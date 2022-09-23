@@ -1,0 +1,39 @@
+.PrintMarker {
+    --PrintMarker-length: 3mm;
+    --PrintMarker-width: 0.25mm;
+    position: absolute;
+    z-index: 100;
+}
+@media screen {
+    .PrintMarker {
+        /*display: none;*/
+    }
+}
+.PrintMarker__top {
+    top: 0;
+}
+.PrintMarker__right {
+    right: 0;
+}
+.PrintMarker__bottom {
+    bottom: 0;
+}
+.PrintMarker__left {
+    left: 0;
+}
+.PrintMarker_vertical {
+    position: absolute;
+    left: calc(var(--PrintMarker-width) / -2);
+    top: calc(var(--PrintMarker-length) / -2);
+    height: var(--PrintMarker-length);
+    width: 0;
+    border-left: var(--PrintMarker-width) solid var(--PrintMarker-color, black);
+}
+.PrintMarker_horizontal {
+    position: absolute;
+    left: calc(var(--PrintMarker-length) / -2);
+    top: calc(var(--PrintMarker-width) / -2);
+    height: 0;
+    width: var(--PrintMarker-length);
+    border-top: var(--PrintMarker-width) solid var(--PrintMarker-color, black);
+}

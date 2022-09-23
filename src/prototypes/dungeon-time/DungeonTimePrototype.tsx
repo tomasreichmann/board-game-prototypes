@@ -4,10 +4,14 @@ import PrintMarkerCorners from "../../components/print/PrintMarker/PrintMarkerCo
 import PrintPage from "../../components/print/PrintPage/PrintPage";
 import ActionCard from "./components/ActionCard/ActionCard";
 import "./DungeonTimePrototype.css";
-import { useActions } from "./hooks/useActions";
+import { useActionDeck } from "./hooks/useActions";
 
 export default function DungeonTimePrototype() {
-    const { data: actions } = useActions();
+    const { data: actionDecks } = useActionDeck();
+
+    const genericDeckActions =
+        actionDecks?.find((deck) => deck.slug === "generic") || undefined;
+    const actions = genericDeckActions ? genericDeckActions.actions : [];
 
     return (
         <div
@@ -18,21 +22,26 @@ export default function DungeonTimePrototype() {
                 Dungeon Time Prototype
             </h1>
 
-            {chunk(actions, 3 * 3).map((actions) => (
-                <PrintPage>
-                    <div className="flex flex-wrap content-center items-center">
-                        {actions.map((action, actionIndex) => (
-                            <ActionCard
-                                key={actionIndex}
-                                {...action}
-                                className="relative"
-                            >
-                                <PrintMarkerCorners />
-                            </ActionCard>
-                        ))}
-                    </div>
-                </PrintPage>
-            ))}
+            <div className="flex gap-5 flex-wrap">
+                {chunk(actions, 3 * 3).map((actions, actionsPageIndex) => (
+                    <PrintPage key={actionsPageIndex}>
+                        <div className="flex flex-wrap content-center items-center">
+                            <h2 className="text-2xl font-dtHeading text-blood-3 w-full">
+                                Generic Deck
+                            </h2>
+                            {actions.map((action, actionIndex) => (
+                                <ActionCard
+                                    key={action.slug}
+                                    {...action}
+                                    className="relative"
+                                >
+                                    <PrintMarkerCorners />
+                                </ActionCard>
+                            ))}
+                        </div>
+                    </PrintPage>
+                ))}
+            </div>
 
             <pre className="h-80 overflow-auto print:hidden">
                 {JSON.stringify(actions, null, 2)}

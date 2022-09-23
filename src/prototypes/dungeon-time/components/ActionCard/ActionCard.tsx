@@ -2,6 +2,8 @@ import React from "react";
 import clsx from "clsx";
 import Paper from "../../../../components/print/Paper/Paper";
 import { ActionType } from "../../types";
+import Icon from "../Icon/Icon";
+import effectToIcon from "../../utils/effectToIcon";
 // import "./ActionCard.css";
 
 export type ActionCardProps = React.PropsWithChildren<
@@ -24,7 +26,11 @@ export default function ActionCard({
         >
             <div className="h-32 flex flex-row flex-wrap gap-4 items-center justify-center text-center">
                 {effects.map((effect, effectIndex) => (
-                    <div key={effectIndex}>{effect}</div>
+                    <Icon
+                        key={effectIndex}
+                        icon={effectToIcon(effect)}
+                        className="h-16"
+                    />
                 ))}
             </div>
             <div className="text-sm text-center">{description}</div>

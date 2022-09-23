@@ -7,3 +7,13 @@ export type ActionType = {
     utilityValue: number;
     comments?: string;
 };
+
+export type ActionDeckType = {
+    slug: string;
+    actionSlugCounts: {
+        actionSlug: string;
+        count: number;
+    }[];
+    actionSlugs: string[];
+    actions: ActionType[];
+};

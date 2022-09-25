@@ -1,20 +1,23 @@
 import { ActionDeckType } from "../types";
+import camelCaseObjectKeys from "../utils/camelCaseObjectKeys";
 
 export default function actionDecksDataAdapter(
-    actionDecksData: { [key: string]: string }[]
+    actionDecksData: Record<string, string>[]
 ): ActionDeckType[] {
     const deckSlugs: string[] = [];
     return actionDecksData.reduce((actionDecks, actionDecksDataRow) => {
         const {
-            ["deck slug"]: slug,
-            ["action slug"]: actionSlug,
+            slug,
+            actionSlug,
             count: countString,
-        } = actionDecksDataRow;
+            ...restData
+        } = camelCaseObjectKeys(actionDecksDataRow);
         let deckSlugIndex = deckSlugs.indexOf(slug);
 
         if (deckSlugIndex === -1) {
             deckSlugs.push(slug);
             actionDecks.push({
+                ...restData,
                 slug,
                 actionSlugCounts: [],
                 actionSlugs: [],

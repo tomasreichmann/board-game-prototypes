@@ -8,19 +8,29 @@ const sheetSignature = {
 const LOCAL_STORAGE_PREFIX = "DT_SHEET_";
 const LOCAL_STORAGE_KEY = LOCAL_STORAGE_PREFIX + sheetSignature.sheetId;
 
+export const clearSheetDataCache = () => {
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+};
+
+const useDummyReturn = <T>(returnValue: T) => returnValue;
+
 export default function useSheetData() {
     const localStorageData = localStorage.getItem(LOCAL_STORAGE_KEY);
+    let response = useGoogleSheets(
+        localStorageData ? { apiKey: "", sheetId: "" } : { ...sheetSignature }
+    );
     if (localStorageData) {
-        return {
+        response = {
             data: JSON.parse(localStorageData),
             loading: false,
             error: null,
+            called: false,
+            refetch: response.refetch,
         };
     }
-    const response = useGoogleSheets(sheetSignature);
 
     useEffect(() => {
-        if (response.data && response.data.length > 0) {
+        if (!localStorageData && response.data && response.data.length > 0) {
             console.log("response.data", response.data);
             localStorage.setItem(
                 LOCAL_STORAGE_KEY,

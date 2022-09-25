@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import "./index.css";
 import IndexRoute from "./routes/IndexRoute/IndexRoute";
 import prototypes from "./prototypes/prototypes";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const routes = [
     {
@@ -13,7 +14,11 @@ const routes = [
     },
     ...prototypes.map(({ path, Component }) => ({
         path,
-        element: <Component />,
+        element: (
+            <ErrorBoundary>
+                <Component />
+            </ErrorBoundary>
+        ),
     })),
 ];
 

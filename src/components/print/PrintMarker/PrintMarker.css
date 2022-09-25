@@ -4,11 +4,12 @@
     position: absolute;
     z-index: 100;
 }
+/*
 @media screen {
     .PrintMarker {
-        /*display: none;*/
+        display: none;
     }
-}
+}*/
 .PrintMarker__top {
     top: 0;
 }

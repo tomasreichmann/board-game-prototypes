@@ -17,8 +17,47 @@ export const useActions = (): {
     const actions = sheetData.data.find(
         (item: { id: string }) => item.id === "actions"
     );
-    const data = actions ? actionDataAdapter(actions.data) : undefined;
+    const data = actions
+        ? actionDataAdapter(actions.data as Record<string, string>[])
+        : undefined;
     return { ...sheetData, data };
+};
+
+export const insertUpgradeOptions = (
+    action: ActionType,
+    actionMap: {
+        [key: string]: ActionType;
+    }
+): ActionType => {
+    const upgradeOptions = action.upgradeOptionSlugs
+        .reduce((upgradeOptions, upgradeOptionSlug) => {
+            const upgradeOption = actionMap[upgradeOptionSlug];
+            if (!upgradeOption) {
+                console.error(
+                    `Upgrade option "${upgradeOptionSlug}" of action "${
+                        action.slug
+                    }" not found in actions (${Object.keys(actionMap).join(
+                        ", "
+                    )})`
+                );
+            } else {
+                upgradeOptions.push(upgradeOption);
+            }
+            return upgradeOptions;
+        }, [] as ActionType[])
+        .map((upgradeOption, upgradeOptionIndex) =>
+            insertUpgradeOptions(
+                {
+                    ...upgradeOption,
+                    slug: action.slug + "-" + upgradeOptionIndex,
+                },
+                actionMap
+            )
+        );
+    return {
+        ...action,
+        upgradeOptions,
+    };
 };
 
 export const useActionDeck = (): {
@@ -40,13 +79,18 @@ export const useActionDeck = (): {
     if (!actionsData || !actionDecksData) {
         return { ...sheetData, data: undefined };
     }
-    const actionMap = arrayToMap(actionDataAdapter(actionsData.data), "slug");
-    const actionDecks = actionDecksDataAdapter(actionDecksData.data);
+    const actionMap = arrayToMap(
+        actionDataAdapter(actionsData.data as Record<string, string>[]),
+        "slug"
+    );
+    const actionDecks = actionDecksDataAdapter(
+        actionDecksData.data as Record<string, string>[]
+    );
 
     const data = actionDecks.map((actionDeck) => ({
         ...actionDeck,
-        actions: actionDeck.actionSlugs
-            .map((actionSlug, actionIndex) => {
+        actions: actionDeck.actionSlugs.reduce(
+            (actions, actionSlug, actionIndex) => {
                 const action = actionMap[actionSlug];
                 if (!action) {
                     console.error(
@@ -54,11 +98,21 @@ export const useActionDeck = (): {
                             actionMap
                         ).join(", ")})`
                     );
-                    return undefined;
+                } else {
+                    actions.push(
+                        insertUpgradeOptions(
+                            {
+                                ...action,
+                                slug: action.slug + "-" + actionIndex,
+                            },
+                            actionMap
+                        )
+                    );
                 }
-                return { ...action, slug: action.slug + "-" + actionIndex };
-            })
-            .filter((action) => action !== undefined) as ActionType[],
+                return actions;
+            },
+            [] as ActionType[]
+        ),
     }));
     return { ...sheetData, data };
 };

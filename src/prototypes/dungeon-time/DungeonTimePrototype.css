@@ -1,9 +1,1 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Germania+One&display=swap");
-
-.DungeonTimePrototype {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    overflow: auto;
-}

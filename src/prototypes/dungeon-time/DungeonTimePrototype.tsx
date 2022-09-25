@@ -7,6 +7,7 @@ import EnemyPages from "./components/print/EnemyPages";
 import { clearSheetDataCache } from "./hooks/useSheetData";
 import { ActionType } from "./types";
 import "./DungeonTimePrototype.css";
+import universalPaperSizes from "../../components/print/paperSizes";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -90,7 +91,10 @@ export default function DungeonTimePrototype() {
                 </div>
             </div>
 
-            <div className="flex gap-5 flex-wrap print:block">
+            <div
+                className="flex gap-5 flex-wrap print:block"
+                style={{ minWidth: universalPaperSizes.A4.mm[0] + "mm" }}
+            >
                 {showActions && (
                     <ErrorBoundary>
                         <ActionCardPages />

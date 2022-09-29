@@ -8,6 +8,10 @@ import { clearSheetDataCache } from "./hooks/useSheetData";
 import { ActionType } from "./types";
 import "./DungeonTimePrototype.css";
 import universalPaperSizes from "../../components/print/paperSizes";
+import BattleEncounterPages from "./components/print/BattleEncounterPages";
+import ConsumablesPages from "./components/print/ConsumablesPages";
+import Toggle from "../../components/Toggle";
+import Icon, { iconMap, IconType } from "./components/Icon/Icon";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -31,6 +35,8 @@ export default function DungeonTimePrototype() {
     const [showActions, setShowActions] = useState(true);
     const [showEnemies, setShowEnemies] = useState(true);
     const [showEnemyIntents, setShowEnemyIntents] = useState(true);
+    const [showBattleEncounters, setShowBattleEncounters] = useState(true);
+    const [showConsumables, setShowConsumables] = useState(true);
 
     const refreshData = () => {
         clearSheetDataCache();
@@ -77,6 +83,26 @@ export default function DungeonTimePrototype() {
                             }
                         />
                     </Form.Label>
+                    <Form.Label title="Battle Encounters">
+                        <Checkbox
+                            className="ml-1"
+                            checked={showBattleEncounters}
+                            onClick={() =>
+                                setShowBattleEncounters(
+                                    (isVisible) => !isVisible
+                                )
+                            }
+                        />
+                    </Form.Label>
+                    <Form.Label title="Consumables">
+                        <Checkbox
+                            className="ml-1"
+                            checked={showConsumables}
+                            onClick={() =>
+                                setShowConsumables((isVisible) => !isVisible)
+                            }
+                        />
+                    </Form.Label>
                     <Button onClick={refreshData} size="sm" color="primary">
                         Refresh Data
                     </Button>
@@ -90,6 +116,20 @@ export default function DungeonTimePrototype() {
                     </Button>
                 </div>
             </div>
+
+            <Toggle buttonContent="Show Icons" initialCollapsed>
+                <div className="flex flex-row flex-wrap gap-2">
+                    {Object.keys(iconMap).map((iconKey) => (
+                        <div
+                            key={iconKey}
+                            className="flex flex-col gap-1 items-center"
+                        >
+                            <Icon icon={iconKey as IconType} className="h-8" />
+                            <div className="text-sm">{iconKey}</div>
+                        </div>
+                    ))}
+                </div>
+            </Toggle>
 
             <div
                 className="flex gap-5 flex-wrap print:block"
@@ -108,6 +148,16 @@ export default function DungeonTimePrototype() {
                 {showEnemyIntents && (
                     <ErrorBoundary>
                         <EnemyIntentPages />
+                    </ErrorBoundary>
+                )}
+                {showBattleEncounters && (
+                    <ErrorBoundary>
+                        <BattleEncounterPages />
+                    </ErrorBoundary>
+                )}
+                {showConsumables && (
+                    <ErrorBoundary>
+                        <ConsumablesPages />
                     </ErrorBoundary>
                 )}
             </div>

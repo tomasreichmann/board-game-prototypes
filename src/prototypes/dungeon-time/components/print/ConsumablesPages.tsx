@@ -1,39 +1,44 @@
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import EnemyCard from "../EnemyCard";
-import { useEnemies } from "../../hooks/useEnemies";
+import ConsumableCard from "../ConsumableCard";
 import DataToggle from "../../../../components/DataToggle";
+import { useConsumables } from "../../hooks/useConsumables";
+import multiplyByCount, {
+    defaultCountAdapter,
+} from "../../utils/multiplyByCount";
 
-const ENEMY_CARDS_PER_PAGE = 3 * 2;
+const CARDS_PER_PAGE = 3 * 3;
 
 export default function EnemyPages() {
-    const { data: enemies = [] } = useEnemies();
-    const totalPages = Math.ceil(enemies.length / ENEMY_CARDS_PER_PAGE);
-
+    const { data } = useConsumables();
+    const consumables = data
+        ? multiplyByCount(data, "cardCount", defaultCountAdapter)
+        : [];
+    const totalPages = Math.ceil(consumables.length / CARDS_PER_PAGE);
     return (
         <>
-            {chunk(enemies, ENEMY_CARDS_PER_PAGE).map(
-                (enemies, enemyPageIndex) => (
-                    <PrintPage key={"enemy-cards-page-" + enemyPageIndex}>
+            {chunk(consumables, CARDS_PER_PAGE).map(
+                (consumables, pageIndex) => (
+                    <PrintPage key={"enemy-cards-page-" + pageIndex}>
                         <div className="flex flex-wrap content-center items-center">
-                            {enemies.map((enemy) => (
-                                <EnemyCard
+                            {consumables.map((enemy) => (
+                                <ConsumableCard
                                     key={enemy.slug}
                                     {...enemy}
                                     className="relative"
                                 >
                                     <PrintMarkerCorners />
-                                </EnemyCard>
+                                </ConsumableCard>
                             ))}
                             <h2 className="text-2xl font-dtHeading text-blood-3 w-full text-center">
-                                Enemies {enemyPageIndex + 1}/{totalPages}
+                                Consumables {pageIndex + 1}/{totalPages}
                             </h2>
                         </div>
                     </PrintPage>
                 )
             )}
-            <DataToggle data={enemies} initialCollapsed />
+            <DataToggle data={consumables} initialCollapsed />
         </>
     );
 }

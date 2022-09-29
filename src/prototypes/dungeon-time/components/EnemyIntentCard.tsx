@@ -23,7 +23,6 @@ export default function EnemyIntentCard({
     move,
     moveMod,
     special,
-    deckCounts,
     children,
 }: EnemyIntentCardProps) {
     const iconProps = { className: "h-6 inline-block" };

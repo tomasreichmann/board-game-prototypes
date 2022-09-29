@@ -1,5 +1,6 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { EnemyType } from "../types";
+import multiplyByCount, { defaultCountAdapter } from "../utils/multiplyByCount";
 import enemiesDataAdapter from "./enemiesDataAdapter";
 import useSheetData from "./useSheetData";
 
@@ -16,7 +17,11 @@ export const useEnemies = (): {
         (item: { id: string }) => item.id === "enemies"
     );
     const data = actions
-        ? enemiesDataAdapter(actions.data as Record<string, string>[])
+        ? multiplyByCount(
+              enemiesDataAdapter(actions.data as Record<string, string>[]),
+              "cardCount",
+              defaultCountAdapter
+          )
         : undefined;
     return { ...sheetData, data };
 };

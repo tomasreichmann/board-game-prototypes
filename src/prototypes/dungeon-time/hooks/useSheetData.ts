@@ -31,7 +31,6 @@ export default function useSheetData() {
 
     useEffect(() => {
         if (!localStorageData && response.data && response.data.length > 0) {
-            console.log("response.data", response.data);
             localStorage.setItem(
                 LOCAL_STORAGE_KEY,
                 JSON.stringify(response.data)

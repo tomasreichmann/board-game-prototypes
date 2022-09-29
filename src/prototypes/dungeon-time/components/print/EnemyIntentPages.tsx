@@ -2,9 +2,9 @@ import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import EnemyIntentCard from "../EnemyIntentCard";
-import { useEnemyIntentDeckMap } from "../../hooks/useEnemyIntents";
 import { ActionType } from "../../types";
 import DataToggle from "../../../../components/DataToggle";
+import useEnemyIntentDeckMap from "../../hooks/useEnemyIntentDeckMap";
 
 const ENEMY_INTENT_CARDS_PER_PAGE = 4 * 4;
 
@@ -63,7 +63,7 @@ export default function EnemyIntentPages() {
                     </PrintPage>
                 )
             )}
-            <DataToggle data={enemyIntentCards} initialCollapsed />
+            <DataToggle data={enemyIntentDeckMap} initialCollapsed />
         </>
     );
 }

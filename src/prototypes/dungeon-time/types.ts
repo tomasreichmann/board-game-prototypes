@@ -28,7 +28,7 @@ export type EnemyType = {
     imageUri: string;
     flavourText: string;
     type: string;
-    hitPoints: number;
+    toughness: string;
     attack: string;
     altAttack: string;
     defend: string;
@@ -36,6 +36,7 @@ export type EnemyType = {
     special: string;
     passive: string;
     challenge: number;
+    cardCount: number;
 };
 
 export type EnemyIntentType = {
@@ -49,10 +50,62 @@ export type EnemyIntentType = {
     move: number;
     moveMod: string;
     special: number;
-    deckCounts: { [key: string]: number };
 };
 
 export type EnemyIntentDeckType = {
     slug: string;
+    name: string;
+    icon: IconType;
+    intentSlugs: string[];
     intents: EnemyIntentType[];
+};
+
+export type BattleEncounterType = {
+    slug: string;
+    name: string;
+    description: string;
+    type: string;
+    icon: IconType;
+    enemyIntentDeckSlug: string;
+    enemyIntentDeck: EnemyIntentDeckType;
+    enemySlugsForPlayerCount1: string[];
+    enemiesForPlayerCount1: EnemyType[];
+    enemySlugsForPlayerCount2: string[];
+    enemiesForPlayerCount2: EnemyType[];
+    enemySlugsForPlayerCount3: string[];
+    enemiesForPlayerCount3: EnemyType[];
+    enemySlugsForPlayerCount4: string[];
+    enemiesForPlayerCount4: EnemyType[];
+    enemySlugsForPlayerCount5: string[];
+    enemiesForPlayerCount5: EnemyType[];
+    reward: string;
+};
+
+export type ConsumableType = {
+    slug: string;
+    name: string;
+    icon: IconType;
+    effect: string;
+    cost: number;
+    cardCount: number;
+};
+
+export type RelicType = {
+    slug: string;
+    type: "minor" | "major";
+    name: string;
+    effect: string;
+    cost: string;
+    cardCount: number;
+};
+
+export type RuleType = {
+    children?: string;
+    imageUri?: string;
+    component?: string;
+    className?: string;
+};
+
+export type PlaytestersType = {
+    name: string;
 };

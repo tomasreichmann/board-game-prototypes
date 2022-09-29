@@ -1,8 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import Paper from "../../../components/print/Paper/Paper";
-import { BattleEncounterType, EnemyType } from "../types";
-import Icon, { iconMap, IconType } from "./Icon/Icon";
+import { BattleEncounterType } from "../types";
+import Icon from "./Icon/Icon";
 import RichText from "./RichText";
 // import "./BattleEncounterCard.css";
 
@@ -51,10 +51,10 @@ export default function BattleEncounterCard({
                 &ensp;
                 {enemyIntentDeck.name}
             </div>
-            <div className="font-dtHeading text-center text-blood-1 -mb-1 pt-1 border-t-2 border-t-slate-300">
+            <div className="font-dtHeading text-sm text-center text-blood-1 -mb-1 pt-1 border-t-2 border-t-slate-300">
                 Enemies per number of players
             </div>
-            <div className="flex flex-row flex-wrap justify-around gap-y-1 gap-x-2">
+            <div className="flex flex-row flex-wrap justify-around gap-x-2">
                 {[
                     enemiesForPlayerCount1,
                     enemiesForPlayerCount2,
@@ -70,14 +70,14 @@ export default function BattleEncounterCard({
                             <Icon
                                 key={enemyIndex}
                                 icon={enemy.icon}
-                                className="h-4 inline-block"
+                                className="h-5 inline-block"
                             />
                         ))}
                     </div>
                 ))}
             </div>
 
-            <div className="text-center leading-4 font-dtHeading text-sm mt-1 mb-2">
+            <div className="text-center leading-4 font-dtHeading text-sm mb-2">
                 <div className="flex flex-1 w-full flex-row gap-2 mb-1">
                     <div className="flex-1 border-t-2 border-t-slate-300 mt-2"></div>
                     <Icon className="h-4 text-fire-3" icon="chest" />

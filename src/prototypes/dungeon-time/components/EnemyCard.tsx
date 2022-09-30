@@ -17,7 +17,7 @@ export default function EnemyCard({
     type,
     icon,
     imageUri,
-    flavourText,
+    flavorText,
     attack,
     altAttack,
     defend,
@@ -28,7 +28,7 @@ export default function EnemyCard({
     challenge,
     children,
 }: EnemyCardProps) {
-    const iconProps = { className: "h-6 inline-block" };
+    const iconProps = { className: "h-5 inline-block -my-1" };
 
     const typeIcon: IconType | undefined =
         type in iconMap ? (type as IconType) : undefined;
@@ -43,10 +43,10 @@ export default function EnemyCard({
         >
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             <div className="flex-1 shrink my-2 flex flex-row gap-2">
-                <div className="w-32 min-w-16">
+                <div className="w-8">
                     <Icon icon={icon} className="w-full" />
                 </div>
-                <div>
+                <div className="flex-1 flex-shrink">
                     <div className="font-dtHeading text-blood-1 text-md">
                         {typeIcon && (
                             <Icon
@@ -57,11 +57,11 @@ export default function EnemyCard({
                         {name}
                     </div>
                     <div className="text-xs leading-3 italic text-justify">
-                        {flavourText}
+                        {flavorText}
                     </div>
                 </div>
             </div>
-            <div className="text-center leading-4 font-dtHeading text-sm mt-1 mb-2">
+            <div className="text-center leading-4 font-dtHeading text-sm mt-1 mb-2 text-lightning-3">
                 {toughness && (
                     <RichText
                         iconProps={{

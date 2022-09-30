@@ -8,6 +8,7 @@ export default function actionDecksDataAdapter(
     return actionDecksData.reduce((actionDecks, actionDecksDataRow) => {
         const {
             slug,
+            name,
             actionSlug,
             count: countString,
             ...restData
@@ -18,6 +19,7 @@ export default function actionDecksDataAdapter(
             deckSlugs.push(slug);
             actionDecks.push({
                 ...restData,
+                name,
                 slug,
                 actionSlugCounts: [],
                 actionSlugs: [],

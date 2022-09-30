@@ -1,13 +1,16 @@
 import arrowLeft from "./media/arrow-left.svg";
 import arrowRight from "./media/arrow-right.svg";
 import barrel from "./media/barrel.svg";
+import bearHead from "./media/bear-head.svg";
 import bladeBite from "./media/blade-bite.svg";
 import brokenBottle from "./media/broken-bottle.svg";
 import cardDraw from "./media/card-draw.svg";
 import cardExchange from "./media/card-exchange.svg";
 import cardPlay from "./media/card-play.svg";
+import cardRandom from "./media/card-random.svg";
 import checkedShield from "./media/checked-shield.svg";
 import chest from "./media/chest.svg";
+import crossbow from "./media/crossbow.svg";
 import crossedAxes from "./media/crossed-axes.svg";
 import crossedSwords from "./media/crossed-swords.svg";
 import crownCoin from "./media/crown-coin.svg";
@@ -24,15 +27,21 @@ import heartBottle from "./media/heart-bottle.svg";
 import highShot from "./media/high-shot.svg";
 import lamellar from "./media/lamellar.svg";
 import magicPotion from "./media/magic-potion.svg";
+import mightyForce from "./media/mighty-force.svg";
+import ninjaHead from "./media/ninja-head.svg";
+import pestleMortar from "./media/pestle-mortar.svg";
 import plainDagger from "./media/plain-dagger.svg";
 import push from "./media/push.svg";
+import sickle from "./media/sickle.svg";
 import skullStaff from "./media/skull-staff.svg";
 import stickyBoot from "./media/sticky-boot.svg";
 import stoneBlock from "./media/stone-block.svg";
 import teleport from "./media/teleport.svg";
+import templarShield from "./media/templar-shield.svg";
 import thrownKnife from "./media/thrown-knife.svg";
 import tripleSkulls from "./media/triple-skulls.svg";
 import walkingBoot from "./media/walking-boot.svg";
+import warlockEye from "./media/warlock-eye.svg";
 import warlordHelmet from "./media/warlord-helmet.svg";
 import williamTellSkull from "./media/william-tell-skull.svg";
 import wolfHead from "./media/wolf-head.svg";
@@ -56,10 +65,13 @@ export const iconAliases = {
     SHOVE: push,
     SKULL: deathSkull,
     SPACE: flatPlatform,
+    SPECIAL: mightyForce,
     TELEPORT: teleport,
     TOUGHNESS: lamellar,
     TRAP: wolfTrap,
     UNDEAD: deathSkull,
+    WOLF: wolfHead,
+    BEAR: bearHead,
     WOUND: drop,
 };
 
@@ -72,8 +84,10 @@ export const iconMap = {
     cardDraw,
     cardExchange,
     cardPlay,
+    cardRandom,
     checkedShield,
     chest,
+    crossbow,
     crossedAxes,
     crossedSwords,
     crownCoin,
@@ -81,28 +95,34 @@ export const iconMap = {
     deathSkull,
     doubleFaceMask,
     drop,
+    explosiveMaterials,
     fireRing,
+    fizzingFlask,
     flatPlatform,
     halt,
+    heartBottle,
     highShot,
     lamellar,
+    magicPotion,
+    mightyForce,
+    ninjaHead,
+    pestleMortar,
     plainDagger,
     push,
+    sickle,
     skullStaff,
     stickyBoot,
     stoneBlock,
     teleport,
+    templarShield,
+    thrownKnife,
     tripleSkulls,
     walkingBoot,
+    warlockEye,
     warlordHelmet,
     williamTellSkull,
     wolfHead,
     wolfTrap,
-    explosiveMaterials,
-    fizzingFlask,
-    heartBottle,
-    magicPotion,
-    thrownKnife,
     ...iconAliases,
 };
 

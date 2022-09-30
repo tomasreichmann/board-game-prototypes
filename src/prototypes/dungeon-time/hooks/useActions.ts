@@ -60,7 +60,7 @@ export const insertUpgradeOptions = (
     };
 };
 
-export const useActionDeck = (): {
+export const useActionDecks = (): {
     data: ActionDeckType[] | undefined;
     loading: boolean;
     error: null | ErrorResponse;
@@ -103,6 +103,7 @@ export const useActionDeck = (): {
                         insertUpgradeOptions(
                             {
                                 ...action,
+                                deck: actionDeck,
                                 slug: action.slug + "-" + actionIndex,
                             },
                             actionMap

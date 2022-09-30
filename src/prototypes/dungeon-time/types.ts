@@ -3,6 +3,7 @@ import { IconType } from "./components/Icon/Icon";
 export type ActionType = {
     slug: string;
     effects: IconType[];
+    deck?: ActionDeckType;
     description: string;
     upgradeSlots: number;
     upgradeOptionSlugs: string[];
@@ -13,6 +14,7 @@ export type ActionType = {
 
 export type ActionDeckType = {
     slug: string;
+    name: string;
     actionSlugCounts: {
         actionSlug: string;
         count: number;
@@ -26,7 +28,7 @@ export type EnemyType = {
     name: string;
     icon: IconType;
     imageUri: string;
-    flavourText: string;
+    flavorText: string;
     type: string;
     toughness: string;
     attack: string;
@@ -81,6 +83,24 @@ export type BattleEncounterType = {
     reward: string;
 };
 
+export type PlayerCharacterType = {
+    slug: string;
+    name: string;
+    role: string;
+    flavor: string;
+    gameplay: string;
+    icon: IconType;
+    imageUri: string;
+    flavorText: string;
+    toughness: number;
+    speed: number;
+    handSize: number;
+    passive: string;
+    special: string;
+    startingDeckSlug: string;
+    startingDeck: ActionDeckType;
+};
+
 export type ConsumableType = {
     slug: string;
     name: string;
@@ -106,6 +126,6 @@ export type RuleType = {
     className?: string;
 };
 
-export type PlaytestersType = {
+export type PlayTestersType = {
     name: string;
 };

@@ -12,6 +12,7 @@ import BattleEncounterPages from "./components/print/BattleEncounterPages";
 import ConsumablesPages from "./components/print/ConsumablesPages";
 import Toggle from "../../components/Toggle";
 import Icon, { iconMap, IconType } from "./components/Icon/Icon";
+import CharactersPages from "./components/print/CharactersPages";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -32,6 +33,7 @@ const getUpgradesDeep = (action: ActionType): ActionType[] => {
 
 export default function DungeonTimePrototype() {
     const [, setRerenderCount] = useState(0);
+    const [showPlayerCharacters, setShowPlayerCharacters] = useState(true);
     const [showActions, setShowActions] = useState(true);
     const [showEnemies, setShowEnemies] = useState(true);
     const [showEnemyIntents, setShowEnemyIntents] = useState(true);
@@ -56,6 +58,17 @@ export default function DungeonTimePrototype() {
                     Dungeon Time Prototype
                 </h1>
                 <div className="flex flex-row justify-end gap-x-2 gap-y-1 content-end flex-wrap-reverse items-center">
+                    <Form.Label title="Player Characters">
+                        <Checkbox
+                            className="ml-1"
+                            checked={showPlayerCharacters}
+                            onClick={() =>
+                                setShowPlayerCharacters(
+                                    (isVisible) => !isVisible
+                                )
+                            }
+                        />
+                    </Form.Label>
                     <Form.Label title="Actions">
                         <Checkbox
                             className="ml-1"
@@ -135,6 +148,11 @@ export default function DungeonTimePrototype() {
                 className="flex gap-5 flex-wrap print:block"
                 style={{ minWidth: universalPaperSizes.A4.mm[0] + "mm" }}
             >
+                {showPlayerCharacters && (
+                    <ErrorBoundary>
+                        <CharactersPages />
+                    </ErrorBoundary>
+                )}
                 {showActions && (
                     <ErrorBoundary>
                         <ActionCardPages />

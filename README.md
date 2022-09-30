@@ -5,6 +5,7 @@ Make prototypes for board games using React, TailwindCSS + Daisy UI, super quick
 
 ```
 $ npm install
+$ npm install netlify-cli -g
 ```
 
 ## Development

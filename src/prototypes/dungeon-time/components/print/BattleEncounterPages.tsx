@@ -1,7 +1,7 @@
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import BattleEncounterCard from "../BattleEncounterCard";
+import BattleEncounterCard from "../gameComponents/BattleEncounterCard";
 import DataToggle from "../../../../components/DataToggle";
 import { useBattleEncounters } from "../../hooks/useBattleEncounters";
 
@@ -31,7 +31,9 @@ export default function BattleEncounterPages() {
                     </div>
                 </PrintPage>
             ))}
-            <DataToggle data={battles} initialCollapsed />
+            <div className="w-full">
+                <DataToggle data={battles} initialCollapsed />
+            </div>
         </>
     );
 }

@@ -1,6 +1,6 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { EnemyIntentType } from "../types";
-import enemyIntentsDataAdapter from "./enemyIntentsDataAdapter";
+import enemyIntentsDataAdapter from "../adapters/enemyIntentsDataAdapter";
 import useSheetData from "./useSheetData";
 
 export const useEnemyIntents = (): {

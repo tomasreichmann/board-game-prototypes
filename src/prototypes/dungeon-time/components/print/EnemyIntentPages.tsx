@@ -1,7 +1,7 @@
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import EnemyIntentCard from "../EnemyIntentCard";
+import EnemyIntentCard from "../gameComponents/EnemyIntentCard";
 import { ActionType } from "../../types";
 import DataToggle from "../../../../components/DataToggle";
 import useEnemyIntentDeckMap from "../../hooks/useEnemyIntentDeckMap";
@@ -63,7 +63,9 @@ export default function EnemyIntentPages() {
                     </PrintPage>
                 )
             )}
-            <DataToggle data={enemyIntentDeckMap} initialCollapsed />
+            <div className="w-full">
+                <DataToggle data={enemyIntentDeckMap} initialCollapsed />
+            </div>
         </>
     );
 }

@@ -1,8 +1,8 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { ActionDeckType, ActionType } from "../types";
 import arrayToMap from "../utils/arrayToMap";
-import actionDataAdapter from "./actionDataAdapter";
-import actionDecksDataAdapter from "./actionDecksDataAdapter";
+import actionDataAdapter from "../adapters/actionDataAdapter";
+import actionDecksDataAdapter from "../adapters/actionDecksDataAdapter";
 import useSheetData from "./useSheetData";
 
 export const useActions = (): {
@@ -104,7 +104,12 @@ export const useActionDecks = (): {
                             {
                                 ...action,
                                 deck: actionDeck,
-                                slug: action.slug + "-" + actionIndex,
+                                slug:
+                                    actionDeck.slug +
+                                    "-" +
+                                    action.slug +
+                                    "-" +
+                                    actionIndex,
                             },
                             actionMap
                         )

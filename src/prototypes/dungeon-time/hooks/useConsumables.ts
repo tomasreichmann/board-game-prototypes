@@ -1,6 +1,6 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { ConsumableType } from "../types";
-import consumablesDataAdapter from "./consumablesDataAdapter";
+import consumablesDataAdapter from "../adapters/consumablesDataAdapter";
 import useSheetData from "./useSheetData";
 
 export const useConsumables = (): {

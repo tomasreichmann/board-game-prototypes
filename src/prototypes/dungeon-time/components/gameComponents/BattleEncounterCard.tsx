@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
-import Paper from "../../../components/print/Paper/Paper";
-import { BattleEncounterType } from "../types";
-import Icon from "./Icon/Icon";
-import RichText from "./RichText";
+import Paper from "../../../../components/print/Paper/Paper";
+import { BattleEncounterType } from "../../types";
+import Icon from "../Icon/Icon";
+import RichText from "../RichText";
 // import "./BattleEncounterCard.css";
 
 export type BattleEncounterCardProps = React.PropsWithChildren<

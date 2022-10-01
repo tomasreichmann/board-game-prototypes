@@ -2,6 +2,7 @@ import { IconType } from "./components/Icon/Icon";
 
 export type ActionType = {
     slug: string;
+    sourceSlug: string;
     effects: IconType[];
     deck?: ActionDeckType;
     description: string;
@@ -25,6 +26,7 @@ export type ActionDeckType = {
 
 export type EnemyType = {
     slug: string;
+    sourceSlug: string;
     name: string;
     icon: IconType;
     imageUri: string;
@@ -62,27 +64,6 @@ export type EnemyIntentDeckType = {
     intents: EnemyIntentType[];
 };
 
-export type BattleEncounterType = {
-    slug: string;
-    name: string;
-    description: string;
-    type: string;
-    icon: IconType;
-    enemyIntentDeckSlug: string;
-    enemyIntentDeck: EnemyIntentDeckType;
-    enemySlugsForPlayerCount1: string[];
-    enemiesForPlayerCount1: EnemyType[];
-    enemySlugsForPlayerCount2: string[];
-    enemiesForPlayerCount2: EnemyType[];
-    enemySlugsForPlayerCount3: string[];
-    enemiesForPlayerCount3: EnemyType[];
-    enemySlugsForPlayerCount4: string[];
-    enemiesForPlayerCount4: EnemyType[];
-    enemySlugsForPlayerCount5: string[];
-    enemiesForPlayerCount5: EnemyType[];
-    reward: string;
-};
-
 export type PlayerCharacterType = {
     slug: string;
     name: string;
@@ -112,10 +93,11 @@ export type ConsumableType = {
 
 export type RelicType = {
     slug: string;
-    type: "minor" | "major";
+    icon: IconType;
     name: string;
+    type: "minor" | "major";
     effect: string;
-    cost: string;
+    cost: number;
     cardCount: number;
 };
 
@@ -128,4 +110,88 @@ export type RuleType = {
 
 export type PlayTestersType = {
     name: string;
+};
+
+export type StageType = {
+    slug: string;
+    name: string;
+    icon: IconType;
+    type: string;
+    tier: number;
+    stageIndex: number;
+    optionIndex: number;
+    environment: string;
+    encounterSlug: string;
+    encounter?: EncounterType;
+    nextStageSlugs: string[];
+    nextStageSlug1: string;
+    nextStageSlug2: string;
+    nextStageSlug3: string;
+};
+
+export type EncounterType = BattleEncounterType | MysteryEncounterType | ShopEncounterType | RestEncounterType;
+
+/*
+export type EncounterType = {
+    slug: string;
+    sourceSlug: string;
+    name: string;
+    description: string;
+    icon: IconType;
+};*/
+
+export type BattleEncounterType = {
+    slug: string;
+    name: string;
+    encounterType: "battle";
+    description: string;
+    battleType: string;
+    icon: IconType;
+    enemyIntentDeckSlug: string;
+    enemyIntentDeck: EnemyIntentDeckType;
+    enemySlugsForPlayerCount1: string[];
+    enemiesForPlayerCount1: EnemyType[];
+    enemySlugsForPlayerCount2: string[];
+    enemiesForPlayerCount2: EnemyType[];
+    enemySlugsForPlayerCount3: string[];
+    enemiesForPlayerCount3: EnemyType[];
+    enemySlugsForPlayerCount4: string[];
+    enemiesForPlayerCount4: EnemyType[];
+    enemySlugsForPlayerCount5: string[];
+    enemiesForPlayerCount5: EnemyType[];
+    reward: string;
+};
+
+export type MysteryOptionType = {
+    description: string;
+    effect: string;
+};
+
+export type MysteryEncounterType = {
+    slug: string;
+    sourceSlug: string;
+    encounterType: "mystery";
+    name: string;
+    icon: IconType;
+    description: string;
+    option: MysteryOptionType[];
+};
+
+export type ShopItemType = {
+    item: ConsumableType | RelicType;
+    cost: number;
+};
+
+export type ShopEncounterType = {
+    slug: string;
+    sourceSlug: string;
+    encounterType: "shop";
+    name: string;
+    icon: IconType;
+    description: string;
+    stock: ShopItemType[];
+};
+
+export type RestEncounterType = {
+    encounterType: "rest";
 };

@@ -11,6 +11,7 @@ export default defineConfig(() => {
                 svgrOptions: {
                     typescript: false,
                     dimensions: false,
+                    replaceAttrValues: { "#000": "currentColor" },
                 },
             }),
         ],

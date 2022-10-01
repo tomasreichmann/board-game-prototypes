@@ -9,11 +9,16 @@ export type ToggleDataProps = {
 
 export default function ToggleData({
     data,
-    className = "print:hidden flex flex-col w-full items-start relative",
+    className = "print:hidden flex flex-col max-w-full items-start relative",
     initialCollapsed,
+    ...restProps
 }: ToggleDataProps) {
     return (
-        <Toggle className={className} initialCollapsed={initialCollapsed}>
+        <Toggle
+            className={className}
+            initialCollapsed={initialCollapsed}
+            {...restProps}
+        >
             <ErrorBoundary>
                 <DataPreview data={data} />
             </ErrorBoundary>

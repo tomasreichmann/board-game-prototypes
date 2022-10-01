@@ -1,7 +1,7 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { EnemyType } from "../types";
 import multiplyByCount, { defaultCountAdapter } from "../utils/multiplyByCount";
-import enemiesDataAdapter from "./enemiesDataAdapter";
+import enemiesDataAdapter from "../adapters/enemiesDataAdapter";
 import useSheetData from "./useSheetData";
 
 export const useEnemies = (): {

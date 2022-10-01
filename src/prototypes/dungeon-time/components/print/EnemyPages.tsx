@@ -1,7 +1,7 @@
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import EnemyCard from "../EnemyCard";
+import EnemyCard from "../gameComponents/EnemyCard";
 import { useEnemies } from "../../hooks/useEnemies";
 import DataToggle from "../../../../components/DataToggle";
 
@@ -33,7 +33,9 @@ export default function EnemyPages() {
                     </PrintPage>
                 )
             )}
-            <DataToggle data={enemies} initialCollapsed />
+            <div className="w-full">
+                <DataToggle data={enemies} initialCollapsed />
+            </div>
         </>
     );
 }

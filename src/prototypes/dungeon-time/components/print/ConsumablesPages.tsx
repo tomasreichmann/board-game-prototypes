@@ -1,7 +1,7 @@
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import ConsumableCard from "../ConsumableCard";
+import ConsumableCard from "../gameComponents/ConsumableCard";
 import DataToggle from "../../../../components/DataToggle";
 import { useConsumables } from "../../hooks/useConsumables";
 import multiplyByCount, {
@@ -38,7 +38,9 @@ export default function EnemyPages() {
                     </PrintPage>
                 )
             )}
-            <DataToggle data={consumables} initialCollapsed />
+            <div className="w-full">
+                <DataToggle data={consumables} initialCollapsed />
+            </div>
         </>
     );
 }

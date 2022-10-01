@@ -7,6 +7,7 @@ import "./PrintPage.css";
 export type PrintPageProps = React.PropsWithChildren<{
     className?: string;
     contentClassName?: string;
+    size?: keyof typeof paperSizes;
     sizeInMm?: number[];
     marginsInMm?: number[];
     bleedInMm?: number;
@@ -15,7 +16,8 @@ export type PrintPageProps = React.PropsWithChildren<{
 export default function PrintPage({
     className,
     contentClassName,
-    sizeInMm = paperSizes.A4.mm,
+    size = "A4",
+    sizeInMm = paperSizes[size].mm,
     marginsInMm = [10, 10, 10, 10],
     bleedInMm = 3,
     children,

@@ -2,7 +2,7 @@ import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
-import PlayerCharacterCard from "../PlayerCharacterCard";
+import PlayerCharacterCard from "../gameComponents/PlayerCharacterCard";
 import { usePlayerCharacters } from "../../hooks/usePlayerCharacters";
 
 const CARDS_PER_PAGE = 3 * 2;
@@ -31,7 +31,9 @@ export default function CharactersPages() {
                     </div>
                 </PrintPage>
             ))}
-            <DataToggle data={data} initialCollapsed />
+            <div className="w-full">
+                <DataToggle data={data} initialCollapsed />
+            </div>
         </>
     );
 }

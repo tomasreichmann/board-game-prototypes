@@ -1,8 +1,8 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { BattleEncounterType, EnemyType } from "../types";
 import arrayToMap from "../utils/arrayToMap";
-import battleEncountersDataAdapter from "./battleEncountersDataAdapter";
-import enemiesDataAdapter from "./enemiesDataAdapter";
+import battleEncountersDataAdapter from "../adapters/battleEncountersDataAdapter";
+import enemiesDataAdapter from "../adapters/enemiesDataAdapter";
 import useEnemyIntentDeckMap from "./useEnemyIntentDeckMap";
 import useSheetData from "./useSheetData";
 

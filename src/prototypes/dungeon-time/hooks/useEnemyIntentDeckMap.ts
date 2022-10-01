@@ -1,8 +1,8 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { EnemyIntentDeckType } from "../types";
 import arrayToMap from "../utils/arrayToMap";
-import enemyIntentDecksDataAdapter from "./enemyIntentDecksDataAdapter";
-import enemyIntentsDataAdapter from "./enemyIntentsDataAdapter";
+import enemyIntentDecksDataAdapter from "../adapters/enemyIntentDecksDataAdapter";
+import enemyIntentsDataAdapter from "../adapters/enemyIntentsDataAdapter";
 import useSheetData from "./useSheetData";
 
 type IntentDeckMap = { [key: string]: EnemyIntentDeckType };

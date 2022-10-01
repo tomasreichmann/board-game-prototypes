@@ -1,12 +1,14 @@
-import { chunk } from "lodash";
+import { chunk, mapKeys, mapValues } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import ActionCard from "../ActionCard";
+import ActionCard from "../gameComponents/ActionCard";
 import { useActionDecks } from "../../hooks/useActions";
 import { ActionType } from "../../types";
 import DataToggle from "../../../../components/DataToggle";
+import countByProperty from "../../utils/countByProperty";
 
 const CARDS_PER_PAGE = 3 * 3;
+const MAX_IDENTICAL_UPGRADES = 4;
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -37,13 +39,62 @@ export default function ActionCardPages() {
 
     const decks = actionDecks?.filter((deck) => deck.slug !== "generic") || [];
 
-    const actionDeckUpgrades =
+    const allActionDeckUpgrades =
         decks.length > 0
             ? getDeckUpgradesDeep(decks.flatMap((deck) => deck.actions))
             : [];
 
+    const cardTypeCounts = countByProperty(allActionDeckUpgrades, "sourceSlug");
+    const cardsOfTypeLimits = mapValues(cardTypeCounts, (cardCount) =>
+        Math.min(cardCount, MAX_IDENTICAL_UPGRADES)
+    );
+    const cardsOfTypeLeft = { ...cardsOfTypeLimits };
+
+    const unsortedActionDeckUpgrades = allActionDeckUpgrades.reduce(
+        (actionDeckUpgrades, action) => {
+            const { sourceSlug } = action;
+            if (cardsOfTypeLeft[sourceSlug] > 0) {
+                const slug =
+                    sourceSlug +
+                    "-" +
+                    (cardsOfTypeLimits[sourceSlug] -
+                        cardsOfTypeLeft[sourceSlug]);
+                cardsOfTypeLeft[sourceSlug]--;
+                actionDeckUpgrades.push({
+                    ...action,
+                    slug,
+                });
+            }
+            return actionDeckUpgrades;
+        },
+        [] as ActionType[]
+    );
+
+    const actionDeckUpgrades = [...unsortedActionDeckUpgrades].sort((a, b) => {
+        return (
+            unsortedActionDeckUpgrades.findIndex(
+                (action) => action.sourceSlug === a.sourceSlug
+            ) -
+            unsortedActionDeckUpgrades.findIndex(
+                (action) => action.sourceSlug === b.sourceSlug
+            )
+        );
+    });
+
     return (
         <>
+            <div className="flex flex-row justify-start w-full print:hidden gap-2">
+                <DataToggle
+                    data={cardTypeCounts}
+                    buttonContent="Total Upgrade Cards by type"
+                    initialCollapsed
+                />
+                <DataToggle
+                    data={cardsOfTypeLimits}
+                    buttonContent="Filtered Upgrade Cards by type"
+                    initialCollapsed
+                />
+            </div>
             {decks.map(({ actions, name }) => (
                 <>
                     {chunk(actions, CARDS_PER_PAGE).map(
@@ -73,7 +124,11 @@ export default function ActionCardPages() {
                     )}
                 </>
             ))}
-            <DataToggle data={decks} initialCollapsed />
+            <DataToggle
+                data={decks}
+                initialCollapsed
+                className="print:hidden flex flex-col w-full items-start relative"
+            />
             {chunk(actionDeckUpgrades, CARDS_PER_PAGE).map(
                 (actions, actionsPageIndex) => (
                     <PrintPage
@@ -99,7 +154,9 @@ export default function ActionCardPages() {
                     </PrintPage>
                 )
             )}
-            <DataToggle data={actionDeckUpgrades} initialCollapsed />
+            <div className="w-full">
+                <DataToggle data={actionDeckUpgrades} initialCollapsed />
+            </div>
         </>
     );
 }

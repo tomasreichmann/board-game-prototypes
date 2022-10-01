@@ -108,7 +108,7 @@ export type RuleType = {
     className?: string;
 };
 
-export type PlayTestersType = {
+export type PlaytesterType = {
     name: string;
 };
 

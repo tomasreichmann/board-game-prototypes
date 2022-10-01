@@ -25,13 +25,13 @@ export default function ConsumableCard({ className, name, icon, slug, effect, co
                 </div>
             </div>
 
-            <div className="flex-1 flex flex-col items-center justify-center gap-1">
+            <div className="flex-1 flex flex-col items-center justify-end gap-1">
                 <Icon icon={icon} className="w-full max-h-24 text-lightning-1" />
                 <div className="font-dtHeading text-blood-1 text-md text-center">{name}</div>
             </div>
 
-            <div className="flex-1 text-center leading-4 text-md italic">
-                {effect && <RichText iconProps={{ className: "h-8 inline-block" }}>{effect}</RichText>}
+            <div className="flex-1 max-h-24 text-center text-md italic">
+                {effect && <RichText iconProps={{ className: "h-6 inline-block -my-1" }}>{effect}</RichText>}
             </div>
             {children}
         </Paper>

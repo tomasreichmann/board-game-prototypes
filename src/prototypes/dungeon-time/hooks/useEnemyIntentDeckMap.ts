@@ -16,26 +16,21 @@ export default function useEnemyIntentDeckMap(): {
     if (!sheetsState.data) {
         return { ...sheetsState, data: undefined };
     }
-    const enemyIntentsSheet = sheetsState.data.find(
-        (item: { id: string }) => item.id === "enemy intents"
-    );
-    const enemyIntentDecksSheet = sheetsState.data.find(
-        (item: { id: string }) => item.id === "enemy intent decks"
-    );
+    const enemyIntentsSheet = sheetsState.data.find((item: { id: string }) => item.id === "enemy intents");
+    const enemyIntentDecksSheet = sheetsState.data.find((item: { id: string }) => item.id === "enemy intent decks");
     if (!enemyIntentsSheet || !enemyIntentDecksSheet) {
         return { ...sheetsState, data: undefined };
     }
 
     const enemyIntentMap = arrayToMap(
-        enemyIntentsDataAdapter(
-            enemyIntentsSheet.data as Record<string, string>[]
-        ),
+        enemyIntentsDataAdapter(enemyIntentsSheet.data as Record<string, string>[]),
         "slug"
     );
     const enemyIntentDecks = enemyIntentDecksDataAdapter(
         enemyIntentDecksSheet.data as Record<string, string>[],
         enemyIntentMap
     );
+    console.log("enemyIntentDecks", enemyIntentDecks);
 
     return { ...sheetsState, data: arrayToMap(enemyIntentDecks, "slug") };
 }

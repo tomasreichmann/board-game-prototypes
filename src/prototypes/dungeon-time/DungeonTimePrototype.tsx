@@ -15,6 +15,8 @@ import Icon, { iconMap, IconType } from "./components/Icon/Icon";
 import Toggle from "../../components/Toggle";
 import universalPaperSizes from "../../components/print/paperSizes";
 import RelicsPages from "./components/print/RelicsPages";
+import Playtesters from "./components/Playtesters";
+import Credits from "./components/Credits";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -57,12 +59,16 @@ export default function DungeonTimePrototype() {
             className="p-10 print:p-0 min-h-screen bg-acid-5 print:bg-white text-lightning-1"
             data-theme="DungeonTimePrototype"
         >
-            <div className="print:hidden mb-5 flex flex-row gap-4 justify-between">
-                <h1 className="font-dtHeading text-lightning-3">Dungeon Time Prototype</h1>
-                <div className="flex flex-row justify-end gap-x-2 gap-y-1 content-end flex-wrap-reverse items-center">
+            <div className="print:hidden flex flex-row gap-4 justify-between -m-10 mb-5 py-5 px-10 bg-acid-5 text-blood-2 ">
+                <h1 className="font-dtHeading text-2xl flex flex-row flex-wrap min-w-fit">
+                    <Icon icon="warlordHelmet" className="h-8" />
+                    &ensp;Dungeon Time
+                </h1>
+                <div className="flex flex-row justify-end gap-x-2 gap-y-0 content-end flex-wrap-reverse items-center">
                     <Form.Label title="Player Characters">
                         <Checkbox
                             className="ml-1"
+                            size="sm"
                             checked={showPlayerCharacters}
                             onClick={() => setShowPlayerCharacters((isVisible) => !isVisible)}
                         />
@@ -182,6 +188,8 @@ export default function DungeonTimePrototype() {
                     </ErrorBoundary>
                 )}
             </div>
+            <Playtesters />
+            <Credits />
         </div>
     );
 }

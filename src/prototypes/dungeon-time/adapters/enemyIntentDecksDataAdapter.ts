@@ -6,20 +6,17 @@ export default function enemyIntentDecksDataAdapter(
     intentMap: Record<string, EnemyIntentType>
 ): EnemyIntentDeckType[] {
     return data.map((dataItem) => {
-        const enemyIntentDeck = camelCaseObjectKeys(dataItem) as Record<
-            keyof EnemyIntentDeckType,
-            any
-        >;
+        const enemyIntentDeck = camelCaseObjectKeys(dataItem) as Record<keyof EnemyIntentDeckType, any>;
 
         const intentSlugs: string[] = enemyIntentDeck.intentSlugs.split(/,\s*/);
-
+        console.log();
         return {
             ...enemyIntentDeck,
             intentSlugs,
             intents: intentSlugs
                 .map((slug, slugIndex) => ({
                     ...intentMap[slug],
-                    slug: intentMap[slug].slug + "-" + slugIndex,
+                    slug: enemyIntentDeck.slug + "-" + intentMap[slug].slug + "-" + slugIndex,
                 }))
                 .filter((intent) => !!intent),
         };

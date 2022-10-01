@@ -7,9 +7,7 @@ import RichText from "../RichText";
 import { range } from "lodash";
 // import "./EnemyIntentCard.css";
 
-export type EnemyIntentCardProps = React.PropsWithChildren<
-    { className?: string; deck?: string } & EnemyIntentType
->;
+export type EnemyIntentCardProps = React.PropsWithChildren<{ className?: string; deck?: string } & EnemyIntentType>;
 
 export default function EnemyIntentCard({
     className,
@@ -26,16 +24,14 @@ export default function EnemyIntentCard({
     children,
 }: EnemyIntentCardProps) {
     const iconProps = { className: "h-6 inline-block" };
+    console.log({ defend, altAttack });
     return (
         <Paper
             size="Mini European"
             orientation="portrait"
-            className={clsx(
-                "EnemyIntentCard bg-white rounded-sm px-2 pt-2 flex flex-col justify-between",
-                className
-            )}
+            className={clsx("EnemyIntentCard rounded-sm px-2 pt-2 flex flex-col justify-between", className)}
         >
-            <div className="text-slate-400 text-center text-xs">{slug}</div>
+            <div className="text-slate-400 text-xs w-1/2 leading-3 pr-1">{slug}</div>
             <div className="flex flex-col items-start">
                 <div className="bg-fire-5 text-fire-1 h-8 -mx-2 pl-4 pr-2 flex flex-col justify-center items-start text-xs leading-3">
                     <div className="text-left ">
@@ -50,9 +46,7 @@ export default function EnemyIntentCard({
                         {range(altAttack).map((index) => (
                             <Icon key={index} icon="arrowLeft" {...iconProps} />
                         ))}{" "}
-                        <RichText iconProps={iconProps}>
-                            {altAttackMod}
-                        </RichText>
+                        <RichText iconProps={iconProps}>{altAttackMod}</RichText>
                     </div>
                 </div>
                 <div className="bg-lightning-5 text-lightning-1 h-8 -mx-2 pl-4 pr-2 flex flex-col justify-center items-start text-xs leading-3">

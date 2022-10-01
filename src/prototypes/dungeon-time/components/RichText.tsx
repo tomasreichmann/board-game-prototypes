@@ -20,11 +20,7 @@ const aliasRegex = new RegExp(
     "g"
 );
 
-export default function RichText({
-    className,
-    iconProps = {},
-    children,
-}: RichTextProps) {
+export default function RichText({ className, iconProps = {}, children = "" }: RichTextProps) {
     const matches = children.match(aliasRegex) || [];
     const fragments = children.split(aliasRegex);
     return (
@@ -39,11 +35,7 @@ export default function RichText({
                         </React.Fragment>
                     );
                 }
-                fragments.push(
-                    <React.Fragment key={fragmentIndex * 2}>
-                        {fragment}
-                    </React.Fragment>
-                );
+                fragments.push(<React.Fragment key={fragmentIndex * 2}>{fragment}</React.Fragment>);
                 return fragments;
             }, [] as JSX.Element[])}
         </>

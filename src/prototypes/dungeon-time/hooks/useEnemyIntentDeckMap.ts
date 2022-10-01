@@ -30,7 +30,6 @@ export default function useEnemyIntentDeckMap(): {
         enemyIntentDecksSheet.data as Record<string, string>[],
         enemyIntentMap
     );
-    console.log("enemyIntentDecks", enemyIntentDecks);
 
     return { ...sheetsState, data: arrayToMap(enemyIntentDecks, "slug") };
 }

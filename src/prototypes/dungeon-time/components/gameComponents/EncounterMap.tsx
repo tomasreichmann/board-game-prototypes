@@ -75,7 +75,6 @@ export default function EncounterMap({ className, stages, children }: EncounterM
                                             </div>
                                         </div>
                                         {nextStageSlugs.map((nextStageSlug) => {
-                                            console.log("nextStageSlug", nextStageSlug);
                                             const nextLevel = levels[levelIndex + 1];
                                             const nextStageIndex = nextLevel?.stages.findIndex(
                                                 (stage) => stage.slug === nextStageSlug

@@ -9,7 +9,6 @@ export default function enemyIntentDecksDataAdapter(
         const enemyIntentDeck = camelCaseObjectKeys(dataItem) as Record<keyof EnemyIntentDeckType, any>;
 
         const intentSlugs: string[] = enemyIntentDeck.intentSlugs.split(/,\s*/);
-        console.log();
         return {
             ...enemyIntentDeck,
             intentSlugs,

@@ -11,6 +11,14 @@ export default function Credits() {
                 </a>
                 <br />
                 Development started 24. 9. 2022
+                <br />
+                Powered by{" "}
+                <a
+                    className="text-blood-1 underline hover:no-underline hover:text-fire-1"
+                    href="https://github.com/tomasreichmann/board-game-prototypes"
+                >
+                    Board game prototypes (GitHub)
+                </a>
             </p>
         </div>
     );

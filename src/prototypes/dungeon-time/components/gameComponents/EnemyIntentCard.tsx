@@ -24,7 +24,6 @@ export default function EnemyIntentCard({
     children,
 }: EnemyIntentCardProps) {
     const iconProps = { className: "h-6 inline-block" };
-    console.log({ defend, altAttack });
     return (
         <Paper
             size="Mini European"

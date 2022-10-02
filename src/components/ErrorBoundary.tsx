@@ -17,6 +17,7 @@ export const DefaultErrorComponent = ({
     return (
         <Alert
             className={className}
+            color="error"
             icon={
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,10 +54,7 @@ interface State {
     errorInfo: ErrorInfo | null;
 }
 
-export default class ErrorBoundary extends React.Component<
-    ErrorBoundaryProps,
-    State
-> {
+export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { error: null, errorInfo: null };
@@ -78,17 +76,11 @@ export default class ErrorBoundary extends React.Component<
 
     render() {
         if (this.state.error) {
-            const { className, ErrorComponent = DefaultErrorComponent } =
-                this.props;
+            const { className, ErrorComponent = DefaultErrorComponent } = this.props;
             const error = this.state.error as ErrorComponentProps["error"];
-            const errorInfo = this.state
-                .errorInfo as ErrorComponentProps["errorInfo"];
+            const errorInfo = this.state.errorInfo as ErrorComponentProps["errorInfo"];
             // You can render any custom fallback UI
-            return (
-                <ErrorComponent
-                    {...{ className, error, errorInfo, retry: this.retry }}
-                />
-            );
+            return <ErrorComponent {...{ className, error, errorInfo, retry: this.retry }} />;
         }
 
         return this.props.children;

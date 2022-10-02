@@ -6,9 +6,7 @@ import Icon, { iconMap, IconType } from "../Icon/Icon";
 import RichText from "../RichText";
 // import "./EnemyCard.css";
 
-export type EnemyCardProps = React.PropsWithChildren<
-    { className?: string } & EnemyType
->;
+export type EnemyCardProps = React.PropsWithChildren<{ className?: string } & EnemyType>;
 
 export default function EnemyCard({
     className,
@@ -30,17 +28,10 @@ export default function EnemyCard({
 }: EnemyCardProps) {
     const iconProps = { className: "h-5 inline-block -my-1" };
 
-    const typeIcon: IconType | undefined =
-        type in iconMap ? (type as IconType) : undefined;
+    const typeIcon: IconType | undefined = type in iconMap ? (type as IconType) : undefined;
 
     return (
-        <Paper
-            size="Trump"
-            className={clsx(
-                "EnemyCard bg-white rounded-sm px-2 pt-2 flex flex-col",
-                className
-            )}
-        >
+        <Paper size="Trump" className={clsx("EnemyCard bg-white px-2 pt-2 flex flex-col", className)}>
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             <div className="flex-1 shrink my-2 flex flex-row gap-2">
                 <div className="w-8">
@@ -48,17 +39,9 @@ export default function EnemyCard({
                 </div>
                 <div className="flex-1 flex-shrink">
                     <div className="font-dtHeading text-blood-1 text-md">
-                        {typeIcon && (
-                            <Icon
-                                icon={typeIcon}
-                                className="h-4 inline-block"
-                            />
-                        )}{" "}
-                        {name}
+                        {typeIcon && <Icon icon={typeIcon} className="h-4 inline-block" />} {name}
                     </div>
-                    <div className="text-xs leading-3 italic text-justify">
-                        {flavorText}
-                    </div>
+                    <div className="text-xs leading-3 italic text-justify">{flavorText}</div>
                 </div>
             </div>
             <div className="text-center leading-4 font-dtHeading text-sm mt-1 mb-2 text-lightning-3">

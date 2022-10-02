@@ -12,10 +12,7 @@ export default function ConsumableCard({ className, name, icon, slug, effect, co
     const iconProps = { className: "h-6 inline-block" };
 
     return (
-        <Paper
-            size="US game"
-            className={clsx("ConsumableCard bg-white rounded-sm px-2 pt-2 flex flex-col gap-2", className)}
-        >
+        <Paper size="US game" className={clsx("ConsumableCard bg-white px-2 pt-2 flex flex-col gap-2", className)}>
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             <div className="flex flex-row justify-between items-center">
                 <div className="font-dtHeading text-sm text-acid-1">Consumable</div>

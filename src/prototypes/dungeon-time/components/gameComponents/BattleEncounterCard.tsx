@@ -6,9 +6,7 @@ import Icon from "../Icon/Icon";
 import RichText from "../RichText";
 // import "./BattleEncounterCard.css";
 
-export type BattleEncounterCardProps = React.PropsWithChildren<
-    { className?: string } & BattleEncounterType
->;
+export type BattleEncounterCardProps = React.PropsWithChildren<{ className?: string } & BattleEncounterType>;
 
 export default function BattleEncounterCard({
     className,
@@ -26,28 +24,15 @@ export default function BattleEncounterCard({
     children,
 }: BattleEncounterCardProps) {
     return (
-        <Paper
-            size="Trump"
-            className={clsx(
-                "BattleEncounterCard bg-white rounded-sm px-2 pt-2 flex flex-col gap-2",
-                className
-            )}
-        >
+        <Paper size="Trump" className={clsx("BattleEncounterCard bg-white px-2 pt-2 flex flex-col gap-2", className)}>
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             <div className="flex flex-col items-center justify-center ">
                 <Icon icon={icon} className="w-full max-h-16" />
-                <div className="font-dtHeading text-blood-1 text-md text-center">
-                    {name}
-                </div>
+                <div className="font-dtHeading text-blood-1 text-md text-center">{name}</div>
             </div>
-            <div className="flex-1 text-sm italic text-center leading-4">
-                {description}
-            </div>
+            <div className="flex-1 text-sm italic text-center leading-4">{description}</div>
             <div className="text-sm font-dtHeading text-center">
-                <Icon
-                    icon={enemyIntentDeck.icon}
-                    className="h-4 inline-block"
-                />
+                <Icon icon={enemyIntentDeck.icon} className="h-4 inline-block" />
                 &ensp;
                 {enemyIntentDeck.name}
             </div>
@@ -63,15 +48,9 @@ export default function BattleEncounterCard({
                     enemiesForPlayerCount5,
                 ].map((enemies, enemiesIndex) => (
                     <div className="text-sm" key={enemiesIndex}>
-                        <span className="font-dtHeading text-blood-3">
-                            {enemiesIndex + 1}:
-                        </span>
+                        <span className="font-dtHeading text-blood-3">{enemiesIndex + 1}:</span>
                         {enemies.map((enemy, enemyIndex) => (
-                            <Icon
-                                key={enemyIndex}
-                                icon={enemy.icon}
-                                className="h-5 inline-block"
-                            />
+                            <Icon key={enemyIndex} icon={enemy.icon} className="h-5 inline-block" />
                         ))}
                     </div>
                 ))}

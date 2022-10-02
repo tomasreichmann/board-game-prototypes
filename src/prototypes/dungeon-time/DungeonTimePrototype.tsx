@@ -1,6 +1,6 @@
 import "./DungeonTimePrototype.css";
 import { ActionType } from "./types";
-import { Button, Checkbox, Form } from "react-daisyui";
+import { Button, Checkbox } from "react-daisyui";
 import { clearSheetDataCache } from "./hooks/useSheetData";
 import { useState } from "react";
 import ActionCardPages from "./components/print/ActionCardPages";
@@ -13,10 +13,13 @@ import StagesPages from "./components/print/EncounterMapPage";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import Icon, { iconMap, IconType } from "./components/Icon/Icon";
 import Toggle from "../../components/Toggle";
-import universalPaperSizes from "../../components/print/paperSizes";
+import universalPaperSizes, { cardSizes } from "../../components/print/paperSizes";
 import RelicsPages from "./components/print/RelicsPages";
 import Playtesters from "./components/Playtesters";
 import Credits from "./components/Credits";
+import RulesPages from "./components/print/RulesPages";
+import Paper from "../../components/print/Paper/Paper";
+import clsx from "clsx";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -35,16 +38,29 @@ const getUpgradesDeep = (action: ActionType): ActionType[] => {
     );
 };
 
+const sections = [
+    { slug: "rules", label: "Rules", Component: RulesPages, isVisibleByDefault: true },
+    { slug: "stages", label: "Stages", Component: StagesPages, isVisibleByDefault: true },
+    { slug: "characters", label: "Characters", Component: CharactersPages, isVisibleByDefault: true },
+    { slug: "enemies", label: "Enemies", Component: EnemyPages, isVisibleByDefault: true },
+    { slug: "enemyIntents", label: "Enemy Intents", Component: EnemyIntentPages, isVisibleByDefault: true },
+    {
+        slug: "battleEncounters",
+        label: "Battle Encounters",
+        Component: BattleEncounterPages,
+        isVisibleByDefault: true,
+    },
+    { slug: "consumables", label: "Consumables", Component: ConsumablesPages, isVisibleByDefault: true },
+    { slug: "relics", label: "Relics", Component: RelicsPages, isVisibleByDefault: true },
+    { slug: "actions", label: "Actions", Component: ActionCardPages, isVisibleByDefault: true },
+];
+
 export default function DungeonTimePrototype() {
     const [, setRerenderCount] = useState(0);
-    const [showPlayerCharacters, setShowPlayerCharacters] = useState(true);
-    const [showActions, setShowActions] = useState(true);
-    const [showEnemies, setShowEnemies] = useState(true);
-    const [showEnemyIntents, setShowEnemyIntents] = useState(true);
-    const [showBattleEncounters, setShowBattleEncounters] = useState(true);
-    const [showConsumables, setShowConsumables] = useState(true);
-    const [showRelics, setShowRelics] = useState(true);
-    const [showStages, setShowStages] = useState(true);
+
+    const [sectionVisibility, setSectionVisibility] = useState(
+        sections.map(({ isVisibleByDefault }) => isVisibleByDefault)
+    );
 
     const refreshData = () => {
         clearSheetDataCache();
@@ -59,134 +75,115 @@ export default function DungeonTimePrototype() {
             className="p-10 print:p-0 min-h-screen bg-acid-5 print:bg-white text-lightning-1"
             data-theme="DungeonTimePrototype"
         >
-            <div className="print:hidden flex flex-row gap-4 justify-between -m-10 mb-5 py-5 px-10 bg-acid-5 text-blood-2 ">
-                <h1 className="font-dtHeading text-2xl flex flex-row flex-wrap min-w-fit">
-                    <Icon icon="warlordHelmet" className="h-8" />
-                    &ensp;Dungeon Time
-                </h1>
-                <div className="flex flex-row justify-end gap-x-2 gap-y-0 content-end flex-wrap-reverse items-center">
-                    <Form.Label title="Player Characters">
-                        <Checkbox
-                            className="ml-1"
-                            size="sm"
-                            checked={showPlayerCharacters}
-                            onClick={() => setShowPlayerCharacters((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Encounter Map">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showStages}
-                            onClick={() => setShowStages((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Enemies">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showEnemies}
-                            onClick={() => setShowEnemies((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Enemy Intents">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showEnemyIntents}
-                            onClick={() => setShowEnemyIntents((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Battle Encounters">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showBattleEncounters}
-                            onClick={() => setShowBattleEncounters((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Consumables">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showConsumables}
-                            onClick={() => setShowConsumables((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Relics">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showRelics}
-                            onClick={() => setShowRelics((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Form.Label title="Actions">
-                        <Checkbox
-                            className="ml-1"
-                            checked={showActions}
-                            onClick={() => setShowActions((isVisible) => !isVisible)}
-                        />
-                    </Form.Label>
-                    <Button onClick={refreshData} size="sm" color="primary">
-                        Refresh Data
-                    </Button>
-                    <Button onClick={rerender} size="sm" color="primary" variant="outline">
-                        Rerender
-                    </Button>
+            <div
+                className="sticky top-0 z-50 -m-10 mb-0 py-5 px-10 bg-opacity-90 print:hidden"
+                style={{
+                    background:
+                        "linear-gradient(to bottom, rgb(255 254 235 / var(--tw-bg-opacity)) 80%, transparent 100%)",
+                }}
+            >
+                <div className="top-0 flex flex-row gap-4 justify-between text-blood-2">
+                    <h1 className="font-dtHeading text-2xl flex flex-row flex-wrap min-w-fit">
+                        <Icon icon="warlordHelmet" className="h-8" />
+                        &ensp;Dungeon Time
+                    </h1>
+                    <div className="flex flex-row justify-end gap-x-2 gap-y-0 content-end flex-wrap-reverse items-center">
+                        <Button onClick={refreshData} size="sm" color="primary">
+                            Refresh Data
+                        </Button>
+                        <Button onClick={rerender} size="sm" color="primary" variant="outline">
+                            Rerender
+                        </Button>
+                    </div>
+                </div>
+                <div className="flex flex-row justify-start gap-x-2 gap-y-0 mb-5 content-start items-center flex-wrap ">
+                    {sections.map(({ label, slug }, sectionIndex) => {
+                        return (
+                            <div key={slug} className="flex flex-row gap-x-1 content-start items-center flex-wrap">
+                                <a
+                                    href={"#" + slug}
+                                    className="underline hover:no-underline text-fire-1 hover:text-fire-2"
+                                    onClick={() =>
+                                        setSectionVisibility((sectionVisibility) => {
+                                            const newSectionVisibility = [...sectionVisibility];
+                                            newSectionVisibility[sectionIndex] = true;
+                                            return newSectionVisibility;
+                                        })
+                                    }
+                                >
+                                    {label}
+                                </a>
+                                <Checkbox
+                                    size="sm"
+                                    checked={sectionVisibility[sectionIndex]}
+                                    onClick={() =>
+                                        setSectionVisibility((sectionVisibility) => {
+                                            const newSectionVisibility = [...sectionVisibility];
+                                            newSectionVisibility[sectionIndex] = !newSectionVisibility[sectionIndex];
+                                            return newSectionVisibility;
+                                        })
+                                    }
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 
-            <Toggle buttonContent="Show Icons" initialCollapsed>
-                <div
-                    className="flex flex-row flex-wrap gap-2 p-8 rounded-md shadow-md mb-2"
-                    style={{ backgroundColor: "white" }}
-                >
-                    {Object.keys(iconMap).map((iconKey) => (
-                        <div key={iconKey} className="flex flex-col gap-1 items-center">
-                            <Icon icon={iconKey as IconType} className="h-8" />
-                            <div className="text-sm">{iconKey}</div>
-                        </div>
-                    ))}
-                </div>
-            </Toggle>
+            <div>
+                <Toggle buttonContent="Show Icons" initialCollapsed>
+                    <div className="flex flex-row flex-wrap gap-2 p-8 bg-white rounded-md shadow-lg mb-2">
+                        {Object.keys(iconMap).map((iconKey) => (
+                            <div key={iconKey} className="flex flex-col gap-1 items-center">
+                                <Icon icon={iconKey as IconType} className="h-8" />
+                                <div className="text-sm">{iconKey}</div>
+                            </div>
+                        ))}
+                    </div>
+                </Toggle>
+                <Toggle buttonContent="Show Card Sizes" initialCollapsed>
+                    <div className="flex flex-row flex-wrap gap-5 mb-2">
+                        {(Object.keys(cardSizes) as (keyof typeof cardSizes)[])
+                            .sort(
+                                (a, b) =>
+                                    cardSizes[a].mm[0] * 1000 +
+                                    cardSizes[a].mm[1] -
+                                    (cardSizes[b].mm[0] * 1000 + cardSizes[b].mm[1])
+                            )
+                            .map((cardSizeName) => (
+                                <Paper
+                                    size={cardSizeName}
+                                    key={cardSizeName}
+                                    className={clsx(
+                                        "flex flex-col gap-1 items-center justify-center bg-white rounded-md shadow-md",
+                                        cardSizeName === "Circle" && "rounded-full"
+                                    )}
+                                >
+                                    <div className="text-sm">{cardSizes[cardSizeName].mm.join(" x ")}mm</div>
+                                    <div className="text-sm">
+                                        A4: {Math.floor(universalPaperSizes.A4.mm[0] / cardSizes[cardSizeName].mm[0])} x{" "}
+                                        {Math.floor(universalPaperSizes.A4.mm[1] / cardSizes[cardSizeName].mm[1])}
+                                    </div>
+                                    <div className="text-sm">{cardSizeName}</div>
+                                </Paper>
+                            ))}
+                    </div>
+                </Toggle>
+            </div>
 
             <div className="flex gap-5 flex-wrap print:block" style={{ minWidth: universalPaperSizes.A4.mm[0] + "mm" }}>
-                {showStages && (
-                    <ErrorBoundary>
-                        <StagesPages />
-                    </ErrorBoundary>
-                )}
-                {showPlayerCharacters && (
-                    <ErrorBoundary>
-                        <CharactersPages />
-                    </ErrorBoundary>
-                )}
-
-                {showEnemies && (
-                    <ErrorBoundary>
-                        <EnemyPages />
-                    </ErrorBoundary>
-                )}
-                {showEnemyIntents && (
-                    <ErrorBoundary>
-                        <EnemyIntentPages />
-                    </ErrorBoundary>
-                )}
-                {showBattleEncounters && (
-                    <ErrorBoundary>
-                        <BattleEncounterPages />
-                    </ErrorBoundary>
-                )}
-                {showConsumables && (
-                    <ErrorBoundary>
-                        <ConsumablesPages />
-                    </ErrorBoundary>
-                )}
-                {showRelics && (
-                    <ErrorBoundary>
-                        <RelicsPages />
-                    </ErrorBoundary>
-                )}
-                {showActions && (
-                    <ErrorBoundary>
-                        <ActionCardPages />
-                    </ErrorBoundary>
-                )}
+                {sections.map(({ Component, slug }, sectionIndex) => {
+                    return (
+                        sectionVisibility[sectionIndex] && (
+                            <ErrorBoundary key={slug}>
+                                <div className="w-full flex gap-5 flex-wrap print:block relative">
+                                    <div id={slug} className="absolute -top-32" />
+                                    <Component />
+                                </div>
+                            </ErrorBoundary>
+                        )
+                    );
+                })}
             </div>
             <Playtesters />
             <Credits />

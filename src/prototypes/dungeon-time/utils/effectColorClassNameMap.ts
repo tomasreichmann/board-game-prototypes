@@ -3,6 +3,7 @@ import { IconType } from "../components/Icon/Icon";
 const effectColorClassNameMap: { [key in IconType]?: string } = {
     ACTION: "text-lightning-3",
     BARRIER: "text-slate-400",
+    EXPLOSIVE_BARRIER: "text-blood-3",
     BLOCK: "text-lightning-2",
     HALT: "text-fire-2",
     MELEE: "text-blood-1",

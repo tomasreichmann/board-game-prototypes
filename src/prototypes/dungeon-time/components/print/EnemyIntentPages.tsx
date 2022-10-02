@@ -29,12 +29,6 @@ const getUpgradesDeep = (action: ActionType): ActionType[] => {
 export default function EnemyIntentPages() {
     const { data: enemyIntentDeckMap } = useEnemyIntentDeckMap();
 
-    const enemyIntentCards =
-        enemyIntentDeckMap !== undefined
-            ? Object.values(enemyIntentDeckMap).flatMap((deck) => {
-                  return deck.intents;
-              })
-            : [];
     const basicDeck = enemyIntentDeckMap ? enemyIntentDeckMap.basic_deck : undefined;
     const basicIntents = basicDeck ? basicDeck.intents : [];
     const bossDeck = enemyIntentDeckMap ? enemyIntentDeckMap.boss_deck : undefined;
@@ -64,7 +58,7 @@ export default function EnemyIntentPages() {
                             </EnemyIntentCard>
                         ))}
                         <h2 className="text-2xl font-dtHeading text-blood-3 w-full text-center">
-                            Enemy Intents {intentPageIndex + 1}/{Math.ceil(enemyIntentCards.length / CARDS_PER_PAGE)}
+                            Enemy Intents {intentPageIndex + 1}/{Math.ceil(basicIntents.length / CARDS_PER_PAGE)}
                         </h2>
                     </div>
                 </PrintPage>

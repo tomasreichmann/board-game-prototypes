@@ -101,8 +101,8 @@ export type RelicType = {
     cardCount: number;
 };
 
-export type RuleType = {
-    children?: string;
+export type ContentType = {
+    children?: string | ContentType[];
     imageUri?: string;
     component?: string;
     className?: string;

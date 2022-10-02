@@ -13,10 +13,7 @@ export default function RelicCard({ className, name, icon, type, slug, effect, c
     const iconProps = { className: "h-6 inline-block" };
 
     return (
-        <Paper
-            size="US game"
-            className={clsx("RelicCard bg-white rounded-sm px-2 pt-2 flex flex-col gap-2", className)}
-        >
+        <Paper size="US game" className={clsx("RelicCard bg-white px-2 pt-2 flex flex-col gap-2", className)}>
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             <div className="flex flex-row justify-between items-center">
                 <div className="font-dtHeading text-sm text-acid-1">{titleCase(type)} Relic</div>

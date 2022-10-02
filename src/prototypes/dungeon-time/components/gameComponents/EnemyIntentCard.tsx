@@ -28,7 +28,7 @@ export default function EnemyIntentCard({
         <Paper
             size="Mini European"
             orientation="portrait"
-            className={clsx("EnemyIntentCard rounded-sm px-2 pt-2 flex flex-col justify-between", className)}
+            className={clsx("EnemyIntentCard px-2 pt-2 flex flex-col justify-between overflow-hidden", className)}
         >
             <div className="text-slate-400 text-xs w-1/2 leading-3 pr-1">{slug}</div>
             <div className="flex flex-col items-start">

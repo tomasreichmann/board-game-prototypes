@@ -2,7 +2,7 @@
     --PrintMarker-length: 3mm;
     --PrintMarker-width: 0.25mm;
     position: absolute;
-    z-index: 100;
+    z-index: 1;
 }
 /*
 @media screen {

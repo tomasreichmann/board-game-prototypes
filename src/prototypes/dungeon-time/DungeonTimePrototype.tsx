@@ -72,11 +72,11 @@ export default function DungeonTimePrototype() {
 
     return (
         <div
-            className="p-10 print:p-0 min-h-screen bg-acid-5 print:bg-white text-lightning-1"
+            className="px-2 pb-2 md:px-10 md:pb-10 print:p-0 h-screen w-screen relative overflow-auto bg-acid-5 print:bg-white text-lightning-1"
             data-theme="DungeonTimePrototype"
         >
             <div
-                className="sticky top-0 z-50 -m-10 mb-0 py-5 px-10 bg-opacity-90 print:hidden"
+                className="sticky top-0 z-50 -mx-2 md:-mx-10 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 print:hidden"
                 style={{
                     background:
                         "linear-gradient(to bottom, rgb(255 254 235 / var(--tw-bg-opacity)) 80%, transparent 100%)",
@@ -87,7 +87,7 @@ export default function DungeonTimePrototype() {
                         <Icon icon="warlordHelmet" className="h-8" />
                         &ensp;Dungeon Time
                     </h1>
-                    <div className="flex flex-row justify-end gap-x-2 gap-y-0 content-end flex-wrap-reverse items-center">
+                    <div className="flex flex-row justify-end gap-x-2 gap-y-1 content-end flex-wrap-reverse items-center">
                         <Button onClick={refreshData} size="sm" color="primary">
                             Refresh Data
                         </Button>
@@ -171,7 +171,7 @@ export default function DungeonTimePrototype() {
                 </Toggle>
             </div>
 
-            <div className="flex gap-5 flex-wrap print:block" style={{ minWidth: universalPaperSizes.A4.mm[0] + "mm" }}>
+            <div className="flex gap-5 flex-wrap print:block max-w-screen">
                 {sections.map(({ Component, slug }, sectionIndex) => {
                     return (
                         sectionVisibility[sectionIndex] && (

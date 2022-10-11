@@ -5,7 +5,9 @@ import actionDataAdapter from "../adapters/actionDataAdapter";
 import actionDecksDataAdapter from "../adapters/actionDecksDataAdapter";
 import useSheetData from "./useSheetData";
 
-export const useActions = (): {
+export const useActions = (
+    includeUpgrades?: boolean
+): {
     data: ActionType[] | undefined;
     loading: boolean;
     error: null | ErrorResponse;
@@ -14,12 +16,13 @@ export const useActions = (): {
     if (!sheetData.data) {
         return { ...sheetData, data: undefined };
     }
-    const actions = sheetData.data.find(
-        (item: { id: string }) => item.id === "actions"
-    );
-    const data = actions
-        ? actionDataAdapter(actions.data as Record<string, string>[])
-        : undefined;
+    const actions = sheetData.data.find((item: { id: string }) => item.id === "actions");
+    const data = actions ? actionDataAdapter(actions.data as Record<string, string>[]) : undefined;
+
+    if (data && includeUpgrades) {
+        const actionMap = arrayToMap(data, "slug");
+        return { ...sheetData, data: data.map((action, actionIndex) => insertUpgradeOptions(action, actionMap)) };
+    }
     return { ...sheetData, data };
 };
 
@@ -36,9 +39,7 @@ export const insertUpgradeOptions = (
                 console.error(
                     `Upgrade option "${upgradeOptionSlug}" of action "${
                         action.slug
-                    }" not found in actions (${Object.keys(actionMap).join(
-                        ", "
-                    )})`
+                    }" not found in actions (${Object.keys(actionMap).join(", ")})`
                 );
             } else {
                 upgradeOptions.push(upgradeOption);
@@ -69,56 +70,35 @@ export const useActionDecks = (): {
     if (!sheetData.data) {
         return { ...sheetData, data: undefined };
     }
-    const actionsData = sheetData.data.find(
-        (item: { id: string }) => item.id === "actions"
-    );
-    const actionDecksData = sheetData.data.find(
-        (item: { id: string }) => item.id === "action decks"
-    );
+    const actionsData = sheetData.data.find((item: { id: string }) => item.id === "actions");
+    const actionDecksData = sheetData.data.find((item: { id: string }) => item.id === "action decks");
 
     if (!actionsData || !actionDecksData) {
         return { ...sheetData, data: undefined };
     }
-    const actionMap = arrayToMap(
-        actionDataAdapter(actionsData.data as Record<string, string>[]),
-        "slug"
-    );
-    const actionDecks = actionDecksDataAdapter(
-        actionDecksData.data as Record<string, string>[]
-    );
+    const actionMap = arrayToMap(actionDataAdapter(actionsData.data as Record<string, string>[]), "slug");
+    const actionDecks = actionDecksDataAdapter(actionDecksData.data as Record<string, string>[]);
 
     const data = actionDecks.map((actionDeck) => ({
         ...actionDeck,
-        actions: actionDeck.actionSlugs.reduce(
-            (actions, actionSlug, actionIndex) => {
-                const action = actionMap[actionSlug];
-                if (!action) {
-                    console.error(
-                        `slug "${actionSlug}" not found in actions (${Object.keys(
-                            actionMap
-                        ).join(", ")})`
-                    );
-                } else {
-                    actions.push(
-                        insertUpgradeOptions(
-                            {
-                                ...action,
-                                deck: actionDeck,
-                                slug:
-                                    actionDeck.slug +
-                                    "-" +
-                                    action.slug +
-                                    "-" +
-                                    actionIndex,
-                            },
-                            actionMap
-                        )
-                    );
-                }
-                return actions;
-            },
-            [] as ActionType[]
-        ),
+        actions: actionDeck.actionSlugs.reduce((actions, actionSlug, actionIndex) => {
+            const action = actionMap[actionSlug];
+            if (!action) {
+                console.error(`slug "${actionSlug}" not found in actions (${Object.keys(actionMap).join(", ")})`);
+            } else {
+                actions.push(
+                    insertUpgradeOptions(
+                        {
+                            ...action,
+                            deck: actionDeck,
+                            slug: actionDeck.slug + "-" + action.slug + "-" + actionIndex,
+                        },
+                        actionMap
+                    )
+                );
+            }
+            return actions;
+        }, [] as ActionType[]),
     }));
     return { ...sheetData, data };
 };

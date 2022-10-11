@@ -4,6 +4,7 @@ import { ContentType } from "../types";
 import DataPreview from "../../../components/DataPreview";
 import RichText from "./RichText";
 import GameComponents from "./GameComponents";
+import ActionUpgradeTree from "./ActionUpgradeTree";
 // import "./ContentItem.css";
 
 export type ContentItemProps = {
@@ -75,6 +76,7 @@ export const defaultComponentMap: { [key: string]: React.ComponentType<ContentIt
         </li>
     ),
     GameComponents: (props) => <GameComponents />,
+    ActionUpgradeTree: (props) => <ActionUpgradeTree />,
     pre: (props) => <DataPreview data={props} />,
 };
 export default function ContentItem({ componentMap = defaultComponentMap, ...componentProps }: ContentItemProps) {

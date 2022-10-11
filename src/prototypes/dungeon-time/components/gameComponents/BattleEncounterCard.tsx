@@ -68,6 +68,7 @@ export default function BattleEncounterCard({
                             iconProps={{
                                 className: "h-4 inline-block",
                             }}
+                            aliasProps={{ COIN: { className: "h-4 inline-block text-fire-3" } }}
                         >
                             {reward}
                         </RichText>

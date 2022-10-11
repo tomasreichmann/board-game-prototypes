@@ -1,5 +1,6 @@
 import arrowLeft from "./media/arrow-left.svg";
 import arrowRight from "./media/arrow-right.svg";
+import bandageRoll from "./media/bandage-roll.svg";
 import barrel from "./media/barrel.svg";
 import batteredAxe from "./media/battered-axe.svg";
 import bearHead from "./media/bear-head.svg";
@@ -100,6 +101,7 @@ export const iconAliases = {
 export const iconMap = {
     arrowLeft,
     arrowRight,
+    bandageRoll,
     barrel,
     bladeBite,
     brokenBottle,

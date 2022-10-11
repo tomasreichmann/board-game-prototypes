@@ -147,6 +147,27 @@ export default function GameComponents() {
             <div className="break-inside-avoid flex flex-col justify-center items-center gap-2">
                 <div className="p-5 text-fuchsia-600">
                     TODO
+                    <Icon icon="HIDE" className="m-4 h-12 text-stone-700" />
+                </div>
+                <div className="text-md text-center font-dtHeading text-blood-1">1&ensp;Hide Token</div>
+            </div>
+            <div className="break-inside-avoid flex flex-col justify-center items-center gap-2">
+                <div className="p-5 text-fuchsia-600">
+                    TODO
+                    <Icon icon="BLOCK" className="m-4 h-12 text-lightning-3" />
+                </div>
+                <div className="text-md text-center font-dtHeading text-blood-1">10&ensp;Defend Tokens</div>
+            </div>
+            <div className="break-inside-avoid flex flex-col justify-center items-center gap-2">
+                <div className="p-5 text-fuchsia-600">
+                    TODO +1
+                    <Icon icon="WOUND" className="m-4 h-12 text-blood-1" />
+                </div>
+                <div className="text-md text-center font-dtHeading text-blood-1">10&ensp;+1 Wound Tokens</div>
+            </div>
+            <div className="break-inside-avoid flex flex-col justify-center items-center gap-2">
+                <div className="p-5 text-fuchsia-600">
+                    TODO
                     <Icon icon="EXPLOSIVE_BARRIER" className="m-4 h-12 text-blood-3" />
                 </div>
                 <div className="text-md text-center font-dtHeading text-blood-1">3&ensp;Explosive Barrel Tokens</div>

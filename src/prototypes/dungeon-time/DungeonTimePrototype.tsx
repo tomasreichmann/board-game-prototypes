@@ -20,6 +20,7 @@ import Credits from "./components/Credits";
 import RulesPages from "./components/print/RulesPages";
 import Paper from "../../components/print/Paper/Paper";
 import clsx from "clsx";
+import Changelog from "./components/Changelog";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -39,6 +40,7 @@ const getUpgradesDeep = (action: ActionType): ActionType[] => {
 };
 
 const sections = [
+    { slug: "changelog", label: "Changelog", Component: Changelog, isVisibleByDefault: true },
     { slug: "rules", label: "Rules", Component: RulesPages, isVisibleByDefault: true },
     { slug: "stages", label: "Stages", Component: StagesPages, isVisibleByDefault: true },
     { slug: "characters", label: "Characters", Component: CharactersPages, isVisibleByDefault: true },

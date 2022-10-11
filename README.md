@@ -19,7 +19,7 @@ $ npm run dev
 ```
 $ npm run build
 ...
-$ npm netlify deploy
+$ netlify deploy
 or
-$ npm netlify deploy --prod
+$ netlify deploy --prod
 ```

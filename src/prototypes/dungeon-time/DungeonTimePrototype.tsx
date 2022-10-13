@@ -21,6 +21,8 @@ import RulesPages from "./components/print/RulesPages";
 import Paper from "../../components/print/Paper/Paper";
 import clsx from "clsx";
 import Changelog from "./components/Changelog";
+import outcomes from "./data/outcomeDeck";
+import OutcomeCardPages from "./components/print/OutcomeCardPages";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -55,6 +57,7 @@ const sections = [
     { slug: "consumables", label: "Consumables", Component: ConsumablesPages, isVisibleByDefault: true },
     { slug: "relics", label: "Relics", Component: RelicsPages, isVisibleByDefault: true },
     { slug: "actions", label: "Actions", Component: ActionCardPages, isVisibleByDefault: true },
+    { slug: "outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: true },
 ];
 
 export default function DungeonTimePrototype() {

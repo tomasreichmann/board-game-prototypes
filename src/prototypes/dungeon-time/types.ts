@@ -195,3 +195,21 @@ export type ShopEncounterType = {
 export type RestEncounterType = {
     encounterType: "rest";
 };
+export type OutcomeSlug =
+    | "special"
+    | "success"
+    | "partialSuccess"
+    | "fumble"
+    | "chaos"
+    | "wound"
+    | "complication"
+    | "bless"
+    | "advantage"
+    | "curse";
+
+export type OutcomeType = {
+    slug: string;
+    title: string;
+    icon: IconType;
+    description: string;
+};

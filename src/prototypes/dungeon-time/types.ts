@@ -195,6 +195,32 @@ export type ShopEncounterType = {
 export type RestEncounterType = {
     encounterType: "rest";
 };
+
+const enum BattleMapCellFlagEnum {
+    E1 = "Enemy spawn point 1",
+    E2 = "Enemy spawn point 2",
+    E3 = "Enemy spawn point 3",
+    E4 = "Enemy spawn point 4",
+    E5 = "Enemy spawn point 5",
+    B = "BARRIER",
+    BB = "BARRIER BARRIER",
+    H = "Hazard",
+    P = "Player spawn point",
+}
+
+export type BattleMapCellType = {
+    x: number;
+    y: number;
+    flags: BattleMapCellFlagEnum[];
+    content: [];
+};
+
+export type BattleMapType = {
+    slug: string;
+    name: string;
+    grid: BattleMapCellType[][];
+};
+
 export type OutcomeSlug =
     | "special"
     | "success"

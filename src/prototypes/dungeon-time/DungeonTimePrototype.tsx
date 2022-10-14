@@ -21,8 +21,8 @@ import RulesPages from "./components/print/RulesPages";
 import Paper from "../../components/print/Paper/Paper";
 import clsx from "clsx";
 import Changelog from "./components/Changelog";
-import outcomes from "./data/outcomeDeck";
 import OutcomeCardPages from "./components/print/OutcomeCardPages";
+import ActionCardBack from "./components/gameComponents/ActionCardBack";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
     return action.upgradeOptions || [];
@@ -69,19 +69,18 @@ export default function DungeonTimePrototype() {
 
     const refreshData = () => {
         clearSheetDataCache();
-        setRerenderCount((count) => count + 1);
-    };
-    const rerender = () => {
-        setRerenderCount((count) => count + 1);
+        setTimeout(() => {
+            setRerenderCount((count) => count + 1);
+        }, 1000);
     };
 
     return (
         <div
-            className="px-2 pb-2 md:px-10 md:pb-10 print:p-0 h-screen w-screen relative overflow-auto bg-acid-5 print:bg-white text-lightning-1"
+            className="h-screen print:h-full w-screen relative overflow-auto bg-acid-5 print:bg-white text-lightning-1 flex flex-col items-stretch"
             data-theme="DungeonTimePrototype"
         >
             <div
-                className="sticky top-0 z-50 -mx-2 md:-mx-10 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 print:hidden"
+                className="sticky top-0 left-0 z-50 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 print:hidden"
                 style={{
                     background:
                         "linear-gradient(to bottom, rgb(255 254 235 / var(--tw-bg-opacity)) 80%, transparent 100%)",
@@ -93,11 +92,8 @@ export default function DungeonTimePrototype() {
                         &ensp;Dungeon Time
                     </h1>
                     <div className="flex flex-row justify-end gap-x-2 gap-y-1 content-end flex-wrap-reverse items-center">
-                        <Button onClick={refreshData} size="sm" color="primary">
+                        <Button onClick={refreshData} size="xs" color="primary">
                             Refresh Data
-                        </Button>
-                        <Button onClick={rerender} size="sm" color="primary" variant="outline">
-                            Rerender
                         </Button>
                     </div>
                 </div>
@@ -135,63 +131,70 @@ export default function DungeonTimePrototype() {
                 </div>
             </div>
 
-            <div>
-                <Toggle buttonContent="Show Icons" initialCollapsed>
-                    <div className="flex flex-row flex-wrap gap-2 p-8 bg-white rounded-md shadow-lg mb-2">
-                        {Object.keys(iconMap).map((iconKey) => (
-                            <div key={iconKey} className="flex flex-col gap-1 items-center">
-                                <Icon icon={iconKey as IconType} className="h-8" />
-                                <div className="text-sm">{iconKey}</div>
-                            </div>
-                        ))}
-                    </div>
-                </Toggle>
-                <Toggle buttonContent="Show Card Sizes" initialCollapsed>
-                    <div className="flex flex-row flex-wrap gap-5 mb-2">
-                        {(Object.keys(cardSizes) as (keyof typeof cardSizes)[])
-                            .sort(
-                                (a, b) =>
-                                    cardSizes[a].mm[0] * 1000 +
-                                    cardSizes[a].mm[1] -
-                                    (cardSizes[b].mm[0] * 1000 + cardSizes[b].mm[1])
-                            )
-                            .map((cardSizeName) => (
-                                <Paper
-                                    size={cardSizeName}
-                                    key={cardSizeName}
-                                    className={clsx(
-                                        "flex flex-col gap-1 items-center justify-center bg-white rounded-md shadow-md",
-                                        cardSizeName === "Circle" && "rounded-full"
-                                    )}
-                                >
-                                    <div className="text-sm">{cardSizes[cardSizeName].mm.join(" x ")}mm</div>
-                                    <div className="text-sm">
-                                        A4: {Math.floor(universalPaperSizes.A4.mm[0] / cardSizes[cardSizeName].mm[0])} x{" "}
-                                        {Math.floor(universalPaperSizes.A4.mm[1] / cardSizes[cardSizeName].mm[1])}
-                                    </div>
-                                    <div className="text-sm">{cardSizeName}</div>
-                                </Paper>
-                            ))}
-                    </div>
-                </Toggle>
-            </div>
-
-            <div className="flex gap-5 flex-wrap print:block max-w-screen">
-                {sections.map(({ Component, slug }, sectionIndex) => {
-                    return (
-                        sectionVisibility[sectionIndex] && (
-                            <ErrorBoundary key={slug}>
-                                <div className="w-full flex gap-5 flex-wrap print:block relative">
-                                    <div id={slug} className="absolute -top-32" />
-                                    <Component />
+            <div className="px-2 pb-2 md:px-10 md:pb-10 print:p-0">
+                <div>
+                    <Toggle buttonContent="Show Icons" initialCollapsed>
+                        <div className="flex flex-row flex-wrap gap-2 p-8 bg-white rounded-md shadow-lg mb-2">
+                            {Object.keys(iconMap).map((iconKey) => (
+                                <div key={iconKey} className="flex flex-col gap-1 items-center">
+                                    <Icon icon={iconKey as IconType} className="h-8" />
+                                    <div className="text-sm">{iconKey}</div>
                                 </div>
-                            </ErrorBoundary>
-                        )
-                    );
-                })}
+                            ))}
+                        </div>
+                    </Toggle>
+                    <Toggle buttonContent="Show Card Sizes" initialCollapsed>
+                        <div className="flex flex-row flex-wrap gap-5 mb-2">
+                            {(Object.keys(cardSizes) as (keyof typeof cardSizes)[])
+                                .sort(
+                                    (a, b) =>
+                                        cardSizes[a].mm[0] * 1000 +
+                                        cardSizes[a].mm[1] -
+                                        (cardSizes[b].mm[0] * 1000 + cardSizes[b].mm[1])
+                                )
+                                .map((cardSizeName) => (
+                                    <Paper
+                                        size={cardSizeName}
+                                        key={cardSizeName}
+                                        className={clsx(
+                                            "flex flex-col gap-1 items-center justify-center bg-white rounded-md shadow-md",
+                                            cardSizeName === "Circle" && "rounded-full"
+                                        )}
+                                    >
+                                        <div className="text-sm">{cardSizes[cardSizeName].mm.join(" x ")}mm</div>
+                                        <div className="text-sm">
+                                            A4:{" "}
+                                            {Math.floor(universalPaperSizes.A4.mm[0] / cardSizes[cardSizeName].mm[0])} x{" "}
+                                            {Math.floor(universalPaperSizes.A4.mm[1] / cardSizes[cardSizeName].mm[1])}
+                                        </div>
+                                        <div className="text-sm">{cardSizeName}</div>
+                                    </Paper>
+                                ))}
+                        </div>
+                    </Toggle>
+                </div>
+
+                <div className="flex gap-5 flex-wrap print:block max-w-screen">
+                    {sections.map(({ Component, slug }, sectionIndex) => {
+                        return (
+                            sectionVisibility[sectionIndex] && (
+                                <ErrorBoundary key={slug}>
+                                    <div className="w-full flex gap-5 flex-wrap print:block relative">
+                                        <div id={slug} className="absolute -top-32" />
+                                        <Component />
+                                    </div>
+                                </ErrorBoundary>
+                            )
+                        );
+                    })}
+                </div>
+
+                <div className="flex flex-row flex-wrap gap-2 p-10 bg-stone-700">
+                    <ActionCardBack />
+                </div>
+                <Playtesters />
+                <Credits />
             </div>
-            <Playtesters />
-            <Credits />
         </div>
     );
 }

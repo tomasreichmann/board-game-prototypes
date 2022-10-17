@@ -14,17 +14,19 @@ import OutcomeCardPages from "./components/print/OutcomeCardPages";
 import ColorList from "./components/ColorList";
 import PlayerCharacterCardPages from "./components/print/PlayerCharacterCardPages";
 import AssetCardPages from "./components/print/AssetCardPages";
+import EncounterCardPages from "./components/print/EncounterCardPages";
 
 const sections = [
-    { slug: "changelog", label: "Changelog", Component: Changelog, isVisibleByDefault: true },
-    { slug: "assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: true },
+    { slug: "changelog", label: "Changelog", Component: Changelog, isVisibleByDefault: false },
+    { slug: "assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: false },
     {
         slug: "player-character-card",
         label: "Player Character Card",
         Component: PlayerCharacterCardPages,
-        isVisibleByDefault: true,
+        isVisibleByDefault: false,
     },
-    { slug: "outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: true },
+    { slug: "outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: false },
+    { slug: "encounters", label: "Encounters", Component: EncounterCardPages, isVisibleByDefault: true },
 ];
 
 export default function KickAssCards() {

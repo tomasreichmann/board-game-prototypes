@@ -19,7 +19,8 @@
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.4.1",
         "tslib": "^2.4.0",
-        "use-google-sheets": "^2.0.0"
+        "use-google-sheets": "^2.0.0",
+        "vite-plugin-markdown": "^2.1.0"
     },
     "devDependencies": {
         "@originjs/vite-plugin-content": "^1.0.1",

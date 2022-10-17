@@ -6,8 +6,8 @@ import PlayerCharacterCard from "../gameComponents/PlayerCharacterCard";
 const copies = 2;
 
 const blankCharacter = {
-    name: ". ",
-    occupation: ". ",
+    name: "",
+    occupation: "",
     specials: [],
     tricks: [],
     titles: [],

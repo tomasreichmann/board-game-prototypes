@@ -48,3 +48,8 @@ export type OutcomeType = {
     icon: IconType;
     description: string;
 };
+
+export type EncounterType = {
+    slug: string;
+    title: string;
+};

@@ -40,6 +40,7 @@ import fairyWand from "./media/fairy-wand.svg";
 import fireRing from "./media/fire-ring.svg";
 import fizzingFlask from "./media/fizzing-flask.svg";
 import flatPlatform from "./media/flat-platform.svg";
+import fountainPen from "./media/fountain-pen.svg";
 import globeRing from "./media/globe-ring.svg";
 import grapple from "./media/grapple.svg";
 import halt from "./media/halt.svg";
@@ -144,6 +145,7 @@ export const iconMap = {
     fireRing,
     fizzingFlask,
     flatPlatform,
+    fountainPen,
     globeRing,
     grapple,
     halt,

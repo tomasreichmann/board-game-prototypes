@@ -15,12 +15,12 @@ export default function OutcomeCardPages() {
             {chunk(allOutcomes, CARDS_PER_PAGE).map((outcomes, pageIndex) => (
                 <PrintPage key={"action-deck-page-" + pageIndex}>
                     <div className="flex flex-wrap content-center items-center">
-                        {outcomes.map((outcome) => (
-                            <OutcomeCard key={outcome.slug} {...outcome} className="relative">
+                        {outcomes.map((outcome, outcomeIndex) => (
+                            <OutcomeCard key={outcome.slug + "-" + outcomeIndex} {...outcome} className="relative">
                                 <PrintMarkerCorners />
                             </OutcomeCard>
                         ))}
-                        <h2 className="text-2xl font-dtHeading text-blood-3 w-full text-center">
+                        <h2 className="text-2xl font-kacHeading text-kac-steel-dark w-full text-center">
                             Outcomes {pageIndex + 1}/{Math.ceil(allOutcomes.length / CARDS_PER_PAGE)}
                         </h2>
                     </div>

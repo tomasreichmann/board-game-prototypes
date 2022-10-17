@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Paper from "../../../../components/print/Paper/Paper";
 import { ActionType } from "../../types";
-import Icon, { IconType } from "../Icon/Icon";
+import Icon, { IconType } from "../Icon";
 import effectColorClassNameMap from "../../utils/effectColorClassNameMap";
 import RichText from "../RichText";
 // import "./ActionCard.css";

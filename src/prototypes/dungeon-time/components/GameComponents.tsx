@@ -12,7 +12,7 @@ import EnemyCard from "./gameComponents/EnemyCard";
 import EnemyIntentCard from "./gameComponents/EnemyIntentCard";
 import PlayerCharacterCard from "./gameComponents/PlayerCharacterCard";
 import RelicCard from "./gameComponents/RelicCard";
-import Icon from "./Icon/Icon";
+import Icon from "./Icon";
 
 export default function GameComponents() {
     const { data: actions } = useActions();

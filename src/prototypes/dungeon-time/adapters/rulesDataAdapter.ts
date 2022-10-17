@@ -1,5 +1,5 @@
 import { ContentType } from "../types";
-import camelCaseObjectKeys from "../utils/camelCaseObjectKeys";
+import camelCaseObjectKeys from "../../../utils/camelCaseObjectKeys";
 
 const groupRules = (contentItems: ContentType[]) => {
     const itemsToParse = [...contentItems];

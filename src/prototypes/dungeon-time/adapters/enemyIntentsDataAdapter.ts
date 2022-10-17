@@ -1,14 +1,9 @@
 import { EnemyIntentType } from "../types";
-import camelCaseObjectKeys from "../utils/camelCaseObjectKeys";
+import camelCaseObjectKeys from "../../../utils/camelCaseObjectKeys";
 
-export default function enemyIntentsDataAdapter(
-    data: Record<string, string>[]
-): EnemyIntentType[] {
+export default function enemyIntentsDataAdapter(data: Record<string, string>[]): EnemyIntentType[] {
     return data.map((dataItem) => {
-        const enemyIntent = camelCaseObjectKeys(dataItem) as Record<
-            keyof EnemyIntentType,
-            any
-        >;
+        const enemyIntent = camelCaseObjectKeys(dataItem) as Record<keyof EnemyIntentType, any>;
 
         return {
             ...enemyIntent,

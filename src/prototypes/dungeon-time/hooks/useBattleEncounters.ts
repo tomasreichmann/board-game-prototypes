@@ -1,6 +1,6 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { BattleEncounterType, EnemyType } from "../types";
-import arrayToMap from "../utils/arrayToMap";
+import arrayToMap from "../../../utils/arrayToMap";
 import battleEncountersDataAdapter from "../adapters/battleEncountersDataAdapter";
 import enemiesDataAdapter from "../adapters/enemiesDataAdapter";
 import useEnemyIntentDeckMap from "./useEnemyIntentDeckMap";
@@ -16,28 +16,15 @@ export const useBattleEncounters = (): {
     if (!sheetData.data || !enemyIntentDeckMap) {
         return { ...sheetData, data: undefined };
     }
-    const battleSheet = sheetData.data.find(
-        (item: { id: string }) => item.id === "battle encounters"
-    );
-    const enemiesSheet = sheetData.data.find(
-        (item: { id: string }) => item.id === "enemies"
-    );
+    const battleSheet = sheetData.data.find((item: { id: string }) => item.id === "battle encounters");
+    const enemiesSheet = sheetData.data.find((item: { id: string }) => item.id === "enemies");
 
     const enemyMap =
         enemiesSheet && enemiesSheet.data
-            ? arrayToMap(
-                  enemiesDataAdapter(
-                      enemiesSheet.data as Record<keyof EnemyType, string>[]
-                  ),
-                  "slug"
-              )
+            ? arrayToMap(enemiesDataAdapter(enemiesSheet.data as Record<keyof EnemyType, string>[]), "slug")
             : {};
     const data = battleSheet
-        ? battleEncountersDataAdapter(
-              battleSheet.data as Record<string, string>[],
-              enemyMap,
-              enemyIntentDeckMap
-          )
+        ? battleEncountersDataAdapter(battleSheet.data as Record<string, string>[], enemyMap, enemyIntentDeckMap)
         : undefined;
     return { ...sheetData, data };
 };

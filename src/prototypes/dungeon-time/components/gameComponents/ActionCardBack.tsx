@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Paper from "../../../../components/print/Paper/Paper";
 import { ActionType } from "../../types";
-import Icon from "../Icon/Icon";
+import Icon from "../Icon";
 // import "./ActionCard.css";
 import splashUri from "../../media/splash-1.png";
 

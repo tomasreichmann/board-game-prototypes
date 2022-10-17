@@ -1,6 +1,6 @@
-import { IconType } from "../components/Icon/Icon";
+import { IconType } from "../components/Icon";
 import { EncounterType, StageType } from "../types";
-import camelCaseObjectKeys from "../utils/camelCaseObjectKeys";
+import camelCaseObjectKeys from "../../../utils/camelCaseObjectKeys";
 
 export default function stagesDataAdapter(
     stagesData: Record<string, string>[],

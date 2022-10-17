@@ -1,0 +1,32 @@
+slug,title,icon,effect,cost,cardCount
+bandages,Bandages,bandageRoll,Remove to convert replace a wound in your Outcome deck with a Complication.,,5
+weapon-concealed,Concealed Weapon,plainDagger,You can attack an armed opponent with full effect.  You can conceal this weapon.,,5
+shield,Shield,checkedShield,You can fully defend using a Partial Success.,,0
+grappling-hook,Grappling Hook,grapple,Discard to climb without risk.,,1
+smoke-bomb,Smoke Bomb,smokeBomb,remove to hide without risk.,,3
+lock-picks,Lock Picks,lockpicks,You can pick a lock silently on Success.,,3
+scroll-of-whisper,Scroll of Whisper,humanEar,You can produce a simple sound that appears to be comming from a place you can see.,,2
+scrying-water,Scrying water,paranoia,You can pour this water and see a person or an object you are looking for.,,1
+sleeping-dart,Sleeping dart,dart,You can knock out a creature at range.,,1
+crossbow,Crossbow,crossbow,You can attack from a distance.,,1
+caltrops,Caltrops,caltrops,You can throw these to break a chase.,,1
+lantern,Lantern,lanternFlame,Provides light. Spills flamable oil when broken.,,1
+barrel,,barrel,,,2
+explosive,Explosive,explosiveMaterials,,,1
+healing-potion,Healing Potion,heartBottle,Remove to completely remove a Wound without risk.,,3
+alchemy-tools,Alchemy Tools,pestleMortar,"Tools to create potions, poisons and other alchemical products.",,1
+poison,Poison,poisonBottle,Remove to knock out or kill a creature without risk.,,3
+jewelry,Jewelry,bigDiamondRing,,,3
+book,Book,blackBook,,,1
+bolas,Bolas,bolas,Discard to prevent movement of a creature on Success.,,1
+crowbar,Crowbar,crowbar,,,1
+potion,Potion,drinkMe,,,1
+key,Key,key,,,3
+trap,Trap,wolfTrap,,1,1
+disguise,Disguise,prankGlasses,,,1
+rope,Rope,ropeCoil,,,1
+gem,Gem,rupee,,,1
+letter,,scrollQuill,,,1
+bag,,swapBag,,,1
+scroll,,tiedScroll,,,1
+toolbox,,toolbox,,,1

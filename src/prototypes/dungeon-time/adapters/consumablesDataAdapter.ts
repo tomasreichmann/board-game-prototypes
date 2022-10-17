@@ -1,17 +1,9 @@
 import { ConsumableType } from "../types";
-import camelCaseObjectKeys from "../utils/camelCaseObjectKeys";
+import camelCaseObjectKeys from "../../../utils/camelCaseObjectKeys";
 
-export default function battleEncountersDataAdapter(
-    sheetData: Record<string, string>[]
-): ConsumableType[] {
+export default function battleEncountersDataAdapter(sheetData: Record<string, string>[]): ConsumableType[] {
     return sheetData
-        .map(
-            (dataItem) =>
-                camelCaseObjectKeys(dataItem) as Record<
-                    keyof ConsumableType,
-                    any
-                >
-        )
+        .map((dataItem) => camelCaseObjectKeys(dataItem) as Record<keyof ConsumableType, any>)
         .map((dataItem) => {
             return {
                 ...dataItem,

@@ -1,6 +1,6 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { ActionDeckType, ActionType } from "../types";
-import arrayToMap from "../utils/arrayToMap";
+import arrayToMap from "../../../utils/arrayToMap";
 import actionDataAdapter from "../adapters/actionDataAdapter";
 import actionDecksDataAdapter from "../adapters/actionDecksDataAdapter";
 import useSheetData from "./useSheetData";

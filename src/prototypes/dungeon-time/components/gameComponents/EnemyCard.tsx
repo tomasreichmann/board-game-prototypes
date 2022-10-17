@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Paper from "../../../../components/print/Paper/Paper";
 import { EnemyType } from "../../types";
-import Icon, { iconMap, IconType } from "../Icon/Icon";
+import Icon, { iconMap, IconType } from "../Icon";
 import RichText from "../RichText";
 // import "./EnemyCard.css";
 

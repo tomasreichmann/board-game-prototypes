@@ -12,7 +12,7 @@ export default defineConfig(() => {
                 svgrOptions: {
                     typescript: false,
                     dimensions: false,
-                    replaceAttrValues: { "#000": "currentColor" },
+                    replaceAttrValues: { "#000": "currentColor", "#000000": "currentColor" },
                 },
             }),
             dsv(),

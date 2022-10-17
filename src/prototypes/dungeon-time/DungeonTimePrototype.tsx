@@ -11,7 +11,7 @@ import EnemyIntentPages from "./components/print/EnemyIntentPages";
 import EnemyPages from "./components/print/EnemyPages";
 import StagesPages from "./components/print/EncounterMapPage";
 import ErrorBoundary from "../../components/ErrorBoundary";
-import Icon, { iconMap, IconType } from "./components/Icon/Icon";
+import Icon, { iconMap, IconType } from "./components/Icon";
 import Toggle from "../../components/Toggle";
 import universalPaperSizes, { cardSizes } from "../../components/print/paperSizes";
 import RelicsPages from "./components/print/RelicsPages";
@@ -21,7 +21,6 @@ import RulesPages from "./components/print/RulesPages";
 import Paper from "../../components/print/Paper/Paper";
 import clsx from "clsx";
 import Changelog from "./components/Changelog";
-import OutcomeCardPages from "./components/print/OutcomeCardPages";
 import ActionCardBack from "./components/gameComponents/ActionCardBack";
 
 const getUpgrades = (action: ActionType): ActionType[] => {
@@ -57,7 +56,6 @@ const sections = [
     { slug: "consumables", label: "Consumables", Component: ConsumablesPages, isVisibleByDefault: true },
     { slug: "relics", label: "Relics", Component: RelicsPages, isVisibleByDefault: true },
     { slug: "actions", label: "Actions", Component: ActionCardPages, isVisibleByDefault: true },
-    { slug: "outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: true },
 ];
 
 export default function DungeonTimePrototype() {
@@ -94,6 +92,9 @@ export default function DungeonTimePrototype() {
                     <div className="flex flex-row justify-end gap-x-2 gap-y-1 content-end flex-wrap-reverse items-center">
                         <Button onClick={refreshData} size="xs" color="primary">
                             Refresh Data
+                        </Button>
+                        <Button href="/" size="xs" color="info">
+                            Prototypes
                         </Button>
                     </div>
                 </div>

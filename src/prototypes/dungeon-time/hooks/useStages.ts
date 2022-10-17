@@ -1,6 +1,6 @@
 import { ErrorResponse } from "use-google-sheets/dist/types";
 import { StageType } from "../types";
-import arrayToMap from "../utils/arrayToMap";
+import arrayToMap from "../../../utils/arrayToMap";
 import stagesDataAdapter from "../adapters/stagesDataAdapter";
 import useSheetData from "./useSheetData";
 import { useBattleEncounters } from "./useBattleEncounters";
@@ -15,17 +15,12 @@ export const useStages = (): {
     if (!sheetData.data || !battleEncounters) {
         return { ...sheetData, data: undefined };
     }
-    const stagesSheet = sheetData.data.find(
-        (item: { id: string }) => item.id === "stages"
-    );
+    const stagesSheet = sheetData.data.find((item: { id: string }) => item.id === "stages");
 
     const encounterMap = arrayToMap(battleEncounters, "slug");
 
     const data = stagesSheet
-        ? stagesDataAdapter(
-              stagesSheet.data as Record<string, string>[],
-              encounterMap
-          )
+        ? stagesDataAdapter(stagesSheet.data as Record<string, string>[], encounterMap)
         : undefined;
     return { ...sheetData, data };
 };

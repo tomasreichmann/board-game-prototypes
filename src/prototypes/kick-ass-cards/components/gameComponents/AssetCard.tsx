@@ -1,0 +1,79 @@
+import React from "react";
+import clsx from "clsx";
+import Paper from "../../../../components/print/Paper/Paper";
+import { AssetType } from "../../types";
+import Icon, { IconType } from "../Icon";
+import RichText from "../RichText";
+// import "./AssetCard.css";
+
+export type AssetCardProps = React.PropsWithChildren<{ className?: string } & AssetType>;
+
+const effectSizeClassNameMap: { [key in IconType]?: string } = {
+    //SPECIAL: "h-24",
+};
+
+const outcomeColorClassNameMap: { [key in IconType]?: string } = {
+    bandageRoll: "text-slate-400",
+    plainDagger: "text-kac-steel-dark",
+    grapple: "text-kac-cloth",
+    smokeBomb: "text-kac-iron",
+    lockpicks: "text-kac-iron-light",
+    humanEar: "text-kac-skin-dark",
+    paranoia: "text-kac-cloth",
+    dart: "text-kac-cloth-dark",
+    crossbow: "text-kac-steel-dark",
+    caltrops: "text-kac-steel-dark",
+    lanternFlame: "text-kac-gold",
+    barrel: "text-kac-bone-dark",
+    explosiveMaterials: "text-kac-fire",
+    heartBottle: "text-kac-blood-light",
+    pestleMortar: "text-kac-curse",
+    poisonBottle: "text-kac-monster",
+    bigDiamondRing: "text-kac-gold",
+    blackBook: "text-kac-bone-dark",
+    drinkMe: "text-kac-curse-light",
+    key: "text-kac-gold-dark",
+    prankGlasses: "text-kac-skin-dark",
+    ropeCoil: "text-kac-bone-dark",
+    rupee: "text-kac-fire-dark",
+    scrollQuill: "text-kac-bone",
+    swapBag: "text-kac-bone-dark",
+    tiedScroll: "text-kac-bone",
+    toolbox: "text-kac-bone-dark",
+    /*mightyForce: "text-kac-fire",
+    bullseye: "text-kac-monster",
+    dodge: "text-kac-monster-light",
+    knockout: "text-kac-steel-dark",
+    thrustBend: "text-kac-cloth",
+    drop: "text-kac-blood",
+    stickyBoot: "text-kac-curse-light",
+    sunbeams: "text-kac-gold",
+    sprint: "text-kac-gold-dark",
+    warlockEye: "text-kac-curse",*/
+};
+
+export default function AssetCard({ className, slug, title, icon, effect, children }: AssetCardProps) {
+    return (
+        <Paper size="Mini US game" className={clsx("AssetCard bg-white p-5 flex flex-col gap-2", className)}>
+            <div>
+                <div className="text-slate-400 text-center text-xs">{slug}</div>
+            </div>
+
+            <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">
+                <Icon
+                    icon={icon}
+                    className={clsx(
+                        "max-h-fit",
+                        outcomeColorClassNameMap[icon] || "text-iron-light",
+                        effectSizeClassNameMap[icon] || "h-16"
+                    )}
+                />
+                <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>
+            </div>
+            <div className="flex-1 text-xs text-center max-h-12 text-kac-iron-light">
+                <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
+            </div>
+            {children}
+        </Paper>
+    );
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { StageType } from "../../types";
-import Icon from "../Icon/Icon";
+import Icon from "../Icon";
 // import "./EncounterMap.css";
 
 export type EncounterMapProps = React.PropsWithChildren<{

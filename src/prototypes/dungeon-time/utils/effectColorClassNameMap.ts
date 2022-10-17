@@ -1,4 +1,4 @@
-import { IconType } from "../components/Icon/Icon";
+import { IconType } from "../components/Icon";
 
 const effectColorClassNameMap: { [key in IconType]?: string } = {
     ACTION: "text-lightning-3",

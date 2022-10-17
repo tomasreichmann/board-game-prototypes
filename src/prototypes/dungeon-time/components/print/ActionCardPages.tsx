@@ -5,7 +5,7 @@ import ActionCard from "../gameComponents/ActionCard";
 import { useActionDecks } from "../../hooks/useActions";
 import { ActionType } from "../../types";
 import DataToggle from "../../../../components/DataToggle";
-import countByProperty from "../../utils/countByProperty";
+import countByProperty from "../../../../utils/countByProperty";
 
 const CARDS_PER_PAGE = 3 * 3;
 const MAX_IDENTICAL_UPGRADES = 4;

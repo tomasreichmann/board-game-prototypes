@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Paper from "../../../../components/print/Paper/Paper";
 import { PlayerCharacterType } from "../../types";
-import Icon from "../Icon/Icon";
+import Icon from "../Icon";
 import RichText from "../RichText";
 // import "./PlayerCharacterCard.css";
 

@@ -1,15 +1,12 @@
-import React, { ReactElement } from "react";
-import clsx from "clsx";
-import Paper from "../../../components/print/Paper/Paper";
-import { ActionType } from "../types";
-import Icon, { iconAliases, IconProps, IconType } from "./Icon/Icon";
+import React from "react";
+import Icon, { aliasMap, IconProps, IconType } from "./Icon";
 // import "./RichText.css";
 
 export type RichTextProps = {
     className?: string;
     children: string;
     iconProps?: Partial<IconProps>;
-    aliasProps?: { [key in keyof typeof iconAliases | keyof typeof componentAliases]?: Record<string, any> };
+    aliasProps?: { [key in keyof typeof aliasMap | keyof typeof componentAliases]?: Record<string, any> };
 };
 
 const componentAliases = {
@@ -17,7 +14,7 @@ const componentAliases = {
 };
 
 const aliasRegex = new RegExp(
-    Object.keys(iconAliases)
+    Object.keys(aliasMap)
         .map((alias) => {
             return alias + "(?:_\\d+)?";
         })
@@ -44,7 +41,7 @@ export default function RichText({ className, iconProps = {}, aliasProps = {}, c
                                 {...(match in aliasProps ? aliasProps[match as keyof typeof aliasProps] : {})}
                             />
                         );
-                    } else if (icon in iconAliases) {
+                    } else if (icon in aliasMap) {
                         fragments.push(
                             <React.Fragment key={aliasKey}>
                                 <Icon

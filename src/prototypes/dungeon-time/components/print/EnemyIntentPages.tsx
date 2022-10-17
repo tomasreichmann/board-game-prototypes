@@ -5,7 +5,7 @@ import EnemyIntentCard from "../gameComponents/EnemyIntentCard";
 import { ActionType } from "../../types";
 import DataToggle from "../../../../components/DataToggle";
 import useEnemyIntentDeckMap from "../../hooks/useEnemyIntentDeckMap";
-import Icon from "../Icon/Icon";
+import Icon from "../Icon";
 
 const CARDS_PER_PAGE = 4 * 4;
 

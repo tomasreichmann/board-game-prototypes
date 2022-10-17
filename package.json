@@ -22,6 +22,7 @@
         "use-google-sheets": "^2.0.0"
     },
     "devDependencies": {
+        "@originjs/vite-plugin-content": "^1.0.1",
         "@rollup/plugin-dsv": "^3.0.0",
         "@types/google-spreadsheet": "^3.3.0",
         "@types/node": "^18.7.18",

@@ -4,7 +4,7 @@ import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import RelicCard from "../gameComponents/RelicCard";
 import DataToggle from "../../../../components/DataToggle";
 import { useRelics } from "../../hooks/useRelics";
-import multiplyByCount, { defaultCountAdapter } from "../../utils/multiplyByCount";
+import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiplyByCount";
 
 const CARDS_PER_PAGE = 3 * 3;
 

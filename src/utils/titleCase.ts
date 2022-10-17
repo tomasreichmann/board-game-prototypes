@@ -1,5 +1,3 @@
-import { camelCase } from "lodash";
-
 export default function titleCase(string: string) {
     return string
         .split(" ")

@@ -1,5 +1,5 @@
 import { EnemyIntentDeckType, EnemyIntentType } from "../types";
-import camelCaseObjectKeys from "../utils/camelCaseObjectKeys";
+import camelCaseObjectKeys from "../../../utils/camelCaseObjectKeys";
 
 export default function enemyIntentDecksDataAdapter(
     data: Record<string, string>[],

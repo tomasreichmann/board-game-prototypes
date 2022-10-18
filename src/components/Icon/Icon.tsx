@@ -79,6 +79,8 @@ import shieldOpposition from "./media/shield-opposition.svg";
 import shorts from "./media/shorts.svg";
 import sickle from "./media/sickle.svg";
 import skullStaff from "./media/skull-staff.svg";
+import slicedBread from "./media/sliced-bread.svg";
+import slingshot from "./media/slingshot.svg";
 import smokeBomb from "./media/smoke-bomb.svg";
 import spikedShield from "./media/spiked-shield.svg";
 import sprint from "./media/sprint.svg";
@@ -106,6 +108,7 @@ import williamTellSkull from "./media/william-tell-skull.svg";
 import wolfHead from "./media/wolf-head.svg";
 import wolfTrap from "./media/wolf-trap.svg";
 import woodBeam from "./media/wood-beam.svg";
+import woodenCrate from "./media/wooden-crate.svg";
 
 export const iconMap = {
     arrowLeft,
@@ -177,6 +180,8 @@ export const iconMap = {
     shorts,
     sickle,
     skullStaff,
+    slingshot,
+    slicedBread,
     smokeBomb,
     spikedShield,
     sprint,
@@ -216,6 +221,7 @@ export const iconMap = {
     tiedScroll,
     toolbox,
     woodBeam,
+    woodenCrate,
 };
 
 export type IconType = keyof typeof iconMap;

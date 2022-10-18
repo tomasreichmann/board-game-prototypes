@@ -1,33 +1,10 @@
-import { range } from "lodash";
-import ToggleData from "../../../../components/DataToggle";
-import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
-import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import EncounterCard from "../gameComponents/EncounterCard";
-import IntroEncounter from "../../data/encounters/kjb/act1-01-Intro.md";
 import React from "react";
-import Module from "module";
 
 const encounterMap = (import.meta as any).glob("../../data/encounters/kjb/*.md", { eager: true }) as Record<
     string,
     { default: React.ComponentType<{}> }
 >;
-
-const copies = 2;
-
-const blankEncounter = {
-    name: "",
-    occupation: "",
-    specials: [],
-    tricks: [],
-    titles: [],
-    wounds: [],
-    assets: [],
-    notes: "",
-};
-
 const encounterModules = Object.values(encounterMap);
-console.log(IntroEncounter);
-// <ToggleData data={encounterModules.map(encounterModules)} />
 export default function EncounterCardPages() {
     return (
         <>

@@ -28,5 +28,8 @@ rope,Rope,ropeCoil,,,1
 gem,Gem,rupee,,,1
 letter,,scrollQuill,,,1
 bag,,swapBag,,,1
-scroll,,tiedScroll,,,1
+scroll,,tiedScroll,,,2
 toolbox,,toolbox,,,1
+waterskin,Waterskin,magicPotion,,,5
+crate,Crate,woodenCrate,,,5
+slingshot,Slingshot,slingshot,,,1

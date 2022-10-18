@@ -16,18 +16,29 @@ import ColorList from "./components/ColorList";
 import PlayerCharacterCardPages from "./components/print/PlayerCharacterCardPages";
 import AssetCardPages from "./components/print/AssetCardPages";
 import EncounterCardPages from "./components/print/EncounterCardPages";
+import ActorCardPages from "./components/print/ActorCardPages";
+import ClockPages from "./components/print/ClockPages";
+
+const defaultSectionVisibility = true;
 
 const sections = [
-    { slug: "changelog", label: "Changelog", Component: Changelog, isVisibleByDefault: false },
-    { slug: "assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: false },
+    { slug: "Changelog", label: "Changelog", Component: Changelog, isVisibleByDefault: defaultSectionVisibility },
     {
-        slug: "player-character-card",
+        slug: "Player Character Card".replace(" ", "-"),
         label: "Player Character Card",
         Component: PlayerCharacterCardPages,
-        isVisibleByDefault: false,
+        isVisibleByDefault: defaultSectionVisibility,
     },
-    { slug: "outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: false },
-    { slug: "encounters", label: "Encounters", Component: EncounterCardPages, isVisibleByDefault: true },
+    { slug: "Outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: defaultSectionVisibility },
+    { slug: "Actors", label: "Actors", Component: ActorCardPages, isVisibleByDefault: defaultSectionVisibility },
+    { slug: "Clocks", label: "Clocks", Component: ClockPages, isVisibleByDefault: defaultSectionVisibility },
+    { slug: "Assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: defaultSectionVisibility },
+    {
+        slug: "Encounters",
+        label: "Encounters",
+        Component: EncounterCardPages,
+        isVisibleByDefault: defaultSectionVisibility,
+    },
 ];
 
 export default function KickAssCards() {

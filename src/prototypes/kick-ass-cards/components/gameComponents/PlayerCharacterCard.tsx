@@ -47,58 +47,88 @@ export default function PlayerCharacterCard({
                     </div>
                     <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{occupation}</h2>
                 </div>
-                <div>
+                <div className="flex-1 flex flex-col">
                     <div className="text-sm">
                         <Icon icon="checkedShield" className="h-4 inline-block" />
                         &ensp;titles
                     </div>
-                    <div className="min-h-4xl">
+                    <div className="flex-1 min-h-4xl relative">
                         {titles.map((title) => (
                             <h2 key={title} className="text-lg font-kacHeading">
                                 {title}
                             </h2>
                         ))}
+                        <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
+                        <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
+                        <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
+                        <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
+                        <div className="border-b-2 border-dashed absolute top-[10em] left-0 w-full"></div>
+                        <div className="border-b-2 border-dashed absolute top-[12em] left-0 w-full"></div>
                     </div>
                 </div>
             </div>
             <div className="flex-1 flex flex-col gap-2">
-                <div className="flex-1">
+                <div className="flex-1 flex flex-col">
                     <div className="text-sm text-kac-fire">
                         <Icon icon="mightyForce" className="h-4 inline-block" />
                         &ensp;specials
                     </div>
-                    <div className="min-h-16">
+                    <div className="min-h-16 flex-1 relative">
                         {specials.map((special) => (
                             <h2 key={special} className="text-lg font-kacHeading">
                                 {special}
                             </h2>
                         ))}
+                        {specials.length === 0 && (
+                            <>
+                                <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
+                            </>
+                        )}
                     </div>
                 </div>
-                <div className="flex-1 text-kac-cloth">
-                    <div className="text-sm border-t-2 border-kac-steel-light pt-1">
+                <div className="flex-1 flex flex-col ">
+                    <div className="text-sm border-t-2 text-kac-cloth border-kac-steel-light pt-1">
                         <Icon icon="pointyHat" className="h-4 inline-block" />
                         &ensp;tricks
                     </div>
-                    <div className="min-h-16">
+                    <div className="min-h-16 flex-1 relative">
                         {tricks.map((trick) => (
                             <h2 key={trick} className="text-lg font-kacHeading">
                                 {trick}
                             </h2>
                         ))}
+                        {tricks.length === 0 && (
+                            <>
+                                <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
+                            </>
+                        )}
                     </div>
                 </div>
-                <div className="flex-1 ">
+                <div className="flex-1 flex flex-col ">
                     <div className="text-sm border-t-2 border-kac-steel-light pt-1 text-kac-blood">
                         <Icon icon="drop" className="h-4 inline-block" />
                         &ensp;wounds
                     </div>
-                    <div className="min-h-16">
+                    <div className="min-h-16 flex-1 relative">
                         {wounds.map((wound) => (
                             <h2 key={wound} className="text-lg font-kacHeading">
                                 {wound}
                             </h2>
                         ))}
+                        {wounds.length === 0 && (
+                            <>
+                                <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
@@ -108,20 +138,42 @@ export default function PlayerCharacterCard({
                         <Icon icon="chest" className="h-4 inline-block" />
                         &ensp;assets
                     </div>
-                    <div className="min-h-16">
+                    <div className="min-h-16 flex-1 relative">
                         {assets.map((asset) => (
                             <h2 key={asset} className="text-lg font-kacHeading">
                                 {asset}
                             </h2>
                         ))}
+                        {assets.length === 0 && (
+                            <>
+                                <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[10em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[12em] left-0 w-full"></div>
+                                <div className="border-b-2 border-dashed absolute top-[14em] left-0 w-full"></div>
+                            </>
+                        )}
                     </div>
                 </div>
-                <div className="flex-1 border-t-2 border-kac-steel-light pt-1">
+                <div className="flex-1 border-t-2 border-kac-steel-light pt-1 relative">
                     <div className="text-sm border-dashed text-kac-bone-dark">
                         <Icon icon="scrollQuill" className="h-4 inline-block" />
                         &ensp;notes
                     </div>
-                    <div className="min-h-16">{notes}</div>
+                    <div className="min-h-16 flex-1 ">{notes}</div>
+                    {notes.length === 0 && (
+                        <>
+                            <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
+                            <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
+                            <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
+                            <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
+                            <div className="border-b-2 border-dashed absolute top-[10em] left-0 w-full"></div>
+                            <div className="border-b-2 border-dashed absolute top-[12em] left-0 w-full"></div>
+                            <div className="border-b-2 border-dashed absolute top-[14em] left-0 w-full"></div>
+                        </>
+                    )}
                 </div>
             </div>
             {children}

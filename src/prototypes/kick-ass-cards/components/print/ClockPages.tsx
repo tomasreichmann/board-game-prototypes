@@ -4,7 +4,7 @@ import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMa
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import Clock from "../Clock";
 
-const copies = 2;
+const copies = 1;
 
 const CARDS_PER_PAGE = 16;
 
@@ -25,8 +25,9 @@ export default function ClockPages() {
                 <PrintPage key={"page-" + pageIndex}>
                     <div className="flex-1 flex flex-row flex-wrap content-center items-stretch">
                         {range(CARDS_PER_PAGE).map((cardIndex) => {
+                            const total = [4, 6, 8, 12].at(cardIndex % 4);
                             return (
-                                <Clock key={cardIndex} {...blankActor} className="flex-1">
+                                <Clock key={cardIndex} total={total} current={0} {...blankActor} className="flex-1">
                                     <PrintMarkerCorners />
                                 </Clock>
                             );

@@ -1,9 +1,6 @@
----
-title: Act 1. - Město v plamenech
-actNumber: 1
----
+# Act 1. - Město v plamenech
 
-# Cíl
+## Cíl
 
 -   Představit silného nepřítele  
     Družina vidí z dálky masakr obránců vojáky pod vedením kněžky
@@ -97,28 +94,28 @@ _Strhla se bitva. Překvapení vojáci Bohyně utrželi několik zásahů, ale v
 
 ## Informace pro GM
 
-    - Armáda Bohyně zajala pekaře Isama Husseina a nutí ho péct chlebové placky dnem i nocí pod pohružkou smrti jemu i jeho rodině
-    -   Isam Hussein (loupežník)
-        -   Isam je plešatý obtloustý snědý muž kolem 40 let.
-        -   Isam je hamoun a snaží se být s Královstvím Jediné Bohyně za dobře, aby mohl co nejdříve otevřít svojí pekárnu
-        -   Isam v první řadě chrání sebe a svojí rodinu
-        -   Pokud ho družina konfrontuje, bude bojovat a volat stráže
-    -   Ve 2. patře spí Isamova manželka Zarma a 4 letý syn Kaeden
-    -   Zarma Hussein (akolyta)
-        -   Zarma je relativně bledá žena kolem 30 let s dlouhými kudrnatými vlasy svázanými do drdolu a chodí oblékaná do drahých barevných dlouhých šatů.
-        -   Zarma je krásná, náročná a vzdělaná žena, které záleží na luxusu a dobré pověsti rodiny.
-        -   Zarma před vojáky Bohyně předstírala, že jsou stoupenci Jediné Bohyně, což zachránilo celé rodině život a umožnilo jim udržet si svůj majetek a postavení.
-        -   Pokud jí družina konfrontuje, bude utíkat a volat stráže. Pokud to nepůjde, bude se snažit dát zlodějům skryté zlato z tajné přihrádky ve skříni v ložnici
-        -   Kaeden Hussein (prostý obyvatel s 1HP)
-            -   Kaeden má krátké černé kudrnaté vlasy, čistou světlou tuniku a nosí dřevěnou šavli.
-            -   Kaeden obdivuje dobrodruhy z pohádek
-            -   Nechá se uplatit hračkou, ale pokud ho někdo ohrozí, bude plakat a utíkat za maminkou.
-    -   Isamovi pomáhá 12 letá dcera Razika
-    -   Razika Hussein (prostý obyvatel)
-        -   Razika má tmavé kudrnaté vlasy svázané červenou stuhou a nosí většinou pracovní šaty se zástěrou.
-        -   Razika má svojí hlavu a raději by se přidala k odboji než sloužila armádě Jediné Bohyně.
-        -   Nicméně vždy poslechne svého otce.
-        -   Pokud jí družina konfrontuje, bude utíkat a volat stráže.
+- Armáda Bohyně zajala pekaře Isama Husseina a nutí ho péct chlebové placky dnem i nocí pod pohružkou smrti jemu i jeho rodině
+-   Isam Hussein (loupežník)
+    -   Isam je plešatý obtloustý snědý muž kolem 40 let.
+    -   Isam je hamoun a snaží se být s Královstvím Jediné Bohyně za dobře, aby mohl co nejdříve otevřít svojí pekárnu
+    -   Isam v první řadě chrání sebe a svojí rodinu
+    -   Pokud ho družina konfrontuje, bude bojovat a volat stráže
+-   Ve 2. patře spí Isamova manželka Zarma a 4 letý syn Kaeden
+-   Zarma Hussein (akolyta)
+    -   Zarma je relativně bledá žena kolem 30 let s dlouhými kudrnatými vlasy svázanými do drdolu a chodí oblékaná do drahých barevných dlouhých šatů.
+    -   Zarma je krásná, náročná a vzdělaná žena, které záleží na luxusu a dobré pověsti rodiny.
+    -   Zarma před vojáky Bohyně předstírala, že jsou stoupenci Jediné Bohyně, což zachránilo celé rodině život a umožnilo jim udržet si svůj majetek a postavení.
+    -   Pokud jí družina konfrontuje, bude utíkat a volat stráže. Pokud to nepůjde, bude se snažit dát zlodějům skryté zlato z tajné přihrádky ve skříni v ložnici
+    -   Kaeden Hussein (prostý obyvatel s 1HP)
+        -   Kaeden má krátké černé kudrnaté vlasy, čistou světlou tuniku a nosí dřevěnou šavli.
+        -   Kaeden obdivuje dobrodruhy z pohádek
+        -   Nechá se uplatit hračkou, ale pokud ho někdo ohrozí, bude plakat a utíkat za maminkou.
+-   Isamovi pomáhá 12 letá dcera Razika
+-   Razika Hussein (prostý obyvatel)
+    -   Razika má tmavé kudrnaté vlasy svázané červenou stuhou a nosí většinou pracovní šaty se zástěrou.
+    -   Razika má svojí hlavu a raději by se přidala k odboji než sloužila armádě Jediné Bohyně.
+    -   Nicméně vždy poslechne svého otce.
+    -   Pokud jí družina konfrontuje, bude utíkat a volat stráže.
 
 ## 2. patro
 

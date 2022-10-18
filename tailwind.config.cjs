@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const lightTheme = require("daisyui/src/colors/themes")["[data-theme=light]"];
 const darkTheme = require("daisyui/src/colors/themes")["[data-theme=dark]"];
-console.log(darkTheme);
+
 module.exports = {
     content: [
         "./index.html",
@@ -102,5 +102,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [require("daisyui")],
+    plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

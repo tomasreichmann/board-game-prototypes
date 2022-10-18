@@ -1,3 +1,4 @@
+import React from "react";
 import "./KickAssCardsPrototype.css";
 import { Button, Checkbox } from "react-daisyui";
 import { useState } from "react";

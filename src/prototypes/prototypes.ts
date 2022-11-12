@@ -1,4 +1,4 @@
-import KickAssCardsPrototype from "./kick-ass-cards/KickAssCardsPrototype";
+import KickAssCardsPrototype, { kickAssCardsPath } from "./kick-ass-cards/KickAssCardsPrototype";
 import DungeonTimePrototype from "./dungeon-time/DungeonTimePrototype";
 
 const prototypes = [
@@ -10,7 +10,7 @@ const prototypes = [
     {
         name: "Kick Ass Cards",
         Component: KickAssCardsPrototype,
-        path: "/kick-ass-cards",
+        path: kickAssCardsPath,
     },
 ];
 

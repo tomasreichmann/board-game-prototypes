@@ -1,5 +1,6 @@
 import arrowLeft from "./media/arrow-left.svg";
 import arrowRight from "./media/arrow-right.svg";
+import backpack from "./media/backpack.svg";
 import bandageRoll from "./media/bandage-roll.svg";
 import barrel from "./media/barrel.svg";
 import batteredAxe from "./media/battered-axe.svg";
@@ -113,6 +114,7 @@ import woodenCrate from "./media/wooden-crate.svg";
 export const iconMap = {
     arrowLeft,
     arrowRight,
+    backpack,
     bandageRoll,
     barrel,
     batteredAxe,

@@ -131,7 +131,6 @@ export default function DungeonTimePrototype() {
                     })}
                 </div>
             </div>
-
             <div className="px-2 pb-2 md:px-10 md:pb-10 print:p-0">
                 <div>
                     <Toggle buttonContent="Show Icons" initialCollapsed>

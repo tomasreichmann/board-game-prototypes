@@ -7,11 +7,12 @@ import { range } from "lodash";
 export type ClockProps = React.PropsWithChildren<{
     className?: string;
     title?: string;
+    reward?: string;
     total?: number;
     current?: number;
 }>;
 
-export default function Clock({ className, title = "", total, current = 0, children }: ClockProps) {
+export default function Clock({ className, title = "", reward = "", total, current = 0, children }: ClockProps) {
     return (
         <div
             className={clsx(
@@ -20,7 +21,7 @@ export default function Clock({ className, title = "", total, current = 0, child
             )}
         >
             <div className="flex-1 flex flex-col gap-2">
-                <div className="relative w-full aspect-square flex flex-col border-2 border-kac-iron rounded-full">
+                <div className="relative w-10/12 mx-auto aspect-square flex flex-col border-2 border-kac-iron rounded-full">
                     {total && (
                         <>
                             {range(((current / total) * 360) / 90).map((quarterIndex) => {
@@ -56,6 +57,13 @@ export default function Clock({ className, title = "", total, current = 0, child
                         &ensp;title
                     </div>
                     <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{title}</h2>
+                </div>
+                <div>
+                    <div className="text-sm border-dashed text-kac-gold-dark">
+                        <Icon icon="chest" className="h-4 inline-block" />
+                        &ensp;reward
+                    </div>
+                    <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{reward}</h2>
                 </div>
             </div>
 

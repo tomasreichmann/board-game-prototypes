@@ -21,6 +21,7 @@
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.4.1",
         "remark-frontmatter": "^4.0.1",
+        "remark-mdx-frontmatter": "^2.1.1",
         "tslib": "^2.4.0",
         "use-google-sheets": "^2.0.0",
         "vite-plugin-markdown": "^2.1.0",

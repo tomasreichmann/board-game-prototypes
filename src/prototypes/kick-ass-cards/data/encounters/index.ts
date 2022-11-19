@@ -3,13 +3,14 @@
     { default: React.ComponentType<{}> }
 >;*/
 // export const encounterModules = Object.values(encounterMap);
-const KJB = "Království Jediné Bohyně";
 export type EnounterDefinition = {
     path: string;
     slug: string;
     campaign?: string;
     title: string;
 };
+
+const KJB = "Království Jediné Bohyně";
 export const encountersMap: { [key: string]: EnounterDefinition } = {
     "KJB-act1-01-Intro": {
         slug: "KJB-act1-01-Intro",
@@ -17,10 +18,10 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         campaign: KJB,
         title: "Akt 1 - Úvod",
     },
-    test: {
-        slug: "test",
-        path: "test",
-        campaign: KJB,
-        title: "Test",
+    "PZZ-akt1-Intro": {
+        slug: "PZZ-akt1-Intro",
+        path: "PZZ-akt1-Intro",
+        campaign: "Pomsta ze záhrobí",
+        title: "PZZ-akt1-Intro",
     },
 };

@@ -4,6 +4,7 @@ import svgr from "vite-plugin-svgr";
 import dsv from "@rollup/plugin-dsv";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 // import {babel} from '@rollup/plugin-babel'
 /*
@@ -27,7 +28,8 @@ export default defineConfig(() => {
                 },
             }),
             dsv(),
-            mdx({ remarkPlugins: [[remarkFrontmatter, "toml"]] }),
+            //mdx({ remarkPlugins: [[remarkFrontmatter, "toml"]] }),
+            mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] }),
         ],
     };
 });

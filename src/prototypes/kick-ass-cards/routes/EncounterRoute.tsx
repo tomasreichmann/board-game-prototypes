@@ -5,8 +5,6 @@ import React, { useEffect, useState } from "react";
 // required for MDX
 import { Alert } from "react-daisyui";
 
-import Test from "../data/encounters/test.mdx";
-
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
     const [Encounter, setEncounter] = useState<React.ComponentType<{

@@ -14,16 +14,13 @@ import OutcomeCardPages from "../components/print/OutcomeCardPages";
 import ColorList from "../components/ColorList";
 import PlayerCharacterCardPages from "../components/print/PlayerCharacterCardPages";
 import AssetCardPages from "../components/print/AssetCardPages";
-import EncounterCardPages from "../components/print/EncounterCardPages";
 import ActorCardPages from "../components/print/ActorCardPages";
 import ClockPages from "../components/print/ClockPages";
 import PlayerBoxPages from "../components/print/PlayerBoxPages";
-import { kickAssCardsPath } from "../KickAssCardsPrototype";
 
 const defaultSectionVisibility = true;
 
 const sections = [
-    { slug: "Changelog", label: "Changelog", Component: Changelog, isVisibleByDefault: defaultSectionVisibility },
     {
         slug: "Player Character Card".replace(" ", "-"),
         label: "Player Character Card",
@@ -37,77 +34,47 @@ const sections = [
     { slug: "Boxes", label: "Boxes", Component: PlayerBoxPages, isVisibleByDefault: defaultSectionVisibility },
 ];
 
-export default function KickAssCards() {
+export default function PrintRoute() {
     const [sectionVisibility, setSectionVisibility] = useState(
         sections.map(({ isVisibleByDefault }) => isVisibleByDefault)
     );
 
     return (
-        <div
-            className="h-screen print:h-full w-screen relative overflow-auto bg-kac-blood-dark print:bg-white text-kac-steel-light print:text-kac-steel-dark flex flex-col items-stretch font-kacBody"
-            data-theme="KickAssCardsPrototype"
-        >
-            <div
-                className="sticky top-0 left-0 z-50 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 bg-blend-multiply print:hidden"
-                style={{
-                    background:
-                        "linear-gradient(to bottom, rgb(84 20 35 / var(--tw-bg-opacity)) 80%, transparent 100%)",
-                }}
-            >
-                <div className="top-0 flex flex-row gap-4 text-kac-bone">
-                    <h1 className="font-kacHeading text-3xl flex flex-row flex-wrap min-w-fit flex-1">
-                        <Icon icon="kickAssCards" className="h-10" />
-                        Kick Ass Cards
-                    </h1>
-                    <Button href={kickAssCardsPath + "/"} size="xs" color="secondary">
-                        Print
-                    </Button>
-                    <Button href={kickAssCardsPath + "/encounters"} size="xs" color="secondary">
-                        Encounters
-                    </Button>
-                    <Button href="/" size="xs" color="secondary">
-                        Prototypes
-                    </Button>
-                </div>
-                <div className="flex flex-row justify-start gap-x-4 gap-y-0 mb-5 content-start items-center flex-wrap ">
-                    {sections.map(({ label, slug }, sectionIndex) => {
-                        return (
-                            <div
-                                key={slug}
-                                className="flex flex-row gap-x-1 content-start items-center flex-wrap text-md"
+        <>
+            <div className="flex flex-row justify-start mt-2 gap-x-4 gap-y-0 mb-5 content-start items-center flex-wrap ">
+                {sections.map(({ label, slug }, sectionIndex) => {
+                    return (
+                        <div key={slug} className="flex flex-row gap-x-1 content-start items-center flex-wrap text-md">
+                            <a
+                                href={"#" + slug}
+                                className="underline hover:no-underline text-kac-monster hover:text-kac-monster-light"
+                                onClick={() =>
+                                    setSectionVisibility((sectionVisibility) => {
+                                        const newSectionVisibility = [...sectionVisibility];
+                                        newSectionVisibility[sectionIndex] = true;
+                                        return newSectionVisibility;
+                                    })
+                                }
                             >
-                                <a
-                                    href={"#" + slug}
-                                    className="underline hover:no-underline text-kac-monster hover:text-kac-monster-light"
-                                    onClick={() =>
-                                        setSectionVisibility((sectionVisibility) => {
-                                            const newSectionVisibility = [...sectionVisibility];
-                                            newSectionVisibility[sectionIndex] = true;
-                                            return newSectionVisibility;
-                                        })
-                                    }
-                                >
-                                    {label}
-                                </a>
-                                <Checkbox
-                                    size="sm"
-                                    color="secondary"
-                                    checked={sectionVisibility[sectionIndex]}
-                                    onClick={() =>
-                                        setSectionVisibility((sectionVisibility) => {
-                                            const newSectionVisibility = [...sectionVisibility];
-                                            newSectionVisibility[sectionIndex] = !newSectionVisibility[sectionIndex];
-                                            return newSectionVisibility;
-                                        })
-                                    }
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
+                                {label}
+                            </a>
+                            <Checkbox
+                                size="sm"
+                                color="secondary"
+                                checked={sectionVisibility[sectionIndex]}
+                                onClick={() =>
+                                    setSectionVisibility((sectionVisibility) => {
+                                        const newSectionVisibility = [...sectionVisibility];
+                                        newSectionVisibility[sectionIndex] = !newSectionVisibility[sectionIndex];
+                                        return newSectionVisibility;
+                                    })
+                                }
+                            />
+                        </div>
+                    );
+                })}
             </div>
-
-            <div className="px-2 pb-2 md:px-10 md:pb-10 print:p-0">
+            <div className="pb-2 md:pb-10 print:p-0">
                 <div>
                     <Toggle buttonContent="Show Colors" initialCollapsed>
                         <ColorList />
@@ -152,7 +119,6 @@ export default function KickAssCards() {
                         </div>
                     </Toggle>
                 </div>
-
                 <div className="flex gap-5 flex-wrap print:block max-w-screen">
                     {sections.map(({ Component, slug }, sectionIndex) => {
                         return (
@@ -170,6 +136,7 @@ export default function KickAssCards() {
                 <Playtesters />
                 <Credits />
             </div>
-        </div>
+            ,
+        </>
     );
 }

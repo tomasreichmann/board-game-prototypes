@@ -1,30 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
 import "./index.css";
-import IndexRoute from "./routes/IndexRoute/IndexRoute";
-import prototypes from "./prototypes/prototypes";
-import ErrorBoundary from "./components/ErrorBoundary";
-
-const routes = [
-    {
-        path: "/",
-        element: <IndexRoute />,
-    },
-    ...prototypes.map(({ path, Component }) => ({
-        path,
-        element: (
-            <ErrorBoundary>
-                <Component />
-            </ErrorBoundary>
-        ),
-    })),
-];
-
-const router = createBrowserRouter(routes);
+import routeStructure from "./routes";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <BrowserRouter>
+            <Routes>{routeStructure}</Routes>
+        </BrowserRouter>
     </React.StrictMode>
 );

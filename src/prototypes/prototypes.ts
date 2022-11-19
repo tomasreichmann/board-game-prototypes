@@ -1,7 +1,8 @@
-import KickAssCardsPrototype, { kickAssCardsPath } from "./kick-ass-cards/KickAssCardsPrototype";
+import KickAssCardsPrototype, { kickAssCardsPath, kickAssCardsSubRoutes } from "./kick-ass-cards/KickAssCardsPrototype";
 import DungeonTimePrototype from "./dungeon-time/DungeonTimePrototype";
+import { RouteDefinition } from "../routeTypes";
 
-const prototypes = [
+const prototypes: RouteDefinition[] = [
     {
         name: "Dungeon Time",
         Component: DungeonTimePrototype,
@@ -11,6 +12,7 @@ const prototypes = [
         name: "Kick Ass Cards",
         Component: KickAssCardsPrototype,
         path: kickAssCardsPath,
+        children: kickAssCardsSubRoutes,
     },
 ];
 

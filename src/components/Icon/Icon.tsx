@@ -19,6 +19,7 @@ import cardDraw from "./media/card-draw.svg";
 import cardExchange from "./media/card-exchange.svg";
 import cardPlay from "./media/card-play.svg";
 import cardRandom from "./media/card-random.svg";
+import cast from "./media/cast.svg";
 import checkedShield from "./media/checked-shield.svg";
 import chest from "./media/chest.svg";
 import crossbow from "./media/crossbow.svg";
@@ -130,6 +131,7 @@ export const iconMap = {
     cardExchange,
     cardPlay,
     cardRandom,
+    cast,
     checkedShield,
     chest,
     crossbow,

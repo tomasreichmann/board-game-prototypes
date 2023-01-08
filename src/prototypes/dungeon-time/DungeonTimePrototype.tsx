@@ -78,7 +78,7 @@ export default function DungeonTimePrototype() {
             data-theme="DungeonTimePrototype"
         >
             <div
-                className="sticky top-0 left-0 z-50 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 print:hidden"
+                className="sticky top-0 left-0 z-50 py-1 md:py-5 px-2 md:px-10 bg-opacity-90"
                 style={{
                     background:
                         "linear-gradient(to bottom, rgb(255 254 235 / var(--tw-bg-opacity)) 80%, transparent 100%)",

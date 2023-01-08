@@ -36,7 +36,7 @@ export default function EncounterRoute() {
             <div className="flex gap-5 flex-wrap print:block max-w-screen">
                 {Object.values(encountersByCampaign).map((campaign) => {
                     return (
-                        <div className="my-5">
+                        <div className="my-5" key={campaign.title}>
                             <h2 className="text-kac-bone-light font-kacHeading">{campaign.title}</h2>
                             <ul className="list-disc pl-5">
                                 {campaign.encounters.map(({ title, slug }) => {

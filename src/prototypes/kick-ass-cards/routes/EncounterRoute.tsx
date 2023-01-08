@@ -4,6 +4,8 @@ import { kickAssCardsPath } from "../KickAssCardsPrototype";
 import React, { useEffect, useState } from "react";
 // required for MDX
 import { Alert } from "react-daisyui";
+import BroadcastImage from "../components/screenContent/BroadcastImage";
+import ReactPlayer from "react-player";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -58,7 +60,9 @@ export default function EncounterRoute() {
                         ...loading
                     </h1>
                 )}
-                {Encounter !== null && <Encounter components={{ Alert }} />}
+                {Encounter !== null && (
+                    <Encounter key={path} components={{ Alert, img: BroadcastImage, Player: ReactPlayer }} />
+                )}
             </article>
         </div>
     );

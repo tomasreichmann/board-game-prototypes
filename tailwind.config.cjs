@@ -9,6 +9,7 @@ module.exports = {
         "node_modules/daisyui/dist/**/*.js",
         "node_modules/react-daisyui/dist/**/*.js",
     ],
+    safelist: ["animate-fadeIn", "animate-fadeOut"],
     theme: {
         extend: {
             colors: {
@@ -72,6 +73,21 @@ module.exports = {
                 dtHeading: ["Germania One", "sans-serif"],
                 kacBody: ["Shadows Into Light Two", "cursive"],
                 kacHeading: ["Trade Winds", "sans-serif"],
+            },
+            animation: {
+                fadeIn: "fadeIn 0.6s ease-in-out",
+                fadeOut: "fadeOut 0.6s ease-in-out",
+            },
+            // that is actual animation
+            keyframes: {
+                fadeIn: {
+                    "0%": { opacity: 0 },
+                    "100%": { opacity: 1 },
+                },
+                fadeOut: {
+                    "0%": { opacity: 1 },
+                    "100%": { opacity: 0 },
+                },
             },
         },
     },

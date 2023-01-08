@@ -1,5 +1,5 @@
 import "./KickAssCardsPrototype.css";
-import { Outlet, RouteObject } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import PrintRoute from "./routes/PrintRoute";
 import EncountersRoute from "./routes/EncountersRoute";
 import { Button } from "react-daisyui";
@@ -8,6 +8,7 @@ import { PropsWithChildren } from "react";
 import { RouteDefinition } from "../../routeTypes";
 import InfoRoute from "./routes/InfoRoute";
 import EncounterRoute from "./routes/EncounterRoute";
+import ScreenRoute from "./routes/ScreenRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 
@@ -34,6 +35,11 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
             },
         ],
     },
+    {
+        name: "Screen",
+        path: kickAssCardsPath + "/screen",
+        Component: ScreenRoute,
+    },
 ];
 
 export default function KickAssCards({ children }: PropsWithChildren) {
@@ -43,7 +49,7 @@ export default function KickAssCards({ children }: PropsWithChildren) {
             data-theme="KickAssCardsPrototype"
         >
             <div
-                className="sticky top-0 left-0 z-50 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 bg-blend-multiply print:hidden"
+                className="sticky top-0 left-0 z-50 py-1 md:py-5 px-2 md:px-10 bg-opacity-90 bg-blend-multiply"
                 style={{
                     background:
                         "linear-gradient(to bottom, rgb(84 20 35 / var(--tw-bg-opacity)) 80%, transparent 100%)",
@@ -65,6 +71,9 @@ export default function KickAssCards({ children }: PropsWithChildren) {
                         </Button>
                         <Button href={kickAssCardsPath + "/encounters"} size="xs" color="secondary">
                             Encounters
+                        </Button>
+                        <Button href={kickAssCardsPath + "/screen"} size="xs" color="secondary">
+                            Screen
                         </Button>
                         <Button href="/" size="xs" color="secondary">
                             Prototypes

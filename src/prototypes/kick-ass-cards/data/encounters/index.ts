@@ -24,4 +24,16 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         campaign: "Pomsta ze záhrobí",
         title: "PZZ-akt1-Intro",
     },
+    "LP-akt1-Navrat": {
+        slug: "LP-akt1-Navrat",
+        path: "LP-akt1-Navrat",
+        campaign: "Ledová pomsta",
+        title: "LP-akt1-Navrat",
+    },
+    "LP-akt1-Vyzkumnice": {
+        slug: "LP-akt1-Vyzkumnice",
+        path: "LP-akt1-Vyzkumnice",
+        campaign: "Ledová pomsta",
+        title: "LP-akt1-Vyzkumnice",
+    },
 };

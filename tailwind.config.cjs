@@ -74,14 +74,13 @@ module.exports = {
                 kacBody: ["Shadows Into Light Two", "cursive"],
                 kacHeading: ["Trade Winds", "sans-serif"],
             },
+            backgroundPosition: {
+                "1/3": "center 33%",
+            },
             animation: {
                 fadeIn: "fadeIn 0.6s ease-in-out",
                 fadeOut: "fadeOut 0.6s ease-in-out",
             },
-            backgroundPosition: {
-                "1/3": "center 33%",
-            },
-            // that is actual animation
             keyframes: {
                 fadeIn: {
                     "0%": { opacity: 0 },

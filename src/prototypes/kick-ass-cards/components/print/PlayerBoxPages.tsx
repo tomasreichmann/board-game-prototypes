@@ -2,23 +2,11 @@ import { range } from "lodash";
 import React from "react";
 import Icon from "../Icon";
 import { cardSizes } from "../../../../components/print/paperSizes";
-import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import PlayerCharacterCard from "../gameComponents/PlayerCharacterCard";
 import PaperCraftBox from "../PaperCraftBox";
 
 const copies = 2;
 
-const blankCharacter = {
-    name: "",
-    occupation: "",
-    specials: [],
-    tricks: [],
-    titles: [],
-    wounds: [],
-    assets: [],
-    notes: "",
-};
 export default function PlayerBoxPages() {
     const safetyMargin = 5;
     return (

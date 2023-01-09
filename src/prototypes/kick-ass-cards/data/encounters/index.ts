@@ -24,16 +24,28 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         campaign: "Pomsta ze záhrobí",
         title: "PZZ-akt1-Intro",
     },
-    "LP-akt1-Navrat": {
-        slug: "LP-akt1-Navrat",
-        path: "LP-akt1-Navrat",
+    "LP-c0-a0-Info": {
+        slug: "LP-c0-a0-Info",
+        path: "LP-c0-a0-Info",
         campaign: "Ledová pomsta",
-        title: "LP-akt1-Navrat",
+        title: "LP-c0-a0-Info",
     },
-    "LP-akt1-Vyzkumnice": {
-        slug: "LP-akt1-Vyzkumnice",
-        path: "LP-akt1-Vyzkumnice",
+    "LP-c1-a1-Navrat": {
+        slug: "LP-c1-a1-Navrat",
+        path: "LP-c1-a1-Navrat",
         campaign: "Ledová pomsta",
-        title: "LP-akt1-Vyzkumnice",
+        title: "LP-c1-a1-Navrat",
+    },
+    "LP-c1-a2-Oslava": {
+        slug: "LP-c1-a2-Oslava",
+        path: "LP-c1-a2-Oslava",
+        campaign: "Ledová pomsta",
+        title: "LP-c1-a2-Oslava",
+    },
+    "LP-c1-a2-Partys-over": {
+        slug: "LP-c1-a2-Partys-over",
+        path: "LP-c1-a2-Partys-over",
+        campaign: "Ledová pomsta",
+        title: "LP-c1-a2-Partys-over",
     },
 };

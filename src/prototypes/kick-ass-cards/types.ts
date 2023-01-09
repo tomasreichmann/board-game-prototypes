@@ -2,19 +2,20 @@ import { IconType } from "../../components/Icon/Icon";
 
 export type PlayerCharacterType = {
     name: string;
-    occupation: string;
-    specials: string[];
-    tricks: string[];
-    wounds: string[];
-    titles: string[];
-    assets: string[];
-    notes: string;
+    imageUri?: string;
+    occupation?: string;
+    specials?: string[];
+    tricks?: string[];
+    wounds?: string[];
+    titles?: string[];
+    assets?: string[];
+    notes?: string;
 };
 
 export type AssetType = {
     slug: string;
     title: string;
-    icon: IconType;
+    icon: IconType | string;
     effect: string;
     cost: number;
     cardCount: number;

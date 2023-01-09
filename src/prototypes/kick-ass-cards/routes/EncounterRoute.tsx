@@ -1,11 +1,13 @@
 import { encountersMap } from "../data/encounters";
 import { Outlet, useParams } from "react-router-dom";
-import { kickAssCardsPath } from "../KickAssCardsPrototype";
 import React, { useEffect, useState } from "react";
 // required for MDX
 import { Alert } from "react-daisyui";
 import BroadcastImage from "../components/screenContent/BroadcastImage";
+import Clock from "../components/Clock";
 import ReactPlayer from "react-player";
+import ActorCard from "../components/gameComponents/ActorCard";
+import AssetCard from "../components/gameComponents/AssetCard";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -61,7 +63,10 @@ export default function EncounterRoute() {
                     </h1>
                 )}
                 {Encounter !== null && (
-                    <Encounter key={path} components={{ Alert, img: BroadcastImage, Player: ReactPlayer }} />
+                    <Encounter
+                        key={path}
+                        components={{ Alert, img: BroadcastImage, Player: ReactPlayer, Clock, ActorCard, AssetCard }}
+                    />
                 )}
             </article>
         </div>

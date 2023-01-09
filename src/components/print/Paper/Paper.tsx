@@ -10,15 +10,16 @@ export type PaperProps = React.PropsWithChildren<{
     orientation?: "portrait" | "landscape";
 }>;
 
-export default function Paper({
-    className,
-    size,
-    orientation = "portrait",
-    children,
-}: PaperProps) {
+export const PaperOrDiv = ({ size, ...restProps }: Omit<PaperProps, "size"> & { size?: PaperProps["size"] }) => {
+    if (size) {
+        return <Paper size={size} {...restProps} />;
+    }
+    return <div className={restProps.className}>{restProps.children}</div>;
+};
+
+export default function Paper({ className, size, orientation = "portrait", children }: PaperProps) {
     const sizeInMm = allSizes[size].mm;
-    const [width, height] =
-        orientation === "landscape" ? [...sizeInMm].reverse() : sizeInMm;
+    const [width, height] = orientation === "landscape" ? [...sizeInMm].reverse() : sizeInMm;
 
     return (
         <div

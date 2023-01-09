@@ -9,7 +9,7 @@ module.exports = {
         "node_modules/daisyui/dist/**/*.js",
         "node_modules/react-daisyui/dist/**/*.js",
     ],
-    safelist: ["animate-fadeIn", "animate-fadeOut"],
+    safelist: ["animate-fadeIn", "animate-fadeOut", "drop-shadow-md"],
     theme: {
         extend: {
             colors: {
@@ -77,6 +77,9 @@ module.exports = {
             animation: {
                 fadeIn: "fadeIn 0.6s ease-in-out",
                 fadeOut: "fadeOut 0.6s ease-in-out",
+            },
+            backgroundPosition: {
+                "1/3": "center 33%",
             },
             // that is actual animation
             keyframes: {

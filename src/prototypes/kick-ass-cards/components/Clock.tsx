@@ -2,19 +2,22 @@ import React, { SVGProps } from "react";
 import clsx from "clsx";
 import Icon from "./Icon";
 import { range } from "lodash";
+import { PaperOrDiv, PaperProps } from "../../../components/print/Paper/Paper";
 // import "./Clock.css";
 
 export type ClockProps = React.PropsWithChildren<{
     className?: string;
+    size?: PaperProps["size"];
     title?: string;
     reward?: string;
     total?: number;
     current?: number;
 }>;
 
-export default function Clock({ className, title = "", reward = "", total, current = 0, children }: ClockProps) {
+export default function Clock({ className, size, title = "", reward = "", total, current = 0, children }: ClockProps) {
     return (
-        <div
+        <PaperOrDiv
+            size={size}
             className={clsx(
                 "Clock relative bg-white p-5 flex flex-row gap-5 text-kac-steel-dark min-w-[4cm]",
                 className
@@ -68,6 +71,6 @@ export default function Clock({ className, title = "", reward = "", total, curre
             </div>
 
             {children}
-        </div>
+        </PaperOrDiv>
     );
 }

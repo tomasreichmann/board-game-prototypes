@@ -1,0 +1,18 @@
+---
+name: Viktor
+occupation: Lodní inženýr
+notes:
+    - Sebevědomí 0/4
+---
+
+import ActorCard from "../../components/gameComponents/ActorCard";
+
+<ActorCard
+    size={props.size}
+    imageUri="/LP/viktor.png"
+    imagePosition="center 30%"
+    className="not-prose drop-shadow-md print:filter-none mx-4"
+    name={name}
+    occupation={occupation}
+    notes={notes.join(",")}
+/>

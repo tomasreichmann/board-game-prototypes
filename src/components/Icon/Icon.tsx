@@ -74,13 +74,16 @@ import prankGlasses from "./media/prank-glasses.svg";
 import push from "./media/push.svg";
 import rollerSkate from "./media/roller-skate.svg";
 import ropeCoil from "./media/rope-coil.svg";
+import run from "./media/run.svg";
 import rupee from "./media/rupee.svg";
 import scrollQuill from "./media/scroll-quill.svg";
 import sewingString from "./media/sewing-string.svg";
 import shieldOpposition from "./media/shield-opposition.svg";
 import shorts from "./media/shorts.svg";
+import shouting from "./media/shouting.svg";
 import sickle from "./media/sickle.svg";
 import skullStaff from "./media/skull-staff.svg";
+import sleepy from "./media/sleepy.svg";
 import slicedBread from "./media/sliced-bread.svg";
 import slingshot from "./media/slingshot.svg";
 import smokeBomb from "./media/smoke-bomb.svg";
@@ -95,6 +98,8 @@ import syringe from "./media/syringe.svg";
 import talk from "./media/talk.svg";
 import teleport from "./media/teleport.svg";
 import templarShield from "./media/templar-shield.svg";
+import thermometerCold from "./media/thermometer-cold.svg";
+import thermometerHot from "./media/thermometer-hot.svg";
 import thirdEye from "./media/third-eye.svg";
 import thrownKnife from "./media/thrown-knife.svg";
 import thrust from "./media/thrust.svg";
@@ -180,10 +185,13 @@ export const iconMap = {
     poisonBottle,
     push,
     rollerSkate,
+    run,
     shieldOpposition,
     shorts,
+    shouting,
     sickle,
     skullStaff,
+    sleepy,
     slingshot,
     slicedBread,
     smokeBomb,
@@ -196,6 +204,8 @@ export const iconMap = {
     talk,
     teleport,
     templarShield,
+    thermometerCold,
+    thermometerHot,
     thirdEye,
     thrownKnife,
     thrust,

@@ -21,6 +21,14 @@ export type AssetType = {
     cardCount: number;
 };
 
+export type EffectType = {
+    slug?: string;
+    title: string;
+    icon: IconType | string;
+    effect: string;
+    cardCount: number;
+};
+
 export type ContentType = {
     children?: string | ContentType[];
     component?: string;

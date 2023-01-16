@@ -29,17 +29,17 @@ export default function ActorCard({
     return (
         <PaperOrDiv
             size={size}
-            className={clsx("ActorCard relative bg-white p-5 flex flex-row gap-5 text-kac-steel-dark", className)}
+            className={clsx("ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark", className)}
         >
-            <div className="flex-1 flex flex-col gap-2">
-                <div className="relative aspect-[3/2] rounded flex flex-col text-kac-steel-light border-2 border-kac-steel">
+            <div className="basis-auto flex flex-col gap-2">
+                <div className="relative rounded flex-grow flex flex-col text-kac-steel-light border-2 border-kac-steel max-h-[33%]">
                     {imageUri ? (
                         <div
                             className="w-full h-full bg-cover bg-1/3 rounded-sm"
                             style={{ backgroundImage: "url(" + imageUri + ")", backgroundPosition: imagePosition }}
                         ></div>
                     ) : (
-                        <CharacterOutlineImage className="h-full w-full " />
+                        <CharacterOutlineImage style={{}} className="h-full w-full" />
                     )}
                 </div>
                 <div>

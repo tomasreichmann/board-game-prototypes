@@ -8,6 +8,7 @@ import Clock from "../components/Clock";
 import ReactPlayer from "react-player";
 import ActorCard from "../components/gameComponents/ActorCard";
 import AssetCard from "../components/gameComponents/AssetCard";
+import EffectCard from "../components/gameComponents/EffectCard";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -65,7 +66,15 @@ export default function EncounterRoute() {
                 {Encounter !== null && (
                     <Encounter
                         key={path}
-                        components={{ Alert, img: BroadcastImage, Player: ReactPlayer, Clock, ActorCard, AssetCard }}
+                        components={{
+                            Alert,
+                            img: BroadcastImage,
+                            Player: ReactPlayer,
+                            Clock,
+                            ActorCard,
+                            AssetCard,
+                            EffectCard,
+                        }}
                     />
                 )}
             </article>

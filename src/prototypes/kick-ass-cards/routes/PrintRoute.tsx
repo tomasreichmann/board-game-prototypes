@@ -17,6 +17,7 @@ import AssetCardPages from "../components/print/AssetCardPages";
 import ActorCardPages from "../components/print/ActorCardPages";
 import ClockPages from "../components/print/ClockPages";
 import PlayerBoxPages from "../components/print/PlayerBoxPages";
+import EffectCardPages from "../components/print/EffectCardPages";
 
 const defaultSectionVisibility = true;
 
@@ -31,6 +32,7 @@ const sections = [
     { slug: "Actors", label: "Actors", Component: ActorCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Clocks", label: "Clocks", Component: ClockPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: defaultSectionVisibility },
+    { slug: "Effects", label: "Effects", Component: EffectCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Boxes", label: "Boxes", Component: PlayerBoxPages, isVisibleByDefault: defaultSectionVisibility },
 ];
 

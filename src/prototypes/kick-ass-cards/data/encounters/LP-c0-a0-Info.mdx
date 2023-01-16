@@ -45,6 +45,14 @@ Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
     -   Pokud klesne na 2/4 nebo méně, Success se počítá jako Partial Success
     -   Pokud vědomí klesne na 0, postava je v bezvědomí a musí ji někdo křísit, dostane také +1 Zkáza.
     -   Každé zranění sníží vědomí o 1.
+
+import effects from "../effects.csv";
+
+<div className="flex flex-row flex-wrap gap-2 my-2">
+    <EffectCard {...effects[0]} className="not-prose drop-shadow-md print:filter-none" />
+    <EffectCard {...effects[1]} className="not-prose drop-shadow-md print:filter-none" />
+</div>
+
 -   Naděje
     -   Každý hrdina má omezenou vůli bojovat.
     -   Pokud se dostane Naděje na 0, hrdina souboj vzdává, nebo utíká z boje a dostane +1 Zkáza.
@@ -53,10 +61,21 @@ Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
     -   Naděje se obnoví dlouhým odpočinkem o 2. Dá se obnovit i povzbuzujícími akcemi.
     -   -1 Naděje, pokud hrdina nevyužil během dne Neřest.
     -   +1 Naděje, v moment, kdy hrdina využije Ctnost.
+
+<div className="flex flex-row flex-wrap gap-2 my-2">
+    <EffectCard {...effects[2]} className="not-prose drop-shadow-md print:filter-none" />
+    <EffectCard {...effects[3]} className="not-prose drop-shadow-md print:filter-none" />
+</div>
+
 -   Teplota
     -   Teplota je míra toho, jak se postava vzdaluje od ideální provozní teploty
     -   Začíná na 2/4
     -   Pokud se postava dostane na 4/4 nebo 0/4, dostane každé kolo zranění, dokud se jí teplota nestabilizuje.
+
+<div className="flex flex-row flex-wrap gap-2 my-2">
+    <EffectCard {...effects[4]} className="not-prose drop-shadow-md print:filter-none" />
+</div>
+
 -   Zkáza
     -   Zkáza je míra podlehnutí temným myšlenkám a zároveň míra transformace v příšeru.
     -   Začíná na 0/6.
@@ -65,13 +84,3 @@ Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
 -   Ctnost
     -   Ctnost působí jako Consumable, která se vždy obnoví po dlouhém odpočinku.
     -   Ctnost lze využít jako +1 efekt tam, kde to dává smysl.
-
-![](/LP/ScrattCZ_alien_planet_attacked_by_spores_dark_concept_art_detai_2a97da17-705d-4333-9396-deeef27bbf87.png)
-
-## Mise na záchranu výzkumného týmu Klanu Gynies na planetě Sporefall (Shrnutí pro GM)
-
--   Klan Gynie sídlí na Černosféře Markanian 40 v soustavě ARP 151. Jejich cílem je zajistit svému druhu co nejdelší budoucnost.
--   Posádka RH4 byla vyslaná na planetu médii překřtěnou Sporefall, která je napadená Spórami, mezigalaktickým parazitem, který konzumuje celé planety a přetváří jejich obyvatele v bezduché drony.
--   Velmi vzácně se stane, že stvoření kolonizované spórami si zachová vlastní vědomí. Tito spóroví hybridi často preferují ostatní hybridy a považují je za svojí novou rodinu. Preferují světy kompletně pohlcené Spórami.
--   Posádka dostala úkol vysvobodit tým výzkumníků Klanu, což se podařilo. Ale dostal se k nim na palubu taky spórový hybrid Flora.
--   Dr. Zimostráz (Bruxus) je Flořin otec, biolog programu na ochranu proti spórám, který ji zavřel do karantény s výzkumníky Klanu, aby ji ochránil, ale sám spórám podlehl a stal se z něj hybrid. Bruxus se snažil přemluvit posádku, aby neotvírali karanténu, dokud se nedokončí sterilizace, ale oni ho neposlechli. Hrozilo totiž, že spóry zničí jejich loď. Posádka Bruxuse přemohli a otevřeli karanténu předčasně. Díky tomu se Flóra nakazila spórami, přišla o vzpomínky na svého otce a je odsouzena k životu v ústraní. Bruxusovi nezbývá nic než se mstít. Za všechno můžou Gynies a jejich žoldáci.

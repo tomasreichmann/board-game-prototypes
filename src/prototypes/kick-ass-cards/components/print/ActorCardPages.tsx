@@ -23,10 +23,10 @@ export default function ActorCardPages() {
         <>
             {range(copies).map((pageIndex) => (
                 <PrintPage key={"page-" + pageIndex}>
-                    <div className="flex-1 flex flex-row flex-wrap content-center items-stretch">
+                    <div className="flex flex-wrap content-center items-center">
                         {range(CARDS_PER_PAGE).map((cardIndex) => {
                             return (
-                                <ActorCard key={cardIndex} {...blankActor} className="flex-1">
+                                <ActorCard key={cardIndex} size="Trump" {...blankActor}>
                                     <PrintMarkerCorners />
                                 </ActorCard>
                             );

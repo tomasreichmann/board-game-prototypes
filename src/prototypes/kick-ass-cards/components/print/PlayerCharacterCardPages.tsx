@@ -4,7 +4,7 @@ import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMa
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import PlayerCharacterCard from "../gameComponents/PlayerCharacterCard";
 
-const copies = 2;
+const copies = 3;
 
 const blankCharacter = {
     name: "",

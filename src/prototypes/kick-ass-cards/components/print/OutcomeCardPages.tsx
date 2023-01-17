@@ -7,8 +7,17 @@ import OutcomeCard from "../gameComponents/OutcomeCard";
 
 const CARDS_PER_PAGE = 4 * 4;
 
-const outcomeSet = [...outcomes, outcomeMap.advantage, outcomeMap.bless, outcomeMap.complication, outcomeMap.wound];
-const allOutcomes = [...outcomeSet, ...outcomeSet, ...outcomeSet, ...outcomeSet];
+const outcomeSet = outcomes;
+const allOutcomes = [
+    ...outcomeSet,
+    ...outcomeSet,
+    ...outcomeSet,
+    ...outcomeSet,
+    ...outcomeSet,
+    ...outcomeSet,
+    ...outcomeSet,
+];
+console.log("outcomes", outcomes);
 export default function OutcomeCardPages() {
     return (
         <>

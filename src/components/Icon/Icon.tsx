@@ -96,6 +96,7 @@ import supersonicArrow from "./media/supersonic-arrow.svg";
 import swapBag from "./media/swap-bag.svg";
 import syringe from "./media/syringe.svg";
 import talk from "./media/talk.svg";
+import tearTracks from "./media/tear-tracks.svg";
 import teleport from "./media/teleport.svg";
 import templarShield from "./media/templar-shield.svg";
 import thermometerCold from "./media/thermometer-cold.svg";
@@ -202,6 +203,7 @@ export const iconMap = {
     sunbeams,
     supersonicArrow,
     talk,
+    tearTracks,
     teleport,
     templarShield,
     thermometerCold,

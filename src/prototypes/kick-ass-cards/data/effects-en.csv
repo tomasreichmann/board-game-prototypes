@@ -1,0 +1,8 @@
+slug,title,icon,effect,cardCount
+dazed,Dazed,sleepy,"When at 2/4 Consciousness or below your Successes counts as Partial successes. Heal wounds to recover.",6
+unconscious,Unconscious,knockout,"When at 0/4 Consciousness you are helpless, you don't act on your turn and someone needs to revive you.",6
+panicked,Panicked,shouting,"When at 1/4 Hope you are panicked. Play the top card from your Outcome deck. Rest or Indulge to recover.",6
+hopeless,Hopeless,run,"When at 0/4 Hope you flee or surrender. Recover after the encounter.",6
+freezing-burning,"Freezing/Burning",thermometerHot,"When at 0/4 or 4/4 Temperature, you receive a Wound at the start of your turn. Stabilize your temperature to recover.",6
+stuck,"Stuck",stickyBoot,"You cannot move until you get free.",6
+hindered,"Hindered",halt,"You can act or move, not both until you get free.",6

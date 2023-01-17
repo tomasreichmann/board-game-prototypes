@@ -43,7 +43,7 @@ export default function PrintRoute() {
 
     return (
         <>
-            <div className="flex flex-row justify-start mt-2 gap-x-4 gap-y-0 mb-5 content-start items-center flex-wrap ">
+            <div className="flex flex-row justify-start mt-2 gap-x-4 gap-y-0 mb-5 content-start items-center flex-wrap print:hidden">
                 {sections.map(({ label, slug }, sectionIndex) => {
                     return (
                         <div key={slug} className="flex flex-row gap-x-1 content-start items-center flex-wrap text-md">

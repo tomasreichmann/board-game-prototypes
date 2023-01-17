@@ -71,15 +71,6 @@ export default function Clock({
                     </div>
                     <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{title}</h2>
                 </div>
-                {reward && (
-                    <div>
-                        <div className="text-sm border-dashed text-kac-gold-dark">
-                            <Icon icon="chest" className="h-4 inline-block" />
-                            &ensp;reward
-                        </div>
-                        <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{reward}</h2>
-                    </div>
-                )}
                 {threat && (
                     <div>
                         <div className="text-sm border-dashed text-kac-blood">
@@ -87,6 +78,15 @@ export default function Clock({
                             &ensp;threat
                         </div>
                         <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{threat}</h2>
+                    </div>
+                )}
+                {reward && (
+                    <div>
+                        <div className="text-sm border-dashed text-kac-gold-dark">
+                            <Icon icon="chest" className="h-4 inline-block" />
+                            &ensp;reward
+                        </div>
+                        <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{reward}</h2>
                     </div>
                 )}
             </div>

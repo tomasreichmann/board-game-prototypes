@@ -20,8 +20,11 @@ const outcomeColorClassNameMap: { [key in IconType]?: string } = {
     shouting: "text-kac-curse",
     run: "text-kac-curse-dark",
     thermometerHot: "text-kac-fire",
-    halt: "text-kac-iron",
+    halt: "text-kac-steel-dark",
     stickyBoot: "text-kac-monster",
+    drop: "text-kac-blood-dark",
+    tearTracks: "text-kac-cloth",
+    sprint: "text-kac-gold-dark",
 };
 
 const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;

@@ -1,8 +1,12 @@
 slug,title,icon,effect,cardCount
-dazed,Dazed,sleepy,"When at 2/4 Consciousness or below your Successes counts as Partial successes. Heal wounds to recover.",6
-unconscious,Unconscious,knockout,"When at 0/4 Consciousness you are helpless, you don't act on your turn and someone needs to revive you.",6
-panicked,Panicked,shouting,"When at 1/4 Hope you are panicked. Play the top card from your Outcome deck. Rest or Indulge to recover.",6
-hopeless,Hopeless,run,"When at 0/4 Hope you flee or surrender. Recover after the encounter.",6
-freezing-burning,"Freezing/Burning",thermometerHot,"When at 0/4 or 4/4 Temperature, you receive a Wound at the start of your turn. Stabilize your temperature to recover.",6
-stuck,"Stuck",stickyBoot,"You cannot move until you get free.",6
-hindered,"Hindered",halt,"You can act or move, not both until you get free.",6
+wound,Zranění,drop,"-1 Vědomí. Nepřátelé ho mohou využít pro +1 Efekt proti tobě. Vyleč se k odstranění.",16
+distress,Tíseň,tearTracks,"-1 Naděje. Nepřátelé ho mohou využít pro +1 Efekt proti tobě. Odpočiň si, nebo využij svojí Neřest k zotavení.",16
+dazed,Zmámený,sleepy,"Když máš 2/4 Vědomí, nebo méně, tvůj Úspěch se počítá jako Částečný úspěch. Zbav se Zranění k zotavení.",6
+unconscious,V Bezvědomí,knockout,"Když máš 0/4 Vědomí, jste bezmocní, nemůžeš provádět akce dokud tě někdo nevzkřísí.",6
+panicked,Panika,shouting,"Když máš 1/4 Naděje, zachvátila tě panika. Hraj vždy vrchní kartu balíčku Výsledků. Odpočiň si, nebo využij svojí Neřest k zotavení.",6
+hopeless,Beznaděj,run,"Když máš 0/4 Naděje, uteč, nebo se vzdej. Zotavíš se po Střetnutí.",6
+freezing-burning,"Mráz/Hoří",thermometerHot,"Když máš 0/4 nebo 4/4 Teploty, Získáš na začátku každého svého kola Zranění dokud nestabilizuješ svojí Teplotu.",6
+stuck,"Uvíznutí",stickyBoot,"Nemůžeš se pohybovat, dokud se neosvobodíš.",6
+hindered,"Obtíž",halt,"Můžeš se pohybovat, nebo provádět akce, ale ne oboje, dokud se neuvolníš.",6
+boost,"Posílení",sprint,"Tvoje příští akce má +1 Efekt nebo +1 Pohyb navíc.",6
+complication,Komplikace,stickyBoot,Komplikace tí ztěžuje život. Příští akce má -1 Efekt, poté odstraň.

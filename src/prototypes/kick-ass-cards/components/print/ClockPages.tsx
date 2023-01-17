@@ -6,7 +6,7 @@ import Clock from "../Clock";
 
 const copies = 1;
 
-const CARDS_PER_PAGE = 16;
+const CARDS_PER_PAGE = 12;
 
 const blankActor = {
     name: "",
@@ -27,7 +27,15 @@ export default function ClockPages() {
                         {range(CARDS_PER_PAGE).map((cardIndex) => {
                             const total = [4, 6, 8, 12].at(cardIndex % 4);
                             return (
-                                <Clock key={cardIndex} total={total} current={0} {...blankActor} className="flex-1">
+                                <Clock
+                                    key={cardIndex}
+                                    total={total}
+                                    current={0}
+                                    {...blankActor}
+                                    threat=" "
+                                    reward=" "
+                                    className="flex-1"
+                                >
                                     <PrintMarkerCorners />
                                 </Clock>
                             );

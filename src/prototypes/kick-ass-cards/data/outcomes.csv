@@ -1,11 +1,6 @@
 slug,title,icon,description,instructions
-special,Special,mightyForce,Activate your special ability.,
-success,Success,bullseye,You succeeded,
-partialSuccess,Partial Success,dodge,You had limited success or complication.,
-fumble,Fumble,knockout,You messed up.,
-chaos,Chaos,thrustBend,Something unexpected occured.,
-wound,Wound,drop,Your wound hinders you.,Use as fumble or spend an action licking your wound and discard. Remove from deck with consumables.
-complication,Complication,stickyBoot,You fail because of a complication.,Use as fumble or spend an action to adress it to remove from deck.
-bless,Bless,sunbeams,You are blessed with success.,Remove from deck when you no longer blessed.
-advantage,Success from Advantage,sprint,You leverage your advantage to succeed. Discard.,
-curse,Curse,warlockEye,You are cursed to fail.,Remove from deck when you no longer cursed.
+special,Speciální akce,mightyForce,Aktivuj svojí speciální akci.,
+success,Úspěch,bullseye,Uspěl jsi (+2 Efekt).,
+partialSuccess,Částečný úspěch,dodge,Částečně jsi uspěl (+1 Efekt nebo Úspěch + Komplikace).,
+fumble,Selhání,knockout,Nepodařilo se ti to.,
+chaos,Chaos,thrustBend,Stalo se něco neočekávaného.,

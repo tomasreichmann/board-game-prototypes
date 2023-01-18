@@ -1,14 +1,28 @@
 import { encountersMap } from "../data/encounters";
-import { Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 // required for MDX
 import { Alert } from "react-daisyui";
-import BroadcastImage from "../components/screenContent/BroadcastImage";
-import Clock from "../components/Clock";
+import { ClockProps } from "../components/Clock";
 import ReactPlayer from "react-player";
-import ActorCard from "../components/gameComponents/ActorCard";
-import AssetCard from "../components/gameComponents/AssetCard";
-import EffectCard from "../components/gameComponents/EffectCard";
+import { ActorCardProps } from "../components/gameComponents/ActorCard";
+import { AssetCardProps } from "../components/gameComponents/AssetCard";
+import { EffectCardProps } from "../components/gameComponents/EffectCard";
+import BroadcastComponent from "../components/screenContent/BroadcastComponent";
+import { ScreenContentTypeEnum } from "../services/broadcastScreen";
+import { ImageProps } from "../components/Image";
+
+const BroadcastImage = (props: ImageProps) => <BroadcastComponent type={ScreenContentTypeEnum.Image} props={props} />;
+const BroadcastActorCard = (props: ActorCardProps) => (
+    <BroadcastComponent type={ScreenContentTypeEnum.Actor} props={props} />
+);
+const BroadcastAssetCard = (props: AssetCardProps) => (
+    <BroadcastComponent type={ScreenContentTypeEnum.Asset} props={props} />
+);
+const BroadcastEffectCard = (props: EffectCardProps) => (
+    <BroadcastComponent type={ScreenContentTypeEnum.Effect} props={props} />
+);
+const BroadcastClock = (props: ClockProps) => <BroadcastComponent type={ScreenContentTypeEnum.Clock} props={props} />;
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -70,10 +84,10 @@ export default function EncounterRoute() {
                             Alert,
                             img: BroadcastImage,
                             Player: ReactPlayer,
-                            Clock,
-                            ActorCard,
-                            AssetCard,
-                            EffectCard,
+                            ActorCard: BroadcastActorCard,
+                            AssetCard: BroadcastAssetCard,
+                            EffectCard: BroadcastEffectCard,
+                            Clock: BroadcastClock,
                         }}
                     />
                 )}

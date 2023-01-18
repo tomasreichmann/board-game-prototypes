@@ -1,6 +1,9 @@
 import { CSSProperties, useCallback, useEffect, useReducer } from "react";
-
-export const storageKey = "kac-screen";
+import Clock, { ClockProps } from "../components/Clock";
+import ActorCard, { ActorCardProps } from "../components/gameComponents/ActorCard";
+import AssetCard, { AssetCardProps } from "../components/gameComponents/AssetCard";
+import EffectCard, { EffectCardProps } from "../components/gameComponents/EffectCard";
+import Image, { ImageProps } from "../components/Image";
 
 export enum AnimationEnum {
     FadeOut = "fadeOut",
@@ -9,17 +12,57 @@ export enum AnimationEnum {
 
 export enum ScreenContentTypeEnum {
     Image = "Image",
+    Actor = "Actor",
+    Asset = "Asset",
+    Clock = "Clock",
+    Effect = "Effect",
 }
 
-export type ScreenImageContentType = {
-    type: ScreenContentTypeEnum.Image;
+export type SharedContentType = {
     id: string;
-    uri: string;
     style?: CSSProperties;
     animation?: AnimationEnum;
 };
 
-export type ScreenContentType = ScreenImageContentType;
+export type ScreenImageContentType = {
+    type: ScreenContentTypeEnum.Image;
+    props: ImageProps;
+} & SharedContentType;
+
+export type ActorContentType = {
+    type: ScreenContentTypeEnum.Actor;
+    props: ActorCardProps;
+} & SharedContentType;
+
+export type AssetContentType = {
+    type: ScreenContentTypeEnum.Asset;
+    props: AssetCardProps;
+} & SharedContentType;
+
+export type ClockContentType = {
+    type: ScreenContentTypeEnum.Clock;
+    props: ClockProps;
+} & SharedContentType;
+
+export type EffectContentType = {
+    type: ScreenContentTypeEnum.Effect;
+    props: EffectCardProps;
+} & SharedContentType;
+
+export type ScreenContentType =
+    | ScreenImageContentType
+    | ActorContentType
+    | AssetContentType
+    | ClockContentType
+    | EffectContentType;
+
+export const typeComponentMap = {
+    [ScreenContentTypeEnum.Image]: Image,
+    [ScreenContentTypeEnum.Actor]: ActorCard,
+    [ScreenContentTypeEnum.Asset]: AssetCard,
+    [ScreenContentTypeEnum.Clock]: Clock,
+    [ScreenContentTypeEnum.Effect]: EffectCard,
+};
 
 export type ScreenStoreType = {
     content: ScreenContentType[];
@@ -66,7 +109,7 @@ export const screenStoreReducer = (store: ScreenStoreType, action: ScreenStoreAc
     return store;
 };
 
-export const getStoredData = () => window.localStorage.getItem(storageKey);
+export const getStoredData = (storageKey: string) => window.localStorage.getItem(storageKey);
 
 export const parseStoredData = (rawData: string | null): ScreenStoreType => {
     const parsedData = rawData !== null ? JSON.parse(rawData) : null;
@@ -84,8 +127,11 @@ export const initialStore: ScreenStoreType = {
     },
 };
 
-export const useBroadcastData = () => {
-    const [storeData, dispatch] = useReducer(screenStoreReducer, parseStoredData(getStoredData()) || initialStore);
+export const useBroadcastData = (storageKey: string = "kac-screen") => {
+    const [storeData, dispatch] = useReducer(
+        screenStoreReducer,
+        parseStoredData(getStoredData(storageKey)) || initialStore
+    );
 
     const broadcastData = useCallback((newStoreData: ScreenStoreType) => {
         dispatch({ type: ScreenStoreActionTypeEnum.Set, store: newStoreData });
@@ -104,7 +150,7 @@ export const useBroadcastData = () => {
         return () => {
             window.removeEventListener("storage", onStorageUpdate);
         };
-    }, []);
+    }, [storageKey]);
 
     useEffect(() => {
         const serializedStore = JSON.stringify(storeData);

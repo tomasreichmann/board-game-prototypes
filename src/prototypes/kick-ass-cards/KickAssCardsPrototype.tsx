@@ -1,6 +1,6 @@
 import "./KickAssCardsPrototype.css";
 import { Outlet } from "react-router-dom";
-import PrintRoute from "./routes/PrintRoute";
+import ComponentsRoute from "./routes/ComponentsRoute";
 import EncountersRoute from "./routes/EncountersRoute";
 import { Button } from "react-daisyui";
 import Icon from "./components/Icon";
@@ -9,8 +9,12 @@ import { RouteDefinition } from "../../routeTypes";
 import InfoRoute from "./routes/InfoRoute";
 import EncounterRoute from "./routes/EncounterRoute";
 import ScreenRoute from "./routes/ScreenRoute";
+import PrintRoute from "./routes/PrintRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
+
+export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
+export const kickAssCardsPrintStorageKey = "kick-ass-cards-print";
 
 export const kickAssCardsSubRoutes: RouteDefinition[] = [
     {
@@ -19,9 +23,9 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         Component: InfoRoute,
     },
     {
-        name: "Print",
-        path: kickAssCardsPath + "/print",
-        Component: PrintRoute,
+        name: "Components",
+        path: kickAssCardsPath + "/components",
+        Component: ComponentsRoute,
     },
     {
         name: "Encounters",
@@ -40,12 +44,17 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         path: kickAssCardsPath + "/screen",
         Component: ScreenRoute,
     },
+    {
+        name: "Print",
+        path: kickAssCardsPath + "/print",
+        Component: PrintRoute,
+    },
 ];
 
 export default function KickAssCards({ children }: PropsWithChildren) {
     return (
         <div
-            className="h-screen print:h-full w-screen relative overflow-auto bg-kac-blood-dark print:bg-white text-kac-steel-light print:text-kac-steel-dark flex flex-col items-stretch font-kacBody"
+            className="h-screen print:h-auto relative flex flex-col items-stretch overflow-auto bg-kac-blood-dark print:bg-white text-kac-steel-light print:text-kac-steel-dark font-kacBody"
             data-theme="KickAssCardsPrototype"
         >
             <div
@@ -66,16 +75,12 @@ export default function KickAssCards({ children }: PropsWithChildren) {
                         </a>
                     </h1>
                     <div className="flex flex-row flex-wrap gap-4 items-center">
-                        <Button href={kickAssCardsPath + "/print"} size="xs" color="secondary">
-                            Print
-                        </Button>
-                        <Button href={kickAssCardsPath + "/encounters"} size="xs" color="secondary">
-                            Encounters
-                        </Button>
-                        <Button href={kickAssCardsPath + "/screen"} size="xs" color="secondary">
-                            Screen
-                        </Button>
-                        <Button href="/" size="xs" color="secondary">
+                        {kickAssCardsSubRoutes.slice(1).map(({ name, path }) => (
+                            <Button key={path} href={path} size="xs" color="secondary">
+                                {name}
+                            </Button>
+                        ))}
+                        <Button href="/" size="xs" color="info">
                             Prototypes
                         </Button>
                     </div>

@@ -5,13 +5,13 @@ notes:
     - Sebevědomí 0/4
 ---
 
-import ActorCard from "../../components/gameComponents/ActorCard";
+import Actor from "../../components/screenContent/BroadcastActor";
 
-<ActorCard
-    size={props.size}
+<Actor
+    {...props}
     imageUri="/LP/viktor.png"
     imagePosition="center 30%"
-    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none mx-4"
+    className="not-prose inline-block drop-shadow-md print:drop-shadow-none mx-4"
     name={name}
     occupation={occupation}
     notes={notes.join(",")}

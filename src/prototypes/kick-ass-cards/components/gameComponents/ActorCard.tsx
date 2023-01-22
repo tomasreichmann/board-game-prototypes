@@ -31,7 +31,7 @@ export default function ActorCard({
             size={size}
             className={clsx("ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark", className)}
         >
-            <div className="basis-auto flex flex-col gap-2">
+            <div className="flex-1 basis-auto flex flex-col gap-2">
                 <div className="relative rounded flex-grow flex flex-col text-kac-steel-light border-2 border-kac-steel max-h-[33%]">
                     {imageUri ? (
                         <div

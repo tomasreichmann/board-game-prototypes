@@ -69,7 +69,7 @@ export default function Clock({
                         <Icon icon="fountainPen" className="h-4 inline-block" />
                         &ensp;title
                     </div>
-                    <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{title}</h2>
+                    <h2 className="text-md font-kacHeading border-b-2 border-dashed min-h-8">{title}</h2>
                 </div>
                 {threat && (
                     <div>
@@ -77,7 +77,7 @@ export default function Clock({
                             <Icon icon="deathSkull" className="h-4 inline-block" />
                             &ensp;threat
                         </div>
-                        <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{threat}</h2>
+                        <h2 className="text-md font-kacHeading border-b-2 border-dashed min-h-8">{threat}</h2>
                     </div>
                 )}
                 {reward && (
@@ -86,7 +86,7 @@ export default function Clock({
                             <Icon icon="chest" className="h-4 inline-block" />
                             &ensp;reward
                         </div>
-                        <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{reward}</h2>
+                        <h2 className="text-md font-kacHeading border-b-2 border-dashed min-h-8">{reward}</h2>
                     </div>
                 )}
             </div>

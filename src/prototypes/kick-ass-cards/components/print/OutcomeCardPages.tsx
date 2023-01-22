@@ -17,7 +17,7 @@ const allOutcomes = [
     ...outcomeSet,
     ...outcomeSet,
 ];
-console.log("outcomes", outcomes);
+
 export default function OutcomeCardPages() {
     return (
         <>

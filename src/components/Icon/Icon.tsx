@@ -71,6 +71,7 @@ import plainDagger from "./media/plain-dagger.svg";
 import pointyHat from "./media/pointy-hat.svg";
 import poisonBottle from "./media/poison-bottle.svg";
 import prankGlasses from "./media/prank-glasses.svg";
+import print from "./media/print.svg";
 import push from "./media/push.svg";
 import rollerSkate from "./media/roller-skate.svg";
 import ropeCoil from "./media/rope-coil.svg";
@@ -126,7 +127,10 @@ export const iconMap = {
     barrel,
     batteredAxe,
     bearHead,
+    bigDiamondRing,
+    blackBook,
     bladeBite,
+    bolas,
     bookCover,
     bracers,
     brokenBottle,
@@ -144,6 +148,7 @@ export const iconMap = {
     crossedAxes,
     crossedSwords,
     crossMark,
+    crowbar,
     crownCoin,
     crownedSkull,
     crystalBall,
@@ -152,6 +157,7 @@ export const iconMap = {
     divert,
     dodge,
     doubleFaceMask,
+    drinkMe,
     drop,
     explosiveMaterials,
     fairyWand,
@@ -166,11 +172,13 @@ export const iconMap = {
     heartBottle,
     highShot,
     humanEar,
+    key,
     kickAssCards,
     knapsack,
     knockout,
     lamellar,
     lanternFlame,
+    lockedChest,
     lockPicking,
     lockpicks,
     loincloth,
@@ -184,17 +192,23 @@ export const iconMap = {
     plainDagger,
     pointyHat,
     poisonBottle,
+    prankGlasses,
+    print,
     push,
     rollerSkate,
+    ropeCoil,
     run,
+    rupee,
+    scrollQuill,
+    sewingString,
     shieldOpposition,
     shorts,
     shouting,
     sickle,
     skullStaff,
     sleepy,
-    slingshot,
     slicedBread,
+    slingshot,
     smokeBomb,
     spikedShield,
     sprint,
@@ -202,6 +216,8 @@ export const iconMap = {
     stoneBlock,
     sunbeams,
     supersonicArrow,
+    swapBag,
+    syringe,
     talk,
     tearTracks,
     teleport,
@@ -213,6 +229,8 @@ export const iconMap = {
     thrust,
     thrustBend,
     thrustDown,
+    tiedScroll,
+    toolbox,
     tripleSkulls,
     walkingBoot,
     warlockEye,
@@ -220,44 +238,30 @@ export const iconMap = {
     williamTellSkull,
     wolfHead,
     wolfTrap,
-    bigDiamondRing,
-    blackBook,
-    bolas,
-    crowbar,
-    drinkMe,
-    key,
-    lockedChest,
-    prankGlasses,
-    ropeCoil,
-    rupee,
-    scrollQuill,
-    sewingString,
-    swapBag,
-    syringe,
-    tiedScroll,
-    toolbox,
     woodBeam,
     woodenCrate,
 };
 
 export type IconType = keyof typeof iconMap;
 
-export type IconProps<AliasMap extends { [key: string]: IconType }> = {
+export type IconMap = { [key: string]: keyof typeof iconMap };
+
+export type IconProps<AliasMap extends IconMap> = {
     className?: string;
-    icon: IconType | (keyof AliasMap & string);
+    icon: IconType | keyof AliasMap;
     params?: { [key: string]: any };
-    aliasMap?: { [key: string]: keyof typeof iconMap };
+    aliasMap?: IconMap;
 };
 
-export default function Icon<AliasMap extends { [key: string]: IconType }>({
+export default function Icon<AliasMap extends IconMap>({
     className,
     icon,
     params,
     aliasMap = {},
 }: IconProps<AliasMap>) {
-    const resolvedKey = icon in iconMap ? icon : aliasMap[icon];
+    const resolvedKey = icon in iconMap ? icon : aliasMap[icon as keyof typeof aliasMap];
     if (!iconMap[resolvedKey as keyof typeof iconMap]) {
-        `icon "${icon}" not found in iconMap (${Object.keys(iconMap).join(", ")}) nor aliasMap (${Object.keys(
+        `icon "${String(icon)}" not found in iconMap (${Object.keys(iconMap).join(", ")}) nor aliasMap (${Object.keys(
             aliasMap
         ).join(", ")})`;
     }

@@ -73,7 +73,8 @@ export enum ScreenStoreActionTypeEnum {
     Set = "Set",
     AppendContent = "AppendContent",
     ReplaceContent = "ReplaceContent",
-    UpdateContentById = "UpdateContentById",
+    UpdateContent = "UpdateContent",
+    RemoveContent = "RemoveContent",
 }
 
 export type ScreenStoreActionType =
@@ -88,11 +89,18 @@ export type ScreenStoreActionType =
     | {
           type: ScreenStoreActionTypeEnum.AppendContent;
           content: ScreenContentType[];
+      }
+    | {
+          type: ScreenStoreActionTypeEnum.RemoveContent;
+          id: ScreenContentType["id"];
       };
 
 export const screenStoreReducer = (store: ScreenStoreType, action: ScreenStoreActionType): ScreenStoreType => {
     if (action.type === ScreenStoreActionTypeEnum.Set) {
-        return action.store;
+        if (JSON.stringify(action.store) !== JSON.stringify(store)) {
+            return action.store;
+        }
+        return store;
     }
     if (action.type === ScreenStoreActionTypeEnum.ReplaceContent) {
         return {
@@ -104,6 +112,18 @@ export const screenStoreReducer = (store: ScreenStoreType, action: ScreenStoreAc
         return {
             ...store,
             content: [...store.content, ...action.content],
+        };
+    }
+    if (action.type === ScreenStoreActionTypeEnum.RemoveContent) {
+        const contentItemIndex = store.content.findIndex((item) => item.id === action.id);
+        if (!contentItemIndex) {
+            console.warn("Cannot remove item with id", action.id);
+            return store;
+        }
+        const newContent = [...store.content.slice(0, contentItemIndex), ...store.content.slice(contentItemIndex + 1)];
+        return {
+            ...store,
+            content: newContent,
         };
     }
     return store;
@@ -127,7 +147,7 @@ export const initialStore: ScreenStoreType = {
     },
 };
 
-export const useBroadcastData = (storageKey: string = "kac-screen") => {
+export const useBroadcastData = (storageKey: string) => {
     const [storeData, dispatch] = useReducer(
         screenStoreReducer,
         parseStoredData(getStoredData(storageKey)) || initialStore
@@ -141,8 +161,7 @@ export const useBroadcastData = (storageKey: string = "kac-screen") => {
         const storedData = window.localStorage.getItem(storageKey);
         updateState(storedData, broadcastData);
         const onStorageUpdate = (event: StorageEvent) => {
-            if (event.storageArea != localStorage) return;
-            if (event.key === storageKey) {
+            if (event.storageArea === localStorage && event.key === storageKey) {
                 updateState(event.newValue, broadcastData);
             }
         };
@@ -157,6 +176,11 @@ export const useBroadcastData = (storageKey: string = "kac-screen") => {
         const storedData = window.localStorage.getItem(storageKey);
         if (serializedStore !== storedData) {
             window.localStorage.setItem(storageKey, serializedStore);
+            const event: Event & { key?: string; storageArea?: Storage; newValue?: string } = new Event("storage");
+            event.key = storageKey;
+            event.storageArea = localStorage;
+            event.newValue = serializedStore;
+            window.dispatchEvent(event);
         }
     }, [storeData]);
     return { storeData, broadcastData, dispatch };

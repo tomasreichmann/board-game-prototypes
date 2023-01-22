@@ -9,7 +9,14 @@ module.exports = {
         "node_modules/daisyui/dist/**/*.js",
         "node_modules/react-daisyui/dist/**/*.js",
     ],
-    safelist: ["animate-fadeIn", "animate-fadeOut", "drop-shadow-md", "print:drop-shadow-none", "print:filter-none"],
+    safelist: [
+        "animate-fadeIn",
+        "animate-fadeOut",
+        "drop-shadow-md",
+        "print:drop-shadow-none",
+        "print:filter-none",
+        "inline-block",
+    ],
     theme: {
         extend: {
             colors: {

@@ -1,24 +1,29 @@
 import React from "react";
 import clsx from "clsx";
 import { AnimationEnum, ScreenContentTypeEnum, typeComponentMap } from "../../services/broadcastScreen";
+import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 
-export type ScreenContentWrapperProps<ContentType extends ScreenContentTypeEnum> = {
+export type ScreenContentWrapperProps<ContentType extends ScreenContentTypeEnum> = React.PropsWithChildren<{
     type: ContentType;
     props: React.ComponentProps<typeof typeComponentMap[ContentType]>;
     animation?: AnimationEnum;
-};
+    withPrintMarkerCorners?: boolean;
+    size?: AnimationEnum;
+}>;
 
 export default function ScreenContentWrapper<ContentType extends ScreenContentTypeEnum>({
     type,
     animation,
     props,
+    withPrintMarkerCorners = false,
+    children,
 }: ScreenContentWrapperProps<ContentType>) {
     const { className } = props;
     const Component = typeComponentMap[type];
     return (
-        <Component
-            {...(props as any)}
-            className={clsx("w-full h-full bg-no-repeat fill", animation && "animate-" + animation, className)}
-        />
+        <Component {...(props as any)} className={clsx(animation && "animate-" + animation, className)}>
+            {withPrintMarkerCorners && <PrintMarkerCorners />}
+            {children}
+        </Component>
     );
 }

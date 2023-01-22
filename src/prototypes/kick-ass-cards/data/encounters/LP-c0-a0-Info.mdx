@@ -49,8 +49,8 @@ Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
 import effects from "../effects.csv";
 
 <div className="flex flex-row flex-wrap gap-2 my-2">
-    <EffectCard {...effects[0]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
-    <EffectCard {...effects[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[0]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
 </div>
 
 -   Naděje
@@ -63,8 +63,8 @@ import effects from "../effects.csv";
     -   +1 Naděje, v moment, kdy hrdina využije Ctnost.
 
 <div className="flex flex-row flex-wrap gap-2 my-2">
-    <EffectCard {...effects[2]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
-    <EffectCard {...effects[3]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[2]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[3]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
 </div>
 
 -   Teplota
@@ -73,7 +73,7 @@ import effects from "../effects.csv";
     -   Pokud se postava dostane na 4/4 nebo 0/4, dostane každé kolo zranění, dokud se jí teplota nestabilizuje.
 
 <div className="flex flex-row flex-wrap gap-2 my-2">
-    <EffectCard {...effects[4]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[4]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
 </div>
 
 -   Zkáza

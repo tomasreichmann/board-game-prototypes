@@ -21,7 +21,9 @@ import Vyzkumnice from "./LP-akt1-Vyzkumnice.mdx";
 
 import Viktor from "./LP-character-Viktor.mdx";
 
-<Viktor size="Trump" />
+<div className="flex flex-row gap-4 flex-wrap my-4">
+    <Viktor size="Trump" className="inline-block" />
+</div>
 
 -   Přišel k vám Viktor a donesl drinky - všechny najednou: Led v nich už je rozpuštěný.
 -   Viktor vám nainstaloval na loď dronový roj a zbraňové systémy, které jste ukořistili na Sporefallu, energetický článek si vyžádala Óna odeslat Klanu.
@@ -35,41 +37,41 @@ import Viktor from "./LP-character-Viktor.mdx";
 -   Viktor si stěžuje na to, že ho Klan ignoruje a neocenili jeho účast. Zdá se, že se s ním výzkumnice nebaví.
 
 <div className="flex flex-row gap-4 flex-wrap my-4">
-    <AssetCard
+    <Asset
         icon="/LP/icons/injection.png"
         title="Medi-gel"
         effect="oprava organického poškození"
-        className="drop-shadow-md"
+        className="drop-shadow-md print:drop-shadow-none"
     />
-    <AssetCard
+    <Asset
         icon="/LP/icons/tube.png"
         title="Nano-gel"
         effect="oprava mechanického poškození"
-        className="drop-shadow-md"
+        className="drop-shadow-md print:drop-shadow-none"
     />
-    <AssetCard
+    <Asset
         icon="/LP/icons/gadget.png"
         title="Instahack"
         effect="dočasné získání kontroly nad zařízením na 1 kolo"
-        className="drop-shadow-md"
+        className="drop-shadow-md print:drop-shadow-none"
     />
-    <AssetCard
+    <Asset
         icon="/LP/icons/rifle.png"
         title="Grapple gun"
         effect="vystřelí lanko a přitáhne k cíli"
-        className="drop-shadow-md"
+        className="drop-shadow-md print:drop-shadow-none"
     />
-    <AssetCard
+    <Asset
         icon="/LP/icons/bag.png"
         title="Lepidlonát"
         effect="granát co zalepí všechno v zóně na 1 kolo"
-        className="drop-shadow-md"
+        className="drop-shadow-md print:drop-shadow-none"
     />
-    <AssetCard
+    <Asset
         icon="/LP/icons/capsule.png"
         title="EMP granát"
         effect="granát, co na 1 kolo vypne všechno elektronické v zóně"
-        className="drop-shadow-md"
+        className="drop-shadow-md print:drop-shadow-none"
     />
 </div>
 
@@ -99,7 +101,8 @@ import Viktor from "./LP-character-Viktor.mdx";
         className="not-prose drop-shadow-md print:drop-shadow-none"
         size="Trump"
         title="Pověst posádky"
-        reward="Každý: Magnetický čip | Chuligáni jedni hovadský"
+        reward="Každý: Magnetický čip"
+        threat="Chuligáni jedni hovadský"
         current={3}
         total={6}
     />

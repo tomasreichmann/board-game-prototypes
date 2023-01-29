@@ -47,7 +47,7 @@ export default function BroadcastComponent<ContentType extends ScreenContentType
         ];
 
         return (
-            <div className={clsx("relative", className)}>
+            <div className={clsx("relative not-prose", className)}>
                 <Component {...(props as any)} />
                 <div className="dropdown dropdown-bottom dropdown-end absolute right-2 top-2 flex flex-col gap-2">
                     <label

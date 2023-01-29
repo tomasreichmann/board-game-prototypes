@@ -33,43 +33,48 @@ export default function Clock({
                 className
             )}
         >
-            <div className="flex-1 flex flex-col gap-2">
-                <div className="relative w-10/12 mx-auto aspect-square flex flex-col border-2 border-kac-iron rounded-full">
-                    {total && (
-                        <>
-                            {range(((current / total) * 360) / 90).map((quarterIndex) => {
-                                const angleLeft = Math.min((current / total) * 360 - quarterIndex * 90, 90);
+            <div className="relative flex-1 flex flex-col gap-2">
+                <div className="flex flex-col justify-center items-center w-8/12 mx-auto">
+                    <div className="relative w-full pt-[100%]">
+                        <div className="border-2 border-kac-iron rounded-full absolute w-full h-full left-0 top-0"></div>
+                        {total && (
+                            <>
+                                {range(((current / total) * 360) / 90).map((quarterIndex) => {
+                                    const angleLeft = Math.min((current / total) * 360 - quarterIndex * 90, 90);
 
-                                return (
-                                    <div
-                                        className={`absolute left-1/2 top-1/2 h-1/2 w-1/2 [transform-origin:left_top] rounded-[0_0_100%_0] overflow-hidden`}
-                                        style={{ rotate: quarterIndex * 90 + 90 + "deg" }}
-                                    >
+                                    return (
                                         <div
-                                            className={`absolute left-0 top-0 h-full w-full bg-kac-steel [transform-origin:left_top] transition-all`}
-                                            style={{ rotate: (90 - angleLeft) * -1 + "deg" }}
-                                        ></div>
-                                    </div>
-                                );
-                            })}
+                                            className={`absolute left-1/2 top-1/2 h-1/2 w-1/2 [transform-origin:left_top] rounded-[0_0_100%_0] overflow-hidden`}
+                                            style={{ rotate: quarterIndex * 90 + 90 + "deg" }}
+                                        >
+                                            <div
+                                                className={`absolute left-0 top-0 h-full w-full bg-kac-steel [transform-origin:left_top] transition-all`}
+                                                style={{ rotate: (90 - angleLeft) * -1 + "deg" }}
+                                            ></div>
+                                        </div>
+                                    );
+                                })}
 
-                            {range(0, total).map((fraction) => {
-                                return (
-                                    <div
-                                        className={`absolute left-1/2 top-1/2 h-1/2 border-l-2 border-kac-iron [transform-origin:center_top] ml-[-1px]`}
-                                        style={{ rotate: fraction * (360 / total) + "deg" }}
-                                    ></div>
-                                );
-                            })}
-                        </>
-                    )}
+                                {range(0, total).map((fraction) => {
+                                    return (
+                                        <div
+                                            className={`absolute left-1/2 top-1/2 h-1/2 border-l-2 border-kac-iron [transform-origin:center_top] ml-[-1px]`}
+                                            style={{ rotate: fraction * (360 / total) + "deg" }}
+                                        ></div>
+                                    );
+                                })}
+                            </>
+                        )}
+                    </div>
                 </div>
                 <div>
                     <div className="text-sm border-dashed -mt-3">
                         <Icon icon="fountainPen" className="h-4 inline-block" />
                         &ensp;title
                     </div>
-                    <h2 className="text-md font-kacHeading border-b-2 border-dashed min-h-8">{title}</h2>
+                    <h2 className={clsx("text-md font-kacHeading", !title && "border-b-2 border-dashed min-h-8")}>
+                        {title}
+                    </h2>
                 </div>
                 {threat && (
                     <div>
@@ -77,7 +82,14 @@ export default function Clock({
                             <Icon icon="deathSkull" className="h-4 inline-block" />
                             &ensp;threat
                         </div>
-                        <p className="text-sm font-kacBody text-kac-blood border-b-2 border-dashed min-h-6">{threat}</p>
+                        <p
+                            className={clsx(
+                                "text-sm font-kacBody text-kac-blood",
+                                !threat && "border-b-2 border-dashed min-h-6"
+                            )}
+                        >
+                            {threat}
+                        </p>
                     </div>
                 )}
                 {reward && (
@@ -86,7 +98,12 @@ export default function Clock({
                             <Icon icon="chest" className="h-4 inline-block" />
                             &ensp;reward
                         </div>
-                        <p className="text-sm font-kacBody text-kac-gold-dark border-b-2 border-dashed min-h-6">
+                        <p
+                            className={clsx(
+                                "text-sm font-kacBody text-kac-gold-dark",
+                                !reward && "border-b-2 border-dashed min-h-6"
+                            )}
+                        >
                             {reward}
                         </p>
                     </div>

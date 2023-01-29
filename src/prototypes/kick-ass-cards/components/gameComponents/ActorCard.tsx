@@ -4,6 +4,7 @@ import { PlayerCharacterType } from "../../types";
 import CharacterOutline from "../../media/character-outline.svg";
 import Icon from "../Icon";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
+import Image, { ImageProps } from "../Image";
 // import "./ActorCard.css";
 
 const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
@@ -13,6 +14,7 @@ export type ActorCardProps = React.PropsWithChildren<
         className?: string;
         size?: PaperProps["size"];
         imagePosition?: CSSProperties["backgroundPosition"];
+        ImageComponent?: React.ComponentType<ImageProps>;
     } & PlayerCharacterType
 >;
 
@@ -24,6 +26,7 @@ export default function ActorCard({
     imageUri,
     occupation = "",
     notes = "",
+    ImageComponent = Image,
     children,
 }: ActorCardProps) {
     return (
@@ -34,10 +37,12 @@ export default function ActorCard({
             <div className="flex-1 basis-auto flex flex-col gap-2">
                 <div className="relative rounded flex-grow flex flex-col text-kac-steel-light border-2 border-kac-steel max-h-[33%]">
                     {imageUri ? (
-                        <div
-                            className="w-full h-full bg-cover bg-1/3 rounded-sm pt-[60%]"
-                            style={{ backgroundImage: "url(" + imageUri + ")", backgroundPosition: imagePosition }}
-                        ></div>
+                        <ImageComponent
+                            src={imageUri}
+                            className="w-full h-full rounded-sm"
+                            objectFit="cover"
+                            objectPosition={imagePosition}
+                        />
                     ) : (
                         <CharacterOutlineImage style={{}} className="h-full w-full" />
                     )}
@@ -47,17 +52,28 @@ export default function ActorCard({
                         <Icon icon="fountainPen" className="h-4 inline-block" />
                         &ensp;name
                     </div>
-                    <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{name}</h2>
+                    <h2 className={clsx("text-lg font-kacHeading", !name && "border-b-2, border-dashed min-h-8")}>
+                        {name}
+                    </h2>
                 </div>
-                <div>
-                    <div className="text-sm border-dashed">
-                        <Icon icon="toolbox" className="h-4 inline-block" />
-                        &ensp;occupation
+                {occupation !== null && (
+                    <div>
+                        <div className="text-sm border-dashed">
+                            <Icon icon="toolbox" className="h-4 inline-block" />
+                            &ensp;occupation
+                        </div>
+                        <h2
+                            className={clsx(
+                                "text-sm font-kacHeading",
+                                !occupation && "border-b-2, border-dashed min-h-8"
+                            )}
+                        >
+                            {occupation}
+                        </h2>
                     </div>
-                    <h2 className="text-sm font-kacHeading border-b-2 border-dashed min-h-8">{occupation}</h2>
-                </div>
+                )}
                 {notes !== null && (
-                    <div className="flex-1 border-t-2 border-kac-steel-light pt-1 relative">
+                    <div className="flex-1 border-kac-steel-light pt-1 relative">
                         <div className="text-sm border-dashed text-kac-bone-dark">
                             <Icon icon="scrollQuill" className="h-4 inline-block" />
                             &ensp;notes

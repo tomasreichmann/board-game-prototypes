@@ -33,16 +33,16 @@ act: 4
 <List>
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Trump"
+        size="US game"
         title="Viktor v kritickém stavu"
         current={0}
-        total={4}
+        total={6}
         threat="Viktor podlehnul svým zraněním"
         reward="Viktor je stabilizovaný"
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Trump"
+        size="US game"
         title="Zkáza New Vega"
         current={0}
         total={4}
@@ -54,9 +54,32 @@ act: 4
 ## Překladiště
 
 -   Nákladní vozík
+-   Stojí zde vyskládané barely StarSynth - známé chemické značky
+    -   (Každé rozbití barelů vypustí jedovaté látky a zraní všechny v zóně a Zkáza New Vega +1)
+-   Jeden barel je zabezpečený magnetickým zámkem
+    -   (možno hacknout nebo rozbít)
+    -   (obsahuje 1x Rapid-regen, 1x SPED, 1x Rage)
 -   Dav humanoidů pod útokem spórových dronů
 
 <List>
+    <Asset
+        icon="/LP/icons/syringe-2.png"
+        title="Rapid-regen"
+        effect="Vyléčí instantně všechna organická zranění. Regenerovaná tkáň může zmutovat (+1&nbsp;zkáza)"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/nose-spray.png"
+        title="SPED"
+        effect="+1 pohyb, znásobí doskokovou vzdálenost na 3 kola"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/syringe.png"
+        title="Rage"
+        effect="+1 efekt na akce síly a útoku na blízko na 3 kola"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
     <Actor
         size="Trump"
         className="not-prose drop-shadow-md print:drop-shadow-none"
@@ -67,7 +90,7 @@ act: 4
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Trump"
+        size="US game"
         title="Odražení spórových sirén"
         current={0}
         total={6}
@@ -78,15 +101,186 @@ act: 4
 
 ## Most
 
--   Stánky s pouličním jídlem jsou opuštěné
--   Roj malých hasičských dronů se rojí kolem hořícího stánku
+-   V takových pouličních stáncích, jako jsou tady se dá pořídit ledaccos. Teď jsou ale opuštěné a jeden hoří.
+    -   Roj malých hasičských dronů se rojí kolem hořícího stánku
+    -   (Ve stáncích k najdení Medi-gel, Nano-gel, Instahack)
 -   Stanice kontroly hasičského děla je zapletená v bodlákovém křoví
+    -   (Bodláky brání užití stanice a hrozí, při pokusu o odstranění horším než Úspěch infikují zasažené organické postavy Spórovou horečkou.
 -   Dobíjecí věž je také infikovaná spórami, elektrizující výboje na jejím povrchu nabírají na intenzitě
+-   U mostu stojí zaparkované skůtry
+
+<List>
+    <Effect
+        icon="thermometerHot"
+        title="Spórová horečka"
+        effect="+1 Teplota každé kolo, dokud se nevyléčí"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Actor
+        size="Trump"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/sci-fi_electric_tesla_tower_spiky_cannon_charging_with_lightning_in_the_middle_of_space_station_corridor.jpg"
+        name="Infikovaná dobíjecí věž"
+        occupation={null}
+        notes="Akce: 1 za 3 kola až 2 zóny daleko vyšle el.&nbsp;výboj do celé zóny zraňující Androidy za 2x&nbsp;Zranění a organiky za 2x&nbsp;Tíseň; Zásah na 1 kolo vyřadí vozidla; Odolná proti konvenčním zbraním"
+    />
+    <Actor
+        name="Hasicí drony"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg"
+        occupation={null}
+        notes="Akce: -1 Teplota všem v zóně ve které hoří; Zničení: +1&nbsp;Zkáza New Vega"
+    />
+    <Clock
+        title="Vyřazení dobíjecí věže"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        current={0}
+        total={6}
+        threat="Zkáza New Vega&nbsp;+1"
+        reward="2x Přetaktovávací baterie"
+    />
+    <Asset
+        title="Přetaktovávací baterie"
+        icon="/LP/icons/battery.png"
+        effect="Jednorázově +2 efekt na akci pro Androidy"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Medi-gel"
+        icon="/LP/icons/injection.png"
+        effect="-1&nbsp;organické Zranění"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Nano-gel"
+        icon="/LP/icons/tube.png"
+        effect="-1&nbsp;mechanického Zranění"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Instahack"
+        icon="/LP/icons/gadget.png"
+        effect="dočasné získání kontroly nad zařízením na 1 kolo"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
 
 <Player url="https://youtu.be/1gNjZSWP4Cw?t=46" controls height={100} />
 
 ![](/LP/ScrattCZ_long_sci-fi_box_with_a_male_bearded_engineers_body_lyi_d48bea17-95bf-4c62-9f86-d8262d20c340.png.png)
 
-# Stasis pod
+## Robotická dílna
 
--   Můžete umístit Viktorovo
+-   Můžete umístit Viktorovo tělo do jednoho z těchto stázových modulů vyskládaných v dílně.
+    -   (Některé moduly obsahují občany New Vega ve stázi. Za každého zachráněného -1&nbsp;Zkáza New Vega)
+-   Ve dvou lidech dokážete modul odnést (Obtíž), nebo můžete využít robotických ramen
+-   Problém je, že jedno z ramen je evidentně infikované
+-   U skladiště je zaparkovaná dodávka a žoldácká stíhačka
+    -   V dodávce je zavřený roj spórového hmyzu, jinak není zabezpečená
+    -   Žoldácká stíhačka má bezpečnostní systém, který použije zbraně proti neautorizovaným uživatelům
+
+<List>
+    <Actor
+        name="Infikované robotické rameno"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
+        occupation={null}
+        notes="Akce: Chycení - Uvíznutí / komplikace, Drcení - 2x&nbsp;Zranění"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Vyřazení robotického ramena"
+        current={0}
+        total={6}
+        reward="Robotická protéza"
+    />
+    <Actor
+        name="Spórový roj"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/alien-swarm.jpg"
+        occupation={null}
+        notes="Infikování spórami +1x&nbsp;Zkáza; Imunní na střelbu a útok na blízko. Slabí proti ohni a plošným útokům."
+    />
+</List>
+
+## Skladiště kontejnerů před Airlockem
+
+-   Na jednu stranu můžete vyrazit k záložnímu Airlocku.
+-   Na druhou stranu můžete vyrazit k roybitému Airlocku.
+-   Nebo zpět přes most ke klubu.
+-   Skladiště je plné různých kontejnerů. Včetně jednoho uzamčeného od zbrojovky Final Solutions.
+    -   (zámek možno hacknout nebo rozbít)
+    -   (obsahuje zbraňový systém VZZ s manuálem k obsluze)
+-   Ve skladišti se krčí robotický žoldák. Ze škvír v jeho brnění roste spórový plevel. Jak vás zmerčil, jeho zmatené senzory se na vás zamřily a z rukou mu vyjely ostří.
+
+<List>
+    <Actor
+        name="Infikovaný robotický žoldák"
+        size="Trump"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_futuristic_killer_military_robot_with_leaves_flowers_a_eb1a5d76-ca30-4811-a6d8-6fa94a15d1af.png"
+        imagePosition="center 30%"
+        occupation={null}
+        notes="Akce: Plamenomet - 1x&nbsp;Zranění, +1&nbsp;Teplota, Zóna hoří (+1 Teplota všem v zóně na začátku tahu), Smršť ostří 2x/1x&nbsp;Zranění. Odolný proti střelbě a konvenčním zbraním na blízko."
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Vyřazení žoldáka"
+        current={0}
+        total={8}
+        threat="Zkáza New Vega&nbsp;+1"
+        reward="1x Přetaktovávací baterie, 1x&nbsp;Plamenometná paže"
+    />
+    <Asset
+        icon="/LP/icons/flamethrower-arm.jpg"
+        title="Plamenometná paže"
+        effect="1x&nbsp;Zranění, Zapálení zóny. +1&nbsp;Zkáza při instalaci (+1&nbsp;Teplota při použití, +2&nbsp;Zranění při odinstalaci)"
+        imagePosition
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Přetaktovávací baterie"
+        icon="/LP/icons/battery.png"
+        effect="Jednorázově +2 efekt na akci pro Androidy"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="VZZ"
+        icon="/LP/icons/bfg.png"
+        effect="Obrovská zbraň: 1 kolo absorbuje veškeré teplo ze zóny, v příštím kole přinese zkázu."
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+## Nákladový prostor u rozbytého airlocku
+
+<List>
+    <Actor
+        name="Infikované robotické rameno"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
+        occupation={null}
+        notes="Akce: Vrhání šrotu - 2x&nbsp;Zranění na vzdálenost až 2&nbsp;zóny, Odhození - 1x&nbsp;Tíseň a odhození až 2&nbsp;zóny daleko"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Vyřazení robotického ramena"
+        current={0}
+        total={6}
+        reward="Zaměřovací oční implantát"
+    />
+    <Asset
+        title="Zaměřovací oční implantát"
+        effect="+1 Efekt na akce střelby a vrhu, kde je důležitá přesnost. +1 Zkáza."
+        icon="/LP/targeting-implant.png"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>

@@ -4,6 +4,7 @@ import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper
 import { AssetType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
+import Image from "../Image";
 // import "./AssetCard.css";
 
 export type AssetCardProps = React.PropsWithChildren<{ className?: string; size?: PaperProps["size"] } & AssetType>;
@@ -76,10 +77,7 @@ export default function AssetCard({
             )}
         />
     ) : (
-        <div
-            className="max-h-fit h-24"
-            style={{ background: "url(" + icon + ") center center / contain no-repeat" }}
-        ></div>
+        <Image className="max-h-fit h-24" src={icon} objectFit="contain" />
     );
     return (
         <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2", className)}>
@@ -92,7 +90,7 @@ export default function AssetCard({
             <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">
                 <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>
             </div>
-            <div className="flex-1 text-xs text-center max-h-12 text-kac-iron-light">
+            <div className="flex-1 text-xs text-center text-kac-iron-light">
                 <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
             </div>
             {children}

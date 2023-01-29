@@ -49,90 +49,98 @@ export default function BroadcastComponent<ContentType extends ScreenContentType
         return (
             <div className={clsx("relative", className)}>
                 <Component {...(props as any)} />
-                <div className="absolute right-2 top-2 flex flex-col gap-2">
-                    <Button
-                        className="h-auto"
-                        size="xs"
-                        color="secondary"
-                        onClick={() => {
-                            dispatchScreen({
-                                type: ScreenStoreActionTypeEnum.ReplaceContent,
-                                content,
-                            });
-                        }}
+                <div className="dropdown dropdown-bottom dropdown-end absolute right-2 top-2 flex flex-col gap-2">
+                    <label
+                        tabIndex={0}
+                        className="btn btn-sm bg-kac-cloth border-0 hover:bg-kac-cloth-light text-kac-iron"
                     >
-                        <Icon icon="cast" className="h-4 block" />
-                    </Button>
-                    <Button
-                        className="h-auto"
-                        size="xs"
-                        color="secondary"
-                        onClick={() => {
-                            dispatchScreen({
-                                type: ScreenStoreActionTypeEnum.AppendContent,
-                                content,
-                            });
-                        }}
+                        <Icon icon="cast" className="h-4" />
+                    </label>
+                    <ul
+                        tabIndex={0}
+                        className="dropdown-content menu menu-compact p-1 shadow bg-kac-steel-light text-kac-monster-dark-content rounded-sm w-24"
                     >
-                        <Icon icon="cast" className="h-4 block" />
-                        <span className="relative left-[-9px] -mr-2 ">+</span>
-                    </Button>
-                    <Button
-                        className="h-auto"
-                        size="xs"
-                        color="secondary"
-                        onClick={() => {
-                            dispatchScreen({
-                                type: ScreenStoreActionTypeEnum.ReplaceContent,
-                                content: [],
-                            });
-                        }}
-                    >
-                        <Icon icon="cast" className="h-4 block" />
-                        <span className="relative left-[-9px] -mr-2 ">×</span>
-                    </Button>
-
-                    <Button
-                        className="h-auto"
-                        size="xs"
-                        color="secondary"
-                        onClick={() => {
-                            dispatchPrint({
-                                type: ScreenStoreActionTypeEnum.ReplaceContent,
-                                content,
-                            });
-                        }}
-                    >
-                        <Icon icon="print" className="h-4 block" />
-                    </Button>
-                    <Button
-                        className="h-auto"
-                        size="xs"
-                        color="secondary"
-                        onClick={() => {
-                            dispatchPrint({
-                                type: ScreenStoreActionTypeEnum.AppendContent,
-                                content,
-                            });
-                        }}
-                    >
-                        <Icon icon="print" className="h-4 block" />
-                        <span>+</span>
-                    </Button>
-                    <Button
-                        className="h-auto"
-                        size="xs"
-                        color="secondary"
-                        onClick={() => {
-                            dispatchPrint({
-                                type: ScreenStoreActionTypeEnum.ReplaceContent,
-                                content: [],
-                            });
-                        }}
-                    >
-                        <Icon icon="print" className="h-4 block" />
-                        <span>×</span>
-                    </Button>
+                        <li className="mt-2 mb-0 px-5 text-sm font-kacHeading text-kac-steel-dark">Screen</li>
+                        <li className="my-1">
+                            <div
+                                onClick={() => {
+                                    dispatchScreen({
+                                        type: ScreenStoreActionTypeEnum.ReplaceContent,
+                                        content,
+                                    });
+                                }}
+                                className="px-4 py-1 text-xs text-kac-cloth-dark"
+                            >
+                                Replace
+                            </div>
+                        </li>
+                        <li className="my-1">
+                            <div
+                                onClick={() => {
+                                    dispatchScreen({
+                                        type: ScreenStoreActionTypeEnum.AppendContent,
+                                        content,
+                                    });
+                                }}
+                                className="px-4 py-1 text-xs text-kac-cloth-dark"
+                            >
+                                Add
+                            </div>
+                        </li>
+                        <li className="my-1">
+                            <div
+                                onClick={() => {
+                                    dispatchScreen({
+                                        type: ScreenStoreActionTypeEnum.ReplaceContent,
+                                        content: [],
+                                    });
+                                }}
+                                className="px-4 py-1 text-xs text-kac-cloth-dark"
+                            >
+                                Clear
+                            </div>
+                        </li>
+                        <li className="mt-2 mb-0 px-5 text-sm font-kacHeading text-kac-steel-dark">Print</li>
+                        <li className="my-1">
+                            <div
+                                onClick={() => {
+                                    dispatchPrint({
+                                        type: ScreenStoreActionTypeEnum.ReplaceContent,
+                                        content,
+                                    });
+                                }}
+                                className="px-4 py-1 text-xs text-kac-cloth-dark"
+                            >
+                                Replace
+                            </div>
+                        </li>
+                        <li className="my-1">
+                            <div
+                                onClick={() => {
+                                    dispatchPrint({
+                                        type: ScreenStoreActionTypeEnum.AppendContent,
+                                        content,
+                                    });
+                                }}
+                                className="px-4 py-1 text-xs text-kac-cloth-dark"
+                            >
+                                Add
+                            </div>
+                        </li>
+                        <li className="my-1">
+                            <div
+                                onClick={() => {
+                                    dispatchPrint({
+                                        type: ScreenStoreActionTypeEnum.ReplaceContent,
+                                        content: [],
+                                    });
+                                }}
+                                className="px-4 py-1 text-xs text-kac-cloth-dark"
+                            >
+                                Clear
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         );

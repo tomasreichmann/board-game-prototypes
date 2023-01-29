@@ -116,7 +116,7 @@ export const screenStoreReducer = (store: ScreenStoreType, action: ScreenStoreAc
     }
     if (action.type === ScreenStoreActionTypeEnum.RemoveContent) {
         const contentItemIndex = store.content.findIndex((item) => item.id === action.id);
-        if (!contentItemIndex) {
+        if (contentItemIndex === -1) {
             console.warn("Cannot remove item with id", action.id);
             return store;
         }

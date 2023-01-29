@@ -9,6 +9,11 @@ import BroadcastAsset from "../components/screenContent/BroadcastAsset";
 import BroadcastClock from "../components/screenContent/BroadcastClock";
 import BroadcastEffect from "../components/screenContent/BroadcastEffect";
 import BroadcastImage from "../components/screenContent/BroadcastImage";
+import clsx from "clsx";
+
+const List = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
+    <div className={clsx("flex flex-row gap-4 flex-wrap my-4", className)}>{children}</div>
+);
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -67,6 +72,7 @@ export default function EncounterRoute() {
                         key={path}
                         components={{
                             Alert,
+                            List,
                             img: BroadcastImage,
                             Player: ReactPlayer,
                             Actor: BroadcastActor,

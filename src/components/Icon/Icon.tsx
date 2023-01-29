@@ -259,7 +259,7 @@ export default function Icon<AliasMap extends IconMap>({
     params,
     aliasMap = {},
 }: IconProps<AliasMap>) {
-    const resolvedKey = icon in iconMap ? icon : aliasMap[icon as keyof typeof aliasMap];
+    const resolvedKey = (icon as keyof typeof iconMap) in iconMap ? icon : aliasMap[icon as keyof typeof aliasMap];
     if (!iconMap[resolvedKey as keyof typeof iconMap]) {
         `icon "${String(icon)}" not found in iconMap (${Object.keys(iconMap).join(", ")}) nor aliasMap (${Object.keys(
             aliasMap

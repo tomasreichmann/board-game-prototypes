@@ -35,7 +35,7 @@ export default function ActorCard({
                 <div className="relative rounded flex-grow flex flex-col text-kac-steel-light border-2 border-kac-steel max-h-[33%]">
                     {imageUri ? (
                         <div
-                            className="w-full h-full bg-cover bg-1/3 rounded-sm"
+                            className="w-full h-full bg-cover bg-1/3 rounded-sm pt-[60%]"
                             style={{ backgroundImage: "url(" + imageUri + ")", backgroundPosition: imagePosition }}
                         ></div>
                     ) : (

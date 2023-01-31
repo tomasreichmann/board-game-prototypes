@@ -18,6 +18,7 @@ import ActorCardPages from "../components/print/ActorCardPages";
 import ClockPages from "../components/print/ClockPages";
 import PlayerBoxPages from "../components/print/PlayerBoxPages";
 import EffectCardPages from "../components/print/EffectCardPages";
+import PaperMiniPages from "../components/print/PaperMiniPages";
 
 const defaultSectionVisibility = true;
 
@@ -34,6 +35,12 @@ const sections = [
     { slug: "Assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Effects", label: "Effects", Component: EffectCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Boxes", label: "Boxes", Component: PlayerBoxPages, isVisibleByDefault: defaultSectionVisibility },
+    {
+        slug: "Paper Minis",
+        label: "Paper Minis",
+        Component: PaperMiniPages,
+        isVisibleByDefault: defaultSectionVisibility,
+    },
 ];
 
 export default function ComponentsRoute() {

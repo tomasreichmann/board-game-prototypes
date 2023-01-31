@@ -1,7 +1,5 @@
-import React, { SVGProps } from "react";
+import React from "react";
 import clsx from "clsx";
-import Icon from "./Icon";
-import { range } from "lodash";
 // import "./PapercraftBox.css";
 
 export type PaperCraftBoxProps = React.PropsWithChildren<{
@@ -145,9 +143,9 @@ export default function PaperCraftBox({
             className={clsx("relative", classNameVisible)}
             style={{
                 height: contentHeight / 2 + "mm",
-                width: paperThickness * 2 + "mm",
-                borderTopLeftRadius: paperThickness + "mm",
-                borderBottomLeftRadius: paperThickness + "mm",
+                width: paperThickness * 5 + "mm",
+                borderTopLeftRadius: paperThickness * 5 + "mm",
+                borderBottomLeftRadius: paperThickness * 5 + "mm",
                 ...cutTopStyle,
                 ...cutLeftStyle,
                 ...cutBottomStyle,
@@ -253,9 +251,9 @@ export default function PaperCraftBox({
             className={clsx("relative", classNameVisible)}
             style={{
                 height: contentHeight / 2 + "mm",
-                width: paperThickness * 2 + "mm",
-                borderTopRightRadius: paperThickness + "mm",
-                borderBottomRightRadius: paperThickness + "mm",
+                width: paperThickness * 5 + "mm",
+                borderTopRightRadius: paperThickness * 5 + "mm",
+                borderBottomRightRadius: paperThickness * 5 + "mm",
                 ...cutTopStyle,
                 ...cutRightStyle,
                 ...cutBottomStyle,

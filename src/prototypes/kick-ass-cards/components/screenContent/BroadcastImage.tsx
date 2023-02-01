@@ -19,7 +19,7 @@ export const BroadcastImage = ({ broadcastProps = {}, ...props }: BroadcastImage
             className={clsx("bg-black/50 print:bg-transparent", className)}
             broadcastPropsOverride={{
                 className: (props.className || "") + " self-stretch flex-1 flex flex-col align-center items-center",
-                style: { ...(props.style || {}), height: "min(100vh, 100%)", minWidth: "min(400px, 100vw)" },
+                style: { ...(props.style || {}), height: "100%", maxHeight: "100vh", minWidth: "min(400px, 100vw)" },
             }}
             {...restBroadcastProps}
         />

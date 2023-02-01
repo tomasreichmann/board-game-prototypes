@@ -4,10 +4,12 @@ chapter: 1
 act: 4
 ---
 
-# Kapitola 1 - Akt 4 - Na loď
+<Player url="https://youtu.be/1gNjZSWP4Cw?t=46" controls height={100} />
 
--   New Vega zachvátil chaos. Spórová infekce se nekontrolovaně šíří po stanici a nívštěvníky zachvátila panika.
--   Nad vašimi hlavami stále vidíte loď porostlou Spórami, která pomalu opouští stanici.
+# Kapitola 1 - Akt 4 - Na ulici
+
+-   New Vega zachvátil chaos. Spórová infekce se nekontrolovaně šíří po stanici a návštěvníky zachvátila panika.
+-   Nad vašimi hlavami stále vidíte loď porostlou Spórami, která pomalu směřuje k nákladnímu doku obrostlému spórovým křovím.
 -   Airlock k dokům je po tragédii s Viktorem mimo provoz. Musíte jít oklikou podél koridoru do nákladního doku.
 -   Je na čase vyrazit
 
@@ -174,8 +176,6 @@ act: 4
     />
 </List>
 
-<Player url="https://youtu.be/1gNjZSWP4Cw?t=46" controls height={100} />
-
 ![](/LP/ScrattCZ_long_sci-fi_box_with_a_male_bearded_engineers_body_lyi_d48bea17-95bf-4c62-9f86-d8262d20c340.png.png)
 
 ## Robotická dílna
@@ -212,6 +212,53 @@ act: 4
         imageUri="/LP/alien-swarm.jpg"
         occupation={null}
         notes="Infikování spórami +1x&nbsp;Zkáza; Imunní na střelbu a útok na blízko. Slabí proti ohni a plošným útokům."
+    />
+</List>
+
+## Nákladový prostor u rozbytého airlocku
+
+-   infikované robotické rameno v této části vrhá kusy šrotu na velkou vzdálenost
+
+<List>
+    <Actor
+        name="Infikované robotické rameno"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
+        occupation={null}
+        notes="Akce: Vrhání šrotu - 2x&nbsp;Zranění na vzdálenost až 2&nbsp;zóny, Odhození - 1x&nbsp;Tíseň a odhození až 2&nbsp;zóny daleko"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Vyřazení robotického ramena"
+        current={0}
+        total={6}
+        reward="Zaměřovací oční implantát"
+    />
+    <Asset
+        title="Zaměřovací oční implantát"
+        effect="+1 Efekt na akce střelby. +1 Zkáza."
+        icon="/LP/targeting-implant.png"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+## Letový koridor
+
+-   Mezi ochozy je velký prostor pro vznášedla.
+-   Tyčí se zde věž hasičské ochrany, která se zdá nefunkční
+-   V dálce vidíte velkého nákladního brouka, který se běžné používá na sklad zboží.
+    -   Zdá se, že ho porůstá spórová nákaza a on se jí snaží zmateně setřást
+
+<List>
+    <Actor
+        name="Zmatený nákladní brouk"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png"
+        occupation={null}
+        notes="Akce: Při zranění: Skřek - +1 Tíseň v dané a vedlejší zóně; Naražení - pohyb + 1x Zranění všem v zóně; Poryv křídly - posun všeho v zóně od brouka"
     />
 </List>
 
@@ -265,29 +312,8 @@ act: 4
     />
 </List>
 
-## Nákladový prostor u rozbytého airlocku
+![](/LP/ScrattCZ_sci-fi_mercenaries_and_civilians_evacuating_a_casino_s_d0e45988-8940-4d77-b448-d0dcc36de800.png)
 
-<List>
-    <Actor
-        name="Infikované robotické rameno"
-        size="US game"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
-        occupation={null}
-        notes="Akce: Vrhání šrotu - 2x&nbsp;Zranění na vzdálenost až 2&nbsp;zóny, Odhození - 1x&nbsp;Tíseň a odhození až 2&nbsp;zóny daleko"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Vyřazení robotického ramena"
-        current={0}
-        total={6}
-        reward="Zaměřovací oční implantát"
-    />
-    <Asset
-        title="Zaměřovací oční implantát"
-        effect="+1 Efekt na akce střelby. +1 Zkáza."
-        icon="/LP/targeting-implant.png"
-        className="drop-shadow-md print:drop-shadow-none"
-    />
-</List>
+## Záložní Airlock
+
+-   Akt 5

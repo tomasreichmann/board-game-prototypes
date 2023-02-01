@@ -48,10 +48,16 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         campaign: "Ledová pomsta",
         title: "LP-c1-a3-Partys-over",
     },
-    "LP-c1-a4-Na-lod": {
-        slug: "LP-c1-a4-Na-lod",
-        path: "LP-c1-a4-Na-lod",
+    "LP-c1-a4-Na-ulici": {
+        slug: "LP-c1-a4-Na-ulici",
+        path: "LP-c1-a4-Na-ulici",
         campaign: "Ledová pomsta",
-        title: "LP-c1-a4-Na-lod",
+        title: "LP-c1-a4-Na-ulici",
+    },
+    "LP-c1-a5-Odlet": {
+        slug: "LP-c1-a5-Odlet",
+        path: "LP-c1-a5-Odlet",
+        campaign: "Ledová pomsta",
+        title: "LP-c1-a5-Odlet",
     },
 };

@@ -10,6 +10,7 @@ import BroadcastClock from "../components/screenContent/BroadcastClock";
 import BroadcastEffect from "../components/screenContent/BroadcastEffect";
 import BroadcastImage from "../components/screenContent/BroadcastImage";
 import clsx from "clsx";
+import EncounterImage from "../components/EncounterImage";
 
 const List = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
     <div className={clsx("flex flex-row gap-4 flex-wrap my-4", className)}>{children}</div>
@@ -73,7 +74,7 @@ export default function EncounterRoute() {
                         components={{
                             Alert,
                             List,
-                            img: BroadcastImage,
+                            img: EncounterImage,
                             Player: ReactPlayer,
                             Actor: BroadcastActor,
                             Asset: BroadcastAsset,

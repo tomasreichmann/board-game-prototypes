@@ -11,6 +11,7 @@ import BroadcastEffect from "../components/screenContent/BroadcastEffect";
 import BroadcastImage from "../components/screenContent/BroadcastImage";
 import clsx from "clsx";
 import EncounterImage from "../components/EncounterImage";
+import Paper from "../../../components/print/Paper/Paper";
 
 const List = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
     <div className={clsx("flex flex-row gap-4 flex-wrap my-4", className)}>{children}</div>
@@ -80,6 +81,7 @@ export default function EncounterRoute() {
                             Asset: BroadcastAsset,
                             Effect: BroadcastEffect,
                             Clock: BroadcastClock,
+                            Paper: Paper,
                         }}
                     />
                 )}

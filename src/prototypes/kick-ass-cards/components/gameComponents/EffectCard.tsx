@@ -28,6 +28,29 @@ const outcomeColorClassNameMap: { [key in IconType]?: string } = {
 };
 
 const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;
+const getGraphics = (icon: EffectType["icon"]) => {
+    if (!icon) {
+        return null;
+    }
+    if (isIcon(icon)) {
+        return (
+            <Icon
+                icon={icon}
+                className={clsx(
+                    "max-h-fit",
+                    outcomeColorClassNameMap[icon] || "text-iron-light",
+                    effectSizeClassNameMap[icon] || "h-16"
+                )}
+            />
+        );
+    }
+    return (
+        <div
+            className="max-h-fit h-24"
+            style={{ background: "url(" + icon + ") center center / contain no-repeat" }}
+        ></div>
+    );
+};
 
 export default function EffectCard({
     className,
@@ -38,21 +61,7 @@ export default function EffectCard({
     effect,
     children,
 }: EffectCardProps) {
-    const graphics = isIcon(icon) ? (
-        <Icon
-            icon={icon}
-            className={clsx(
-                "max-h-fit",
-                outcomeColorClassNameMap[icon] || "text-iron-light",
-                effectSizeClassNameMap[icon] || "h-16"
-            )}
-        />
-    ) : (
-        <div
-            className="max-h-fit h-24"
-            style={{ background: "url(" + icon + ") center center / contain no-repeat" }}
-        ></div>
-    );
+    const graphics = getGraphics(icon);
     return (
         <PaperOrDiv size={size} className={clsx("EffectCard bg-white p-5 flex flex-col gap-2", className)}>
             <div className="text-slate-400 text-center text-xs">{slug}</div>
@@ -60,7 +69,7 @@ export default function EffectCard({
             <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">
                 <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>
             </div>
-            <div className="flex-1 text-xs text-center max-h-24 text-kac-iron-light">
+            <div className="flex-1 text-xs text-center text-kac-iron-light">
                 <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
             </div>
             {children}

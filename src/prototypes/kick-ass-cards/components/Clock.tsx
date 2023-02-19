@@ -36,7 +36,6 @@ export default function Clock({
             <div className="relative flex-1 flex flex-col gap-2">
                 <div className="flex flex-col justify-center items-center w-8/12 mx-auto">
                     <div className="relative w-full pt-[100%]">
-                        <div className="border-2 border-kac-iron rounded-full absolute w-full h-full left-0 top-0"></div>
                         {total && (
                             <>
                                 {range(((current / total) * 360) / 90).map((quarterIndex) => {
@@ -63,6 +62,7 @@ export default function Clock({
                                         ></div>
                                     );
                                 })}
+                                <div className="border-2 border-kac-iron rounded-full absolute w-full h-full left-0 top-0"></div>
                             </>
                         )}
                     </div>

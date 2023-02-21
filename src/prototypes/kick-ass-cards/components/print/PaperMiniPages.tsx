@@ -200,6 +200,95 @@ export default function PaperMiniPages() {
                     />
                 </div>
             </PrintPage>
+            <PrintPage>
+                <div className="flex flex-wrap content-center items-top">
+                    <PaperMini
+                        imageUri="/LP/insectoid.jpg"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Insectoid"
+                        imageStyle={{ backgroundPosition: "left 50%", backgroundSize: "185%" }}
+                        backImageStyle={{
+                            backgroundPosition: "right 50%",
+                            backgroundSize: "188%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Insectoid"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/insectoid.jpg"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Insectoid"
+                        imageStyle={{ backgroundPosition: "left 50%", backgroundSize: "185%" }}
+                        backImageStyle={{
+                            backgroundPosition: "right 50%",
+                            backgroundSize: "188%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Insectoid"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/ScrattCZ_several_sci-fi_insectoid_aliens_367f922c-6a98-45ef-acf0-c311f562483e.png"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Insectoid"
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Insectoid"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/rat-men.jpg"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Rodentoid"
+                        imageStyle={{ backgroundPosition: "0% 50%", backgroundSize: "185%" }}
+                        backImageStyle={{
+                            backgroundPosition: "right 50%",
+                            backgroundSize: "188%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Rodentoid"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/rat-men.jpg"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Rodentoid"
+                        imageStyle={{ backgroundPosition: "0% 50%", backgroundSize: "185%" }}
+                        backImageStyle={{
+                            backgroundPosition: "right 50%",
+                            backgroundSize: "188%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Rodentoid"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/pilot.jpg"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Pilot"
+                        imageStyle={{ backgroundPosition: "center", backgroundSize: "105%" }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Pilot"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                </div>
+            </PrintPage>
         </>
     );
 }

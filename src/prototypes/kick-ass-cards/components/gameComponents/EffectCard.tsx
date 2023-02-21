@@ -15,16 +15,18 @@ const effectSizeClassNameMap: { [key in IconType]?: string } = {
 };
 
 const outcomeColorClassNameMap: { [key in IconType]?: string } = {
-    sleepy: "text-kac-cloth",
-    knockout: "text-kac-iron-dark",
-    shouting: "text-kac-curse",
-    run: "text-kac-curse-dark",
-    thermometerHot: "text-kac-fire",
-    halt: "text-kac-steel-dark",
-    stickyBoot: "text-kac-monster",
     drop: "text-kac-blood-dark",
-    tearTracks: "text-kac-cloth",
+    halt: "text-kac-steel-dark",
+    knockout: "text-kac-iron-dark",
+    run: "text-kac-curse-dark",
+    shouting: "text-kac-curse",
+    sleepy: "text-kac-cloth",
     sprint: "text-kac-gold-dark",
+    quicksand: "text-kac-bone-dark",
+    stickyBoot: "text-kac-monster",
+    tearTracks: "text-kac-cloth",
+    thermometerCold: "text-kac-cloth-dark",
+    thermometerHot: "text-kac-fire",
 };
 
 const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;

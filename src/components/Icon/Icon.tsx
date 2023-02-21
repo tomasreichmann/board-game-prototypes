@@ -73,6 +73,7 @@ import poisonBottle from "./media/poison-bottle.svg";
 import prankGlasses from "./media/prank-glasses.svg";
 import print from "./media/print.svg";
 import push from "./media/push.svg";
+import quicksand from "./media/quicksand.svg";
 import rollerSkate from "./media/roller-skate.svg";
 import ropeCoil from "./media/rope-coil.svg";
 import run from "./media/run.svg";
@@ -195,6 +196,7 @@ export const iconMap = {
     prankGlasses,
     print,
     push,
+    quicksand,
     rollerSkate,
     ropeCoil,
     run,

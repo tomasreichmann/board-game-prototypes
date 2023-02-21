@@ -49,7 +49,7 @@ act: 4
         current={0}
         total={4}
         threat="New Vega bylo pohlceno Spórami"
-        reward="Spóry byly potlačeny"
+        reward="Titul: Hrdina New Vega"
     />
 </List>
 
@@ -64,40 +64,46 @@ act: 4
 -   Dav humanoidů pod útokem spórových dronů
 
 <List>
-    <Asset
-        icon="/LP/icons/syringe-2.png"
-        title="Rapid-regen"
-        effect="Vyléčí instantně všechna organická zranění. Regenerovaná tkáň může zmutovat (+1&nbsp;zkáza)"
-        className="drop-shadow-md print:drop-shadow-none"
-    />
-    <Asset
-        icon="/LP/icons/nose-spray.png"
-        title="SPED"
-        effect="+1 pohyb, znásobí doskokovou vzdálenost na 3 kola"
-        className="drop-shadow-md print:drop-shadow-none"
-    />
-    <Asset
-        icon="/LP/icons/syringe.png"
-        title="Rage"
-        effect="+1 efekt na akce síly a útoku na blízko na 3 kola"
-        className="drop-shadow-md print:drop-shadow-none"
-    />
     <Actor
+        name="Spórové sirény"
         size="Trump"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_several_screaming_slender_6_feet_tall_feminine-looking_70707d8f-a4ff-474f-974a-608f4d82b3c9.png"
-        name="Spórové sirény"
         occupation="Infikovaní obyvatelé vodního světa"
         notes="Akce: Nervy drásající křik - zóna: +1 Tíseň, Hryznutí - Zranění"
     />
     <Clock
+        title="Odražení spórových sirén"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         size="US game"
-        title="Odražení spórových sirén"
         current={0}
         total={6}
         threat="Zkáza New Vega +1"
-        reward="Spóry byly potlačeny"
+        reward="Medigel"
+    />
+    <Asset
+        title="Rapid-regen"
+        icon="/LP/icons/syringe-2.png"
+        effect="Vyléčí instantně všechna organická zranění. Tkáň může zmutovat (+1&nbsp;zkáza)"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="SPED"
+        icon="/LP/icons/nose-spray.png"
+        effect="+1 pohyb, znásobí doskokovou vzdálenost na 3 kola"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Rage"
+        icon="/LP/icons/syringe.png"
+        effect="+1 efekt na akce síly a útoku na blízko na 3 kola"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Medi-gel"
+        icon="/LP/icons/injection.png"
+        effect="-1&nbsp;organické Zranění"
+        className="drop-shadow-md print:drop-shadow-none"
     />
 </List>
 
@@ -135,7 +141,7 @@ act: 4
     />
     <Actor
         name="Hasicí drony"
-        size="US game"
+        size="Trump"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg"
         occupation={null}
@@ -191,11 +197,19 @@ act: 4
 <List>
     <Actor
         name="Infikované robotické rameno"
-        size="US game"
+        size="Trump"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
         occupation={null}
         notes="Akce: Chycení - Uvíznutí / komplikace, Drcení - 2x&nbsp;Zranění"
+    />
+    <Actor
+        name="Spórový roj"
+        size="Trump"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/alien-swarm.jpg"
+        occupation={null}
+        notes="Infikování spórami +1x&nbsp;Zkáza; Imunní na střelbu a útok na blízko. Slabí proti ohni a plošným útokům."
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
@@ -204,14 +218,6 @@ act: 4
         current={0}
         total={6}
         reward="Robotická protéza"
-    />
-    <Actor
-        name="Spórový roj"
-        size="US game"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/alien-swarm.jpg"
-        occupation={null}
-        notes="Infikování spórami +1x&nbsp;Zkáza; Imunní na střelbu a útok na blízko. Slabí proti ohni a plošným útokům."
     />
 </List>
 
@@ -222,7 +228,7 @@ act: 4
 <List>
     <Actor
         name="Infikované robotické rameno"
-        size="US game"
+        size="Trump"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
         occupation={null}
@@ -254,7 +260,7 @@ act: 4
 <List>
     <Actor
         name="Zmatený nákladní brouk"
-        size="US game"
+        size="Trump"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png"
         occupation={null}

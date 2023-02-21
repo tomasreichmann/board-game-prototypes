@@ -49,7 +49,7 @@ export default function BroadcastRoute({ storageKey, withPrintMarkerCorners }: B
                     );
                 })}
             </div>
-            <DataToggle data={storeData} className="fixed left-4 bottom-4 " initialCollapsed />
+            <DataToggle data={storeData} className="fixed left-4 bottom-4 print:hidden" initialCollapsed />
             <Outlet />
         </>
     );

@@ -33,10 +33,10 @@ export default function PaperMiniPages() {
                     />
                     <PaperMini
                         imageUri="/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png"
-                        baseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
                         baseContent="Nákladní-brouk"
                         imageStyle={{ backgroundPosition: "70% 60%", filter: "brightness(1.5)" }}
-                        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
                         backBaseContent="Nákladní-brouk"
                         baseWidth="0.5in"
                         height="1.5in"
@@ -161,6 +161,39 @@ export default function PaperMiniPages() {
                         imageStyle={{}}
                         backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
                         backBaseContent="Bezpečáci"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/BlipBlop_Dark_fantasy_zombie_spores_animated_body_left_for_dead_e0a2eb85-983f-4aea-ac67-02c4e62e618d.png"
+                        baseClassName="pt-2 bg-kac-monster-dark text-white text-center text-xs"
+                        baseContent="Spórový dron"
+                        imageStyle={{}}
+                        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center text-xs"
+                        backBaseContent="Spórový dron"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/BlipBlop_Dark_fantasy_zombie_spores_animated_body_left_for_dead_e0a2eb85-983f-4aea-ac67-02c4e62e618d.png"
+                        baseClassName="pt-2 bg-kac-monster-dark text-white text-center text-xs"
+                        baseContent="Spórový dron"
+                        imageStyle={{}}
+                        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center text-xs"
+                        backBaseContent="Spórový dron"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/BlipBlop_Dark_fantasy_zombie_spores_animated_body_left_for_dead_e0a2eb85-983f-4aea-ac67-02c4e62e618d.png"
+                        baseClassName="pt-2 bg-kac-monster-dark text-white text-center text-xs"
+                        baseContent="Spórový dron"
+                        imageStyle={{}}
+                        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center text-xs"
+                        backBaseContent="Spórový dron"
                         baseWidth="0.5in"
                         height="1.5in"
                         width="1in"

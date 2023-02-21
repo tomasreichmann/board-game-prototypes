@@ -2,18 +2,18 @@ slug,title,icon,effect,cost,cardCount
 medi-gel,Medi-gel,/LP/icons/injection.png,Oprava organického poškození,,6
 nano-gel,Nano-gel,/LP/icons/tube.png,Oprava mechanického poškození,,6
 instahack,Insta-hack,/LP/icons/gadget.png,Dočasné získání kontroly nad zařízením,,5
-grapple-gun,Kotevní puška,/LP/icons/rifle.png,"Přitáhne předmět k pušce, nebo naopak",,2
-glue-nade,Lepidlonát,/LP/icons/bag.png,Granát co zalepí všechno v zóně na 1 kolo (Hindered),,3
-emp-nade,EMP granát,/LP/icons/capsule.png,"Granát, co na 1 kolo vypne všechno elektronické v zóně",,3
-frag-grenade,Framentační granát,/LP/icons/shell.png,Způsobuje poškození všeho v zóně,,5
-gravi-emitter,Gravitační emitor,/LP/icons/emitter.png,"Přitahuje, nebo odpuzuje všechno ve stejné a sousedních zónách. Pohyb v opačném směru způsobuje (Hindered)",,1
-freeze-grenade,Mrazící granát,/LP/icons/liquid-grenade.png,Všichni v zóně jsou přimrzlí. -2 Teplota,,2
-air-conditioning,Klimatizace,/LP/icons/device-2.png,+2...-2 Teplota v zóně,,1
+grapple-gun,Kotevní puška,/LP/icons/rifle.png,"Přitáhne předmět k pušce, nebo pušku k předmětu.",,2
+glue-nade,Lepidlonát,/LP/icons/bag.png,Granát zalepí všechno v zóně na 1 kolo Obtíž.,,3
+emp-nade,EMP granát,/LP/icons/capsule.png,"Granát na 1 kolo vypne všechno elektronické v zóně.",,3
+frag-grenade,Framentační granát,/LP/icons/shell.png,Způsobuje poškození všeho v zóně.,,5
+gravi-emitter,Gravitační emitor,/LP/icons/emitter.png,"Přitahuje/odpuzuje všechno až 1 Zónu daleko. Pohyb proti směru způsobuje Obtíž.",,1
+freeze-grenade,Mrazící granát,/LP/icons/liquid-grenade.png,Všichni v zóně jsou přimrzlí. +2 Mráz,,2
+air-conditioning,Klimatizace,/LP/icons/device-2.png,+/- Mráz/Horko v zóně,,1
 scanner,Skener,/LP/icons/tablet.png,Víceúčelový skener,,3
 magnetic-gun,Magnetická pistole,/LP/icons/gun-2.png,Pohybuje s kovovými předměty,,1
 multi-purpose-bow,Víceúčelový luk,/LP/icons/utility-bow.png,Vystřeluje předměty na vzdálenost přímého dohledu,,2
 heat-gun,Tepelná puška,/LP/icons/heat-gun.png,Vyzařuje obrovské teplo na vzdálenost dohledu,,1
 bfg,VZZ,/LP/icons/bfg.png,"Obrovská zbraň: 1 kolo absorbuje veškeré teplo ze zóny, v příštím kole přinese zkázu.",,1
-heat-blade,Termodynamická čepel,/LP/icons/black-blade.png,"Meč který vysává teplo z nepřítele a zahřívá nositele (+1 Efekt, +1 Teplota)",,2
+heat-blade,Termodynamická čepel,/LP/icons/black-blade.png,"Meč který vysává teplo z nepřítele a zahřívá nositele (+1 Efekt, +1 Horko)",,2
 holo-generator,Holo-generátor,/LP/icons/orb.png,"Generátor holografických obrazů",,2
 barrier,Generátor štítu,/LP/icons/projector.png,"Vytvoří bariéru mezi zónami, která absorbuje 3 poškození.",,2

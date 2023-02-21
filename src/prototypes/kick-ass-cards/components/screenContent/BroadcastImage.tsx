@@ -10,6 +10,7 @@ export type BroadcastImageProps = ImageProps & {
 
 export const BroadcastImage = ({ broadcastProps = {}, ...props }: BroadcastImageProps) => {
     const { className, ...restBroadcastProps } = broadcastProps;
+
     return (
         <BroadcastComponent
             screenStorageKey={kickAssCardsScreenStorageKey}

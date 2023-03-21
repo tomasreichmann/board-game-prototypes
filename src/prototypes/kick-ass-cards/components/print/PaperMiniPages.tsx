@@ -289,6 +289,106 @@ export default function PaperMiniPages() {
                     />
                 </div>
             </PrintPage>
+            <PrintPage>
+                <div className="flex flex-wrap content-center items-top">
+                    <PaperMini
+                        imageUri="/LP/reptilian_male.jpg"
+                        baseClassName="pt-2 bg-kac-blood text-white text-center"
+                        baseContent="Reptilián"
+                        imageStyle={{ backgroundPosition: "left bottom", backgroundSize: "210%" }}
+                        backImageStyle={{
+                            backgroundPosition: "right bottom",
+                            backgroundSize: "210%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-blood text-white text-center"
+                        backBaseContent="Reptilián"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/security-guard.jpg"
+                        baseClassName="pt-2 bg-kac-blood text-white text-center"
+                        baseContent="Terran"
+                        imageStyle={{ backgroundPosition: "8% bottom", backgroundSize: "220%" }}
+                        backImageStyle={{
+                            backgroundPosition: "92% bottom",
+                            backgroundSize: "220%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-blood text-white text-center"
+                        backBaseContent="Terran"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/rat-men.jpg"
+                        baseClassName="pt-2 bg-kac-blood text-white text-center"
+                        baseContent="Rodentid"
+                        imageStyle={{ backgroundPosition: "5% bottom", backgroundSize: "210%" }}
+                        backImageStyle={{
+                            backgroundPosition: "95% bottom",
+                            backgroundSize: "210%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-blood text-white text-center"
+                        backBaseContent="Rodentid"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/reptilian_female.jpg"
+                        baseClassName="pt-2 bg-kac-blood text-white text-center"
+                        baseContent="Reptiliánka"
+                        imageStyle={{ backgroundPosition: "9% bottom", backgroundSize: "260%" }}
+                        backImageStyle={{
+                            backgroundPosition: "91% bottom",
+                            backgroundSize: "260%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-blood text-white text-center"
+                        backBaseContent="Reptiliánka"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/felian_female.jpg"
+                        baseClassName="pt-2 bg-kac-blood text-white text-center"
+                        baseContent="Felian"
+                        imageStyle={{ backgroundPosition: "3% bottom", backgroundSize: "210%" }}
+                        backImageStyle={{
+                            backgroundPosition: "97% bottom",
+                            backgroundSize: "210%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-blood text-white text-center"
+                        backBaseContent="Felian"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/LP/insectoid_female.jpg"
+                        baseClassName="pt-2 bg-kac-blood text-white text-center"
+                        baseContent="Insektoidka"
+                        imageStyle={{ backgroundPosition: "3% bottom", backgroundSize: "210%" }}
+                        backImageStyle={{
+                            backgroundPosition: "97% bottom",
+                            backgroundSize: "210%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-blood text-white text-center"
+                        backBaseContent="Insectoidka"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                </div>
+            </PrintPage>
         </>
     );
 }

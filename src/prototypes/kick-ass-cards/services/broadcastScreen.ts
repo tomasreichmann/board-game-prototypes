@@ -1,4 +1,5 @@
 import { CSSProperties, useCallback, useEffect, useReducer } from "react";
+import Paper, { PaperProps } from "../../../components/print/Paper/Paper";
 import Clock, { ClockProps } from "../components/Clock";
 import ActorCard, { ActorCardProps } from "../components/gameComponents/ActorCard";
 import AssetCard, { AssetCardProps } from "../components/gameComponents/AssetCard";
@@ -18,6 +19,7 @@ export enum ScreenContentTypeEnum {
     Clock = "Clock",
     Effect = "Effect",
     PaperMini = "PaperMini",
+    Paper = "Paper",
 }
 
 export type SharedContentType = {
@@ -52,8 +54,13 @@ export type EffectContentType = {
 } & SharedContentType;
 
 export type PaperMiniContentType = {
-    type: ScreenContentTypeEnum.Effect;
+    type: ScreenContentTypeEnum.PaperMini;
     props: PaperMiniProps;
+} & SharedContentType;
+
+export type PaperContentType = {
+    type: ScreenContentTypeEnum.Paper;
+    props: PaperProps;
 } & SharedContentType;
 
 export type ScreenContentType =
@@ -62,7 +69,8 @@ export type ScreenContentType =
     | AssetContentType
     | ClockContentType
     | EffectContentType
-    | PaperMiniContentType;
+    | PaperMiniContentType
+    | PaperContentType;
 
 export const typeComponentMap = {
     [ScreenContentTypeEnum.Image]: Image,
@@ -71,6 +79,7 @@ export const typeComponentMap = {
     [ScreenContentTypeEnum.Clock]: Clock,
     [ScreenContentTypeEnum.Effect]: EffectCard,
     [ScreenContentTypeEnum.PaperMini]: PaperMini,
+    [ScreenContentTypeEnum.Paper]: Paper,
 };
 
 export type ScreenStoreType = {

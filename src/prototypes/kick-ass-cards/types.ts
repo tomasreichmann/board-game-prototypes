@@ -10,6 +10,7 @@ export type PlayerCharacterType = {
     titles?: string[];
     assets?: string[];
     notes?: string;
+    toughness?: number;
 };
 
 export type AssetType = {

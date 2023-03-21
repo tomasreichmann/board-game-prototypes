@@ -1,12 +1,12 @@
 ---
 campaign: Ledová pomsta
-chapter: 1
-act: 6
+chapter: 2
+act: 1
 ---
 
 ![](/LP/leaving_new_vega.jpg)
 
-# Kapitola 1 - Akt 6 - Výsadek
+# Kapitola 2 - Akt 1 - Výsadek
 
 <Player url="https://www.youtube.com/watch?v=3SyBDWywITk&t=0" controls height={100} />
 
@@ -90,14 +90,19 @@ act: 6
 
 Různé hráčské akce, např. zabíjení civilistů, bezohledné využití technologie / bio-chemie / zbraní mohou způsobit, že postava dostane +1 Zkázu.
 
--   Pokud hráč dosáhne 2/4 Zkázy, dostane tajnou zprávu, která naznačuje, jaká zkáza ho čeká.
+-   Pokud hráč dosáhne 2/4 Zkázy, dostane tajnou zprávu, která naznačuje, jaká zkáza ho čeká - První stupeň zkázy.
     -   Technozkáza: Postava ztrácí emoce, ovládají jí spíše programy než slova ostatních. Jde slepě za svým cílem a přestává brát ohled na životy ostatních včetně své družiny
     -   Psychozkáza: Postava ztrácí rozum, rozhoduje se tak, aby maximalizovala svoje emoce, dobré nebo zlé bez ohledu na misi.
     -   Spórozkáza: Z postavy se stává spórový hybrid. Spóry ji fascinují a chce je aktivně šířit. Části těla nahrazují spórové tkáně.
     -   Nenávistná zkáza: Postava je pohlcena znechucením, lehce se vytočí, stále nadává, napadá ostatní a staví se do opozice kdekoliv může.
     -   Ničivá zkáza: Postava je pohlcena vztekem. Vystavuje se nebezpečí a páchá škodu kam přijde. Její tělo na jednu stranu sílí, ale postupně se rozpadá.
--   Pokud se dostane na Zkázu 3/4, dostane první stupeň zkázy
--   Pokud se dostane na Zkázu 4/4, dostane druhý stupeň zkázy
+-   Pokud se dostane na Zkázu 3/4, dostane druhý stupeň zkázy
+-   Pokud se dostane na Zkázu 4/4, dostane třetí stupeň zkázy
+    -   Hráč podléhá svým démonům a stává se z něj monstrum,
+    -   Jakákoliv akce, která jde proti jeho novému přesvědčení vyžaduje extra Úspěch, aby se o ní vůbec pokusil.
+    -   ztrácí veškerou Zkázu, místo toho získává Spásu 0/3.
+        -   Činy, kde se objetuje za ostatní, zachrání nevinné, nebo úspěšně odolá svým démonům mu dají jednu Spásu.
+        -   Pokud postava dosáhne Spásy 3/3, tak je vykoupena, ztrácí všechny stupně zkázy a jeho Spása se mění zpět na Zkázu 0/4.
 
 <List>
     <Effect
@@ -201,6 +206,24 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
         effect="+1 Efekt útoku, Efekt 0 obrany, nepovažuješ nikoho za svého spojence."
         className="drop-shadow-md print:drop-shadow-none"
     />
+    <Effect
+        icon="/LP/icons/salvation.png"
+        title="Spása"
+        effect="Jsi o jeden krok blíž vykoupení."
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/medical-station.png"
+        title="Vybavení medika"
+        effect="ošetření hráče -1&nbsp;Zranění nebo -1&nbsp;Tíseň"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/pill-bottle.png"
+        title="Anxiolytika"
+        effect="-2&nbsp;Tíseň"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
 
 </List>
 
@@ -218,6 +241,12 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
     -   Chapadla mohou bránit loď před nejnebezpečnějšími útoky a nechat zníčit místo toho sebe.
 -   Hráči se mohou útokům bránit, pokud to dává smysl v rámci jejich stanoviště
 
+![](/LP/rh4.jpg)
+
+<Columns>
+
+<div>
+
 ### Akce hráčů
 
 -   Přiblížit se ke spórové lodi (např. pilotování, výkon reaktoru, optimalizace motorů, přesunutí energie z ostatních systémů, sabotáž Spórové lodi)
@@ -228,31 +257,29 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
     -   narážení (vzdálenost 1-0)
 -   Opravit vlastní loď (např. inženýrství, dronový roj)
 -   Výsadek (pouze vzdálenost 0)
--   Medik může pomocí lodního vybavení ošetřovat hráče (-1 Zranění / -1 Tíseň)
--   Smlouva s ďáblem - možnost zvýšit efektivitu výměnou za Zkázu (Efekt Přetaktovat tělo / Přetaktovat mysl), např:
-    -   Přímé propojení svého těla se systémy lodi
-    -   Přetaktování svých implantátů
-    -   Konzumace nebezpečných stimulantů
+-   Medik - přenosná zdravotnícká stanice - ošetření hráče (-1 Zranění / -1 Tíseň)
+-   Přetaktování - možnost zvýšit efektivitu výměnou za Zkázu (Efekt Přetaktovat tělo / Přetaktovat mysl), např: - Přímé propojení svého těla se systémy lodi - Přetaktování svých implantátů - Konzumace nebezpečných stimulantů
+
+</div>
+<div>
 
 ### Akce Spór
 
 -   V prvním kole bezpečnostní systémy mezihvězdného portálu útočí na loď 2x
     -   Vystřelení Salvy raket (hrozba Salva 4 raket) je ve vzduchu rakety dopadnou za 2 kola (rakety je možné zničit než dopadnou)
-    -   EMP dělo
-        -   Zásah vyřadí stanici hráče (Efekt vyřazená stanice)
-        -   +1 Tíseň
+    -   EMP dělo: Zásah vyřadí stanici hráče (Efekt vyřazená stanice); +1 Tíseň
 -   V dalších kolech útočí Spórová loď
-
     -   Vrhání kontejnerů z hangáru chapadly (efektivita viz počet chapadel)
         -   Kontejner s mrazivou směsí (-1 Teplota všem)
         -   Výbušný kontejner (+1 poškození lodi)
         -   Stázový kontejner se zajatcem (+1 Tíseň všem při zničení)
-    -   EMP dělo
-        -   Zásah vyřadí stanici hráče (Efekt vyřazená stanice)
-        -   +1 Tíseň
-    -   Plasmové dělo
+    -   EMP dělo: Zásah vyřadí stanici hráče (Efekt vyřazená stanice); +1 Tíseň
+    -   Plasmové dělo - běžné zranění
+-   Zvětšit vzdálenost zdržením RH4
 
--   Zvětšit vzdálenost zdržením RG4
+</div>
+
+</Columns>
 
 ![](/LP/warp-tunnel.jpg)
 
@@ -260,17 +287,75 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
 
 <Player url="https://youtu.be/rTbJ2qFd-Tc?t=0" controls height={100} />
 
-![](/LP/spore_seeds.jpg)
-![](/LP/spore_bush.jpg)
-
 ## Zničení lodi
 
 -   Pokud integrita RH4 klesne na 0, tak se loď začne rozpadat.
 -   Záchranné moduly mohou posádku vystřelit, ale jsou pochytané chapadly, nebo silovým polem a nasměrovány do hangáru.
 -   Všechny postavy se mohou bránit úrazům při opouštění lodi, hrozí jim až 2 Zranění.
+-   Pokud jsou na lodi NPC postavy, hráči dostanou na výběr, které 2 NPC chtějí zachránit.
 
 ## Výsadek
 
-Pokud je RH4 na vzdálenosti 0, hráči mohou provést výsadek a obsadit spórovou loď buď skrz otevřený hangár, nebo přes airlock v boční části.
+-   Pokud je RH4 na vzdálenosti 0, hráči mohou provést výsadek a obsadit spórovou loď buď skrz otevřený hangár, nebo přes airlock v boční části.
+-   Hráči si sebou mohou vzít až 3 NPC
+
+<List>
+    <Actor
+        size="Trump"
+        imageUri="/LP/reptilian_male.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        occupation="Žoldák"
+        name="Reptilián"
+        notes="???"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/security-guard.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Terran"
+        occupation="Bezpečák"
+        notes="???"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/rat-men.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Rodentid"
+        occupation="???"
+        notes="???"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/reptilian_female.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Reptiliánka"
+        occupation="???"
+        notes="???"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/felian_female.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Felian"
+        occupation="Členka bezpečnostního zásahového týmu"
+        notes="???"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/insectoid_female.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Insectoidka"
+        occupation="???"
+        notes="???"
+    />
+</List>
+
+![](/LP/maps/overgrown_spaceship.jpg)
 
 # Další kapitola - Spórová loď

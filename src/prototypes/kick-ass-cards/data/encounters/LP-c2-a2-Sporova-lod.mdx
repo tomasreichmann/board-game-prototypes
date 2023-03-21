@@ -1,0 +1,353 @@
+---
+campaign: Ledová pomsta
+chapter: 2
+act: 2
+---
+
+![](/LP/maps/overgrown_spaceship.jpg)
+
+# Kapitola 2 - Akt 2 - Spórová Loď
+
+<Player url="https://youtu.be/-JFCwxVhHl0?t=8" controls height={100} />
+
+-   Posádka RH4 se dostala na Spórovou loď, která se nezadržitelně blíží k domovské Černosféře Klanu Gynies.
+-   Nezbývá moc času, než loď opustí mezihvězdný koridor a dostane se na dostřel Klanu - Hrozba Opuštění mezihvězdného koridoru.
+-   Pokud se do té doby podaří spórovou hrozbu odvrátit a přesvědčit o tom Klan, může posádka zachránit životy svoje i Klanu.
+-   Pokračujeme ve sledování hrozby Integrita Spórové lodi.
+
+<List>
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Opuštění mezihvězdného koridoru"
+        current={0}
+        total={12}
+        threat="Na dostřel Klanu"
+    />
+</List>
+
+## Exteriér
+
+![](/LP/spore_bush.jpg)
+
+Vidíte, že celá loď je porostlá trsy spórových keřů. Jediná spóra stačí na to infikovat celou planetu.
+
+![](/LP/maps/overgrown_spaceship_interior.jpg)
+
+Dveře hangáru jsou stále dokořán otevřené.
+
+## Hangár
+
+-   Hangár je obrovská místnost, kde mohou přistávat osobní lodě a stíhačky, také se zde vykládá a skladuje náklad.
+-   Hangárové dveře jsou stále otevřené a místnost je bez tlaku a atmosféry.
+-   Zbylo tu ještě několik kontejnerů:
+    -   Kontejner s explosivy: Lepidlonát, EMP granát, 2x Fragmentační granát
+    -   Kontejner s chladící směsí: Lze vyrobit 3x Mrazicí granát
+    -   Kontejner se zmraženou bytostí: Vulkánský Drak - ještěr o velikosti koně, který dští oheň.
+        -   (není agresivní, ale není nijak inteligentní a vyžaduje Úspěch na to aby vykonal, byť jednoduché příkazy, jinak hrozí, že si to vyloží po svém)
+-   Vedou odsud bezpečnostní dveře do chodby
+-   Hoří zde lékárnička
+    -   Jsou v ní 2x Anxiolytika
+    -   +1 Horko, pokud není před otevřením uhašena
+
+<List>
+    <Actor
+        size="Trump"
+        imageUri="/LP/scifi_dragon.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Vulkánský Drak"
+        toughness={6}
+        occupation={null}
+        notes="Akce: Chrlení ohně - 1x Zranění a 2x Horko; Kousnutí: 2x Zranění. Šupinatá kůže - imunita na zranění ohněm, Max. 1 zranění za 1 útok."
+    />
+
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Zničení spórového keře"
+        current={0}
+        total={6}
+        threat="Vibrace lámajících se větví rezonují celou chodbou"
+        reward="Cesta do kapitánovy kajuty"
+    />
+
+    <Asset
+        icon="/LP/icons/bag.png"
+        title="Lepidlonát"
+        effect="granát co zalepí všechno v zóně na 1 kolo"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+    <Asset
+        icon="/LP/icons/capsule.png"
+        title="EMP granát"
+        effect="granát, co na 1 kolo vypne všechno elektronické v zóně"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+    <Asset
+        icon="/LP/icons/shell.png"
+        title="Framentační granát,"
+        effect="Způsobuje poškození všeho v zóně"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+    <Asset
+        icon="/LP/icons/liquid-grenade.png"
+        title="Mrazící granát"
+        effect="Všichni v zóně jsou přimrzlí. +2 Mráz"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+    <Asset
+        icon="/LP/icons/pill-bottle.png"
+        title="Anxiolytika"
+        effect="-2&nbsp;Tíseň"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+</List>
+
+## Chodba
+
+-   Z chodby vede několik dveří
+    -   bezpečnostní dveře do hangáru
+    -   dveře do kajuty posádky
+    -   dveře do jídelny
+    -   dveře do kapitánské kajuty jsou zarostlé rudým spórovým keřem
+        -   Ze spórového keře sálá teplo. Při každém zásahu na blízko dostane postava +1 Horko.
+-   Z prasklého vedení ve stropě uniká chladící kapalina, která se vypařuje a drží se u země jako namodralá hustá ledová mlha.
+    -   Postavy, které vstoupí do kapaliny dostanou +1 Mráz.
+    -   (Na podlaze si v chladivé kapalině hoví dvě masivní zelené liány, které zaútočí, když někdo vkročí do mlhy, nebo způsobí vibrace, např. útokem na Spórový keř)
+
+<List>
+    <Actor
+        size="Trump"
+        imageUri="/LP/green_tentacle.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Mrazivá liána"
+        toughness={4}
+        occupation={null}
+        notes="Akce: Chycení postavy - Uvíznutí, Škrcení postavy - 3x Zranění, Vržení postavy na jinou - 1x Zranění oběma, Šplouchnutí mrazicí kapalinou - Všichni v zóně +1 Mráz. Při každém zásahu se stáhne do mlhy a není vidět."
+    />
+
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Zničení spórového keře"
+        current={0}
+        total={6}
+        threat="Vibrace lámajících se větví rezonují celou chodbou"
+        reward="Cesta do kapitánovy kajuty"
+    />
+
+</List>
+
+## Kapitánova kajuta
+
+-   U stěny je do elektřiny zapojený stázový modul. Skrz zamražené okno je vidět busta ženy s kudrnatými hnědo šedivými vlasy a přívěškem na krku.
+
+    -   (Žena je Fatima Zimostrázová, manželka doktora Alma Zimostráze a matka Flory.)
+    -   Přívěšek na krku po zmáčknutí zobrazí hologram rodinného portrétu Flory, Alma a Fatimy.
+    -   Analýzou modulu lze zjistit, že je žena tak tak na živu, postrádá totiž spodní polovinu těla.
+    -   Pokud dojde k pokusu o vzkříšení ženy, bude na živu cca minutu, než zkolabuje a nenávratně umře.
+        -   Fatima ihned pozná svojí dceru Floru, i když Flora si jí vůbec nepamatuje.
+        -   Fatima dokáže odpovědět na tři otázky o Almově výzkumu spór, útoku spór na Sporefall a Floře
+    -   Pokud Fatima zemře a Flora pochopí, že je to její matka, získá Flora 2x Zkáza.
+
+-   Poznámky Dr. Zimostráze
+    -   Doktorovy poznámky se nejprve zaměřují na spórovou infekci, která se tou dobou vyskytla na jeho domovské planetě Nedus 4, později přejmenovanou médii na Sporefall.
+    -   Je zde záznam o příjezdu výzkumnic Klanu, které zajímalo, jak je možné, že spóry dokážou přežít v ledovém vesmíru.
+    -   Doktor zpětně popsal, jak se spórová infekce náhle rozšířila. Klan Gynies uvrhl planetu do karantény a neumožnil nikomu planetu opustit.
+    -   Doktor ve snaze zachránit svojí rodinu zamkl výzkumnice klanu spolu se svojí dcerou do karantény a vyslal SOS klanu.
+    -   Zápisky čím dál víc nabírají na emocích a kritice zejména vůdči Klanu a týmu RH4, který tam Klan poslal.
+    -   Ke konci poznámek se doktor snaží zpomalit postup svojí spórové infekce a přichází se stále nesmyslnějšími nápady na záchranu svojí ženy, kterou po útoku spór zavřel v kritickém stavu do stázového modulu.
+    -   Zbytek poznámek je už jen nekoherentní proud myšlenek proložený nutkáním šířit spóry, kde to jen jde.
+    -   Vidíte zde mnohokrát přeškrtaný podpis Dr Zimostráze. Poslední stránka vypadá, jakoby si tu někdo trénoval podpis "Buxus"
+
+## Kajuta posádky
+
+-   Dveře do kajuty jsou zabarikádované z druhé strany.
+-   V kajutách se schovávají dvě děti ze Sporefallu. Nechtějí otevřít dveře, protože se bojí, že je sežere Buxus.
+    -   Kluk a holka jsou spóroví hybridi. Vždycky, když jim někde na těle vyroste květ, tak ho sní, aby to nebylo vidět.
+    -   Děti si nepamatují, jak se jmenují, ale maskují to nedůvěřivostí.
+    -   Když něco dětem ublíží, tak vypustí mrak spór způsobující všem v zóně +1 Tíseň.
+    -   Děti zamkly dveře do ošetřovny. Prý tam je duch.
+
+<List>
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Přesvědčení dětí, aby otevřeli dveře"
+        current={0}
+        total={6}
+        reward="Cesta do kapitánovy kajuty"
+    />
+    <Asset
+        icon="/LP/icons/pill-bottle.png"
+        title="Anxiolytika"
+        effect="-2&nbsp;Tíseň"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+</List>
+
+## Ošetřovna
+
+-   Ošetřovna je skvěle vybavená pro ošetření i vážnějších zranění.
+    -   Jsou zde léky: 3x Medigel, 3x Anxiolytika, Rapid-regen, SPED, Rage
+-   Ošetřovna byla vybavena zdravotnickým hologramem.
+    -   Systém hologramu, umístěný v konzoli v ošetřovně je napaden Spórovou infekcí.
+    -   Hologram se snaží vyřadit posádku a šířit Spórovou infekci.
+    -   Hologram není vidět, lze ho detekovat pouze sledováním cyber systémů lodi.
+    -   Po otevření dveří se může hologram pohybovat kamkoliv po lodi, ale nedokáže si otevírat dveře.
+    -   Schopnost hologramu brát do ruky předměty lze znemožnit zničením holografických projektorů v každé místnosti.
+    -   Pokaždé, když je někdo sám v místnosti, hologram ho napadne např. injekcí do zad způsobující Komplikace, Tíseň, nebo Zranění.
+
+<List>
+    <Asset
+        icon="/LP/icons/injection.png"
+        title="Medi-gel"
+        effect="oprava organického poškození"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/pill-bottle.png"
+        title="Anxiolytika"
+        effect="-2&nbsp;Tíseň"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/syringe-2.png"
+        title="Rapid-regen"
+        effect="Vyléčí instantně všechna organická zranění. Regenerovaná tkáň může zmutovat (+1&nbsp;Zkáza)"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/nose-spray.png"
+        title="SPED"
+        effect="+1 pohyb, znásobí doskokovou vzdálenost na 3 kola"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/syringe.png"
+        title="Rage"
+        effect="+1 efekt na akce síly a útoku na blízko na 3 kola"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+![](/LP/mess_hall_drones.jpg)
+
+## Jídelna
+
+-   Jídelna je plná spórových dronů
+-   Ve spórovém davu se skrývá infikovaný robotický kuchař.
+    -   Buxus mu přikázal, ať se pokusí zajmout nějaké NPC posádky a dovede mu je jako zajatce.
+    -   Kuchař stále vaří pokrmy, nyní s naprosto nechutnými přísadami. (Kusy lidských těl, hnis, chlupy, spórovy)
+
+<List>
+    <Actor
+        size="Trump"
+        imageUri="/LP/kitchen_robot.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Robotický kuchař"
+        toughness={6}
+        occupation={null}
+        notes="Akce každý tah: Chycení a útěk, Vrhání jídla - Komplikace"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Dav spórových dronů"
+        toughness={12}
+        occupation={null}
+        notes="Akce každý tah: Sápání - 1x Zranění nebo Chycení"
+    />
+</List>
+
+![](/LP/overgrown_engineering.jpg)
+
+## Strojovna
+
+-   Strojovna dominuje reaktor, který nepřirozeně hučí a vibruje celou místností
+    -   V plášti reaktoru jsou trhliny a radioaktivní palivo vytéká na zem
+-   Strojovna je zarostlá spórovým trním, které pomalu expanduje a pohlcuje všechno zařízení v místnosti
+
+![](/LP/drone_engineer.jpg)
+
+-   Jediná silueta se pomalu blíží k vám
+    -   Syntetický inženýr porostlý spórovou infekcí stále bojuje o kontrolu nad svojí schránkou.
+        -   Inženýr se nemůže pořádně pohybovat a mluvit. Pouze části vět jsou srozumitelné.
+        -   Inženýr zná velmi dobře všechny systémy lodi.
+        -   Snažit se zachránit inženýra (Záchrana inženýra od Spórové infekce 0/6), znamená vystavit se riziku spórové infekce.
+            -   Každá akce: Částečný úspěch - Spórová infekce, Neúspěch - Zkáza +1
+    -   Inženýr se snaží zabránit rozpadu jádra, které by způsobilo tak masivní explozi, že by se loď rozpadla na tisíce kousků letících relativistickou rychlostí na všechny strany. Kdoví, kam by se tak Spórová infekce dostala.
+    -   Jeho klouby jsou zarostlé a nedokáže se dostat až nahoru k jádru a opravit trhliny.
+    -   Radiace u jádra je tak vysoká, že i s ochranným oblekem jde pravděpodobně o smrtelnou dávku i pro organiky i syntetiky (+1 Zkáza)
+
+## Můstek
+
+-   Lodní systémy jsou zarostlé spórovou infekcí.
+-   I přes spórovou džungli vidíte v kokpitu dr Zimostráže, ale vypadá dost jinak, než naposledy, co jste ho zahlédli. Zdá se, že spórová infekce roste přímo z něj.
+-   Po stěnách můstku jsou 4 záchranné moduly. Každý pojme 2 osoby.
+    -   Moduly jsou zarostlé spórami, které je potřeba zneškodnit až na jeden, který má zaseklé dveře.
+-   Každé mrtvé NPC se stane spórovým dronem.
+
+## Kokpit
+
+-   Kokpit je chráněn přenosným silovým polem, které pohltí veškeré energetické zranění.
+-   Buxus naviguje spórovou loď přímo do středu černosféry Klanu.
+-   Buxus ovládá lodní systémy, aby zneškodnil posádku.
+-   Buxus se snaží zasít rozkol do posádky:
+    -   Buxus tvrdí, že to byly výzkumnice Klanu, které způsobily vypuštění spórové infekce z karantény, protože potřebovaly větší vzorek rudých keřů na výzkum generování tepla z organické hmoty.
+    -   Buxus apeluje na všechny nakažené spórami, že infekce je nezvratná a že jdou sami proti sobě, když se snaží zachránit Klan.
+    -   Buxus apeluje na NPC, ať použijí záchranné moduly, dokud mají ještě šanci.
+-   Pokud Buxus umírá, zničí navigační konzoli s autopilotem nastaveným na kolizní kurz s černosférou.
+
+![](/LP/black_sphere.jpg)
+
+## Opuštění mezihvězdného koridoru
+
+-   Když dojde k naplnění hrozby Opuštění mezihvězdného koridoru
+    -   Spórová loď vypadla z koridoru
+    -   Na obrazovce je vidět černosféra Klanu
+    -   Systémy hlásí, že se blíží singulární rakety - vytvoří při explozi malou černou díru, která pohltí všechnu hmotu v rozsahu několika stovek kilometrů.
+-   Je možné přesvědčit Klan, aby raketu deaktivoval, ale pouze pokud spórová loď nemíří na černosféru.
+
+<List>
+    <Actor
+        size="Trump"
+        imageUri="/LP/green_tentacle.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Sápavá líána"
+        toughness={4}
+        occupation={null}
+        notes="Akce: Chycení postavy - Uvíznutí, Blokování útoku na Buxuse chycenou postavou, Vržení postavy na jinou - 1x Zranění oběma"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/BlipBlop_Dark_fantasy_zombie_spores_animated_body_left_for_dead_e0a2eb85-983f-4aea-ac67-02c4e62e618d.png"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Spórový dron"
+        toughness={2}
+        occupation={null}
+        notes="Kousnutí - 1x Zranění, Chycení - Uvíznutí"
+    />
+    <Actor
+        size="Trump"
+        imageUri="/LP/buxus_final.jpg"
+        imagePosition="center 30%"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Buxus"
+        toughness={12}
+        occupation="Spórový hybrid Dr Zimostráze"
+        notes="Ovládá loď - "
+    />
+</List>

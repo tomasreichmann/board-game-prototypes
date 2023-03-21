@@ -78,7 +78,7 @@ module.exports = {
             },
             fontFamily: {
                 dtHeading: ["Germania One", "sans-serif"],
-                kacBody: ["Shadows Into Light Two", "cursive"],
+                kacBody: ["Rajdhani", "sans-serif"],
                 kacLogo: ["Trade Winds", "sans-serif"],
                 kacHeading: ["Oxanium", "sans-serif"],
             },

@@ -25,6 +25,7 @@ export default function ActorCard({
     name = "",
     imageUri,
     occupation = "",
+    toughness = 0,
     notes = "",
     ImageComponent = Image,
     children,
@@ -48,9 +49,17 @@ export default function ActorCard({
                     )}
                 </div>
                 <div>
-                    <div className="text-sm border-dashed">
-                        <Icon icon="fountainPen" className="h-4 inline-block" />
-                        &ensp;name
+                    <div className="text-sm border-dashed flex flex-row justify-between gap-4">
+                        <div>
+                            <Icon icon="fountainPen" className="h-4 inline-block" />
+                            &ensp;name
+                        </div>
+                        {toughness > 0 && (
+                            <div className="text-sm border-dashed justify-end text-kac-blood font-kacHeading flex flex-row">
+                                {toughness}&nbsp;
+                                <Icon icon="drop" className="h-4" />
+                            </div>
+                        )}
                     </div>
                     <h2 className={clsx("text-lg font-kacHeading", !name && "border-b-2, border-dashed min-h-8")}>
                         {name}

@@ -11,10 +11,19 @@ import BroadcastEffect from "../components/screenContent/BroadcastEffect";
 import BroadcastImage from "../components/screenContent/BroadcastImage";
 import clsx from "clsx";
 import EncounterImage from "../components/EncounterImage";
-import Paper from "../../../components/print/Paper/Paper";
+import BroadcastPaper from "../components/screenContent/BroadcastPaper";
 
 const List = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
     <div className={clsx("flex flex-row gap-4 flex-wrap my-4", className)}>{children}</div>
+);
+
+const Columns = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
+    <div
+        className={clsx("grid gap-4 my-4", className)}
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
+    >
+        {children}
+    </div>
 );
 
 export default function EncounterRoute() {
@@ -61,7 +70,7 @@ export default function EncounterRoute() {
     }
     return (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto">
-            <article className="prose text-kac-iron max-w-none prose-headings:font-kacHeading prose-headings:text-kac-blood prose-a:text-kac-monster prose-strong:text-kac-iron-dark prose-blockquote:text-kac-iron-dark prose-em:text-kac-cloth prose-ul:[--tw-prose-bullets:rgb(123,0,29)]">
+            <article className="prose text-kac-iron max-w-none prose-headings:font-kacHeading prose-headings:text-kac-blood prose-a:text-kac-monster prose-strong:text-kac-iron-dark prose-blockquote:text-kac-iron-dark prose-em:text-kac-cloth prose-ul:[--tw-prose-bullets:rgb(123,0,29)] prose-ul:my-0 prose-li:my-0">
                 {isPending && (
                     <h1>
                         {title}
@@ -75,13 +84,14 @@ export default function EncounterRoute() {
                         components={{
                             Alert,
                             List,
+                            Columns,
                             img: EncounterImage,
                             Player: ReactPlayer,
                             Actor: BroadcastActor,
                             Asset: BroadcastAsset,
                             Effect: BroadcastEffect,
                             Clock: BroadcastClock,
-                            Paper: Paper,
+                            Paper: BroadcastPaper,
                         }}
                     />
                 )}

@@ -14,6 +14,7 @@ export type ActorCardProps = React.PropsWithChildren<
         className?: string;
         size?: PaperProps["size"];
         imagePosition?: CSSProperties["backgroundPosition"];
+        notesClassName?: string;
         ImageComponent?: React.ComponentType<ImageProps>;
     } & PlayerCharacterType
 >;
@@ -26,6 +27,7 @@ export default function ActorCard({
     imageUri,
     occupation = "",
     toughness = 0,
+    notesClassName = "inline text-sm",
     notes = "",
     ImageComponent = Image,
     children,
@@ -49,11 +51,11 @@ export default function ActorCard({
                     )}
                 </div>
                 <div>
-                    <div className="text-sm border-dashed flex flex-row justify-between gap-4">
-                        <div>
-                            <Icon icon="fountainPen" className="h-4 inline-block" />
-                            &ensp;name
-                        </div>
+                    <div className="text-sm flex flex-row gap-4">
+                        <h2 className="flex-1 text-lg font-kacHeading leading-tight flex flex-row gap-2">
+                            <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel" />
+                            {name || <div className="border-b-2 border-dashed mt-[2em]" />}
+                        </h2>
                         {toughness > 0 && (
                             <div className="text-sm border-dashed justify-end text-kac-blood font-kacHeading flex flex-row">
                                 {toughness}&nbsp;
@@ -61,42 +63,29 @@ export default function ActorCard({
                             </div>
                         )}
                     </div>
-                    <h2 className={clsx("text-lg font-kacHeading", !name && "border-b-2, border-dashed min-h-8")}>
-                        {name}
-                    </h2>
-                </div>
-                {occupation !== null && (
-                    <div>
-                        <div className="text-sm border-dashed">
-                            <Icon icon="toolbox" className="h-4 inline-block" />
-                            &ensp;occupation
-                        </div>
-                        <h2
-                            className={clsx(
-                                "text-sm font-kacHeading",
-                                !occupation && "border-b-2, border-dashed min-h-8"
-                            )}
-                        >
-                            {occupation}
+                    {occupation !== null && (
+                        <h2 className="text-sm flex flex-row gap-2">
+                            <Icon icon="toolbox" className="h-4 mr-1 flex-shrink-0 inline-block text-kac-steel" />
+                            {occupation || <div className="border-b-2 border-dashed mt-[2em] " />}
                         </h2>
-                    </div>
-                )}
+                    )}
+                </div>
                 {notes !== null && (
-                    <div className="flex-1 border-kac-steel-light pt-1 relative">
+                    <div className="flex-1 border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
                         <div className="text-sm border-dashed text-kac-bone-dark">
-                            <Icon icon="scrollQuill" className="h-4 inline-block" />
-                            &ensp;notes
+                            <Icon icon="scrollQuill" className="h-4 mr-1 inline-block " />
+                            {notes.length > 0 ? (
+                                <div className={notesClassName}>{notes}</div>
+                            ) : (
+                                <>
+                                    <div className="border-b-2 border-dashed ml-7"></div>
+                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
+                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
+                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
+                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
+                                </>
+                            )}
                         </div>
-                        <div className="min-h-16 flex-1 text-sm">{notes}</div>
-                        {notes.length === 0 && (
-                            <>
-                                <div className="border-b-2 border-dashed absolute top-[2em] left-0 w-full"></div>
-                                <div className="border-b-2 border-dashed absolute top-[4em] left-0 w-full"></div>
-                                <div className="border-b-2 border-dashed absolute top-[6em] left-0 w-full"></div>
-                                <div className="border-b-2 border-dashed absolute top-[8em] left-0 w-full"></div>
-                                <div className="border-b-2 border-dashed absolute top-[10em] left-0 w-full"></div>
-                            </>
-                        )}
                     </div>
                 )}
             </div>

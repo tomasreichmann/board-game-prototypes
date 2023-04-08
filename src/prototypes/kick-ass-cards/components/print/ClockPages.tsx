@@ -25,15 +25,14 @@ export default function ClockPages() {
                 <PrintPage key={"page-" + pageIndex}>
                     <div className="flex-1 flex flex-row flex-wrap content-center items-stretch">
                         {range(CARDS_PER_PAGE).map((cardIndex) => {
-                            const total = [4, 6, 8, 12].at(cardIndex % 4);
+                            const total = [4, 6, 8, 12].at(cardIndex % 4) as number;
                             return (
                                 <Clock
                                     key={cardIndex}
+                                    forPrint
                                     total={total}
                                     current={0}
                                     {...blankActor}
-                                    threat=" "
-                                    reward=" "
                                     className="flex-1"
                                 >
                                     <PrintMarkerCorners />

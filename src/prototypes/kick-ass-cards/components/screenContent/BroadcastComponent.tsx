@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from "uuid";
-import { Button } from "react-daisyui";
 import Icon from "../../../../components/Icon/Icon";
 import {
     AnimationEnum,
@@ -9,7 +8,7 @@ import {
     typeComponentMap,
     useBroadcastData,
 } from "../../services/broadcastScreen";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export type BroadcastComponentProps<ContentType extends ScreenContentTypeEnum> = {
     type: ContentType;
@@ -47,7 +46,7 @@ export default function BroadcastComponent<ContentType extends ScreenContentType
         ];
 
         return (
-            <div className={clsx("relative not-prose", className)}>
+            <div className={twMerge("relative not-prose", className)}>
                 <Component {...(props as any)} />
                 <div className="dropdown dropdown-bottom dropdown-end absolute right-2 top-2 flex flex-col gap-2">
                     <label

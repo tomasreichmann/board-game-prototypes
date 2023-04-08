@@ -5,6 +5,7 @@ import { AssetType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import Image from "../Image";
+import { twMerge } from "tailwind-merge";
 // import "./AssetCard.css";
 
 export type AssetCardProps = React.PropsWithChildren<{ className?: string; size?: PaperProps["size"] } & AssetType>;
@@ -70,7 +71,7 @@ export default function AssetCard({
     const graphics = isIcon(icon) ? (
         <Icon
             icon={icon}
-            className={clsx(
+            className={twMerge(
                 "max-h-fit",
                 outcomeColorClassNameMap[icon] || "text-iron-light",
                 effectSizeClassNameMap[icon] || "h-16"

@@ -1,10 +1,13 @@
 import React, { CSSProperties, SVGProps } from "react";
 import clsx from "clsx";
-import { PlayerCharacterType } from "../../types";
+import { ActorType } from "../../types";
 import CharacterOutline from "../../media/character-outline.svg";
 import Icon from "../Icon";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import Image, { ImageProps } from "../Image";
+import Clock from "../Clock";
+import { twMerge } from "tailwind-merge";
+import DiceCounter from "../DiceCounter";
 // import "./ActorCard.css";
 
 const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
@@ -15,30 +18,35 @@ export type ActorCardProps = React.PropsWithChildren<
         size?: PaperProps["size"];
         imagePosition?: CSSProperties["backgroundPosition"];
         notesClassName?: string;
+        forPrint?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
-    } & PlayerCharacterType
+    } & ActorType
 >;
 
 export default function ActorCard({
     className,
     imagePosition,
-    size,
+    forPrint,
+    size = forPrint ? "US game" : undefined,
     name = "",
     imageUri,
-    occupation = "",
+    occupation = forPrint ? "" : null,
     toughness = 0,
+    currentToughness = toughness,
     notesClassName = "inline text-sm",
-    notes = "",
+    threat = forPrint ? "" : null,
+    reward = forPrint ? "" : null,
+    notes = forPrint ? "" : null,
     ImageComponent = Image,
     children,
 }: ActorCardProps) {
     return (
         <PaperOrDiv
             size={size}
-            className={clsx("ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark", className)}
+            className={twMerge("ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark", className)}
         >
-            <div className="flex-1 basis-auto flex flex-col gap-2">
-                <div className="relative rounded flex-grow flex flex-col text-kac-steel-light border-2 border-kac-steel max-h-[33%]">
+            <div className="flex-1 flex flex-col gap-2">
+                <div className="flex-1 relative rounded flex flex-col text-kac-steel-light border-2 border-kac-steel h-16">
                     {imageUri ? (
                         <ImageComponent
                             src={imageUri}
@@ -47,40 +55,65 @@ export default function ActorCard({
                             objectPosition={imagePosition}
                         />
                     ) : (
-                        <CharacterOutlineImage style={{}} className="h-full w-full" />
+                        <CharacterOutlineImage style={{}} className="h-full w-full text-kac-steel-light" />
+                    )}
+                    {toughness > 0 && (
+                        <DiceCounter
+                            current={currentToughness}
+                            total={toughness}
+                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent drop-shadow-sm opacity-50 text-white h-20"
+                            iconClassName="h-3/4 max-h-20"
+                            currentClassName="text-red-300"
+                        />
                     )}
                 </div>
-                <div>
-                    <div className="text-sm flex flex-row gap-4">
-                        <h2 className="flex-1 text-lg font-kacHeading leading-tight flex flex-row gap-2">
-                            <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel" />
-                            {name || <div className="border-b-2 border-dashed mt-[2em]" />}
-                        </h2>
-                        {toughness > 0 && (
-                            <div className="text-sm border-dashed justify-end text-kac-blood font-kacHeading flex flex-row">
-                                {toughness}&nbsp;
-                                <Icon icon="drop" className="h-4" />
-                            </div>
+                <div className="text-sm flex flex-row gap-4">
+                    <h2 className="flex-1 text-md font-kacHeading leading-tight flex flex-row gap-2">
+                        <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
+                        {name || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
+                    </h2>
+                    {toughness > 0 && (
+                        <div className="text-sm border-dashed justify-end text-kac-blood font-kacHeading flex flex-row">
+                            {toughness}&nbsp;
+                            <Icon icon="drop" className="h-5" />
+                        </div>
+                    )}
+                </div>
+                {occupation !== null && (
+                    <h2 className="text-sm flex flex-row gap-2">
+                        <Icon icon="toolbox" className="h-5 mr-1 flex-shrink-0 inline-block text-kac-steel-dark" />
+                        {occupation || <div className="flex-1 border-b-2 border-dashed mt-[2em] " />}
+                    </h2>
+                )}
+                {threat !== null && (
+                    <div className="text-sm text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
+                        <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block text-sm" />
+                        {threat ? (
+                            <p className="flex-grow text-sm font-kacBody">{threat}</p>
+                        ) : (
+                            <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}
                     </div>
-                    {occupation !== null && (
-                        <h2 className="text-sm flex flex-row gap-2">
-                            <Icon icon="toolbox" className="h-4 mr-1 flex-shrink-0 inline-block text-kac-steel" />
-                            {occupation || <div className="border-b-2 border-dashed mt-[2em] " />}
-                        </h2>
-                    )}
-                </div>
+                )}
+                {reward !== null && (
+                    <div className="text-sm text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
+                        <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
+                        {reward ? (
+                            <p className="flex-grow text-sm font-kacBody">{reward}</p>
+                        ) : (
+                            <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
+                        )}
+                    </div>
+                )}
                 {notes !== null && (
-                    <div className="flex-1 border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
-                        <div className="text-sm border-dashed text-kac-bone-dark">
-                            <Icon icon="scrollQuill" className="h-4 mr-1 inline-block " />
+                    <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
+                        <div className="text-sm border-dashed text-kac-bone-dark leading-tight">
+                            <Icon icon="scrollQuill" className="h-5 mr-2 inline-block " />
                             {notes.length > 0 ? (
                                 <div className={notesClassName}>{notes}</div>
                             ) : (
                                 <>
                                     <div className="border-b-2 border-dashed ml-7"></div>
-                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
-                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
                                     <div className="border-b-2 border-dashed mt-[2em]"></div>
                                     <div className="border-b-2 border-dashed mt-[2em]"></div>
                                 </>

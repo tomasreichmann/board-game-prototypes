@@ -1,15 +1,15 @@
 import "./KickAssCardsPrototype.css";
 import { Outlet } from "react-router-dom";
-import ComponentsRoute from "./routes/ComponentsRoute";
-import EncountersRoute from "./routes/EncountersRoute";
+import ComponentsRoute from "./components/routes/ComponentsRoute";
+import EncountersRoute from "./components/routes/EncountersRoute";
 import { Button } from "react-daisyui";
 import Icon from "./components/Icon";
 import { PropsWithChildren } from "react";
 import { RouteDefinition } from "../../routeTypes";
-import InfoRoute from "./routes/InfoRoute";
-import EncounterRoute from "./routes/EncounterRoute";
-import ScreenRoute from "./routes/ScreenRoute";
-import PrintRoute from "./routes/PrintRoute";
+import InfoRoute from "./components/routes/InfoRoute";
+import EncounterRoute from "./components/routes/EncounterRoute";
+import ScreenRoute from "./components/routes/ScreenRoute";
+import PrintRoute from "./components/routes/PrintRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 

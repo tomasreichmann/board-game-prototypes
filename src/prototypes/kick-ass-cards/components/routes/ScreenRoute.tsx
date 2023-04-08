@@ -1,5 +1,5 @@
 import React from "react";
-import { kickAssCardsScreenStorageKey } from "../KickAssCardsPrototype";
+import { kickAssCardsScreenStorageKey } from "../../KickAssCardsPrototype";
 import BroadcastRoute from "./BroadcastRoute";
 
 export default function ScreenRoute() {

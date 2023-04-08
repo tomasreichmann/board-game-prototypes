@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { EffectType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
@@ -38,7 +38,7 @@ const getGraphics = (icon: EffectType["icon"]) => {
         return (
             <Icon
                 icon={icon}
-                className={clsx(
+                className={twMerge(
                     "max-h-fit",
                     outcomeColorClassNameMap[icon] || "text-iron-light",
                     effectSizeClassNameMap[icon] || "h-16"
@@ -65,7 +65,7 @@ export default function EffectCard({
 }: EffectCardProps) {
     const graphics = getGraphics(icon);
     return (
-        <PaperOrDiv size={size} className={clsx("EffectCard bg-white p-5 flex flex-col gap-2", className)}>
+        <PaperOrDiv size={size} className={twMerge("EffectCard bg-white p-5 flex flex-col gap-2", className)}>
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             {graphics}
             <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">

@@ -1,13 +1,14 @@
 import React, { SVGProps } from "react";
-import clsx from "clsx";
 import { PlayerCharacterType } from "../../types";
 import CharacterOutline from "../../media/character-outline.svg";
 import Icon from "../Icon";
-// import "./PlayerCharacterCard.css";
+import { twMerge } from "tailwind-merge";
 
 const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
 
 export type PlayerCharacterCardProps = React.PropsWithChildren<{ className?: string } & PlayerCharacterType>;
+
+const iconProps = { className: "h-4 inline-block" };
 
 export default function PlayerCharacterCard({
     className,
@@ -21,35 +22,34 @@ export default function PlayerCharacterCard({
     notes = "",
     children,
 }: PlayerCharacterCardProps) {
-    const iconProps = { className: "h-5 inline-block -my-1" };
     return (
         <div
-            className={clsx(
+            className={twMerge(
                 "PlayerCharacterCard relative bg-white p-5 flex flex-row gap-5 text-kac-steel-dark",
                 className
             )}
         >
             <div className="flex-1 flex flex-col gap-2">
                 <div className="relative h-1/3 rounded flex flex-col text-kac-steel-light border-2 border-kac-steel">
-                    <CharacterOutlineImage className="h-full w-full " style={{}} />
+                    <CharacterOutlineImage className="h-full w-full" style={{}} />
                 </div>
                 <div>
                     <div className="text-sm border-dashed">
-                        <Icon icon="fountainPen" className="h-4 inline-block" />
+                        <Icon icon="fountainPen" {...iconProps} />
                         &ensp;name
                     </div>
                     <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{name}</h2>
                 </div>
                 <div>
                     <div className="text-sm border-dashed">
-                        <Icon icon="toolbox" className="h-4 inline-block" />
+                        <Icon icon="toolbox" {...iconProps} />
                         &ensp;occupation
                     </div>
                     <h2 className="text-lg font-kacHeading border-b-2 border-dashed min-h-8">{occupation}</h2>
                 </div>
                 <div className="flex-1 flex flex-col">
                     <div className="text-sm">
-                        <Icon icon="checkedShield" className="h-4 inline-block" />
+                        <Icon icon="checkedShield" {...iconProps} />
                         &ensp;titles
                     </div>
                     <div className="flex-1 min-h-4xl relative">
@@ -70,7 +70,7 @@ export default function PlayerCharacterCard({
             <div className="flex-1 flex flex-col gap-2">
                 <div className="flex-1 flex flex-col">
                     <div className="text-sm text-kac-fire">
-                        <Icon icon="mightyForce" className="h-4 inline-block" />
+                        <Icon icon="mightyForce" {...iconProps} />
                         &ensp;specials
                     </div>
                     <div className="min-h-16 flex-1 relative">
@@ -91,7 +91,7 @@ export default function PlayerCharacterCard({
                 </div>
                 <div className="flex-1 flex flex-col ">
                     <div className="text-sm border-t-2 text-kac-cloth border-kac-steel-light pt-1">
-                        <Icon icon="pointyHat" className="h-4 inline-block" />
+                        <Icon icon="pointyHat" {...iconProps} />
                         &ensp;tricks
                     </div>
                     <div className="min-h-16 flex-1 relative">
@@ -112,7 +112,7 @@ export default function PlayerCharacterCard({
                 </div>
                 <div className="flex-1 flex flex-col ">
                     <div className="text-sm border-t-2 border-kac-steel-light pt-1 text-kac-blood">
-                        <Icon icon="drop" className="h-4 inline-block" />
+                        <Icon icon="drop" {...iconProps} />
                         &ensp;wounds
                     </div>
                     <div className="min-h-16 flex-1 relative">
@@ -135,7 +135,7 @@ export default function PlayerCharacterCard({
             <div className="flex-1 flex flex-col gap-2">
                 <div className="flex-1">
                     <div className="text-sm border-dashed text-kac-gold-dark">
-                        <Icon icon="chest" className="h-4 inline-block" />
+                        <Icon icon="chest" {...iconProps} />
                         &ensp;assets
                     </div>
                     <div className="min-h-16 flex-1 relative">
@@ -159,7 +159,7 @@ export default function PlayerCharacterCard({
                 </div>
                 <div className="flex-1 border-t-2 border-kac-steel-light pt-1 relative">
                     <div className="text-sm border-dashed text-kac-bone-dark">
-                        <Icon icon="scrollQuill" className="h-4 inline-block" />
+                        <Icon icon="scrollQuill" {...iconProps} />
                         &ensp;notes
                     </div>
                     <div className="min-h-16 flex-1 ">{notes}</div>

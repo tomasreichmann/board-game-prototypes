@@ -4,7 +4,7 @@ import Paper from "../../../../components/print/Paper/Paper";
 import { OutcomeType } from "../../types";
 import Icon, { IconType } from "../Icon";
 import RichText from "../RichText";
-// import "./OutcomeCard.css";
+import { twMerge } from "tailwind-merge";
 
 export type OutcomeCardProps = React.PropsWithChildren<{ className?: string } & OutcomeType>;
 
@@ -27,7 +27,7 @@ const outcomeColorClassNameMap: { [key: string]: string } = {
 
 export default function OutcomeCard({ className, slug, title, icon, description, children }: OutcomeCardProps) {
     return (
-        <Paper size="Mini US game" className={clsx("OutcomeCard bg-white p-5 flex flex-col gap-2", className)}>
+        <Paper size="Mini US game" className={twMerge("OutcomeCard bg-white p-5 flex flex-col gap-2", className)}>
             <div>
                 <div className="text-slate-400 text-center text-xs">{slug}</div>
             </div>

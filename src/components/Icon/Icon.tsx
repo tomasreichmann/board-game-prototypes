@@ -30,6 +30,13 @@ import crowbar from "./media/crowbar.svg";
 import crownCoin from "./media/crown-coin.svg";
 import crownedSkull from "./media/crowned-skull.svg";
 import crystalBall from "./media/crystal-ball.svg";
+import dx from "./media/dx.svg";
+import d4 from "./media/d4.svg";
+import d6 from "./media/d6.svg";
+import d8 from "./media/d8.svg";
+import d10 from "./media/d10.svg";
+import d12 from "./media/d12.svg";
+import d20 from "./media/d20.svg";
 import dart from "./media/dart.svg";
 import deathSkull from "./media/death-skull.svg";
 import divert from "./media/divert.svg";
@@ -153,6 +160,13 @@ export const iconMap = {
     crownCoin,
     crownedSkull,
     crystalBall,
+    dx,
+    d4,
+    d6,
+    d8,
+    d10,
+    d12,
+    d20,
     dart,
     deathSkull,
     divert,

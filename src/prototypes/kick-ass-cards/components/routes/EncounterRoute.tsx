@@ -1,21 +1,17 @@
-import { encountersMap } from "../data/encounters";
+import { encountersMap } from "../../data/encounters";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 // required for MDX
 import { Alert } from "react-daisyui";
 import ReactPlayer from "react-player";
-import BroadcastActor from "../components/screenContent/BroadcastActor";
-import BroadcastAsset from "../components/screenContent/BroadcastAsset";
-import BroadcastClock from "../components/screenContent/BroadcastClock";
-import BroadcastEffect from "../components/screenContent/BroadcastEffect";
+import BroadcastActor from "../screenContent/BroadcastActor";
+import BroadcastAsset from "../screenContent/BroadcastAsset";
+import BroadcastClock from "../screenContent/BroadcastClock";
+import BroadcastEffect from "../screenContent/BroadcastEffect";
 import clsx from "clsx";
-import EncounterImage from "../components/EncounterImage";
-import ComponentList from "../components/ComponentList";
-import BroadcastPaper from "../components/screenContent/BroadcastPaper";
-
-const List = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
-    <div className={clsx("flex flex-row gap-4 flex-wrap my-4", className)}>{children}</div>
-);
+import EncounterImage from "../EncounterImage";
+import ComponentList from "../ComponentList";
+import BroadcastPaper from "../screenContent/BroadcastPaper";
 
 const Columns = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
     <div
@@ -48,7 +44,7 @@ export default function EncounterRoute() {
         setEncounter(null);
         let isValid = true;
         const pathWithoutExtension = path.replace("/.mdx$/", "");
-        import(`../data/encounters/${pathWithoutExtension}.mdx`)
+        import(`../../data/encounters/${pathWithoutExtension}.mdx`)
             .then((data) => {
                 if (isValid) {
                     console.dir(data);
@@ -57,7 +53,7 @@ export default function EncounterRoute() {
                 }
             })
             .catch((error) => {
-                console.error(`../data/encounters/${path} Error:`, error);
+                console.error(`../../data/encounters/${path} Error:`, error);
                 setError(error);
             });
         return () => {

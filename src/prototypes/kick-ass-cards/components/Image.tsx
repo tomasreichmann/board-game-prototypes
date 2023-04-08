@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export type ImageProps = React.PropsWithChildren<{
     className?: string;
@@ -11,7 +11,7 @@ export type ImageProps = React.PropsWithChildren<{
 
 export default function Image({ className, objectFit, objectPosition, style, src, children }: ImageProps) {
     return (
-        <div className={clsx("relative overflow-hidden", className)} style={style}>
+        <div className={twMerge("relative overflow-hidden", className)} style={style}>
             <img src={src} alt="" style={{ objectFit, objectPosition }} className="h-full w-full" />
             {children}
         </div>

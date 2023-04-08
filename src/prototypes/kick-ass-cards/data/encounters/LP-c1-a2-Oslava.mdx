@@ -22,7 +22,15 @@ import Vyzkumnice from "./LP-akt1-Vyzkumnice.mdx";
 import Viktor from "./LP-character-Viktor.mdx";
 
 <div className="flex flex-row gap-4 flex-wrap my-4">
-    <Viktor size="Trump" className="inline-block" />
+    <Actor
+        name="Viktor"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/viktor.png"
+        imagePosition="center 30%"
+        occupation="Lodní inženýr"
+        notes="Sebevědomí 0/4"
+    />
 </div>
 
 -   Přišel k vám Viktor a donesl drinky - všechny najednou: Led v nich už je rozpuštěný.
@@ -83,7 +91,7 @@ import Viktor from "./LP-character-Viktor.mdx";
 <div className="flex flex-row gap-4 flex-wrap my-4">
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Trump"
+        size="US game"
         title="Budování respektu pro Viktora u výzkumnic"
         reward="Mental stim - 2 akce"
         current={0}
@@ -91,7 +99,7 @@ import Viktor from "./LP-character-Viktor.mdx";
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Trump"
+        size="US game"
         title="Rozpuštění zdrženlivosti výzkumnic"
         reward="Consumable"
         current={0}
@@ -99,7 +107,7 @@ import Viktor from "./LP-character-Viktor.mdx";
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Trump"
+        size="US game"
         title="Pověst posádky"
         reward="Každý: Magnetický čip"
         threat="Chuligáni jedni hovadský"

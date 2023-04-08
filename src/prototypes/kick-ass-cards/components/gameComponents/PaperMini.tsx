@@ -1,9 +1,5 @@
-import React, { SVGProps } from "react";
-import clsx from "clsx";
-import { PlayerCharacterType } from "../../types";
-import CharacterOutline from "../../media/character-outline.svg";
-import Icon from "../Icon";
-// import "./PaperMini.css";
+import React from "react";
+import { twMerge } from "tailwind-merge";
 
 export type PaperMiniProps = React.PropsWithChildren<{
     imageUri: string;
@@ -44,7 +40,7 @@ export default function PaperMini({
     children,
 }: PaperMiniProps) {
     return (
-        <div className={clsx("PaperMini flex flex-col", className)}>
+        <div className={twMerge("PaperMini flex flex-col", className)}>
             <div
                 className={backBaseClassName}
                 style={{

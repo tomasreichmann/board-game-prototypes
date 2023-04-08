@@ -1,7 +1,7 @@
 import React from "react";
-import Playtesters from "../components/Playtesters";
-import Credits from "../components/Credits";
-import Changelog from "../../dungeon-time/components/Changelog";
+import Playtesters from "../Playtesters";
+import Credits from "../Credits";
+import Changelog from "../../../dungeon-time/components/Changelog";
 
 export default function InfoRoute() {
     return (

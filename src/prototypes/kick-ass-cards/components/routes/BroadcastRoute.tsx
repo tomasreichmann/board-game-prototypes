@@ -1,12 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { ScreenStoreActionTypeEnum, useBroadcastData } from "../services/broadcastScreen";
-import DataToggle from "../../../components/DataToggle";
-import ScreenContentWrapper from "../components/screenContent/ScreenContentWrapper";
-import ErrorBoundary from "../../../components/ErrorBoundary";
+import { ScreenStoreActionTypeEnum, useBroadcastData } from "../../services/broadcastScreen";
+import DataToggle from "../../../../components/DataToggle";
+import ScreenContentWrapper from "../screenContent/ScreenContentWrapper";
+import ErrorBoundary from "../../../../components/ErrorBoundary";
 import clsx from "clsx";
 import { Button } from "react-daisyui";
-import Icon from "../components/Icon";
+import Icon from "../Icon";
 
 export type BroadcastRouteProps = { storageKey: string; withPrintMarkerCorners?: boolean };
 

@@ -26,7 +26,7 @@ export default function ActorCardPages() {
                     <div className="flex flex-wrap content-center items-center">
                         {range(CARDS_PER_PAGE).map((cardIndex) => {
                             return (
-                                <ActorCard key={cardIndex} size="Trump" {...blankActor}>
+                                <ActorCard key={cardIndex} forPrint size="Trump" {...blankActor}>
                                     <PrintMarkerCorners />
                                 </ActorCard>
                             );

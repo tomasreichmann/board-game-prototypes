@@ -13,6 +13,17 @@ export type PlayerCharacterType = {
     toughness?: number;
 };
 
+export type ActorType = {
+    name: string;
+    imageUri?: string;
+    occupation?: string | null;
+    toughness?: number;
+    currentToughness?: number;
+    reward?: string | null;
+    threat?: string | null;
+    notes?: string | null;
+};
+
 export type AssetType = {
     slug: string;
     title: string;

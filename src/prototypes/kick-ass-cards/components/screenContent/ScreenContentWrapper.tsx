@@ -1,7 +1,7 @@
 import React from "react";
-import clsx from "clsx";
 import { AnimationEnum, ScreenContentTypeEnum, typeComponentMap } from "../../services/broadcastScreen";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
+import { twMerge } from "tailwind-merge";
 
 export type ScreenContentWrapperProps<ContentType extends ScreenContentTypeEnum> = React.PropsWithChildren<{
     type: ContentType;
@@ -21,7 +21,7 @@ export default function ScreenContentWrapper<ContentType extends ScreenContentTy
     const { className } = props;
     const Component = typeComponentMap[type];
     return (
-        <Component {...(props as any)} className={clsx(animation && "animate-" + animation, className)}>
+        <Component {...(props as any)} className={twMerge(animation && "animate-" + animation, className)}>
             {withPrintMarkerCorners && <PrintMarkerCorners />}
             {children}
         </Component>

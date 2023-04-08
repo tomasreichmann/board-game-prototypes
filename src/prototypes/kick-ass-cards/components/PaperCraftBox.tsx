@@ -1,6 +1,5 @@
 import React from "react";
-import clsx from "clsx";
-// import "./PapercraftBox.css";
+import { twMerge } from "tailwind-merge";
 
 export type PaperCraftBoxProps = React.PropsWithChildren<{
     className?: string;
@@ -112,7 +111,7 @@ export default function PaperCraftBox({
     );
     const boxInsideBack = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{ height: contentDepth + "mm", width: contentWidth + "mm", ...cutTopStyle }}
         >
             {showLabels && <Label>{isInside ? "boxInsideBack" : "boxOutsideBack"}</Label>}
@@ -140,7 +139,7 @@ export default function PaperCraftBox({
 
     const boxLeftInsidePlug = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{
                 height: contentHeight / 2 + "mm",
                 width: paperThickness * 5 + "mm",
@@ -201,7 +200,7 @@ export default function PaperCraftBox({
 
     const boxBottomInside = (
         <div
-            className={clsx("relative flex flex-row justify-between items-center", classNameVisible)}
+            className={twMerge("relative flex flex-row justify-between items-center", classNameVisible)}
             style={{ height: contentHeight + "mm", width: contentWidth + "mm" }}
         >
             {boxBottomLeftCutout}
@@ -248,7 +247,7 @@ export default function PaperCraftBox({
 
     const boxRightInsidePlug = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{
                 height: contentHeight / 2 + "mm",
                 width: paperThickness * 5 + "mm",
@@ -266,7 +265,7 @@ export default function PaperCraftBox({
     const boxInsideFrontFlapLeft = boxInsideBackFlapLeft;
     const boxInsideFront = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{ height: contentDepth + "mm", width: contentWidth + "mm" }}
         >
             {showLabels && <Label>{isInside ? "boxInsideFront" : "boxOutsideFront"}</Label>}
@@ -277,7 +276,7 @@ export default function PaperCraftBox({
 
     const lidInsideTopFlapLeft = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{
                 height: contentHeight + "mm",
                 width: Math.min(contentHeight, contentDepth) / 2 + "mm",
@@ -305,7 +304,7 @@ export default function PaperCraftBox({
     );
     const lidTopInside = (
         <div
-            className={clsx("relative flex flex-row justify-between", classNameVisible)}
+            className={twMerge("relative flex flex-row justify-between", classNameVisible)}
             style={{ height: contentHeight + "mm", width: contentWidth + "mm" }}
         >
             {showLabels && <Label>{isInside ? "lidTopInside" : "lidTopOutside"}</Label>}
@@ -315,7 +314,7 @@ export default function PaperCraftBox({
     const lidTopInsideBendRight = lidTopInsideBendLeft;
     const lidInsideTopFlapRight = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{
                 height: contentHeight + "mm",
                 width: Math.min(contentHeight, contentDepth) / 2 + "mm",
@@ -335,7 +334,7 @@ export default function PaperCraftBox({
 
     const lidInsideFrontFlapLeft = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{
                 height: contentDepth + "mm",
                 width: Math.min(contentHeight, contentDepth) / 2 + "mm",
@@ -353,7 +352,7 @@ export default function PaperCraftBox({
     );
     const lidInsideFront = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{ height: contentDepth + "mm", width: contentWidth + "mm", ...cutBottomStyle }}
         >
             {showLabels && <Label>{isInside ? "lidInsideFront" : "lidOutsideFront"}</Label>}
@@ -362,7 +361,7 @@ export default function PaperCraftBox({
     );
     const lidInsideFrontFlapRight = (
         <div
-            className={clsx("relative", classNameVisible)}
+            className={twMerge("relative", classNameVisible)}
             style={{
                 height: contentDepth + "mm",
                 width: Math.min(contentHeight, contentDepth) / 2 + "mm",
@@ -380,7 +379,7 @@ export default function PaperCraftBox({
     );
 
     return (
-        <div className={clsx("PaperCraftBox relative", className)}>
+        <div className={twMerge("PaperCraftBox relative", className)}>
             <div className="flex flex-col items-center">
                 <div className="relative flex flex-row justify-center">
                     {boxInsideBackFlapLeft}

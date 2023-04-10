@@ -19,59 +19,14 @@ act: 1
 -   Na zprávu od Ony nemusíte dlouho čekat: "Za každou cenu zabraňte infikované lodi dosáhnout černosféry Klanu"
 -   Senzory ukazují, že spórová loď míří k mezihvězdné bráně
 -   Mezihvězdný koridor je otevřený, zvláštní... řekli byste, že Klan má dost moci nechat koridor ve výjimečných případech zavřít.
+
     -   (Mezihvězdná brána je porostlá spórami, které koridor přímo k černosféře Klanu drží otevřený)
--   (Sledujeme Integritu lodi RH4, Integritu spórové lodi, Vzdálenost lodí)
+
+## Přetaktování
+
+Na lodi se nachází spousta možností, jak načerpat extra sílu a obrnit se v případě největší nouze tzv. _přetaktováním_. Jde ovšem o nebezpečný proces, který vždy zanechá nějaké trvalé následky. Může jít např. o experimentální stimulanty, propojení mozku s umělou inteligencí lodi, nebo přetížení napětí implantátů energií z lodního jádra.
 
 <List>
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Integrita lodi RH4"
-        current={4}
-        total={4}
-        threat="Evakuace záchrannými moduly"
-        reward="Podpora lodních systémů"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Integrita spórové lodi"
-        current={6}
-        total={6}
-        reward="Loďní systémy přestanou fungovat"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Vzdálenost lodí"
-        current={5}
-        total={6}
-        threat="Pokud by se vzdálenost měla zvýšit nad 6, Spórová loď zmizí z dosahu"
-        reward="Možnost výsadku"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Salva 4 raket"
-        current={0}
-        total={2}
-        threat="Integrita klesne o 4 - počet sestřelených raket"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Chapadla na spórové lodi"
-        current={3}
-        total={3}
-        threat="Chapadla chrání loď a útočí"
-        reward="Loď je možné obsadit"
-    />
-    <Effect
-        icon="/LP/icons/broken-console.png"
-        title="Vyřazená stanice"
-        effect="Lodní systémy dané stanice jsou mimo provoz dokud je hráč neopraví - je potřeba Úspěch"
-        className="drop-shadow-md print:drop-shadow-none"
-    />
     <Effect
         icon="/LP/icons/overclock-body.png"
         title="Přetaktovat tělo"
@@ -91,11 +46,11 @@ act: 1
 Různé hráčské akce, např. zabíjení civilistů, bezohledné využití technologie / bio-chemie / zbraní mohou způsobit, že postava dostane +1 Zkázu.
 
 -   Pokud hráč dosáhne 2/4 Zkázy, dostane tajnou zprávu, která naznačuje, jaká zkáza ho čeká - První stupeň zkázy.
-    -   Technozkáza: Postava ztrácí emoce, ovládají jí spíše programy než slova ostatních. Jde slepě za svým cílem a přestává brát ohled na životy ostatních včetně své družiny
-    -   Psychozkáza: Postava ztrácí rozum, rozhoduje se tak, aby maximalizovala svoje emoce, dobré nebo zlé bez ohledu na misi.
-    -   Spórozkáza: Z postavy se stává spórový hybrid. Spóry ji fascinují a chce je aktivně šířit. Části těla nahrazují spórové tkáně.
-    -   Nenávistná zkáza: Postava je pohlcena znechucením, lehce se vytočí, stále nadává, napadá ostatní a staví se do opozice kdekoliv může.
-    -   Ničivá zkáza: Postava je pohlcena vztekem. Vystavuje se nebezpečí a páchá škodu kam přijde. Její tělo na jednu stranu sílí, ale postupně se rozpadá.
+    -   **Technozkáza:** Postava ztrácí emoce, ovládají jí spíše programy než slova ostatních. Jde slepě za svým cílem a přestává brát ohled na životy ostatních včetně své družiny
+    -   **Psychozkáza:** Postava ztrácí rozum, rozhoduje se tak, aby maximalizovala svoje emoce, dobré nebo zlé bez ohledu na misi.
+    -   **Spórozkáza:** Z postavy se stává spórový hybrid. Spóry ji fascinují a chce je aktivně šířit. Části těla nahrazují spórové tkáně.
+    -   **Nenávistná zkáza:** Postava je pohlcena znechucením, lehce se vytočí, stále nadává, napadá ostatní a staví se do opozice kdekoliv může.
+    -   **Ničivá zkáza:** Postava je pohlcena vztekem. Vystavuje se nebezpečí a páchá škodu kam přijde. Její tělo na jednu stranu sílí, ale postupně se rozpadá.
 -   Pokud se dostane na Zkázu 3/4, dostane druhý stupeň zkázy
 -   Pokud se dostane na Zkázu 4/4, dostane třetí stupeň zkázy
     -   Hráč podléhá svým démonům a stává se z něj monstrum,
@@ -240,12 +195,13 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
     -   Chapadla mohou odrazit loď, pokud je na vzdálenosti 0/6
     -   Chapadla mohou bránit loď před nejnebezpečnějšími útoky a nechat zníčit místo toho sebe.
 -   Hráči se mohou útokům bránit, pokud to dává smysl v rámci jejich stanoviště
-
-![](/LP/rh4.jpg)
+-   (Sledujeme Integritu lodi RH4, Integritu spórové lodi, Vzdálenost lodí)
 
 <Columns>
 
 <div>
+
+![](/LP/rh4.jpg)
 
 ### Akce hráčů
 
@@ -260,8 +216,37 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
 -   Medik - přenosná zdravotnícká stanice - ošetření hráče (-1 Zranění / -1 Tíseň)
 -   Přetaktování - možnost zvýšit efektivitu výměnou za Zkázu (Efekt Přetaktovat tělo / Přetaktovat mysl), např: - Přímé propojení svého těla se systémy lodi - Přetaktování svých implantátů - Konzumace nebezpečných stimulantů
 
+<List>
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Integrita lodi RH4"
+        current={4}
+        total={4}
+        threat="Evakuace záchrannými moduly"
+        reward="Podpora lodních systémů"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Vzdálenost lodí"
+        current={5}
+        total={6}
+        threat="Pokud by se vzdálenost měla zvýšit nad 6, Spórová loď zmizí z dosahu"
+        reward="Možnost výsadku"
+    />
+    <Effect
+        icon="/LP/icons/broken-console.png"
+        title="Vyřazená stanice"
+        effect="Lodní systémy dané stanice jsou mimo provoz dokud je hráč neopraví - je potřeba Úspěch"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
 </div>
 <div>
+
+![](/LP/ship_with_tentacles.jpg)
 
 ### Akce Spór
 
@@ -277,6 +262,46 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
     -   Plasmové dělo - běžné zranění
 -   Zvětšit vzdálenost zdržením RH4
 
+<List>
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Salva 4 raket"
+        current={4}
+        total={4}
+        threat="Integrita klesne o 4 - počet sestřelených raket"
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/ship_with_tentacles.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        toughness={1}
+        name="Chapadlo na spórové lodi"
+        notesClassName="inline flex-1 text-xs"
+        notes="Ignoruje 1 poškození, blokuje útok na loď"
+        threat="Vrhání kontejnerů"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Integrita spórové lodi"
+        current={6}
+        total={6}
+        reward="Loďní systémy přestanou fungovat"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Chapadla na spórové lodi"
+        current={4}
+        total={4}
+        threat="Chapadla chrání loď a útočí"
+        reward="Loď je možné obsadit"
+    />
+
+</List>
+
 </div>
 
 </Columns>
@@ -287,17 +312,39 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
 
 <Player url="https://youtu.be/rTbJ2qFd-Tc?t=0" controls height={100} />
 
-## Zničení lodi
+![](/LP/ship_in_hyperspace.jpg)
+
+## Zničení lodi RH4
 
 -   Pokud integrita RH4 klesne na 0, tak se loď začne rozpadat.
 -   Záchranné moduly mohou posádku vystřelit, ale jsou pochytané chapadly, nebo silovým polem a nasměrovány do hangáru.
 -   Všechny postavy se mohou bránit úrazům při opouštění lodi, hrozí jim až 2 Zranění.
 -   Pokud jsou na lodi NPC postavy, hráči dostanou na výběr, které 2 NPC chtějí zachránit.
 
+## Zničení spórové lodi
+
+-   Došlo k několika výbuchům, loď zpomalila a nyní bezvládně letí koridorem k jeho plánovanému konci.
+-   Systémy ukazují, že loď opouští několik záchranných modulů.
+-   Záchranné moduly
+
+    -   Stázový modul s ženou uvnitř
+        -   (Žena je Fatima Zimostrázová, manželka doktora Alma Zimostráze a matka Flory.)
+        -   Přívěšek na krku po zmáčknutí zobrazí hologram rodinného portrétu Flory, Alma a Fatimy.
+        -   Analýzou modulu lze zjistit, že je žena tak tak na živu, postrádá totiž spodní polovinu těla.
+        -   Pokud dojde k pokusu o vzkříšení ženy, bude na živu cca minutu, než zkolabuje a nenávratně umře.
+            -   Fatima ihned pozná svojí dceru Floru, i když Flora si jí vůbec nepamatuje.
+            -   Fatima dokáže odpovědět na tři otázky o Almově výzkumu spór, útoku spór na Sporefall a Floře
+    -   Buxus, který udělá vše, aby posádku zničil a nakazil spórami, koho může.
+    -   Singulární hlavice nastavená k výbuchu za 15 minut. Při výbuchu vytvoří malou černou díru, která pohltí vše v okolí 1km a zanikne,
+    -   Doktor Johanes King
+        -   Špičkový doktor, který může zachránit Viktora
+
+    **TODO: postavy a hrozby?**
+
 ## Výsadek
 
 -   Pokud je RH4 na vzdálenosti 0, hráči mohou provést výsadek a obsadit spórovou loď buď skrz otevřený hangár, nebo přes airlock v boční části.
--   Hráči si sebou mohou vzít až 3 NPC
+-   Hráči si sebou mohou vzít každý 1 NPC.
 
 <List>
     <Actor
@@ -321,54 +368,51 @@ Různé hráčské akce, např. zabíjení civilistů, bezohledné využití tec
         occupation="Terran Bezpečák"
         notesClassName="inline flex-1 text-xs"
         notes="Často se tváří přísně a snaží se ukázat svou moc ostatním. Nedostatek zkušeností a slabá morálka často vedou k chybným rozhodnutím a špatnému zvládání situací. Navíc se často uchyluje k nelegálním praktikám, aby si přivydělal a udržel si život na vysoké noze."
-/>
-
-<Actor
-    size="US game"
-    imageUri="/LP/rat-men.jpg"
-    imagePosition="center top"
-    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-    name="Squeko"
-    toughness={3}
-    occupation="Striptér z New Vega"
-    notesClassName="inline flex-1 text-xs"
-    notes="Rodentid Squeko se vždy snažil pro sebe ukousnout co nejvíce šlo, nemá čest, sebezáchova je jeho nejvyšší prioritou. Má vynikající čich a intuici v organicích. Naučil se vyhýbat felinidům, protože je zde přirozené nepřátelství mezi těmito druhy."
-/>
-<Actor
-    size="US game"
-    imageUri="/LP/reptilian_female.jpg"
-    imagePosition="left top"
-    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-    name="Reptiliánka HBFUOAOQLI"
-    occupation="kostymérka a vizážistka"
-    notesClassName="inline flex-1 text-xs"
-    notes="Změnila si jméno z Jackie Liz na HBFUOAOQLI protože je introvertní a chtěla zkomplikovat ostatním ji oslovovat. Nosí svoji tvorbu pokud výjimečně vyjde z domu. OMG! Totální panika, ale navenek zachovává poker face paralyzovaného introverta."
-    toughness={3}
-/>
-<Actor
-    size="US game"
-    imageUri="/LP/cat-hybrid.jpg"
-    imagePosition="left top"
-    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-    name="Lyra"
-    occupation="Feliánka Žoldák"
-    notesClassName="inline flex-1 text-xs"
-    notes="Podniká nebezpečné mise pro svou frakci. Buduje své jméno v lokální galaxii. Je velmi obratná a zdatná. Má brnění a na zakázku vyrobenou energetickou pušku. Hledá smysl a účel své práce, viděla již příliš mnoho násilí."
-    toughness={3}
-/>
-<Actor
-    size="US game"
-    imageUri="/LP/insectoid_female.jpg"
-    imagePosition="left top"
-    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-    name="Buzz"
-    occupation="Insectoidka mechanička"
-    notes="Je ostražitá, drží se spíše stranou, její komunikační znalosti jsou zatím malé, ale lze se s ní nějakým způsobem domluvit. Moc toho teda nenamluví, spíše bzučí."
-    toughness={3}
-/>
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/rat_man.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Squeko"
+        toughness={3}
+        occupation="Striptér z New Vega"
+        notesClassName="inline flex-1 text-xs"
+        notes="Rodentid Squeko se vždy snažil pro sebe ukousnout co nejvíce šlo, nemá čest, sebezáchova je jeho nejvyšší prioritou. Má vynikající čich a intuici v organicích. Naučil se vyhýbat felinidům, protože je zde přirozené nepřátelství mezi těmito druhy."
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/reptilian_female.jpg"
+        imagePosition="left top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="HBFUOAOQLI"
+        occupation="Reptiliánská kostymérka a vizážistka"
+        notesClassName="inline flex-1 text-xs"
+        notes="Změnila si jméno z Jackie Liz na HBFUOAOQLI protože je introvertní a chtěla zkomplikovat ostatním ji oslovovat. Nosí svoji tvorbu pokud výjimečně vyjde z domu. OMG! Totální panika, ale navenek zachovává poker face paralyzovaného introverta."
+        toughness={3}
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/cat-hybrid.jpg"
+        imagePosition="left top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Lyra"
+        occupation="Feliánka Žoldák"
+        notesClassName="inline flex-1 text-xs"
+        notes="Podniká nebezpečné mise pro svou frakci. Buduje své jméno v lokální galaxii. Je velmi obratná a zdatná. Má brnění a na zakázku vyrobenou energetickou pušku. Hledá smysl a účel své práce, viděla již příliš mnoho násilí."
+        toughness={3}
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/insectoid_female.jpg"
+        imagePosition="left top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Buzz"
+        occupation="Insectoidka mechanička"
+        notes="Je ostražitá, drží se spíše stranou, její komunikační znalosti jsou zatím malé, ale lze se s ní nějakým způsobem domluvit. Moc toho teda nenamluví, spíše bzučí."
+        toughness={3}
+    />
 
 </List>
 
 ![](/LP/maps/overgrown_spaceship.jpg)
-
-# Další kapitola - Spórová loď

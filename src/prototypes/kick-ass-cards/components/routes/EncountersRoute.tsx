@@ -82,12 +82,16 @@ export default function EncounterRoute() {
     const prevNext = (prevEncounter || nextEncounter) && (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto flex flex-row justify-between">
             {prevEncounter ? (
-                <a href={kickAssCardsPath + "/encounters/" + prevEncounter.slug}>{prevEncounter.title}</a>
+                <a className="font-bold" href={kickAssCardsPath + "/encounters/" + prevEncounter.slug}>
+                    {prevEncounter.title}
+                </a>
             ) : (
                 <div />
             )}
             {nextEncounter ? (
-                <a href={kickAssCardsPath + "/encounters/" + nextEncounter.slug}>{nextEncounter.title}</a>
+                <a className="font-bold" href={kickAssCardsPath + "/encounters/" + nextEncounter.slug}>
+                    {nextEncounter.title}
+                </a>
             ) : (
                 <div />
             )}

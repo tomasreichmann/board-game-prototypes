@@ -6,7 +6,8 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "deploy": "npm run build && netlify deploy"
     },
     "dependencies": {
         "@esbuild-plugins/node-globals-polyfill": "^0.1.1",

@@ -10,5 +10,5 @@ hindered,"Obtíž",halt,"Můžeš se pohybovat, nebo provádět akce, ale ne obo
 boost,"Posílení",sprint,"Tvoje příští akce má +1 Efekt nebo +1 Pohyb navíc.",4
 freezing,"Mráz",thermometerCold,"Pokud máš na začátku tahu 2x Mráz, získáš Zranění dokud se neohřeješ.",6
 hot,"Horko",thermometerHot,"Pokud máš na začátku tahu 2x Horko, získáš Zranění dokud se neochladíš.",6
-complication,Komplikace,quicksand,"Komplikace tí ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",6
+complication,Komplikace,quicksand,"Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",6
 infection,Spórová infekce,"/LP/icons/spore-infection.png",+1 Zkáza,6

@@ -8,7 +8,12 @@ import Image from "../Image";
 import { twMerge } from "tailwind-merge";
 // import "./AssetCard.css";
 
-export type AssetCardProps = React.PropsWithChildren<{ className?: string; size?: PaperProps["size"] } & AssetType>;
+type OptionalKeysType = "slug" | "cost" | "cardCount";
+
+export type AssetCardProps = React.PropsWithChildren<
+    { className?: string; size?: PaperProps["size"] } & Omit<AssetType, OptionalKeysType> &
+        Partial<Pick<AssetType, OptionalKeysType>>
+>;
 
 const effectSizeClassNameMap: { [key in IconType]?: string } = {
     //SPECIAL: "h-24",
@@ -81,7 +86,7 @@ export default function AssetCard({
         <Image className="max-h-fit h-24" src={icon} objectFit="contain" />
     );
     return (
-        <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2", className)}>
+        <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}>
             <div>
                 <div className="text-slate-400 text-center text-xs">{slug}</div>
             </div>

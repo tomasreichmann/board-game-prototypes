@@ -65,7 +65,10 @@ export default function EffectCard({
 }: EffectCardProps) {
     const graphics = getGraphics(icon);
     return (
-        <PaperOrDiv size={size} className={twMerge("EffectCard bg-white p-5 flex flex-col gap-2", className)}>
+        <PaperOrDiv
+            size={size}
+            className={twMerge("EffectCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}
+        >
             <div className="text-slate-400 text-center text-xs">{slug}</div>
             {graphics}
             <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">

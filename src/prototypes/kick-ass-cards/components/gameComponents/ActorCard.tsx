@@ -43,7 +43,10 @@ export default function ActorCard({
     return (
         <PaperOrDiv
             size={size}
-            className={twMerge("ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark", className)}
+            className={twMerge(
+                "ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark rounded-lg",
+                className
+            )}
         >
             <div className="flex-1 flex flex-col gap-2">
                 <div className="flex-1 relative rounded flex flex-col text-kac-steel-light border-2 border-kac-steel h-16">

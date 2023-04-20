@@ -1,11 +1,9 @@
 import React, { CSSProperties, SVGProps } from "react";
-import clsx from "clsx";
 import { ActorType } from "../../types";
 import CharacterOutline from "../../media/character-outline.svg";
 import Icon from "../Icon";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import Image, { ImageProps } from "../Image";
-import Clock from "../Clock";
 import { twMerge } from "tailwind-merge";
 import DiceCounter from "../DiceCounter";
 // import "./ActorCard.css";
@@ -86,20 +84,20 @@ export default function ActorCard({
                     </h2>
                 )}
                 {threat !== null && (
-                    <div className="text-sm text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block text-sm" />
+                    <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
+                        <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block text-xs" />
                         {threat ? (
-                            <p className="flex-grow text-sm font-kacBody">{threat}</p>
+                            <p className="flex-grow text-xs font-kacBody">{threat}</p>
                         ) : (
                             <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}
                     </div>
                 )}
                 {reward !== null && (
-                    <div className="text-sm text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
+                    <div className="text-xs text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
+                        <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-xs" />
                         {reward ? (
-                            <p className="flex-grow text-sm font-kacBody">{reward}</p>
+                            <p className="flex-grow text-xs font-kacBody">{reward}</p>
                         ) : (
                             <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}
@@ -107,7 +105,7 @@ export default function ActorCard({
                 )}
                 {notes !== null && (
                     <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
-                        <div className="text-sm border-dashed text-kac-bone-dark leading-tight">
+                        <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
                             <Icon icon="scrollQuill" className="h-5 mr-2 inline-block " />
                             {notes.length > 0 ? (
                                 <div className={notesClassName}>{notes}</div>

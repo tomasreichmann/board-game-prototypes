@@ -18,7 +18,7 @@ const outcomeColorClassNameMap: { [key in IconType]?: string } = {
     drop: "text-kac-blood-dark",
     halt: "text-kac-steel-dark",
     knockout: "text-kac-iron-dark",
-    run: "text-kac-curse-dark",
+    run: "text-kac-iron-dark",
     shouting: "text-kac-curse",
     sleepy: "text-kac-cloth",
     sprint: "text-kac-gold-dark",

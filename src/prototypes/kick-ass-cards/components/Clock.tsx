@@ -15,15 +15,6 @@ export type ClockProps = React.PropsWithChildren<{
     current?: number;
 }>;
 
-const countIconMap = {
-    4: "d4",
-    6: "d6",
-    8: "d8",
-    10: "d10",
-    12: "d12",
-    20: "d20",
-} as const;
-
 export default function Clock({
     className,
     size,
@@ -35,12 +26,11 @@ export default function Clock({
     current = 0,
     children,
 }: ClockProps) {
-    const icon = (total in countIconMap && countIconMap[total as keyof typeof countIconMap]) || ("dx" as const);
     return (
         <PaperOrDiv
             size={size}
             className={twMerge(
-                "Clock p-5 flex flex-col gap-5 text-kac-steel-dark min-w-[4cm] bg-white relative",
+                "Clock p-5 flex flex-col gap-5 text-kac-steel-dark min-w-[4cm] bg-white relative rounded-lg",
                 className
             )}
         >

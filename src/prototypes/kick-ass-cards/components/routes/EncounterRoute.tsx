@@ -12,6 +12,7 @@ import clsx from "clsx";
 import EncounterImage from "../EncounterImage";
 import ComponentList from "../ComponentList";
 import BroadcastPaper from "../screenContent/BroadcastPaper";
+import BroadcastHeading from "../screenContent/BroadcastHeading";
 
 const Columns = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
     <div
@@ -82,6 +83,7 @@ export default function EncounterRoute() {
                             List: ComponentList,
                             Columns,
                             img: EncounterImage,
+                            Heading: BroadcastHeading,
                             Player: ReactPlayer,
                             Actor: BroadcastActor,
                             Asset: BroadcastAsset,

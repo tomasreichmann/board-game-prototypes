@@ -6,6 +6,7 @@ import AssetCard, { AssetCardProps } from "../components/gameComponents/AssetCar
 import EffectCard, { EffectCardProps } from "../components/gameComponents/EffectCard";
 import PaperMini, { PaperMiniProps } from "../components/gameComponents/PaperMini";
 import Image, { ImageProps } from "../components/Image";
+import Heading, { HeadingProps } from "../components/Heading";
 
 export enum AnimationEnum {
     FadeOut = "fadeOut",
@@ -14,6 +15,7 @@ export enum AnimationEnum {
 
 export enum ScreenContentTypeEnum {
     Image = "Image",
+    Heading = "Heading",
     Actor = "Actor",
     Asset = "Asset",
     Clock = "Clock",
@@ -36,6 +38,11 @@ export type ScreenImageContentType = {
 export type ActorContentType = {
     type: ScreenContentTypeEnum.Actor;
     props: ActorCardProps;
+} & SharedContentType;
+
+export type HeadingContentType = {
+    type: ScreenContentTypeEnum.Heading;
+    props: HeadingProps;
 } & SharedContentType;
 
 export type AssetContentType = {
@@ -65,6 +72,7 @@ export type PaperContentType = {
 
 export type ScreenContentType =
     | ScreenImageContentType
+    | HeadingContentType
     | ActorContentType
     | AssetContentType
     | ClockContentType
@@ -74,6 +82,7 @@ export type ScreenContentType =
 
 export const typeComponentMap = {
     [ScreenContentTypeEnum.Image]: Image,
+    [ScreenContentTypeEnum.Heading]: Heading,
     [ScreenContentTypeEnum.Actor]: ActorCard,
     [ScreenContentTypeEnum.Asset]: AssetCard,
     [ScreenContentTypeEnum.Clock]: Clock,

@@ -23,6 +23,7 @@ const outcomeColorClassNameMap: { [key in IconType]?: string } = {
     sleepy: "text-kac-cloth",
     sprint: "text-kac-gold-dark",
     quicksand: "text-kac-bone-dark",
+    footTrip: "text-kac-bone-dark",
     stickyBoot: "text-kac-monster",
     tearTracks: "text-kac-cloth",
     thermometerCold: "text-kac-cloth-dark",
@@ -69,7 +70,10 @@ export default function EffectCard({
             size={size}
             className={twMerge("EffectCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}
         >
-            <div className="text-slate-400 text-center text-xs">{slug}</div>
+            <div className="flex flex-row items-center gap-2">
+                <Icon icon="heartBeats" className={"text-kac-steel h-4"} />
+                <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
+            </div>
             {graphics}
             <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">
                 <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>

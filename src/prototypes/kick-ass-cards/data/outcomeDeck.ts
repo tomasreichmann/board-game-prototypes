@@ -4,16 +4,17 @@ import outcomeData from "./outcomes.csv";
 
 export const outcomeMap = arrayToMap(outcomeData, "slug") as { [key in OutcomeSlug]: OutcomeType };
 
-const { special, success, partialSuccess, fumble, chaos } = outcomeMap;
+const { special, success, partial, fumble, chaos } = outcomeMap;
 
 const outcomes: OutcomeType[] = [
     special,
     success,
     success,
     success,
-    partialSuccess,
-    partialSuccess,
-    partialSuccess,
+    partial,
+    partial,
+    partial,
+    fumble,
     fumble,
     fumble,
     fumble,

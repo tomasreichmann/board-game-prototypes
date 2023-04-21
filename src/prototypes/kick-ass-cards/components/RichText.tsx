@@ -3,7 +3,7 @@ import GenericRichText, { RichTextProps as GenericRichTextProps } from "../../..
 // import "./RichText.css";
 
 export const defaultAliasComponentMap: { [key: string]: React.ComponentType<{ match: string }> } = {
-    "\\[BR\\]": () => <br />,
+    "<BR>": () => <br />,
 };
 
 type Alias = Exclude<keyof typeof defaultAliasComponentMap, number>;

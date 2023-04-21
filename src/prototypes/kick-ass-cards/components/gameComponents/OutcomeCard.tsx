@@ -27,9 +27,13 @@ const outcomeColorClassNameMap: { [key: string]: string } = {
 
 export default function OutcomeCard({ className, slug, title, icon, description, children }: OutcomeCardProps) {
     return (
-        <Paper size="Mini US game" className={twMerge("OutcomeCard bg-white p-5 flex flex-col gap-2", className)}>
-            <div>
-                <div className="text-slate-400 text-center text-xs">{slug}</div>
+        <Paper
+            size="Mini US game"
+            className={twMerge("OutcomeCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}
+        >
+            <div className="flex flex-row items-center gap-1">
+                <Icon icon="cardRandom" className={"text-kac-steel h-5"} />
+                <div className="flex-1 text-slate-400 text-center text-xs pr-6">{slug}</div>
             </div>
 
             <div className="flex-1 flex flex-col items-center justify-end gap-1">
@@ -37,7 +41,7 @@ export default function OutcomeCard({ className, slug, title, icon, description,
                     icon={icon}
                     className={clsx(
                         "max-h-fit",
-                        outcomeColorClassNameMap[icon] || "text-iron-light",
+                        outcomeColorClassNameMap[icon] || "text-kac-iron-light",
                         effectSizeClassNameMap[icon] || "h-16"
                     )}
                 />

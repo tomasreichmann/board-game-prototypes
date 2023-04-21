@@ -33,8 +33,8 @@ export default function PlayerBoxPages() {
             <PrintPage key="page-gm">
                 <div className="flex-1 flex flex-col content-center items-stretch">
                     <PaperCraftBox
-                        contentWidth={cardSizes["Mini US game"].mm[0] + safetyMargin}
-                        contentHeight={cardSizes["Mini US game"].mm[1] + safetyMargin}
+                        contentWidth={cardSizes["US game"].mm[0] + safetyMargin}
+                        contentHeight={cardSizes["US game"].mm[1] + safetyMargin}
                         contentDepth={30}
                         classNameVisible="bg-kac-steel"
                         bendStyles={{ borderColor: "#65738b" }}

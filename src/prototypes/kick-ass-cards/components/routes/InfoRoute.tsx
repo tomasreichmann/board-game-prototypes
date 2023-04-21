@@ -1,7 +1,6 @@
 import React from "react";
 import Playtesters from "../Playtesters";
 import Credits from "../Credits";
-import Changelog from "../../../dungeon-time/components/Changelog";
 import Hand from "../layout/Hand";
 import AssetCard from "../gameComponents/AssetCard";
 import Spread from "../layout/Spread";
@@ -14,6 +13,10 @@ export default function InfoRoute() {
     return (
         <>
             <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white container">
+                <h1 className="text-lg">
+                    Kick Ass Cards is a tabletop game system to run narrative games. It is setting independent focused
+                    on roleplay and building drama.
+                </h1>
                 <div className="flex flex-col -gap-10 items-center mb-10">
                     <Spread
                         className="w-full max-w-[600px] h-[350px]"
@@ -61,7 +64,7 @@ export default function InfoRoute() {
                             />,
                             <OutcomeCard
                                 key="1"
-                                slug="partialSuccess"
+                                slug="partial"
                                 title="Částečný úspěch"
                                 icon="dodge"
                                 description="Částečně jsi uspěl (+1 Efekt nebo Úspěch + Komplikace)."
@@ -111,14 +114,6 @@ export default function InfoRoute() {
                         ]}
                     />
                 </div>
-
-                <article className="prose text-kac-iron max-w-none prose-headings:font-kacHeading prose-headings:text-kac-blood prose-a:text-kac-monster prose-strong:text-kac-iron-dark prose-blockquote:text-kac-iron-dark prose-em:text-kac-cloth prose-ul:[--tw-prose-bullets:rgb(123,0,29)]">
-                    <p>
-                        Kick Ass Cards is a tabletop game system to run narrative games. It is setting independent
-                        focused on roleplay and building drama.
-                    </p>
-                </article>
-                <Changelog />
                 <Playtesters />
                 <Credits />
             </div>

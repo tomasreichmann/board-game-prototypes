@@ -10,6 +10,6 @@ hindered,"Obtíž",halt,"Můžeš se pohybovat, nebo provádět akce, ale ne obo
 boost,"Posílení",sprint,"Tvoje příští akce má +1 Efekt nebo +1 Pohyb navíc.",4
 freezing,"Mráz",thermometerCold,"Pokud máš na konci tahu 2x Mráz, získáš Tíseň, dokud se neohřeješ.",6
 hot,"Horko",thermometerHot,"Pokud máš na konci tahu 2x Horko, získáš Zranění, dokud se neochladíš.",6
-complication,Komplikace,quicksand,"Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",6
-infection,Spórová infekce,"/LP/icons/spore-infection.png",+1 Zkáza,6
+complication,Komplikace,footTrip,"Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",6
+infection,Spórová infekce,"/LP/icons/spore-infection.png",+1 Zkáza,0
 doom,Zkáza,"/LP/icons/doom.png",3x Zkáza: Transformace v Monstrum,6

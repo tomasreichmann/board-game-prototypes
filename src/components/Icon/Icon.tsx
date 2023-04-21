@@ -47,6 +47,7 @@ import drop from "./media/drop.svg";
 import explosiveMaterials from "./media/explosive-materials.svg";
 import fairyWand from "./media/fairy-wand.svg";
 import fireRing from "./media/fire-ring.svg";
+import footTrip from "./media/foot-trip.svg";
 import fizzingFlask from "./media/fizzing-flask.svg";
 import flatPlatform from "./media/flat-platform.svg";
 import fountainPen from "./media/fountain-pen.svg";
@@ -55,6 +56,7 @@ import grapple from "./media/grapple.svg";
 import halt from "./media/halt.svg";
 import hangingSign from "./media/hanging-sign.svg";
 import heartBottle from "./media/heart-bottle.svg";
+import heartBeats from "./media/heart-beats.svg";
 import highShot from "./media/high-shot.svg";
 import humanEar from "./media/human-ear.svg";
 import key from "./media/key.svg";
@@ -180,11 +182,13 @@ export const iconMap = {
     fizzingFlask,
     flatPlatform,
     fountainPen,
+    footTrip,
     globeRing,
     grapple,
     halt,
     hangingSign,
     heartBottle,
+    heartBeats,
     highShot,
     humanEar,
     key,

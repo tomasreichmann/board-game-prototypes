@@ -8,7 +8,9 @@ import BroadcastActor from "../screenContent/BroadcastActor";
 import BroadcastAsset from "../screenContent/BroadcastAsset";
 import BroadcastClock from "../screenContent/BroadcastClock";
 import BroadcastEffect from "../screenContent/BroadcastEffect";
+import OutcomeCard from "../gameComponents/OutcomeCard";
 import clsx from "clsx";
+import Hand from "../layout/Hand";
 import EncounterImage from "../EncounterImage";
 import ComponentList from "../ComponentList";
 import BroadcastPaper from "../screenContent/BroadcastPaper";
@@ -82,6 +84,8 @@ export default function EncounterRoute() {
                             Alert,
                             List: ComponentList,
                             Columns,
+                            Hand,
+                            Outcome: OutcomeCard,
                             img: EncounterImage,
                             Heading: BroadcastHeading,
                             Player: ReactPlayer,

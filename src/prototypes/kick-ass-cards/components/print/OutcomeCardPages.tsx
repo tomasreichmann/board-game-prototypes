@@ -2,21 +2,13 @@ import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
-import outcomes, { outcomeMap } from "../../data/outcomeDeck";
+import outcomes from "../../data/outcomeDeck";
 import OutcomeCard from "../gameComponents/OutcomeCard";
 
-const CARDS_PER_PAGE = 4 * 4;
+const CARDS_PER_PAGE = 3 * 4;
 
 const outcomeSet = outcomes;
-const allOutcomes = [
-    ...outcomeSet,
-    ...outcomeSet,
-    ...outcomeSet,
-    ...outcomeSet,
-    ...outcomeSet,
-    ...outcomeSet,
-    ...outcomeSet,
-];
+const allOutcomes = [...outcomeSet, ...outcomeSet, ...outcomeSet, ...outcomeSet, ...outcomeSet, ...outcomeSet];
 
 export default function OutcomeCardPages() {
     return (

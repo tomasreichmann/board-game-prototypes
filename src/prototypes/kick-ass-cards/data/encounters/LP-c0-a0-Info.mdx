@@ -37,14 +37,27 @@ Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
 
 -   Vypravěč uvádí příběh, ve kterém hráči mohou rozhodovat za jednu nebo více postav.
 -   V případě, že se hráč pokouší provést něco nebezpečného, nebo kde není jednoznačné, jak to dopadne, vypravěč ho vyzve k zahrání karty Výsledků.
--   Každý hráč má svůj balíček karet Výsledků. Pokud nění řečeno jinak, na začátku sezení balíček karet Výsledků zamíchá a vezme si do ruky tři karty z vrchu balíčku.
+-   Každý hráč má svůj balíček karet Výsledků. Na začátku sezení balíček karet Výsledků zamíchá a vezme si do ruky **tři** karty z vrchu balíčku.
 -   Karty výsledků jsou:
     -   Úspěch (3x): Akce se podařila (Efekt +2)
     -   Částečný úspěch (3x): Akce se podařila částečně (Efekt +1, nebo úspěch a získání nějaké komplikace)
     -   Neúspěch (4x): Akce se nepodařila (Efekt 0)
     -   Chaos (1x): Místo zamýšlené akce se stalo něco jiného
     -   Super (1x): Aktivuje speciální akci (Efekt +3)
--   Pokud má hráč na ruce 3x Neúspěch, oznámí to ihned vypravěči. Vypravěč popíše tragédii, která se hráči přihodila.
+
+import outcomes from "../outcomes.csv";
+
+<List>
+    <Outcome {...outcomes[0]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[2]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[3]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[4]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+</List>
+
+import effects from "../effects.csv";
+
+-   Pokud má hráč na ruce 3x&nbsp;Neúspěch, oznámí to ihned vypravěči. Vypravěč popíše tragédii, která se hráči přihodila.
 -   Nehráčské postavy jsou reprezentované kartami Aktérů, které vypravěč umístí před hráče. Tyto postavy budou mít svojí akci po tahu daného hráče.
 -   Některé cíle a hrozby mohou vyžadovat více akcí k vyřešení a jsou reprezentovány kartami Počítadel. Např. "Časovaná bomba", nebo "Překonání zámku." Na kartu vypravěč umístí kostku otočenou na stranu, která reprezentuje aktuální hodnotu Počítadla.
     -   Hráči mohou svými akcemi ovlivňovat hodnotu Počítadla. Pokud hodnota dosáhne předem určené hodnoty, může spustit události v příběhu, nežádoucí efekt, nebo uvolnit odměnu.
@@ -52,17 +65,15 @@ Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
 
 ### Zranění
 
--   Zranění hrozí, že dostane hráčskou postavu do bezvědomí, odkud ho někdo nevzkřísí.
+-   Zranění hrozí, že dostane hráčskou postavu do bezvědomí, dokud ho někdo nevzkřísí.
 -   Pokud hráč má alespoň 2 karty Zranění, je Zmámený, jejich karty Úspěchu se počítají jako Částečný úspěch.
 -   Pokud hráč získá čtvrtou kartu Zranění, jejich postava je v bezvědomí a nemůže provádět další akce, dokud jí někdo nevzkřísí. Postava také dostane kartu Zkázy.
 -   Zranění je možné odstanit specifickými kartami, nebo akcí ošetření.
 
-import effects from "../effects.csv";
-
 <List>
     <Effect {...effects[0]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
     <Effect {...effects[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
-</div>
+</List>
 
 ### Tíseň
 

@@ -51,7 +51,7 @@ export type PlaytesterType = {
     name: string;
 };
 
-export type OutcomeSlug = "special" | "success" | "partialSuccess" | "fumble" | "chaos";
+export type OutcomeSlug = "special" | "success" | "partial" | "fumble" | "chaos";
 
 export type OutcomeType = {
     slug: string;

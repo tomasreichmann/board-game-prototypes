@@ -5,6 +5,7 @@ import dsv from "@rollup/plugin-dsv";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import path from "path";
 
 // import {babel} from '@rollup/plugin-babel'
 /*
@@ -17,6 +18,22 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 export default defineConfig(() => {
     return {
+        build: {
+            commonjsOptions: {
+                include: ["tailwind-config.cjs", "node_modules/**"],
+            },
+        },
+
+        optimizeDeps: {
+            include: ["tailwind-config"],
+        },
+
+        resolve: {
+            alias: {
+                "@": path.resolve(__dirname, "./src"),
+                "tailwind-config": path.resolve(__dirname, "./tailwind.config.cjs"),
+            },
+        },
         plugins: [
             react(),
             svgr({

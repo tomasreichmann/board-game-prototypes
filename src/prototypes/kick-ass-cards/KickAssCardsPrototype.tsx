@@ -12,7 +12,6 @@ import ScreenRoute from "./components/routes/ScreenRoute";
 import PrintRoute from "./components/routes/PrintRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
-
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
 export const kickAssCardsPrintStorageKey = "kick-ass-cards-print";
 

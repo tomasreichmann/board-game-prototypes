@@ -1,5 +1,4 @@
-import React from "react";
-import { Button, Checkbox } from "react-daisyui";
+import { Checkbox } from "react-daisyui";
 import { useState } from "react";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
 import Icon, { iconMap, IconType } from "../Icon";
@@ -9,7 +8,6 @@ import Playtesters from "../Playtesters";
 import Credits from "../Credits";
 import Paper from "../../../../components/print/Paper/Paper";
 import clsx from "clsx";
-import Changelog from "../Changelog";
 import OutcomeCardPages from "../print/OutcomeCardPages";
 import ColorList from "../ColorList";
 import PlayerCharacterCardPages from "../print/PlayerCharacterCardPages";

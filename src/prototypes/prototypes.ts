@@ -1,6 +1,11 @@
 import KickAssCardsPrototype, { kickAssCardsPath, kickAssCardsSubRoutes } from "./kick-ass-cards/KickAssCardsPrototype";
 import DungeonTimePrototype from "./dungeon-time/DungeonTimePrototype";
 import { RouteDefinition } from "../routeTypes";
+import JustDwarvesPrototype, {
+    justDwarvesName,
+    justDwarvesPath,
+    justDwarvesSubRoutes,
+} from "./just-dwarves/JustDwarvesPrototype";
 
 const prototypes: RouteDefinition[] = [
     {
@@ -13,6 +18,12 @@ const prototypes: RouteDefinition[] = [
         Component: KickAssCardsPrototype,
         path: kickAssCardsPath,
         children: kickAssCardsSubRoutes,
+    },
+    {
+        name: justDwarvesName,
+        Component: JustDwarvesPrototype,
+        path: justDwarvesPath,
+        children: justDwarvesSubRoutes,
     },
 ];
 

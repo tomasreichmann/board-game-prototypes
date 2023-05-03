@@ -81,14 +81,14 @@ export default function JustDwarves({ children }: PropsWithChildren) {
                             <a
                                 key={path}
                                 href={path}
-                                className="btn btn-sm bg-jd-ruby text-jd-paper hover:bg-jd-ruby-light hover:text-jd-paper-alt"
+                                className="btn btn-sm bg-jd-gold text-jd-iron hover:bg-jd-gold-light border-jd-gold-darkest hover:text-jd-gold-darkest hover:border-jd-gold"
                             >
                                 {name}
                             </a>
                         ))}
                         <a
                             href="/"
-                            className="btn btn-sm bg-jd-ruby text-jd-paper hover:bg-jd-ruby-light hover:text-jd-paper-alt"
+                            className="btn btn-sm bg-jd-gold text-jd-iron hover:bg-jd-gold-light border-jd-gold-darkest hover:text-jd-gold-darkest hover:border-jd-gold"
                         >
                             Prototypes
                         </a>

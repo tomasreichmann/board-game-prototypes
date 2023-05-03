@@ -123,6 +123,7 @@ import tripleSkulls from "./media/triple-skulls.svg";
 import walkingBoot from "./media/walking-boot.svg";
 import warlockEye from "./media/warlock-eye.svg";
 import warlordHelmet from "./media/warlord-helmet.svg";
+import weight from "./media/weight.svg";
 import williamTellSkull from "./media/william-tell-skull.svg";
 import wolfHead from "./media/wolf-head.svg";
 import wolfTrap from "./media/wolf-trap.svg";
@@ -255,6 +256,7 @@ export const iconMap = {
     walkingBoot,
     warlockEye,
     warlordHelmet,
+    weight,
     williamTellSkull,
     wolfHead,
     wolfTrap,

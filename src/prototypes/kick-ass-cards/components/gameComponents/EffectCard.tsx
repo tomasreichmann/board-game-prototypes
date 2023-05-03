@@ -10,13 +10,14 @@ export type EffectCardProps = React.PropsWithChildren<
     { className?: string; size?: PaperProps["size"] } & Omit<EffectType, "cardCount">
 >;
 
-const effectSizeClassNameMap: { [key in IconType]?: string } = {
-    //SPECIAL: "h-24",
+const effectSizeClassNameMap: { [key: string]: string } = {
+    "/LP/icons/doom.png": "h-24",
+    "/LP/icons/salvation.png": "h-24",
 };
 
 const outcomeColorClassNameMap: { [key in IconType]?: string } = {
     drop: "text-kac-blood-dark",
-    halt: "text-kac-steel-dark",
+    weight: "text-kac-steel-dark",
     knockout: "text-kac-iron-dark",
     run: "text-kac-iron-dark",
     shouting: "text-kac-curse",
@@ -47,12 +48,13 @@ const getGraphics = (icon: EffectType["icon"]) => {
             />
         );
     }
-    return (
+    return <img className={twMerge("max-h-fit h-16", effectSizeClassNameMap[icon] || "h-16")} src={icon} alt="" />;
+    /*    return (
         <div
-            className="max-h-fit h-24"
+            className="max-h-fit h-16"
             style={{ background: "url(" + icon + ") center center / contain no-repeat" }}
         ></div>
-    );
+    );*/
 };
 
 export default function EffectCard({
@@ -71,14 +73,14 @@ export default function EffectCard({
             className={twMerge("EffectCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}
         >
             <div className="flex flex-row items-center gap-2">
-                <Icon icon="heartBeats" className={"text-kac-steel h-4"} />
+                <Icon icon="heartBeats" className={"text-kac-blood-dark text-opacity-50 h-4"} />
                 <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
             </div>
-            {graphics}
-            <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">
+            <div className="flex-1 flex flex-col items-center justify-end gap-1">
+                {graphics}
                 <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>
             </div>
-            <div className="flex-1 text-xs text-center text-kac-iron-light">
+            <div className="text-xs text-center text-kac-iron-light min-h-8">
                 <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
             </div>
             {children}

@@ -31,7 +31,7 @@ export default function ActorCard({
     occupation = forPrint ? "" : null,
     toughness = 0,
     currentToughness = toughness,
-    notesClassName = "inline text-sm",
+    notesClassName,
     threat = forPrint ? "" : null,
     reward = forPrint ? "" : null,
     notes = forPrint ? "" : null,
@@ -87,8 +87,8 @@ export default function ActorCard({
                     </h2>
                 )}
                 {threat !== null && (
-                    <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block text-xs" />
+                    <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-3">
+                        <Icon icon="deathSkull" className="h-4 mt-1 flex-shrink-0 inline-block text-xs" />
                         {threat ? (
                             <p className="flex-grow text-xs font-kacBody">{threat}</p>
                         ) : (
@@ -97,8 +97,8 @@ export default function ActorCard({
                     </div>
                 )}
                 {reward !== null && (
-                    <div className="text-xs text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-xs" />
+                    <div className="text-xs text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-3">
+                        <Icon icon="chest" className="h-4 mt-1 flex-shrink-0 inline-block text-xs" />
                         {reward ? (
                             <p className="flex-grow text-xs font-kacBody">{reward}</p>
                         ) : (
@@ -109,9 +109,9 @@ export default function ActorCard({
                 {notes !== null && (
                     <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
                         <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
-                            <Icon icon="scrollQuill" className="h-5 mr-2 inline-block " />
+                            <Icon icon="scrollQuill" className="h-4 mr-3 inline-block " />
                             {notes.length > 0 ? (
-                                <div className={notesClassName}>{notes}</div>
+                                <div className={twMerge('inline', notesClassName)}>{notes}</div>
                             ) : (
                                 <>
                                     <div className="border-b-2 border-dashed ml-7"></div>

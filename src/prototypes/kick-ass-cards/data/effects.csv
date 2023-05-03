@@ -1,15 +1,16 @@
 slug,title,icon,effect,cardCount
 wound,Zranění,drop,"2x+ Zranění: Zmámení, 4x Zranění: Bezvědomí. Vyleč se k odstranění.",16
 distress,Tíseň,tearTracks,"3x+ Tíseň: Panika. 4x Tíseň: Beznaděj. Odpočiň si nebo využij svojí Neřest k zotavení.",16
-dazed,Zmámený,sleepy,"2x+ Zranění: tvůj Úspěch se počítá jako Částečný úspěch. Zbav se Zranění k zotavení.",6
-unconscious,Bezvědomí,knockout,"4x Zranění: postava je bezmocná. Nemůžeš provádět akce dokud tě někdo nevzkřísí. Zbav se Zranění k zotavení",6
-panicked,Panika,shouting,"3x Tíseň: zachvátila tě panika. Hraj vždy vrchní kartu balíčku Výsledků. Zbav se Tísňě k zotavení.",6
-hopeless,Beznaděj,run,"4x Tíseň: postava může jen utíkat, nebo se vzdát. Zbav se Tísňě k zotavení.",6
-stuck,"Uvíznutí",stickyBoot,"Nemůžeš se pohybovat, dokud se neosvobodíš.",6
-hindered,"Obtíž",halt,"Můžeš se pohybovat, nebo provádět akce, ale ne oboje, dokud se neuvolníš.",6
+dazed,Zmámený,sleepy,"2x+ Zranění: tvůj Úspěch se počítá jako Částečný úspěch. Zbav se Zranění k zotavení.",4
+unconscious,Bezvědomí,knockout,"4x Zranění: postava je bezmocná. Nemůžeš provádět akce dokud tě někdo nevzkřísí. Zbav se Zranění k zotavení",4
+panicked,Panika,shouting,"3x Tíseň: zachvátila tě panika. Místo z ruky hraj na slepo vrchní kartu balíčku Výsledků. Zbav se Tísňě k zotavení.",4
+hopeless,Beznaděj,run,"4x Tíseň: postava může jen utíkat, nebo se vzdát. Zbav se Tísňě k zotavení.",4
+stuck,"Uvíznutí",stickyBoot,"Nemůžeš se pohybovat, dokud se neosvobodíš.",4
+hindered,"Obtíž",weight,"Můžeš se pohybovat, nebo provádět akce, ale ne oboje, dokud se neuvolníš.",4
 boost,"Posílení",sprint,"Tvoje příští akce má +1 Efekt nebo +1 Pohyb navíc.",4
-freezing,"Mráz",thermometerCold,"Pokud máš na konci tahu 2x Mráz, získáš Tíseň, dokud se neohřeješ.",6
-hot,"Horko",thermometerHot,"Pokud máš na konci tahu 2x Horko, získáš Zranění, dokud se neochladíš.",6
-complication,Komplikace,footTrip,"Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",6
+freezing,"Mráz",thermometerCold,"Pokud máš na konci tahu 2x Mráz, získáš Tíseň, dokud se neohřeješ.",8
+hot,"Horko",thermometerHot,"Pokud máš na konci tahu 2x Horko, získáš Zranění, dokud se neochladíš.",8
+complication,Komplikace,footTrip,"Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",4
 infection,Spórová infekce,"/LP/icons/spore-infection.png",+1 Zkáza,0
-doom,Zkáza,"/LP/icons/doom.png",3x Zkáza: Transformace v Monstrum,6
+doom,Zkáza,"/LP/icons/doom.png",3x Zkáza: Transformace v Monstrum,12
+salvation,Spása,"/LP/icons/salvation.png",3x Spása: Transformace zpět v Hrdinu,4

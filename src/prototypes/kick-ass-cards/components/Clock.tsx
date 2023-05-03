@@ -44,7 +44,7 @@ export default function Clock({
                 )}
                 {threat !== null && (
                     <div className="text-sm text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block" />
+                        <Icon icon="deathSkull" className="h-5 mt-1 flex-shrink-0 inline-block" />
                         {threat ? (
                             <p className="flex-grow text-sm font-kacBody">{threat}</p>
                         ) : (
@@ -54,7 +54,7 @@ export default function Clock({
                 )}
                 {reward !== null && (
                     <div className="text-sm text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
+                        <Icon icon="chest" className="h-5 mt-1 flex-shrink-0 inline-block text-sm" />
                         {reward ? (
                             <p className="flex-grow text-sm font-kacBody">{reward}</p>
                         ) : (

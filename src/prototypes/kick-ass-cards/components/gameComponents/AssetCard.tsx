@@ -87,8 +87,9 @@ export default function AssetCard({
     );
     return (
         <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}>
-            <div>
-                <div className="text-slate-400 text-center text-xs">{slug}</div>
+            <div className="flex flex-row items-center gap-2">
+                <Icon icon="chest" className={"text-kac-gold-dark text-opacity-50 h-4"} />
+                <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
             </div>
 
             {graphics}

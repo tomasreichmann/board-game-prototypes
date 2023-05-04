@@ -18,12 +18,14 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         campaign: KJB,
         title: "Akt 1 - Úvod",
     },
+
     "PZZ-akt1-Intro": {
         slug: "PZZ-akt1-Intro",
         path: "PZZ-akt1-Intro",
         campaign: "Pomsta ze záhrobí",
         title: "PZZ-akt1-Intro",
     },
+
     "LP-c0-a0-Info": {
         slug: "LP-c0-a0-Info",
         path: "LP-c0-a0-Info",
@@ -71,5 +73,54 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         path: "LP-c2-a2-Sporova-lod",
         campaign: "Ledová pomsta",
         title: "LP-c2-a2-Sporova-lod",
+    },
+
+    "LP-en-c0-a0-Info": {
+        slug: "LP-en-c0-a0-Info",
+        path: "LP-en-c0-a0-Info",
+        campaign: "Cold Revenge",
+        title: "LP-en-c0-a0-Info",
+    },
+    "LP-en-c1-a1-Return": {
+        slug: "LP-en-c1-a1-Return",
+        path: "LP-en-c1-a1-Return",
+        campaign: "Cold Revenge",
+        title: "LP-en-c1-a1-Return",
+    },
+    "LP-en-c1-a2-Celebration": {
+        slug: "LP-en-c1-a2-Celebration",
+        path: "LP-en-c1-a2-Celebration",
+        campaign: "Cold Revenge",
+        title: "LP-en-c1-a2-Celebration",
+    },
+    "LP-en-c1-a3-Partys-over": {
+        slug: "LP-en-c1-a3-Partys-over",
+        path: "LP-en-c1-a3-Partys-over",
+        campaign: "Cold Revenge",
+        title: "LP-en-c1-a3-Partys-over",
+    },
+    "LP-en-c1-a4-On-the-street": {
+        slug: "LP-en-c1-a4-On-the-street",
+        path: "LP-en-c1-a4-On-the-street",
+        campaign: "Cold Revenge",
+        title: "LP-en-c1-a4-On-the-street",
+    },
+    "LP-en-c1-a5-Departure": {
+        slug: "LP-en-c1-a5-Departure",
+        path: "LP-en-c1-a5-Departure",
+        campaign: "Cold Revenge",
+        title: "LP-en-c1-a5-Departure",
+    },
+    "LP-en-c2-a1-Boarding": {
+        slug: "LP-en-c2-a1-Boarding",
+        path: "LP-en-c2-a1-Boarding",
+        campaign: "Cold Revenge",
+        title: "LP-en-c2-a1-Boarding",
+    },
+    "LP-en-c2-a2-Spore-ship": {
+        slug: "LP-en-c2-a2-Spore-ship",
+        path: "LP-en-c2-a2-Spore-ship",
+        campaign: "Cold Revenge",
+        title: "LP-en-c2-a2-Spore-ship",
     },
 };

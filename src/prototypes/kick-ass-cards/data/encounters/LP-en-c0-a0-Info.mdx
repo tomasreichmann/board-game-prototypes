@@ -1,0 +1,116 @@
+---
+campaign: Cold Revenge
+chapter: 0
+act: 0
+---
+
+# Cold Revenge
+
+<Heading imageUri="/LP/ScrattCZ_a_squad_of_sci-fi_heroes_heat_death_of_the_universe_hy_472c154b-c146-4e49-b43f-78288b4d7018.png" />
+
+**RPG high sci-fi three-shot about revenge.**
+
+_As a group of veterans in service of a clan of genetically modified women, you set off against the Spires - an interstellar weed that relentlessly consumes all living things. You have come for revenge, but the road to vengeance is treacherous. How far are you willing to go to protect what you hold most dear? How much of yourselves are you willing to sacrifice on this journey for retribution?_
+
+## Character creation assumptions
+
+-   Your crew are heroes, seasoned veterans of the rescue operation on the planet Sporefall. You rescued a group of researchers from the clan, but with them came a (player) character who was not originally part of your unit. You couldn't save everyone, and the planet succumbed to the Spires.
+-   Engineer Viktor is traveling with you, trying to gain influence with the Clan but needing your help to do so.
+-   Everyone is fiercely loyal to the Clan. Its existence is a matter of life and death for them.
+-   The highest authority the group recognizes is Her, the Chief Representative of the Clan.
+
+## Heroes
+
+Each hero must be distinct from the others:
+
+-   Name
+-   Specialization - e.g. mercenary, scientist, hacker, pilot.
+-   Equipment - generally, what the character uses to solve problems. It can partially be spoils from Sporefall.
+-   Virtue - a quality that helps the character overcome obstacles.
+-   Vice - a quality that gets the character into trouble and increases stress.
+-   Injury - an injury from the Sporefall vapor that just won't heal.
+-   Special action - e.g. "Bull's Eye - incredible accuracy when shooting their rifle."
+
+![](/LP/WarTourist_cyberpunk_balcony_gun_fight_syd_mead_c93441f4-81c0-4215-bf7a-d9c0cd652f0d.png)
+
+## General rules of Kick Ass Cards
+
+-   The storyteller presents a story in which players can make decisions for one or more characters.
+-   If a player attempts something dangerous or where the outcome is not clear, the storyteller prompts them to play a Results card.
+-   Each player has their own deck of Results cards. At the beginning of the session, the deck is shuffled, and each player draws **three** cards from the top of the deck.
+-   The Results cards are:
+    -   Success (3x): The action succeeded (Effect +2).
+    -   Partial success (3x): The action succeeded partially (Effect +1, or success with some complication).
+    -   Failure (4x): The action failed (Effect 0).
+    -   Chaos (1x): Something else happened instead of the intended action.
+    -   Super (1x): Activates a special action (Effect +3).
+
+import outcomes from "../outcomes-en.csv";
+
+<List>
+    <Outcome {...outcomes[0]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[2]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[3]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Outcome {...outcomes[4]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+</List>
+
+import effects from "../effects-en.csv";
+
+-   If a player has 3x Failure in their hand, they immediately announce it to the storyteller. The storyteller describes the tragedy that has befallen the player.
+-   Non-player characters are represented by Actor cards, which the storyteller places in front of the players. These characters will take their action after the player's turn.
+-   Some goals and threats may require multiple actions to resolve and are represented by Counter cards. For example, "Timed bomb" or "Overcoming a lock." The storyteller places a die with the current Counter value on the card.
+    -   Players can influence the Counter value with their actions. If the value reaches a predetermined value, it can trigger story events, an unwanted effect, or release a reward.
+    -   Counters can change value over time, in which case they are placed in front of the players and their value is shifted at the end of their turn.
+
+### Injuries
+
+-   Injuries threaten to render the player character unconscious until someone resurrects them.
+-   If a player has at least 2 Injury cards, they are Dazed, and their Success cards count as Partial success.
+-   If a player gains a fourth Injury card, their character is unconscious and cannot perform further actions until someone resurrects them. The character also receives a Chaos card.
+-   Injuries can be removed by specific cards or by a treatment action.
+
+<List>
+    <Effect {...effects[0]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+</List>
+
+### Distress
+
+-   Distress threatens to break the character's current will to continue fighting until they recover.
+-   If a player has at least 3 Distress cards, they are Gripped by panic. Instead of playing cards from their hand, they play cards from the top of the deck.
+-   If a player gains a fourth Distress card, their character is Overwhelmed by hopelessness, and they can decide in their turn whether to surrender or run to safety.
+-   Hope can be restored by resting, encouraging ally actions, or indulging in their Vice.
+
+<List>
+    <Effect {...effects[1]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[4]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[5]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+</List>
+
+## Mechanics specific to this story
+
+This story is about a hostile dying universe, in which players decide whether to
+
+### Frost and Heat
+
+-   Frost and Heat represent how far the character is from their operating temperature.
+-   Various actions and events can cause the character to gain a Frost or Heat card.
+-   Frost and Heat cards cancel each other out. Pairs of these cards can be discarded immediately.
+-   If a character has two or more Heat cards at the end of the turn, they gain an Injury card.
+-   If a character has two or more Frost cards at the end of the turn, they gain a Distress card.
+
+<List>
+    <Effect {...effects[9]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+    <Effect {...effects[10]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+</List>
+
+### Doom
+
+-   Doom is a measure of succumbing to dark thoughts and turning into a Monster.
+-   If a player gains 3x Doom, the Hero transforms into a Monster, and Doom becomes Redemption, which works exactly the opposite.
+-   Doom can only be reduced by a rare intervention of a powerful being.
+
+<List>
+    <Effect {...effects[13]} className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none" />
+</List>

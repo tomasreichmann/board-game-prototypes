@@ -1,0 +1,186 @@
+---
+campaign: Cold Revenge
+chapter: 1
+act: 5
+---
+
+![](/LP/ScrattCZ_sci-fi_mercenaries_and_civilians_evacuating_a_casino_s_d0e45988-8940-4d77-b448-d0dcc36de800.png)
+
+# Chapter 1 - Act 5 - Departure
+
+<Player url="https://youtu.be/Vb-jZDiGrDo?t=0" controls height={100} />
+
+-   You are at the cargo airlock
+-   (We continue to monitor the **New Vega Destruction** threat)
+
+## Crowd at the entrance
+
+-   From a distance, you can see a crowd of people trying to get to the airlock to board their ship. However, the capacity of the airlock is limited and the atmosphere is tense.
+
+![](/LP/ScrattCZ_two_sci-fi_crowds_of_angry_humanoids_shouting_at_each__70560736-bf42-4734-a7e3-f55f7450352b.png)
+
+-   Security robots are scanning the incoming people.
+    -   You see a cyborg approaching them, holding onto his eye.
+    -   When scanned, the robots triggered an alarm. And immediately turned their flamethrowers and disintegrators towards him.
+    -   Within moments, there was nothing left of the cyborg but a pile of ashes.
+    -   The robots immediately called for the next person to be scanned.
+
+![](/LP/maps/New_Vega_Cargo_Airlock.jpg)
+
+<List>
+    <Actor
+        name="Security Robots"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_two_sci-fi_crowds_of_angry_humanoids_shouting_at_each__70560736-bf42-4734-a7e3-f55f7450352b.png"
+        imagePosition="center 30%"
+        notes="Action: Scanning - +1 effectiveness against anything in the zone until the end of the conflict. Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Disintegrator 2x/1x&nbsp;Injury. Resistant to shooting and melee attacks."
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Endless Crowd of Spore Drones"
+        notes="Lashing Attack: 1x Injury; Infection: if Defense fails -> Spore Infection"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Suspicion of Security Robots"
+        current={0}
+        total={4}
+        threat="Gunfire"
+        reward="Access to the airlock"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Disabling the Security Robots"
+        current={0}
+        total={8}
+        threat="New Vega Destruction +1"
+        reward="1x Disintegrator, 1x Flamethrower Arm"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Gathering of the Spore Drone Crowd"
+        current={0}
+        total={8}
+        threat="Spore Drone Crowd Attacks"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Panic"
+        current={0}
+        total={6}
+        threat="Everyone +1 Stress"
+        reward="New Vega Destruction -1"
+    />
+    <Asset
+        icon="/LP/icons/flamethrower-arm.jpg"
+        title="Flamethrower Arm"
+        effect="+1 effectiveness against the target + Igniting the zone. +1&nbsp;Destruction when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        icon="/LP/icons/rifle-3.png"
+        title="Disintegrator"
+        effect="+1 effectiveness against organic targets"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Effect
+        icon="/LP/icons/spore-infection-2.png"
+        title="Spore Infection"
+        effect="+1&nbsp;Destruction"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+
+</List>
+
+![](/LP/ScrattCZ_two_crowds_of_angry_space-station_citizens_shouting_at_574f7a8a-b97f-44dd-a05d-891626c38e43.png)
+
+## Departure Queue
+
+-   The local security personnel are trying to maintain order and navigate ships to the airlock one by one.
+-   There is a dismounted plasma tower here.
+    -   Theoretically, it can be connected to an Android and fired once or twice with +2 effectiveness, but it will cause significant difficulties +3 Stress + Difficulty until recharged.
+-   There is a large queue in front of you.
+
+![](/LP/rat_man.jpg)
+
+### Rodent Ship
+
+-   A group of rodents are waiting impatiently as their ship docks.
+-   A group of refugees of various origins are trying to sneak onto their ship. The rodents are trying to talk them out of it, but it is delaying their departure.
+    -   (The Rodent ship has a different atmosphere than the station, which could poison some. The stench is noticeable when the airlock opens)
+-   The rodents claim that they are missing a member who is still standing in line in front of the security checkpoint before the hangar.
+-   (If they do not agree, the security personnel will use a security command and sever the ship -> +1 Panic)
+
+![](/LP/ScrattCZ_several_sci-fi_insectoid_aliens_367f922c-6a98-45ef-acf0-c311f562483e.png)
+
+![](/LP/insectoid.jpg)
+
+### Insectoid Ship
+
+-   Several insectoids and their cargo are next in line to board.
+-   During quick loading, a warning appears that cargo inspection is required.
+    -   The insectoids argue that there is no time for that.
+    -   (The insectoids are smuggling a captured spore drone for research, but do not want to admit it)
+    -   (The spore drone may escape from its container during the argument and attack refugees before the security team shoots it -> +1 Panic)
+
+### Clan Representatives
+
+-   We have received permission to evacuate you and the Gynies Clan researcher as a priority.
+    -   (If the players decide to use this option, there will be unrest among the refugees +1 Panic)
+
+### Panic
+
+-   If there is panic among the refugees, one humanoid refugee pulls out an unsecured fragmentation grenade and threatens to detonate it if their ship is not next in line.
+
+### RH4 Departure
+
+-   Finally, it's your turn to board.
+-   The crowd sees that you have a spacious and well-equipped ship.
+-   Some refugees start bribing you to let them on board: Medi-gel, Nano-gel, Rapid-regen
+
+<List>
+    <Asset
+        title="Medi-gel"
+        icon="/LP/icons/injection.png"
+        effect="repairs organic damage"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Nano-gel"
+        icon="/LP/icons/tube.png"
+        effect="repairs mechanical damage"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Rapid-regen"
+        icon="/LP/icons/syringe-2.png"
+        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;havoc)"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Lepidlonate"
+        icon="/LP/icons/bag.png"
+        effect="grenade that seals everything in the area for 1 round"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="EMP grenade"
+        icon="/LP/icons/capsule.png"
+        effect="grenade that disables all electronics in the area for 1 round"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+## Leaving the Station
+
+-   Your ship is ready to depart.
+-   On the distant sensors, you see a spore ship heading straight for the home blacksphere of the Gynies Clan.
+-   (Evaluation of the **Doom of New Vega** threat)

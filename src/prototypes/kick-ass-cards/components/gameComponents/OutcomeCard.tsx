@@ -36,7 +36,7 @@ export default function OutcomeCard({ className, slug, title, icon, description,
                 <div className="flex-1 text-slate-400 text-center text-xs pr-6">{slug}</div>
             </div>
 
-            <div className="flex-1 flex flex-col items-center justify-end gap-1">
+            <div className="flex-1 flex flex-col items-center justify-end gap-1 h-0">
                 <Icon
                     icon={icon}
                     className={clsx(
@@ -47,7 +47,7 @@ export default function OutcomeCard({ className, slug, title, icon, description,
                 />
                 <div className="font-kacHeading text-kac-cloth text-sm text-center">{title}</div>
             </div>
-            <div className="flex-1 text-xs text-center max-h-12 text-kac-iron-light">
+            <div className="text-xs text-center min-h-8 text-kac-iron-light">
                 <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{description}</RichText>
             </div>
             {children}

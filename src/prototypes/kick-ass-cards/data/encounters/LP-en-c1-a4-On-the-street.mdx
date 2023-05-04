@@ -1,0 +1,312 @@
+---
+campaign: Cold Revenge
+chapter: 1
+act: 4
+---
+
+<Player url="https://youtu.be/1gNjZSWP4Cw?t=46" controls height={100} />
+
+# Chapter 1 - Act 4 - On the Street
+
+-   New Vega was hit by chaos. The spore infection is spreading uncontrollably throughout the station and panic has taken hold of the visitors.
+-   Above your heads, you still see a ship covered in spores slowly heading towards the cargo dock overgrown with spore bushes.
+-   The airlock to the docks is out of order after the tragedy with Victor. You have to take a detour along the corridor to the cargo dock.
+-   It's time to go.
+
+![](/LP/ScrattCZ_sci-fi_engineer_in_engineers_uniform_with_a_beard_and__d280e504-42d6-4a48-8fd0-6d5919feea53.png)
+
+## Viktor
+
+-   If Viktor is alive:
+    -   Viktor is in critical condition. You can imagine the chaos at the local medical station. It would be safer to store Viktor in a stasis module. You saw some on your way along the corridor.
+    -   Whoever carries Viktor has _Difficulty_.
+-   If Viktor is not alive:
+    -   What will you do with Viktor's body?
+
+![](/LP/maps/New_Vega_Freeway.jpg)
+
+## Corridor to the Docks
+
+-   You run out onto the corridor (top left) and see hovercrafts flying around in confusion. Some of them are covered in spore infection, as are various devices around the corridor.
+-   Even the beings on the balconies around the corridor are facing spores. From a distance, you see several fights between surviving locals and infected drones.
+-   You saw stasis modules here (in the top right corner). Stasis modules are devilishly heavy, you'll need to find a way to move them.
+-   This is the way to another airlock (in the bottom right corner).
+
+<List>
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Viktor in critical condition"
+        current={0}
+        total={6}
+        threat="Viktor succumbs to his injuries"
+        reward="Viktor is stabilized"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Destruction of New Vega"
+        current={0}
+        total={4}
+        threat="New Vega is consumed by spores"
+        reward="Title: Hero of New Vega"
+    />
+</List>
+
+## Loading Dock
+
+-   Freight cart
+-   There are stacked barrels of StarSynth - a well-known chemical brand
+    -   (Breaking each barrel releases toxic substances, injuring everyone in the area and increasing Destruction of New Vega by 1)
+-   One barrel is secured with a magnetic lock
+    -   (can be hacked or broken)
+    -   (contains 1x Rapid-regen, 1x SPED, 1x Rage)
+-   A crowd of humanoids is under attack by spore drones.
+
+<List>
+    <Actor
+        name="Spore Sirens"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_several_screaming_slender_6_feet_tall_feminine-looking_70707d8f-a4ff-474f-974a-608f4d82b3c9.png"
+        occupation="Infected inhabitants of the water world"
+        notes="Action: Nerve-racking scream - Zone: +1&nbsp;Distress, Bite - Injury"
+        toughness={6}
+        threat="Destruction of New Vega +1"
+        reward="Medigel"
+    />
+    <Asset
+        title="Rapid-regen"
+        icon="/LP/icons/syringe-2.png"
+        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;destruction)"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="SPED"
+        icon="/LP/icons/nose-spray.png"
+        effect="+1&nbsp;movement, multiplies landing distance by 3&nbsp;rounds"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Rage"
+        icon="/LP/icons/syringe.png"
+        effect="+1&nbsp;effect on strength actions and close-range attacks for 3&nbsp;rounds"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Medigel"
+        icon="/LP/icons/injection.png"
+        effect="-1&nbsp;organic Injury"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+## Airspace
+
+-   The transportation airspace is located between the balconies.
+-   Artificial gravity only works on the balconies.
+
+![](/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png)
+
+## Bridge
+
+-   Such street stalls can offer a wide variety of items. Now they are abandoned and one is on fire.
+    -   A swarm of small firefighting drones swarm around the burning stall
+    -   (Medi-gel, Nano-gel, Instahack can be found in the stalls)
+-   The fire control station is entangled in thorn bushes
+    -   (Thorns prevent the use of the station and, if worse than a Success, threaten to infect affected organic characters with Spore Fever.)
+-   The recharge tower is also infected with spores, and the electrifying discharges on its surface are increasing in intensity)
+-   Scooters are parked near the bridge.
+
+<List>
+    <Effect
+        icon="thermometerHot"
+        title="Spore Fever"
+        effect="+1&nbsp;temperature each round until cured"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Actor
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/sci-fi_electric_tesla_tower_spiky_cannon_charging_with_lightning_in_the_middle_of_space_station_corridor.jpg"
+        name="Infected Recharge Tower"
+        notes="Action: Once every 3&nbsp;rounds, it sends an electrical discharge up to 2&nbsp;zones away, injuring Androids for 2x&nbsp;Injury and organics for 2x&nbsp;Distress in the entire zone; A hit for 1 round disables vehicles; Resistant to conventional weapons"
+    />
+    <Actor
+        name="Firefighting Drones"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg"
+        notes="Action: -1&nbsp;temperature to everyone in the zone where the fire is burning; Destruction: +1&nbsp;Destruction of New Vega"
+    />
+    <Clock
+        title="Disabling the Recharge Tower"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        current={0}
+        total={6}
+        threat="Destruction of New Vega&nbsp;+1"
+        reward="2x Overclocking Battery"
+    />
+    <Asset
+        title="Overclocking Battery"
+        icon="/LP/icons/battery.png"
+        effect="Once, +2&nbsp;effect on action for Androids"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Medigel"
+        icon="/LP/icons/injection.png"
+        effect="-1&nbsp;organic Injury"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Nano-gel"
+        icon="/LP/icons/tube.png"
+        effect="-1&nbsp;mechanical Injury"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Instahack"
+        icon="/LP/icons/gadget.png"
+        effect="Temporary control of a device for 1 round"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+![](/LP/ScrattCZ_long_sci-fi_box_with_a_male_bearded_engineers_body_lyi_d48bea17-95bf-4c62-9f86-d8262d20c340.png)
+
+## Robotics Workshop
+
+-   You can place Viktor's body into one of the cryogenic modules stacked in the workshop.
+    -   (Some modules contain New Vega citizens in stasis. For each rescued person, -1&nbsp;Destruction of New Vega)
+-   Two people can carry the module (Hindered), or you can use robotic arms.
+-   The problem is that one of the arms is obviously infected.
+-   A van and a mercenary fighter are parked at the warehouse.
+    -   The van has a swarm of spore insects trapped inside and is otherwise unsecured.
+    -   The mercenary fighter has a security system that uses weapons against unauthorized users.
+
+<List>
+    <Actor
+        name="Infected Robotic Arm"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
+        notes="Action: Grab - Stuck / complication, Crush - 2x&nbsp;Injury"
+    />
+    <Actor
+        name="Spore Swarm"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/alien-swarm.jpg"
+        notes="Infected with spores +1x&nbsp;Destruction; Immune to shooting and melee attacks. Weak to fire and area attacks."
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Disabling the Robotic Arm"
+        current={0}
+        total={6}
+        reward="Robotic Prosthesis"
+    />
+</List>
+
+## Cargo hold at the broken airlock
+
+-   The infected robotic arm in this area throws pieces of scrap over a long distance.
+
+<List>
+    <Actor
+        name="Infected Robotic Arm"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
+        notes="Action: Throwing Scrap - 2x&nbsp;Injury up to 2&nbsp;zones away, Throwing Away - 1x&nbsp;Distress and throwing up to 2&nbsp;zones away"
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Disabling the Robotic Arm"
+        current={0}
+        total={6}
+        reward="Targeting Eye Implant"
+    />
+    <Asset
+        title="Targeting Eye Implant"
+        effect="+1&nbsp;Effect on shooting actions. +1&nbsp;Destruction."
+        icon="/LP/targeting-implant.png"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+## Flight corridor
+
+-   There is a large space for hovercraft between the levels.
+-   There is a fire protection tower here that appears to be non-functional.
+-   In the distance, you see a large cargo beetle that is commonly used for storing goods.
+    -   It appears to be infected with spore contagion and is trying to shake it off.
+
+<List>
+    <Actor
+        name="Confused Cargo Beetle"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png"
+        notes="Action: When injured: Scream - +1&nbsp;Distress in the given and adjacent zones; Impact - movement + 1x Injury to everyone in the zone; Wing Gust - move everything in the zone away from the beetle"
+    />
+</List>
+
+## Container Warehouse before Airlock
+
+-   On one side, you can head to the backup airlock.
+-   On the other hand, you can head to the broken airlock.
+-   Or back across the bridge to the club.
+-   The warehouse is full of various containers, including one locked from Final Solutions armory.
+    -   (the lock can be hacked or broken)
+    -   (contains the VZZ weapon system with an instruction manual)
+-   A robotic mercenary crouches in the warehouse. Spore weeds grow from the cracks in his armor. As he spotted you, his confused sensors locked onto you and blades sprang from his hands.
+
+<List>
+    <Actor
+        name="Infected Robo-Mercenary"
+        size="US game"
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        imageUri="/LP/ScrattCZ_futuristic_killer_military_robot_with_leaves_flowers_a_eb1a5d76-ca30-4811-a6d8-6fa94a15d1af.png"
+        imagePosition="center 30%"
+        notes="Action: Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Zone on fire (+1&nbsp;Heat to everyone in the zone at the beginning of the turn), Blade Fury 2x/1x&nbsp;Injury. Resistant to shooting and melee attacks."
+    />
+    <Clock
+        className="not-prose drop-shadow-md print:drop-shadow-none"
+        size="US game"
+        title="Disabling the Robo-Mercenary"
+        current={0}
+        total={8}
+        threat="New Vega&nbsp;Destruction +1"
+        reward="1x Overclocking Battery, 1x Flamethrower Arm"
+    />
+    <Asset
+        icon="/LP/icons/flamethrower-arm.jpg"
+        title="Flamethrower Arm"
+        effect="1x&nbsp;Injury, Igniting the zone. +1&nbsp;Destruction when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
+        imagePosition
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="Overclocking Battery"
+        icon="/LP/icons/battery.png"
+        effect="Once +2&nbsp;effect on action for Androids"
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+    <Asset
+        title="BFG"
+        icon="/LP/icons/bfg.png"
+        effect="Huge weapon: 1 round absorbs all heat from the zone, in the next round brings destruction."
+        className="drop-shadow-md print:drop-shadow-none"
+    />
+</List>
+
+![](/LP/ScrattCZ_sci-fi_mercenaries_and_civilians_evacuating_a_casino_s_d0e45988-8940-4d77-b448-d0dcc36de800.png)
+
+## Backup Airlock
+
+-   Act 5

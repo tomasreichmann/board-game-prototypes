@@ -1,6 +1,6 @@
 import { OutcomeSlug, OutcomeType } from "../types";
 import arrayToMap from "../../../utils/arrayToMap";
-import outcomeData from "./outcomes.csv";
+import outcomeData from "./outcomes-en.csv";
 
 export const outcomeMap = arrayToMap(outcomeData, "slug") as { [key in OutcomeSlug]: OutcomeType };
 

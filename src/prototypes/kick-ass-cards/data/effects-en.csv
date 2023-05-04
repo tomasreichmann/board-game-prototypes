@@ -1,8 +1,11 @@
-slug,title,icon,effect,cardCount
-dazed,Dazed,sleepy,"When at 2/4 Consciousness or below your Successes counts as Partial successes. Heal wounds to recover.",6
-unconscious,Unconscious,knockout,"When at 0/4 Consciousness you are helpless, you don't act on your turn and someone needs to revive you.",6
-panicked,Panicked,shouting,"When at 1/4 Hope you are panicked. Play the top card from your Outcome deck. Rest or Indulge to recover.",6
-hopeless,Hopeless,run,"When at 0/4 Hope you flee or surrender. Recover after the encounter.",6
-freezing-burning,"Freezing/Burning",thermometerHot,"When at 0/4 or 4/4 Temperature, you receive a Wound at the start of your turn. Stabilize your temperature to recover.",6
-stuck,"Stuck",stickyBoot,"You cannot move until you get free.",6
-hindered,"Hindered",halt,"You can act or move, not both until you get free.",6
+"slug","title","icon","effect","cardCount"
+"wound","Injury","drop","2x+&nbsp;Injury: Dazed, 4x&nbsp;Injury: Unconscious. Heal to remove.",16
+"distress","Distress","tearTracks","3x+&nbsp;Distress: Panic. 4x&nbsp;Distress: Hopeless. Rest or use your Vice to recover.",16
+"dazed","Dazed","sleepy","2x+&nbsp;Injury: your Success counts as Partial success. Get rid of your Injuries to recover.",4
+"unconscious","Unconscious","knockout","4x&nbsp;Injury: character is helpless. Cannot take actions until someone revives you. Get rid of your Injuries to recover.",4
+"panicked","Panicked","shouting","3x&nbsp;Distress: panic overcomes you. Instead of playing a card from your hand, blindly play the top card from the Results deck. Get rid of your Distress to recover.",4
+"hopeless","Hopeless","run","4x&nbsp;Distress: character can only flee or give up. Get rid of your Distress to recover.",4
+"stuck","Stuck","stickyBoot","Cannot move until you free yourself.",4
+"hindered","Hindered","weight","Can move or take actions, but not both, until you free yourself.",4
+"boost","Boost","sprint","Your next action has +1 Effect or +1 Movement.",4
+"freezing","Freezing","thermometerCold","If you have 2x Freezing at the end of your turn, gain Distress until you warm up.",8 "hot","Hot","thermometerHot","If you have 2x Hot at the end of your turn, gain Injury until you cool down.",8 "complication","Complication","footTrip","Complication makes your life harder. Next action has -1 Effect, then remove.",4 "infection","Spore infection","/LP/icons/spore-infection.png","+1 Doom",0 "doom","Doom","/LP/icons/doom.png","3x Doom: Transformation into Monster",12 "salvation","Salvation","/LP/icons/salvation.png","3x Salvation: Transformation back into Hero",4

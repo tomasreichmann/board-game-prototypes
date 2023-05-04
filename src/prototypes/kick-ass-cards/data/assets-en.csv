@@ -1,0 +1,19 @@
+"slug","title","icon","effect","cost","cardCount"
+"medi-gel","Medi-gel","/LP/icons/injection.png","Repairs organic damage","",6
+"nano-gel","Nano-gel","/LP/icons/tube.png","Repairs mechanical damage","",6
+"instahack","Insta-hack","/LP/icons/gadget.png","Temporarily gains control over a device","",5
+"grapple-gun","Grapple gun","/LP/icons/rifle.png","Pulls an object to the gun or the gun to an object","",2
+"glue-nade","Glue grenade","/LP/icons/bag.png","Sticks everything in the zone for 1 round Hindered.","",3
+"emp-nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.","",3
+"frag-grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone.","",5
+"gravi-emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance.","",1
+"freeze-grenade","Freezing grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Freezing.","",2
+"air-conditioning","Air conditioning","/LP/icons/device-2.png","+/- Freezing/Heat in the zone.","",1
+"scanner","Scanner","/LP/icons/tablet.png","Multipurpose scanner.","",3
+"magnetic-gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects.","",1
+"multi-purpose-bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance.","",2
+"heat-gun","Heat gun","/LP/icons/heat-gun.png","Emits immense heat up to line of sight distance.","",1
+"bfg","BFG","/LP/icons/bfg.png","Huge weapon: absorbs all heat from the zone for 1 round, causes Doom in the next round.","",1
+"heat-blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Heat).","",2
+"holo-generator","Holo-generator","/LP/icons/orb.png","Generates holographic images.","",2
+"barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage.","",2

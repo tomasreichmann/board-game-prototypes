@@ -2,7 +2,7 @@ import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
-import effects from "../../data/effects.csv";
+import effects from "../../data/effects-en.csv";
 import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiplyByCount";
 import EffectCard from "../gameComponents/EffectCard";
 

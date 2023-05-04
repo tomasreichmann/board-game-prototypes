@@ -1,11 +1,6 @@
-slug,title,icon,description,instructions
-special,Special,mightyForce,Activate your special ability.,
-success,Success,bullseye,You succeeded,
-partialSuccess,Partial Success,dodge,You had limited success or complication.,
-fumble,Fumble,knockout,You messed up.,
-chaos,Chaos,thrustBend,Something unexpected occured.,
-wound,Wound,drop,Your wound hinders you.,Use as fumble or spend an action licking your wound and discard. Remove from deck with consumables.
-complication,Complication,stickyBoot,You fail because of a complication.,Use as fumble or spend an action to adress it to remove from deck.
-bless,Bless,sunbeams,You are blessed with success.,Remove from deck when you no longer blessed.
-advantage,Success from Advantage,sprint,You leverage your advantage to succeed. Discard.,
-curse,Curse,warlockEye,You are cursed to fail.,Remove from deck when you no longer cursed.
+"slug","title","icon","description","instructions"
+"special","Special action","mightyForce","Activate your special action<BR>+3 Effect",""
+"success","Success","bullseye","+2 Effect",""
+"partial","Partial success","dodge","+1 Effect,<BR>or success + Complication",""
+"fumble","Failure","knockout","Immediately announce if you have 3 Failures in your hand ➜ Catastrophe",""
+"chaos","Chaos","thrustBend","Something unexpected happened.<BR>Cannot be used for defense",""

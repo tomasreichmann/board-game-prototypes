@@ -2,7 +2,7 @@ import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
-import assets from "../../data/assets.csv";
+import assets from "../../data/assets-en.csv";
 import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiplyByCount";
 import AssetCard from "../gameComponents/AssetCard";
 

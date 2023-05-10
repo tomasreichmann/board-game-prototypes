@@ -24,7 +24,6 @@ export default function RichText<Aliases extends string, CommonProps extends {}>
                 const match = matches[fragmentIndex - 1];
                 const aliasKey = fragmentIndex * 2 + 1 + "-alias";
                 if (fragmentIndex > 0 && match) {
-                    console.log("match", match, aliasComponentMap);
                     if (match in aliasComponentMap) {
                         const Component = aliasComponentMap[match as keyof typeof aliasComponentMap];
                         fragments.push(

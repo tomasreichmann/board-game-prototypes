@@ -18,6 +18,7 @@ import PlayerBoxPages from "../print/PlayerBoxPages";
 import EffectCardPages from "../print/EffectCardPages";
 import PaperMiniPages from "../print/PaperMiniPages";
 import InfoCardPages from "../print/InfoCardPages";
+import StuntCardPages from "../print/StuntCardPages";
 
 const defaultSectionVisibility = true;
 
@@ -28,8 +29,14 @@ const sections = [
         Component: PlayerCharacterCardPages,
         isVisibleByDefault: defaultSectionVisibility,
     },
-    { slug: "InfoCards", label: "Info Cards", Component: InfoCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: defaultSectionVisibility },
+    {
+        slug: "StuntCards",
+        label: "Stunt Cards",
+        Component: StuntCardPages,
+        isVisibleByDefault: defaultSectionVisibility,
+    },
+    { slug: "InfoCards", label: "Info Cards", Component: InfoCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Actors", label: "Actors", Component: ActorCardPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Clocks", label: "Clocks", Component: ClockPages, isVisibleByDefault: defaultSectionVisibility },
     { slug: "Assets", label: "Assets", Component: AssetCardPages, isVisibleByDefault: defaultSectionVisibility },

@@ -2,7 +2,7 @@ import { range } from "lodash";
 import React from "react";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
-import InfoCard from "../gameComponents/InfoCard";
+import InfoCard from "../gameComponents/InfoCardEn";
 
 const copies = 1;
 

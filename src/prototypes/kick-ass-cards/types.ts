@@ -41,6 +41,10 @@ export type EffectType = {
     cardCount: number;
 };
 
+export type StuntType = {
+    requirements?: string;
+} & EffectType;
+
 export type ContentType = {
     children?: string | ContentType[];
     component?: string;

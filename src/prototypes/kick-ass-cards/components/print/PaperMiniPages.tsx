@@ -287,6 +287,22 @@ export default function PaperMiniPages() {
                         height="1.5in"
                         width="1in"
                     />
+                    <PaperMini
+                        imageUri="/LP/hacker.jpg"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="Martor"
+                        imageStyle={{ backgroundPosition: "5% 75%", backgroundSize: "180%" }}
+                        backImageStyle={{
+                            backgroundPosition: "95% 75%",
+                            backgroundSize: "180%",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="Martor"
+                        baseWidth="0.5in"
+                        height="1.5in"
+                        width="1in"
+                    />
                 </div>
             </PrintPage>
             <PrintPage>

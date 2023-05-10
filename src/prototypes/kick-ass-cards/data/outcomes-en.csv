@@ -2,5 +2,5 @@
 "special","Special action","mightyForce","Activate your special action<BR>+3 Effect",""
 "success","Success","bullseye","+2 Effect",""
 "partial","Partial success","dodge","+1 Effect,<BR>or success + Complication",""
-"fumble","Failure","knockout","Immediately announce if you have 3 Failures in your hand ➜ Catastrophe",""
+"fumble","Fumble","knockout","Immediately announce if you have 3 Fumbles in your hand ➜ Catastrophe",""
 "chaos","Chaos","thrustBend","Something unexpected happened.<BR>Cannot be used for defense",""

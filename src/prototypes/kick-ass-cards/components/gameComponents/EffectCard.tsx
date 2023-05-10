@@ -49,12 +49,6 @@ const getGraphics = (icon: EffectType["icon"]) => {
         );
     }
     return <img className={twMerge("max-h-fit h-16", effectSizeClassNameMap[icon] || "h-16")} src={icon} alt="" />;
-    /*    return (
-        <div
-            className="max-h-fit h-16"
-            style={{ background: "url(" + icon + ") center center / contain no-repeat" }}
-        ></div>
-    );*/
 };
 
 export default function EffectCard({
@@ -76,7 +70,7 @@ export default function EffectCard({
                 <Icon icon="heartBeats" className={"text-kac-blood-dark text-opacity-50 h-4"} />
                 <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
             </div>
-            <div className="flex-1 flex flex-col items-center justify-end gap-1">
+            <div className="flex-1 flex flex-col items-center justify-end gap-1 h-0">
                 {graphics}
                 <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>
             </div>

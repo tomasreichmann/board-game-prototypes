@@ -1,6 +1,5 @@
-import { EffectType } from "../types";
-
 declare module "*effects-en.csv" {
     import { EffectType } from "../types";
-    export default effects as EffectType[];
+    const effects: EffectType[];
+    export default effects;
 }

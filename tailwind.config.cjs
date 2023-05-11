@@ -93,8 +93,9 @@ module.exports = {
                 "jd-iron": "#180B06",
             },
             fontFamily: {
-                "jd-heading": ["Anglodavek", "sans-serif"],
-                "jd-body": ["Alegreya Sans", "sans-serif"],
+                "jd-logo": ["New Rocker", "sans-serif"],
+                "jd-heading": ["Skranji", "sans-serif"],
+                "jd-body": ["Teko", "sans-serif"],
                 dtHeading: ["Germania One", "sans-serif"],
                 kacBody: ["Rajdhani", "sans-serif"],
                 kacLogo: ["Trade Winds", "sans-serif"],

@@ -67,13 +67,6 @@ export default function JustDwarves({ children }: PropsWithChildren) {
                             className="text-inherit font-inherit inline-flex uppercase leading-none items-center flex-row flex-wrap hover:text-jd-soil transition-colors"
                         >
                             <Logo className="h-14" />
-                            &ensp;
-                            <span className="inline-flex flex-col">
-                                <span>{justDwarvesName}</span>
-                                <span className="font-jd-body leading-none font-bold text-xl tracking-wide uppercase">
-                                    mine, trade, drink, repeat
-                                </span>
-                            </span>
                         </a>
                     </h1>
                     <div className="flex flex-row flex-wrap gap-4 items-center">

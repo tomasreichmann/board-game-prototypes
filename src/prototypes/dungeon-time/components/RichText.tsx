@@ -3,7 +3,6 @@ import Icon, { aliasMap, IconProps, IconType } from "./Icon";
 // import "./RichText.css";
 
 export type RichTextProps = {
-    className?: string;
     children: string;
     iconProps?: Partial<IconProps>;
     aliasProps?: { [key in keyof typeof aliasMap | keyof typeof componentAliases]?: Record<string, any> };
@@ -23,7 +22,7 @@ const aliasRegex = new RegExp(
     "g"
 );
 
-export default function RichText({ className, iconProps = {}, aliasProps = {}, children = "" }: RichTextProps) {
+export default function RichText({ iconProps = {}, aliasProps = {}, children = "" }: RichTextProps) {
     const matches = children.match(aliasRegex) || [];
     const fragments = children.split(aliasRegex);
     return (

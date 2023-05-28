@@ -7,6 +7,7 @@ import Logo from "./just_dwarves_logo.svg";
 import Icon from "../../components/Icon/Icon";
 import InfoRoute from "./components/routes/InfoRoute";
 import RulesRoute from "./components/routes/RulesRoute";
+import DataRoute from "./components/routes/DataRoute";
 
 export const justDwarvesName = "Just Dwarves";
 export const justDwarvesPath = "/just-dwarves";
@@ -23,6 +24,11 @@ export const justDwarvesSubRoutes: RouteDefinition[] = [
         name: "Rules",
         path: justDwarvesPath + "/rules",
         Component: RulesRoute,
+    },
+    {
+        name: "Data",
+        path: justDwarvesPath + "/data",
+        Component: DataRoute,
     },
     /*{
         name: "Components",

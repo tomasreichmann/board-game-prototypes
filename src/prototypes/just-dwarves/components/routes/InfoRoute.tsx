@@ -5,6 +5,7 @@ import { justDwarvesName } from "../../JustDwarvesPrototype";
 import Changelog from "../content/Changelog";
 import Playtesters from "../content/Playtesters";
 import Credits from "../content/Credits";
+import IconList from "../misc/IconList";
 
 export default function InfoRoute() {
     return (
@@ -38,9 +39,12 @@ export default function InfoRoute() {
                 <Toggle buttonContent="Colors">
                     <ColorList filter={/^jd-/} />
                 </Toggle>
-                <Changelog />
-                <Playtesters />
-                <Credits />
+                <Toggle buttonContent="Icons">
+                    <IconList />
+                </Toggle>
+                <Changelog className="mt-5" />
+                <Playtesters className="mt-5" />
+                <Credits className="mt-5" />
             </div>
         </>
     );

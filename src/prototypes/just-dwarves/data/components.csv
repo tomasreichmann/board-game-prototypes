@@ -1,0 +1,21 @@
+name,imageUri,width,height,thickness,form,material,punchout,variations,count,pricePerPiece,priceTotal,description
+Town board,,,,,board,cardboard,FALSE,1,1,,,1 fold
+Event cards Instant,,62mm,100mm,,card,card paper,FALSE,29,40,,,
+Market boards,,,,,board,cardboard,TRUE,1,4,,,Cardboard with punched out holes for goods and prices glued on a paper with print inside holes
+Market slider,,,,,custom,plastic,FALSE,1,20,,,Plastic rectangle that fits into the punched out hole in market board and slides side to side with 3 holes inside that reveal prices on the print inside holes in the market board
+Dwarf meeples DwarfMeepleBlue,,,,,meeple,wood,FALSE,4,8,,,
+Golem meeples GolemMeepleBlue,,,,,meeple,wood,FALSE,4,12,,,
+Coins (1),,,,,coin,metal,FALSE,1,20,,,
+Coins (2),,,,,coin,metal,FALSE,1,20,,,
+Coins (5),,,,,coin,metal,FALSE,1,10,,,
+Coins (10),,,,,coin,metal,FALSE,1,10,,,
+Coins (20),,,,,coin,metal,FALSE,1,10,,,
+Coins (100),,,,,coin,metal,FALSE,1,6,,,
+Goods tokens Resource,,,,,cube,wood,FALSE,1,140,,,
+Gem dice GemDie,,,,,dice,ceramic,FALSE,1,1,,,"Custom die with sides: 3 gems, 2 gems, 2 gems, 1 gem, 1 gem, blank"
+Rule book,,,,,brochure,paper,FALSE,1,1,,,
+Production slot tokens PlayerTokenBlue,,,,,disc,cardboard,TRUE,4,20,,,
+Info cards with treasures Treasure,,,,,card,paper,FALSE,1,4,,,
+Turn info cards,,,,,card,paper,FALSE,1,4,,,
+Production shift token HigherProduction LowerProduction,,,,,disc,cardboard,TRUE,1,40,,,"Doublesided, + / -"
+Clan chief cards,,100mm,62mm,,card,paper,FALSE,6,6,,,

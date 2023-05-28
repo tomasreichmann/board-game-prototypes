@@ -28,7 +28,7 @@ export const defaultComponentMap: { [key: string]: React.ComponentType<ContentIt
     h1: ({ className, children = "" }) => (
         <h1
             className={twMerge(
-                "not-prose break-inside-avoid text-3xl font-jd-heading font-bold text-jd-soil mt-6 mb-3",
+                "not-prose break-inside-avoid text-3xl font-jd-heading font-bold text-jd-soil mt-6 mb-3 first:mt-0",
                 className
             )}
         >
@@ -106,7 +106,12 @@ export const defaultComponentMap: { [key: string]: React.ComponentType<ContentIt
         </ul>
     ),
     li: ({ className, children = "" }) => (
-        <li className={twMerge("break-inside-avoid", typeof children !== "string" ? "list-none" : "", className)}>
+        <li
+            className={twMerge(
+                "break-inside-avoid leading-tight",
+                /* typeof children !== "string" ? "list-none" : "",  */ className
+            )}
+        >
             <NormalizedChildren iconClassName="h-6 inline-block -my-1">{children}</NormalizedChildren>
         </li>
     ),

@@ -6,6 +6,7 @@ import { RouteDefinition } from "../../routeTypes";
 import Logo from "./just_dwarves_logo.svg";
 import Icon from "../../components/Icon/Icon";
 import InfoRoute from "./components/routes/InfoRoute";
+import RulesRoute from "./components/routes/RulesRoute";
 
 export const justDwarvesName = "Just Dwarves";
 export const justDwarvesPath = "/just-dwarves";
@@ -17,6 +18,11 @@ export const justDwarvesSubRoutes: RouteDefinition[] = [
         name: justDwarvesName,
         path: justDwarvesPath + "/",
         Component: InfoRoute,
+    },
+    {
+        name: "Rules",
+        path: justDwarvesPath + "/rules",
+        Component: RulesRoute,
     },
     /*{
         name: "Components",
@@ -74,7 +80,7 @@ export default function JustDwarves({ children }: PropsWithChildren) {
                             <a
                                 key={path}
                                 href={path}
-                                className="btn btn-sm bg-jd-gold text-jd-iron hover:bg-jd-gold-light border-jd-gold-darkest hover:text-jd-gold-darkest hover:border-jd-gold"
+                                className="btn btn-sm bg-jd-emerald text-jd-gold-light hover:bg-jd-emerald-light border-jd-emerald-darkest hover:text-jd-gold-light hover:border-jd-emerald"
                             >
                                 {name}
                             </a>

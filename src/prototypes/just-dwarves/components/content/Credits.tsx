@@ -1,6 +1,6 @@
-import Article from "./Article";
-import Mdx from "./articles/credits.mdx";
+import Article, { ArticleProps } from "./Article";
+import Mdx from "../../content/credits.mdx";
 
-export default function Credits() {
-    return <Article mdx={Mdx} />;
+export default function Credits(props: Omit<ArticleProps, "mdx">) {
+    return <Article mdx={Mdx} {...props} />;
 }

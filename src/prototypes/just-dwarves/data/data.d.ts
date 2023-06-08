@@ -13,3 +13,13 @@ declare module "*components.csv" {
 declare module "*events.csv" {
     export default data as { [key: string] }[];
 }
+
+declare module "*prequelCards.csv" {
+    export default data as {
+        name: string;
+        frontBottom: string;
+        frontTop: string;
+        backBottom: string;
+        backTop: string;
+    }[];
+}

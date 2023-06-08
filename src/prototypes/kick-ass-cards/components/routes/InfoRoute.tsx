@@ -15,7 +15,7 @@ export default function InfoRoute() {
             <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white container">
                 <h1 className="text-lg">
                     Kick Ass Cards is a tabletop game system to run narrative games. It is setting independent focused
-                    on roleplay and building drama.
+                    on role-play and building drama.
                 </h1>
                 <div className="flex flex-col -gap-10 items-center mb-10">
                     <Spread

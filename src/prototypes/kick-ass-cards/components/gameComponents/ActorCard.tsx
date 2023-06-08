@@ -18,7 +18,7 @@ export type ActorCardProps = React.PropsWithChildren<
         notesClassName?: string;
         forPrint?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
-    } & ActorType
+    } & Partial<ActorType>
 >;
 
 export default function ActorCard({
@@ -111,7 +111,7 @@ export default function ActorCard({
                         <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
                             <Icon icon="scrollQuill" className="h-4 mr-3 inline-block " />
                             {notes.length > 0 ? (
-                                <div className={twMerge('inline', notesClassName)}>{notes}</div>
+                                <div className={twMerge("inline", notesClassName)}>{notes}</div>
                             ) : (
                                 <>
                                     <div className="border-b-2 border-dashed ml-7"></div>

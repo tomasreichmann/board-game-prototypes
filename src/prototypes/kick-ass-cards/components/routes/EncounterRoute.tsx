@@ -9,21 +9,12 @@ import BroadcastAsset from "../screenContent/BroadcastAsset";
 import BroadcastClock from "../screenContent/BroadcastClock";
 import BroadcastEffect from "../screenContent/BroadcastEffect";
 import OutcomeCard from "../gameComponents/OutcomeCard";
-import clsx from "clsx";
 import Hand from "../layout/Hand";
 import EncounterImage from "../EncounterImage";
 import ComponentList from "../ComponentList";
 import BroadcastPaper from "../screenContent/BroadcastPaper";
 import BroadcastHeading from "../screenContent/BroadcastHeading";
-
-const Columns = ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
-    <div
-        className={clsx("grid gap-4 my-4", className)}
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
-    >
-        {children}
-    </div>
-);
+import Columns from "../content/Columns";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);

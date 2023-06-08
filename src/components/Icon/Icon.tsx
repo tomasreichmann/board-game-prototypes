@@ -44,6 +44,7 @@ import dodge from "./media/dodge.svg";
 import doubleFaceMask from "./media/double-face-mask.svg";
 import drinkMe from "./media/drink-me.svg";
 import drop from "./media/drop.svg";
+import dwarfKing from "./media/dwarf-king.svg";
 import explosiveMaterials from "./media/explosive-materials.svg";
 import fairyWand from "./media/fairy-wand.svg";
 import fireRing from "./media/fire-ring.svg";
@@ -177,6 +178,7 @@ export const iconMap = {
     doubleFaceMask,
     drinkMe,
     drop,
+    dwarfKing,
     explosiveMaterials,
     fairyWand,
     fireRing,

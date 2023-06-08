@@ -17,3 +17,4 @@
 "heat-blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Heat).","",2
 "holo-generator","Holo-generator","/LP/icons/orb.png","Generates holographic images.","",2
 "barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage.","",2
+"turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret is destroyed.",1,

@@ -1,6 +1,6 @@
-import Article, { ArticleProps } from "./Article";
+import MdxArticle, { MdxArticleProps } from "./MdxArticle";
 import DrinkingRulesArticle from "../../content/drinkingRules.mdx";
 
-export default function DrinkingRules(props: Omit<ArticleProps, "mdx">) {
-    return <Article mdx={DrinkingRulesArticle} {...props} />;
+export default function DrinkingRules(props: Omit<MdxArticleProps, "mdx">) {
+    return <MdxArticle mdx={DrinkingRulesArticle} {...props} />;
 }

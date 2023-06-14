@@ -14,6 +14,8 @@
     padding-left: calc(var(--PrintPage-margin-left, 0) - var(--PrintPage-bleed, 0));
     box-shadow: 0 0 1cm rgba(0, 0, 0, 0.25);
     background-color: white;
+    page-break-inside: avoid;
+    page-break-after: always;
 }
 
 .PrintPage::after {

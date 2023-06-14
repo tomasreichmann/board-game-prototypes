@@ -53,6 +53,7 @@ import fizzingFlask from "./media/fizzing-flask.svg";
 import flatPlatform from "./media/flat-platform.svg";
 import fountainPen from "./media/fountain-pen.svg";
 import globeRing from "./media/globe-ring.svg";
+import gooeyImpact from "./media/gooey-impact.svg";
 import grapple from "./media/grapple.svg";
 import halt from "./media/halt.svg";
 import hangingSign from "./media/hanging-sign.svg";
@@ -188,6 +189,7 @@ export const iconMap = {
     footTrip,
     globeRing,
     grapple,
+    gooeyImpact,
     halt,
     hangingSign,
     heartBottle,

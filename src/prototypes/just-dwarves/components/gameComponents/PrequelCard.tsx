@@ -25,18 +25,8 @@ export default function PrequelCard({
 }: PrequelCardProps) {
     const nameElement = <span className="font-bold text-slate-700 mr-2">{name.toUpperCase()}</span>;
     const iconAliases = {
-        PRIDE: () => (
-            <>
-                <Icon icon="dwarfKing" className="h-5 text-amber-700 mr-1 mb-1 inline-block align-center" />
-                {isFaceDown ? null : nameElement}
-            </>
-        ),
-        SHAME: () => (
-            <>
-                <Icon icon="knockout" className="h-5 text-indigo-700 mr-1 mb-1 inline-block align-center" />
-                {isFaceDown ? null : nameElement}
-            </>
-        ),
+        PRIDE: () => <>{isFaceDown ? null : nameElement}</>,
+        SHAME: () => <>{isFaceDown ? null : nameElement}</>,
         BR: () => <br />,
     };
     return (
@@ -47,7 +37,7 @@ export default function PrequelCard({
                 className
             )}
         >
-            <div className="absolute top-0 left-0 w-full h-full rounded print:rounded-none overflow-hidden bg-indigo-300">
+            <div className="absolute top-0 left-0 w-full h-full rounded print:rounded-none overflow-hidden bg-violet-300">
                 {(frontTop.startsWith("PRIDE") || isFaceDown) && (
                     <div className="absolute -left-1/4 top-1/2 w-[150%] h-full bg-amber-300 rotate-[170deg] origin-[50%_0%]"></div>
                 )}

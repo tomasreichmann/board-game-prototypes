@@ -1,9 +1,10 @@
 import React from "react";
 import MdxArticle from "../content/MdxArticle";
-import prequelCards from "../../data/prequelCards.csv";
 import Credits from "../content/Credits";
 import ToggleData from "../../../../components/DataToggle";
 import PrequelCard from "../gameComponents/PrequelCard";
+
+import prequelCards from "../../data/prequelInAPubCards.csv";
 
 import prequelArticle from "../../content/prequel.mdx";
 import inAPubArticle from "../../content/prequel-in-a-pub.mdx";
@@ -27,14 +28,14 @@ export default function PrequelRoute() {
                 <MdxArticle mdx={inAPubArticle} className="mb-5" />
             </PrintPage>
             {chunk(allCards, CARDS_PER_PAGE).map((cards, pageIndex) => (
-                <>
+                <React.Fragment key={pageIndex}>
                     <PrintPage
-                        key={"card-page-" + pageIndex}
+                        key={"card-page-front-" + pageIndex}
                         contentClassName="overflow-hidden border-2 border-slate-200"
                     >
                         <div className="flex flex-wrap justify-center content-center items-center">
-                            {cards.map((card) => (
-                                <PrequelCard key={card.name} {...card} />
+                            {cards.map((card, cardIndex) => (
+                                <PrequelCard key={cardIndex} {...card} />
                             ))}
                             <h2 className="text-2xl font-kacHeading text-kac-steel-dark w-full text-center">
                                 Cards front {pageIndex * 2 + 1}/{Math.ceil(allCards.length / CARDS_PER_PAGE) * 2}
@@ -42,7 +43,7 @@ export default function PrequelRoute() {
                         </div>
                     </PrintPage>
                     <PrintPage
-                        key={"card-page-" + pageIndex}
+                        key={"card-page-back-" + pageIndex}
                         className="-scale-x-100"
                         contentClassName="overflow-hidden border-2 border-slate-200"
                     >
@@ -55,7 +56,7 @@ export default function PrequelRoute() {
                             </h2>
                         </div>
                     </PrintPage>
-                </>
+                </React.Fragment>
             ))}
             <div>
                 <ToggleData data={prequelCards} className="mb-5" />

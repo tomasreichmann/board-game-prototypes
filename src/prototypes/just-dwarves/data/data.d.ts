@@ -14,7 +14,7 @@ declare module "*events.csv" {
     export default data as { [key: string] }[];
 }
 
-declare module "*prequelCards.csv" {
+declare module "*prequelInAPubCards.csv" {
     export default data as {
         name: string;
         frontBottom: string;

@@ -1,8 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import config from "tailwind-config";
 
-console.log("theme", config);
-
 export type CellType = string | number | React.ReactNode;
 
 export type GenericRowType = { [key: string | number]: CellType };

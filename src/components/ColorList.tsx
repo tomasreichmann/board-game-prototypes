@@ -4,8 +4,6 @@ import { ThemeConfig } from "tailwindcss/types/config";
 
 const { colors: colorMap } = config?.theme?.extend || ({ colors: {} } as ThemeConfig);
 
-console.log("theme", config);
-
 export type ColorListProps = {
     className?: string;
     filter?: RegExp;

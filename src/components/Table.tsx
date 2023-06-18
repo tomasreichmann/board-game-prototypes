@@ -1,5 +1,4 @@
 import { twMerge } from "tailwind-merge";
-import config from "tailwind-config";
 
 export type CellType = string | number | React.ReactNode;
 

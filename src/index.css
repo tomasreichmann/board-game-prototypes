@@ -72,3 +72,28 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+
+@layer utilities {
+    .perspective {
+        perspective: 600px;
+    }
+    .perspective * {
+        transform-style: preserve-3d;
+    }
+
+    .card-up {
+        @apply transform-gpu;
+        @apply transition-all;
+        @apply duration-300;
+        @apply drop-shadow;
+        @apply hover:translate-z-10;
+        @apply hover:z-10;
+        @apply hover:drop-shadow-xl;
+    }
+
+    .card {
+        @apply drop-shadow-md;
+        @apply print:drop-shadow-none;
+        @apply print:filter-none;
+    }
+}

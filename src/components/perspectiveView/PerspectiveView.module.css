@@ -1,0 +1,4 @@
+.PerspectiveView * {
+    transform-style: preserve-3d;
+    transition: transform 500ms ease-in-out;
+}

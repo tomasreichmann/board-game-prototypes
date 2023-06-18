@@ -1,14 +1,19 @@
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../KickAssCardsPrototype";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { ClockProps } from "../Clock";
-import BroadcastComponent from "./BroadcastComponent";
+import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
 
-export const BroadcastClock = (props: ClockProps) => (
+export type BroadcastActorProps = ClockProps & {
+    broadcastProps?: Partial<BroadcastComponentProps<ScreenContentTypeEnum.Clock>>;
+};
+
+export const BroadcastClock = ({ broadcastProps, ...props }: BroadcastActorProps) => (
     <BroadcastComponent
         screenStorageKey={kickAssCardsScreenStorageKey}
         printStorageKey={kickAssCardsPrintStorageKey}
         type={ScreenContentTypeEnum.Clock}
         props={props}
+        {...broadcastProps}
     />
 );
 export default BroadcastClock;

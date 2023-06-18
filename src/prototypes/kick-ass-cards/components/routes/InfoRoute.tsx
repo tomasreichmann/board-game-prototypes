@@ -8,15 +8,17 @@ import EffectCard from "../gameComponents/EffectCard";
 import OutcomeCard from "../gameComponents/OutcomeCard";
 import ActorCard from "../gameComponents/ActorCard";
 import Clock from "../Clock";
+import MdxArticle from "../layout/MdxArticle";
+import InfoMdx from "../../articles/info.mdx";
+import { Navigation } from "../Navigation";
 
 export default function InfoRoute() {
     return (
         <>
+            <Navigation />
             <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white container">
-                <h1 className="text-lg">
-                    Kick Ass Cards is a tabletop game system to run narrative games. It is setting independent focused
-                    on role-play and building drama.
-                </h1>
+                <MdxArticle mdx={InfoMdx} className="mt-4" />
+
                 <div className="flex flex-col -gap-10 items-center mb-10">
                     <Spread
                         className="w-full max-w-[600px] h-[350px]"

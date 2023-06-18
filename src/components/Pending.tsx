@@ -1,11 +1,11 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export type PendingProps = {
+export type PendingProps = React.PropsWithChildren<{
     className?: string;
-};
+}>;
 
-const Pending = ({ className }: PendingProps) => {
+const Pending = ({ className, children }: PendingProps) => {
     return (
         <div className={twMerge("flex items-center justify-center", className)}>
             <svg
@@ -21,7 +21,8 @@ const Pending = ({ className }: PendingProps) => {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM12 20a8 8 0 01-8-8H0c0 4.411 3.589 8 8 8v-2zm5-5.291c1.865-2.114 3-4.896 3-7.938h-4a7.962 7.962 0 01-2 5.291l3 2.647z"
                 ></path>
             </svg>
-            <span className="sr-only">Loading...</span>
+            <span className="sr-only">Loading&hellip;</span>
+            {children}
         </div>
     );
 };

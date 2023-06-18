@@ -1,14 +1,19 @@
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../KickAssCardsPrototype";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { EffectCardProps } from "../gameComponents/EffectCard";
-import BroadcastComponent from "./BroadcastComponent";
+import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
 
-export const BroadcastEffect = (props: EffectCardProps) => (
+export type BroadcastActorProps = EffectCardProps & {
+    broadcastProps?: Partial<BroadcastComponentProps<ScreenContentTypeEnum.Effect>>;
+};
+
+export const BroadcastEffect = ({ broadcastProps, ...props }: BroadcastActorProps) => (
     <BroadcastComponent
         screenStorageKey={kickAssCardsScreenStorageKey}
         printStorageKey={kickAssCardsPrintStorageKey}
         type={ScreenContentTypeEnum.Effect}
         props={props}
+        {...broadcastProps}
     />
 );
 export default BroadcastEffect;

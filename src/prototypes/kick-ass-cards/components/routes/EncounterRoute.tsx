@@ -14,7 +14,11 @@ import EncounterImage from "../EncounterImage";
 import ComponentList from "../ComponentList";
 import BroadcastPaper from "../screenContent/BroadcastPaper";
 import BroadcastHeading from "../screenContent/BroadcastHeading";
+import Pending from "../../../../components/Pending";
+import Article from "../layout/Article";
 import Columns from "../content/Columns";
+import Spread from "../layout/Spread";
+import { Navigation } from "../Navigation";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -27,7 +31,7 @@ export default function EncounterRoute() {
         path: undefined,
         title: undefined,
     };
-    const { path, title } = encounterDefinition;
+    const { path } = encounterDefinition;
 
     useEffect(() => {
         if (!path) {
@@ -60,14 +64,8 @@ export default function EncounterRoute() {
     }
     return (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto">
-            <article className="prose text-kac-iron max-w-none prose-headings:font-kacHeading prose-headings:text-kac-blood prose-a:text-kac-monster prose-strong:text-kac-iron-dark prose-blockquote:text-kac-iron-dark prose-em:text-kac-cloth prose-ul:[--tw-prose-bullets:rgb(123,0,29)] prose-ul:my-0 prose-li:my-0">
-                {isPending && (
-                    <h1>
-                        {title}
-                        <br />
-                        ...loading
-                    </h1>
-                )}
+            {isPending && <Pending />}
+            <Article>
                 {Encounter !== null && (
                     <Encounter
                         key={path}
@@ -80,6 +78,7 @@ export default function EncounterRoute() {
                             img: EncounterImage,
                             Heading: BroadcastHeading,
                             Player: ReactPlayer,
+                            Spread,
                             Actor: BroadcastActor,
                             Asset: BroadcastAsset,
                             Effect: BroadcastEffect,
@@ -88,7 +87,7 @@ export default function EncounterRoute() {
                         }}
                     />
                 )}
-            </article>
+            </Article>
         </div>
     );
 }

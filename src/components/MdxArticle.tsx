@@ -1,6 +1,3 @@
-import Article, { ArticleProps } from "./Article";
-import { defaultComponentMap } from "../../prototypes/just-dwarves/components/content/ContentItem";
-
 export type MdxComponent = React.ComponentType<{
     components?: {
         [key: string]: React.ComponentType<any>;
@@ -10,14 +7,20 @@ export type MdxComponent = React.ComponentType<{
 export type MdxArticleProps = React.PropsWithChildren<{
     className?: string;
     componentMap?: { [key: string]: React.ComponentType<any> };
-    ArticleComponent?: React.ComponentType<ArticleProps>;
+    ArticleComponent?:
+        | React.ComponentType<{
+              className?: string;
+          }>
+        | "article";
     mdx: MdxComponent;
 }>;
 
+const emptyComponentMap = {};
+
 export default function MdxArticle({
     className,
-    componentMap = defaultComponentMap,
-    ArticleComponent = Article,
+    componentMap = emptyComponentMap,
+    ArticleComponent = "article",
     mdx,
     children,
 }: MdxArticleProps) {

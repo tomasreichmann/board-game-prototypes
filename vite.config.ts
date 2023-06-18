@@ -23,7 +23,6 @@ export default defineConfig(() => {
                 include: ["tailwind-config.cjs", "node_modules/**"],
             },
         },
-
         optimizeDeps: {
             include: ["tailwind-config"],
         },

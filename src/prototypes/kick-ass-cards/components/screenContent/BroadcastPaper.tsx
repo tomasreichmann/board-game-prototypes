@@ -1,9 +1,13 @@
 import { PaperProps } from "../../../../components/print/Paper/Paper";
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../KickAssCardsPrototype";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
-import BroadcastComponent from "./BroadcastComponent";
+import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
 
-export const BroadcastPaper = ({ children, ...props }: PaperProps) => (
+export type BroadcastActorProps = PaperProps & {
+    broadcastProps?: Partial<BroadcastComponentProps<ScreenContentTypeEnum.Paper>>;
+};
+
+export const BroadcastPaper = ({ broadcastProps, children, ...props }: BroadcastActorProps) => (
     <BroadcastComponent
         screenStorageKey={kickAssCardsScreenStorageKey}
         printStorageKey={kickAssCardsPrintStorageKey}
@@ -12,6 +16,7 @@ export const BroadcastPaper = ({ children, ...props }: PaperProps) => (
             ...props,
             children: typeof children === "object" ? "This component does not support complex children" : children,
         }}
+        {...broadcastProps}
     />
 );
 export default BroadcastPaper;

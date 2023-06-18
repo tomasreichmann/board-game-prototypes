@@ -17,6 +17,8 @@ module.exports = {
         "print:drop-shadow-none",
         "print:filter-none",
         "inline-block",
+        "card",
+        "card-up",
     ],
     theme: {
         extend: {

@@ -62,7 +62,7 @@ export default function StuntCard({
         <PaperOrDiv size={size} className={twMerge("StuntCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}>
             <div className="flex flex-row items-center gap-2">
                 <Icon icon="sprint" className={"text-kac-monster-dark text-opacity-50 h-4"} />
-                <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
+                <div className="flex-1 text-slate-400 text-center text-xs -ml-4">{slug}</div>
             </div>
             <div className="flex-1 flex flex-col items-center">
                 <div className="flex-1 self-stretch flex flex-col justify-center relative">{graphics}</div>

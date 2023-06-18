@@ -1,18 +1,25 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type SpreadProps = React.PropsWithChildren<{
     className?: string;
     horizontalMarginPercent?: number;
     items: JSX.Element[];
-}>;
+}> &
+    HTMLAttributes<HTMLDivElement>;
 
-export default function Spread({ className, items, children, horizontalMarginPercent = 15 }: SpreadProps) {
+export default function Spread({
+    className,
+    items,
+    children,
+    horizontalMarginPercent = 15,
+    ...restProps
+}: SpreadProps) {
     return (
-        <div className={twMerge("Spread [perspective:600px] flex flex-row", className)}>
+        <div className={twMerge("Spread [perspective:600px] flex flex-row", className)} {...restProps}>
             {items.map((item, itemIndex) => (
                 <div
-                    key={item.key}
+                    key={item.key || itemIndex}
                     style={{
                         left:
                             (items.length > 1

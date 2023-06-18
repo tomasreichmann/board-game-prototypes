@@ -7,6 +7,7 @@ import ErrorBoundary from "../../../../components/ErrorBoundary";
 import clsx from "clsx";
 import { Button } from "react-daisyui";
 import Icon from "../Icon";
+import { Navigation } from "../Navigation";
 
 export type BroadcastRouteProps = { storageKey: string; withPrintMarkerCorners?: boolean };
 
@@ -15,6 +16,7 @@ export default function BroadcastRoute({ storageKey, withPrintMarkerCorners }: B
 
     return (
         <>
+            <Navigation />
             <div
                 className={clsx(
                     "print:relative flex-1 flex justify-center items-center content-center flex-wrap",

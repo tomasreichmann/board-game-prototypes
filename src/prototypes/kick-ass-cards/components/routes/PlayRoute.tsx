@@ -1,20 +1,133 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigation } from "../Navigation";
-import { PerspectiveView } from "../../../../components/perspectiveView/PerspectiveView";
+import { PerspectiveView, PerspectiveViewProps } from "../../../../components/perspectiveView/PerspectiveView";
+import { Button } from "react-daisyui";
+import EffectCard from "../gameComponents/EffectCard";
+
+import effects from "../../data/effects.csv";
+import { Position } from "../../../../components/perspectiveView/Position";
+import Spread from "../layout/Spread";
+import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
+import { PerspectiveCard, PerspectiveCardProps } from "../../../../components/perspectiveView/PerspectiveCard";
+import { cardSizes } from "../../../../components/print/paperSizes";
 
 export default function PlayRoute() {
+    const [perspectivePreset, setPerspectivePreset] = useState<Partial<PerspectiveViewProps>>({});
+    const [firstCardPreset, setFirstCardPreset] = useState<Partial<PerspectiveCardProps>>({});
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full select-none">
             <Navigation className="absolute left-0 top-0 right-0 z-40" />
-            <PerspectiveView className="w-full h-full z-0" showGrid targetX={0} targetY={0} targetZ={0}>
-                <h1 className="text-3xl absolute left-[0px] top-[0px] -translate-x-1/2 -translate-y-1/2">0x0</h1>
-                <h1 className="text-3xl absolute left-[200px] top-[200px] -translate-x-1/2 -translate-y-1/2">
-                    200x200
-                </h1>
-                <h1 className="text-3xl absolute left-[-100px] top-[300px] -translate-x-1/2 -translate-y-1/2">
-                    -100x300
-                </h1>
+            <PerspectiveView
+                className="w-full h-full z-0"
+                showGrid
+                targetX={0}
+                targetY={0}
+                targetZ={0}
+                {...perspectivePreset}
+            >
+                <div className="absolute left-[0px] top-[0px] -translate-x-1/2 -translate-y-1/2">0x0</div>
+                <PerspectiveCard
+                    x={-400}
+                    rotateY={0}
+                    shadow
+                    center
+                    front={<EffectCard className="outline outline-1 outline-slate-200" {...effects[0]} />}
+                    back={<OutcomeBackFace />}
+                    {...firstCardPreset}
+                />
+                <PerspectiveCard
+                    x={-200}
+                    shadow
+                    center
+                    front={<EffectCard className="outline outline-1 outline-slate-200" {...effects[1]} />}
+                    back={<OutcomeBackFace />}
+                />
+                <PerspectiveCard
+                    x={0}
+                    shadow
+                    center
+                    front={<EffectCard className="outline outline-1 outline-slate-200" {...effects[2]} />}
+                    back={<OutcomeBackFace />}
+                />
+                <PerspectiveCard
+                    x={200}
+                    shadow
+                    center
+                    front={<EffectCard className="outline outline-1 outline-slate-200" {...effects[3]} />}
+                    back={<OutcomeBackFace />}
+                />
+                <PerspectiveCard
+                    x={400}
+                    shadow
+                    center
+                    front={<EffectCard className="outline outline-1 outline-slate-200" {...effects[4]} />}
+                    back={<OutcomeBackFace />}
+                />
+                <Position center z={-1}>
+                    <div
+                        style={{ background: "url(/wood2.jpg) center center / 25% repeat" }}
+                        className="w-[2000px] h-[2000px] max-w-none max-h-none"
+                    />
+                </Position>
             </PerspectiveView>
+            <div className="absolute left-2 bottom-2 z-20 flex flex-col gap-2">
+                <Button
+                    size="xs"
+                    color="secondary"
+                    onClick={() => {
+                        setFirstCardPreset((preset) => ({
+                            ...preset,
+                            z: preset.z === 100 ? 0 : 100,
+                        }));
+                    }}
+                >
+                    Raise first card
+                </Button>
+                <Button
+                    size="xs"
+                    color="secondary"
+                    onClick={() => {
+                        setFirstCardPreset((preset) => ({
+                            ...preset,
+                            rotateY: ((preset.rotateY || 0) + 180) % 360,
+                        }));
+                    }}
+                >
+                    Flip first card
+                </Button>
+                <Button
+                    size="xs"
+                    color="secondary"
+                    onClick={() => {
+                        setFirstCardPreset((preset) => ({
+                            ...preset,
+                            x: preset.x === 200 ? -400 : 200,
+                            z: preset.x === 200 ? 0 : 20,
+                            rotateZ: preset.x === 200 ? 0 : 20,
+                        }));
+                    }}
+                >
+                    Move first card
+                </Button>
+                <Button
+                    size="xs"
+                    color="secondary"
+                    onClick={() => {
+                        setPerspectivePreset({});
+                    }}
+                >
+                    reset view
+                </Button>
+                <Button
+                    size="xs"
+                    color="secondary"
+                    onClick={() => {
+                        setPerspectivePreset({ targetX: -320, targetZ: 0, rotateX: 15, scale: 2 });
+                    }}
+                >
+                    Zoom in on first
+                </Button>
+            </div>
         </div>
     );
 }

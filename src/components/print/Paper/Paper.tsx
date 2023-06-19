@@ -8,6 +8,7 @@ export type PaperProps = React.PropsWithChildren<{
     className?: string;
     size: keyof typeof allSizes;
     orientation?: "portrait" | "landscape";
+    bleedMm?: number;
 }>;
 
 export const PaperOrDiv = ({ size, ...restProps }: Omit<PaperProps, "size"> & { size?: PaperProps["size"] }) => {
@@ -17,7 +18,7 @@ export const PaperOrDiv = ({ size, ...restProps }: Omit<PaperProps, "size"> & { 
     return <div className={restProps.className}>{restProps.children}</div>;
 };
 
-export default function Paper({ className, size, orientation = "portrait", children }: PaperProps) {
+export default function Paper({ className, size, orientation = "portrait", bleedMm = 0, children }: PaperProps) {
     const sizeInMm = allSizes[size].mm;
     const [width, height] = orientation === "landscape" ? [...sizeInMm].reverse() : sizeInMm;
 
@@ -25,8 +26,8 @@ export default function Paper({ className, size, orientation = "portrait", child
         <div
             className={clsx("Paper", className)}
             style={{
-                width: width + "mm",
-                height: height + "mm",
+                width: width + bleedMm + "mm",
+                height: height + bleedMm + "mm",
             }}
         >
             {children}

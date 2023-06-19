@@ -48,13 +48,20 @@ export const Position = ({ children, ...propsWithoutChildren }: PositionProps) =
     } = propsWithoutChildren;
     const combinedStyle = useMemo(() => {
         const { transform = "", transition = "", ...restStyle } = style || {};
+
+        // const transitionWithoutDuplicates = transition
+        //     .split(/,\s*/)
+        //     .filter((fragment) => !fragment.startsWith("transform"))
+        //     .join(", ");
+
         return {
             transform: `translateX(${x}px) translateY(${y}px) translateZ(${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)${
                 transform ? " " + transform : ""
             }`,
-            transition: `transform ${transitionDurationMs}ms ease-in-out, transform-origin ${transitionDurationMs} ease-in-out${
-                transform ? ", " + transform : ""
-            }`,
+            /*transition: `transform ${transitionDurationMs}ms ease-in-out, transform-origin ${transitionDurationMs} ease-in-out${
+                transitionWithoutDuplicates ? (", " + transitionWithoutDuplicates) : ""
+            }`,*/
+            transition: `all ${transitionDurationMs}ms ease-in-out`,
             ...restStyle,
         };
     }, [x, y, z, rotateX, rotateY, rotateZ, transitionDurationMs, style]);

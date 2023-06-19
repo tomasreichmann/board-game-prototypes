@@ -9,7 +9,7 @@ import OutcomeCard from "../gameComponents/OutcomeCard";
 import ActorCard from "../gameComponents/ActorCard";
 import Clock from "../Clock";
 import MdxArticle from "../layout/MdxArticle";
-import InfoMdx from "../../articles/info.mdx";
+import homeInfoMdx from "../../articles/homeInfo.mdx";
 import { Navigation } from "../Navigation";
 
 export default function InfoRoute() {
@@ -17,7 +17,7 @@ export default function InfoRoute() {
         <>
             <Navigation />
             <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white container">
-                <MdxArticle mdx={InfoMdx} className="mt-4" />
+                <MdxArticle mdx={homeInfoMdx} className="mt-4" />
 
                 <div className="flex flex-col -gap-10 items-center mb-10">
                     <Spread

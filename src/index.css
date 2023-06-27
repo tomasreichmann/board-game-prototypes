@@ -60,6 +60,11 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
+.preserve3d,
+.preserve3d * {
+    transform-style: preserve-3d;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;

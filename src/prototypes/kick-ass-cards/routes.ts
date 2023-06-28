@@ -7,6 +7,7 @@ import PrintRoute from "./components/routes/PrintRoute";
 import ScreenRoute from "./components/routes/ScreenRoute";
 
 import { RouteDefinition } from "../../routeTypes";
+import PlaygroundRoute from "./components/routes/PlaygroundRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
@@ -44,6 +45,11 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         name: "Print",
         path: kickAssCardsPath + "/print",
         Component: PrintRoute,
+    },
+    {
+        name: "Playground",
+        path: kickAssCardsPath + "/playground",
+        Component: PlaygroundRoute,
     },
     {
         name: "Play",

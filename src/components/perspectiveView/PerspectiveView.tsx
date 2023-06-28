@@ -71,6 +71,7 @@ export const PerspectiveView = ({ children, ...propsWithoutChildren }: Perspecti
 
             <ToggleData
                 data={{ ...propsWithoutChildren, width, height }}
+                initialCollapsed
                 className="absolute right-2 bottom-2 flex flex-col-reverse items-end gap-2 -mb-2"
             />
         </div>

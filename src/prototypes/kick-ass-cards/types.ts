@@ -45,9 +45,9 @@ export type StuntType = {
     requirements?: string;
 } & EffectType;
 
-export type ContentType = {
+export type ContentType<ComponentType = string> = {
     children?: string | ContentType[];
-    component?: string;
+    component?: ComponentType;
     className?: string;
 };
 

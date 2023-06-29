@@ -2,7 +2,7 @@ import ComponentsRoute from "./components/routes/ComponentsRoute";
 import EncounterRoute from "./components/routes/EncounterRoute";
 import EncountersRoute from "./components/routes/EncountersRoute";
 import InfoRoute from "./components/routes/InfoRoute";
-import PlayRoute from "./components/routes/PlayRoute";
+import MachimagikaRoute from "./components/routes/PlayRoute";
 import PrintRoute from "./components/routes/PrintRoute";
 import ScreenRoute from "./components/routes/ScreenRoute";
 
@@ -54,6 +54,6 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
     {
         name: "Play",
         path: kickAssCardsPath + "/play",
-        Component: PlayRoute,
+        Component: MachimagikaRoute,
     },
 ];

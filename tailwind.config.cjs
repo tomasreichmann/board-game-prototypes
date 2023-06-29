@@ -102,6 +102,7 @@ module.exports = {
                 kacBody: ["Rajdhani", "sans-serif"],
                 kacLogo: ["Trade Winds", "sans-serif"],
                 kacHeading: ["Oxanium", "sans-serif"],
+                mmHeading: ["Quantico", "sans-serif"],
             },
             backgroundPosition: {
                 "1/3": "center 33%",

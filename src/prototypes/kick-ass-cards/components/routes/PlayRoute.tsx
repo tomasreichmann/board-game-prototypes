@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigation } from "../Navigation";
 import { PerspectiveView, PerspectiveViewProps } from "../../../../components/perspectiveView/PerspectiveView";
-import { Button } from "react-daisyui";
 import EffectCard from "../gameComponents/EffectCard";
 
 import effects from "../../data/effects.csv";
@@ -10,14 +9,41 @@ import Spread from "../layout/Spread";
 import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
 import { PerspectiveCard, PerspectiveCardProps } from "../../../../components/perspectiveView/PerspectiveCard";
 import { cardSizes } from "../../../../components/print/paperSizes";
+import SceneRouter from "../machimagika/scenes/SceneRouter";
+import { GameContextProvider, SceneEnum } from "../machimagika/GameContext";
 
-export default function PlayRoute() {
+export default function MachimagikaRoute() {
+    const [isNavigationVisible, setIsNavigationVisible] = useState(true);
     const [perspectivePreset, setPerspectivePreset] = useState<Partial<PerspectiveViewProps>>({});
     const [firstCardPreset, setFirstCardPreset] = useState<Partial<PerspectiveCardProps>>({});
+
+    useEffect(() => {
+        let timeout: number;
+        if (isNavigationVisible) {
+            timeout = setTimeout(() => {
+                setIsNavigationVisible(false);
+            }, 2000);
+        }
+        return () => clearTimeout(timeout);
+    }, [isNavigationVisible]);
     return (
         <div className="w-full h-full select-none">
-            <Navigation className="absolute left-0 top-0 right-0 z-40" />
-            <PerspectiveView
+            <div
+                className="absolute left-0 top-0 right-0 z-40 transition-all duration-300 ease-in-out hover:!top-0"
+                style={{ top: isNavigationVisible ? 0 : -90 }}
+            >
+                <Navigation className="relative left-0 top-0 right-0" />
+                <button
+                    className="absolute right-0 top-[70px] z-30 text-xl pt-6 py-2 px-4 rounded-tr-none rounded-br-none rounded-tl-none font-bold bg-[rgba(255,255,255,0.5)] border-none outline-none text-black focus:outline-0"
+                    onClick={() => setIsNavigationVisible((isNavigationVisible) => !isNavigationVisible)}
+                >
+                    ☰
+                </button>
+            </div>
+            <GameContextProvider>
+                <SceneRouter />
+            </GameContextProvider>
+            {/* <PerspectiveView
                 className="w-full h-full z-0"
                 showGrid
                 targetX={0}
@@ -127,7 +153,7 @@ export default function PlayRoute() {
                 >
                     Zoom in on first
                 </Button>
-            </div>
+            </div> */}
         </div>
     );
 }

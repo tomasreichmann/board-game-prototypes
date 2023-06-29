@@ -10,7 +10,8 @@ export type ContentItemProps = {
     componentMap?: typeof defaultComponentMap;
 } & ContentType;
 type NormalizedChildrenProps = { iconClassName: string } & Pick<ContentType, "children">;
-const NormalizedChildren = ({ children, iconClassName }: NormalizedChildrenProps) => {
+
+export const NormalizedChildren = ({ children, iconClassName }: NormalizedChildrenProps) => {
     if (typeof children === "string") {
         return <RichText commonComponentProps={{ className: iconClassName }}>{children}</RichText>;
     }
@@ -80,5 +81,6 @@ export const defaultComponentMap: { [key: string]: React.ComponentType<ContentIt
 export default function ContentItem({ componentMap = defaultComponentMap, ...componentProps }: ContentItemProps) {
     const { component } = componentProps;
     const Component = (component && componentMap[component]) || componentMap.pre || defaultComponentMap.pre;
+    console.log({ component, resolvedComponent: component && componentMap[component] });
     return <Component {...componentProps} />;
 }

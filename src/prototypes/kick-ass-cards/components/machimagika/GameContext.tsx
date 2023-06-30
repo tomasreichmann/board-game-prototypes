@@ -1,66 +1,30 @@
-import { createContext, useContext, useReducer } from "react";
-import { AssetType, ContentType, OutcomeType } from "../../types";
-import gameReducer, { GameActionType } from "./gameReducer";
-import { BackgroundComponentType, DialogContentItemProps } from "./dialog/DialogContentItem";
-import newGameDialog from "./dialogs/newGameDialog";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { AssetType, OutcomeType } from "../../types";
+import gameReducer, { GameActionType } from "./reducer/gameReducer";
+import { DialogIdType, DialogStateType, FlagMapType } from "./dialog/dialogModel";
+import { SceneEnum } from "./scenes/sceneModel";
 
-export enum SceneEnum {
-    MainMenu = "MainMenu",
-    Region = "Region",
-    Location = "Location",
-    Dialog = "Dialog",
-    Inventory = "Inventory",
-}
-
-export type DialogConditionType = {
-    selector: string;
-    value?: any;
-    minValue?: number;
-    maxValue?: number;
+export type GameScheduledActionType = {
+    id?: number;
+    action: GameActionType;
+    delayMs: number;
 };
 
-export type DialogActionBaseType = {
-    children: DialogContentItemProps[];
-    setFlags?: Partial<FlagMapType>;
-};
-
-export type DialogActionType = {
-    changeNodeId?: string;
-    setFlags?: Partial<FlagMapType>;
-    backgroundContent?: ContentType<BackgroundComponentType>[];
-} & Partial<Pick<StateType, "scene" | "regionId" | "locationId" | "dialogId">>;
-
-export type DialogNodeType = {
-    id: string;
-    content: DialogContentItemProps[];
-};
-export type DialogNodeMapType = { [key: string]: DialogNodeType };
-
-export type DialogStateType = {
-    id: string;
-    currentNodeId: string;
-    scene?: ContentType<BackgroundComponentType>[];
-    nodeMap: DialogNodeMapType;
-    history?: DialogContentItemProps[];
-};
-
-export type FlagMapType = {
-    finishedDeFragmentation?: boolean;
-};
-
-export const dialogMap = {
-    newGame: newGameDialog,
+export type GameScheduledActionsType = {
+    scheduledActions?: Required<GameScheduledActionType>[];
 };
 
 export type StateType = {
     scene: SceneEnum;
     regionId?: string;
     locationId?: string;
-    dialogId?: keyof typeof dialogMap;
+    dialogId?: DialogIdType;
     dialog?: DialogStateType;
     hand: OutcomeType[];
     flagMap: FlagMapType;
     inventory: AssetType[];
+    scheduledActions: Required<GameScheduledActionType>[];
+    lastScheduledActionId: number;
 };
 
 const initialState: StateType = {
@@ -69,6 +33,8 @@ const initialState: StateType = {
     hand: [],
     inventory: [],
     dialogId: undefined,
+    scheduledActions: [],
+    lastScheduledActionId: -1,
 };
 
 const GameContext = createContext({
@@ -78,6 +44,17 @@ const GameContext = createContext({
 
 export const GameContextProvider = ({ children }: React.PropsWithChildren) => {
     const [state, dispatch] = useReducer(gameReducer, initialState);
+    useEffect(() => {
+        if (state.scheduledActions.length > 0) {
+            state.scheduledActions.forEach((nextAction) => {
+                setTimeout(() => {
+                    dispatch({ ...nextAction.action, resolveScheduledActions: [nextAction.id] });
+                }, nextAction.delayMs);
+            });
+            // return () => clearTimeout(timeoutId);
+        }
+        return;
+    }, [state.scheduledActions]);
     return <GameContext.Provider value={{ state, dispatch }}>{children}</GameContext.Provider>;
 };
 

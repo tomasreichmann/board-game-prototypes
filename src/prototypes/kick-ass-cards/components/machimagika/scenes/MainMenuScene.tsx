@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import mainMenuBackgroundUri from "../../../media/gameplay/MainMenuBackground.png";
 import useGameContext from "../GameContext";
-import { GameActionTypeEnum } from "../gameReducer";
+import { GameActionTypeEnum } from "../reducer/gameReducer";
 
 export type MenuItemProps = React.PropsWithChildren<
     {
@@ -37,9 +37,7 @@ export default function MainMenuScene({ className, children }: MainMenuSceneProp
             <div className="absolute left-20 top-40 bottom-40 flex flex-col justify-center gap-20">
                 <h1 className="text-amber-100 text-5xl font-mmHeading uppercase">MACHIMAGIKA</h1>
                 <div className="flex-col items-start flex gap-10">
-                    <MenuItem autoFocus onClick={() => dispatch({ type: GameActionTypeEnum.NewGame })}>
-                        New game
-                    </MenuItem>
+                    <MenuItem onClick={() => dispatch({ type: GameActionTypeEnum.NewGame })}>New game</MenuItem>
                     {/* <MenuItem autoFocus>Continue</MenuItem>
                     <MenuItem>Load game</MenuItem>
                     <MenuItem>Options</MenuItem>

@@ -1,4 +1,5 @@
-import { DialogStateType } from "../GameContext";
+import { SceneEnum } from "../scenes/sceneModel";
+import { DialogStateType } from "../dialog/dialogModel";
 
 const newGameDialog: DialogStateType = {
     id: "newGame",
@@ -19,16 +20,18 @@ const newGameDialog: DialogStateType = {
                 },
                 {
                     component: "Action",
-                    children: "Stay a while longer",
+                    children: "Stay a while longer and enjoy the sunset",
                     action: {
+                        id: "stayLonger",
                         changeNodeId: "stayLonger",
-                        setFlags: { finishedDeFragmentation: true },
+                        setFlags: { watchedSunset: true },
                     },
                 },
                 {
                     component: "Action",
                     children: "95% is enough. Let's move on.",
                     action: {
+                        id: "leave",
                         changeNodeId: "leave",
                     },
                 },
@@ -40,7 +43,43 @@ const newGameDialog: DialogStateType = {
                 {
                     component: "Introspection",
                     children:
-                        "You are not in a rush to get up. Better finish the de-fragmentation process before moving on. You don't want to get a lag during your job interview.",
+                        "You are not in a rush to get up. Better finish the de-fragmentation process before moving on. You don't want to get a lag during your job interview. But more importantly, it would be a crime to miss this beautiful sunset. You don't get to see Demina, the smaller of two moons, casting a shadow over the golden disk of setting sun.",
+                },
+                {
+                    component: "Introspection",
+                    children:
+                        "Aah yes, the last spark of the sun is swallowed by the see. Only Domina's blue circle will guide you through the approaching night.",
+                },
+                {
+                    component: "Action",
+                    children: "It's time to move.",
+                    action: {
+                        id: "leave",
+                        changeNodeId: "leave",
+                    },
+                },
+            ],
+        },
+        leave: {
+            id: "leave",
+            content: [
+                {
+                    component: "Introspection",
+                    children: "You stand up, stretch your servos and brush off sand from your legs.",
+                },
+                {
+                    component: "Introspection",
+                    children: "The archeologist will be waiting in the tavern by now.",
+                },
+                {
+                    component: "Action",
+                    children: "Go to the tavern.",
+                    action: {
+                        id: "goToTavern",
+                        scene: SceneEnum.Location,
+                        locationId: "tavern",
+                        delayMs: 1000,
+                    },
                 },
             ],
         },

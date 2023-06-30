@@ -10,7 +10,7 @@ import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
 import { PerspectiveCard, PerspectiveCardProps } from "../../../../components/perspectiveView/PerspectiveCard";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import SceneRouter from "../machimagika/scenes/SceneRouter";
-import { GameContextProvider, SceneEnum } from "../machimagika/GameContext";
+import { GameContextProvider } from "../machimagika/GameContext";
 
 export default function MachimagikaRoute() {
     const [isNavigationVisible, setIsNavigationVisible] = useState(true);

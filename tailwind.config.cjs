@@ -152,6 +152,7 @@ module.exports = {
     },
     plugins: [
         require("@tailwindcss/typography"),
+        require("tailwindcss-animate"),
         require("daisyui"),
         plugin(function ({ matchUtilities, theme }) {
             matchUtilities(

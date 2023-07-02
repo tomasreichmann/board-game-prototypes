@@ -1,0 +1,50 @@
+import { OutcomeType, AssetType } from "../../../types";
+import { DialogIdType, DialogStateType, FlagMapType } from "../dialog/dialogModel";
+import { GameActionType } from "../reducer/gameReducer";
+
+export type GameScheduledActionType = {
+    id?: number;
+    action: GameActionType;
+    delayMs: number;
+};
+
+export type GameScheduledActionsType = {
+    scheduledActions?: Required<GameScheduledActionType>[];
+};
+
+export enum VisibilityEnum {
+    Visible = "Visible",
+    Hidden = "Hidden",
+    FadeIn = "FadeIn",
+    FadeOut = "FadeOut",
+}
+
+export type GameStateType = {
+    mainMenuVisibility: VisibilityEnum;
+    regionId?: string;
+    regionVisibility: VisibilityEnum;
+    locationId?: string;
+    locationVisibility: VisibilityEnum;
+    dialog: DialogStateType;
+    dialogVisibility: VisibilityEnum;
+    hand: OutcomeType[];
+    flagMap: FlagMapType;
+    inventory: AssetType[];
+    inventoryVisibility: VisibilityEnum;
+    scheduledActions: Required<GameScheduledActionType>[];
+    lastScheduledActionId: number;
+};
+
+export const initialState: GameStateType = {
+    mainMenuVisibility: VisibilityEnum.Visible,
+    inventoryVisibility: VisibilityEnum.Hidden,
+    dialogVisibility: VisibilityEnum.Hidden,
+    locationVisibility: VisibilityEnum.Hidden,
+    regionVisibility: VisibilityEnum.Hidden,
+    flagMap: {},
+    dialog: {},
+    hand: [],
+    inventory: [],
+    scheduledActions: [],
+    lastScheduledActionId: -1,
+};

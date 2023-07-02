@@ -1,47 +1,61 @@
-import deepCopy from "../../../../../utils/deepCopy";
-import { GameScheduledActionType, StateType } from "../GameContext";
-import { DialogActionType, DialogIdType, dialogMap } from "../dialog/dialogModel";
-import { SceneEnum } from "../scenes/sceneModel";
+import { DialogActionType, DialogIdType, DialogStateType } from "../dialog/dialogModel";
+import { GameScheduledActionType, GameStateType as GameStateType } from "../model/gameState";
+import { SceneEnum } from "../scene/sceneModel";
+import handleSceneVisibility from "./handleSceneVisibility";
+import handleUpdateDialog from "./handleUpdateDialog";
 
 export enum GameActionTypeEnum {
+    Common = "Common",
     NewGame = "NewGame",
+    ShowScene = "ShowScene",
+    HideScene = "HideScene",
     ChangeScene = "ChangeScene",
     DialogAction = "DialogAction",
     AddScheduledActions = "AddScheduledActions",
     ScheduledActionStarted = "ScheduledActionStarted",
 }
 
-export type ScheduledActionsType = {
+export type CommonActionsType = {
     addScheduledActions?: GameScheduledActionType[];
     resolveScheduledActions?: number[];
+    updateDialog?: Partial<DialogStateType>;
+    showScene?: SceneEnum;
+    hideScene?: SceneEnum;
 };
 
 export type AddScheduledActionActionType = {
     type: GameActionTypeEnum.AddScheduledActions;
     addScheduledActions: GameScheduledActionType[];
-} & ScheduledActionsType;
+} & CommonActionsType;
 
 export type DialogActionGameActionType = {
     type: GameActionTypeEnum.DialogAction;
 } & DialogActionType &
-    ScheduledActionsType;
+    CommonActionsType;
 
-export type NewGameActionType = { type: GameActionTypeEnum.NewGame } & ScheduledActionsType;
+export type NewGameActionType = { type: GameActionTypeEnum.NewGame } & CommonActionsType;
 export type ChangeSceneActionType = {
     type: GameActionTypeEnum.ChangeScene;
     scene: SceneEnum;
     dialogId?: DialogIdType;
     regionId?: string;
     locationId?: string;
-} & ScheduledActionsType;
+} & CommonActionsType;
+
+export type CommonActionType = { type: GameActionTypeEnum.Common } & CommonActionsType;
+export type ShowSceneActionType = { type: GameActionTypeEnum.ShowScene } & Pick<CommonActionsType, "showScene"> &
+    CommonActionsType;
+export type hideSceneActionType = { type: GameActionTypeEnum.HideScene } & Pick<CommonActionsType, "hideScene"> &
+    CommonActionsType;
 
 export type GameActionType =
+    | CommonActionType
     | NewGameActionType
     | ChangeSceneActionType
     | DialogActionGameActionType
     | AddScheduledActionActionType;
-
-const handleChangeDialog = (state: StateType, action: GameActionType) => {
+/*
+const handleChangeDialog = (state: GameStateType, action: GameActionType) => {
     if ("dialogId" in action && action.dialogId !== state.dialogId) {
         return {
             ...state,
@@ -51,17 +65,20 @@ const handleChangeDialog = (state: StateType, action: GameActionType) => {
     return state;
 };
 
-const handleChangeScene = (state: StateType, action: GameActionType): StateType => {
-    if ("scene" in action && state.scene !== action?.scene) {
-        return { ...state, scene: action?.scene || SceneEnum.MainMenu };
+const handleChangeScene = (state: GameStateType, action: GameActionType): GameStateType => {
+    if ("scene" in action && action?.scene) {
+        const sceneVisibility = sceneVisibilityMap[action?.scene || SceneEnum.MainMenu];
+        console.log(sceneVisibility);
+        return { ...state, ...sceneVisibility };
     }
     return state;
 };
 
-const handleDialogAction = (state: StateType, action: DialogActionGameActionType): StateType => {
+const handleDialogAction = (state: GameStateType, action: DialogActionGameActionType): GameStateType => {
     const newState = { ...handleChangeScene(state, action) };
 
     if (!newState.dialog) {
+        console.warn("no dialog", action);
         return newState;
     }
 
@@ -79,10 +96,17 @@ const handleDialogAction = (state: StateType, action: DialogActionGameActionType
         newState.dialog.history = [...(history || []), ...lastNodeContent];
     }
 
-    return newState;
-};
+    if (action.locationId) {
+        newState.locationId = action.locationId;
+    }
+    if (action.regionId) {
+        newState.regionId = action.regionId;
+    }
 
-const handleScheduledActions = (state: StateType, action: GameActionType): StateType => {
+    return newState;
+};*/
+
+const handleScheduledActions = (state: GameStateType, action: GameActionType): GameStateType => {
     const hasNewActions = (action.addScheduledActions?.length || 0) > 0;
     const hasResolvedActions = (action.resolveScheduledActions?.length || 0) > 0;
     if (!hasNewActions && !hasResolvedActions) {
@@ -114,27 +138,12 @@ const handleScheduledActions = (state: StateType, action: GameActionType): State
     return state;
 };
 
-export default function gameReducer(state: StateType, action: GameActionType): StateType {
+export default function gameReducer(state: GameStateType, action: GameActionType): GameStateType {
     console.log("gameReducer action", action, state);
-    if (action.type === GameActionTypeEnum.NewGame) {
-    }
-    const scheduledState = handleScheduledActions(state, action);
+    let newState = state;
+    newState = handleScheduledActions(newState, action);
+    newState = handleUpdateDialog(newState, action);
+    newState = handleSceneVisibility(newState, action);
 
-    if (action.type === GameActionTypeEnum.NewGame) {
-        const newGameAction: GameActionType = {
-            type: GameActionTypeEnum.ChangeScene,
-            scene: SceneEnum.Dialog,
-            dialogId: "newGame",
-        };
-        return handleChangeScene(handleChangeDialog(scheduledState, newGameAction), newGameAction);
-    }
-    if (action.type === GameActionTypeEnum.DialogAction) {
-        let newState = handleChangeDialog(scheduledState, action);
-        newState = handleDialogAction(newState, action);
-        return newState;
-    }
-    if (action.type === GameActionTypeEnum.ChangeScene) {
-        return handleChangeScene(handleChangeDialog(scheduledState, action), action);
-    }
-    return scheduledState;
+    return newState;
 }

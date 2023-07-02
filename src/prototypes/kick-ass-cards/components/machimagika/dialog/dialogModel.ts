@@ -1,41 +1,39 @@
-import { StateType } from "../GameContext";
+import { ContentItemProps } from "../content/sharedContentProps";
 import newGameDialog from "../dialogs/newGameDialog";
-import { DialogContentItemProps } from "./DialogContentItem";
+import { GameStateType } from "../model/gameState";
+import { GameActionTypeEnum } from "../reducer/gameReducer";
+import { SceneEnum } from "../scene/sceneModel";
 
-export type DialogConditionType = {
-    selector: string;
-    value?: any;
-    minValue?: number;
-    maxValue?: number;
+export type DialogNodeType = {
+    nodeId: string;
+    content: ContentItemProps[];
 };
 
-export type DialogActionBaseType = {
-    children: DialogContentItemProps[];
-    setFlags?: Partial<FlagMapType>;
+export type DialogType = {
+    dialogId?: keyof typeof dialogMap;
+    backgroundContent?: ContentItemProps[];
+    nodeMap: { [key: string]: DialogNodeType };
+};
+
+export type DialogStateType = {
+    dialogId?: keyof typeof dialogMap;
+    currentNodeId?: string;
+    backgroundContent?: ContentItemProps[];
+    history?: ContentItemProps[];
 };
 
 export type DialogActionType = {
     id: string;
+    type: GameActionTypeEnum;
     changeNodeId?: string;
     setFlags?: Partial<FlagMapType>;
     isSelected?: boolean;
     backgroundContent?: any;
     delayMs?: number;
-} & Partial<Pick<StateType, "scene" | "regionId" | "locationId" | "dialogId">>;
+    scene?: SceneEnum;
+} & Partial<Pick<GameStateType, "regionId" | "locationId">>;
 
-export type DialogNodeType = {
-    id: string;
-    content: DialogContentItemProps[];
-};
 export type DialogNodeMapType = { [key: string]: DialogNodeType };
-
-export type DialogStateType = {
-    id: string;
-    currentNodeId: string;
-    backgroundContent?: any;
-    nodeMap: DialogNodeMapType;
-    history?: DialogContentItemProps[];
-};
 
 export type FlagMapType = {
     watchedSunset?: boolean;

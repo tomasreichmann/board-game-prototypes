@@ -9,8 +9,8 @@ import Spread from "../layout/Spread";
 import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
 import { PerspectiveCard, PerspectiveCardProps } from "../../../../components/perspectiveView/PerspectiveCard";
 import { cardSizes } from "../../../../components/print/paperSizes";
-import SceneRouter from "../machimagika/scenes/SceneRouter";
-import { GameContextProvider } from "../machimagika/GameContext";
+import SceneRouter from "../machimagika/scene/SceneRouter";
+import { GameContextProvider } from "../machimagika/model/GameContext";
 
 export default function MachimagikaRoute() {
     const [isNavigationVisible, setIsNavigationVisible] = useState(true);
@@ -27,7 +27,7 @@ export default function MachimagikaRoute() {
         return () => clearTimeout(timeout);
     }, [isNavigationVisible]);
     return (
-        <div className="w-full h-full select-none">
+        <div className="w-full h-full select-none bg-black">
             <div
                 className="absolute left-0 top-0 right-0 z-40 transition-all duration-300 ease-in-out hover:!top-0"
                 style={{ top: isNavigationVisible ? 0 : -90 }}

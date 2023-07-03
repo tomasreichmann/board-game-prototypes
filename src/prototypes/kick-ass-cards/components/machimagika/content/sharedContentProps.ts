@@ -12,15 +12,9 @@ export const contentComponentMap = {
     Image,
 };
 
-type ComponentPropsType<C extends keyof typeof contentComponentMap> = PropsType<(typeof contentComponentMap)[C]>;
-type ComponentMultipleObjectType<C extends keyof typeof contentComponentMap> = {
-    [key in C]: Omit<ComponentPropsType<C>, "componentMap">;
+type ComponentObjectType3 = {
+    [key in keyof typeof contentComponentMap]?: PropsType<(typeof contentComponentMap)[key]>;
 };
-type Values<T> = T[keyof T];
-type OneProperty<T, K extends keyof T> = Pick<T, K>;
-type UnionOfOneProperties<T> = Values<{ [K in keyof T]: OneProperty<T, K> }>;
-type ComponentObjectType = UnionOfOneProperties<ComponentMultipleObjectType<keyof typeof contentComponentMap>>;
-type ComponentObjectType2 = Partial<ComponentMultipleObjectType<keyof typeof contentComponentMap>>;
 
 export type SharedContentProps = {
     componentMap?: typeof contentComponentMap;
@@ -29,5 +23,5 @@ export type SharedContentProps = {
 
 export type ContentItemProps = {
     conditions?: ConditionType[];
-    component: ComponentObjectType2;
+    component: ComponentObjectType3;
 } & SharedContentProps;

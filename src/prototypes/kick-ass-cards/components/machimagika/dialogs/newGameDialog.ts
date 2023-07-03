@@ -1,6 +1,6 @@
 import { SceneEnum } from "../scene/sceneModel";
 import { DialogType } from "../dialog/dialogModel";
-import { GameActionTypeEnum } from "../reducer/gameReducer";
+import { GameActionTypeEnum } from "../reducer/GameActionTypeEnum";
 
 const newGameDialog: DialogType = {
     dialogId: "newGame",
@@ -38,7 +38,8 @@ const newGameDialog: DialogType = {
                         DialogAction: {
                             children: "Stay a while longer and enjoy the sunset",
                             action: {
-                                id: "stayLonger",
+                                type: GameActionTypeEnum.Common,
+                                actionId: "stayLonger",
                                 updateDialog: { currentNodeId: "stayLonger" },
                                 setFlags: { watchedSunset: true },
                             },
@@ -50,7 +51,8 @@ const newGameDialog: DialogType = {
                         DialogAction: {
                             children: "95% is enough. Let's move on.",
                             action: {
-                                id: "leave",
+                                type: GameActionTypeEnum.Common,
+                                actionId: "leave",
                                 updateDialog: { currentNodeId: "leave" },
                             },
                         },
@@ -82,7 +84,8 @@ const newGameDialog: DialogType = {
                         DialogAction: {
                             children: "It's time to move.",
                             action: {
-                                id: "leave",
+                                type: GameActionTypeEnum.Common,
+                                actionId: "leave",
                                 updateDialog: { currentNodeId: "leave" },
                             },
                         },
@@ -94,6 +97,27 @@ const newGameDialog: DialogType = {
             nodeId: "leave",
             content: [
                 {
+                    conditions: [
+                        {
+                            selector: "flagMap.watchedSunset",
+                            value: true,
+                        },
+                    ],
+                    component: {
+                        DialogIntrospection: {
+                            children:
+                                "You stand up feeling refreshed and calm, stretch your servos and brush off sand from your legs.",
+                        },
+                    },
+                },
+                {
+                    conditions: [
+                        {
+                            selector: "flagMap.watchedSunset",
+                            not: true,
+                            value: true,
+                        },
+                    ],
                     component: {
                         DialogIntrospection: {
                             children: "You stand up, stretch your servos and brush off sand from your legs.",
@@ -113,12 +137,12 @@ const newGameDialog: DialogType = {
                             children: "Go to the tavern.",
                             action: {
                                 type: GameActionTypeEnum.AddScheduledActions,
-                                id: "goToTavern",
+                                actionId: "goToTavern",
                                 addScheduledActions: [
                                     {
                                         action: {
-                                            type: GameActionTypeEnum.AddScheduledActions,
-                                            id: "goToTavernDelayed",
+                                            type: GameActionTypeEnum.Common,
+                                            actionId: "goToTavernDelayed",
                                             updateLocation: {
                                                 locationId: "tavern",
                                             },

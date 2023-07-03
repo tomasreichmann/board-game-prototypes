@@ -23,9 +23,11 @@ export default function DialogAction({
     const changeNodeInfo = action?.updateDialog?.currentNodeId ? (
         <span className="font-normal">(&gt; #{action?.updateDialog?.currentNodeId})</span>
     ) : null;
+    const arrowContent = isSelected !== false ? "▶ " : "";
     const content = (
         <>
-            ▶&ensp;<NormalizedChildren {...restProps}>{children}</NormalizedChildren> {changeNodeInfo}
+            {arrowContent}
+            <NormalizedChildren {...restProps}>{children}</NormalizedChildren> {changeNodeInfo}
         </>
     );
     // todo dispatch action on click

@@ -7,7 +7,7 @@ import ToggleData from "../../../../../components/DataToggle";
 import DialogScene from "../dialog/DialogScene";
 import { VisibilityEnum } from "../model/gameState";
 import LocationScene from "../location/LocationScene";
-import { GameActionTypeEnum } from "../reducer/gameReducer";
+import { GameActionTypeEnum } from "../reducer/GameActionTypeEnum";
 
 export type SceneRouterProps = React.PropsWithChildren<{
     className?: string;

@@ -1,27 +1,20 @@
-import { DialogActionType, DialogIdType, DialogStateType, FlagMapType } from "../dialog/dialogModel";
-import { GameScheduledActionType, GameStateType as GameStateType } from "../model/gameState";
+import { DialogIdType, DialogStateType, FlagMapType } from "../dialog/dialogModel";
+import { LocationStateType } from "../location/locationModel";
+import { GameScheduledActionType, GameStateType } from "../model/gameState";
 import { SceneEnum } from "../scene/sceneModel";
+import { GameActionTypeEnum } from "./GameActionTypeEnum";
+import handleNewGame from "./handleNewGame";
 import handleSceneVisibility from "./handleSceneVisibility";
 import handleSetFlags from "./handleSetFlags";
 import handleUpdateDialog from "./handleUpdateDialog";
 import handleUpdateLocation from "./handleUpdateLocation";
 
-export enum GameActionTypeEnum {
-    Common = "Common",
-    NewGame = "NewGame",
-    ShowScene = "ShowScene",
-    HideScene = "HideScene",
-    ChangeScene = "ChangeScene",
-    DialogAction = "DialogAction",
-    AddScheduledActions = "AddScheduledActions",
-    ScheduledActionStarted = "ScheduledActionStarted",
-}
-
 export type CommonActionsType = {
+    actionId?: string;
     addScheduledActions?: GameScheduledActionType[];
     resolveScheduledActions?: number[];
     updateDialog?: Partial<DialogStateType>;
-    updateLocation?: Partial<DialogStateType>;
+    updateLocation?: Partial<LocationStateType>;
     setFlags?: Partial<FlagMapType>;
     showScene?: SceneEnum;
     hideScene?: SceneEnum;
@@ -138,11 +131,14 @@ const handleScheduledActions = (state: GameStateType, action: GameActionType): G
 export default function gameReducer(state: GameStateType, action: GameActionType): GameStateType {
     console.log("gameReducer action", action, state);
     let newState = state;
-    newState = handleScheduledActions(newState, action);
-    newState = handleSetFlags(newState, action);
-    newState = handleUpdateDialog(newState, action);
-    newState = handleUpdateLocation(newState, action);
-    newState = handleSceneVisibility(newState, action);
+    let newAction = action;
+    [newState, newAction] = handleNewGame(newState, action);
+
+    newState = handleScheduledActions(newState, newAction);
+    newState = handleSetFlags(newState, newAction);
+    newState = handleUpdateDialog(newState, newAction);
+    newState = handleUpdateLocation(newState, newAction);
+    newState = handleSceneVisibility(newState, newAction);
 
     return newState;
 }

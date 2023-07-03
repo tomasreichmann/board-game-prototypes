@@ -5,7 +5,7 @@
  * @param {string} selector - dot separated list of property names or array indexes specifying the path to the desired value.
  * @returns {any} - The value retrieved from the data object.
  */
-function getDeepValue<Data>(data: Data, selector: string): unknown {
+export default function getDeepValue<Data>(data: Data, selector: string): unknown {
     let value: any = data;
     selector.split(".").forEach((property) => {
         if (Array.isArray(value) && !isNaN(Number(property))) {

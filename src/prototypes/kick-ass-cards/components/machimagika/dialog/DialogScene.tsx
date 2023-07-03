@@ -4,15 +4,15 @@ import useGameContext from "../model/GameContext";
 import ToggleData from "../../../../../components/DataToggle";
 import { dialogMap } from "./dialogModel";
 import ContentItem from "../content/ContentItem";
+import { resolveConditions } from "../utils/Conditional";
 
 export type DialogSceneProps = React.PropsWithChildren<{
     className?: string;
 }>;
 
 export default function DialogScene({ className, children }: DialogSceneProps) {
-    const {
-        state: { dialog },
-    } = useGameContext();
+    const { state } = useGameContext();
+    const { dialog } = state;
     const { dialogId, currentNodeId, history /*scene*/ } = dialog;
     if (!dialogId || !currentNodeId) {
         return null;
@@ -49,24 +49,43 @@ export default function DialogScene({ className, children }: DialogSceneProps) {
                     style={{ scrollBehavior: "smooth" }}
                 >
                     <div className="flex flex-col gap-4 ">
-                        {currentNode &&
-                            [...(history || []), ...currentNode.content].map((content, contentIndex) => {
-                                const isHistory = contentIndex < (history?.length || 0);
-                                const nonHistoryIndex = contentIndex - (history?.length || 0);
-                                const componentKey = Object.keys(
-                                    content.component
-                                )[0] as keyof typeof content.component;
-                                const component = {
-                                    [componentKey]: {
-                                        ...content.component[componentKey],
-                                        className: twMerge(
-                                            "text-xl transition-all ease-in-out duration-400",
-                                            !isHistory && "animate-fadeIn fill-mode-both text-2xl transition-all"
-                                        ),
-                                        style: { animationDelay: isHistory ? "0s" : `${(nonHistoryIndex + 1) * 0.5}s` },
-                                    },
-                                };
-                                return <ContentItem {...content} component={component} key={contentIndex} />;
+                        {history &&
+                            history.length > 0 &&
+                            history.map((contentNode, contentNodeIndex) => {
+                                const isLastNode = contentNodeIndex === history.length - 1;
+                                return (
+                                    <React.Fragment key={contentNodeIndex}>
+                                        {contentNode.content
+                                            .filter((content) => resolveConditions(state, content.conditions))
+                                            .map((content, contentIndex) => {
+                                                const componentKey = Object.keys(
+                                                    content.component
+                                                )[0] as keyof typeof content.component;
+                                                const component = {
+                                                    [componentKey]: {
+                                                        ...content.component[componentKey],
+                                                        className: twMerge(
+                                                            "text-xl transition-all ease-in-out duration-400",
+                                                            isLastNode &&
+                                                                "animate-fadeIn fill-mode-both text-2xl transition-all"
+                                                        ),
+                                                        style: {
+                                                            animationDelay: isLastNode
+                                                                ? `${(contentIndex + 1) * 0.5}s`
+                                                                : "0s",
+                                                        },
+                                                    },
+                                                };
+                                                return (
+                                                    <ContentItem
+                                                        {...content}
+                                                        component={component}
+                                                        key={contentIndex}
+                                                    />
+                                                );
+                                            })}
+                                    </React.Fragment>
+                                );
                             })}
                     </div>
                 </div>

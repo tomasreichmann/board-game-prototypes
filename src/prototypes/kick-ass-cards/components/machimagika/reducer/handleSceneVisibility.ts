@@ -1,6 +1,7 @@
 import { GameStateType, VisibilityEnum } from "../model/gameState";
 import { SceneEnum } from "../scene/sceneModel";
-import { GameActionType, GameActionTypeEnum } from "./gameReducer";
+import { GameActionType } from "./gameReducer";
+import { GameActionTypeEnum } from "./GameActionTypeEnum";
 
 const sceneOrderFromBottom = [
     SceneEnum.Region,

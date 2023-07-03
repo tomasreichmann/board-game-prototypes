@@ -1,9 +1,12 @@
 import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import useGameContext from "../model/GameContext";
-import { GameActionType, GameActionTypeEnum } from "../reducer/gameReducer";
+import { GameActionType } from "../reducer/gameReducer";
+import { GameActionTypeEnum } from "../reducer/GameActionTypeEnum";
 import { SceneEnum } from "../scene/sceneModel";
 import Image from "../content/Image";
+import Evaporation from "../effect/Evaporation";
+import { VisibilityEnum } from "../model/gameState";
 
 export type MenuItemProps = React.PropsWithChildren<
     {
@@ -18,7 +21,7 @@ export const MenuItem = ({ children, className, ...restProps }: MenuItemProps) =
             tabIndex={0}
             {...restProps}
             className={twMerge(
-                "text-amber-100 text-3xl font-mmHeading hover:scale-150  focus:scale-150 bg-transparent focus:outline-0 focus:border-0 p-0 outline-0 border-0 origin-left transform-gpu transition-transform duration-200",
+                "text-mm-steel text-3xl font-mmHeading hover:text-mm-steel-light focus:text-mm-steel-light hover:scale-150  focus:scale-150 bg-transparent focus:outline-0 focus:border-0 p-0 outline-0 border-0 origin-left transform-gpu transition-transform duration-200",
                 className
             )}
         >
@@ -31,12 +34,7 @@ export type MainMenuSceneProps = React.PropsWithChildren<{
 }>;
 
 const newGameAction: GameActionType = {
-    type: GameActionTypeEnum.Common,
-    showScene: SceneEnum.Dialog,
-    updateDialog: {
-        dialogId: "newGame",
-        currentNodeId: "start",
-    },
+    type: GameActionTypeEnum.NewGame,
 };
 
 const hideMenuAction: GameActionType = {
@@ -47,14 +45,17 @@ const hideMenuAction: GameActionType = {
 export default function MainMenuScene({ className, children }: MainMenuSceneProps) {
     const {
         dispatch,
-        state: { inventoryVisibility, dialogVisibility, locationVisibility, regionVisibility },
+        state: { mainMenuVisibility, inventoryVisibility, dialogVisibility, locationVisibility, regionVisibility },
     } = useGameContext();
-    const isAnyOtherSceneVisible = inventoryVisibility || dialogVisibility || localStorage || regionVisibility;
+    const isAnyOtherSceneVisible = inventoryVisibility || dialogVisibility || locationVisibility || regionVisibility;
     return (
         <div className={twMerge("MainMenuScene relative w-full h-full", className)}>
             <Image className="w-full h-full object-cover" src="/MM/mainMenuBackground.png" alt="Main Menu Background" />
             <div className="absolute left-20 top-40 bottom-40 flex flex-col justify-center gap-20">
-                <h1 className="text-amber-100 text-5xl font-mmHeading uppercase">MACHIMAGIKA</h1>
+                <div className="relative">
+                    <h1 className="relative text-mm-steel text-5xl font-mmHeading uppercase z-[2]">MACHIMAGIKA</h1>
+                    <Evaporation className="absolute z-[0]" disabled={mainMenuVisibility === VisibilityEnum.Hidden} />
+                </div>
                 <div className="flex-col items-start flex gap-10">
                     <MenuItem onClick={() => dispatch(newGameAction)}>New game</MenuItem>
                     {/* <MenuItem autoFocus>Continue</MenuItem>

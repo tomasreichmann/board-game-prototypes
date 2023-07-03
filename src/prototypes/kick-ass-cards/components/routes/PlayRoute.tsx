@@ -29,12 +29,12 @@ export default function MachimagikaRoute() {
     return (
         <div className="w-full h-full select-none bg-black">
             <div
-                className="absolute left-0 top-0 right-0 z-40 transition-all duration-300 ease-in-out hover:!top-0"
-                style={{ top: isNavigationVisible ? 0 : -90 }}
+                className="absolute left-0 top-0 right-0 z-40 transition-all duration-300 ease-in-out hover:!translate-x-0"
+                style={{ transform: isNavigationVisible ? "translateY(0%)" : "translateY(-100%)" }}
             >
                 <Navigation className="relative left-0 top-0 right-0" />
                 <button
-                    className="absolute right-0 top-[70px] z-30 text-xl pt-6 py-2 px-4 rounded-tr-none rounded-br-none rounded-tl-none font-bold bg-[rgba(255,255,255,0.5)] border-none outline-none text-black focus:outline-0"
+                    className="absolute right-0 top-[100%] translate-y-2 -mt-40 z-30 text-xl pt-40 pb-2 px-4 rounded-tr-none rounded-br-none rounded-tl-none font-bold bg-[rgba(255,255,255,0.5)] border-none outline-none text-black focus:outline-0"
                     onClick={() => setIsNavigationVisible((isNavigationVisible) => !isNavigationVisible)}
                 >
                     ☰

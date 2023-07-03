@@ -16,7 +16,9 @@ const locationMap = {
 
 export default function LocationScene({ className, children }: LocationSceneProps) {
     const {
-        state: { locationId },
+        state: {
+            location: { locationId },
+        },
     } = useGameContext();
     if (!locationId) {
         return null;
@@ -30,7 +32,7 @@ export default function LocationScene({ className, children }: LocationSceneProp
     }
 
     return (
-        <div className={twMerge("flex-1 relative w-full h-full", className)}>
+        <div className={twMerge("LocationScene flex-1 relative w-full h-full", className)}>
             <div className="absolute flex flex-col gap-4 p-10">
                 <h1 className="text-xl">LocationId: {locationId}</h1>
                 <ToggleData data={location} initialCollapsed />

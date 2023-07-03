@@ -1,5 +1,6 @@
 import { OutcomeType, AssetType } from "../../../types";
 import { DialogIdType, DialogStateType, FlagMapType } from "../dialog/dialogModel";
+import { LocationStateType } from "../location/locationModel";
 import { GameActionType } from "../reducer/gameReducer";
 
 export type GameScheduledActionType = {
@@ -23,7 +24,7 @@ export type GameStateType = {
     mainMenuVisibility: VisibilityEnum;
     regionId?: string;
     regionVisibility: VisibilityEnum;
-    locationId?: string;
+    location: LocationStateType;
     locationVisibility: VisibilityEnum;
     dialog: DialogStateType;
     dialogVisibility: VisibilityEnum;
@@ -43,6 +44,7 @@ export const initialState: GameStateType = {
     regionVisibility: VisibilityEnum.Hidden,
     flagMap: {},
     dialog: {},
+    location: {},
     hand: [],
     inventory: [],
     scheduledActions: [],

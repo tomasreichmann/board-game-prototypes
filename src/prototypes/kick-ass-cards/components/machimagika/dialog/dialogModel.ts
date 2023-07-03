@@ -22,6 +22,9 @@ export type DialogStateType = {
     history?: ContentItemProps[];
 };
 
+/**
+ * @deprecated
+ */
 export type DialogActionType = {
     id: string;
     type: GameActionTypeEnum;
@@ -31,7 +34,7 @@ export type DialogActionType = {
     backgroundContent?: any;
     delayMs?: number;
     scene?: SceneEnum;
-} & Partial<Pick<GameStateType, "regionId" | "locationId">>;
+};
 
 export type DialogNodeMapType = { [key: string]: DialogNodeType };
 

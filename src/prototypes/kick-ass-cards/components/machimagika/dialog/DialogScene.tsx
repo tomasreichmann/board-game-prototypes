@@ -26,7 +26,7 @@ export default function DialogScene({ className, children }: DialogSceneProps) {
     }
 
     return (
-        <div className={twMerge("flex-1 relative w-full h-full", className)}>
+        <div className={twMerge("DialogScene flex-1 relative w-full h-full", className)}>
             <div className="absolute -z-[3] w-full h-full">
                 {dialogContent.backgroundContent?.map((content, contentIndex) => (
                     <ContentItem {...content} key={contentIndex} />

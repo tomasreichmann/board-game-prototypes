@@ -1,5 +1,6 @@
 import { SceneEnum } from "../scene/sceneModel";
 import { DialogType } from "../dialog/dialogModel";
+import { GameActionTypeEnum } from "../reducer/gameReducer";
 
 const newGameDialog: DialogType = {
     dialogId: "newGame",
@@ -111,11 +112,21 @@ const newGameDialog: DialogType = {
                         DialogAction: {
                             children: "Go to the tavern.",
                             action: {
+                                type: GameActionTypeEnum.AddScheduledActions,
                                 id: "goToTavern",
-                                scene: SceneEnum.Location,
-                                locationId: "tavern",
-                                delayMs: 1000,
-                                showScene: SceneEnum.Location,
+                                addScheduledActions: [
+                                    {
+                                        action: {
+                                            type: GameActionTypeEnum.AddScheduledActions,
+                                            id: "goToTavernDelayed",
+                                            updateLocation: {
+                                                locationId: "tavern",
+                                            },
+                                            showScene: SceneEnum.Location,
+                                        },
+                                        delayMs: 1000,
+                                    },
+                                ],
                             },
                         },
                     },

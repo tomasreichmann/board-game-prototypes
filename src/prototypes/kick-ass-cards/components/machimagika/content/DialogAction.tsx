@@ -2,25 +2,34 @@ import { twMerge } from "tailwind-merge";
 import NormalizedChildren from "./NormalizedChildren";
 import { SharedContentProps } from "./sharedContentProps";
 import useGameContext from "../model/GameContext";
-import { DialogActionGameActionType } from "../reducer/gameReducer";
+import { GameActionType } from "../reducer/gameReducer";
 
 export type DialogActionProps = {
     className?: string;
     style?: React.CSSProperties;
-    action?: DialogActionGameActionType;
+    action?: GameActionType;
+    isSelected?: boolean;
 } & SharedContentProps;
 
-export default function DialogAction({ className, style, children, action, ...restProps }: DialogActionProps) {
+export default function DialogAction({
+    className,
+    style,
+    children,
+    action,
+    isSelected,
+    ...restProps
+}: DialogActionProps) {
     const { dispatch } = useGameContext();
-
+    const changeNodeInfo = action?.updateDialog?.currentNodeId ? (
+        <span className="font-normal">(&gt; #{action?.updateDialog?.currentNodeId})</span>
+    ) : null;
     const content = (
         <>
-            ▶&ensp;<NormalizedChildren {...restProps}>{children}</NormalizedChildren>{" "}
-            <span className="font-normal">(&gt; #{action?.changeNodeId})</span>
+            ▶&ensp;<NormalizedChildren {...restProps}>{children}</NormalizedChildren> {changeNodeInfo}
         </>
     );
     // todo dispatch action on click
-    if (action?.isSelected === true) {
+    if (isSelected === true) {
         return (
             <div
                 className={twMerge(
@@ -33,7 +42,7 @@ export default function DialogAction({ className, style, children, action, ...re
             </div>
         );
     }
-    if (action?.isSelected === false) {
+    if (isSelected === false) {
         return (
             <div
                 className={twMerge(

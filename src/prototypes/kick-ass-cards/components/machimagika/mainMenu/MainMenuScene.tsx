@@ -39,13 +39,19 @@ const newGameAction: GameActionType = {
     },
 };
 
+const hideMenuAction: GameActionType = {
+    type: GameActionTypeEnum.Common,
+    hideScene: SceneEnum.MainMenu,
+};
+
 export default function MainMenuScene({ className, children }: MainMenuSceneProps) {
     const {
         dispatch,
-        state: {},
+        state: { inventoryVisibility, dialogVisibility, locationVisibility, regionVisibility },
     } = useGameContext();
+    const isAnyOtherSceneVisible = inventoryVisibility || dialogVisibility || localStorage || regionVisibility;
     return (
-        <div className={twMerge("relative w-full h-full", className)}>
+        <div className={twMerge("MainMenuScene relative w-full h-full", className)}>
             <Image className="w-full h-full object-cover" src="/MM/mainMenuBackground.png" alt="Main Menu Background" />
             <div className="absolute left-20 top-40 bottom-40 flex flex-col justify-center gap-20">
                 <h1 className="text-amber-100 text-5xl font-mmHeading uppercase">MACHIMAGIKA</h1>
@@ -58,6 +64,14 @@ export default function MainMenuScene({ className, children }: MainMenuSceneProp
                     <MenuItem>Quit</MenuItem> */}
                 </div>
             </div>
+            {isAnyOtherSceneVisible && (
+                <button
+                    onClick={() => dispatch(hideMenuAction)}
+                    className="absolute top-5 right-20 z-[5] font-mmHeading text-xl px-4 py-2 font-bold text-amber-100 hover:scale-125 focus:scale-125 text-left bg-[rgba(0,0,0,0.5)] focus:outline-0 focus:border-0 outline-0 border-0 origin-top-right transform-gpu transition-transform duration-200"
+                >
+                    ×
+                </button>
+            )}
             {children}
         </div>
     );

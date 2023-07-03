@@ -1,8 +1,10 @@
-import { DialogActionType, DialogIdType, DialogStateType } from "../dialog/dialogModel";
+import { DialogActionType, DialogIdType, DialogStateType, FlagMapType } from "../dialog/dialogModel";
 import { GameScheduledActionType, GameStateType as GameStateType } from "../model/gameState";
 import { SceneEnum } from "../scene/sceneModel";
 import handleSceneVisibility from "./handleSceneVisibility";
+import handleSetFlags from "./handleSetFlags";
 import handleUpdateDialog from "./handleUpdateDialog";
+import handleUpdateLocation from "./handleUpdateLocation";
 
 export enum GameActionTypeEnum {
     Common = "Common",
@@ -19,19 +21,15 @@ export type CommonActionsType = {
     addScheduledActions?: GameScheduledActionType[];
     resolveScheduledActions?: number[];
     updateDialog?: Partial<DialogStateType>;
+    updateLocation?: Partial<DialogStateType>;
+    setFlags?: Partial<FlagMapType>;
     showScene?: SceneEnum;
     hideScene?: SceneEnum;
 };
 
 export type AddScheduledActionActionType = {
     type: GameActionTypeEnum.AddScheduledActions;
-    addScheduledActions: GameScheduledActionType[];
 } & CommonActionsType;
-
-export type DialogActionGameActionType = {
-    type: GameActionTypeEnum.DialogAction;
-} & DialogActionType &
-    CommonActionsType;
 
 export type NewGameActionType = { type: GameActionTypeEnum.NewGame } & CommonActionsType;
 export type ChangeSceneActionType = {
@@ -52,7 +50,6 @@ export type GameActionType =
     | CommonActionType
     | NewGameActionType
     | ChangeSceneActionType
-    | DialogActionGameActionType
     | AddScheduledActionActionType;
 /*
 const handleChangeDialog = (state: GameStateType, action: GameActionType) => {
@@ -142,7 +139,9 @@ export default function gameReducer(state: GameStateType, action: GameActionType
     console.log("gameReducer action", action, state);
     let newState = state;
     newState = handleScheduledActions(newState, action);
+    newState = handleSetFlags(newState, action);
     newState = handleUpdateDialog(newState, action);
+    newState = handleUpdateLocation(newState, action);
     newState = handleSceneVisibility(newState, action);
 
     return newState;

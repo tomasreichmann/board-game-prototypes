@@ -53,7 +53,12 @@ export default function MainMenuScene({ className, children }: MainMenuSceneProp
             <Image className="w-full h-full object-cover" src="/MM/mainMenuBackground.png" alt="Main Menu Background" />
             <div className="absolute left-20 top-40 bottom-40 flex flex-col justify-center gap-20">
                 <div className="relative">
-                    <h1 className="relative text-mm-steel text-5xl font-mmHeading uppercase z-[2]">MACHIMAGIKA</h1>
+                    <h1
+                        className="relative text-mm-steel text-5xl font-mmHeading uppercase z-[2]"
+                        style={{ textShadow: "0 0 10px #528FC7" }}
+                    >
+                        MACHIMAGIKA
+                    </h1>
                     <Evaporation className="absolute z-[0]" disabled={mainMenuVisibility === VisibilityEnum.Hidden} />
                 </div>
                 <div className="flex-col items-start flex gap-10">

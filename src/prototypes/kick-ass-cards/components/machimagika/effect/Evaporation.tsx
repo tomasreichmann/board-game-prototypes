@@ -1,13 +1,14 @@
 import { twMerge } from "tailwind-merge";
 import Particles, { IParticlesProps } from "react-particles";
 import { loadFull } from "tsparticles";
-import { CSSProperties, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Container, Engine, MoveDirection } from "tsparticles-engine";
 import useMeasure from "react-use-measure";
 
 export type EvaporationProps = {
     className?: string;
     style?: React.CSSProperties;
+    duration?: number;
     disabled?: boolean;
     top?: number;
     bottom?: number;
@@ -21,7 +22,7 @@ const evaporationOptions: IParticlesProps["options"] = {
     },
     fpsLimit: 60,
     zLayers: 1,
-
+    detectRetina: true,
     emitters: {
         direction: "top",
         life: {
@@ -190,10 +191,12 @@ export default function Evaporation({
     style = {},
     top = -400,
     bottom = 0,
-    left = -100,
-    right = -100,
+    left = -50,
+    right = -50,
+    duration = 10000,
     disabled,
 }: EvaporationProps) {
+    const [particlesContainer, setParticlesContainer] = useState<Container | undefined>(undefined);
     const [ref, bounds] = useMeasure();
     const particlesInit = useCallback(async (engine: Engine) => {
         console.log(engine);
@@ -205,24 +208,38 @@ export default function Evaporation({
 
     const particlesLoaded = useCallback(
         async (container: Container | undefined) => {
-            let interval: number;
-            if (!disabled) {
-                setInterval(() => {
-                    if (bounds.width > 0 && bounds.height > 0 && container) {
-                        container.particles.addParticle({
-                            x: -1 * left + (bounds.width + left + right) * Math.random(),
-                            y: bounds.height - 10 - 30 * Math.random(),
-                        });
-                    }
-                }, 10);
-            }
             await container;
-            return () => {
-                clearInterval(interval);
-            };
+            setParticlesContainer(container);
         },
-        [bounds, disabled]
+        [bounds.width, bounds.height, disabled]
     );
+
+    const firstRenderTime = useRef(Date.now());
+
+    useEffect(() => {
+        let interval: number;
+        if (!disabled && particlesContainer && bounds.width > 0 && bounds.height > 0) {
+            const xScale = particlesContainer.canvas.size.width / bounds.width;
+            interval = setInterval(() => {
+                const elapsedTime = Math.min(Date.now() - firstRenderTime.current, duration);
+                const completeness = elapsedTime / duration;
+                const chanceForParticle = 1 - completeness * completeness;
+                if (Math.random() < chanceForParticle) {
+                    particlesContainer.particles.addParticle({
+                        x: -left + (bounds.width + left + right) * Math.random() * xScale,
+                        y: particlesContainer.canvas.size.height - 10 - 30 * Math.random(),
+                    });
+                }
+                if (elapsedTime >= duration) {
+                    clearInterval(interval);
+                }
+            }, 10);
+        }
+        return () => {
+            clearInterval(interval);
+        };
+    }, [particlesContainer, bounds.width, bounds.height, disabled]);
+
     return (
         <div className={twMerge("Evaporation", className)} style={{ ...style, top, bottom, left, right }} ref={ref}>
             <Particles

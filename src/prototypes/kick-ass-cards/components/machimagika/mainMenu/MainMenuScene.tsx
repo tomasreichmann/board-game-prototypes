@@ -7,6 +7,7 @@ import { SceneEnum } from "../scene/sceneModel";
 import Image from "../content/Image";
 import Evaporation from "../effect/Evaporation";
 import { VisibilityEnum } from "../model/gameState";
+import { isAnyOtherSceneVisible } from "../model/visibilityHelpers";
 
 export type MenuItemProps = React.PropsWithChildren<
     {
@@ -37,17 +38,19 @@ const newGameAction: GameActionType = {
     type: GameActionTypeEnum.NewGame,
 };
 
+const showEditorAction: GameActionType = {
+    type: GameActionTypeEnum.Common,
+    showScene: SceneEnum.Editor,
+};
+
 const hideMenuAction: GameActionType = {
     type: GameActionTypeEnum.Common,
     hideScene: SceneEnum.MainMenu,
 };
 
 export default function MainMenuScene({ className, children }: MainMenuSceneProps) {
-    const {
-        dispatch,
-        state: { mainMenuVisibility, inventoryVisibility, dialogVisibility, locationVisibility, regionVisibility },
-    } = useGameContext();
-    const isAnyOtherSceneVisible = inventoryVisibility || dialogVisibility || locationVisibility || regionVisibility;
+    const { dispatch, state } = useGameContext();
+    const { mainMenuVisibility } = state;
     return (
         <div className={twMerge("MainMenuScene relative w-full h-full", className)}>
             <Image className="w-full h-full object-cover" src="/MM/mainMenuBackground.png" alt="Main Menu Background" />
@@ -63,6 +66,7 @@ export default function MainMenuScene({ className, children }: MainMenuSceneProp
                 </div>
                 <div className="flex-col items-start flex gap-10">
                     <MenuItem onClick={() => dispatch(newGameAction)}>New game</MenuItem>
+                    <MenuItem onClick={() => dispatch(showEditorAction)}>Editor</MenuItem>
                     {/* <MenuItem autoFocus>Continue</MenuItem>
                     <MenuItem>Load game</MenuItem>
                     <MenuItem>Options</MenuItem>
@@ -70,7 +74,7 @@ export default function MainMenuScene({ className, children }: MainMenuSceneProp
                     <MenuItem>Quit</MenuItem> */}
                 </div>
             </div>
-            {isAnyOtherSceneVisible && (
+            {isAnyOtherSceneVisible(state, SceneEnum.MainMenu) && (
                 <button
                     onClick={() => dispatch(hideMenuAction)}
                     className="absolute top-5 right-20 z-[5] font-mmHeading text-xl px-4 py-2 font-bold text-amber-100 hover:scale-125 focus:scale-125 text-left bg-[rgba(0,0,0,0.5)] focus:outline-0 focus:border-0 outline-0 border-0 origin-top-right transform-gpu transition-transform duration-200"

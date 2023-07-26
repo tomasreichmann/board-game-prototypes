@@ -17,6 +17,7 @@ export type CommonActionsType = {
     updateLocation?: Partial<LocationStateType>;
     setFlags?: Partial<FlagMapType>;
     showScene?: SceneEnum;
+    toggleScene?: SceneEnum;
     hideScene?: SceneEnum;
 };
 
@@ -34,11 +35,14 @@ export type ChangeSceneActionType = {
 } & CommonActionsType;
 
 export type CommonActionType = { type: GameActionTypeEnum.Common } & CommonActionsType;
+/*
+export type ToggleSceneActionType = { type: GameActionTypeEnum.ToggleScene } & Pick<CommonActionsType, "toggleScene"> &
+    CommonActionsType;
 export type ShowSceneActionType = { type: GameActionTypeEnum.ShowScene } & Pick<CommonActionsType, "showScene"> &
     CommonActionsType;
 export type hideSceneActionType = { type: GameActionTypeEnum.HideScene } & Pick<CommonActionsType, "hideScene"> &
     CommonActionsType;
-
+*/
 export type GameActionType =
     | CommonActionType
     | NewGameActionType

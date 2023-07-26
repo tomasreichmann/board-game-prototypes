@@ -21,7 +21,9 @@ export enum VisibilityEnum {
 }
 
 export type GameStateType = {
+    isEditorEnabled?: boolean;
     mainMenuVisibility: VisibilityEnum;
+    editorVisibility: VisibilityEnum;
     regionId?: string;
     regionVisibility: VisibilityEnum;
     location: LocationStateType;
@@ -37,7 +39,9 @@ export type GameStateType = {
 };
 
 export const initialState: GameStateType = {
+    isEditorEnabled: true,
     mainMenuVisibility: VisibilityEnum.Visible,
+    editorVisibility: VisibilityEnum.Hidden,
     inventoryVisibility: VisibilityEnum.Hidden,
     dialogVisibility: VisibilityEnum.Hidden,
     locationVisibility: VisibilityEnum.Hidden,

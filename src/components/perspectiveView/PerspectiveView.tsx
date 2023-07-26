@@ -1,4 +1,4 @@
-import react, { CSSProperties, HTMLAttributes, useMemo } from "react";
+import react, { CSSProperties, HTMLAttributes, useCallback, useMemo } from "react";
 import useMeasure from "react-use-measure";
 import { twMerge } from "tailwind-merge";
 import ToggleData from "../DataToggle";
@@ -14,6 +14,7 @@ export type PerspectiveViewProps = React.PropsWithChildren<
         rotateZ?: number;
         showGrid?: boolean;
         scale?: number;
+        onWrapperMouseMove?: (x: number, y: number, event: React.MouseEvent<HTMLDivElement>) => void;
     } & HTMLAttributes<HTMLDivElement>
 >;
 
@@ -42,6 +43,7 @@ export const PerspectiveView = ({ children, ...propsWithoutChildren }: Perspecti
         rotateZ = 0,
         scale = 1,
         showGrid,
+        onWrapperMouseMove,
         ...restProps
     } = propsWithoutChildren;
     const style = useMemo(() => {
@@ -51,11 +53,30 @@ export const PerspectiveView = ({ children, ...propsWithoutChildren }: Perspecti
         };
     }, [targetX, targetY, targetZ, rotateX, rotateY, rotateZ, width, height, scale]);
 
+    const onMouseMove = useCallback(
+        (event: React.MouseEvent<HTMLDivElement>) => {
+            const { clientX, clientY } = event;
+            if (
+                onWrapperMouseMove &&
+                "getBoundingClientRect" in event.target &&
+                typeof event.target.getBoundingClientRect === "function"
+            ) {
+                const componentRect = event.target.getBoundingClientRect();
+                const x = clientX - componentRect.left;
+                const y = clientY - componentRect.top;
+
+                onWrapperMouseMove(x, y, event);
+            }
+        },
+        [onWrapperMouseMove]
+    );
+
     return (
         <div
             ref={ref}
             className={twMerge("PerspectiveView", styles.PerspectiveView, "overflow-hidden", className)}
             style={{ perspective: 600 }}
+            onMouseMove={onWrapperMouseMove && onMouseMove}
             {...restProps}
         >
             <div className="absolute w-0 h-0 left-1/2 top-1/2" style={style}>

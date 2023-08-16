@@ -16,10 +16,13 @@ declare module "*events.csv" {
 
 declare module "*prequelInAPubCards.csv" {
     export default data as {
+        slug: string;
         name: string;
         frontBottom: string;
         frontTop: string;
         backBottom: string;
         backTop: string;
+        imageUri: string;
+        count: number;
     }[];
 }

@@ -103,9 +103,12 @@ module.exports = {
                 "jd-ruby-dark": "#6C181D",
                 "jd-soil": "#462D20",
                 "jd-iron": "#180B06",
+                "jd-shitty-text": "#401648",
+                "jd-golden-text": "#FED801",
             },
             fontFamily: {
                 "jd-logo": ["New Rocker", "sans-serif"],
+                "jd-prequel-body": ["Unica One", "sans-serif"],
                 "jd-heading": ["Skranji", "sans-serif"],
                 "jd-body": ["Teko", "sans-serif"],
                 dtHeading: ["Germania One", "sans-serif"],

@@ -11,6 +11,7 @@ import { PerspectiveCard, PerspectiveCardProps } from "../../../../components/pe
 import { cardSizes } from "../../../../components/print/paperSizes";
 import SceneRouter from "../machimagika/scene/SceneRouter";
 import { GameContextProvider } from "../machimagika/model/GameContext";
+import { Button } from "react-daisyui";
 
 export default function MachimagikaRoute() {
     const [isNavigationVisible, setIsNavigationVisible] = useState(true);
@@ -40,10 +41,10 @@ export default function MachimagikaRoute() {
                     ☰
                 </button>
             </div>
-            <GameContextProvider>
+            {/* <GameContextProvider>
                 <SceneRouter />
-            </GameContextProvider>
-            {/* <PerspectiveView
+            </GameContextProvider> */}
+            <PerspectiveView
                 className="w-full h-full z-0"
                 showGrid
                 targetX={0}
@@ -153,7 +154,7 @@ export default function MachimagikaRoute() {
                 >
                     Zoom in on first
                 </Button>
-            </div> */}
+            </div>
         </div>
     );
 }

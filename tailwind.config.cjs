@@ -108,7 +108,7 @@ module.exports = {
             },
             fontFamily: {
                 "jd-logo": ["New Rocker", "sans-serif"],
-                "jd-prequel-body": ["Unica One", "sans-serif"],
+                "jd-prequel-body": ["Barlow Condensed", "sans-serif"],
                 "jd-heading": ["Skranji", "sans-serif"],
                 "jd-body": ["Teko", "sans-serif"],
                 dtHeading: ["Germania One", "sans-serif"],

@@ -1,15 +1,15 @@
 slug,name,frontBottom,frontTop,imageUri,count
-"moist-fart",Moist Fart!,"If turned, pick one card from an opponents hand and ⇄ it for this card.","If turned, pick one card from an opponents hand and ⇄ it for this card.","moist-fart",1
-"get-lucky",Get Lucky!,"If turned, pick an opponent. They pick a card from their hand. ⇄ it with this card.","If turned, pick an opponent. They pick a card from their hand. ⇄ it with this card.","get-lucky",1
-"boogie-dance",Boogie Dance,"Move 1 card in your hand to another position.","Move 2 cards in your hand to another position.","boogie-dance",3
-"mead-for-all",Mead for all,"Everyone ↻ 1 of their cards.","Pick 1 card name, everyone ↻ those cards.","mead-for-all",3
-"drink-splash",Drink Splash,"↻ 2 cards to the left of this card.","↻ your whole hand upside down.","drink-splash",3
-"butt-kick",Butt Kick,"↻ 1 of your cards 💩 and ↻ 1 of your cards Golden.","↻ 1 of your cards 💩 and ↻ 2 cards Golden.","butt-kick",3
-"pass-a-pipe",Pass a Pipe,"Pick a position, everyone passes a card on that position to the next player.","Pick a position, everyone ↻ a card on that position.","pass-a-pipe",3
-"bear-hug",Bear Hug,"↻ 1 card on the left or right of this one.","You may ↻ one or both cards to the left and right of this one.","bear-hug",3
-"shady-deal",Shady Deal,"Pick a card from an opponents hand, they pick a card from yours. ⇄ them.","Pick a card from an opponents hand and from yours. ⇄ them.","shady-deal",3
-"rockblock",Rockblock,"You can play this after any card is played to negate it's effect. ⇄ those cards.","You can play this after any card is played to negate it's effect. ⇄ those cards.","rockblock",3
-"mix-up",Mix-up,"Pick up to 2 players (incl. you), take their cards, shuffle them and deal them back randomly.","Pick any number of players (incl. you), take their cards, shuffle them and deal them back randomly.","mix-up",3
-"get-spoiled",Spoiled,"Play a 💩 card from your hand. Wherever there is a number in it's text, add 1 to it.","Play any card from your hand. Wherever there is a number in it's text, add 1 to it.","get-spoiled",3
-"sneak-peek",Sneak-peek,"Pick a player, they show you their 2 leftmost cards. You can ↻ 1 of them.","Pick a player, they show you their 4 rightmost cards. You can ↻ 1 of them.","sneak-peek",3
-"feast",Feast,"↻ this card.","Pick a card from your hand and play it 2 times. Then ↻ this card 💩.","feast",1
+"moist-fart",Moist Fart!,"If turned, pick one card from an opponents hand and ⇄ it for this card.","If turned, pick one card from an opponents hand and ⇄ it for this card.","moist-fart",1
+"get-lucky",Get Lucky!,"If turned, pick an opponent. They pick a card from their hand. ⇄ it with this card.","If turned, pick an opponent. They pick a card from their hand. ⇄ it with this card.","get-lucky",1
+"boogie-dance",Boogie Dance,"Move 1 card in your hand to another position.","Move 2 cards in your hand to another position.","boogie-dance",3
+"mead-for-all",Mead for all,"Everyone ↻ 1 of their cards.","Pick 1 card name, everyone ↻ those cards.","mead-for-all",3
+"drink-splash",Drink Splash,"↻ 2 cards to the left of this card.","↻ your whole hand upside down.","drink-splash",3
+"butt-kick",Butt Kick,"↻ 1 of your cards 💩 and ↻ 1 of your cards Golden.","↻ 1 of your cards 💩 and ↻ 2 cards Golden.","butt-kick",3
+"pass-a-pipe",Pass a Pipe,"Pick a position, everyone passes a card on that position to the next player.","Pick a position, everyone ↻ a card on that position.","pass-a-pipe",3
+"bear-hug",Bear Hug,"↻ 1 card on the left or right of this one.","You may ↻ one or both cards to the left and right of this one.","bear-hug",3
+"shady-deal",Shady Deal,"Pick a card from an opponents hand, they pick a card from yours. ⇄ them.","Pick a card from an opponents hand and from yours. ⇄ them.","shady-deal",3
+"rockblock",Rockblock,"You can play this after any card is played to negate it's effect. ⇄ those cards.","You can play this after any card is played to negate it's effect. ⇄ those cards.","rockblock",3
+"mix-up",Mix-up,"Pick up to 2 players (incl. you), take their cards, shuffle them and deal them back randomly.","Pick any number of players (incl. you), take their cards, shuffle them and deal them back randomly.","mix-up",3
+"get-spoiled",Spoiled,"Play a 💩 card from your hand. Wherever there is a number in it's text, add 1 to it.","Play any card from your hand. Wherever there is a number in it's text, add 1 to it.","spoiled",3
+"sneak-peek",Sneak-peek,"Pick a player, they show you their 2 leftmost cards. You can ↻ 1 of them.","Pick a player, they show you their 4 rightmost cards. You can ↻ 1 of them.","sneak-peek",3
+"feast",Feast,"↻ this card.","Pick a card from your hand and play it 2 times. Then ↻ this card 💩.","feast",1

@@ -25,16 +25,27 @@
 .PrintMarker_vertical {
     position: absolute;
     left: calc(var(--PrintMarker-width) / -2);
-    top: calc(var(--PrintMarker-length) / -2);
     height: var(--PrintMarker-length);
     width: 0;
     border-left: var(--PrintMarker-width) solid var(--PrintMarker-color, black);
 }
+.PrintMarker_vertical__top {
+    bottom: var(--PrintMarker-bleed);
+}
+.PrintMarker_vertical__bottom {
+    top: var(--PrintMarker-bleed);
+}
 .PrintMarker_horizontal {
     position: absolute;
-    left: calc(var(--PrintMarker-length) / -2);
+    right: var(--PrintMarker-length);
     top: calc(var(--PrintMarker-width) / -2);
     height: 0;
     width: var(--PrintMarker-length);
     border-top: var(--PrintMarker-width) solid var(--PrintMarker-color, black);
+}
+.PrintMarker_horizontal__left {
+    right: var(--PrintMarker-bleed);
+}
+.PrintMarker_horizontal__right {
+    left: var(--PrintMarker-bleed);
 }

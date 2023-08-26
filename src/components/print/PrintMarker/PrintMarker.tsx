@@ -8,7 +8,10 @@ type PrintMarkerProps = {
     right?: boolean;
     bottom?: boolean;
     left?: boolean;
+    vertical?: boolean;
+    horizontal?: boolean;
     className?: string;
+    bleedMm?: number;
     color?: React.CSSProperties["color"];
 };
 
@@ -17,9 +20,13 @@ const PrintMarker = ({
     right,
     bottom,
     left,
+    bleedMm = 0,
     className,
     color = "black",
+    ...restProps
 }: PrintMarkerProps) => {
+    const vertical = restProps.vertical || !restProps.horizontal;
+    const horizontal = restProps.horizontal || !restProps.vertical;
     return (
         <div
             className={clsx(
@@ -33,11 +40,14 @@ const PrintMarker = ({
             style={
                 {
                     "--PrintMarker-color": color,
+                    "--PrintMarker-bleed": bleedMm + "mm",
                 } as unknown as React.CSSProperties
             }
         >
-            <div className="PrintMarker_vertical" />
-            <div className="PrintMarker_horizontal" />
+            {top && <div className="PrintMarker_vertical PrintMarker_vertical__top" />}
+            {right && <div className="PrintMarker_horizontal PrintMarker_horizontal__right" />}
+            {bottom && <div className="PrintMarker_vertical PrintMarker_vertical__bottom" />}
+            {left && <div className="PrintMarker_horizontal PrintMarker_horizontal__left" />}
         </div>
     );
 };

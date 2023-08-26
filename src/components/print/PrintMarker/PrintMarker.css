@@ -4,23 +4,18 @@
     position: absolute;
     z-index: 1;
 }
-/*
-@media screen {
-    .PrintMarker {
-        display: none;
-    }
-}*/
+
 .PrintMarker__top {
-    top: 0;
+    top: var(--PrintMarker-bleed-top);
 }
 .PrintMarker__right {
-    right: 0;
+    right: var(--PrintMarker-bleed-right);
 }
 .PrintMarker__bottom {
-    bottom: 0;
+    bottom: var(--PrintMarker-bleed-bottom);
 }
 .PrintMarker__left {
-    left: 0;
+    left: var(--PrintMarker-bleed-left);
 }
 .PrintMarker_vertical {
     position: absolute;
@@ -30,22 +25,21 @@
     border-left: var(--PrintMarker-width) solid var(--PrintMarker-color, black);
 }
 .PrintMarker_vertical__top {
-    bottom: var(--PrintMarker-bleed);
+    bottom: calc(var(--PrintMarker-offset) + var(--PrintMarker-bleed-top));
 }
 .PrintMarker_vertical__bottom {
-    top: var(--PrintMarker-bleed);
+    top: calc(var(--PrintMarker-offset) + var(--PrintMarker-bleed-bottom));
 }
 .PrintMarker_horizontal {
     position: absolute;
-    right: var(--PrintMarker-length);
     top: calc(var(--PrintMarker-width) / -2);
     height: 0;
     width: var(--PrintMarker-length);
     border-top: var(--PrintMarker-width) solid var(--PrintMarker-color, black);
 }
 .PrintMarker_horizontal__left {
-    right: var(--PrintMarker-bleed);
+    right: calc(var(--PrintMarker-offset) + var(--PrintMarker-bleed-left));
 }
 .PrintMarker_horizontal__right {
-    left: var(--PrintMarker-bleed);
+    left: calc(var(--PrintMarker-offset) + var(--PrintMarker-bleed-right));
 }

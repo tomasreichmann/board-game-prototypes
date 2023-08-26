@@ -13,6 +13,7 @@ import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import { chunk } from "lodash";
 import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiplyByCount";
 import Rules from "../gameComponents/Rules";
+import PrintMarker from "../../../../components/print/PrintMarker/PrintMarker";
 
 const allCards = multiplyByCount(prequelCards, "count", defaultCountAdapter);
 
@@ -38,7 +39,40 @@ export default function PrequelRoute() {
                     >
                         <div className="flex flex-wrap justify-center content-center items-center">
                             {cards.map((card, cardIndex) => (
-                                <PrequelCard key={cardIndex} {...card} />
+                                <PrequelCard key={cardIndex} {...card}>
+                                    <PrintMarker
+                                        left
+                                        top
+                                        noTopMarker={cardIndex > 2}
+                                        noLeftMarker={cardIndex % 3 !== 0}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                    <PrintMarker
+                                        right
+                                        top
+                                        noTopMarker={cardIndex > 2}
+                                        noRightMarker={cardIndex % 3 !== 2}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                    <PrintMarker
+                                        right
+                                        bottom
+                                        noBottomMarker={cardIndex < 6}
+                                        noRightMarker={cardIndex % 3 !== 2}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                    <PrintMarker
+                                        left
+                                        bottom
+                                        noBottomMarker={cardIndex < 6}
+                                        noLeftMarker={cardIndex % 3 !== 0}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                </PrequelCard>
                             ))}
                             {/* <h2 className="text-2xl font-kacHeading text-kac-steel-dark w-full text-center">
                                 Cards front {pageIndex * 2 + 1}/{Math.ceil(allCards.length / CARDS_PER_PAGE) * 2}
@@ -52,7 +86,40 @@ export default function PrequelRoute() {
                     >
                         <div className="flex flex-wrap justify-center content-center items-center -scale-x-100">
                             {cards.map((card, cardIndex) => (
-                                <PrequelCard isFaceDown key={cardIndex} {...card} />
+                                <PrequelCard isFaceDown key={cardIndex} {...card}>
+                                    <PrintMarker
+                                        left
+                                        top
+                                        noTopMarker={cardIndex > 2}
+                                        noLeftMarker={cardIndex % 3 !== 0}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                    <PrintMarker
+                                        right
+                                        top
+                                        noTopMarker={cardIndex > 2}
+                                        noRightMarker={cardIndex % 3 !== 2}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                    <PrintMarker
+                                        right
+                                        bottom
+                                        noBottomMarker={cardIndex < 6}
+                                        noRightMarker={cardIndex % 3 !== 2}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                    <PrintMarker
+                                        left
+                                        bottom
+                                        noBottomMarker={cardIndex < 6}
+                                        noLeftMarker={cardIndex % 3 !== 0}
+                                        bleedMm={3}
+                                        offsetMm={-1}
+                                    />
+                                </PrequelCard>
                             ))}
                             {/* <h2 className=" text-2xl font-kacHeading text-kac-steel-dark w-full text-center">
                                 Cards back {pageIndex * 2 + 2}/{Math.ceil(allCards.length / CARDS_PER_PAGE) * 2}

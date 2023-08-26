@@ -105,6 +105,7 @@ module.exports = {
                 "jd-iron": "#180B06",
                 "jd-shitty-text": "#401648",
                 "jd-golden-text": "#FED801",
+                "jd-golden-paper": "#fef1ca",
             },
             fontFamily: {
                 "jd-logo": ["New Rocker", "sans-serif"],

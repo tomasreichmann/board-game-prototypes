@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+        "@mdx-js/react": "^2.3.0",
         "@mdx-js/rollup": "^2.1.5",
         "@tailwindcss/typography": "^0.5.7",
         "@types/lodash": "^4.14.185",

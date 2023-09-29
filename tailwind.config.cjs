@@ -6,7 +6,7 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
     content: [
         "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
+        "./src/**/*.{js,ts,jsx,tsx,mdx}",
         "node_modules/daisyui/dist/**/*.js",
         "node_modules/react-daisyui/dist/**/*.js",
     ],
@@ -18,7 +18,7 @@ module.exports = {
         "print:filter-none",
         "inline-block",
         "card",
-        "card-up",
+        "card-up"
     ],
     theme: {
         extend: {

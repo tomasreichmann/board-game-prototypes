@@ -5,6 +5,8 @@ import dsv from "@rollup/plugin-dsv";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import remarkUnwrapImages from "remark-unwrap-images";
+import remarkImages from "remark-images";
 import path from "path";
 
 // import {babel} from '@rollup/plugin-babel'
@@ -45,7 +47,7 @@ export default defineConfig(() => {
             }),
             dsv(),
             //mdx({ remarkPlugins: [[remarkFrontmatter, "toml"]] }),
-            mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter], providerImportSource: "@mdx-js/react" }),
+            mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkImages, remarkUnwrapImages], providerImportSource: "@mdx-js/react" }),
         ],
     };
 });

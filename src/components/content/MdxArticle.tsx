@@ -1,5 +1,6 @@
 import Article, { ArticleProps } from "./Article";
 import { defaultComponentMap } from "../../prototypes/just-dwarves/components/content/ContentItem";
+import { MDXProvider } from "@mdx-js/react";
 
 export type MdxComponent = React.ComponentType<{
     components?: {
@@ -24,7 +25,13 @@ export default function MdxArticle({
     const Component = mdx;
     return (
         <ArticleComponent className={className}>
-            <Component components={componentMap} />
+            <MDXProvider
+                    components={
+                        componentMap
+                    }
+                >
+                <Component components={componentMap} />
+            </MDXProvider>
             {children}
         </ArticleComponent>
     );

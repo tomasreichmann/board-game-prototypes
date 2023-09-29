@@ -1,21 +1,27 @@
 import Article from "./Article";
+
+// required for MDX
 import { Alert } from "react-daisyui";
+import ReactPlayer from "react-player";
 import BroadcastActor from "../screenContent/BroadcastActor";
 import BroadcastAsset from "../screenContent/BroadcastAsset";
 import BroadcastClock from "../screenContent/BroadcastClock";
 import BroadcastEffect from "../screenContent/BroadcastEffect";
-import BroadcastHeading from "../screenContent/BroadcastHeading";
-import BroadcastPaper from "../screenContent/BroadcastPaper";
-import ComponentList from "../ComponentList";
-import EncounterImage from "../EncounterImage";
-import Hand from "../layout/Hand";
 import OutcomeCard from "../gameComponents/OutcomeCard";
-import ReactPlayer from "react-player";
+import Hand from "../layout/Hand";
+import EncounterImage from "../EncounterImage";
+import ComponentList from "../ComponentList";
+import BroadcastPaper from "../screenContent/BroadcastPaper";
+import BroadcastHeading from "../screenContent/BroadcastHeading";
+import Columns from "../content/Columns";
+import Spread from "../layout/Spread";
+import BroadcastPaperMini from "../screenContent/BroadcastPaperMini";
+import Paragraph from "../Paragraph";
+import ListItem from "../ListItem";
 
 import GenericMdxArticle, {
     MdxArticleProps as GenericMdxArticleProps,
 } from "../../../../components/content/MdxArticle";
-import Columns from "./Columns";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -25,30 +31,35 @@ export type MdxComponent = React.ComponentType<{
 
 export type MdxArticleProps = GenericMdxArticleProps;
 
-const defaultComponentMap = {
-    Actor: BroadcastActor,
+export const defaultMdxComponentMap = {
     Alert,
-    Asset: BroadcastAsset,
-    Clock: BroadcastClock,
-    Columns,
-    Effect: BroadcastEffect,
-    Hand,
-    Heading: BroadcastHeading,
-    img: EncounterImage,
     List: ComponentList,
+    p: Paragraph,
+    li: ListItem,
+    Columns,
+    Hand,
     Outcome: OutcomeCard,
-    Paper: BroadcastPaper,
+    img: EncounterImage as any,
+    Heading: BroadcastHeading,
     Player: ReactPlayer,
+    Spread,
+    Actor: BroadcastActor,
+    Asset: BroadcastAsset,
+    Effect: BroadcastEffect,
+    Clock: BroadcastClock,
+    Paper: BroadcastPaper,
+    PaperMini: BroadcastPaperMini,
 };
 
 export default function MdxArticle({
     className,
-    componentMap = defaultComponentMap,
+    componentMap = defaultMdxComponentMap,
     ArticleComponent = Article,
     mdx,
     children,
 }: MdxArticleProps) {
     return (
+        
         <GenericMdxArticle
             className={className}
             ArticleComponent={ArticleComponent}

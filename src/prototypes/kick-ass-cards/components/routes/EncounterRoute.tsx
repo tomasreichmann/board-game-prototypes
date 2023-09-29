@@ -1,24 +1,10 @@
 import { encountersMap } from "../../data/encounters";
 import { useParams } from "react-router-dom";
-import React, { Component, DetailedHTMLProps, ImgHTMLAttributes, useEffect, useState } from "react";
-// required for MDX
-import { Alert } from "react-daisyui";
-import ReactPlayer from "react-player";
-import BroadcastActor from "../screenContent/BroadcastActor";
-import BroadcastAsset from "../screenContent/BroadcastAsset";
-import BroadcastClock from "../screenContent/BroadcastClock";
-import BroadcastEffect from "../screenContent/BroadcastEffect";
-import OutcomeCard from "../gameComponents/OutcomeCard";
-import Hand from "../layout/Hand";
-import EncounterImage from "../EncounterImage";
-import ComponentList from "../ComponentList";
-import BroadcastPaper from "../screenContent/BroadcastPaper";
-import BroadcastHeading from "../screenContent/BroadcastHeading";
+import React, { useEffect, useState } from "react";
 import Pending from "../../../../components/Pending";
 import Article from "../layout/Article";
-import Columns from "../content/Columns";
-import Spread from "../layout/Spread";
 import { MDXProvider } from "@mdx-js/react";
+import { defaultMdxComponentMap } from "../content/MdxArticle";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -65,22 +51,9 @@ export default function EncounterRoute() {
             {isPending && <Pending />}
             <Article>
                 <MDXProvider
-                    components={{
-                        Alert,
-                        List: ComponentList,
-                        Columns,
-                        Hand,
-                        Outcome: OutcomeCard,
-                        img: EncounterImage as any,
-                        Heading: BroadcastHeading,
-                        Player: ReactPlayer,
-                        Spread,
-                        Actor: BroadcastActor,
-                        Asset: BroadcastAsset,
-                        Effect: BroadcastEffect,
-                        Clock: BroadcastClock,
-                        Paper: BroadcastPaper,
-                    }}
+                    components={
+                        defaultMdxComponentMap
+                    }
                 >
                     {Encounter !== null && <Encounter key={path} />}
                 </MDXProvider>

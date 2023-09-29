@@ -1,0 +1,120 @@
+---
+campaign: In Sanguine Veritas
+chapter: 0
+act: 0
+---
+
+# In Sanguine Veritas
+
+<Heading imageUri="/ISV/splash.jpg" />
+
+**Strategické RPG o přežití upírů ve světě rozumu.**
+
+_Vaše panství zachválity plameny. Vůz drkotá po kamenné cestě a rychle se vzdaluje od města, které vám bylo do dnešního rána útočištěm, od domova, od rodiny, od potravy, která si vám dobrovolně vleze do pusy. Všemu dobrému je jednou konec a proto se musíte vydat na útěk. Milice Osvícených jsou vám totiž v patách. Pro ně jste jen zrůdy, nemoc, nádor k vyříznutí. Málokdo je ale tak nebezpečný jako vy, mrštný, neúnavný, vypočítavý. Odplata bude krvavá._
+
+## Předpoklady pro tvorbu postav
+
+-   Vaše posádka jsou hrdinové, ostřílení veterání záchranné akce na planetě Sporefall. Vysvobodili jste skupinu výzkumníku klanu, ale s nimi se k vám na palubu dostala i (hráčská) postava, která nebyla původně součástí vaší jednotky. Nemohli jste zachránit všechny a planeta podlehla Spórám.
+-   Cestuje s vámi inženýr Viktor, který se snaží se prosadit u Klanu, ale potřebuje k tomu vaší pomoc.
+-   Všichni jsou maximálně loajální Klanu. Jeho existence pro ně znamená otázku života a smrti.
+-   Nejvyšší autoritou, kterou družina uznává je Ona, Vrchní zástupkyně Klanu.
+
+## Hrdinové
+
+Každý hrdina musí být dostatečně vyhraněný oproti ostatním:
+
+-   **Jméno**
+-   **Specializace** - např. žoldák, vědkyně, hacker, pilotka.
+-   **Vybavení** - obecně, co používá postava k řešení problémů. Částečně může jít i o kořist ze Sporefallu.
+-   **Ctnost** - vlastnost, co mu pomáhá překonat obtíže.
+-   **Neřest** - vlastnost, co ho dostává do problémů a snižuje stres.
+-   **Zranění** - zranění z výparvy na Sporefall, které se ne a ne zahojit.
+-   **Speciální akce** - např. "Trefa do černého - neuvěřitelná přesnost při střelbě ze svojí pušky."
+
+![](/LP/WarTourist_cyberpunk_balcony_gun_fight_syd_mead_c93441f4-81c0-4215-bf7a-d9c0cd652f0d.png)
+
+## Obecná pravidla Kick Ass Cards
+
+-   Vypravěč uvádí příběh, ve kterém hráči mohou rozhodovat za jednu nebo více postav.
+-   V případě, že se hráč pokouší provést něco nebezpečného, nebo kde není jednoznačné, jak to dopadne, vypravěč ho vyzve k zahrání karty Výsledků.
+-   Každý hráč má svůj balíček karet Výsledků. Na začátku sezení balíček karet Výsledků zamíchá a vezme si do ruky **tři** karty z vrchu balíčku.
+-   Karty výsledků jsou:
+    -   **Úspěch** (3x): Akce se podařila (Efekt +2)
+    -   **Částečný úspěch** (3x): Akce se podařila částečně (Efekt +1, nebo úspěch a získání nějaké komplikace)
+    -   **Neúspěch** (4x): Akce se nepodařila (Efekt 0)
+    -   **Chaos** (1x): Místo zamýšlené akce se stalo něco jiného
+    -   **Super** (1x): Aktivuje speciální akci (Efekt +3)
+
+import outcomes from "../outcomes.csv";
+
+<Hand
+    className="h-[300px] max-w-[800px]"
+    items={[
+        <Outcome {...outcomes[0]} className="not-prose" />,
+        <Outcome {...outcomes[1]} className="not-prose" />,
+        <Outcome {...outcomes[2]} className="not-prose" />,
+        <Outcome {...outcomes[3]} className="not-prose" />,
+        <Outcome {...outcomes[4]} className="not-prose" />,
+    ]}
+/>
+
+import effects from "../effects.csv";
+
+-   Pokud má hráč na ruce 3x&nbsp;Neúspěch, oznámí to ihned vypravěči. Vypravěč popíše tragédii, která se hráči přihodila.
+-   Nehráčské postavy jsou reprezentované kartami Aktérů, které vypravěč umístí před hráče. Tyto postavy budou mít svojí akci po tahu daného hráče.
+-   Některé cíle a hrozby mohou vyžadovat více akcí k vyřešení a jsou reprezentovány kartami Počítadel. Např. "Časovaná bomba", nebo "Překonání zámku." Na kartu vypravěč umístí kostku otočenou na stranu, která reprezentuje aktuální hodnotu Počítadla.
+    -   Hráči mohou svými akcemi ovlivňovat hodnotu Počítadla. Pokud hodnota dosáhne předem určené hodnoty, může spustit události v příběhu, nežádoucí efekt, nebo uvolnit odměnu.
+    -   Počítadla mohou měnit hodnotu uplynutím času, v tom případě jsou umístěná před hráče a hodnota se posune na konci jeho kola.
+
+### Zranění
+
+-   Zranění hrozí, že dostane hráčskou postavu do bezvědomí, dokud ho někdo nevzkřísí.
+-   Pokud hráč má alespoň 2 karty Zranění, je Zmámený, jejich karty Úspěchu se počítají jako Částečný úspěch.
+-   Pokud hráč získá čtvrtou kartu Zranění, jejich postava je v bezvědomí a nemůže provádět další akce, dokud jí někdo nevzkřísí. Postava také dostane kartu Zkázy.
+-   Zranění je možné odstanit specifickými kartami, nebo akcí ošetření.
+
+<List>
+    <Effect {...effects[0]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[2]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[3]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+</List>
+
+### Tíseň
+
+-   Tíseň hrozí, že zlomí momentální vůli postavy pokračovat v boji, dokud se nevzpamatuje.
+-   Pokud hráč má alespoň 3 karty Tísně, zachvátí ho Panika. Místo toho, aby hrál karty Výsledků z ruky, hraje karty zvrchu balíčku.
+-   Pokud hráč získá čtvrtou kartu Tísně, jejich postavu zachvátí Beznaděj, ve svém tahu se může rozhodnout, zdali se vzdává, nebo utíká do bezpečí.
+-   Naděje se může obnovit odpočinkem, povzbuzující akcí spojence, nebo dopřáním si svojí Neřesti.
+
+<List>
+    <Effect {...effects[1]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[4]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[5]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+</List>
+
+## Mechaniky specifické pro tento příběh
+
+Tento příběh je o nehostinném umírajícím vesmírů, ve kterém si hráči musí hlídat správnou provozní teplotu a rozhodují zdali potřebují nasadit extra úsilí, které z nich postupně může udělat monstrum.
+
+### Mráz a Horko
+
+-   Mráz a Horko znázorňuje, jak moc se postava vzdaluje od svojí provozní teploty.
+-   Různé akce a události mohou způsobit, že postava získá kartu Mráz, nebo Horko.
+-   Karty Mráz a Horko se vzájemně negují. Páry těchto karet lze ihned odhodit.
+-   Pokud má postava na konci kola dvě nebo víc karet Horko, získává kartu Zranění.
+-   Pokud má postava na konci kola dvě nebo víc karet Mráz, získává kartu Tíseň.
+
+<List>
+    <Effect {...effects[9]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[10]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+</List>
+
+### Zkáza
+
+    -   Zkáza je míra podlehnutí temným myšlenkám a přechodu v Monstrum.
+    -   Pokud hráč získá 3x&nbsp;Zkáza, Hrdina se změní v Monstrum a ze Zkázy se stane Vykoupení, které funguje přesně opačně.
+    -   Zkáza se dá snížit jen výjimečným zásahem mocné bytosti.
+
+<List>
+    <Effect {...effects[13]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+</List>

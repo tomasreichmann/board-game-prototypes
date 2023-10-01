@@ -31,7 +31,7 @@ export default function PaperMini({
     backImageUri = imageUri,
     backImageStyle = { ...imageStyle, transform: "scaleY(-1)" },
     baseContent,
-    backBaseContent,
+    backBaseContent = baseContent,
     width = "2in",
     height = "2in",
     baseWidth = `calc(${width} / 2)`,

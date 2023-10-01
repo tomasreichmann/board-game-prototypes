@@ -2,6 +2,15 @@
 campaign: In Sanguine Veritas
 chapter: 0
 act: 1
+defaultActorProps: {size: "US game", className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none", imagePosition: "center top"}
+defaultMiniProps: {
+    baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+    backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+    baseWidth: "0.5in",
+    height: "2in",
+    width: "1in"
+}
+
 ---
 
 # In Sanguine Veritas - Prequel
@@ -9,14 +18,6 @@ act: 1
 /ISV/splash-prequel.jpg
 
 **RPG one-shot o útěku ztroskotalých obchodníků z jámy lvové.**
-
-<Columns noMargin>
-
-_Neúnavná bouře žene vaší loď dál a dál na západ, daleko od vaší obchodní trasy. Přes provazy deště bičující palubu lodi nevidíš na konec své ruky, když se ti najednou podlaha podtrhne pod nohama. Obrovská rána! Najeli jste na skaliska. Děsivé zapraskání dřeva a loď se celá nahnula na bok. Padáš přes palubu do rozbouřeného moře._
-
-_Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažérů, kteří se zvedají z pláže. Už neprší. Jak dlouho zde ležíš? Naštěstí vidíš nedaleko město, jeho střechy se bliští v posledních paprscích zapadajícího slunce. Je podzim a promoklé oblečení tě mrazí do morku kostí. Je na čase se zvednout a dostat všechny do bezpečí._
-
-</Columns>
 
 ### Legenda
 
@@ -53,6 +54,84 @@ _Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažér�
 -   Univerzita Osvíceného Rozumu se značně zasloužila o vymýcení Modřenin a získala díky tomu a podpoře královny velkou moc včetně vlastních ozbrojených sil.
 
 /ISV/rosenfel.jpg
+
+## Úvod
+
+/ISV/ship-crashing.jpg
+
+<Columns noMargin>
+
+_Neúnavná bouře žene vaší loď dál a dál na západ, daleko od vaší obchodní trasy. Přes provazy deště bičující palubu lodi nevidíš na konec své ruky, když se ti najednou podlaha podtrhne pod nohama. Obrovská rána! Najeli jste na skaliska. Děsivé zapraskání dřeva a loď se celá nahnula na bok. Padáš přes palubu do rozbouřeného moře._
+
+_Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažérů, kteří se zvedají z pláže. Už neprší. Jak dlouho zde ležíš? Naštěstí vidíš nedaleko město, jeho střechy se bliští v posledních paprscích zapadajícího slunce. Je podzim a promoklé oblečení tě mrazí do morku kostí. Je na čase se zvednout a dostat všechny do bezpečí._
+
+</Columns>
+
+**Každý hráč si vezme jednoho trosečníka, za které bude hrát.**
+
+import survivors from "../survivors-cs.csv"
+import getMiniProps from "../../utils/getMiniPropsFromActor"
+
+<List>
+    <Actor {...defaultActorProps} {...survivors[0]} />
+    <Actor {...defaultActorProps} {...survivors[1]} />
+    <Actor {...defaultActorProps} {...survivors[2]} />
+    <Actor {...defaultActorProps} {...survivors[3]} />
+    <Actor {...defaultActorProps} {...survivors[4]} />
+    <Actor {...defaultActorProps} {...survivors[5]} />
+    <Actor {...defaultActorProps} {...survivors[6]} />
+    <Actor {...defaultActorProps} {...survivors[7]} />
+    <Actor {...defaultActorProps} {...survivors[8]} />
+    <Actor {...defaultActorProps} {...survivors[9]} />
+    <Actor {...defaultActorProps} {...survivors[10]} />
+    <Actor {...defaultActorProps} {...survivors[11]} />
+    <Actor {...defaultActorProps} {...survivors[12]} />
+    <Actor {...defaultActorProps} {...survivors[13]} />
+    <Actor {...defaultActorProps} {...survivors[14]} />
+    <Actor {...defaultActorProps} {...survivors[15]} />
+    <Actor {...defaultActorProps} {...survivors[16]} />
+    <Actor {...defaultActorProps} {...survivors[17]} />
+    <Actor {...defaultActorProps} {...survivors[18]} />
+    <Actor {...defaultActorProps} {...survivors[19]} />
+    <Actor {...defaultActorProps} {...survivors[20]} />
+    <Actor {...defaultActorProps} {...survivors[21]} />
+    <Actor {...defaultActorProps} {...survivors[22]} />
+    <Actor {...defaultActorProps} {...survivors[23]} />
+    <Actor {...defaultActorProps} {...survivors[24]} />
+    <Actor {...defaultActorProps} {...survivors[25]} />
+    <Actor {...defaultActorProps} {...survivors[26]} />
+    <Actor {...defaultActorProps} {...survivors[27]} />
+</List>
+<List>
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[0])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[1])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[2])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[3])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[4])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[5])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[6])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[7])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[8])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[9])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[10])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[11])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[12])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[13])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[14])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[15])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[16])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[17])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[18])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[19])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[20])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[21])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[22])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[23])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[24])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[25])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[26])} />
+    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[27])} />
+</List>
 
 ## Pláž
 

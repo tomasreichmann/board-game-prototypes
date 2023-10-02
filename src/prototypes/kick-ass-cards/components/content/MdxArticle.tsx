@@ -22,6 +22,7 @@ import ListItem from "../ListItem";
 import GenericMdxArticle, {
     MdxArticleProps as GenericMdxArticleProps,
 } from "../../../../components/content/MdxArticle";
+import Toggle from "../../../../components/Toggle";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -49,6 +50,7 @@ export const defaultMdxComponentMap = {
     Clock: BroadcastClock,
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,
+    Toggle,
 };
 
 export default function MdxArticle({

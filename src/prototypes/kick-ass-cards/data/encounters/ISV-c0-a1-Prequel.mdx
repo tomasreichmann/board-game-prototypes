@@ -19,7 +19,7 @@ defaultMiniProps: {
 
 **RPG one-shot o útěku ztroskotalých obchodníků z jámy lvové.**
 
-### Legenda
+## Legenda
 
 -   _Popisný text, který můžeš rovnou přečíst hráčům, když dorazí do lokace._
 -   🔎 Informace, kterou mohou hráči zjistit prohledáním, zkoumáním, nebo výslechem.
@@ -29,29 +29,29 @@ defaultMiniProps: {
 ## 🔒 Shrnutí pro GM (obsahuje spoilery)
 
 -   Toto dobrodružství slouží jako **prequel ke kampani In Sanguine Veritas**.
--   Příběh sleduje osudy posádky a pasažérů loďi, která ztroskotala poblíž města **Veledol**.
-    -   Trosečníci dostanou možnost uchýlit se do města Veledol, které je ovšem v karanténě a nikdo z něj nesmí odejít, dokud nebude karanténa zrušena.
+-   **Příběh sleduje osudy trosečníků**, posádky a pasažérů loďi, která ztroskotala poblíž města **Veledol**.
+    -   Trosečníci dostanou možnost uchýlit se do města **Veledol**, které je ovšem v karanténě a nikdo z něj nesmí odejít, dokud nebude karanténa zrušena.
     -   Brzo se ukáže, že celé město je pod nadvládou upírů a že občané města více či méně dobrovolně dávají upírům svojí krev výměnou za peníze, ochranu a příslib věčného bohatství.
-    -   Upíři chtějí udržet v tajnosti svojí nadvládu nad Veledolem a proto pod rouškou další epidemie využívají karantény k izolaci města.
+    -   Upíři chtějí udržet v tajnosti svojí nadvládu nad **Veledolem** a proto pod rouškou další epidemie využívají karantény k izolaci města.
     -   Stráže dělají všechno pro to, aby dostihli a zajali kohokoliv, kdo karanténu poruší. Pokud to nezvládnou přes den, stanou se uprchlíci kořistí upírů v noci.
     -   Trosečníci se obávají o svůj život a rozhodnou se utéct.
--   Cílem hry z pohledu hráče je, aby se alespoň jednomu trosečníkovi podařilo utéct z města a předat informaci o problému s upíry ve Veledolu Osvíceným, příslušníkům Univerzity Osvíceného Rozumu.
+-   **Cílem hry z pohledu hráče je**, aby se alespoň jednomu trosečníkovi podařilo utéct z města a předat informaci o problému s upíry ve Veledolu Osvíceným, příslušníkům **Univerzity Osvíceného Rozumu**.
     -   Hráčské postavy je záměrně velmi jednoduché zabít. Když k tomu dojde, vezme si hráč hned novou postavu.
     -   Pokud se postava rozhodne ve městě zůstat dobrovolně, nebo nechat si informace o upírech pro sebe, hráč si vezme novou postavu.
--   Cílem hry z pohledu vypravěče je
+-   **Cílem hry z pohledu vypravěče je**
     -   Informovat hráče o tom, co to zamená být upír a co s tím přichází za silné a slabé stránky.
     -   Vysvětlit, jak došlo k tažení Osvícených proti upírům.
 
-### 🔒 Širší kontext světa
+## 🔎 Širší kontext světa
 
--   Veledol je jedno z měst království Rosenfelu.
--   Rosenfel je malé království o dvou městech a několika vesnicích.
-    -   Rozkládá se na břehu Zubatého moře.
-    -   Na východě za Prázdnou stepí sousedí s Vychostánem, se kterým Rosenfel kdysi válčil.
-    -   Rosenfel nedávno protrpěl morovou epidemii choroby jménem Modřeniny a postupně se z ní vzpamatovává.
-    Díky tomu královna vydala řadu dekretů, které měly pomoct s Modřeninami bojovat.
-    -   Královna ovšem sama Modřeninám podlehla. Šlechta se stále nemůže dohodnout, kdo bude další hlavou státu, nebo zdali vůbec neopustit monarchii.
--   Univerzita Osvíceného Rozumu se značně zasloužila o vymýcení Modřenin a získala díky tomu a podpoře královny velkou moc včetně vlastních ozbrojených sil.
+-   **Veledol** je jedno z měst **království Rosenfelu**.
+-   **Rosenfel** je malé království o dvou městech a několika vesnicích.
+    -   Rozkládá se na břehu **Zubatého moře**.
+    -   Na východě za **Prázdnou stepí** sousedí s **Vychostánem**, se kterým **Rosenfel** kdysi válčil.
+    -   **Rosenfel** nedávno protrpěl morovou epidemii choroby jménem **Modřeniny** a postupně se z ní vzpamatovává.
+    Díky tomu **královna Roseslava I.** vydala řadu dekretů, které měly pomoct s **Modřeninami** bojovat. 
+    -   Královna ovšem sama **Modřeninám** podlehla. Šlechta se stále nemůže dohodnout, kdo bude další hlavou státu, nebo zdali vůbec neopustit monarchii.
+-   **Univerzita Osvíceného Rozumu** se značně zasloužila o vymýcení **Modřenin** a získala díky tomu a podpoře královny velkou moc včetně vlastních ozbrojených sil.
 
 /ISV/rosenfel.jpg
 
@@ -69,75 +69,96 @@ _Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažér�
 
 **Každý hráč si vezme jednoho trosečníka, za které bude hrát.**
 
+🔒 **V případě, že trosečník umře, nebo ztratí motivaci utéct z města, hráč si vezme hned nového trosečníka.**
+
 import survivors from "../survivors-cs.csv"
 import getMiniProps from "../../utils/getMiniPropsFromActor"
 
-<List>
-    <Actor {...defaultActorProps} {...survivors[0]} />
-    <Actor {...defaultActorProps} {...survivors[1]} />
-    <Actor {...defaultActorProps} {...survivors[2]} />
-    <Actor {...defaultActorProps} {...survivors[3]} />
-    <Actor {...defaultActorProps} {...survivors[4]} />
-    <Actor {...defaultActorProps} {...survivors[5]} />
-    <Actor {...defaultActorProps} {...survivors[6]} />
-    <Actor {...defaultActorProps} {...survivors[7]} />
-    <Actor {...defaultActorProps} {...survivors[8]} />
-    <Actor {...defaultActorProps} {...survivors[9]} />
-    <Actor {...defaultActorProps} {...survivors[10]} />
-    <Actor {...defaultActorProps} {...survivors[11]} />
-    <Actor {...defaultActorProps} {...survivors[12]} />
-    <Actor {...defaultActorProps} {...survivors[13]} />
-    <Actor {...defaultActorProps} {...survivors[14]} />
-    <Actor {...defaultActorProps} {...survivors[15]} />
-    <Actor {...defaultActorProps} {...survivors[16]} />
-    <Actor {...defaultActorProps} {...survivors[17]} />
-    <Actor {...defaultActorProps} {...survivors[18]} />
-    <Actor {...defaultActorProps} {...survivors[19]} />
-    <Actor {...defaultActorProps} {...survivors[20]} />
-    <Actor {...defaultActorProps} {...survivors[21]} />
-    <Actor {...defaultActorProps} {...survivors[22]} />
-    <Actor {...defaultActorProps} {...survivors[23]} />
-    <Actor {...defaultActorProps} {...survivors[24]} />
-    <Actor {...defaultActorProps} {...survivors[25]} />
-    <Actor {...defaultActorProps} {...survivors[26]} />
-    <Actor {...defaultActorProps} {...survivors[27]} />
-</List>
-<List>
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[0])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[1])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[2])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[3])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[4])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[5])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[6])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[7])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[8])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[9])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[10])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[11])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[12])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[13])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[14])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[15])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[16])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[17])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[18])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[19])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[20])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[21])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[22])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[23])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[24])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[25])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[26])} />
-    <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[27])} />
-</List>
+<Toggle initialCollapsed buttonContent="Postavy">
+    <List>
+        <Actor {...defaultActorProps} {...survivors[0]} />
+        <Actor {...defaultActorProps} {...survivors[1]} />
+        <Actor {...defaultActorProps} {...survivors[2]} />
+        <Actor {...defaultActorProps} {...survivors[3]} />
+        <Actor {...defaultActorProps} {...survivors[4]} />
+        <Actor {...defaultActorProps} {...survivors[5]} />
+        <Actor {...defaultActorProps} {...survivors[6]} />
+        <Actor {...defaultActorProps} {...survivors[7]} />
+        <Actor {...defaultActorProps} {...survivors[8]} />
+        <Actor {...defaultActorProps} {...survivors[9]} />
+        <Actor {...defaultActorProps} {...survivors[10]} />
+        <Actor {...defaultActorProps} {...survivors[11]} />
+        <Actor {...defaultActorProps} {...survivors[12]} />
+        <Actor {...defaultActorProps} {...survivors[13]} />
+        <Actor {...defaultActorProps} {...survivors[14]} />
+        <Actor {...defaultActorProps} {...survivors[15]} />
+        <Actor {...defaultActorProps} {...survivors[16]} />
+        <Actor {...defaultActorProps} {...survivors[17]} />
+        <Actor {...defaultActorProps} {...survivors[18]} />
+        <Actor {...defaultActorProps} {...survivors[19]} />
+        <Actor {...defaultActorProps} {...survivors[20]} />
+        <Actor {...defaultActorProps} {...survivors[21]} />
+        <Actor {...defaultActorProps} {...survivors[22]} />
+        <Actor {...defaultActorProps} {...survivors[23]} />
+        <Actor {...defaultActorProps} {...survivors[24]} />
+        <Actor {...defaultActorProps} {...survivors[25]} />
+        <Actor {...defaultActorProps} {...survivors[26]} />
+        <Actor {...defaultActorProps} {...survivors[27]} />
+    </List>
+</Toggle>
+<Toggle initialCollapsed buttonContent="Výchozí vybavení pro některé postavy">
+    <List>
+        <Asset title="Mačeta" icon="/ISV/items/machette.png" effect="Při Úspěchu + 1 Efekt na sekání" className="drop-shadow" />
+        <Asset title="Dýka" icon="/ISV/items/dagger.png" effect="Umožňuje útok na blízko i vrhání do vedlejší zóny" className="drop-shadow" />
+        <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
+        <Asset title="Pistole" icon="/ISV/items/pistol-with-bullets.png" effect="Střelba: +1 Efekt (1 kolo nabití)." className="drop-shadow" />
+    </List>
+</Toggle>
+<Toggle initialCollapsed buttonContent="Minis">
+    <List>
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[0])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[1])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[2])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[3])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[4])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[5])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[6])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[7])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[8])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[9])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[10])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[11])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[12])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[13])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[14])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[15])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[16])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[17])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[18])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[19])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[20])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[21])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[22])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[23])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[24])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[25])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[26])} />
+        <PaperMini {...defaultMiniProps} {...getMiniProps(survivors[27])} />
+    </List>
+</Toggle>
+
+## Pravidla
+
+-   Platí standartní pravidla Kick Ass Cards a navíc:
+-   **Hlad** - Postavy, které jdou spát anižby ten den zkonzumovaly jedny Zásoby plus jedny Zásoby za každou odstraněnou kartu **Hladu** získávají **Hlad**. Pokud postava získá třetí kartu **Hladu**, umře hlady.
+
+<Effect title="Hlad" effect="+1 Tíseň, která nejde odstranit, dokud máš tuto kartu. Zkonzumuj Zásoby pro odstranění. 3x Hlad = smrt" icon="/ISV/icons/hunger.png" className="drop-shadow" />
 
 ## Pláž
 
 /ISV/beach.jpg
 
-_Poslední zbytky zlatavého slunce se odráží od vlhkého písku písečné pláže a vrhají stíny za roztroušenými pozůstatky nákladu vaší obchodní expedice. Z dálky se klidným krokem blíží několik mužů ve fialových pláštích. Vypadají jako městské milice sousedního království Rosenfel._
+_Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vrhají stíny za roztroušenými pozůstatky nákladu vaší obchodní expedice. Nedaleko od břehu vidíte nahnutý vrak vaší lodi Stará Dobrá, který vlny pomalu stahují ze skalisk pod hladinu. Svůj náklad do Vychostánu už nedoručí. Z dálky se klidným krokem blíží několik mužů ve fialových pláštích. Vypadají jako městské milice sousedního království Rosenfel._
 
 🔎 **Zbytky nákladu** - Ve vyplavených bednách lze najít:
 -   sušené maso: 🏺 Zásoby
@@ -149,9 +170,17 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku písečné p
 -   🏺 Stříbrné příbory
 -   Je zde také hodně dřeva z vraku lodi: 🏺 Dřevo
 
-❗TODO Vybavení
+<List>
+    <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
+    <Asset title="Nářadí" icon="/ISV/items/tools.png" effect="Umožňuje provádět řemeslné práce" className="drop-shadow" />
+    <Asset title="Medicína" icon="/ISV/items/medicine.png" effect="Vyléčí Zranění za 2x Efekt + další Zranění za každý další Efekt. 1 použití." className="drop-shadow" />
+    <Asset title="Kord" icon="/ISV/items/kord.png" effect="Při Úspěchu + 1 Efekt na bodání" className="drop-shadow" />
+    <Asset title="Luxusní oblečení" icon="/ISV/items/clothes.png" className="drop-shadow" />
+    <Asset title="Stříbrné příbory" icon="/ISV/items/silver-cuttlery.png" className="drop-shadow" />
+    <Asset title="Dřevo" icon="/ISV/items/wood.png" className="drop-shadow" />
+</List>
 
-### Milice
+## Milice
 
 /ISV/milice.jpg
 
@@ -161,8 +190,10 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku písečné p
     -   Takže můžou do města vstoupit, ale budou tam muset zůstat dokud nebude karanténa zvednuta.
     -   Za porušení královského ediktu karantény hrozí poprava.
 -   Nejbližší další osada je rybářská vesnice Skalská, cesta tam ovšem vede přes skály a les, kde se potulují vlci a jiná havěť.
--   Stráže vás rádi doprovodí do města.
--   🔒 Stráže informují upíry o tom, co mají trosečníci v plánu.
+-   Stráže vás rádi doprovodí do města, ale varují vás, že jestli se nebudete chovat slušně, špatně to s vámi dopadne.
+-   🔎 Pokud Stráže uvidí, že se snažíte utéct, hned vás zajmou. Případně zavolají posily z města.
+-   🔎 Stráže informují upíry o tom, co mají trosečníci v plánu.
+-   🔎 Být členem milice je luktrativní zaměstnání s velkou autoritou, i když člověk musí být často morálně flexibilní.
 
 <List>
     <Actor
@@ -207,7 +238,7 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku písečné p
     />
 </List>
 
-## Město Veledol
+# Město Veledol
 
 /ISV/veledol.jpg
 
@@ -222,24 +253,45 @@ Jediná cesta z města vede na východ temným jehličnatým lesem. Na jihu lemu
 -   Na severu jsou **doly** na kámen a železo.
 -   Na okraji města je několik panství. **Panství Korblů** na severo západě a **panství Brožů** na západě.
 -   Můžete se ubytovat v **hostinci U Mrtvého Ptáka**.
--   Lidé se tu zabývají hlavně řemeslnou výrobou, těžbou železa, ale také uměním.
--   🔒 Starostka a všichni šlechtici ve městě jsou upíři, proto vycházejí jen po soumraku. Přes den za ně vyřizují pochůzky jejich služebnictvo.
--   🔒 Běžní lidé mají zakázáno mluvit o upírech.
+-   Lidé se tu zabývají hlavně řemeslnou výrobou, zpracováním železa, chovem ovcí, pěstováním ovocných stromů, ale také uměním.
+-   Je zde poměrně hodně ozbrojených milicí, kteří dohlížejí na pořádek a hlavně na to, aby nikdo nepovolaný neopustil město.
+-   🔎 Starostka a všichni šlechtici ve městě jsou upíři, proto vycházejí jen po soumraku. Přes den za ně vyřizují pochůzky jejich služebnictvo.
+-   🔎 Běžní lidé mají zakázáno mluvit o upírech.
 -   Symbol města je zlatý kalich na fialovém štítu.
+-   Ve městě se platí zlatými 🟡 a stříbrnými ⚪ rosenfelskými mincemi s hlavou nyní zesnulé královny Roseslavy I. 1🟡 = 100⚪.
 
 /ISV/veledol-symbol.jpg
 
-### Cesta na západ
+## Těžký život trosečníka
 
-_Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a podle všeho kdysi frekventovaná cesta nyní zarůstá trávou_
+-   🔒 Trosečníci to mají těžké. Místní nejsou moc ochotní pomáhat novým lidem, kteří asi moc dlouho nevydrží, kteří nemají až na výjimky žádné peníze, majetek a nemají, kde bydlet. Hlavně neví, jak to ve Veledolu chodí, proto se je někteří budou snažit spíš zneužít.
+-   🔒 **Cílem je vytvořit pro hráče pocit nebezpečí ve městě a motivaci z města utéct a varovat zbytek světa před upíry.**
+-   Stráže navedou trosečníky do **Hostince U Mrtvého Ptáka**.
+-   🔎 Běžní lidé se trosečníků bojí a nechtějí je pouštět k sobě domů.
+-   🔎 Běžný člověk ve městě si vydělá 10 - 20⚪ za den. Šlechta díky karanténě kontroluje dovoz a vývoz zboží a vydělává mnohonásobně víc zejména díky rozdílným cenám mezi Veledolem a okolními osadami.
 
--   Milice hlídkují kolem města a kontrolují všechny, kdo se chystají město opustit.
-    -   🔎 Milice zastaví kohokoliv, kdo nemá povolení od starostky.
-    -   🔎 Pokud někdo neprávem opustí město, stráže spustí poplach a vyšlo za nimi hlídky je zajmout.
-    -   🔎 V lesích kolem města se pohybují stopaři, kteří zavolají posily, když uvidí někoho, kdo neprávem opustil město.
--   🔎 Kdysi frekventovaná **Cesta na západ** vede skrz **Skalský les** k vesnici **Skalská**.
--   🔎 Je to nebezpečná cesta, kterou není radno podnikat sám, nebo beze zbraně.
--   🔎 Jediní, kdo po ní dnes smí cestovat jsou obchodníci se zásobami.
+## Zákon a pořádek ve městě
+
+-   🔎 Pokud stráže uvidí trosečníky páchat přestupek (krádež, urážka, vloupání, vandalismus, výtržnictví), dostanou pokutu (desetinásobek škody).
+-   🔎 Pokud stráže uvidí trosečníky páchat trestný čin (napadení, neúmyslné zabití, vražda), půjdou do vězení.
+-   🔎 Stráže nenechají spát trosečníky na ulici. Za to je pokuta 1🟡.
+-   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
+-   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
+-   🔎 Trest za útěk
+    -   Na konci dne Starostka **Věra Korblová** vyhlásí verdikt: Všichni, kteří porušili královský edikt karantény jsou odsouzeni k popravě
+dle místních zvyků, tedy vykrvácením.
+    -   Kat odsouzeným nařízne stehenní tepnu a nechá je vykrvácet do skleněného džbánu.
+
+TODO❗ obrázek popravy
+
+### Vězení
+
+TODO❗ obrázek vězení
+
+-   Dva strážníci hlídají vězně a nosí jim jídlo.
+-   Kovové mříže a okovy na kotníku přivázané řetězem ke zdi brání vězňům utéct. Okovy lze sundat pouze pomocí klíče, který mají strážní,
+**paklíčem** nebo hlasitě pomocí **nástrojů**.
+-   🔎 Upíři podplácejí stráže, aby je pustili k vězňům, aby jim mohli sát krev. 1x Zranění, 1x Tíseň. Proto ve vězení nikdo moc dlouho nepřežije.
 
 ### Hostinec U Mrtvého Ptáka
 
@@ -248,37 +300,95 @@ _Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a p
 _Velká čtyřpatrová budova hostince U Mrtvého Ptáka je dominantou **Veledolského náměstí**. V hospodě v přízemí posedávají místní řemeslníci,
 tu a tam se tu mihne i někdo z místní smetánky._
 
--   **Ctirad Brož** zaplatí trosečníkům ubytování ve velkém hostinci, který jinak zeje prázdnotou.
+-   **Ctirad Brož**, nechá trosečníky přenocovat ve svém hostinci, který jinak zeje prázdnotou. Další den už ale bude chtít zaplatit.
 -   **Madlena Brožová**, Ctiradova dcera se stará o hostinec a nechá trosečníkům přinést jídlo a ukáže jim pokoje.
--   🔒 Ctirad i Madlena byli do doby před epidemií Modřenin bohatí obyvatelé Veledolu. Rodina Korblů Brožům slíbila věčný život za jejich podporu při převratu ve městě.
+-   🔎 Ctirad i Madlena byli do doby před epidemií Modřenin bohatí obyvatelé Veledolu. Rodina Korblů Brožům slíbila věčný život za jejich podporu při převratu ve městě. Je to veřejné tajemství, o kterém ale nikdo nechce mluvit, pokud nemusí.
+-   🔎 Místní lidé sem neradi chodí kvůli vysokým cenám. Proto se zde schází hlavně upíří šlechta. Často sem ale chodí lidé, kteří chtějí darovat upírům krev výměnou za peníze.
+-   Hospoda otvírá po soumraku a je otevřená až do úsvitu.
+-   V krčmě si mohou trosečníci pořídit předražené jídlo a pití (stejná cena i pro místní), ubytuvání a koupel:
+    -   🏺 **Zásoby** (Ovčí guláš, ovocné knedlíky, štrůdl, vyléčí 1x Tíseň) - 30⚪
+    -   🏺 **Alkohol** (cider, hrušková pálenka, vyléčí 2x Tíseň) - 50⚪
+    -   **Ubytování na den** (pěkně zařízený a uklizený pokoj s velkou postelí) - 20⚪
+    -   **Koupel** (Dobře vybavená a pěkně upravená koupelna s mramorovou lázní s horkou vodou ohřívanou v kamnech pod lázní, vyléčí všechnu Tíseň) - 30⚪
+-   🔎 Je možné zde potkat upíry, kteří jsou ochotní zaplatit až 50⚪ za možnost napít se lidské krve. Upíři zavedou osobu do jednoho z upuštěných pokojí, kousnou je do krku nebo do ruky a budou pít, dokud je osoba nechá, nebo upadne do bezvědomí. Postava za to utrpí +1 Zranění a +1 Tíseň.
 
 <List>
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/veledol/madlena-brozova.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Madlena Brožová"
+        toughness={5}
+        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
+        notes="Pohyb 2 zóny."
+    />
 
-/ISV/madlena-brozova.jpg
-
-/ISV/ctirad-broz.jpg
-
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/veledol/ctirad-broz.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Ctirad Brož"
+        toughness={6}
+        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
+        notes="Zmámení: Donutí hráče provést akci (Efekt 2) dle své vůle, obrana 2+ Efekt."
+    />
 </List>
 
+### Cesta na západ
+
+TODO❗ obrázek cesty do lesa
+
+_Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a podle všeho kdysi frekventovaná cesta nyní zarůstá trávou_
+
+-   **Milice hlídkují kolem města a kontrolují všechny, kdo se chystají město opustit.**
+    -   🔎 Milice zastaví kohokoliv, kdo nemá povolení od starostky.
+    -   🔎 Pokud někdo neprávem opustí město, stráže spustí poplach a vyšlo za nimi hlídky je zajmout.
+    -   🔎 V lesích kolem města se pohybují stopaři, kteří zavolají posily, když uvidí někoho, kdo neprávem opustil město.
+-   🔎 Kdysi frekventovaná **Cesta na západ** vede skrz **Skalský les** k vesnici **Skalská**.
+-   🔎 Je to nebezpečná cesta, kterou není radno podnikat sám, nebo beze zbraně.
+-   🔎 Jediní, kdo po ní dnes smí cestovat jsou obchodníci se zásobami.
+
 ### Veledolské Náměstí
+
+TODO❗ obrázek stánku
 
 _Veledolské Náměstí je plné stánků s různými řemeslnými produkty, jídlem a pitím. Na náměstí shlíží dlouhá budova radnice se symbolem zlatého kalichu
 na fialovém štítu. Další dominantou náměstí je velká budova Hostince U Mrtvého Ptáka._
 
--   U stánků je možné koupit:
-    -   🏺 Zásoby (uzené, sýry) - 10⚪ na den
-    -   🏺 Nářadí (řemeslné, stavební, těžební nástroje) - 50⚪
-    -   🏺 Léčiva (obvazy, medicína, léčivé byliny) - 1🟡
-    -   🏺 Zbraně (dýky, kordy, pistole, kuše) - 1🟡
+-   U stánků je možné koupit mnoho věcí, ale pro trosečníky jsou ceny dvojnásobné (uvedené ceny jsou už s přirážkou):
+    -   🏺 Zásoby (uzené, kozí sýry, jablka, hrušky) - 20⚪
+    -   🏺 Nářadí (řemeslné, stavební, těžební nástroje) - 1🟡
+    -   🏺 Léčiva (obvazy, medicína, léčivé byliny) - 2🟡
+    -   🏺 Zbraně (dýky, kordy, pistole, kuše) - 2🟡
         -   🔎 Milice se budou zajímat o to, k čemu zbraně trosečníci potřebují a případně je donutí je vrátit.
-    -   🏺 Oblečení - 50⚪
-    -   🏺 Alkohol (cider, pálenka) - 20⚪
+    -   🏺 Náboje do zbraní (pistole, kuše) 1ks - 10⚪
+    -   🏺 Oblečení - 1🟡
+    -   🏺 Alkohol (cider, pálenka) - 40⚪
+
+-   Na náměstí jsou
+    -   domy šlechticů
+    -   **Hostinec U Mrtvého Ptáka**
+    -   **radnice s kasárnami milic a vězením**
 
 ### Doly
+❗TODO obrázek
 
 -   **Důl na kámen** slouží jako zdroj stavebního materiálu pro celou oblast.
+    -   Lze zde najít těžkou práci za 10⚪ + 1x Tíseň.
 -   Rozsáhlé a spletité **důlní šachty** vedou hlouběji do paty hory, kde se těží železo.
 -   🔎 Skrz šachty se dá dostat na druhou stranu hory na **Ledové pláně** a k **Ledovému jezeru**
+
+# Sady
+❗TODO obrázek
+
+-   Sady na východě končí dlouhou zdí, kolem které občas hlídkují milice.
+    -   🔎 Jednou za čas obyvatelé sadů pálí suchou trávu za zdí kvůli parazitům, kteří v trávě stepi žijí.
+    -   Za stěnou se rozkládá široká a celkem opuštěná step.
+        -   Za tři dny se dá dojít do sousedního království .
+
+❗TODO Encountery, které poukazují na vlastnosti upírů.
 
 ### Panství Korblů
 
@@ -288,22 +398,35 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
 /ISV/vera-korblova.jpg
 
 ### Panství Brožů
+❗TODO obrázek
+❗TODO Encountery, které poukazují na vlastnosti upírů.
 
--   TODO❗
-
-### Vězení
-
--   Dva strážníci hlídají vězně a nosí jim jídlo.
--   Kovové mříže a okovy na kotníku přivázané řetězem ke zdi brání vězňům utéct. Okovy lze sundat pouze pomocí klíče, který mají strážní
-**paklíčem** nebo hlasitě pomocí **nástrojů**.
-
-### Trest za útěk
-
--   Na konci týdne Starostka **Věra Korblová** vyhlásí verdikt: Všichni, kteří porušili královský edikt karantény jsou odsouzeni k popravě
-dle místních zvyků, tedy vykrvácením.
--   Kat odsouzeným nařízne stehenní tepnu a nechá je vykrvácet do skleněného džbánu.
-
-
+# TODO
 ❗TODO Kdo byl původním starostou města před převratem Korblových? Někdo spojený s Osvícenými.
 
+# Skalský Les
+❗TODO obrázek
 ❗TODO Encountery, které poukazují na vlastnosti upírů.
+-> Vesnice Skalská
+-> Cesta na Luka
+
+# Vesnice Skalská
+❗TODO Encountery, které poukazují na vlastnosti upírů.
+
+# Cesta na Luka
+❗TODO Možný Konec ve vesnici Luka
+
+# Důlní Šachty
+❗TODO obrázek
+❗TODO Encountery, které poukazují na vlastnosti upírů.
+-> Ledové pláně
+
+# Ledové pláně
+❗TODO obrázek
+❗TODO Encountery, které poukazují na vlastnosti upírů.
+❗TODO Možný Konec na Experimentální katedře
+
+# Prázdná step
+❗TODO obrázek
+❗TODO Encountery, které poukazují na vlastnosti upírů.
+❗TODO Možný Konec ve Vychostánu

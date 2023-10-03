@@ -2,15 +2,20 @@
 campaign: In Sanguine Veritas
 chapter: 0
 act: 1
-defaultActorProps: {size: "US game", className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none", imagePosition: "center top"}
-defaultMiniProps: {
-    baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
-    backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
-    baseWidth: "0.5in",
-    height: "2in",
-    width: "1in"
-}
-
+defaultActorProps:
+    {
+        size: "US game",
+        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        imagePosition: "center top",
+    }
+defaultMiniProps:
+    {
+        baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+        backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+        baseWidth: "0.5in",
+        height: "2in",
+        width: "1in",
+    }
 ---
 
 # In Sanguine Veritas - Prequel
@@ -49,7 +54,7 @@ defaultMiniProps: {
     -   Rozkládá se na břehu **Zubatého moře**.
     -   Na východě za **Prázdnou stepí** sousedí s **Vychostánem**, se kterým **Rosenfel** kdysi válčil.
     -   **Rosenfel** nedávno protrpěl morovou epidemii choroby jménem **Modřeniny** a postupně se z ní vzpamatovává.
-    Díky tomu **královna Roseslava I.** vydala řadu dekretů, které měly pomoct s **Modřeninami** bojovat. 
+        Díky tomu **královna Roseslava I.** vydala řadu dekretů, které měly pomoct s **Modřeninami** bojovat.
     -   Královna ovšem sama **Modřeninám** podlehla. Šlechta se stále nemůže dohodnout, kdo bude další hlavou státu, nebo zdali vůbec neopustit monarchii.
 -   **Univerzita Osvíceného Rozumu** se značně zasloužila o vymýcení **Modřenin** a získala díky tomu a podpoře královny velkou moc včetně vlastních ozbrojených sil.
 
@@ -71,8 +76,8 @@ _Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažér�
 
 🔒 **V případě, že trosečník umře, nebo ztratí motivaci utéct z města, hráč si vezme hned nového trosečníka.**
 
-import survivors from "../survivors-cs.csv"
-import getMiniProps from "../../utils/getMiniPropsFromActor"
+import survivors from "../survivors-cs.csv";
+import getMiniProps from "../../utils/getMiniPropsFromActor";
 
 <Toggle initialCollapsed buttonContent="Postavy">
     <List>
@@ -108,10 +113,25 @@ import getMiniProps from "../../utils/getMiniPropsFromActor"
 </Toggle>
 <Toggle initialCollapsed buttonContent="Výchozí vybavení pro některé postavy">
     <List>
-        <Asset title="Mačeta" icon="/ISV/items/machette.png" effect="Při Úspěchu + 1 Efekt na sekání" className="drop-shadow" />
-        <Asset title="Dýka" icon="/ISV/items/dagger.png" effect="Umožňuje útok na blízko i vrhání do vedlejší zóny" className="drop-shadow" />
+        <Asset
+            title="Mačeta"
+            icon="/ISV/items/machette.png"
+            effect="Při Úspěchu +1 Efekt na sekání"
+            className="drop-shadow"
+        />
+        <Asset
+            title="Dýka"
+            icon="/ISV/items/dagger.png"
+            effect="Umožňuje útok na blízko i vrhání do vedlejší zóny"
+            className="drop-shadow"
+        />
         <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
-        <Asset title="Pistole" icon="/ISV/items/pistol-with-bullets.png" effect="Střelba: +1 Efekt (1 kolo nabití)." className="drop-shadow" />
+        <Asset
+            title="Pistole"
+            icon="/ISV/items/pistol-with-bullets.png"
+            effect="Střelba: +1 Efekt (1 kolo nabití)."
+            className="drop-shadow"
+        />
     </List>
 </Toggle>
 <Toggle initialCollapsed buttonContent="Minis">
@@ -152,7 +172,12 @@ import getMiniProps from "../../utils/getMiniPropsFromActor"
 -   Platí standartní pravidla Kick Ass Cards a navíc:
 -   **Hlad** - Postavy, které jdou spát anižby ten den zkonzumovaly jedny Zásoby plus jedny Zásoby za každou odstraněnou kartu **Hladu** získávají **Hlad**. Pokud postava získá třetí kartu **Hladu**, umře hlady.
 
-<Effect title="Hlad" effect="+1 Tíseň, která nejde odstranit, dokud máš tuto kartu. Zkonzumuj Zásoby pro odstranění. 3x Hlad = smrt" icon="/ISV/icons/hunger.png" className="drop-shadow" />
+<Effect
+    title="Hlad"
+    effect="+1 Tíseň, která nejde odstranit, dokud máš tuto kartu. Zkonzumuj Zásoby pro odstranění. 3x Hlad = smrt"
+    icon="/ISV/icons/hunger.png"
+    className="drop-shadow"
+/>
 
 ## Pláž
 
@@ -161,6 +186,7 @@ import getMiniProps from "../../utils/getMiniPropsFromActor"
 _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vrhají stíny za roztroušenými pozůstatky nákladu vaší obchodní expedice. Nedaleko od břehu vidíte nahnutý vrak vaší lodi Stará Dobrá, který vlny pomalu stahují ze skalisk pod hladinu. Svůj náklad do Vychostánu už nedoručí. Z dálky se klidným krokem blíží několik mužů ve fialových pláštích. Vypadají jako městské milice sousedního království Rosenfel._
 
 🔎 **Zbytky nákladu** - Ve vyplavených bednách lze najít:
+
 -   sušené maso: 🏺 **Zásoby**
 -   🏺 **Nářadí**
 -   🏺 **Léčiva**
@@ -172,9 +198,19 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vr
 
 <List>
     <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
-    <Asset title="Nářadí" icon="/ISV/items/tools.png" effect="Umožňuje provádět řemeslné práce" className="drop-shadow" />
-    <Asset title="Medicína" icon="/ISV/items/medicine.png" effect="Vyléčí Zranění za 2x Efekt + další Zranění za každý další Efekt. 1 použití." className="drop-shadow" />
-    <Asset title="Kord" icon="/ISV/items/kord.png" effect="Při Úspěchu + 1 Efekt na bodání" className="drop-shadow" />
+    <Asset
+        title="Nářadí"
+        icon="/ISV/items/tools.png"
+        effect="Umožňuje provádět řemeslné práce"
+        className="drop-shadow"
+    />
+    <Asset
+        title="Medicína"
+        icon="/ISV/items/medicine.png"
+        effect="Vyléčí Zranění za 2x Efekt + další Zranění za každý další Efekt. 1 použití."
+        className="drop-shadow"
+    />
+    <Asset title="Kord" icon="/ISV/items/kord.png" effect="Při Úspěchu +1 Efekt na bodání" className="drop-shadow" />
     <Asset title="Luxusní oblečení" icon="/ISV/items/clothes.png" className="drop-shadow" />
     <Asset title="Stříbrné příbory" icon="/ISV/items/silver-cuttlery.png" className="drop-shadow" />
     <Asset title="Dřevo" icon="/ISV/items/wood.png" className="drop-shadow" />
@@ -213,7 +249,7 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vr
         backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
         backBaseContent="Milice"
         baseWidth="0.5in"
-        height="1.5in"
+        height="2in"
         width="1in"
     />
     <PaperMini
@@ -223,7 +259,7 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vr
         backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
         backBaseContent="Milice"
         baseWidth="0.5in"
-        height="1.5in"
+        height="2in"
         width="1in"
     />
     <PaperMini
@@ -233,7 +269,7 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vr
         backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
         backBaseContent="Milice"
         baseWidth="0.5in"
-        height="1.5in"
+        height="2in"
         width="1in"
     />
 </List>
@@ -277,12 +313,10 @@ Jediná cesta z města vede na východ temným jehličnatým lesem. Na jihu lemu
 -   🔎 Stráže nenechají spát trosečníky na ulici. Za to je pokuta 1🟡.
 -   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
 -   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
--   🔎 Trest za útěk
-    -   Na konci dne Starostka **Věra Korblová** vyhlásí verdikt: Všichni, kteří porušili královský edikt karantény jsou odsouzeni k popravě
-dle místních zvyků, tedy vykrvácením.
-    -   Kat odsouzeným nařízne stehenní tepnu a nechá je vykrvácet do skleněného džbánu.
+-   🔎 Trest za útěk - Na konci dne Starostka **Věra Korblová** vyhlásí verdikt: Všichni, kteří porušili královský edikt karantény jsou odsouzeni k popravě
+    dle místních zvyků, tedy vykrvácením. - Kat odsouzeným nařízne stehenní tepnu a nechá je vykrvácet do skleněného džbánu.
 
-TODO❗ obrázek popravy
+/ISV/execution.jpg
 
 ### Vězení
 
@@ -290,7 +324,7 @@ TODO❗ obrázek vězení
 
 -   Dva strážníci hlídají vězně a nosí jim jídlo.
 -   Kovové mříže a okovy na kotníku přivázané řetězem ke zdi brání vězňům utéct. Okovy lze sundat pouze pomocí klíče, který mají strážní,
-**paklíčem** nebo hlasitě pomocí **nástrojů**.
+    **paklíčem** nebo hlasitě pomocí **nástrojů**.
 -   🔎 Upíři podplácejí stráže, aby je pustili k vězňům, aby jim mohli sát krev. 1x Zranění, 1x Tíseň. Proto ve vězení nikdo moc dlouho nepřežije.
 
 ### Hostinec U Mrtvého Ptáka
@@ -334,14 +368,19 @@ tu a tam se tu mihne i někdo z místní smetánky._
         threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
         notes="Zmámení: Donutí hráče provést akci (Efekt 2) dle své vůle, obrana 2+ Efekt."
     />
+    <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
+    <Asset title="Cider" icon="/ISV/items/cider.png" effect="-2 Tíseň" className="drop-shadow" />
+    <Asset title="Pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
+
 </List>
 
 ### Cesta na západ
 
-TODO❗ obrázek cesty do lesa
+/ISV/skalska-cesta.jpg
 
 _Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a podle všeho kdysi frekventovaná cesta nyní zarůstá trávou_
 
+-   Les je vlhký, hustý a plný stínů, viditelnost stěžuje také hustá mlha.
 -   **Milice hlídkují kolem města a kontrolují všechny, kdo se chystají město opustit.**
     -   🔎 Milice zastaví kohokoliv, kdo nemá povolení od starostky.
     -   🔎 Pokud někdo neprávem opustí město, stráže spustí poplach a vyšlo za nimi hlídky je zajmout.
@@ -350,29 +389,215 @@ _Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a p
 -   🔎 Je to nebezpečná cesta, kterou není radno podnikat sám, nebo beze zbraně.
 -   🔎 Jediní, kdo po ní dnes smí cestovat jsou obchodníci se zásobami.
 
+#### ⚔️ Divá zvěř
+
+-   Les je plný různých zvířat, která jsou vidět na každém kroku. Veverky, srnky, prasata.
+-   🔎 Po lese se potulují vlci, kteří se orientují hlavně čichem a loví ve smečkách.
+    -   Vlci, srnky a prasata se dají stáhnout z kůže, která se dá prodat ve městě za 10⚪.
+
+<List>
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/veledol/madlena-brozova.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Madlena Brožová"
+        toughness={5}
+        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
+        notes="Pohyb 2 zóny."
+    />
+
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/veledol/ctirad-broz.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Ctirad Brož"
+        toughness={6}
+        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
+        notes="Zmámení: Donutí hráče provést akci (Efekt 2) dle své vůle, obrana 2+ Efekt."
+    />
+    <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
+    <Asset title="Cider" icon="/ISV/items/cider.png" effect="-2 Tíseň" className="drop-shadow" />
+    <Asset title="Pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
+
+</List>
+
+#### ⚔️ Lovci uprchlíků
+
+-   Les je vlhký, hustý a plný stínů, viditelnost stěžuje také hustá mlha.
+-   🔎 Pokud někdo opustí neprávem město a přijde se na to, nebo někdo uvidí osoby plížit se lesem, milice za nimi pošlou lovce.
+-   🔎 Les poskytuje dost stínu, aby se tam mohli pohybovat také upíři, kteří doufají, že narazí na osoby, které nejsou pod ochranou starostky.
+
+💡 Pokud není ještě jasné, že po hráčích jdou upíři, můžete použít postavy **Stopařka** místo **Upírka** a prohodit je, až když bude jasné, že jsou to upíři, např. v moment, kdy se do někoho zakousnou.
+
+<List>
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/militia3.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Milice"
+        toughness={4}
+        threat="Střelba pistolí: 2x Zranění (1 kolo nabití). Útok mečem: 1x Zranění"
+        notes="Poraženým nasadí okovy"
+        treasure="Pistole se 3 náboji, Meč, Okovy"
+    />
+
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/tracker1.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Stopařka"
+        toughness={3}
+        threat="Střelba kuší: 1x Zranění. Útok mečem: 1x Zranění"
+        notes="Poraženým nasadí okovy"
+        treasure="Kuše s 10 náboji, Meč, Okovy, Zásoby"
+    />
+
+    <Actor
+        size="US game"
+        imageUri="/ISV/minis/vampire6.jpg"
+        imagePosition="center top"
+        className="drop-shadow"
+        name="Upírka"
+        toughness={5}
+        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
+        notes="Skok: pohyb o 2 akce."
+        treasure="Váček s penězi (2🟡)"
+    />
+
+    <PaperMini
+        imageUri="/ISV/minis/militia3.jpg"
+        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        baseContent="Milice"
+        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        backBaseContent="Milice"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
+    />
+    <PaperMini
+        imageUri="/ISV/minis/tracker1.jpg"
+        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        baseContent="Stopařka"
+        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        backBaseContent="Stopařka"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
+    />
+    <PaperMini
+        imageUri="/ISV/minis/tracker2.jpg"
+        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        baseContent="Stopařka"
+        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        backBaseContent="Stopařka"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
+    />
+    <PaperMini
+        imageUri="/ISV/minis/tracker3.jpg"
+        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        baseContent="Stopařka"
+        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+        backBaseContent="Stopařka"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
+    />
+    <PaperMini
+        imageUri="/ISV/minis/vampire6.jpg"
+        baseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+        baseContent="Upírka"
+        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+        backBaseContent="Upírka"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
+    />
+    <PaperMini
+        imageUri="/ISV/minis/vampire7.jpg"
+        baseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+        baseContent="Upírka"
+        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+        backBaseContent="Upírka"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
+    />
+    <Asset title="Meč" icon="/ISV/items/sword.png" effect="Při Úspěchu +1 Efekt na sekání/bodání" className="drop-shadow" />
+    <Asset title="Okovy" icon="/ISV/items/shackles.png" effect="Lze otevřít klíčem, Šperhákem, nebo hlasitě Nářadím" className="drop-shadow" />
+    <Asset title="Kuše" icon="/ISV/items/crossbow.png" effect="Útok až 2 zóny daleko" className="drop-shadow" />
+
+</List>
+
 ### Veledolské Náměstí
 
-TODO❗ obrázek stánku
+/ISV/cheese-vendor.jpg
 
 _Veledolské Náměstí je plné stánků s různými řemeslnými produkty, jídlem a pitím. Na náměstí shlíží dlouhá budova radnice se symbolem zlatého kalichu
 na fialovém štítu. Další dominantou náměstí je velká budova Hostince U Mrtvého Ptáka._
-
--   U stánků je možné koupit mnoho věcí, ale pro trosečníky jsou ceny dvojnásobné (uvedené ceny jsou už s přirážkou):
-    -   🏺 **Zásoby** (uzené, kozí sýry, jablka, hrušky) - 20⚪
-    -   🏺 **Nářadí** (řemeslné, stavební, těžební nástroje) - 1🟡
-    -   🏺 **Léčiva** (obvazy, medicína, léčivé byliny) - 2🟡
-    -   🏺 **Zbraně** (dýky, kordy, pistole, kuše) - 2🟡
-        -   🔎 Milice se budou zajímat o to, k čemu zbraně trosečníci potřebují a případně je donutí je vrátit.
-    -   🏺 **Náboje do zbraní** (pistole, kuše) 1ks - 10⚪
-    -   🏺 **Oblečení** - 1🟡
-    -   🏺 **Alkohol** (cider, pálenka) - 40⚪
 
 -   Na náměstí jsou
     -   domy šlechticů
     -   **Hostinec U Mrtvého Ptáka**
     -   **radnice s kasárnami milic a vězením**
+-   Přes den je zde mnoho stánků, kde je možné koupit mimo jiné:
+    -   🔎 Pro trosečníky jsou ceny dvojnásobné (uvedené ceny jsou už s přirážkou)
+    -   🏺 **Zásoby** (uzené, kozí sýry, jablka, hrušky) - 20⚪
+    -   🏺 **Nářadí** (řemeslné, stavební, těžební nástroje) - 1🟡
+    -   🏺 **Léčiva** (obvazy, medicína, léčivé byliny) - 2🟡
+    -   🏺 **Zbraně** (dýky, kordy, mačety, pistole, kuše) - 2🟡
+        -   🔎 Milice se budou zajímat o to, k čemu zbraně trosečníci potřebují a případně je donutí je vrátit.
+    -   🏺 **Náboje do zbraní** (pistole, kuše) 1ks - 10⚪
+    -   🏺 **Oblečení** - 1🟡
+    -   🏺 **Oblečení do zimy** - 2🟡
+    -   🏺 **Alkohol** (cider, pálenka) - 40⚪
+
+<List>
+    <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
+    <Asset
+        title="Nářadí"
+        icon="/ISV/items/tools.png"
+        effect="Umožňuje provádět řemeslné práce"
+        className="drop-shadow"
+    />
+    <Asset
+        title="Medicína"
+        icon="/ISV/items/medicine.png"
+        effect="Vyléčí Zranění za 2x Efekt + další Zranění za každý další Efekt. 1 použití."
+        className="drop-shadow"
+    />
+    <Asset
+        title="Dýka"
+        icon="/ISV/items/dagger.png"
+        effect="Umožňuje útok na blízko i vrhání do vedlejší zóny"
+        className="drop-shadow"
+    />
+    <Asset title="Kord" icon="/ISV/items/kord.png" effect="Při Úspěchu +1 Efekt na bodání" className="drop-shadow" />
+    <Asset
+        title="Mačeta"
+        icon="/ISV/items/machette.png"
+        effect="Při Úspěchu +1 Efekt na sekání"
+        className="drop-shadow"
+    />
+    <Asset
+        title="Pistole"
+        icon="/ISV/items/pistol-with-bullets.png"
+        effect="Střelba: +1 Efekt (1 kolo nabití)."
+        className="drop-shadow"
+    />
+    <Asset title="Oblečení" icon="/ISV/items/clothes.png" className="drop-shadow" />
+    <Asset title="Oblečení do zimy" icon="/ISV/items/clothes.png" className="drop-shadow" />
+    <Asset title="Hrušková pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
+    <Asset title="Cider" icon="/ISV/items/cider.png" effect="-2 Tíseň" className="drop-shadow" />
+</List>
 
 ### Doly
+
 ❗TODO obrázek
 
 -   **Důl na kámen** slouží jako zdroj stavebního materiálu pro celou oblast.
@@ -381,6 +606,7 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
 -   🔎 Skrz šachty se dá dostat na druhou stranu hory na **Ledové pláně** a k **Ledovému jezeru**
 
 # Sady
+
 ❗TODO obrázek
 
 -   Sady na východě končí dlouhou zdí, kolem které občas hlídkují milice.
@@ -398,35 +624,44 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
 /ISV/vera-korblova.jpg
 
 ### Panství Brožů
-❗TODO obrázek
+
+❗TODO obrázek  
 ❗TODO Encountery, které poukazují na vlastnosti upírů.
 
 # TODO
+
 ❗TODO Kdo byl původním starostou města před převratem Korblových? Někdo spojený s Osvícenými.
 
 # Skalský Les
-❗TODO obrázek
-❗TODO Encountery, které poukazují na vlastnosti upírů.
--> Vesnice Skalská
+
+/ISV/skalsky-les.jpg
+
+❗TODO Encountery, které poukazují na vlastnosti upírů.  
+-> Vesnice Skalská  
 -> Cesta na Luka
 
 # Vesnice Skalská
+
 ❗TODO Encountery, které poukazují na vlastnosti upírů.
 
 # Cesta na Luka
+
 ❗TODO Možný Konec ve vesnici Luka
 
 # Důlní Šachty
-❗TODO obrázek
-❗TODO Encountery, které poukazují na vlastnosti upírů.
+
+❗TODO obrázek  
+❗TODO Encountery, které poukazují na vlastnosti upírů.  
 -> Ledové pláně
 
 # Ledové pláně
-❗TODO obrázek
-❗TODO Encountery, které poukazují na vlastnosti upírů.
+
+❗TODO obrázek  
+❗TODO Encountery, které poukazují na vlastnosti upírů.  
 ❗TODO Možný Konec na Experimentální katedře
 
 # Prázdná step
-❗TODO obrázek
-❗TODO Encountery, které poukazují na vlastnosti upírů.
+
+❗TODO obrázek  
+❗TODO Encountery, které poukazují na vlastnosti upírů.  
 ❗TODO Možný Konec ve Vychostánu

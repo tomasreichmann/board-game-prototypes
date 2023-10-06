@@ -28,10 +28,12 @@ defaultMiniProps:
 
 -   _Popisný text, který můžeš rovnou přečíst hráčům, když dorazí do lokace._
 -   🔎 Informace, kterou mohou hráči zjistit prohledáním, zkoumáním, nebo výslechem.
--   🔒 Informace pro vypravěče, na kterou by hráči měli eventuelně přijít sami.
 -   🏺 Předměty, které mohou hráči získat, jako vybavení.
+-   💡 Rady pro vypravěče.
+-   🔒 Informace pro vypravěče, které jsou v momentálně hráčům utajené.
+-   📅 Události, které se mohou stát.
 
-## 🔒 Shrnutí pro GM (obsahuje spoilery)
+## 🔒 Shrnutí pro vypravěče (obsahuje spoilery)
 
 -   Toto dobrodružství slouží jako **prequel ke kampani In Sanguine Veritas**.
 -   **Příběh sleduje osudy trosečníků**, posádky a pasažérů loďi, která ztroskotala poblíž města **Veledol**.
@@ -74,7 +76,7 @@ _Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažér�
 
 **Každý hráč si vezme jednoho trosečníka, za které bude hrát.**
 
-🔒 **V případě, že trosečník umře, nebo ztratí motivaci utéct z města, hráč si vezme hned nového trosečníka.**
+💡 **V případě, že trosečník umře, nebo ztratí motivaci utéct z města, hráč si vezme hned nového trosečníka.**
 
 import survivors from "../survivors-cs.csv";
 import getMiniProps from "../../utils/getMiniPropsFromActor";
@@ -220,16 +222,20 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vr
 
 /ISV/milice.jpg
 
--   Milice nosí charakteristické fialové pláště se zlatým emblémem kalichu.
+-   Milice nosí charakteristické **fialové pláště se zlatým emblémem kalichu**.
 -   Milice pochází z nedalekého města Veledolu.
--   Velitel stráže vysvětlí obchodníkům, že město je v karanténě, vyskytla se tam Bledá spála. Dle královského dekretu nikdo nesmí město opustit, dokud jsou v něm nakažení.
-    -   Takže můžou do města vstoupit, ale budou tam muset zůstat dokud nebude karanténa zvednuta.
-    -   Za porušení královského ediktu karantény hrozí poprava.
--   Nejbližší další osada je rybářská vesnice Skalská, cesta tam ovšem vede přes skály a les, kde se potulují vlci a jiná havěť.
+-   Velitel stráže vysvětlí obchodníkům, že **město je v karanténě**, vyskytla se tam **Bledá spála**. Dle královského dekretu **nikdo nesmí město opustit**, dokud jsou v něm nakažení.
+    -   Takže můžou do města vstoupit, ale **nebudou město smět opustit**, dokud nebude karanténa zvednuta.
+    -   Za porušení královského ediktu karantény **hrozí poprava**.
+-   Nejbližší další osada je **rybářská vesnice Skalská**, cesta tam ovšem vede přes skály a les, kde se potulují vlci a jiná havěť.
 -   Stráže vás rádi doprovodí do města, ale varují vás, že jestli se nebudete chovat slušně, špatně to s vámi dopadne.
+-   🔎 Milice u sebe nosí doklad o pověření starostkou, že mohou hlídkovat kolem města se jménem osoby a podpisem starostky.
+-   🔎 **Milice sídlí v kasárnách** v budově radnice **na náměstí ve Veledolu**. Je tam i vězení.
+-   🔎 **Stráže informují šlechtice** o tom, co mají trosečníci v plánu.
 -   🔎 Pokud Stráže uvidí, že se snažíte utéct, hned vás zajmou. Případně zavolají posily z města.
--   🔎 Stráže informují upíry o tom, co mají trosečníci v plánu.
 -   🔎 Být členem milice je luktrativní zaměstnání s velkou autoritou, i když člověk musí být často morálně flexibilní.
+
+💡 Milice si mohou po cestě s uprchlíky povídat, nebo si povídat mezi sebou a nepřímo naznačit např. že dopadli někoho, kdo se pokusil uprchnout z města bez povolení starostky a že jeho poprava bude večer.
 
 <List>
     <Actor
@@ -272,6 +278,12 @@ _Poslední zbytky zlatavého slunce se odráží od vlhkého písku pláže a vr
         height="2in"
         width="1in"
     />
+    <Asset
+        title="Pověření starostky"
+        icon="/ISV/items/letter.png"
+        effect="Opravňuje konkrétní osobu opustit město."
+        className="drop-shadow"
+    />
 </List>
 
 # Město Veledol
@@ -291,12 +303,45 @@ Jediná cesta z města vede na východ temným jehličnatým lesem. Na jihu lemu
 -   Můžete se ubytovat v **hostinci U Mrtvého Ptáka**.
 -   Lidé se tu zabývají hlavně řemeslnou výrobou, zpracováním železa, chovem ovcí, pěstováním ovocných stromů, ale také uměním.
 -   Je zde poměrně hodně ozbrojených milicí, kteří dohlížejí na pořádek a hlavně na to, aby nikdo nepovolaný neopustil město.
--   🔎 Starostka a všichni šlechtici ve městě jsou upíři, proto vycházejí jen po soumraku. Přes den za ně vyřizují pochůzky jejich služebnictvo.
+-   Občas můžete zahlédnout šleechtický kočár na cestě do radnice a zpět do panství.
+-   🔎 Starostka Věra Korblová a všichni šlechtici ve městě jsou upíři, proto vycházejí jen po soumraku. Přes den za ně vyřizuje pochůzky jejich služebnictvo, jinak jezdí kočáry, ze kterých vystupují jen v garážích.
 -   🔎 Běžní lidé mají zakázáno mluvit o upírech.
 -   Symbol města je zlatý kalich na fialovém štítu.
 -   Ve městě se platí zlatými 🟡 a stříbrnými ⚪ rosenfelskými mincemi s hlavou nyní zesnulé královny Roseslavy I. 1🟡 = 100⚪.
 
 /ISV/veledol-symbol.jpg
+
+## 📅 Když na město padne noc
+
+/ISV/veledol-noc.jpg
+
+-   Obyvatelé města se se setměním vracejí do svých domovů.
+-   Několik členů Milice vyráží do ulic a zapalují petrolejové pouliční lampy.
+-   Také šlechta vychází ven na pozdní nákupy na náměstí a za zábavou v hostinci, v panství Brožů nebo Korblů.
+-   📅 Noční střetnutí:
+    -   Ožrala na ulici se snaží vymluvit Milicím, aby ho nezavřeli do vězení.
+    -   Šlechtic zve mladou dívku na skleničku do hostince.
+    -   Chudý mladík prodává zboží pochybného původu:
+        -   🔎 Zboží je kradené ze skladu v hostinci
+        -   🔎 **Madlena Brožová** už krádež oznámila a milice pozná kradené předměty, když je u někoho uvidí.
+        -   🏺 **Oblečení do zimy** 1🟡
+        -   🏺 **Stříbrné příbory** 1🟡
+        -   🏺 **Šperhák** 50⚪
+        -   🏺 **Mačeta** 50⚪
+        -   🏺 **Pálenka** 50⚪
+
+<List>
+    <Asset title="Oblečení do zimy" icon="/ISV/items/fur-coat.png" className="drop-shadow" />
+    <Asset title="Stříbrné příbory" icon="/ISV/items/silver-cuttlery.png" className="drop-shadow" />
+    <Asset title="Šperhák" icon="/ISV/items/lockpick.png" className="drop-shadow" />
+    <Asset
+        title="Mačeta"
+        icon="/ISV/items/machette.png"
+        effect="Při Úspěchu +1 Efekt na sekání"
+        className="drop-shadow"
+    />
+    <Asset title="Hrušková pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
+</List>
 
 ## Těžký život trosečníka
 
@@ -312,15 +357,12 @@ Jediná cesta z města vede na východ temným jehličnatým lesem. Na jihu lemu
 -   🔎 Pokud stráže uvidí trosečníky páchat trestný čin (napadení, neúmyslné zabití, vražda), půjdou do vězení.
 -   🔎 Stráže nenechají spát trosečníky na ulici. Za to je pokuta 1🟡.
 -   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
--   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
 -   🔎 Trest za útěk - Na konci dne Starostka **Věra Korblová** vyhlásí verdikt: Všichni, kteří porušili královský edikt karantény jsou odsouzeni k popravě
-    dle místních zvyků, tedy vykrvácením. - Kat odsouzeným nařízne stehenní tepnu a nechá je vykrvácet do skleněného džbánu.
-
-/ISV/execution.jpg
+    dle místních zvyků, tedy gilotinou.
 
 ### Vězení
 
-TODO❗ obrázek vězení
+/ISV/veledol-vezeni.jpg
 
 -   Dva strážníci hlídají vězně a nosí jim jídlo.
 -   Kovové mříže a okovy na kotníku přivázané řetězem ke zdi brání vězňům utéct. Okovy lze sundat pouze pomocí klíče, který mají strážní,
@@ -345,6 +387,12 @@ tu a tam se tu mihne i někdo z místní smetánky._
     -   **Ubytování na den** (pěkně zařízený a uklizený pokoj s velkou postelí) - 20⚪
     -   **Koupel** (Dobře vybavená a pěkně upravená koupelna s mramorovou lázní s horkou vodou ohřívanou v kamnech pod lázní, vyléčí všechnu Tíseň) - 30⚪
 -   🔎 Je možné zde potkat upíry, kteří jsou ochotní zaplatit až 50⚪ za možnost napít se lidské krve. Upíři zavedou osobu do jednoho z upuštěných pokojí, kousnou je do krku nebo do ruky a budou pít, dokud je osoba nechá, nebo upadne do bezvědomí. Postava za to utrpí +1 Zranění a +1 Tíseň.
+-   🔎 Je zde možné slyšet **drby**:
+    -   Veledol se hodně změnil od karantény. S novou starostkou Věrou Korblovou se **hodně zdražilo**, ale o jídlo a medicínu není nouze.
+    -   Trosečníci jsou první návštěvníci města od začátku epidemie, proto **zeje hostinec prázdnotou**. Přesto se ale Brožovým daří dobře.
+    -   Horníci si stěžují, že **v důlních šachtách fouká neuvěřitelně ledový vzduch**.
+    -   Řemeslníci připravují na náměstí **zboží na další zavážku do Skalské**. Místní se těší na čerstvé ryby a mušle, které za zboží dostanou.
+    -   **V dolech Veledolu se kdysi těžilo také stříbro**, ale nebylo ho tam tolik, jako v dolech na východu Rosenfelu, tak se Veledol soustředí na železo.
 
 <List>
     <Actor
@@ -373,6 +421,14 @@ tu a tam se tu mihne i někdo z místní smetánky._
     <Asset title="Pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
 
 </List>
+
+#### 📅 Vystoupení místní kapely
+
+-   Jednou týdně hraje v hostinci místní kapela.
+    -   Zpěvačka, basista, louteník a housliska
+    -   Hrají veselou klasickou hudbu
+-   Hodně obyvatel se na ně chodí podívat.
+-   🔒 Pokud se hráči sdrží na koncert -1 Tíseň
 
 ### Cesta na západ
 
@@ -398,28 +454,28 @@ _Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a p
 <List>
     <Actor
         size="US game"
-        imageUri="/ISV/minis/veledol/madlena-brozova.jpg"
+        imageUri="/ISV/minis/monsters/wolf.jpg"
         imagePosition="center top"
         className="drop-shadow"
-        name="Madlena Brožová"
-        toughness={5}
-        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
-        notes="Pohyb 2 zóny."
+        name="Vlk"
+        toughness={2}
+        threat="Kousnutí: 1x Zranění. Útok na vlka vyvolá útok od jednoho jiného vlka ve stejné zóně."
+        notes="Pohyb 2 zóny. Bojí se ohně."
+        treasure="Lze stáhnout z kůže pomocí Nářadí. Kůže se dá prodat za 10⚪"
     />
 
-    <Actor
-        size="US game"
-        imageUri="/ISV/minis/veledol/ctirad-broz.jpg"
-        imagePosition="center top"
-        className="drop-shadow"
-        name="Ctirad Brož"
-        toughness={6}
-        threat="Kousnutí: 1x Zranění a 1x Tíseň (-1 Zranění sobě). Seknutí drápy: 2x Zranění."
-        notes="Zmámení: Donutí hráče provést akci (Efekt 2) dle své vůle, obrana 2+ Efekt."
+    <PaperMini
+        imageUri="/ISV/minis/monsters/wolf.jpg"
+        baseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+        baseContent="Vlk"
+        backBaseClassName="pt-2 bg-kac-monster-dark text-white text-center"
+        backBaseContent="Vlk"
+        baseWidth="0.5in"
+        height="2in"
+        width="1in"
     />
-    <Asset title="Zásoby" icon="/ISV/items/rations.png" effect="Jídlo a pití na den" className="drop-shadow" />
-    <Asset title="Cider" icon="/ISV/items/cider.png" effect="-2 Tíseň" className="drop-shadow" />
-    <Asset title="Pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
+
+    <Asset title="Kožešina" icon="/ISV/items/pelt.png" className="drop-shadow" />
 
 </List>
 
@@ -541,10 +597,12 @@ _Cesta na západ mizí v hustém a temném jedhličnatém lese. Dlážděná a p
 _Veledolské Náměstí je plné stánků s různými řemeslnými produkty, jídlem a pitím. Na náměstí shlíží dlouhá budova radnice se symbolem zlatého kalichu
 na fialovém štítu. Další dominantou náměstí je velká budova Hostince U Mrtvého Ptáka._
 
--   Na náměstí jsou
-    -   domy šlechticů
+-   Na náměstí jsou:
+    -   Domy šlechticů
     -   **Hostinec U Mrtvého Ptáka**
-    -   **radnice s kasárnami milic a vězením**
+    -   **Radnice s kasárnami milic, vězením a garáží pro kočáry**
+-   Řemeslníci skládají na vůz krabice zboží označené vypáleným symbolem kalichu.
+    -   🔎 Jde o zavážku do vesnice Skalská. Veledol naoplátku dostane čerstvé ryby a mušle.
 -   Přes den je zde mnoho stánků, kde je možné koupit mimo jiné:
     -   🔎 Pro trosečníky jsou ceny dvojnásobné (uvedené ceny jsou už s přirážkou)
     -   🏺 **Zásoby** (uzené, kozí sýry, jablka, hrušky) - 20⚪
@@ -591,19 +649,52 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
         className="drop-shadow"
     />
     <Asset title="Oblečení" icon="/ISV/items/clothes.png" className="drop-shadow" />
-    <Asset title="Oblečení do zimy" icon="/ISV/items/clothes.png" className="drop-shadow" />
+    <Asset title="Oblečení do zimy" icon="/ISV/items/fur-coat.png" className="drop-shadow" />
     <Asset title="Hrušková pálenka" icon="/ISV/items/hrusenice.png" effect="-2 Tíseň" className="drop-shadow" />
     <Asset title="Cider" icon="/ISV/items/cider.png" effect="-2 Tíseň" className="drop-shadow" />
 </List>
+
+#### 📅 Veřejná poprava
+
+/ISV/execution.jpg
+
+🔒 Pokud někdo z hráčů skončí ve vězení za útěk z města, následující den večer je odsouzen k popravě.
+
+-   Přes den na náměstí řemeslníci postaví pódium s gilotinou.
+-   Po soumraku se začnou kolem podia srocovat davy.
+-   Starostka Věra Korblová vystoupí na náměstí a uvede popravu.
+    -   _"S politováním musím oznámit, že došlo k porušení královského dekretu, který zakazuje všem občanům města  
+        kromě těch speciálně určených starostkou na zajištění základních potřeb města, vycházet po dobu karantény  
+        za hranice města. Za porušení královského dekretu náleží trest smrti dle místních zvyklostí."_
+    -   _"Budiž toto varování pro všechny, kdo se chtějí vzepřít královské vůli."_
+-   Stráže přivedou vězně na pódium, uloží ho na gilotinu a hlavu mu zavřou do pranýře pod čepelí gilotiny.
+-   Na znamení starostky kat spustí gilotinu, která čistě usekne vězňovi hlavu, kterou následně kat ukáže jásajícímu davu.
+    -   🔒 Pokud postavy vidí popravu a jedná se o trosečníka +2 Tíseň.
+-   🔎 Gilotina obsahuje žlábky pro svod krve do skleněného džbánu.
+-   Dav se postupně rozejde a stráže odnesou ostatky do masového hrobu na hřbitově.
 
 ### Doly
 
 /ISV/veledol-doly.jpg
 
 -   **Důl na kámen** slouží jako zdroj stavebního materiálu pro celou oblast.
-    -   Lze zde najít těžkou práci za 10⚪ + 1x Tíseň.
+    -   Lze zde najít těžkou práci za 10⚪ + 1x Tíseň za den.
+    -   📅 Může se stát, že se rozbije kladka a náklad kamene zraní jednoho z dělníků. Dělníka je nutné rychle dostat do panství Korblů za doktorem, nebo jinak ošetřit.
+-   🔎 V kůlně jsou uskladněné **krumpáče** a další **nářadí**.
 -   Rozsáhlé a spletité **důlní šachty** vedou hlouběji do paty hory, kde se těží železo.
--   🔎 Skrz šachty se dá dostat na druhou stranu hory na **Ledové pláně** a k **Ledovému jezeru**
+    -   V důlní šachtě táhne ledový vzduch.
+    -   🔎 Skrz šachty se dá dostat na druhou stranu hory na **Ledové pláně** a k **Ledovému jezeru**
+    -   📅 Může se stát, že v dole začne unikat plyn metan. Plyn je cítit a způsobí výbuch a potažmo zával, když se dostane k otevřenému ohni.
+
+<List>
+    <Asset title="Krumpáč" icon="/ISV/items/pick.png" effect="Umožňuje těžit kámen a rudy" className="drop-shadow" />
+    <Asset
+        title="Nářadí"
+        icon="/ISV/items/tools.png"
+        effect="Umožňuje provádět řemeslné práce"
+        className="drop-shadow"
+    />
+</List>
 
 ### Sady
 
@@ -621,7 +712,7 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
 /ISV/veledol-klaster.jpg
 
 -   **Věra Korblová**
--   TODO❗
+-   TODO❗ Doktor
 
 /ISV/vera-korblova.jpg
 

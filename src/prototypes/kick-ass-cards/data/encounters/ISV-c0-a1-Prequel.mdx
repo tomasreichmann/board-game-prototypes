@@ -78,7 +78,7 @@ _Kdosi zvedá tvojí hlavu z písku. Vidíš desítky námořníků a pasažér�
 
 💡 **V případě, že trosečník umře, nebo ztratí motivaci utéct z města, hráč si vezme hned nového trosečníka.**
 
-import survivors from "../survivors-cs.csv";
+import survivors from "../LSV-survivors-cs.csv";
 import getMiniProps from "../../utils/getMiniPropsFromActor";
 
 <Toggle initialCollapsed buttonContent="Postavy">
@@ -174,12 +174,14 @@ import getMiniProps from "../../utils/getMiniPropsFromActor";
 -   Platí standartní pravidla Kick Ass Cards a navíc:
 -   **Hlad** - Postavy, které jdou spát anižby ten den zkonzumovaly jedny Zásoby plus jedny Zásoby za každou odstraněnou kartu **Hladu** získávají **Hlad**. Pokud postava získá třetí kartu **Hladu**, umře hlady.
 
-<Effect
-    title="Hlad"
-    effect="+1 Tíseň, která nejde odstranit, dokud máš tuto kartu. Zkonzumuj Zásoby pro odstranění. 3x Hlad = smrt"
-    icon="/ISV/icons/hunger.png"
-    className="drop-shadow"
-/>
+<List>
+    <Effect
+        title="Hlad"
+        effect="+1 Tíseň, která nejde odstranit, dokud máš tuto kartu. Zkonzumuj Zásoby pro odstranění. 3x Hlad = smrt"
+        icon="/ISV/icons/hunger.png"
+        className="drop-shadow"
+    />
+</List>
 
 ## Pláž
 
@@ -355,7 +357,9 @@ Jediná cesta z města vede na východ temným jehličnatým lesem. Na jihu lemu
 
 -   🔎 Pokud stráže uvidí trosečníky páchat přestupek (krádež, urážka, vloupání, vandalismus, výtržnictví), dostanou pokutu (desetinásobek škody).
 -   🔎 Pokud stráže uvidí trosečníky páchat trestný čin (napadení, neúmyslné zabití, vražda), půjdou do vězení.
+-   🔎 Pokud se někde ve městě nebo poblíž strhne souboj, milice to uslyší a za chvíli dorazí někdo to zkontrolovat.
 -   🔎 Stráže nenechají spát trosečníky na ulici. Za to je pokuta 1🟡.
+-   🔎 Stráže se mohou nechat uplatit alespoň za 1🟡.
 -   🔎 Pokud si osoby nemohou dovolit zaplatit pokutu, jdou do vězení.
 -   🔎 Trest za útěk - Na konci dne Starostka **Věra Korblová** vyhlásí verdikt: Všichni, kteří porušili královský edikt karantény jsou odsouzeni k popravě
     dle místních zvyků, tedy gilotinou.
@@ -704,9 +708,9 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
     -   🔎 Jednou za čas obyvatelé sadů pálí suchou trávu za zdí kvůli parazitům, kteří v trávě stepi žijí.
     -   Za stěnou se rozkládá široká a celkem **opuštěná step**.
         -   🔎 Za tři dny se dá dojít do sousedního království **Vychostánu**.
--   Můžete si zde nasbírat Zásoby, pokud vás nikdo nenačapá.
-    -   🔒 Každý sběr trvá půl hodiny a zvyšuje se pravděpodobnost, že na ně narazí sadař, nebo milice.
-    -   🔒 Pokud je noc, může je načapat upír.
+-   Můžete si zde nasbírat **Zásoby**, pokud vás nikdo nenačapá.
+    -   🔒 Každý sběr trvá půl hodiny a zvyšuje se pravděpodobnost, že na ně narazí **skupina farmářů**, nebo **milice**.
+    -   🔒 Pokud je noc, může je načapat **upír**.
         -   Ukáže se, že upíři vidí velmi dobře ve tmě.
         -   Upír může trosečníky vydírat, aby mu dali svojí krev, jinak zavolá milice.
 
@@ -769,3 +773,230 @@ na fialovém štítu. Další dominantou náměstí je velká budova Hostince U 
 
 ❗TODO Přidat střetnutí, které poukazuje na nějakou vlastnost upírů.  
 ❗TODO Přidat text pro možný konec dobrodružství, kde se trosečník zachrání ve Vychostánu
+
+## Měšťani
+
+<table>
+    <tr>
+        <td>Josef Novák</td>
+        <td>35</td>
+        <td>Švec</td>
+        <td>
+            (dirty:0.5) Josef Novák (ugly:1.2) 35-year-old Male Cobbler with a bald head and a long unkempt beard,
+            wearing worn-out 18th-century cobbler clothes and a leather apron. Standing near a flickering street lamp in
+            the misty evening, casting eerie shadows
+        </td>
+    </tr>
+    <tr>
+        <td>Marie Müller</td>
+        <td>28</td>
+        <td>Švadlena</td>
+        <td>
+            (dirty:0.1) Marie Müller (ugly:0.8) 28-year-old Female Seamstress with short curly brown hair and tired
+            eyes, wearing a faded 18th-century dress and a frayed shawl. Sewing by candlelight in a dimly lit room,
+            surrounded by unfinished garments and creepy porcelain dolls
+        </td>
+    </tr>
+    <tr>
+        <td>Jan Novotný</td>
+        <td>55</td>
+        <td>Tkadlec</td>
+        <td>
+            (dirty:0.8) Jan Novotný (ugly:1.2) 55-year-old Male Weaver with gray unkempt hair and missing teeth, wearing
+            threadbare 18th-century weaver clothes. Sitting in an old wooden chair in a dimly lit weaving workshop,
+            surrounded by cobwebs and dusty looms
+        </td>
+    </tr>
+    <tr>
+        <td>Karolina Dvořáková</td>
+        <td>42</td>
+        <td>Krejčová</td>
+        <td>
+            (dirty:0.4) Karolina Dvořáková (ugly:1.4) 42-year-old Female Seamstress with thinning gray hair and a
+            hunchback, wearing tattered 18th-century dress and a crooked hat. Walking with a cane on a deserted
+            cobblestone street at night, her shadow elongating eerily
+        </td>
+    </tr>
+    <tr>
+        <td>Antonín Procházka</td>
+        <td>50</td>
+        <td>Obuvník</td>
+        <td>
+            (dirty:0.6) Antonín Procházka (ugly:1.1) 50-year-old Male Shoemaker with a weathered face and missing
+            fingers, wearing worn-out 18th-century shoemaker clothes. Hammering nails into shoes in a dimly lit
+            workshop, the sound echoing ominously throughout the empty streets
+        </td>
+    </tr>
+    <tr>
+        <td>Helena Nováková</td>
+        <td>32</td>
+        <td>Tkadlena</td>
+        <td>
+            (dirty:0.2) Helena Nováková (ugly:0.7) 32-year-old Female Weaver with long black hair and pale skin, wearing
+            a worn-out 18th-century dress. Sitting on a rickety stool near a spinning wheel, spinning thread in a
+            candlelit room, the shadows dancing eerily on the walls
+        </td>
+    </tr>
+    <tr>
+        <td>Václav Svoboda</td>
+        <td>48</td>
+        <td>Krejčí</td>
+        <td>
+            (dirty:0.7) Václav Svoboda (ugly:1.3) 48-year-old Male Tailor with a gaunt face and sunken eyes, wearing
+            worn-out 18th-century tailor clothes. Measuring fabric in a cluttered and dusty tailor shop, the air heavy
+            with the smell of mothballs and old fabric
+        </td>
+    </tr>
+    <tr>
+        <td>Anna Nováková</td>
+        <td>60</td>
+        <td>Obuvnice</td>
+        <td>
+            (dirty:0.3) Anna Nováková (ugly:0.9) 60-year-old Female Shoemaker with gray hair tied in a bun and a stern
+            expression, wearing worn-out 18th-century shoemaker clothes. Sitting at a cobbler's bench in a dimly lit
+            workshop, surrounded by stacks of worn-out shoes and leather scraps, the smell of leather and polish filling
+            the air
+        </td>
+    </tr>
+    <tr>
+        <td>Tomáš Nový</td>
+        <td>45</td>
+        <td>Krejčí</td>
+        <td>
+            (dirty:0.4) Tomáš Nový (ugly:1.2) 45-year-old Male Tailor with a scruffy beard and disheveled hair, wearing
+            stained 18th-century tailor clothes. Standing behind a worn-out wooden counter in a dimly lit tailor shop,
+            surrounded by bolts of fabric and sewing tools, the walls adorned with old sewing patterns and faded
+            tapestries
+        </td>
+    </tr>
+    <tr>
+        <td>Klára Novotná</td>
+        <td>38</td>
+        <td>Švadlena</td>
+        <td>
+            (dirty:0.2) Klára Novotná (ugly:0.7) 38-year-old Female Seamstress with long red hair and a pale complexion,
+            wearing a faded 18th-century dress covered in thread and fabric scraps. Sitting on a wobbly wooden chair
+            near a creaking window, sewing by natural light, her face illuminated by a flickering candle, casting eerie
+            shadows on the walls
+        </td>
+    </tr>
+    <tr>
+        <td>Pavel Dvořák</td>
+        <td>52</td>
+        <td>Švec</td>
+        <td>
+            (dirty:0.5) Pavel Dvořák (ugly:1.1) 52-year-old Male Cobbler with a grizzled beard and calloused hands,
+            wearing worn-out 18th-century cobbler clothes. Repairing shoes at a cluttered workbench in a small, dimly
+            lit workshop, the air heavy with the smell of leather and adhesive
+        </td>
+    </tr>
+    <tr>
+        <td>Veronika Procházková</td>
+        <td>47</td>
+        <td>Tkadlena</td>
+        <td>
+            (dirty:0.7) Veronika Procházková (ugly:1.3) 47-year-old Female Weaver with gray hair tied in a tight bun and
+            a distant gaze, wearing a faded 18th-century dress stained with dyes. Sitting on a rickety stool near a
+            loom, weaving intricate patterns in silence, the sound of the shuttle moving back and forth echoing through
+            the empty room
+        </td>
+    </tr>
+    <tr>
+        <td>Martin Svoboda</td>
+        <td>55</td>
+        <td>Obuvník</td>
+        <td>
+            (dirty:0.6) Martin Svoboda (ugly:1.2) 55-year-old Male Shoemaker with a gruff voice and rough hands, wearing
+            worn-out 18th-century shoemaker clothes covered in stains. Hammering nails into shoes at a cluttered
+            workbench in a dimly lit workshop, the sound resonating through the narrow alleys
+        </td>
+    </tr>
+    <tr>
+        <td>Jana Nováková</td>
+        <td>30</td>
+        <td>Krejčová</td>
+        <td>
+            (dirty:0.1) Jana Nováková (ugly:0.8) 30-year-old Female Tailor with short brown hair and a tired expression,
+            wearing a faded 18th-century dress with pins and needles sticking out. Standing in front of a mirror in a
+            dimly lit tailor shop, adjusting the fit of a garment, the room filled with the sound of scissors cutting
+            through fabric and the occasional creaking of the wooden floor
+        </td>
+    </tr>
+    <tr>
+        <td>Petr Novák</td>
+        <td>42</td>
+        <td>Tkadlec</td>
+        <td>
+            (dirty:0.8) Petr Novák (ugly:1.2) 42-year-old Male Weaver with a scruffy beard and worn-out clothes, wearing
+            stained 18th-century weaver clothes. Sitting on a rickety stool in a dimly lit weaving workshop, surrounded
+            by dusty looms and tangled threads, his hands moving swiftly to create intricate patterns, the air thick
+            with the smell of damp wool and aged wood
+        </td>
+    </tr>
+    <tr>
+        <td>Barbora Dvořáková</td>
+        <td>35</td>
+        <td>Švadlena</td>
+        <td>
+            (dirty:0.4) Barbora Dvořáková (ugly:1.4) 35-year-old Female Seamstress with a hunched back and piercing
+            eyes, wearing tattered 18th-century dress and a crooked hat. Sitting in a corner of a dimly lit room,
+            surrounded by rolls of fabric and unfinished garments, her needle and thread moving with an eerie precision,
+            the flickering candle casting haunting shadows on her face
+        </td>
+    </tr>
+    <tr>
+        <td>Lukáš Novotný</td>
+        <td>48</td>
+        <td>Švec</td>
+        <td>
+            (dirty:0.6) Lukáš Novotný (ugly:1.1) 48-year-old Male Cobbler with a rough beard and weathered hands,
+            wearing worn-out 18th-century cobbler clothes. Repairing shoes in a small, cluttered workshop, the air heavy
+            with the smell of leather and polish, the sound of hammering echoing through the narrow alleyways
+        </td>
+    </tr>
+    <tr>
+        <td>Eliška Svobodová</td>
+        <td>32</td>
+        <td>Krejčová</td>
+        <td>
+            (dirty:0.2) Eliška Svobodová (ugly:0.7) 32-year-old Female Tailor with long black hair and a distant gaze,
+            wearing a faded 18th-century dress covered in thread and fabric scraps. Sitting in front of a sewing machine
+            in a dimly lit tailor shop, surrounded by bolts of fabric and pattern books, the sound of the machine
+            humming softly as she stitches garments together, the room filled with the smell of fabric and dust
+        </td>
+    </tr>
+    <tr>
+        <td>Jakub Novák</td>
+        <td>50</td>
+        <td>Obuvník</td>
+        <td>
+            (dirty:0.7) Jakub Novák (ugly:1.3) 50-year-old Male Shoemaker with a gruff voice and rough hands, wearing
+            worn-out 18th-century shoemaker clothes covered in stains. Sitting at a worn-out workbench in a small, dimly
+            lit workshop, surrounded by piles of shoes and tools, the air heavy with the smell of leather and glue, the
+            sound of hammering and stitching echoing through the silent streets
+        </td>
+    </tr>
+    <tr>
+        <td>Adéla Nováková</td>
+        <td>28</td>
+        <td>Tkadlena</td>
+        <td>
+            (dirty:0.3) Adéla Nováková (ugly:0.9) 28-year-old Female Weaver with long red hair and a distant gaze,
+            wearing a faded 18th-century dress stained with dyes. Sitting on a rickety stool near a loom, weaving
+            intricate patterns in silence, the sound of the shuttle moving back and forth echoing through the empty
+            room, the walls adorned with moth-eaten tapestries and old spools of thread
+        </td>
+    </tr>
+    <tr>
+        <td>Michal Nový</td>
+        <td>45</td>
+        <td>Krejčí</td>
+        <td>
+            (dirty:0.4) Michal Nový (ugly:1.2) 45-year-old Male Tailor with a scruffy beard and disheveled hair, wearing
+            stained 18th-century tailor clothes. Standing behind a worn-out wooden counter in a dimly lit tailor shop,
+            surrounded by bolts of fabric and sewing tools, the walls adorned with old sewing patterns and faded
+            tapestries. His eyes dart around the room as if expecting something, his hands trembling slightly as he
+            measures fabric and cuts it with precision, the air heavy with the scent of mothballs and old fabric
+        </td>
+    </tr>
+</table>

@@ -3,12 +3,14 @@ import React from "react";
 import { Navigation } from "../Navigation";
 import PaperMini from "../gameComponents/PaperMini";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
+import NPCs from "../NPCs";
 
 export default function PlaygroundRoute() {
     return (
         <>
             <Navigation />
-            <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white container">
+            <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white">
+                <NPCs className="mb-10" />
                 <PrintPage>
                     <div className="flex flex-wrap content-center items-top">
                         <PaperMini

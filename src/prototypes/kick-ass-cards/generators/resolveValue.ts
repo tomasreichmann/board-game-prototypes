@@ -133,4 +133,12 @@ const resolveValue = <T extends any>(
     return randomization as T;
 };
 
+type DeepRandomType<T> = T | T[] | { [key: string]: DeepRandomType<T> };
+
+/**
+ * resolves tree of values recursively.
+ * @param randomization can be a list of values with weights, list of values without weights, or a map of values depending on a parameter
+ */
+const resolveRandom = <T extends any, P>(randomization: DeepRandomType<T>, reference: P) => {};
+
 export default resolveValue;

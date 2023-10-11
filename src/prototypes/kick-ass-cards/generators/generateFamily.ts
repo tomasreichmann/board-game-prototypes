@@ -74,6 +74,7 @@ const generateFamily = ({
     fatherData = defaultFatherData,
     firstNamesByGender = defaultFirstNamesByGender,
     fatherMotherAgeDifference = defaultFatherMotherAgeDifferenceModifier,
+    childData = defaultChildData,
 }: GenerateFamilyOptions = {}) => {
     const familyName = resolveValue(motherData.familyNameData || familyNamesCzechWeightedRange);
     const mother = generatePerson({ ...motherData, familyNameData: familyName });
@@ -110,7 +111,7 @@ const generateFamily = ({
                 );
             }
             const newChild = generatePerson({
-                ...fatherData,
+                ...childData,
                 firstNameData: availableFirstNames,
                 familyNameData: familyName,
                 ageData: childrenAgeData,

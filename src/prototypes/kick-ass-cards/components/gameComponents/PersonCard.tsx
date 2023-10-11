@@ -2,13 +2,13 @@ import { Person } from "../../generators/generatePerson";
 import BroadcastActor from "../screenContent/BroadcastActor";
 
 const PersonCard = ({ firstName, lastName, age, isAlive, ...restPerson }: Partial<Person>) => {
-    const ageLabel = age !== undefined ? ` (${age})` : "";
-    const deadLabel = isAlive ? "" : `💀 `;
+    const deadLabel = isAlive ? "" : `✝`;
+    const ageLabel = age !== undefined ? ` (${deadLabel}${age})` : "";
     return (
         <div>
             <BroadcastActor
                 size="Mini US game"
-                name={`${deadLabel}${firstName} ${lastName}${ageLabel}`}
+                name={`${firstName} ${lastName}${ageLabel}`}
                 {...restPerson}
                 className="shadow"
             />

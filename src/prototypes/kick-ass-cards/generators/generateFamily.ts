@@ -6,7 +6,7 @@ import generatePerson, {
     firstNamesCzechFemaleWeightedRange,
     firstNamesCzechMaleWeightedRange,
 } from "./generatePerson";
-import resolveValue, { ValueOrRangeOrWeightedRange } from "./resolveValue";
+import resolveValue, { ValueOrRangeOrWeightedRange } from "./resolveValue_deprecated";
 
 type GenerateFamilyOptions = {
     motherCount?: number;

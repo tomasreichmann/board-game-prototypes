@@ -101,6 +101,15 @@ export type ResolveValueOptionsType = {
     rangePrecision?: number;
 };
 
+/**
+ * @deprecated This function is deprecated. Use resolveRandom instead.
+ * Resolves a value from a given randomization.
+ *
+ * @param {ValueOrRangeOrWeightedRange<T>} randomization - The randomization to resolve a value from.
+ * @param {ResolveValueOptionsType} [options] - Optional options object.
+ * @param {number} [options.rangePrecision=1] - The precision to use when resolving a value from a range.
+ * @return {T} - The resolved value.
+ */
 const resolveValue = <T extends any>(
     randomization: ValueOrRangeOrWeightedRange<T>,
     { rangePrecision = 1 }: ResolveValueOptionsType = {}
@@ -115,7 +124,6 @@ const resolveValue = <T extends any>(
             const [min, max] = randomization as unknown as [number, number];
             return randomNumber(min, max, rangePrecision) as T;
         }
-        console.log("array resolve", randomValue(randomization));
         return randomValue(randomization) as T;
     }
     if (
@@ -125,7 +133,6 @@ const resolveValue = <T extends any>(
         "weights" in randomization
     ) {
         const weightedRandomization = weightedRandom(randomization.values, randomization.weights);
-        console.log("weighted resolve", weightedRandomization);
         if (weightedRandomization !== null) {
             return weightedRandomization as T;
         }

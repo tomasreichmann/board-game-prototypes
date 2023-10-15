@@ -1,0 +1,858 @@
+"name","population"
+"Prague",1357326
+"Brno",396101
+"Ostrava",283504
+"Plzeň",181240
+"Liberec",107389
+"Olomouc",101825
+"České Budějovice",96417
+"Hradec Králové",93506
+"Pardubice",92149
+"Ústí nad Labem",91963
+"Zlín",74191
+"Havířov",70245
+"Kladno",68436
+"Most",63856
+"Opava",55512
+"Frýdek-Místek",54188
+"Jihlava",52548
+"Teplice",50843
+"Karviná",50172
+"Karlovy Vary",49043
+"Děčín",47180
+"Chomutov",46940
+"Jablonec nad Nisou",45830
+"Mladá Boleslav",45000
+"Prostějov",43551
+"Přerov",41634
+"Třinec",34306
+"Česká Lípa",37262
+"Třebíč",34712
+"Tábor",34301
+"Znojmo",34146
+"Kolín",33289
+"Příbram",32743
+"Cheb",31954
+"Písek",30742
+"Trutnov",29660
+"Kroměříž",28185
+"Orlová",27966
+"Vsetín",25393
+"Šumperk",25061
+"Uherské Hradiště",24812
+"Břeclav",24544
+"Hodonín",23805
+"Český Těšín",23487
+"Chrudim",23443
+"Havlíčkův Brod",23398
+"Litoměřice",23124
+"Nový Jičín",23015
+"Krnov",22848
+"Litvínov",22695
+"Valašské Meziříčí",22630
+"Strakonice",22583
+"Klatovy",22496
+"Sokolov",22227
+"Kopřivnice",21669
+"Kutná Hora",21417
+"Jindřichův Hradec",20828
+"Beroun",20809
+"Bohumín",20643
+"Žďár nad Sázavou",20519
+"Vyškov",20426
+"Mělník",20202
+"Blansko",20174
+"Náchod",19936
+"Brandýs nad Labem-Stará Boleslav",19767
+"Jirkov",19305
+"Žatec",19044
+"Kralupy nad Vltavou",18770
+"Kadaň",18275
+"Louny",18121
+"Hranice",17978
+"Otrokovice",17634
+"Benešov",16875
+"Říčany",16775
+"Slaný",16557
+"Pelhřimov",16423
+"Uherský Brod",16410
+"Neratovice",16220
+"Jičín",16210
+"Rožnov pod Radhoštěm",16205
+"Svitavy",16186
+"Ostrov",15894
+"Rakovník",15574
+"Nymburk",15424
+"Bruntál",15415
+"Dvůr Králové nad Labem",15348
+"Česká Třebová",15203
+"Poděbrady",14902
+"Varnsdorf",14837
+"Bílina",14633
+"Turnov",14472
+"Klášterec nad Ohří",14324
+"Rokycany",14309
+"Ústí nad Orlicí",14141
+"Tachov",13800
+"Mariánské Lázně",13766
+"Milovice",13634
+"Hlučín",13506
+"Zábřeh",13434
+"Šternberk",13239
+"Český Krumlov",12907
+"Aš",12804
+"Roudnice nad Labem",12747
+"Chodov",12733
+"Krupka",12710
+"Jaroměř",12628
+"Čelákovice",12444
+"Vysoké Mýto",12333
+"Vrchlabí",12205
+"Boskovice",11996
+"Holešov",11538
+"Velké Meziříčí",11517
+"Nový Bor",11485
+"Vlašim",11438
+"Humpolec",11333
+"Kuřim",11263
+"Prachatice",11211
+"Rychnov nad Kněžnou",11178
+"Uničov",11122
+"Domažlice",11010
+"Rumburk",10937
+"Kyjov",10844
+"Sušice",10820
+"Frenštát pod Radhoštěm",10709
+"Jeseník",10665
+"Veselí nad Moravou",10642
+"Čáslav",10468
+"Litomyšl",10441
+"Králův Dvůr",10428
+"Jesenice",10169
+"Lysá nad Labem",10047
+"Přelouč",9971
+"Nové Město na Moravě",9919
+"Frýdlant nad Ostravicí",9890
+"Ivančice",9888
+"Litovel",9712
+"Lanškroun",9709
+"Moravská Třebová",9685
+"Hlinsko",9596
+"Mohelnice",9424
+"Nové Město nad Metují",9378
+"Studénka",9326
+"Tišnov",9223
+"Hostivice",9123
+"Chotěboř",9109
+"Nová Paka",9035
+"Roztoky",8971
+"Mnichovo Hradiště",8949
+"Polička",8910
+"Dobříš",8831
+"Lovosice",8803
+"Choceň",8708
+"Duchcov",8684
+"Štětí",8572
+"Hořice",8562
+"Příbor",8364
+"Červený Kostelec",8326
+"Třeboň",8242
+"Semily",8163
+"Milevsko",8089
+"Bystřice pod Hostýnem",8029
+"Lipník nad Bečvou",7981
+"Stříbro",7975
+"Dubí",7968
+"Rýmařov",7953
+"Bystřice nad Pernštejnem",7906
+"Hrádek nad Nisou",7882
+"Týn nad Vltavou",7858
+"Šlapanice",7853
+"Benátky nad Jizerou",7786
+"Nejdek",7772
+"Rychvald",7713
+"Mikulov",7679
+"Hořovice",7581
+"Černošice",7570
+"Kaplice",7479
+"Vodňany",7446
+"Bílovec",7429
+"Frýdlant",7427
+"Odry",7424
+"Úvaly",7404
+"Petřvald",7388
+"Český Brod",7361
+"Vimperk",7347
+"Vratimov",7336
+"Broumov",7207
+"Nový Bydžov",7203
+"Dačice",7177
+"Napajedla",7171
+"Slavkov u Brna",7167
+"Sezimovo Ústí",7166
+"Moravské Budějovice",7159
+"Letovice",6967
+"Soběslav",6966
+"Nýřany",6935
+"Sedlčany",6833
+"Holice",6813
+"Bučovice",6771
+"Přeštice",6750
+"Rosice",6656
+"Staré Město",6629
+"Kravaře",6624
+"Kraslice",6614
+"Blatná",6600
+"Dobruška",6571
+"Šenov",6553
+"Hulín",6524
+"Letohrad",6503
+"Veselí nad Lužnicí",6488
+"Světlá nad Sázavou",6437
+"Podbořany",6371
+"Dobřany",6360
+"Mimoň",6358
+"Odolena Voda",6344
+"Chrastava",6316
+"Dubňany",6266
+"Mníšek pod Brdy",6250
+"Hustopeče",6248
+"Slavičín",6238
+"Týniště nad Orlicí",6143
+"Kostelec nad Orlicí",6117
+"Hronov",6096
+"Železný Brod",6079
+"Tanvald",6070
+"Žamberk",5951
+"Rousínov",5888
+"Třebechovice pod Orebem",5848
+"Kojetín",5844
+"Šluknov",5744
+"Týnec nad Sázavou",5731
+"Třešť",5715
+"Františkovy Lázně",5707
+"Nové Strašecí",5696
+"Moravský Krumlov",5677
+"Vítkov",5670
+"Pohořelice",5669
+"Kunovice",5638
+"Chlumec nad Cidlinou",5625
+"Lomnice nad Popelkou",5585
+"Modřice",5572
+"Fulnek",5545
+"Zubří",5532
+"Hluboká nad Vltavou",5526
+"Planá",5505
+"Úpice",5498
+"Hradec nad Moravicí",5490
+"Holýšov",5489
+"Brumov-Bylnice",5471
+"Jilemnice",5439
+"Starý Plzenec",5414
+"Strážnice",5401
+"Horní Slavkov",5388
+"Velká Bíteš",5361
+"Stochov",5341
+"Jablunkov",5292
+"Trhové Sviny",5291
+"Rudná",5290
+"Telč",5239
+"Polná",5238
+"Kdyně",5235
+"Bakov nad Jizerou",5202
+"Bor",5191
+"Doksy",5187
+"Jílové u Prahy",5165
+"Horšovský Týn",5132
+"Luhačovice",5107
+"Česká Kamenice",5103
+"Horažďovice",5094
+"Skuteč",5071
+"Kosmonosy",5059
+"Česká Skalice",5053
+"Jílové",5037
+"Nýrsko",5033
+"Třemošná",5020
+"Unhošť",5013
+"Heřmanův Městec",4912
+"Pečky",4886
+"Bechyně",4882
+"Vizovice",4870
+"Valašské Klobouky",4868
+"Ledeč nad Sázavou",4862
+"Bělá pod Bezdězem",4838
+"Náměšť nad Oslavou",4824
+"Oslavany",4802
+"Protivín",4801
+"Vrbno pod Pradědem",4798
+"Zruč nad Sázavou",4767
+"Pacov",4743
+"Habartov",4729
+"Chropyně",4720
+"Postoloprty",4679
+"Chýně",4657
+"Votice",4651
+"Meziboří",4627
+"Lišov",4621
+"Vamberk",4607
+"Osek",4603
+"Bystřice",4585
+"Cvikov",4577
+"Kynšperk nad Ohří",4568
+"Bzenec",4565
+"Planá nad Lužnicí",4561
+"Vracov",4539
+"Adamov",4538
+"Klimkovice",4516
+"Horní Bříza",4411
+"Bojkovice",4365
+"Rožmitál pod Třemšínem",4336
+"Hluk",4298
+"Uherský Ostroh",4278
+"Hostinné",4273
+"Sezemice",4268
+"Kostelec nad Labem",4261
+"Chlumec",4253
+"Nová Role",4228
+"Slatiňany",4210
+"Blovice",4184
+"Borovany",4162
+"Zdice",4154
+"Brušperk",4144
+"Králíky",4143
+"Rajhrad",4092
+"Jaroměřice nad Rokytnou",4086
+"Police nad Metují",4084
+"Kostelec nad Černými lesy",4059
+"Mnichovice",4050
+"Jemnice",4015
+"Přibyslav",4004
+"Dolní Benešov",3934
+"Buštěhrad",3912
+"Paskov",3898
+"Kamenický Šenov",3892
+"Velešín",3892
+"Velké Bílovice",3884
+"Brtnice",3854
+"Smržovka",3851
+"Sázava",3834
+"Větřní",3833
+"Klecany",3811
+"Fryšták",3800
+"Jablonné v Podještědí",3779
+"Dobřichovice",3770
+"Stráž pod Ralskem",3762
+"Volary",3755
+"Nové Město pod Smrkem",3754
+"Řevnice",3749
+"Lázně Bělohrad",3734
+"Rájec-Jestřebí",3725
+"Kamenice nad Lipou",3720
+"Židlochovice",3702
+"Lom",3701
+"Zbýšov",3687
+"Zlaté Hory",3668
+"Dobrovice",3650
+"Lanžhot",3632
+"Velká Bystřice",3625
+"Stod",3610
+"Suchdol nad Lužnicí",3607
+"Benešov nad Ploučnicí",3602
+"Jiříkov",3589
+"České Velenice",3589
+"Nepomuk",3560
+"Toužim",3559
+"Valtice",3559
+"Březnice",3554
+"Štěpánov",3553
+"Libčice nad Vltavou",3531
+"Veverská Bítýška",3523
+"Velké Opatovice",3515
+"Štramberk",3515
+"Lázně Bohdaneč",3507
+"Zliv",3502
+"Kralovice",3480
+"Hrušovany nad Jevišovkou",3435
+"Město Albrechtice",3417
+"Libochovice",3413
+"Krásná Lípa",3413
+"Libušín",3403
+"Staňkov",3388
+"Újezd u Brna",3369
+"Trmice",3314
+"Košťany",3255
+"Třemošnice",3250
+"Sadská",3235
+"Nová Bystřice",3214
+"Chrast",3159
+"Uhlířské Janovice",3154
+"Velké Pavlovice",3132
+"Opočno",3123
+"Žirovnice",3121
+"Kaznějov",3120
+"Miroslav",3109
+"Desná",3103
+"Žacléř",3092
+"Ždírec nad Doubravou",3080
+"Smiřice",3077
+"Loket",3075
+"Loštice",3042
+"Jablonné nad Orlicí",3023
+"Břidličná",3003
+"Plasy",2993
+"Hodkovice nad Mohelkou",2989
+"Velvary",2986
+"Ivanovice na Hané",2983
+"Podivín",2974
+"Spálené Poříčí",2974
+"Zákupy",2971
+"Volyně",2964
+"Hanušovice",2952
+"Slušovice",2950
+"Sedlec-Prčice",2942
+"Morkovice-Slížany",2932
+"Rtyně v Podkrkonoší",2932
+"Dolní Bousov",2932
+"Teplá",2926
+"Chvaletice",2921
+"Úštěk",2883
+"Terezín",2881
+"Český Dub",2880
+"Městec Králové",2873
+"Kostelec na Hané",2872
+"Moravský Beroun",2872
+"Jevíčko",2859
+"Kunštát",2851
+"Rychnov u Jablonce nad Nisou",2845
+"Rotava",2844
+"Raspenava",2840
+"Budišov nad Budišovkou",2826
+"Vejprty",2793
+"Hejnice",2791
+"Hrádek",2790
+"Neveklov",2745
+"Koryčany",2733
+"Golčův Jeníkov",2727
+"Velké Hamry",2717
+"Kelč",2706
+"Mladá Vožice",2697
+"Konice",2666
+"Březová",2638
+"Luže",2613
+"Javorník",2604
+"Rokytnice nad Jizerou",2599
+"Nové Sedlo",2598
+"Vyšší Brod",2569
+"Dolní Kounice",2560
+"Rudolfov",2559
+"Chabařovice",2542
+"Nové Hrady",2542
+"Chýnov",2536
+"Zbiroh",2526
+"Ždánice",2520
+"Netolice",2512
+"Klobouky u Brna",2495
+"Počátky",2485
+"Tovačov",2475
+"Bohušovice nad Ohří",2469
+"Dašice",2439
+"Sobotka",2420
+"Karolinka",2419
+"Janovice nad Úhlavou",2414
+"Jáchymov",2396
+"Nechanice",2376
+"Kryry",2369
+"Meziměstí",2335
+"Solnice",2323
+"Město Touškov",2306
+"Plumlov",2300
+"Veltrusy",2293
+"Ralsko",2273
+"Hrochův Týnec",2272
+"Kardašova Řečice",2254
+"Horní Benešov",2253
+"Nová Včelnice",2252
+"Slavonice",2249
+"Žebrák",2240
+"Mirošov",2238
+"Žlutice",2223
+"Horní Jiřetín",2206
+"Pyšely",2195
+"Luby",2194
+"Kopidlno",2190
+"Budyně nad Ohří",2180
+"Týnec nad Labem",2164
+"Nový Knín",2132
+"Jistebnice",2128
+"Borohrádek",2119
+"Horní Jelení",2112
+"Proseč",2096
+"Hroznětín",2096
+"Zásmuky",2088
+"Hranice",2087
+"Rokytnice v Orlických horách",2072
+"Mikulášovice",2063
+"Svoboda nad Úpou",2032
+"Hrob",2010
+"Velký Šenov",2009
+"Horní Planá",2006
+"Kouřim",1985
+"Štíty",1976
+"Smečno",1976
+"Lučany nad Nisou",1953
+"Žandov",1943
+"Horní Cerekev",1926
+"Němčice nad Hanou",1918
+"Třebenice",1918
+"Plesná",1917
+"Skalná",1916
+"Bochov",1909
+"Hostomice",1887
+"Libáň",1866
+"Vroutek",1853
+"Seč",1823
+"Radnice",1814
+"Lomnice nad Lužnicí",1789
+"Hoštka",1774
+"Černovice",1769
+"Hrotovice",1761
+"Ronov nad Doubravou",1757
+"Vlachovo Březí",1733
+"Staré Město",1724
+"Bělá nad Radbuzou",1718
+"Nasavrky",1712
+"Všeruby",1704
+"Kladruby",1703
+"Bavorov",1685
+"Dubá",1682
+"Železná Ruda",1681
+"Švihov",1677
+"Olešnice",1672
+"Jablonec nad Jizerou",1672
+"Dolní Poustevna",1662
+"Jesenice",1653
+"Teplice nad Metují",1648
+"Mirovice",1640
+"Rožďalovice",1628
+"Oloví",1620
+"Březová nad Svitavou",1619
+"Plánice",1612
+"Bystré",1575
+"Přimda",1561
+"Mýto",1558
+"Kožlany",1543
+"Poběžovice",1526
+"Lázně Kynžvart",1514
+"Trhový Štěpánov",1460
+"Strmilov",1444
+"Kašperské Hory",1441
+"Husinec",1431
+"Mšeno",1417
+"Harrachov",1406
+"Svratka",1405
+"Kasejovice",1387
+"Strážov",1367
+"Rovensko pod Troskami",1364
+"Vysoké nad Jizerou",1353
+"Železnice",1351
+"Habry",1335
+"Chřibská",1328
+"Brandýs nad Orlicí",1310
+"Sedlice",1298
+"Mirotice",1256
+"Potštát",1246
+"Hostouň",1234
+"Nalžovské Hory",1226
+"Pilníkov",1215
+"Černošín",1207
+"Osečná",1196
+"Vidnava",1195
+"Úsov",1166
+"Žulová",1162
+"Verneřice",1157
+"Manětín",1142
+"Jevišovice",1138
+"Měčín",1123
+"Špindlerův Mlýn",1117
+"Krásná Hora nad Vltavou",1106
+"Liběchov",1093
+"Červená Řečice",1030
+"Blšany",1004
+"Bělčice",992
+"Miletín",963
+"Bečov nad Teplou",935
+"Hartmanice",929
+"Bezdružice",915
+"Abertamy",896
+"Stráž nad Nežárkou",888
+"Vysoké Veselí",872
+"Miličín",861
+"Deštná",733
+"Pec pod Sněžkou",711
+"Janské Lázně",708
+"Krásno",700
+"Lipnice nad Sázavou",695
+"Stárkov",632
+"Chyše",590
+"Mašťov",570
+"Ledvice",539
+"Rabí",483
+"Hora Svaté Kateřiny",461
+"Úterý",458
+"Andělská Hora",397
+"Rožmberk nad Vltavou",395
+"Krásné Údolí",389
+"Horní Blatná",370
+"Výsluní",294
+"Janov",276
+"Rejštejn",253
+"Boží Dar",231
+"Loučná pod Klínovcem",197
+"Přebuz",79
+"Nehvizdy",4294
+"Luka nad Jihlavou",3110
+"Křemže",2975
+"Jedovnice",2969
+"Suchdol nad Odrou",2813
+"Moravská Nová Ves",2585
+"Ledenice",2543
+"Nový Hrozenkov",2537
+"Buchlovice",2447
+"Komárov",2445
+"Batelov",2426
+"Jince",2402
+"Všetaty",2394
+"Velké Poříčí",2390
+"Pozořice",2374
+"Peruc",2337
+"Mladé Buky",2315
+"Zlonice",2311
+"Štěchovice",2207
+"Škvorec",2200
+"Náměšť na Hané",2164
+"Černá Hora",2127
+"Lhenice",2109
+"Okříšky",2053
+"Měřín",2048
+"Drásov",2041
+"Polešovice",2020
+"Červené Pečky",2008
+"Štoky",1982
+"Chodová Planá",1956
+"Kamenice",1952
+"Lysice",1937
+"Plaňany",1925
+"Chlum u Třeboně",1893
+"Brodek u Přerova",1888
+"Malšice",1879
+"Křižanov",1870
+"Cerhenice",1864
+"Svitávka",1863
+"Drnholec",1854
+"Velké Němčice",1825
+"Davle",1820
+"Divišov",1808
+"Doudleby nad Orlicí",1747
+"Hustopeče nad Bečvou",1744
+"Častolovice",1744
+"Dolní Bukovsko",1700
+"Kralice na Hané",1697
+"Stařeč",1670
+"Kounice",1661
+"Svatava",1644
+"Dub nad Moravou",1620
+"Krucemburk",1604
+"Lázně Toušeň",1513
+"Želetava",1508
+"Lomnice",1504
+"Pozlovice",1501
+"Nezamyslice",1484
+"Dřevohostice",1477
+"Kolinec",1474
+"Brodek u Prostějova",1473
+"Klenčí pod Čerchovem",1452
+"Chotětov",1430
+"Čechtice",1425
+"Březová",1414
+"Mohelno",1402
+"Frymburk",1402
+"Velký Újezd",1394
+"Pecka",1390
+"Loučeň",1385
+"Dolní Čermná",1385
+"Ševětín",1377
+"Doubravice nad Svitavou",1375
+"Bernartice",1373
+"Sepekov",1371
+"Nosislav",1366
+"Radomyšl",1360
+"Nové Veselí",1358
+"Křinec",1356
+"Katovice",1352
+"Stráž",1333
+"Brozany nad Ohří",1326
+"Strunkovice nad Blanicí",1309
+"Nedvědice",1298
+"Senomaty",1286
+"Dolní Cerekev",1257
+"Chroustovice",1239
+"Liteň",1227
+"Choltice",1225
+"Blížkovice",1205
+"Cerhovice",1201
+"Netvořice",1200
+"Budišov",1196
+"Vladislav",1194
+"Bohdalov",1189
+"Hostomice",1185
+"Šatov",1183
+"Jimramov",1179
+"Radiměř",1176
+"Olbramovice",1159
+"Nová Cerekev",1139
+"Suchdol",1136
+"Deblín",1130
+"Stonařov",1119
+"Načeradec",1119
+"Ostrov u Macochy",1101
+"Česká Bělá",1100
+"Brodce",1093
+"Višňové",1080
+"Protivanov",1071
+"Machov",1070
+"Cítoliby",1063
+"Březno",1063
+"Pavlíkov",1060
+"Malešov",1043
+"Koloveč",1025
+"Švábenice",1023
+"Kněževes",1022
+"Vrchotovy Janovice",1020
+"Trhová Kamenice",1017
+"Kovářská",1014
+"Nový Rychnov",1000
+"Bezno",998
+"Havlíčkova Borová",994
+"Měcholupy",993
+"Ostrov nad Oslavou",990
+"Vilémov",988
+"Lukavec",986
+"Sloup",976
+"Litultovice",957
+"Libštát",950
+"Knínice",949
+"Zápy",943
+"Zásada",939
+"Radostín nad Oslavou",934
+"Nové Dvory",932
+"Kunvald",930
+"Boleradice",923
+"Čestice",921
+"Bobrová",910
+"Mšec",910
+"Spálov",905
+"Brankovice",901
+"Hořice na Šumavě",899
+"Osvětimany",889
+"Medlov",882
+"Prosiměřice",880
+"Mrákotín",876
+"Nová Říše",876
+"Žehušice",876
+"Vranov nad Dyjí",869
+"Nový Hrádek",865
+"Libice nad Doubravou",861
+"Žinkovy",861
+"Strážek",854
+"Doubravník",844
+"Štěkeň",837
+"Rokytnice nad Rokytnou",834
+"Karlštejn",825
+"Ostrovačice",813
+"Vysoký Chlumec",811
+"Křtiny",808
+"Besednice",806
+"Vraný",800
+"Vojnův Městec",797
+"Kácov",796
+"Všeruby",795
+"Maršovice",778
+"Opatov",773
+"Sněžné",765
+"Chudenice",761
+"Slabce",728
+"Vémyslice",708
+"Úsobí",708
+"Štěpánov nad Svratkou",703
+"Černý Důl",703
+"Troskotovice",702
+"Křivoklát",701
+"Dešenice",696
+"Přídolí",691
+"Borotín",677
+"Štítary",677
+"Oleksovice",671
+"Mikulovice",653
+"Bojanov",650
+"Louňovice pod Blaníkem",648
+"Slavětín",638
+"Větrný Jeníkov",634
+"Božejov",628
+"Choustníkovo Hradiště",625
+"Stará Říše",621
+"Bílé Podolí",601
+"České Heřmanice",601
+"Stádlec",587
+"Hvězdlice",581
+"Včelákov",575
+"Ročov",567
+"Rataje nad Sázavou",561
+"Holany",557
+"Dalešice",552
+"Neustupov",548
+"Mlázovice",536
+"Mladkov",535
+"Olbramkostel",531
+"Drahany",512
+"Uhelná Příbram",512
+"Zdislavice",504
+"Čachrov",495
+"Litenčice",491
+"Podhradí",478
+"Tištín",473
+"Staré Město pod Landštejnem",471
+"Křivsoudov",452
+"Panenský Týnec",443
+"Nepomyšl",437
+"Strážný",407
+"Dub",407
+"Běhařovice",376
+"Heraltice",368
+"Svojanov",360
+"Sovínky",360
+"Žernov",304
+"Zdislava",278
+"Vratěnín",273
+"Žumberk",270
+"Liblín",269
+"Lukov",261
+"Velký Vřešťov",250
+"Zvíkovec",206
+"Český Šternberk",175
+"Levín",160
+"Bystřice",5291
+"Dolní Lutyně",5288
+"Horoměřice",5080
+"Kamenice",5060
+"Ludgeřovice",4955
+"Petrovice u Karviné",4924
+"Těrlicko",4819
+"Dolní Břežany",4620
+"Vendryně",4504
+"Vejprnice",4489
+"Bolatice",4469
+"Horní Suchá",4438
+"Dětmarovice",4395
+"Hlubočky",4206
+"Psáry",4175
+"Šestajovice",4021

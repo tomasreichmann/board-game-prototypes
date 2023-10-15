@@ -1,12 +1,10 @@
-import resolveValue, {
-    ValueOrRangeOrWeightedRange,
-    resolveValueOrConditionList,
-    resolveValueOrMap,
-} from "./resolveValue_deprecated";
-import firstNamesCzechFemaleRaw from "../data/first-names-czech-female.csv";
-import firstNamesCzechMaleRaw from "../data/first-names-czech-male.csv";
-import lastNamesCzechRaw from "../data/last-names-czech.csv";
-import occupations from "../data/LSV-occupations-cs.csv";
+import { culturesSyllablesData } from "../../data/cultures-syllables";
+import resolveRandom, { DeepRandomMultipleType, DeepRandomType, ReferenceConditionType } from "../resolveRandom";
+
+import firstNamesCzechFemaleRaw from "../../data/first-names-czech-female.csv";
+import firstNamesCzechMaleRaw from "../../data/first-names-czech-male.csv";
+import lastNamesCzechRaw from "../../data/last-names-czech.csv";
+import occupations from "../../data/LSV-occupations-cs.csv";
 
 export const lastNamesCzech = lastNamesCzechRaw.map((item) => ({
     family: item.family,
@@ -59,27 +57,11 @@ export const firstNamesCzechFemale = firstNamesCzechFemaleRaw.map((item) => ({
     weight: Number(item.weight),
     order: item.order,
 }));
-export const firstNamesCzechMaleWeightedRange = firstNamesCzechMale.reduce(
-    (result, { name, weight }) => {
-        result.values.push(name);
-        result.weights.push(weight);
-        return result;
-    },
-    {
-        values: [] as string[],
-        weights: [] as number[],
-    }
+export const firstNamesCzechMaleWeightedRange = firstNamesCzechMale.map(
+    ({ name, weight }) => [name, weight] as [string, number]
 );
-export const firstNamesCzechFemaleWeightedRange = firstNamesCzechFemale.reduce(
-    (result, { name, weight }) => {
-        result.values.push(name);
-        result.weights.push(weight);
-        return result;
-    },
-    {
-        values: [] as string[],
-        weights: [] as number[],
-    }
+export const firstNamesCzechFemaleWeightedRange = firstNamesCzechFemale.map(
+    ({ name, weight }) => [name, weight] as [string, number]
 );
 
 export enum GenderEnum {
@@ -148,53 +130,36 @@ export type Person = {
     };
 };
 
-export type GeneratePersonOptions = {
-    genderData?: ValueOrRangeOrWeightedRange<GenderEnum>;
-    firstNameData?: ValueOrRangeOrWeightedRange<string> | { [key in GenderEnum]: ValueOrRangeOrWeightedRange<string> };
-    familyNameData?: ValueOrRangeOrWeightedRange<{ family: string; male: string; female: string }>;
-    ageData?: ValueOrRangeOrWeightedRange<number>;
-    isAliveData?: ValueOrRangeOrWeightedRange<boolean> | { max: number; value: ValueOrRangeOrWeightedRange<boolean> }[];
-    occupationData?:
-        | {
-              [key in GenderEnum]:
-                  | ValueOrRangeOrWeightedRange<string | null>
-                  | { max: number; value: ValueOrRangeOrWeightedRange<string | null> }[];
-          };
+const gender: DeepRandomType<GenderEnum> = {
+    _rWeighted: [
+        [GenderEnum.Male, 105],
+        [GenderEnum.Female, 100],
+    ],
 };
 
-const generatePerson = ({
-    genderData = defaultGenderRange,
-    familyNameData = familyNamesCzechWeightedRange,
-    ageData = defaultAgeRange,
-    firstNameData = defaultFirstNameRangeMap,
-    isAliveData = defaultIsAliveAgeRangeList,
-    occupationData = defaultOccupationRange,
-}: GeneratePersonOptions = {}) => {
-    const gender = resolveValue(genderData);
-    const familyNames = resolveValue(familyNameData);
-    const familyName = familyNames.male;
-    const age = resolveValue(ageData);
-    const firstName = resolveValueOrMap(firstNameData, gender) as string;
-    const lastName = familyNames[gender as "male" | "female"];
-    const isAlive = resolveValueOrConditionList(isAliveData, age) as boolean;
-    const occupation = resolveValueOrConditionList(occupationData[gender], age);
+const firstName: DeepRandomType<string> = {
+    _rArray: [
+        { _rWeighted: firstNamesCzechMaleWeightedRange, _prop: "gender", _equals: GenderEnum.Male },
+        { _rWeighted: firstNamesCzechFemaleWeightedRange, _prop: "gender", _equals: GenderEnum.Female },
+    ],
+};
 
-    return {
+const personScheme = {
+    _rObject: {
         gender,
         firstName,
-        familyName,
-        lastName,
-        age,
-        isAlive,
-        occupation,
         /*
+        lastName,
+        familyName,
+        occupation,
         toughness,
         threat,
         notes,
         treasure,
         color,
-        imageUri,*/
-    };
+        age,*/
+        imageUri: undefined,
+        isAlive: true,
+    },
 };
-
-export default generatePerson;
+export default personScheme;

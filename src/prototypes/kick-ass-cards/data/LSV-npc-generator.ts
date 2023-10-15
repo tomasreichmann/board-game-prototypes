@@ -1,4 +1,4 @@
-import { ValueOrRangeOrWeightedRange } from "../generators/resolveValue";
+import { ValueOrRangeOrWeightedRange } from "../generators/resolveValue_deprecated";
 import firstNamesCzechFemaleRaw from "./first-names-czech-female.csv";
 import firstNamesCzechMaleRaw from "./first-names-czech-male.csv";
 import lastNamesCzechRaw from "./last-names-czech.csv";

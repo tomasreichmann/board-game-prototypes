@@ -4,12 +4,18 @@ import { Navigation } from "../Navigation";
 import PaperMini from "../gameComponents/PaperMini";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import NPCs from "../NPCs";
+import DataPreview from "../../../../components/DataPreview";
+import generateHistory from "../../generators/generateHistory";
+import generateCulture from "../../generators/generateCulture";
+import Generator from "../generation/Generator";
 
 export default function PlaygroundRoute() {
     return (
         <>
             <Navigation />
             <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white">
+                <Generator />
+
                 <NPCs className="mb-10" />
                 <PrintPage>
                     <div className="flex flex-wrap content-center items-top">

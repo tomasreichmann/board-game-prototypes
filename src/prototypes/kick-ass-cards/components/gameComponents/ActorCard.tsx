@@ -14,7 +14,7 @@ export type ActorCardProps = React.PropsWithChildren<
     {
         className?: string;
         size?: PaperProps["size"];
-        imagePosition?: CSSProperties["backgroundPosition"];
+        imagePosition?: CSSProperties["objectPosition"];
         notesClassName?: string;
         forPrint?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
@@ -32,6 +32,7 @@ export default function ActorCard({
     toughness = 0,
     currentToughness = toughness,
     notesClassName,
+    age,
     threat = forPrint ? "" : null,
     reward = forPrint ? "" : null,
     notes = forPrint ? "" : null,
@@ -72,6 +73,7 @@ export default function ActorCard({
                     <h2 className="flex-1 text-md font-kacHeading leading-tight flex flex-row gap-2">
                         <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
                         {name || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
+                        {age !== undefined ? ` (${age})` : ""}
                     </h2>
                     {toughness > 0 && (
                         <div className="text-sm border-dashed justify-end text-kac-blood font-kacHeading flex flex-row">
@@ -109,7 +111,7 @@ export default function ActorCard({
                 {notes !== null && (
                     <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
                         <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
-                            <Icon icon="scrollQuill" className="h-4 mr-3 inline-block " />
+                            <Icon icon="scrollQuill" className="h-4 mr-3 inline-block" />
                             {notes.length > 0 ? (
                                 <div className={twMerge("inline", notesClassName)}>{notes}</div>
                             ) : (

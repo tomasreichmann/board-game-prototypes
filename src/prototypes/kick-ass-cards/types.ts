@@ -17,6 +17,8 @@ export type ActorType = {
     name: string;
     imageUri?: string;
     occupation?: string | null;
+    gender?: string | null;
+    age?: number | null;
     toughness?: number;
     currentToughness?: number;
     reward?: string | null;

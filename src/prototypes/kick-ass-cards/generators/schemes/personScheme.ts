@@ -5,6 +5,8 @@ import firstNamesCzechFemaleRaw from "../../data/first-names-czech-female.csv";
 import firstNamesCzechMaleRaw from "../../data/first-names-czech-male.csv";
 import lastNamesCzechRaw from "../../data/last-names-czech.csv";
 import occupations from "../../data/LSV-occupations-cs.csv";
+import LSVOccupationsCs from "../../data/LSV-occupations-cs-cleaned";
+import ageDistributionData from "../../data/age-distribution-18th-century-cleaned";
 
 export const lastNamesCzech = lastNamesCzechRaw.map((item) => ({
     family: item.family,
@@ -25,7 +27,7 @@ export const familyNamesCzechWeightedRange = lastNamesCzech.reduce(
     }
 );
 export const lastNamesCzechMale = lastNamesCzechRaw.map(({ male }) => male);
-export const lastNamesCzechMaleWeightedRange = lastNamesCzech.reduce(
+export const lastNamesCzechMaleWeightedRangeDeprecated = lastNamesCzech.reduce(
     (result, { male, maleWeight }) => {
         result.values.push(male);
         result.weights.push(maleWeight);
@@ -36,7 +38,7 @@ export const lastNamesCzechMaleWeightedRange = lastNamesCzech.reduce(
         weights: [] as number[],
     }
 );
-export const lastNamesCzechFemaleWeightedRange = lastNamesCzech.reduce(
+export const lastNamesCzechFemaleWeightedRangeDeprecated = lastNamesCzech.reduce(
     (result, { female, femaleWeight }) => {
         result.values.push(female);
         result.weights.push(femaleWeight);
@@ -57,12 +59,19 @@ export const firstNamesCzechFemale = firstNamesCzechFemaleRaw.map((item) => ({
     weight: Number(item.weight),
     order: item.order,
 }));
+
 export const firstNamesCzechMaleWeightedRange = firstNamesCzechMale.map(
     ({ name, weight }) => [name, weight] as [string, number]
 );
 export const firstNamesCzechFemaleWeightedRange = firstNamesCzechFemale.map(
     ({ name, weight }) => [name, weight] as [string, number]
 );
+export const lastNamesCzechMaleWeightedRange = lastNamesCzech.map(({ male: name, maleWeight: weight }) => {
+    return [name, weight] as [string, number];
+});
+export const lastNamesCzechFemaleWeightedRange = lastNamesCzech.map(({ female: name, femaleWeight: weight }) => {
+    return [name, weight] as [string, number];
+});
 
 export enum GenderEnum {
     Male = "male",
@@ -75,8 +84,8 @@ export const defaultFirstNameRangeMap = {
     [GenderEnum.Female]: firstNamesCzechFemaleWeightedRange,
 };
 export const defaultLastNameRangeMap = {
-    [GenderEnum.Male]: lastNamesCzechMaleWeightedRange,
-    [GenderEnum.Female]: lastNamesCzechFemaleWeightedRange,
+    [GenderEnum.Male]: lastNamesCzechMaleWeightedRangeDeprecated,
+    [GenderEnum.Female]: lastNamesCzechFemaleWeightedRangeDeprecated,
 };
 export const defaultAgeRange = [0, 100];
 export const defaultIsAliveAgeRangeList = [
@@ -89,7 +98,7 @@ export const defaultIsAliveAgeRangeList = [
     { max: 999, value: false },
 ];
 
-export const defaultOccupationRange = {
+export const defaultOccupationRangeDeprecated = {
     [GenderEnum.Male]: [
         { max: 4, value: "Batole" },
         { max: 7, value: "Dítě" },
@@ -103,6 +112,20 @@ export const defaultOccupationRange = {
         { max: 15, value: { values: ["Učednice", "Studentka"], weights: [90, 10] } },
         { max: 60, value: occupations.map(({ female }) => female) },
         { max: 999, value: null },
+    ],
+};
+
+export const maleOccupationOptions: DeepRandomType<string> = {
+    _rWeighted: LSVOccupationsCs.map(({ male, maleWeight }) => [male, maleWeight]),
+};
+export const femaleOccupationOptions: DeepRandomType<string> = {
+    _rWeighted: LSVOccupationsCs.map(({ female, femaleWeight }) => [female, femaleWeight]),
+};
+
+export const occupationOptions: DeepRandomType<string> = {
+    _rArray: [
+        { ...maleOccupationOptions, _prop: "gender", _equals: GenderEnum.Male },
+        { ...femaleOccupationOptions, _prop: "gender", _equals: GenderEnum.Female },
     ],
 };
 
@@ -130,24 +153,39 @@ export type Person = {
     };
 };
 
-const gender: DeepRandomType<GenderEnum> = {
+export const genderOptions: DeepRandomType<GenderEnum> = {
     _rWeighted: [
         [GenderEnum.Male, 105],
         [GenderEnum.Female, 100],
     ],
 };
 
-const firstName: DeepRandomType<string> = {
+export const firstNameOptions: DeepRandomType<string> = {
     _rArray: [
         { _rWeighted: firstNamesCzechMaleWeightedRange, _prop: "gender", _equals: GenderEnum.Male },
         { _rWeighted: firstNamesCzechFemaleWeightedRange, _prop: "gender", _equals: GenderEnum.Female },
     ],
 };
 
+export const lastNameOptions: DeepRandomType<string> = {
+    _rArray: [
+        { _rWeighted: lastNamesCzechMaleWeightedRange, _prop: "gender", _equals: GenderEnum.Male },
+        { _rWeighted: lastNamesCzechFemaleWeightedRange, _prop: "gender", _equals: GenderEnum.Female },
+    ],
+};
+
+export const ageOptions: DeepRandomType<number> = {
+    _rWeighted: ageDistributionData.map(
+        ({ fromAge, toAge, percentage }) =>
+            [{ _rRange: { from: fromAge, to: toAge } }, percentage] as [DeepRandomType<number>, number]
+    ),
+};
+
 const personScheme = {
     _rObject: {
-        gender,
-        firstName,
+        gender: genderOptions,
+        firstName: firstNameOptions,
+        age: ageOptions,
         /*
         lastName,
         familyName,
@@ -157,7 +195,7 @@ const personScheme = {
         notes,
         treasure,
         color,
-        age,*/
+        */
         imageUri: undefined,
         isAlive: true,
     },

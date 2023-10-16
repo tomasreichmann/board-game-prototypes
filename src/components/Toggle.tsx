@@ -24,6 +24,7 @@ export default function Toggle({
         <div className={className}>
             <Button
                 {...buttonProps}
+                children={buttonContent || buttonProps.children}
                 variant={isCollapsed ? undefined : "outline"}
                 onClick={() => setIsCollapsed((isCollapsed) => !isCollapsed)}
             />

@@ -1,5 +1,6 @@
 import { range } from "lodash";
 import generateWord, { GenerateWordOptionsType } from "./generateWord";
+import ArrayItem from "../../../utils/ArrayItemType";
 
 export type DeepRandomUnresolvedType<T> =
     | DeepRandomValueType<T>
@@ -8,14 +9,17 @@ export type DeepRandomUnresolvedType<T> =
     | DeepRandomMultipleType<T[]>
     | DeepRandomRangeType
     | DeepRandomObjectType<T>
-    | DeepRandomWeightedType<T>;
+    | DeepRandomWeightedType<T>
+    | DeepRandomTemplateType;
 
 export type DeepRandomType<T> = T | (DeepRandomUnresolvedType<T> & ReferenceConditionType);
 
 export type ReferenceConditionType = {
     _prop?: string;
-    _min?: number;
-    _max?: number;
+    _lessThan?: number;
+    _lessThanEquals?: number;
+    _greaterThan?: number;
+    _greaterThanEquals?: number;
     _equals?: any;
     _notEquals?: any;
 };
@@ -44,6 +48,10 @@ export type DeepRandomWeightedItemType<T> =
     | [DeepRandomType<T>, number]
     | [DeepRandomType<T>, number, ReferenceConditionType];
 export type DeepRandomWeightedType<T> = { _rWeighted: DeepRandomWeightedItemType<T>[] };
+export type DeepRandomTemplateType = {
+    _rTemplate: string;
+    _variables: { [key: string]: DeepRandomType<string | number> };
+};
 
 export const randomNumber = (min: number = 0, max: number = 0, precision: number = 1) => {
     const preciseValue = Math.random() * (max - min + precision) + min;
@@ -64,6 +72,7 @@ export const weightedRandom = <T extends any>(weightedValues: DeepRandomWeighted
     let sum = 0;
     const totalWeights = weightedValues.reduce((total, weightedItem) => total + weightedItem[1], 0);
     const rand = Math.random() * totalWeights;
+    console.log(weightedValues, totalWeights, rand);
     for (let i = 0; i < weightedValues.length; i++) {
         sum += weightedValues[i][1];
         if (sum > rand) {
@@ -117,6 +126,10 @@ const isRandomRangeType = <T>(random: any): random is DeepRandomRangeType => {
     return random !== null && typeof random === "object" && "_rRange" in random;
 };
 
+const isRandomTemplateType = <T>(random: any): random is DeepRandomTemplateType => {
+    return random !== null && typeof random === "object" && "_rTemplate" in random;
+};
+
 const resolveReferenceValue = <R>(reference: R, path: string) => {
     const pathFragments = path.split(".");
     let pointer: unknown = reference;
@@ -156,10 +169,24 @@ const checkReferenceCondition = <R>(item: ReferenceConditionType, reference: R) 
         if ("_notEquals" in item && referenceValue === item._notEquals) {
             return false;
         }
-        if ("_min" in item && item._min !== undefined && Number(referenceValue) < item._min) {
+        if ("_lessThan" in item && item._lessThan !== undefined && Number(referenceValue) >= item._lessThan) {
             return false;
         }
-        if ("_max" in item && item._max !== undefined && Number(referenceValue) > item._max) {
+        if (
+            "_lessThanEquals" in item &&
+            item._lessThanEquals !== undefined &&
+            Number(referenceValue) > item._lessThanEquals
+        ) {
+            return false;
+        }
+        if ("_greaterThan" in item && item._greaterThan !== undefined && Number(referenceValue) <= item._greaterThan) {
+            return false;
+        }
+        if (
+            "_greaterThanEquals" in item &&
+            item._greaterThanEquals !== undefined &&
+            Number(referenceValue) < item._greaterThanEquals
+        ) {
             return false;
         }
         return true;
@@ -167,7 +194,7 @@ const checkReferenceCondition = <R>(item: ReferenceConditionType, reference: R) 
     return true;
 };
 
-const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveResultType<DeepRandomType<T>> => {
+const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveResultType<DeepRandomType<T>> | T => {
     // deep filter weights and conditions
     if (isReferenceConditionType(random)) {
         if (!checkReferenceCondition(random, reference)) {
@@ -246,6 +273,13 @@ const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveR
     if (isRandomValueType(random)) {
         return resolveRandom(random._rValue, reference);
     }
+    if (isRandomTemplateType(random)) {
+        return random._rTemplate.replace(/\$\{[\w|_]*\}/g, (match) => {
+            console.log("match", match);
+            const key = match.slice(2, match.length - 1);
+            return (key in random._variables && String(resolveRandom(random._variables[key], reference))) || "";
+        });
+    }
     return random;
 };
 
@@ -291,23 +325,23 @@ const deepArrayCondition = resolveRandom({ _rArray: [1, { _rArray: [2, 3, 4, 5, 
 console.log(deepArrayCondition);
 // assert([1, 2, 3, 4, 5, 6, 7].includes(deepArrayCondition as number));
 
-export type ResolveResultType<T> =
-    | (T extends DeepRandomObjectType<infer T>
-          ? ResolveObjectResultType<T>
-          : T extends DeepRandomMultipleType<infer T>
-          ? ResolveResultType<T>
-          : T extends DeepRandomWeightedType<infer T>
-          ? ResolveResultType<T>
-          : T extends DeepRandomValueType<infer T>
-          ? ResolveResultType<T>
-          : T extends DeepRandomWordType
-          ? string | null
-          : T extends DeepRandomArrayType<infer T>
-          ? ResolveResultType<T>
-          : T extends DeepRandomRangeType
-          ? number
-          : never)
-    | T;
+export type ResolveResultType<T> = T extends DeepRandomObjectType<infer T>
+    ? ResolveObjectResultType<T>
+    : T extends DeepRandomMultipleType<infer T>
+    ? ResolveResultType<T>
+    : T extends DeepRandomWeightedType<infer T>
+    ? ResolveResultType<T>
+    : T extends DeepRandomValueType<infer T>
+    ? ResolveResultType<T>
+    : T extends DeepRandomWordType
+    ? string | null
+    : T extends DeepRandomArrayType<infer T>
+    ? ResolveResultType<T>
+    : T extends DeepRandomRangeType
+    ? number
+    : T extends DeepRandomTemplateType
+    ? string
+    : T;
 /*
 export type XNumber = ResolveResultType<number>;
 export type XArray = ResolveResultType<number[]>;

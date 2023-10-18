@@ -53,6 +53,12 @@ export type DeepRandomTemplateType = {
     _variables: { [key: string]: DeepRandomType<string | number> };
 };
 
+export type Resolver<T, R> = (
+    random: DeepRandomType<T>,
+    reference?: R,
+    resolver?: Resolver<T, R>
+) => ResolveResultType<DeepRandomType<T>> | T;
+
 export const randomNumber = (min: number = 0, max: number = 0, precision: number = 1) => {
     const preciseValue = Math.random() * (max - min + precision) + min;
     if (precision === 0) {
@@ -72,7 +78,6 @@ export const weightedRandom = <T extends any>(weightedValues: DeepRandomWeighted
     let sum = 0;
     const totalWeights = weightedValues.reduce((total, weightedItem) => total + weightedItem[1], 0);
     const rand = Math.random() * totalWeights;
-    console.log(weightedValues, totalWeights, rand);
     for (let i = 0; i < weightedValues.length; i++) {
         sum += weightedValues[i][1];
         if (sum > rand) {
@@ -94,39 +99,39 @@ export const weightedRandom = <T extends any>(weightedValues: DeepRandomWeighted
     return null;
 };
 
-const isRandomValueType = <T>(random: any): random is DeepRandomValueType<T> => {
+export const isRandomValueType = <T>(random: any): random is DeepRandomValueType<T> => {
     return random !== null && typeof random === "object" && "_rValue" in random;
 };
 
-const isRandomWordType = <T extends string>(random: any): random is DeepRandomWordType => {
+export const isRandomWordType = <T extends string>(random: any): random is DeepRandomWordType => {
     return random !== null && typeof random === "object" && "_rWord" in random;
 };
 
-const isRandomObjectType = <T>(random: any): random is DeepRandomObjectType<T> => {
+export const isRandomObjectType = <T>(random: any): random is DeepRandomObjectType<T> => {
     return random !== null && typeof random === "object" && "_rObject" in random;
 };
 
-const isRandomArrayType = <T>(random: any): random is DeepRandomArrayType<T> => {
+export const isRandomArrayType = <T>(random: any): random is DeepRandomArrayType<T> => {
     return random !== null && typeof random === "object" && "_rArray" in random;
 };
 
-const isRandomWeightedType = <T>(random: any): random is DeepRandomWeightedType<T> => {
+export const isRandomWeightedType = <T>(random: any): random is DeepRandomWeightedType<T> => {
     return random !== null && typeof random === "object" && "_rWeighted" in random;
 };
 
-const isReferenceConditionType = <T>(random: any): random is ReferenceConditionType => {
+export const isReferenceConditionType = <T>(random: any): random is ReferenceConditionType => {
     return random !== null && typeof random === "object" && "_prop" in random;
 };
 
-const isRandomMultipleType = <T>(random: any): random is DeepRandomMultipleType<T> => {
+export const isRandomMultipleType = <T>(random: any): random is DeepRandomMultipleType<T> => {
     return random !== null && typeof random === "object" && "_rMultiple" in random;
 };
 
-const isRandomRangeType = <T>(random: any): random is DeepRandomRangeType => {
+export const isRandomRangeType = <T>(random: any): random is DeepRandomRangeType => {
     return random !== null && typeof random === "object" && "_rRange" in random;
 };
 
-const isRandomTemplateType = <T>(random: any): random is DeepRandomTemplateType => {
+export const isRandomTemplateType = <T>(random: any): random is DeepRandomTemplateType => {
     return random !== null && typeof random === "object" && "_rTemplate" in random;
 };
 
@@ -194,7 +199,12 @@ const checkReferenceCondition = <R>(item: ReferenceConditionType, reference: R) 
     return true;
 };
 
-const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveResultType<DeepRandomType<T>> | T => {
+const resolveRandom = <T, R>(
+    random: DeepRandomType<T>,
+    reference?: R,
+    resolver?: Resolver<any, any>
+): ResolveResultType<DeepRandomType<T>> | T => {
+    const currentResolver = resolver || resolveRandom;
     // deep filter weights and conditions
     if (isReferenceConditionType(random)) {
         if (!checkReferenceCondition(random, reference)) {
@@ -217,7 +227,7 @@ const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveR
         });
         const weightedResult = weightedRandom(filteredOptions);
         if (weightedResult !== null) {
-            return resolveRandom(weightedResult, reference) as ResolveResultType<T>;
+            return currentResolver(weightedResult, reference) as ResolveResultType<T>;
         }
         return null;
     }
@@ -230,16 +240,14 @@ const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveR
         });
         const arrayResult = randomValue(filteredOptions);
         if (arrayResult !== null) {
-            return resolveRandom(arrayResult, reference);
+            return currentResolver(arrayResult, reference);
         }
         return null;
     }
     if (isRandomObjectType(random)) {
         const keys = Object.keys(random._rObject) as (keyof typeof random._rObject)[];
         const randomObject = keys.reduce((result, key) => {
-            console.log("key", key);
-            console.log({ reference });
-            (result as any)[key] = resolveRandom(random._rObject[key], reference !== undefined ? reference : result);
+            (result as any)[key] = currentResolver(random._rObject[key], reference !== undefined ? reference : result);
             return result;
         }, {} as ResolveObjectResultType<T>);
 
@@ -249,13 +257,13 @@ const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveR
         return randomNumber(random._rRange.from, random._rRange.to, random._rRange.precision);
     }
     if (isRandomMultipleType(random)) {
-        const count = resolveRandom(random._count, reference);
+        const count = currentResolver(random._count, reference);
         if (typeof count !== "number" || count === null) {
             return [];
         }
         random;
         const results = range(count).map(() => {
-            const result = resolveRandom(random._rMultiple, reference) as T;
+            const result = currentResolver(random._rMultiple, reference) as T;
             return result;
         });
         return results.filter((result, resultIndex, results) => {
@@ -271,13 +279,12 @@ const resolveRandom = <T, R>(random: DeepRandomType<T>, reference?: R): ResolveR
         return word;
     }
     if (isRandomValueType(random)) {
-        return resolveRandom(random._rValue, reference);
+        return currentResolver(random._rValue, reference);
     }
     if (isRandomTemplateType(random)) {
         return random._rTemplate.replace(/\$\{[\w|_]*\}/g, (match) => {
-            console.log("match", match);
             const key = match.slice(2, match.length - 1);
-            return (key in random._variables && String(resolveRandom(random._variables[key], reference))) || "";
+            return (key in random._variables && String(currentResolver(random._variables[key], reference))) || "";
         });
     }
     return random;
@@ -287,42 +294,42 @@ export default resolveRandom;
 
 const value = resolveRandom(123);
 // assert(value === 123);
-console.log(value);
+// console.log(value);
 
 const array = resolveRandom({ _rArray: [1, 2, 3] });
-console.log(array);
+// console.log(array);
 // assert([1, 2, 3].includes(array as number));
 
 const deepArray = resolveRandom({ _rArray: [1, { _rArray: [2, 3, 4, 5, 6, 7] }] });
-console.log(deepArray);
+// console.log(deepArray);
 // assert([1, 2, 3, 4, 5, 6, 7].includes(deepArray as number));
 
 const valueConditionTrue = resolveRandom({ _rValue: 123, _prop: "a", _equals: 1 }, { a: 1 });
 // assert(valueConditionTrue === 123);
-console.log(valueConditionTrue);
+// console.log(valueConditionTrue);
 const valueConditionFalse = resolveRandom({ _rValue: 123, _prop: "a", _equals: 0 }, { a: 1 });
 // assert(valueConditionFalse === null);
-console.log(valueConditionFalse);
+// console.log(valueConditionFalse);
 
 const arrayCondition = resolveRandom({ _rArray: [1, 2, 3], _prop: "a" }, { a: 1 });
-console.log(arrayCondition);
+// console.log(arrayCondition);
 // assert([1, 2, 3].includes(arrayCondition as number));
 
 const arrayItemConditionTrue = resolveRandom(
     { _rArray: [{ _rValue: 3, _prop: "a", _equals: 1 }], _prop: "a" },
     { a: 1 }
 );
-console.log(arrayItemConditionTrue);
+// console.log(arrayItemConditionTrue);
 // assert([1, 2, 3].includes(arrayItemConditionTrue as number));
-const arrayItemConditionFalse = resolveRandom(
+/* const arrayItemConditionFalse = resolveRandom(
     { _rArray: [{ _rValue: 3, _prop: "a", _equals: 0 }, 2], _prop: "a" },
     { a: 1 }
-);
-console.log(arrayItemConditionFalse);
+); */
+// console.log(arrayItemConditionFalse);
 // assert([1, 2, 3].includes(arrayItemConditionFalse as number));
 
 const deepArrayCondition = resolveRandom({ _rArray: [1, { _rArray: [2, 3, 4, 5, 6, 7] }] });
-console.log(deepArrayCondition);
+// console.log(deepArrayCondition);
 // assert([1, 2, 3, 4, 5, 6, 7].includes(deepArrayCondition as number));
 
 export type ResolveResultType<T> = T extends DeepRandomObjectType<infer T>

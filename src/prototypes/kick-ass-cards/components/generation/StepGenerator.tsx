@@ -14,6 +14,9 @@ import {
     lastNameOptions,
     occupationOptions,
 } from "../../generators/schemes/personScheme";
+import VisualizeRandom from "./VisualizeRandom";
+import catScheme from "../../generators/schemes/catScheme";
+import dogScheme from "../../generators/schemes/dogScheme";
 
 export type StepGeneratorProps = {
     localStorageKey?: string;
@@ -92,6 +95,18 @@ const defaultPresets = [
         },
         {}
     ),
+    createPreset("Cat", catScheme, ActorCard, {
+        name: "cat",
+        size: "Mini US game",
+        className: "drop-shadow",
+        imageUri: "/ISV/minis/animals/cat1.jpg",
+    }),
+    createPreset("Dog", dogScheme, ActorCard, {
+        name: "dog",
+        size: "Mini US game",
+        className: "drop-shadow",
+        imageUri: "/ISV/minis/animals/dog1.jpg",
+    }),
 ];
 
 export default function StepGenerator({
@@ -156,6 +171,9 @@ export default function StepGenerator({
                 ) : (
                     "select a preset"
                 )}
+            </div>
+            <div>
+                <VisualizeRandom random={selectedPreset?.scheme} />
             </div>
         </div>
     );

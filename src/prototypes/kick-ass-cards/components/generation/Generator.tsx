@@ -6,6 +6,7 @@ import cultureScheme, { Culture } from "../../generators/schemes/cultureScheme";
 import resolveRandom, { DeepRandomType } from "../../generators/resolveRandom";
 import DataPreview from "../../../../components/DataPreview";
 import personScheme from "../../generators/schemes/personScheme";
+import VisualizeRandom from "./VisualizeRandom";
 
 export type GeneratorProps = {
     localStorageKey?: string;

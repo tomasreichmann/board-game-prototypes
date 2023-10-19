@@ -18,7 +18,7 @@ module.exports = {
         "print:filter-none",
         "inline-block",
         "card",
-        "card-up"
+        "card-up",
     ],
     theme: {
         extend: {
@@ -104,6 +104,8 @@ module.exports = {
                 "jd-soil": "#462D20",
                 "jd-iron": "#180B06",
                 "jd-shitty-text": "#401648",
+                "jd-shitty-paper": "#88598F",
+                "jd-shitty-paper-dark": "#2d0b3d",
                 "jd-golden-text": "#FED801",
                 "jd-golden-paper": "#fef1ca",
             },

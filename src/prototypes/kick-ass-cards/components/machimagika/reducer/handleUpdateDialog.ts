@@ -15,7 +15,6 @@ export default function handleUpdateDialog(state: GameStateType, action: GameAct
         const dialog = { ...state.dialog, ...action.updateDialog };
         // only change history if isDialogNodeChange
         if (isDialogNodeChange && dialog.dialogId && dialog.currentNodeId) {
-            console.log("updating history");
             const dialogNode = dialogMap[dialog.dialogId]?.nodeMap[dialog.currentNodeId];
             const previousHistory = [...(dialog.history || [])];
             // mark actions as selected in the last history node

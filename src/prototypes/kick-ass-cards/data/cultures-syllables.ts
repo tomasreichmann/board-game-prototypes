@@ -1,6 +1,5 @@
 import culturesData from "../data/cultures.csv";
 import { getWeightedSyllablesAndStats } from "../generators/generateWord";
-console.log(culturesData[0]);
 const culturesDataCleaned = culturesData
     .filter(({ name }) => {
         if (/[\W]/.test(name)) {

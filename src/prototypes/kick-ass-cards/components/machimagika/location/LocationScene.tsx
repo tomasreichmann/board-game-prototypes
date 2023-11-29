@@ -27,7 +27,7 @@ export default function LocationScene({ className, children }: LocationSceneProp
     const location = locationId in locationMap ? locationMap[locationId as keyof typeof locationMap] : null;
 
     if (!location) {
-        console.log("no location", locationId, locationMap[locationId as keyof typeof locationMap]);
+        console.warn("no location", locationId, locationMap[locationId as keyof typeof locationMap]);
         return null;
     }
 

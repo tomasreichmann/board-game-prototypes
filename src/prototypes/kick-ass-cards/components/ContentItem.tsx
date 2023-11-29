@@ -81,6 +81,5 @@ export const defaultComponentMap: { [key: string]: React.ComponentType<ContentIt
 export default function ContentItem({ componentMap = defaultComponentMap, ...componentProps }: ContentItemProps) {
     const { component } = componentProps;
     const Component = (component && componentMap[component]) || componentMap.pre || defaultComponentMap.pre;
-    console.log({ component, resolvedComponent: component && componentMap[component] });
     return <Component {...componentProps} />;
 }

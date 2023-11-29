@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, type MutableRefObject, useCallback } from "react";
 
 export const getStoredData = (storageKey: string) => window.localStorage.getItem(storageKey);
 
 export const parseStoredData = <StoreType>(rawData: string | null): StoreType => {
-    const parsedData = rawData !== null ? JSON.parse(rawData) : null;
+    const parsedData = rawData !== null && rawData !== undefined ? JSON.parse(rawData) : null;
     return parsedData;
 };
 
@@ -11,30 +11,53 @@ export const updateState = <StoreType>(rawData: string | null, setter: (data: St
     setter(parseStoredData<StoreType>(rawData));
 };
 
-export const useLocalStorage = <StoreType>(storageKey: string) => {
-    const [storeData, setStoreData] = useState(parseStoredData<StoreType>(getStoredData(storageKey)));
+export const useLocalStorage = <StoreType>(storageKey: string | null) => {
+    const initialState = storageKey ? () => parseStoredData<StoreType>(getStoredData(storageKey)) : null;
+    const [storeData, setStoreData] = useState<StoreType | null>(initialState);
 
     useEffect(() => {
-        const storedData = window.localStorage.getItem(storageKey);
-        updateState(storedData, setStoreData);
-        const onStorageUpdate = (event: StorageEvent) => {
-            if (event.storageArea != localStorage) return;
-            if (event.key === storageKey) {
-                updateState(event.newValue, setStoreData);
-            }
-        };
-        window.addEventListener("storage", onStorageUpdate);
-        return () => {
-            window.removeEventListener("storage", onStorageUpdate);
-        };
-    }, []);
-
-    useEffect(() => {
-        const serializedStore = JSON.stringify(storeData);
-        const storedData = window.localStorage.getItem(storageKey);
-        if (serializedStore !== storedData) {
-            window.localStorage.setItem(storageKey, serializedStore);
+        if (storageKey !== null) {
+            const storedData = getStoredData(storageKey);
+            updateState(storedData, setStoreData);
+            const onStorageUpdate = () => {
+                updateState(getStoredData(storageKey), setStoreData);
+            };
+            // get updates from this tab
+            window.addEventListener("storageUpdate", onStorageUpdate as any);
+            const onStorage = (event: StorageEvent) => {
+                if (event.storageArea != localStorage) return;
+                if (event.key === storageKey) {
+                    updateState(event.newValue, setStoreData);
+                }
+            };
+            // get updates from other tabs
+            window.addEventListener("storage", onStorage);
+            return () => {
+                window.removeEventListener("storage", onStorage);
+                window.removeEventListener("storageUpdate", onStorageUpdate);
+            };
         }
-    }, [storeData]);
-    return [storeData, setStoreData];
+    }, [storageKey, setStoreData]);
+
+    const updateStore = useCallback(
+        (setter: StoreType | ((data: StoreType | null) => StoreType | null) | null): void => {
+            if (storageKey === null) {
+                return;
+            }
+            const newData =
+                typeof setter === "function"
+                    ? (setter as (data: StoreType | null) => StoreType | null)(
+                          parseStoredData(getStoredData(storageKey))
+                      )
+                    : setter;
+            // This updates other tabs
+            window.localStorage.setItem(storageKey, JSON.stringify(newData));
+            const event = new Event("storageUpdate");
+            // This updates all hooks on this tab
+            window.dispatchEvent(event);
+        },
+        [storageKey]
+    );
+
+    return [storeData, updateStore] as const;
 };

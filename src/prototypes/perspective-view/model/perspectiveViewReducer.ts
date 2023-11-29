@@ -16,12 +16,15 @@ export type PerspectiveViewActionType =
           payload: (state: PerspectiveViewStateType) => Partial<PerspectiveViewStateType>;
       };
 
-const calculateStageStyle = (state: PerspectiveViewStateType): PerspectiveViewStateType => {
+const calculateStyle = (state: PerspectiveViewStateType): PerspectiveViewStateType => {
     return {
         ...state,
         stageStyle: {
             ...state.stageStyle,
-            transform: `translate(${state.stage.x}px, ${state.stage.y}px) scale(${state.stage.scale})`,
+            transform: `translate3d(${state.stage.x}px, ${state.stage.y}px, ${state.stage.z}px) rotateX(${state.stage.rotateX}deg) rotateY(${state.stage.rotateY}deg) rotateZ(${state.stage.rotateZ}deg) scale(${state.stage.scale})`,
+        },
+        frameStyle: {
+            perspective: state.lens.perspective,
         },
     };
 };
@@ -29,13 +32,13 @@ const calculateStageStyle = (state: PerspectiveViewStateType): PerspectiveViewSt
 export default function (state: PerspectiveViewStateType, action: PerspectiveViewActionType): PerspectiveViewStateType {
     console.log(action);
     if (action.type === PerspectiveViewActionTypeEnum.Update) {
-        return calculateStageStyle({
+        return calculateStyle({
             ...state,
             ...action.payload,
         });
     }
     if (action.type === PerspectiveViewActionTypeEnum.Updater) {
-        return calculateStageStyle({
+        return calculateStyle({
             ...state,
             ...action.payload(state),
         });

@@ -1,0 +1,3 @@
+.PerspectiveView .Frame * {
+    transform-style: preserve-3d;
+}

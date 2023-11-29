@@ -59,7 +59,6 @@ export const weightedRandom = <T extends any>(values: T[], weights: number[]) =>
             return values[i] as T;
         }
     }
-    console.log({ sum, rand, values, weights });
     throw new Error("Weighted random failed");
 };
 
@@ -154,7 +153,6 @@ const generatePeople = (
         const existingFamilies = Object.keys(families);
         const existingFamiliesWeights = existingFamilies.map((name) => getNewFamilyMemberWeight(families[name].length));
         // pick between existing family names and a new family name
-        console.log(existingFamilies, existingFamiliesWeights);
         const familyName = weightedRandom(
             existingFamilies.concat([newFamilyName]),
             existingFamiliesWeights.concat([newFamilyNameWeight])
@@ -165,10 +163,6 @@ const generatePeople = (
         removeIndexFromArray(availableFamilyNamesWeights, familyNameIndex);
         const lastName =
             gender === "male" ? familyName : familyNames.find(({ male }) => male === familyName)?.female || familyName;
-        console.log(
-            lastName,
-            familyNames.find(({ male }) => male === familyName)
-        );
 
         // pick first name
         const filteredFirstNamesWeights = [] as number[];

@@ -9,7 +9,7 @@ import PerspectiveViewProvider from "./components/PerspectiveViewProvider";
 export default function PerspectiveViewPrototype({ children }: PropsWithChildren) {
     return (
         <div
-            className="h-screen print:h-auto relative flex flex-col items-stretch overflow-auto bg-kac-blood-dark print:bg-white text-kac-steel-light print:text-kac-steel-dark font-kacBody"
+            className="h-screen print:h-auto relative flex flex-col items-stretch overflow-auto bg-black print:bg-white text-kac-steel-light print:text-kac-steel-dark font-kacBody"
             data-theme="KickAssCardsPrototype"
         >
             <PerspectiveViewProvider>

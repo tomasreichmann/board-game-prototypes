@@ -15,11 +15,11 @@ const getScaledCardSizeStyle = (cardSize: keyof typeof cardSizes, scale: number,
     };
 };
 
-export type RulesProps = {
+export type PrequelRulesProps = {
     isPrint?: boolean;
 };
 
-export default function Rules({ isPrint }: RulesProps) {
+export default function PrequelRules({ isPrint }: PrequelRulesProps) {
     return (
         <div className="flex flex-row flex-wrap">
             <Paper
@@ -108,9 +108,14 @@ export default function Rules({ isPrint }: RulesProps) {
                 >
                     <ol className="list-decimal pl-3 font-jd-prequel-body text-xs mb-2" start={3}>
                         <li>Keep the cards in the same order they were dealt.</li>
-                        <li>Make sure the cards are turned shitty side up.</li>
-                        <li>Pick a starting player.</li>
                         <li>
+                            Make sure the cards are turned shitty
+                            <br />
+                            side up.
+                        </li>
+                        <li>
+                            Pick a starting player:
+                            <br />
                             (the player right of the one who won the last round or the one who was in a pub the most
                             recently)
                         </li>
@@ -157,11 +162,11 @@ export default function Rules({ isPrint }: RulesProps) {
                 >
                     <h1 className="[font-size:inherit] font-jd-heading mb-1">Legend</h1>
                     <p className="text-xs font-jd-prequel-body leading-tight mb-2">
-                        ↻: Turn - from golden to shitty or vice versa
+                        ↻: TURN - from golden to shitty or vice versa
                     </p>
-                    <p className="text-xs font-jd-prequel-body leading-tight mb-2">💩: shitty - the violet side</p>
+                    <p className="text-xs font-jd-prequel-body leading-tight mb-2">💩: SHITTY - the violet side</p>
                     <p className="text-xs font-jd-prequel-body leading-tight mb-2">
-                        ⇄: exchange - replace a card with a different card, usually between players. Keep the
+                        ⇄: EXCHANGE - replace a card with a different card, usually between players. Keep the
                         orientation.
                     </p>
                     <h1 className="[font-size:inherit] font-jd-heading mb-1">The End</h1>
@@ -219,8 +224,8 @@ export default function Rules({ isPrint }: RulesProps) {
                         </div>
                         <div className="flex-1 ">
                             <p className="text-xs font-jd-prequel-body leading-tight mb-2">
-                                The goal of the game is to turn all the cards in your hand the golden side up. Whoever
-                                manages this at the end of anyone’s turn is the winner.
+                                <u>The goal of the game is to turn all the cards in your hand the golden side up.</u>{" "}
+                                Whoever manages this at the end of anyone’s turn is the winner.
                             </p>
                             <p className="text-xs font-jd-prequel-body leading-tight mb-2">
                                 It is best to play several rounds and whoever manages to win 3 rounds, they win the
@@ -274,7 +279,7 @@ export default function Rules({ isPrint }: RulesProps) {
                         </li>
                         <li>
                             Some cards appear to have a shitty and golden side from the back, but count as having both
-                            sides golden (get lucky) or both sides shitty (moist fart) for the purposes of both winning
+                            sides golden (GET LUCKY) or both sides shitty (MOIST FART) for the purposes of both winning
                             a round and effects of cards.
                         </li>
                     </ul>

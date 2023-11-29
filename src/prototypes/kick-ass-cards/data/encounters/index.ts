@@ -15,12 +15,14 @@ const LP = "Ledová pomsta";
 const LP_EN = "Cold Revenge";
 const ISV = "In Sanguine Veritas";
 
-const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({[key]: {
-    slug: key,
-    path: key,
-    campaign,
-    title,
-}});
+const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
+    [key]: {
+        slug: key,
+        path: key,
+        campaign,
+        title,
+    },
+});
 
 export const encountersMap: { [key: string]: EnounterDefinition } = {
     "KJB-act1-01-Intro": {
@@ -134,7 +136,8 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
         campaign: LP_EN,
         title: "LP-en-c2-a2-Spore-ship",
     },
-    ...makeEncounterDefinition('ISV-c0-a1-Prequel', "Prequel", ISV),
-    ...makeEncounterDefinition('ISV-c1-a0-Info', "Info", ISV),
+    ...makeEncounterDefinition("ISV-c0-a0-Prequel-GM-Info", "Prequel - Informace pro vypravěče", ISV),
+    ...makeEncounterDefinition("ISV-c0-a1-Prequel", "Prequel", ISV),
+    ...makeEncounterDefinition("ISV-c1-a0-Info", "Info", ISV),
 };
-console.log("encountersMap", encountersMap)
+console.log("encountersMap", encountersMap);

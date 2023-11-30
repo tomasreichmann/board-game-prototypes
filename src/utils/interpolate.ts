@@ -5,5 +5,5 @@ export default function interpolate(
     outputFrom: number,
     outputTo: number
 ) {
-    return outputFrom + (input - inputFrom) * ((outputTo - outputFrom) / (inputTo - inputFrom));
+    return outputFrom + ((outputTo - outputFrom) * (input - inputFrom)) / (inputTo - inputFrom);
 }

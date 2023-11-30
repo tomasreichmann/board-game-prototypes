@@ -1,100 +1,232 @@
-import react, { CSSProperties, HTMLAttributes, useCallback, useMemo } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
+import { PerspectiveViewStateType, initialPerspectiveViewState } from "./perspectiveViewModel";
+import { PerspectiveViewActionTypeEnum } from "./perspectiveViewReducer";
+import DataPreview from "../DataPreview";
 import useMeasure from "react-use-measure";
-import { twMerge } from "tailwind-merge";
-import ToggleData from "../DataToggle";
-import styles from "./PerspectiveView.module.css";
+import { usePerspectiveView } from "./PerspectiveViewProvider";
 
-export type PerspectiveViewProps = React.PropsWithChildren<
-    {
-        targetX?: number;
-        targetY?: number;
-        targetZ?: number;
-        rotateX?: number;
-        rotateY?: number;
-        rotateZ?: number;
-        showGrid?: boolean;
-        scale?: number;
-        onWrapperMouseMove?: (x: number, y: number, event: React.MouseEvent<HTMLDivElement>) => void;
-    } & HTMLAttributes<HTMLDivElement>
->;
+import "./PerspectiveView.css";
 
-const gridStyle: CSSProperties = {
-    left: "-200vw",
-    right: "-200vw",
-    top: "-200vh",
-    bottom: "-200vh",
-};
-const gridShadowStyle: CSSProperties = {
-    backgroundSize: "40px 40px",
-    backgroundImage: "radial-gradient(circle, #fff 1px, rgba(0, 0, 0, 0) 1px)",
-    backgroundPosition: "center center",
-    filter: "drop-shadow(1px 1px 1px black)",
+export type ControlItemProps = {
+    id: string;
+    label: React.ReactNode;
+    updater: (state: PerspectiveViewStateType, value: number) => Partial<PerspectiveViewStateType>;
+    getter: (state: PerspectiveViewStateType) => number;
+    min: number | ((state: PerspectiveViewStateType) => number);
+    max: number | ((state: PerspectiveViewStateType) => number);
+    step?: number;
 };
 
-export const PerspectiveView = ({ children, ...propsWithoutChildren }: PerspectiveViewProps) => {
-    const [ref, { width, height }] = useMeasure();
-    const {
-        className,
-        targetX = width / 2,
-        targetY = height / 2,
-        targetZ = 0,
-        rotateX = 0,
-        rotateY = 0,
-        rotateZ = 0,
-        scale = 1,
-        showGrid,
-        onWrapperMouseMove,
-        ...restProps
-    } = propsWithoutChildren;
-    const style = useMemo(() => {
-        return {
-            transformOrigin: `${targetX}px ${targetY}px ${-targetZ}px`,
-            transform: `translateX(${-targetX}px) translateY(${-targetY}px) translateZ(${-targetZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
-        };
-    }, [targetX, targetY, targetZ, rotateX, rotateY, rotateZ, width, height, scale]);
+const resolveValueOrGetter = <T, P extends Array<any>>(valueOrGetter: T | ((...params: P) => T), params: P) => {
+    if (typeof valueOrGetter === "function") {
+        return (valueOrGetter as (...params: P) => T)(...params);
+    }
+    return valueOrGetter;
+};
 
-    const onMouseMove = useCallback(
-        (event: React.MouseEvent<HTMLDivElement>) => {
-            const { clientX, clientY } = event;
-            if (
-                onWrapperMouseMove &&
-                "getBoundingClientRect" in event.target &&
-                typeof event.target.getBoundingClientRect === "function"
-            ) {
-                const componentRect = event.target.getBoundingClientRect();
-                const x = clientX - componentRect.left;
-                const y = clientY - componentRect.top;
-
-                onWrapperMouseMove(x, y, event);
-            }
-        },
-        [onWrapperMouseMove]
-    );
-
+export const ControlItem = ({ id, label, updater, getter, min, max, step = 1 }: ControlItemProps) => {
+    const { state, dispatch } = usePerspectiveView();
+    const value = getter(state);
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = parseFloat(event.target.value);
+        if (value !== getter(state)) {
+            dispatch({
+                type: PerspectiveViewActionTypeEnum.Updater,
+                payload: (state) => updater(state, value),
+            });
+        }
+    };
     return (
-        <div
-            ref={ref}
-            className={twMerge("PerspectiveView", styles.PerspectiveView, "overflow-hidden", className)}
-            style={{ perspective: 600 }}
-            onMouseMove={onWrapperMouseMove && onMouseMove}
-            {...restProps}
-        >
-            <div className="absolute w-0 h-0 left-1/2 top-1/2" style={style}>
-                {showGrid && (
-                    <div className="absolute bg-center opacity-75" style={gridStyle}>
-                        <div className="absolute left-0 top-0 w-full h-full" style={gridShadowStyle} />
-                        <div className="absolute left-1/2 top-1/2 h-[80px] w-[2px] ml-[-1px] mt-[-40px] bg-white opacity-25" />
-                        <div className="absolute left-1/2 top-1/2 h-[2px] w-[80px] ml-[-40px] mt-[-1px] bg-white opacity-25" />
-                    </div>
-                )}
-                {children}
-            </div>
-
-            <ToggleData
-                data={{ ...propsWithoutChildren, width, height }}
-                initialCollapsed
-                className="absolute right-2 bottom-2 flex flex-col-reverse items-end gap-2 -mb-2"
-            />
+        <div className="flex flex-row gap-2 items-start">
+            <label className="flex flex-col flex-1">
+                <span className="font-bold text-kac-steel">{label}</span>
+                <input
+                    id={id}
+                    type="range"
+                    onChange={onChange}
+                    value={value}
+                    min={resolveValueOrGetter(min, [state])}
+                    max={resolveValueOrGetter(max, [state])}
+                    step={step}
+                />
+            </label>
+            <button
+                className="text-kac-steel bg-kac-curse-dark font-bold px-3 py-1 rounded-sm border-0"
+                onClick={() =>
+                    dispatch({
+                        type: PerspectiveViewActionTypeEnum.Updater,
+                        payload: (state) => updater(state, getter(initialPerspectiveViewState)),
+                    })
+                }
+            >
+                ↺
+            </button>
         </div>
     );
 };
+
+const controlItems: ControlItemProps[] = [
+    {
+        id: "X",
+        label: "X",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                x: value,
+            },
+        }),
+        getter: (state) => state.stage.x,
+        min: (state) => -state.stage.width,
+        max: (state) => state.stage.width,
+    },
+    {
+        id: "Y",
+        label: "Y",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                y: value,
+            },
+        }),
+        getter: (state) => state.stage.y,
+        min: (state) => -state.stage.height,
+        max: (state) => state.stage.height,
+    },
+    {
+        id: "Z",
+        label: "Z",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                z: value,
+            },
+        }),
+        getter: (state) => state.stage.z,
+        min: -1000,
+        max: 1000,
+    },
+    {
+        id: "rotateX",
+        label: "Rotate X",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                rotateX: value,
+            },
+        }),
+        getter: (state) => state.stage.rotateX,
+        min: -180,
+        max: 180,
+    },
+    {
+        id: "rotateY",
+        label: "Rotate Y",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                rotateY: value,
+            },
+        }),
+        getter: (state) => state.stage.rotateY,
+        min: -180,
+        max: 180,
+    },
+    {
+        id: "rotateZ",
+        label: "Rotate Z",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                rotateZ: value,
+            },
+        }),
+        getter: (state) => state.stage.rotateZ,
+        min: -180,
+        max: 180,
+    },
+    {
+        id: "perspective",
+        label: "Perspective",
+        updater: (state, value) => ({
+            ...state,
+            lens: {
+                ...state.lens,
+                perspective: value,
+            },
+        }),
+        getter: (state) => state.lens.perspective,
+        min: 0,
+        max: 2000,
+    },
+    {
+        id: "depthOfField",
+        label: "Depth Of Field",
+        updater: (state, value) => ({
+            ...state,
+            lens: {
+                ...state.lens,
+                depthOfField: value,
+            },
+        }),
+        getter: (state) => state.lens.depthOfField,
+        min: 0,
+        max: 1000,
+    },
+    {
+        id: "scale",
+        label: "Scale",
+        updater: (state, value) => ({
+            ...state,
+            stage: {
+                ...state.stage,
+                scale: value,
+            },
+        }),
+        getter: (state) => state.stage.scale,
+        step: 0.1,
+        min: 0.1,
+        max: 10,
+    },
+];
+
+export type PerspectiveView = PropsWithChildren<{
+    showControls?: boolean;
+    showDebug?: boolean;
+}>;
+
+export default function PerspectiveView({ children, showControls, showDebug }: PerspectiveView) {
+    const { state, dispatch } = usePerspectiveView();
+    const [frameRef, frameRect] = useMeasure({ debounce: 100 });
+
+    useEffect(() => {
+        dispatch({
+            type: PerspectiveViewActionTypeEnum.Updater,
+            payload: (state) => ({ frame: { ...state.frame, width: frameRect.width, height: frameRect.height } }),
+        });
+    }, [frameRect.width, frameRect.height]);
+
+    return (
+        <div className="PerspectiveView w-full h-screen print:h-auto relative overflow-hidden">
+            <div
+                className="Frame absolute w-full h-full left-0 top-0 [transform-style:preserve-3d]"
+                ref={frameRef}
+                style={state.frameStyle}
+            >
+                {children}
+            </div>
+            {(showControls || showDebug) && (
+                <div className="absolute right-2 bottom-2 w-[400px] p-4 bg-[rgba(255,255,255,0.25)] flex flex-col gap-2">
+                    {showControls && controlItems.map((control) => <ControlItem key={control.id} {...control} />)}
+
+                    {showDebug && <DataPreview data={state} />}
+                </div>
+            )}
+        </div>
+    );
+}

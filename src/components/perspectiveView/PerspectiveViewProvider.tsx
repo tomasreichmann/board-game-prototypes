@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, createContext, useContext, useReducer } from "react";
-import { initialPerspectiveViewState, PerspectiveViewStateType } from "../model/perspectiveViewModel";
-import perspectiveViewReducer, { PerspectiveViewActionType } from "../model/perspectiveViewReducer";
+import { initialPerspectiveViewState, PerspectiveViewStateType } from "./perspectiveViewModel";
+import perspectiveViewReducer, { PerspectiveViewActionType } from "./perspectiveViewReducer";
 
 export type PerspectiveViewContextType = {
     state: PerspectiveViewStateType;

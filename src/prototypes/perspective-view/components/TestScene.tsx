@@ -1,8 +1,10 @@
 import React, { CSSProperties, PropsWithChildren, useEffect, useReducer } from "react";
-import perspectiveViewReducer, { PerspectiveViewActionTypeEnum } from "../model/perspectiveViewReducer";
+import perspectiveViewReducer, {
+    PerspectiveViewActionTypeEnum,
+} from "../../../components/PerspectiveView/perspectiveViewReducer";
 import { initialState } from "../../kick-ass-cards/components/machimagika/model/gameState";
-import { usePerspectiveView } from "./PerspectiveViewProvider";
-import Position, { PositionProps } from "./Position";
+import { usePerspectiveView } from "../../../components/PerspectiveView/PerspectiveViewProvider";
+import Position, { PositionProps } from "../../../components/PerspectiveView/Position";
 
 // import "./KickAssCardsPrototype.css";
 
@@ -25,9 +27,13 @@ export default function TestScene({ children }: PropsWithChildren) {
     useEffect(() => {
         dispatch({
             type: PerspectiveViewActionTypeEnum.Updater,
-            payload: (state) => ({ ...state, stage: { ...state.stage, width: 1920, height: 1080 } }),
+            payload: (state) => ({
+                ...state,
+                stage: { ...state.stage, width: 1920, height: 1080 },
+                lens: { ...state.lens, depthOfField: 250 },
+            }),
         });
-    });
+    }, []);
 
     return (
         <div className="TestScene w-[1920px] h-[1080px] border-2 border-kac-fire-light" style={state.stageStyle}>

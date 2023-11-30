@@ -21,6 +21,8 @@ const calculateStyle = (state: PerspectiveViewStateType): PerspectiveViewStateTy
         ...state,
         stageStyle: {
             ...state.stageStyle,
+            width: state.stage.width,
+            height: state.stage.height,
             transform: `translate3d(${state.stage.x}px, ${state.stage.y}px, ${state.stage.z}px) rotateX(${state.stage.rotateX}deg) rotateY(${state.stage.rotateY}deg) rotateZ(${state.stage.rotateZ}deg) scale(${state.stage.scale})`,
         },
         frameStyle: {

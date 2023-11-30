@@ -1,0 +1,11 @@
+.FireworksScene .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: FireworksSceneDash 2s linear forwards;
+}
+
+@keyframes FireworksSceneDash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}

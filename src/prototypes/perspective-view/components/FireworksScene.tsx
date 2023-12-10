@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, useEffect, useMemo, useRef, useState } from "react";
-import { PerspectiveViewActionTypeEnum } from "../../../components/PerspectiveView/perspectiveViewReducer";
-import { usePerspectiveView } from "../../../components/PerspectiveView/PerspectiveViewProvider";
-import Position, { PositionProps } from "../../../components/PerspectiveView/Position";
-import { PerspectiveViewStateType } from "../../../components/PerspectiveView/perspectiveViewModel";
+import { PerspectiveViewActionTypeEnum } from "../../../components/PerspectiveViewX/perspectiveViewReducer";
+import { usePerspectiveView } from "../../../components/PerspectiveViewX/PerspectiveViewProvider";
+import Position, { PositionProps } from "../../../components/PerspectiveViewX/Position";
+import { PerspectiveViewStateType } from "../../../components/PerspectiveViewX/perspectiveViewModel";
 import interpolate from "../../../utils/interpolate";
 import { clamp } from "lodash";
 

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect, useReducer } from "react";
-import { PerspectiveViewActionTypeEnum } from "../../../components/PerspectiveView/perspectiveViewReducer";
-import { usePerspectiveView } from "../../../components/PerspectiveView/PerspectiveViewProvider";
-import Position, { PositionProps } from "../../../components/PerspectiveView/Position";
+import { PerspectiveViewActionTypeEnum } from "../../../components/PerspectiveViewX/perspectiveViewReducer";
+import { usePerspectiveView } from "../../../components/PerspectiveViewX/PerspectiveViewProvider";
+import Position, { PositionProps } from "../../../components/PerspectiveViewX/Position";
 import useDragDelta from "../../../hooks/useDragDelta";
 import DataPreview from "../../../components/DataPreview";
 import { clamp } from "lodash";

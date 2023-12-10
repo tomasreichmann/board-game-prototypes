@@ -1,11 +1,11 @@
 import React, { PropsWithChildren, useEffect, useMemo } from "react";
 
 import { clamp } from "lodash";
-import { usePerspectiveView } from "../../../../components/PerspectiveView/PerspectiveViewProvider";
-import { PerspectiveViewActionTypeEnum } from "../../../../components/PerspectiveView/perspectiveViewReducer";
+import { usePerspectiveView } from "../../../../components/PerspectiveViewX/PerspectiveViewProvider";
+import { PerspectiveViewActionTypeEnum } from "../../../../components/PerspectiveViewX/perspectiveViewReducer";
 import useDragDelta from "../../../../hooks/useDragDelta";
 import uuid from "../../../../utils/uuid";
-import Position from "../../../../components/PerspectiveView/Position";
+import Position from "../../../../components/PerspectiveViewX/Position";
 import resolveRandom, { DeepRandomType } from "../../generators/resolveRandom";
 import traitsData from "../../data/traits-cs-cleaned";
 import getCardSize from "../../../../utils/getCardSize";
@@ -17,7 +17,7 @@ import {
     BoardContentItemType,
     BoardContentItemTypeEnum,
 } from "../../../../components/PerspectiveBoard/perspectiveBoardModel";
-import { getCenterPan } from "../../../../components/PerspectiveView/utils";
+import { getCenterPan } from "../../../../components/PerspectiveViewX/utils";
 import { getScaleFromZ, moveContentTo } from "../../../../components/PerspectiveBoard/utils";
 import randomUniqueItems from "../../../../utils/randomUniqueItems";
 import { ActorCardEditableProps } from "./content/ActorCard";

@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import { usePerspectiveBoard } from "./PerspectiveBoardProvider";
-import { BoardContentItemType, BoardPositionItemType } from "./perspectiveBoardModel";
+import { BoardPositionItemType } from "./perspectiveBoardModel";
 import DataPreview from "../DataPreview";
 import { PerspectiveBoardActionTypeEnum } from "./perspectiveBoardReducer";
-import { DragDeltaType } from "../PerspectiveView/Position";
+import { DragDeltaType } from "../PerspectiveViewX/Position";
 
 export type ContentItemProps = BoardPositionItemType & { draggable?: boolean };
 

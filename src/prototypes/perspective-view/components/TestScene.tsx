@@ -1,10 +1,10 @@
 import React, { CSSProperties, PropsWithChildren, useEffect, useReducer } from "react";
 import perspectiveViewReducer, {
     PerspectiveViewActionTypeEnum,
-} from "../../../components/PerspectiveViewX/perspectiveViewReducer";
+} from "../../../components/PerspectiveView/perspectiveViewReducer";
 import { initialState } from "../../kick-ass-cards/components/machimagika/model/gameState";
-import { usePerspectiveView } from "../../../components/PerspectiveViewX/PerspectiveViewProvider";
-import Position, { PositionProps } from "../../../components/PerspectiveViewX/Position";
+import { usePerspectiveView } from "../../../components/PerspectiveView/PerspectiveViewProvider";
+import Position, { PositionProps } from "../../../components/PerspectiveView/Position";
 
 // import "./KickAssCardsPrototype.css";
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Navigation } from "../Navigation";
-import PerspectiveViewProvider from "../../../../components/PerspectiveViewX/PerspectiveViewProvider";
-import PerspectiveView from "../../../../components/PerspectiveViewX/PerspectiveView";
-import Position from "../../../../components/PerspectiveViewX/Position";
+import PerspectiveViewProvider from "../../../../components/PerspectiveView/PerspectiveViewProvider";
+import PerspectiveView from "../../../../components/PerspectiveView/PerspectiveView";
+import Position from "../../../../components/PerspectiveView/Position";
 import Paper, { PaperProps } from "../../../../components/print/Paper/Paper";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import { PositionProps } from "../../../../components/perspectiveViewDeprecated/Position";

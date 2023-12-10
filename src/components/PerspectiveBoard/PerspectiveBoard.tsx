@@ -3,7 +3,7 @@ import { usePerspectiveBoard } from "./PerspectiveBoardProvider";
 import { BoardPositionItemType } from "./perspectiveBoardModel";
 import DataPreview from "../DataPreview";
 import { PerspectiveBoardActionTypeEnum } from "./perspectiveBoardReducer";
-import { DragDeltaType } from "../PerspectiveViewX/Position";
+import { DragDeltaType } from "../PerspectiveView/Position";
 
 export type ContentItemProps = BoardPositionItemType & { draggable?: boolean };
 

@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import { Outlet } from "react-router-dom";
 import { RouteDefinition } from "../../routeTypes";
-import PerspectiveView from "../../components/PerspectiveViewX/PerspectiveView";
-import PerspectiveViewProvider from "../../components/PerspectiveViewX/PerspectiveViewProvider";
+import PerspectiveView from "../../components/PerspectiveView/PerspectiveView";
+import PerspectiveViewProvider from "../../components/PerspectiveView/PerspectiveViewProvider";
 import MapScene from "./components/MapScene";
 import TestScene from "./components/TestScene";
 

@@ -1,5 +1,5 @@
 import React, { ComponentProps, useEffect } from "react";
-import Position from "../../../../../components/PerspectiveViewX/Position";
+import Position from "../../../../../components/PerspectiveView/Position";
 import DataPreview from "../../../../../components/DataPreview";
 import ActorCard, { ActorCardEditable } from "./ActorCard";
 import TraitCard from "./TraitCard";
@@ -7,8 +7,8 @@ import { ContentItemProps } from "../../../../../components/PerspectiveBoard/Per
 import useDragDelta from "../../../../../hooks/useDragDelta";
 import { getScaleFromZ } from "../../../../../components/PerspectiveBoard/utils";
 import { usePerspectiveBoard } from "../../../../../components/PerspectiveBoard/PerspectiveBoardProvider";
-import { usePerspectiveView } from "../../../../../components/PerspectiveViewX/PerspectiveViewProvider";
-import { PerspectiveViewActionTypeEnum } from "../../../../../components/PerspectiveViewX/perspectiveViewReducer";
+import { usePerspectiveView } from "../../../../../components/PerspectiveView/PerspectiveViewProvider";
+import { PerspectiveViewActionTypeEnum } from "../../../../../components/PerspectiveView/perspectiveViewReducer";
 import { PerspectiveBoardActionTypeEnum } from "../../../../../components/PerspectiveBoard/perspectiveBoardReducer";
 
 export type ComponentDefinitionType<ComponentName extends keyof typeof componentMap> = {

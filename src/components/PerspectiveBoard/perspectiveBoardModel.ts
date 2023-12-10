@@ -1,4 +1,4 @@
-import { PositionType } from "../PerspectiveViewX/Position";
+import { PositionType } from "../PerspectiveView/Position";
 
 export type BoardPositionType = Omit<PositionType, "scale"> & {
     width: number;

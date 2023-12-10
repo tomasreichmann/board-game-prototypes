@@ -31,7 +31,10 @@ const calculateStyle = (state: PerspectiveViewStateType): PerspectiveViewStateTy
     };
 };
 
-export default function (state: PerspectiveViewStateType, action: PerspectiveViewActionType): PerspectiveViewStateType {
+export default function perspectiveViewReducer(
+    state: PerspectiveViewStateType,
+    action: PerspectiveViewActionType
+): PerspectiveViewStateType {
     console.log(action);
     if (action.type === PerspectiveViewActionTypeEnum.Update) {
         return calculateStyle({

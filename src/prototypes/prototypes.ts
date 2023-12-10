@@ -8,6 +8,7 @@ import JustDwarvesPrototype, {
     justDwarvesSubRoutes,
 } from "./just-dwarves/JustDwarvesPrototype";
 import { perspectiveViewPrototypeRoute } from "./perspective-view/PerspectiveViewPrototype";
+import { subViewPrototypeRoute } from "./sub-view/SubViewPrototype";
 
 const prototypes: RouteDefinition[] = [
     {
@@ -28,6 +29,7 @@ const prototypes: RouteDefinition[] = [
         children: justDwarvesSubRoutes,
     },
     perspectiveViewPrototypeRoute,
+    subViewPrototypeRoute,
 ];
 
 export default prototypes;

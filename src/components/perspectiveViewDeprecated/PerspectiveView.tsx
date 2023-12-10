@@ -34,7 +34,7 @@ const gridShadowStyle: CSSProperties = {
 /**
  * @deprecated This is deprecated, use the src/PerspectiveView/PerspectiveView instead.
  */
-export const PerspectiveView = ({ children, ...propsWithoutChildren }: PerspectiveViewProps) => {
+export const PerspectiveViewDeprecated = ({ children, ...propsWithoutChildren }: PerspectiveViewProps) => {
     const [ref, { width, height }] = useMeasure();
     const {
         className,

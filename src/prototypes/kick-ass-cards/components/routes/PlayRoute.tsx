@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Navigation } from "../Navigation";
-import { PerspectiveView, PerspectiveViewProps } from "../../../../components/perspectiveView/PerspectiveView";
+import {
+    PerspectiveViewDeprecated,
+    PerspectiveViewProps,
+} from "../../../../components/perspectiveViewDeprecated/PerspectiveView";
 import EffectCard from "../gameComponents/EffectCard";
 
 import effects from "../../data/effects.csv";
-import { Position } from "../../../../components/perspectiveView/Position";
+import { Position } from "../../../../components/perspectiveViewDeprecated/Position";
 import Spread from "../layout/Spread";
 import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
-import { PerspectiveCard, PerspectiveCardProps } from "../../../../components/perspectiveView/PerspectiveCard";
+import {
+    PerspectiveCard,
+    PerspectiveCardProps,
+} from "../../../../components/perspectiveViewDeprecated/PerspectiveCard";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import SceneRouter from "../machimagika/scene/SceneRouter";
 import { GameContextProvider } from "../machimagika/model/GameContext";
@@ -44,7 +50,7 @@ export default function MachimagikaRoute() {
             {/* <GameContextProvider>
                 <SceneRouter />
             </GameContextProvider> */}
-            <PerspectiveView
+            <PerspectiveViewDeprecated
                 className="w-full h-full z-0"
                 showGrid
                 targetX={0}
@@ -96,7 +102,7 @@ export default function MachimagikaRoute() {
                         className="w-[2000px] h-[2000px] max-w-none max-h-none"
                     />
                 </Position>
-            </PerspectiveView>
+            </PerspectiveViewDeprecated>
             <div className="absolute left-2 bottom-2 z-20 flex flex-col gap-2">
                 <Button
                     size="xs"

@@ -1,10 +1,10 @@
-import React, { CSSProperties, HTMLAttributes, PropsWithChildren, useEffect, useReducer } from "react";
+import React, { CSSProperties, HTMLAttributes, PropsWithChildren, useEffect, useMemo, useReducer } from "react";
 import { usePerspectiveView } from "./PerspectiveViewProvider";
 import { PerspectiveViewStateType } from "./perspectiveViewModel";
 import interpolate from "../../utils/interpolate";
 import clsx from "clsx";
 
-export type PositionProps = PropsWithChildren<{
+export type PositionType = {
     x: number;
     y: number;
     z: number;
@@ -14,8 +14,16 @@ export type PositionProps = PropsWithChildren<{
     rotateY?: number;
     rotateZ?: number;
     scale?: number;
-}> &
-    HTMLAttributes<HTMLDivElement>;
+};
+
+export type DragDeltaType = {
+    deltaX: number;
+    deltaY: number;
+    scaledDeltaX: number;
+    scaledDeltaY: number;
+};
+
+export type PositionProps = PropsWithChildren<PositionType> & HTMLAttributes<HTMLDivElement>;
 
 const getStyle = (
     state: PerspectiveViewStateType,
@@ -55,9 +63,12 @@ const getStyle = (
 };
 
 export default function Position(props: PositionProps) {
-    const { x, y, z, width, height, rotateX, rotateY, rotateZ, scale, className, children, ...restProps } = props;
+    const { x, y, z, width, height, rotateX, rotateY, rotateZ, scale, className, children, draggable, ...restProps } =
+        props;
     const { state } = usePerspectiveView();
+
     const computedStyle = getStyle(state, props);
+
     if (computedStyle.display === "none") {
         return null;
     }

@@ -1,6 +1,7 @@
 import { range } from "lodash";
 import generateWord, { GenerateWordOptionsType } from "./generateWord";
-import ArrayItem from "../../../utils/ArrayItemType";
+import randomNumber from "../../../utils/randomNumber";
+import randomItem from "../../../utils/randomItem";
 
 export type DeepRandomUnresolvedType<T> =
     | DeepRandomValueType<T>
@@ -58,21 +59,6 @@ export type Resolver<T, R> = (
     reference?: R,
     resolver?: Resolver<T, R>
 ) => ResolveResultType<DeepRandomType<T>> | T;
-
-export const randomNumber = (min: number = 0, max: number = 0, precision: number = 1) => {
-    const preciseValue = Math.random() * (max - min + precision) + min;
-    if (precision === 0) {
-        return preciseValue;
-    }
-    return Math.max(Math.min(Math.floor(preciseValue / precision) * precision, max), min);
-};
-
-export const randomValue = <T extends any>(values: T[]) => {
-    if (values.length === 0) {
-        return null;
-    }
-    return values[Math.floor(Math.random() * values.length)];
-};
 
 export const weightedRandom = <T extends any>(weightedValues: DeepRandomWeightedType<T>["_rWeighted"]) => {
     let sum = 0;
@@ -238,7 +224,7 @@ const resolveRandom = <T, R>(
             }
             return true;
         });
-        const arrayResult = randomValue(filteredOptions);
+        const arrayResult = randomItem(filteredOptions);
         if (arrayResult !== null) {
             return currentResolver(arrayResult, reference);
         }

@@ -1,54 +1,54 @@
-"male","female","neutral",positiveRating
-agresivní,agresivní,agresivní,-2
-chamtivý,chamtivá,chamtivé,-1
-charismatický,charismatická,charismatické,2
-chytrý,chytrá,chytré,2
-děsivý,děsivá,děsivé,-2
-dobrodružný,dobrodružná,dobrodružné,1
-hloupý,hloupá,hloupé,-2
-klidný,klidná,klidné,1
-kreativní,kreativní,kreativní,2
-krutý,krutá,kruté,2
-lehkomyslný,lehkomyslná,lehkomyslné,1
-loajální,loajální,loajální,1
-malicherný,malicherná,malicherné,-1
-moudrý,moudrá,moudré,2
-náladový,náladová,náladové,-1
-nečestný,nečestná,nečestné,-2
-nemilosrdný,nemilosrdná,nemilosrdné,-2
-neohrabaný,neohrabaná,neohrabané,-1
-nezdvořilý,nezdvořilá,nezdvořilé,-1
-obětavý,obětavá,obětavé,1
-ochraňující,ochraňující,ochraňující,1
-odolný,odolná,odolné,2
-odvážný,odvážná,odvážné,2
-optimistický,optimistická,optimistické,1
-organizovaný,organizovaná,organizované,1
-pesimistický,pesimistická,pesimistické,-1
-podnikavý,podnikavá,podnikavé,2
-pracovitý,pracovitá,pracovité,2
-přátelský,přátelská,přátelské,2
-přemýšlivý,přemýšlivá,přemýšlivé,1
-protivný,protivná,protivné,-1
-rodinný,rodinná,rodinné,1
-roztahovačný,roztahovačná,roztahovačné,-1
-sadistický,sadistická,sadistické,-2
-slušný,slušná,slušné,1
-sobecký,sobecká,sobecké,-1
-soustředěný,soustředěná,soustředěné,1
-spirituální,spirituální,spirituální,0
-spolehlivý,spolehlivá,spolehlivé,1
-spravedlivý,spravedlivá,spravedlivé,1
-štědrý,štědrá,štědré,1
-tichý,tichá,tiché,0
-trpělivý,trpělivá,trpělivé,1
-upřímný,upřímná,upřímné,1
-úzkostlivý,úzkostlivá,úzkostlivé,-1
-vášnivý,vášnivá,vášnivé,1
-vážný,vážná,vážné,0
-veselý,veselá,veselé,1
-vůdčí,vůdčí,vůdčí,2
-vynalézavý,vynalézavá,vynalézavé,2
-vytrvalý,vytrvalá,vytrvalé,2
-zbabělý,zbabělá,zbabělé,-2
-zlomyslný,zlomyslná,zlomyslné,-1
+"imageUri","male","female","neutral","positiveRating","frequency","visualDescription"
+"/WB/traits/aggressive.png",agresivní,agresivní,agresivní,-2,3,aggressive man gritting teeth
+"/WB/traits/greedy.png",chamtivý,chamtivá,chamtivé,-1,2,greedy man hugging a pile of coins
+"/WB/traits/charismatic.png",charismatický,charismatická,charismatické,2,2,friendly proud charismatic leader
+"/WB/traits/smart.png",chytrý,chytrá,chytré,2,2,focused scholar thinking
+"/WB/traits/frightening.png",děsivý,děsivá,děsivé,-2,3,scary big deformed frightning man
+"/WB/traits/adventurous.png",dobrodružný,dobrodružná,dobrodružné,1,1,excited adventurer
+"/WB/traits/stupid.png",hloupý,hloupá,hloupé,-2,2,stupid boy with blank expression
+"/WB/traits/calm.png",klidný,klidná,klidné,1,1,calm girl with closed eyes meditating
+"/WB/traits/creative.png",kreativní,kreativní,kreativní,2,1,creative artist holding a paintbrush
+"/WB/traits/cruel.png",krutý,krutá,kruté,2,2,cruel evil kid
+"/WB/traits/reckless.png",lehkomyslný,lehkomyslná,lehkomyslné,1,2,reckless boy jumping up
+"/WB/traits/loyal.png",loajální,loajální,loajální,1,2,optimistic loyal man saluting
+"/WB/traits/petty.png",malicherný,malicherná,malicherné,-1,1,concerned annoyed woman
+"/WB/traits/wise.png",moudrý,moudrá,moudré,2,2,wise old scholar
+"/WB/traits/moody.png",náladový,náladová,náladové,-1,2,moody young woman half sad half happy
+"/WB/traits/dishonest.png",nečestný,nečestná,nečestné,-2,2,mischevious boy lying looking to the side
+"/WB/traits/ruthless.png",nemilosrdný,nemilosrdná,nemilosrdné,-2,2,ruthless man frowning looking straight
+"/WB/traits/clumsy.png",neohrabaný,neohrabaná,neohrabané,-1,1,boy tripping and falling
+"/WB/traits/impolite.png",nezdvořilý,nezdvořilá,nezdvořilé,-1,2,boy sticking out tongue with eyes closed
+"/WB/traits/devoted.png",obětavý,obětavá,obětavé,1,1,pious woman praying
+"/WB/traits/protective.png",ochraňující,ochraňující,ochraňující,1,1,mother hugging a child
+"/WB/traits/resistant.png",odolný,odolná,odolné,2,1,stoic strong man
+"/WB/traits/courageous.png",odvážný,odvážná,odvážné,2,1,courageous hero with chin up
+"/WB/traits/optimistic.png",optimistický,optimistická,optimistické,1,1,optimistic happy boy daydreaming
+"/WB/traits/organized.png",organizovaný,organizovaná,organizované,1,1,confident calm woman looking straight
+"/WB/traits/pessimistic.png",pesimistický,pesimistická,pesimistické,-1,1,sad pessimistic boy with a pouty face
+"/WB/traits/enterprising.png",podnikavý,podnikavá,podnikavé,2,1,a mechant has an idea
+"/WB/traits/hardworking.png",pracovitý,pracovitá,pracovité,2,1,a hard working farmer
+"/WB/traits/friendly.png",přátelský,přátelská,přátelské,2,2,nice welcoming barmaid
+"/WB/traits/thinking.png",přemýšlivý,přemýšlivá,přemýšlivé,1,1,scholar lost in thought
+"/WB/traits/obnoxious.png",protivný,protivná,protivné,-1,1,obnoxious boy complaining
+"/WB/traits/family.png",rodinný,rodinná,rodinné,1,1,father and a son standing side by side
+"/WB/traits/expansive.png",roztahovačný,roztahovačná,roztahovačné,-1,1,squinting greedy man reaching for something
+"/WB/traits/sadistic.png",sadistický,sadistická,sadistické,-2,1,sadistic man with an evil grin
+"/WB/traits/decent.png",slušný,slušná,slušné,1,1,calm stoic old noble woman
+"/WB/traits/selfish.png",sobecký,sobecká,sobecké,-1,2,selfish girl looking into mirror
+"/WB/traits/focused.png",soustředěný,soustředěná,soustředěné,1,1,focused student writing into a notebook
+"/WB/traits/spiritual.png",spirituální,spirituální,spirituální,0,2,woman sitting in a lotus position and medita
+"/WB/traits/reliable.png",spolehlivý,spolehlivá,spolehlivé,1,1,middle aged man offering a hand with a neutr
+"/WB/traits/just.png",spravedlivý,spravedlivá,spravedlivé,1,1,a fair judge
+"/WB/traits/generous.png",štědrý,štědrá,štědré,1,1,kind woman offering bread
+"/WB/traits/quiet.png",tichý,tichá,tiché,0,1,quiet girl looking down
+"/WB/traits/patient.png",trpělivý,trpělivá,trpělivé,1,1,patient man sitting down politely
+"/WB/traits/sincere.png",upřímný,upřímná,upřímné,1,1,woman sincerely talking
+"/WB/traits/anxious.png",úzkostlivý,úzkostlivá,úzkostlivé,-1,1,anxious worried boy
+"/WB/traits/passionate.png",vášnivý,vášnivá,vášnivé,1,2,pretty young girl with a lustful expression
+"/WB/traits/serious.png",vážný,vážná,vážné,0,2,middle aged man with a serious expression
+"/WB/traits/cheerful.png",veselý,veselá,veselé,1,2,cheerful young girl enjoying life
+"/WB/traits/leader.png",vůdčí,vůdčí,vůdčí,2,2,serious nobleman
+"/WB/traits/inventive.png",vynalézavý,vynalézavá,vynalézavé,2,1,inventive scholar drawing a schematic
+"/WB/traits/persistent.png",vytrvalý,vytrvalá,vytrvalé,2,1,focussed persistent man slightly frowning
+"/WB/traits/cowardly.png",zbabělý,zbabělá,zbabělé,-2,1,cowardly scared man sneaking
+"/WB/traits/malicious.png",zlomyslný,zlomyslná,zlomyslné,-1,2,malicious man with an evil grin

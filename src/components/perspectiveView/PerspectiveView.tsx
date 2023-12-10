@@ -6,6 +6,7 @@ import useMeasure from "react-use-measure";
 import { usePerspectiveView } from "./PerspectiveViewProvider";
 
 import "./PerspectiveView.css";
+import resolveValueOrGetter from "../../utils/resolveValueOrGetter";
 
 export type ControlItemProps = {
     id: string;
@@ -15,13 +16,6 @@ export type ControlItemProps = {
     min: number | ((state: PerspectiveViewStateType) => number);
     max: number | ((state: PerspectiveViewStateType) => number);
     step?: number;
-};
-
-const resolveValueOrGetter = <T, P extends Array<any>>(valueOrGetter: T | ((...params: P) => T), params: P) => {
-    if (typeof valueOrGetter === "function") {
-        return (valueOrGetter as (...params: P) => T)(...params);
-    }
-    return valueOrGetter;
 };
 
 export const ControlItem = ({ id, label, updater, getter, min, max, step = 1 }: ControlItemProps) => {
@@ -39,7 +33,7 @@ export const ControlItem = ({ id, label, updater, getter, min, max, step = 1 }: 
     return (
         <div className="flex flex-row gap-2 items-start">
             <label className="flex flex-col flex-1">
-                <span className="font-bold text-kac-steel">{label}</span>
+                <span className="font-bold text-kac-iron">{label}</span>
                 <input
                     id={id}
                     type="range"
@@ -195,12 +189,12 @@ const controlItems: ControlItemProps[] = [
     },
 ];
 
-export type PerspectiveView = PropsWithChildren<{
+export type PerspectiveViewProps = PropsWithChildren<{
     showControls?: boolean;
     showDebug?: boolean;
 }>;
 
-export default function PerspectiveView({ children, showControls, showDebug }: PerspectiveView) {
+export default function PerspectiveView({ children, showControls, showDebug }: PerspectiveViewProps) {
     const { state, dispatch } = usePerspectiveView();
     const [frameRef, frameRect] = useMeasure({ debounce: 100 });
 
@@ -212,7 +206,7 @@ export default function PerspectiveView({ children, showControls, showDebug }: P
     }, [frameRect.width, frameRect.height]);
 
     return (
-        <div className="PerspectiveView w-full h-screen print:h-auto relative overflow-hidden">
+        <div className="PerspectiveView w-full h-full print:h-auto relative overflow-hidden">
             <div
                 className="Frame absolute w-full h-full left-0 top-0 [transform-style:preserve-3d]"
                 ref={frameRef}

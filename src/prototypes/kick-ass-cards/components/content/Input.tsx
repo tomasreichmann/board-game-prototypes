@@ -7,6 +7,17 @@ const variants = cva(["Input", "w-full", "max-w-xs"], {
     variants: {
         type: {
             text: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            password: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            email: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            number: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            date: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            datetime: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            checkbox: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            radio: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            file: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            month: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            time: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            week: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
         },
         disabled: {
             true: ["pointer-events-none"],
@@ -25,7 +36,6 @@ export type InputProps = React.PropsWithChildren<{
         | "text"
         | "password"
         | "email"
-        | "number"
         | "date"
         | "datetime-local"
         | "checkbox"
@@ -35,7 +45,7 @@ export type InputProps = React.PropsWithChildren<{
         | "time"
         | "week";
 }> &
-    InputHTMLAttributes<HTMLInputElement> &
+    Omit<InputHTMLAttributes<HTMLInputElement>, "type"> &
     VariantProps<typeof variants>;
 
 export default function Input({ className, children, label, type, disabled, error, ...restProps }: InputProps) {

@@ -5,12 +5,15 @@ import {
     PerspectiveBoardStateType,
     BoardPositionItemType,
     SpreadItemType,
+    ComponentDefinitionType,
+    BoardContentItemType,
 } from "./perspectiveBoardModel";
 
 export enum PerspectiveBoardActionTypeEnum {
     Update = "Update",
     Drag = "Drag",
     Updater = "Updater",
+    ContentUpdater = "ContentUpdater",
 }
 
 export type PerspectiveBoardActionType =
@@ -25,11 +28,22 @@ export type PerspectiveBoardActionType =
     | {
           type: PerspectiveBoardActionTypeEnum.Drag;
           payload: {
-              id: string;
+              componentId: string;
               delta: {
                   x: number;
                   y: number;
               };
+          };
+      }
+    | {
+          type: PerspectiveBoardActionTypeEnum.ContentUpdater;
+          payload: {
+              componentId: string;
+              updater: (
+                  component: ComponentDefinitionType,
+                  content: BoardContentItemType,
+                  state: PerspectiveBoardStateType
+              ) => Partial<ComponentDefinitionType>;
           };
       };
 
@@ -88,7 +102,7 @@ export default function perspectiveBoardReducer(
     state: PerspectiveBoardStateType,
     action: PerspectiveBoardActionType
 ): PerspectiveBoardStateType {
-    console.log(action);
+    // console.log(action);
     if (action.type === PerspectiveBoardActionTypeEnum.Update) {
         return calculateItems({
             ...state,
@@ -102,10 +116,11 @@ export default function perspectiveBoardReducer(
         });
     }
     if (action.type === PerspectiveBoardActionTypeEnum.Drag) {
-        const { id, delta } = action.payload;
-        const contentIndex = findContentItemIndexByComponentId(state, id);
-        if (contentIndex !== -1) {
-            console.warn("Content item not found", id);
+        const { componentId, delta } = action.payload;
+        const contentIndex = findContentItemIndexByComponentId(state, componentId);
+        if (contentIndex === -1) {
+            console.warn("Component not found", componentId);
+            return state;
         }
         return calculateItems({
             ...state,
@@ -119,6 +134,45 @@ export default function perspectiveBoardReducer(
                         y: state.content[contentIndex].position.y + delta.y,
                     },
                 },
+                ...state.content.slice(contentIndex + 1),
+            ],
+        });
+    }
+    if (action.type === PerspectiveBoardActionTypeEnum.ContentUpdater) {
+        const { componentId, updater } = action.payload;
+        const contentIndex = findContentItemIndexByComponentId(state, componentId);
+        if (contentIndex === -1) {
+            console.warn("Component not found", componentId);
+            return state;
+        }
+        const matchingContentItem = state.content[contentIndex];
+
+        const newContentItem =
+            "component" in matchingContentItem
+                ? {
+                      ...matchingContentItem,
+                      component: {
+                          ...matchingContentItem.component,
+                          ...updater(matchingContentItem.component, matchingContentItem, state),
+                      },
+                  }
+                : {
+                      ...matchingContentItem,
+                      components: matchingContentItem.components.map((component) => {
+                          if (component.id === componentId) {
+                              return {
+                                  ...component,
+                                  ...updater(component, matchingContentItem, state),
+                              };
+                          }
+                          return component;
+                      }),
+                  };
+        return calculateItems({
+            ...state,
+            content: [
+                ...state.content.slice(0, contentIndex),
+                newContentItem,
                 ...state.content.slice(contentIndex + 1),
             ],
         });

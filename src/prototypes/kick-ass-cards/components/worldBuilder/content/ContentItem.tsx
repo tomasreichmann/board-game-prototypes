@@ -1,7 +1,7 @@
 import React, { ComponentProps, useEffect } from "react";
 import Position from "../../../../../components/PerspectiveView/Position";
 import DataPreview from "../../../../../components/DataPreview";
-import ActorCard from "./ActorCard";
+import ActorCard, { ActorCardEditable } from "./ActorCard";
 import TraitCard from "./TraitCard";
 import { ContentItemProps } from "../../../../../components/PerspectiveBoard/PerspectiveBoard";
 import useDragDelta from "../../../../../hooks/useDragDelta";
@@ -18,6 +18,7 @@ export type ComponentDefinitionType<ComponentName extends keyof typeof component
 
 const componentMap = {
     ActorCard,
+    ActorCardEditable,
     TraitCard,
     default: ({ componentName, ...props }: { [key: string]: any }) => (
         <div className="flex flex-col gap-">
@@ -47,7 +48,7 @@ export default function ContentItem({ componentName, id, props, draggable, ...po
         boardDispatch({
             type: PerspectiveBoardActionTypeEnum.Drag,
             payload: {
-                id,
+                componentId: id,
                 delta: {
                     x: delta.x * dragDeltaScale,
                     y: delta.y * dragDeltaScale,

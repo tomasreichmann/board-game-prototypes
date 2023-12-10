@@ -1,14 +1,13 @@
-import React, { PropsWithChildren, useEffect, useMemo, useReducer } from "react";
+import React, { PropsWithChildren, useEffect, useMemo } from "react";
 
-import { clamp, range } from "lodash";
+import { clamp } from "lodash";
 import { usePerspectiveView } from "../../../../components/PerspectiveView/PerspectiveViewProvider";
 import { PerspectiveViewActionTypeEnum } from "../../../../components/PerspectiveView/perspectiveViewReducer";
 import useDragDelta from "../../../../hooks/useDragDelta";
 import uuid from "../../../../utils/uuid";
-import Position, { PositionProps } from "../../../../components/PerspectiveView/Position";
-import resolveRandom, { DeepRandomRangeType, DeepRandomType } from "../../generators/resolveRandom";
+import Position from "../../../../components/PerspectiveView/Position";
+import resolveRandom, { DeepRandomType } from "../../generators/resolveRandom";
 import traitsData from "../../data/traits-cs-cleaned";
-import DataPreview from "../../../../components/DataPreview";
 import getCardSize from "../../../../utils/getCardSize";
 import PerspectiveBoard from "../../../../components/PerspectiveBoard/PerspectiveBoard";
 import ContentItem from "./content/ContentItem";
@@ -21,6 +20,7 @@ import {
 import { getCenterPan } from "../../../../components/PerspectiveView/utils";
 import { getScaleFromZ, moveContentTo } from "../../../../components/PerspectiveBoard/utils";
 import randomUniqueItems from "../../../../utils/randomUniqueItems";
+import { ActorCardEditableProps } from "./content/ActorCard";
 
 // import "./KickAssCardsPrototype.css";
 const gapSize = 10;
@@ -49,19 +49,26 @@ const sizeMap = {
     Trait: miniCardSize,
 };
 
-const strahdCardItem: BoardContentItemType = {
-    type: BoardContentItemTypeEnum.Single,
+const strahdCardItem = {
+    type: BoardContentItemTypeEnum.Single as const,
     position: { x: 0, y: 0, z: 0, width: sizeMap.Actor.width, height: sizeMap.Actor.height, draggable: true },
     component: {
         id: "strahd",
         width: sizeMap.Actor.width,
         height: sizeMap.Actor.height,
-        componentName: "ActorCard",
+        componentName: "ActorCardEditable",
         props: {
-            name: "Count Strahd von Zarovich",
-            currentPower: 10,
-            imageUri: "/ISV/minis/vampire1.jpg",
-        },
+            editing: true,
+            preview: true,
+            onEditToggle: () => {},
+            onChange: () => {},
+            props: {
+                className: "z-20",
+                name: "Count Strahd von Zarovich",
+                currentPower: 10,
+                imageUri: "/ISV/minis/vampire1.jpg",
+            },
+        } as ActorCardEditableProps,
     },
 };
 
@@ -147,10 +154,58 @@ export default function WorldScene({
         });
     };
 
-    const traits = useMemo(() => getTraits(3), []);
-
     useEffect(() => {
-        const strahdCardContent = moveContentTo(strahdCardItem, { x: centerPan.x + gapSize, y: centerPan.y + gapSize });
+        const strahdCardContent = moveContentTo(
+            {
+                ...strahdCardItem,
+                component: {
+                    ...strahdCardItem.component,
+                    props: {
+                        ...strahdCardItem.component.props,
+                        onEditToggle: () => {
+                            boardDispatch({
+                                type: PerspectiveBoardActionTypeEnum.ContentUpdater,
+                                payload: {
+                                    componentId: "strahd",
+                                    updater: (component) => {
+                                        return {
+                                            ...component,
+                                            props: {
+                                                ...component.props,
+                                                editing: !component.props.editing,
+                                            },
+                                        };
+                                    },
+                                },
+                            });
+                        },
+                        onChange: (prop: keyof ActorCardEditableProps, value: any) => {
+                            console.log({ prop, value });
+                            boardDispatch({
+                                type: PerspectiveBoardActionTypeEnum.ContentUpdater,
+                                payload: {
+                                    componentId: "strahd",
+                                    updater: (component) => {
+                                        return {
+                                            ...component,
+                                            props: {
+                                                ...component.props,
+                                                props: {
+                                                    ...component.props.props,
+                                                    [prop]: value,
+                                                },
+                                            },
+                                        };
+                                    },
+                                },
+                            });
+                        },
+                    },
+                },
+            },
+            { x: centerPan.x + gapSize, y: centerPan.y + gapSize }
+        );
+
         const traitsSpreadContent = moveContentTo(traitSpreadItem, {
             x: centerPan.x + gapSize,
             y: strahdCardContent.position.y + gapSize,
@@ -168,6 +223,7 @@ export default function WorldScene({
     return (
         <div className="WorldScene" style={viewState.stageStyle} onWheel={onWheel} {...events}>
             <Position
+                id="background"
                 x={0}
                 y={0}
                 z={-1}

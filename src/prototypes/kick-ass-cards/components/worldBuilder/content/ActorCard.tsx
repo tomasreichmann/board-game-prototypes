@@ -1,7 +1,14 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, { PropsWithChildren } from "react";
 import Paper from "../../../../../components/print/Paper/Paper";
 import { cardSizes } from "../../../../../components/print/paperSizes";
 import { twMerge } from "tailwind-merge";
+import Editable, {
+    ControlMapType,
+    EditableControlItemType,
+    EditableProps,
+} from "../../../../../components/Editable/Editable";
+import Input from "../../content/Input";
+import Select from "../../content/Select";
 
 export type ActorCardProps = PropsWithChildren<{
     cardSize?: keyof typeof cardSizes;
@@ -10,27 +17,91 @@ export type ActorCardProps = PropsWithChildren<{
     imageUri?: string;
     name: string;
 }>;
-/*
-export const formDefinition = [
+
+const controlMap: ControlMapType<string, ActorCardProps> = {
+    text: ({ label, value, onChange, prop }) => {
+        return (
+            <Input label={label} type="text" value={String(value)} onChange={(e) => onChange(prop, e.target.value)} />
+        );
+    },
+    number: ({ label, value, onChange, prop }) => {
+        return (
+            <Input
+                type="number"
+                label={label}
+                value={parseFloat(value as any)}
+                onChange={(e) => onChange(prop, Number(e.target.value))}
+            />
+        );
+    },
+    select: ({ label, inputProps: { options = [], ...inputProps } = {}, value, onChange, prop }) => {
+        return (
+            <Select
+                {...inputProps}
+                type="number"
+                label={label}
+                options={options}
+                value={parseFloat(value as any)}
+                onChange={(e) => onChange(prop, e.target.value)}
+            />
+        );
+    },
+};
+
+export const controls: EditableControlItemType<ActorCardProps, typeof controlMap>[] = [
     {
-        name: "imageUri",
-        type: "image",
+        prop: "imageUri",
+        label: "Image URI",
+        type: "text",
         optional: true,
     },
     {
-        name: "name",
+        prop: "name",
+        label: "Name",
         type: "text",
     },
     {
-        name: "currentPower",
+        prop: "currentPower",
+        label: "Current Power",
         type: "number",
-        min: 0,
         optional: true,
+        inputProps: {
+            min: 0,
+        },
     },
     {
-        name: "cardSize"
-    }
-]*/
+        prop: "cardSize",
+        label: "Card Size",
+        type: "select",
+        inputProps: {
+            options: Object.keys(cardSizes).map((key) => {
+                return {
+                    label: key,
+                    value: key,
+                } as const;
+            }),
+        },
+    },
+];
+
+export type ActorCardEditableAllProps = EditableProps<ActorCardProps, keyof typeof controlMap, typeof controlMap>;
+export type ActorCardEditableProps = Partial<ActorCardEditableAllProps> &
+    Pick<ActorCardEditableAllProps, "onChange" | "props">;
+
+export const ActorCardEditable = ({ onChange, props, ...restProps }: ActorCardEditableProps) => {
+    return (
+        <Editable
+            {...restProps}
+            Component={ActorCard}
+            controlMap={controlMap}
+            controls={controls}
+            props={props}
+            formClassName="p-4 pt-6 bg-white relative -mt-2 z-10 rounded-b-md shadow-md text-kac-iron"
+            editButtonClassName="pt-4 relative -mt-2 z-0"
+            onChange={onChange}
+        />
+    );
+};
 
 export default function ActorCard({
     className,

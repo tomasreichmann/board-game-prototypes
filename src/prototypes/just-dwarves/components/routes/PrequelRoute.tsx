@@ -16,6 +16,7 @@ import PrequelRules from "../gameComponents/PrequelRules";
 import PrintMarker from "../../../../components/print/PrintMarker/PrintMarker";
 import PaperCraftBox from "../../../../components/print/PaperCraftBox";
 import { cardSizes } from "../../../../components/print/paperSizes";
+import CardBox from "../../../../components/print/CardBox";
 
 const allCards = multiplyByCount(prequelCards, "count", defaultCountAdapter);
 
@@ -74,7 +75,7 @@ export default function PrequelRoute() {
             </div>
             {showParts.includes("box") && (
                 <PrintPage className="rounded">
-                    <PaperCraftBox
+                    {/* <PaperCraftBox
                         {...smallBox}
                         paperThickness={boxPaperThickness}
                         classNameVisible="bg-jd-shitty-paper-dark"
@@ -89,6 +90,49 @@ export default function PrequelRoute() {
                             />
                         }
                         contentLidOutsideFront={
+                            <div className="absolute top-0 left-0 w-full h-full bg-shitty-dark">
+                                <img
+                                    src="/JD/in-a-pub/logo.png"
+                                    className="absolute top-[5%] left-[5%] w-[90%] h-[90%] max-w-none max-h-none object-contain object-center"
+                                />
+                            </div>
+                        }
+                    /> */}
+                    <CardBox
+                        {...smallBox}
+                        paperThickness={boxPaperThickness}
+                        classNamePartVisible="bg-jd-shitty-paper-dark"
+                        bendStyles={{
+                            top: { borderTop: "1px solid #1c0726" },
+                            left: { borderLeft: "1px solid #1c0726" },
+                            bottom: { borderBottom: "1px solid #1c0726" },
+                            right: { borderRight: "1px solid #1c0726" },
+                        }}
+                        cutStyles={{
+                            top: { borderTop: "1px solid #1c0726" },
+                            left: { borderLeft: "1px solid #1c0726" },
+                            bottom: { borderBottom: "1px solid #1c0726" },
+                            right: { borderRight: "1px solid #1c0726" },
+                        }}
+                        classNameLabel="text-slate-200"
+                        contentFront={
+                            <img src="/JD/in-a-pub/box-front.png" className="absolute w-full h-full object-cover" />
+                        }
+                        contentBack={
+                            <img
+                                src="/JD/in-a-pub/box-back.png"
+                                className="absolute top-0 left-0 w-full h-full max-w-none max-h-none object-cover object-center"
+                            />
+                        }
+                        contentTop={
+                            <div className="absolute top-0 left-0 w-full h-full bg-shitty-dark">
+                                <img
+                                    src="/JD/in-a-pub/logo.png"
+                                    className="absolute top-[5%] left-[5%] w-[90%] h-[90%] max-w-none max-h-none object-contain object-center"
+                                />
+                            </div>
+                        }
+                        contentBottom={
                             <div className="absolute top-0 left-0 w-full h-full bg-shitty-dark">
                                 <img
                                     src="/JD/in-a-pub/logo.png"

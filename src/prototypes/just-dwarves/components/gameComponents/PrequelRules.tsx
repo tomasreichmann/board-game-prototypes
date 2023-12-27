@@ -309,7 +309,25 @@ export default function PrequelRules({ isPrint }: PrequelRulesProps) {
                 <div
                     className="absolute top-0 left-0 w-full h-full overflow-hidden bg-jd-golden-paper text-jd-shitty-text leading-none"
                     style={{ padding: isPrint ? "3mm 6mm 6mm 3mm" : "3mm" }}
-                ></div>
+                >
+                    <h1 className="[font-size:inherit] font-jd-heading mb-1 ">Optional drinking rules</h1>
+                    <p className="text-xs font-jd-prequel-body leading-tight mb-2">
+                        Prepare a small shot or a tall glass full of your favorite drink. Every time the rules tell you
+                        to drink, ether down the small shot or sip from the tall glass.
+                    </p>
+                    <ul className="list-disc pl-4 font-jd-prequel-body text-xs mb-2">
+                        <li>First time in a game someone plays a MEAD FOR ALL, EVERYONE DRINKS.</li>
+                        <li>First time in a game you play a DRINK SPLASH, YOU DRINK.</li>
+                        <li>If you loose a GET LUCKY, YOU DRINK.</li>
+                        <li>If you receive a MOIST FART, YOU DRINK.</li>
+                        <li>If play a ROCK BLOCK, YOU DRINK.</li>
+                        <li>If you loose a game, YOU DRINK.</li>
+                    </ul>
+                    <p className="text-sm font-jd-prequel-body leading-tight mb-2">
+                        Remember to always DRINK&nbsp;RESPONSIBLY and NEVER FORCE ANYONE TO DRINK more than they are
+                        comfortable with.
+                    </p>
+                </div>
                 {isPrint && <PrintMarker bottom right bleedMm={3} bleedLeftMm={0} bleedTopMm={0} offsetMm={0} />}
             </Paper>
         </div>

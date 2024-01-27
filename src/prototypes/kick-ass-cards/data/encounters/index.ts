@@ -14,6 +14,7 @@ const KJB = "Království Jediné Bohyně";
 const LP = "Ledová pomsta";
 const LP_EN = "Cold Revenge";
 const ISV = "In Sanguine Veritas";
+const TOH = "Throne of Hawthorne";
 
 const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
     [key]: {
@@ -139,5 +140,7 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("ISV-c0-a0-Prequel-GM-Info", "Prequel - Informace pro vypravěče", ISV),
     ...makeEncounterDefinition("ISV-c0-a1-Prequel", "Prequel", ISV),
     ...makeEncounterDefinition("ISV-c1-a0-Info", "Info", ISV),
+    ...makeEncounterDefinition("TOH-c0-a0-GM-Info", "GM Info", TOH),
+    ...makeEncounterDefinition("TOH-c1-a1-Audience-with-the-king", "Audience with the king", TOH),
 };
 console.log("encountersMap", encountersMap);

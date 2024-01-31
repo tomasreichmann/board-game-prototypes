@@ -38,13 +38,13 @@ export default function Clock({
                 <DiceCounter current={current} total={total} className="flex-1 text-kac-steel" />
                 {title !== null && (
                     <h2 className="text-sm font-kacHeading leading-tight flex flex-row gap-2">
-                        <Icon icon="fountainPen" className="h-5 mt-1 flex-shrink-0 inline-block text-kac-steel-dark" />
+                        <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
                         {title || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
                     </h2>
                 )}
                 {threat !== null && (
                     <div className="text-sm text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="deathSkull" className="h-5 mt-1 flex-shrink-0 inline-block" />
+                        <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block" />
                         {threat ? (
                             <p className="flex-grow text-sm font-kacBody">{threat}</p>
                         ) : (
@@ -54,7 +54,7 @@ export default function Clock({
                 )}
                 {reward !== null && (
                     <div className="text-sm text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
-                        <Icon icon="chest" className="h-5 mt-1 flex-shrink-0 inline-block text-sm" />
+                        <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
                         {reward ? (
                             <p className="flex-grow text-sm font-kacBody">{reward}</p>
                         ) : (

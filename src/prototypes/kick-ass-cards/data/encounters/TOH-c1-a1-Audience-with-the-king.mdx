@@ -2,6 +2,11 @@
 campaign: Throne of Hawthorn
 chapter: 1
 act: 1
+defaultClockProps:
+    {
+        size: "US game",
+        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+    }
 defaultActorProps:
     {
         size: "US game",
@@ -21,8 +26,9 @@ defaultMiniProps:
 # Chapter 1 - Act 1 - Audience with the king
 
 ❗TODO title image
-![](/ISV/splash-prequel.jpg)
+![](/TOH/locations/hlohovec-throne-room.png)
 
+💡 This scene introduces the player characters and the main quest - Receive the castle and rebuild it.
 
 _Troubled dreams plague the noble Hrotec family on their long journey to the capital city of Hlohovec. For weeks now, ravens and thorns haunt their restless nights - ominous signs since King Miroslav’s accursed deal robbed them of their ancestral home.
 The same deal that stripped this landlocked realm of a vital mountain fortress guarding their borders. King Miroslav’s promise to reimburse the family’s lost lands is now in question since his unexpected death mere weeks ago. Summoned now to the capital, the unfortunate nobles of the house Hrotec fear they will be stripped of their station by the young king Svatopluk._
@@ -30,7 +36,45 @@ The same deal that stripped this landlocked realm of a vital mountain fortress g
 _The lavish reconstructed citadel towers into view first, no wartime encampment but a gilded palace built with borrowed fortunes. In the opulent, tapestry-laden hall, the herald announces their arrival with little fanfare.
 Yet young King Svatopluk himself awaits atop the ruby-studded granite throne. Murmurs ripple through the gallery of onlooking lords._
 
-* 💬 Players: Each describe what the king sees as you approach his throne.
+**🎭 Players, each describe what do you look like, how you approach the king and what does he see as you approach his throne.**  
+**💡 As players describe their appearance and behaviour, look for things that can reduce king's patience. For example not addressing him properly, arguing or wasting his time.
+You can make this clear by putting the "King's patience" card in front of the players. Make sure to describe how king reacts when players annoy him.**
+
+<List>
+    <Clock
+        {...defaultClockProps}
+        title="King's patience"
+        current={4}
+        total={4}
+        threat="Reduced king's support"
+        reward="Increased king's support"
+    />
+</List>
+
+![](/TOH/characters/king-svatopluk.png)
+
+*   The king addresses you as you approach:
+_"Esteemed lords (and ladies) of the House of Hrotec, You come in troubled times. After my father the king’s tragic passing, chaos threatens our realm - bandits exploit our weakness and rivals hunger for our lands. I see that fate has dealt you an unfair hand. Your ancestral home has been taken from you and you were left without any lands to call your own. Yet I intend to uphold my father’s vow to you. Swear to me your steadfast loyalty and the castle of Špice shall belong to your house forevermore."_  
+_"Are you ready to take the vow?"_
+
+**🎭 How does the Hrotec family respond?**
+
+-   If the players agree:
+
+_A chancellor approaches and unrolls a big scroll for you to see. He says: "Lords and ladies, kindly read this oath and repeat out loud."_  
+_The scroll reads:  
+"By blood and valor, we solemnly pledge our absolute loyalty to our rightful king, Svatopluk of Hlohovec. We vow to protect and rule our given lands in the name and will of the king, or they shall be forfeited. In the presence of God and the men gathered here, this we swear."_
+
+
+![](/TOH/items/oath-scroll.jpg)
+
+**🎭 The king is waiting**
+
+_Take good care of the once great castle. Prove yourselves to be protectors of our land against all that threatens us from without..._
+
+_Suddenly, you hear a loud bang as some distant door slams open. The king stops mid sentence and looks up, his forehead wrinkling. Everybody looks back at the big throne room door. Heavy rushed footsteps echo through the hall as an armored figure approaches through a crowd of nobles. You see a tall woman with sharp features and short brown wavy hair clad in heavy armor. She takes off her metal gauntlets and throws them to the floor with a metal clang and shouts at the king: "What is the meaning of this?! That crown does not belong to you" 
+
+❗TODO image: Rostislava
 
 ## Scene 1: Castle ceremony with the king
 

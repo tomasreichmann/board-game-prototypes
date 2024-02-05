@@ -129,7 +129,7 @@ export const occupationOptions: DeepRandomType<string> = {
     ],
 };
 
-export type Person = {
+export type PersonType = {
     gender: GenderEnum;
     firstName: string;
     lastName: string;

@@ -40,6 +40,7 @@ const createPreset = <T extends any>(
 const defaultPresets = [
     createPreset("Kultura", { _rObject: { data: cultureScheme } }, DataPreview, {}),
     createPreset("Person", { _rObject: { data: personScheme } }, DataPreview, {}),
+    createPreset("PersonAppeared", { _rObject: { data: personScheme } }, DataPreview, {}),
 ];
 
 export default function Generator({

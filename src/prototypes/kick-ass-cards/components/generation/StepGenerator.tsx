@@ -6,7 +6,7 @@ import Toggle from "../../../../components/Toggle";
 import ActorCard, { ActorCardProps } from "../gameComponents/ActorCard";
 import ComponentList from "../ComponentList";
 import resolveRandom, { DeepRandomType } from "../../generators/resolveRandom";
-import {
+import personScheme, {
     GenderEnum,
     ageOptions,
     firstNameOptions,
@@ -17,6 +17,7 @@ import {
 import VisualizeRandom from "./VisualizeRandom";
 import catScheme from "../../generators/schemes/catScheme";
 import dogScheme from "../../generators/schemes/dogScheme";
+import DataPreview from "../../../../components/DataPreview";
 
 export type StepGeneratorProps = {
     localStorageKey?: string;
@@ -106,6 +107,9 @@ const defaultPresets = [
         size: "Mini US game",
         className: "drop-shadow",
         imageUri: "/ISV/minis/animals/dog1.jpg",
+    }),
+    createPreset("PersonAppeared", { _rObject: { data: personScheme } }, DataPreview, {
+        data: "personAppeared",
     }),
 ];
 

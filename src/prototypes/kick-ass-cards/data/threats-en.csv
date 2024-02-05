@@ -1,0 +1,7 @@
+"slug","imageUri","title","action","count"
+weak-attack","/KAC/traits/weak-attack.png",Weak Attack,"Enemy attacks closest target for base damage - 1",3
+basic-attack","/KAC/traits/basic-attack.png",Basic Attack,"Enemy attacks closest target for base damage",3
+double-weak-attack","/KAC/traits/double-weak-attack.png",Double Weak Attack,"Enemy attacks closest target 2x for base damage - 1",2
+strong-attack","/KAC/traits/strong-attack.png",Strong Attack,"Enemy attacks closest target for base damage + 1",2
+defend","/KAC/traits/defense.png",Defend,"Enemy blocks 2 damage",1
+special","/KAC/traits/special.png",Special,"Enemy activates it's special action or boss's action",2

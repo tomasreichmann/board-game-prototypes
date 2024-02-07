@@ -47,6 +47,7 @@ import drop from "./media/drop.svg";
 import dwarfKing from "./media/dwarf-king.svg";
 import explosiveMaterials from "./media/explosive-materials.svg";
 import fairyWand from "./media/fairy-wand.svg";
+import fangs from "./media/fangs.svg";
 import fireRing from "./media/fire-ring.svg";
 import footTrip from "./media/foot-trip.svg";
 import fizzingFlask from "./media/fizzing-flask.svg";
@@ -83,6 +84,7 @@ import pointyHat from "./media/pointy-hat.svg";
 import poisonBottle from "./media/poison-bottle.svg";
 import prankGlasses from "./media/prank-glasses.svg";
 import print from "./media/print.svg";
+import punchBlast from "./media/punch-blast.svg";
 import push from "./media/push.svg";
 import quicksand from "./media/quicksand.svg";
 import rollerSkate from "./media/roller-skate.svg";
@@ -101,6 +103,7 @@ import slicedBread from "./media/sliced-bread.svg";
 import slingshot from "./media/slingshot.svg";
 import smokeBomb from "./media/smoke-bomb.svg";
 import spikedShield from "./media/spiked-shield.svg";
+import splash from "./media/splash.svg";
 import sprint from "./media/sprint.svg";
 import stickyBoot from "./media/sticky-boot.svg";
 import stoneBlock from "./media/stone-block.svg";
@@ -165,13 +168,12 @@ export const iconMap = {
     crownCoin,
     crownedSkull,
     crystalBall,
-    dx,
-    d4,
-    d6,
-    d8,
     d10,
     d12,
     d20,
+    d4,
+    d6,
+    d8,
     dart,
     deathSkull,
     divert,
@@ -180,20 +182,22 @@ export const iconMap = {
     drinkMe,
     drop,
     dwarfKing,
+    dx,
     explosiveMaterials,
     fairyWand,
+    fangs,
     fireRing,
     fizzingFlask,
     flatPlatform,
-    fountainPen,
     footTrip,
+    fountainPen,
     globeRing,
-    grapple,
     gooeyImpact,
+    grapple,
     halt,
     hangingSign,
-    heartBottle,
     heartBeats,
+    heartBottle,
     highShot,
     humanEar,
     key,
@@ -218,6 +222,7 @@ export const iconMap = {
     poisonBottle,
     prankGlasses,
     print,
+    punchBlast,
     push,
     quicksand,
     rollerSkate,
@@ -236,6 +241,7 @@ export const iconMap = {
     slingshot,
     smokeBomb,
     spikedShield,
+    splash,
     sprint,
     stickyBoot,
     stoneBlock,
@@ -272,6 +278,8 @@ export type IconType = keyof typeof iconMap;
 
 export type IconMap = { [key: string]: keyof typeof iconMap };
 
+export const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;
+
 export type IconProps<AliasMap extends IconMap> = {
     className?: string;
     icon: IconType | keyof AliasMap;
@@ -286,10 +294,12 @@ export default function Icon<AliasMap extends IconMap>({
     aliasMap = {},
 }: IconProps<AliasMap>) {
     const resolvedKey = (icon as keyof typeof iconMap) in iconMap ? icon : aliasMap[icon as keyof typeof aliasMap];
-    if (!iconMap[resolvedKey as keyof typeof iconMap]) {
-        `icon "${String(icon)}" not found in iconMap (${Object.keys(iconMap).join(", ")}) nor aliasMap (${Object.keys(
-            aliasMap
-        ).join(", ")})`;
+    if (!isIcon(String(resolvedKey))) {
+        console.warn(
+            `icon "${String(icon)}" not found in iconMap (${Object.keys(iconMap).join(
+                ", "
+            )}) nor aliasMap (${Object.keys(aliasMap).join(", ")})`
+        );
     }
     const Component = (iconMap[resolvedKey as keyof typeof iconMap] || halt) as unknown as React.ComponentType<
         React.SVGAttributes<SVGSVGElement>

@@ -9,6 +9,7 @@ import Credits from "../Credits";
 import Paper from "../../../../components/print/Paper/Paper";
 import clsx from "clsx";
 import OutcomeCardPages from "../print/OutcomeCardPages";
+import ThreatCardPages from "../print/ThreatCardPages";
 import ColorList from "../ColorList";
 import PlayerCharacterCardPages from "../print/PlayerCharacterCardPages";
 import AssetCardPages from "../print/AssetCardPages";
@@ -31,6 +32,7 @@ const sections = [
         isVisibleByDefault: defaultSectionVisibility,
     },
     { slug: "Outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: defaultSectionVisibility },
+    { slug: "Threats", label: "Threats", Component: ThreatCardPages, isVisibleByDefault: defaultSectionVisibility },
     {
         slug: "StuntCards",
         label: "Stunt Cards",

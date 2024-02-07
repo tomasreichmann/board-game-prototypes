@@ -66,7 +66,11 @@ export type OutcomeType = {
     description: string;
 };
 
+export type ThreatType = { slug: string; icon: string; title: string; description: string };
+
 export type EncounterType = {
     slug: string;
     title: string;
 };
+
+export type WithCount<T> = T & { count: number };

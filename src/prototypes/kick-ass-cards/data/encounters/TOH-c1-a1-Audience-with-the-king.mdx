@@ -13,6 +13,11 @@ defaultActorProps:
         className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
         imagePosition: "center top",
     }
+defaultAssetProps:
+    {
+        size: "Mini US game",
+        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+    }
 defaultMiniProps:
     {
         baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
@@ -72,9 +77,255 @@ _The scroll reads:
 
 _Take good care of the once great castle. Prove yourselves to be protectors of our land against all that threatens us from without..._
 
-_Suddenly, you hear a loud bang as some distant door slams open. The king stops mid sentence and looks up, his forehead wrinkling. Everybody looks back at the big throne room door. Heavy rushed footsteps echo through the hall as an armored figure approaches through a crowd of nobles. You see a tall woman with sharp features and short brown wavy hair clad in heavy armor. She takes off her metal gauntlets and throws them to the floor with a metal clang and shouts at the king: "What is the meaning of this?! That crown does not belong to you" 
+_Suddenly, you hear a loud bang as some distant door slams open. The king stops mid sentence and looks up, his forehead wrinkling. Everybody looks back at the big throne room door. Heavy rushed footsteps echo through the hall as an armored figure approaches through a crowd of nobles. You see a tall woman with sharp features and short brown wavy hair clad in heavy armor. She takes off her metal gauntlets and throws them to the floor with a metal clang and shouts at the king: "What is the meaning of this?! That crown does not belong to you."_
 
 ❗TODO image: Rostislava
+
+_The king turns to you and says firmly: **"You know what to do. The chancellor will se you out."** He raises his head to the lords and ladies in the room: **"Leave us."**_
+
+_As you leave the hall with the chancellor, you hear an echo of an incomprehensible but clearly heated argument between the king Svatopluk and his sister Rostislava._
+
+-   The chancellor takes the nobles to a quartermaster.
+-   He gives them the deed to the castle
+-   Players can **each** pick one thing from the list supplies.
+-   As a **group**, players can pick as many extra things from the list as much remains on the "Kings patience" counter.
+-   List of supplies
+    -   Armored warhorse
+    -   Marterwork Two-handed sword
+    -   Masterwork heavy crossbow
+    -   Full plate armor
+    -   Wagon of food and provisions
+    -   Wagon of quality stone
+    -   Wagon of hard wood
+    -   Wagon of luxury goods
+    -   Skilled carpenter
+    -   Skilled blacksmith
+    -   Skilled mason
+    -   Skilled alchemist
+    -   Skilled spy
+    -   Priest
+    -   Veteran officer
+    -   Siege ballista
+    -   A troop of pike men
+    -   A troop of archers
+    -   A group of hunters
+
+❗TODO image: Quartermaster
+❗TODO image: Castle Špice Deed
+
+<List>
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        icon="/LP/icons/bag.png"
+        title="Castle Špice Deed"
+        effect="This document grants the ownership of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk"
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Armored Warhorse"
+        effect="A trained warhorse armoured with heavy steel barding."
+    />
+    <Actor
+        size="US game"
+        imageUri="/LP/scifi_dragon.jpg"
+        imagePosition="center top"
+        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+        name="Armored Warhorse"
+        toughness={6}
+        notes="A trained warhorse armoured with heavy steel barding"
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Masterwork Two-handed Sword"
+        effect="Superior balance, damage, and durability in battle."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Masterwork Heavy Crossbow"
+        effect="Increased range, power, and accuracy in combat."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Full Plate Armor"
+        effect="Excellent protection against various physical attacks."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Wagon of Food and Provisions"
+        effect="Necessary supplies for travel and sustenance at a castle."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Wagon of Quality Stone"
+        effect="High-grade stone for castle construction and repair."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Wagon of Hard Wood"
+        effect="Sturdy, high-quality wood for castle woodworking projects."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Wagon of Luxury Goods"
+        effect="Valuable goods for trade, decoration, or personal use."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Skilled Carpenter"
+        effect="Constructing, repairing, or maintaining wooden structures."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Skilled Blacksmith"
+        effect="Creating, repairing, or maintaining metal items required in a castle."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Skilled Mason"
+        effect="Constructing, repairing, or maintaining stone structures or features."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Skilled Alchemist"
+        effect="Creating potions, elixirs, or substances for medicinal or protective purposes."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Skilled Spy"
+        effect="Gathering information, infiltrating enemy territories, and conducting covert operations."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Priest"
+        effect="Performing religious ceremonies, offering spiritual guidance, and possibly possessing healing abilities."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Veteran Officer"
+        effect="Commanding troops, planning defensive or offensive strategies, and advising on military matters."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Siege Ballista"
+        effect="Hurls large projectiles at enemy fortifications or troops, aiding in offensive and defensive operations."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Troop of Pike Men"
+        effect="Well-trained soldiers specializing in pikes for defensive line or coordinated attacks."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Troop of Archers"
+        effect="Skilled bowmen capable of raining arrows down upon enemy troops or fortifications."
+    />
+    <Asset
+        {...defaultAssetProps}
+        icon="/LP/icons/bag.png"
+        title="Group of Hunters"
+        effect="Experienced hunters providing fresh game and helping maintain surrounding lands."
+    />
+</List>
+
+
+Castle Špice Deed
+A detailed illustration of the official document for the Castle Špice Deed showcasing its calligraphic text and royal seal on a parchment background
+
+Armored Warhorse
+A powerful armored warhorse standing regally adorned with metallic armor and reigns set in a medieval backdrop
+
+Masterwork Two-handed Sword
+An exquisite masterwork two-handed sword showcasing its detailed craftsmanship metallic blade and intricate hilt
+
+Masterwork Heavy Crossbow
+A finely crafted masterwork heavy crossbow featuring its wooden stock intricate mechanism and metal components
+
+Full Plate Armor
+A complete set of full plate armor displayed with its metallic plates shoulder guards chest plate and leg guards
+
+Wagon of Food and Provisions
+A wooden wagon filled with various food supplies and provisions including barrels sacks bread and cured meats
+
+Wagon of Quality Stone
+A wagon transporting a large quantity of quality stone building materials with its large wheels pulled by horses
+
+Wagon of Hard Wood
+A wooden wagon loaded with neatly stacked hardwood logs showcasing the transportation of lumber for various projects
+
+Wagon of Luxury Goods
+An ornately designed wagon filled with luxury goods such as silk spices and precious items used for trade and transportation
+
+Skilled Carpenter
+A skilled carpenter at work crafting wooden structures furniture or tools within a medieval castle setting
+
+Skilled Blacksmith
+A skilled blacksmith creating repairing or maintaining metal items such as weapons armor and tools showcasing their expertise in a medieval forge
+
+Skilled Mason
+A skilled mason constructing repairing or maintaining stone structures or features within a medieval castle highlighting their craftsmanship and attention to detail
+
+Skilled Alchemist
+A skilled alchemist preparing potions elixirs or other alchemical substances in their workshop utilizing various tools ingredients and equipment for medicinal or protective purposes
+
+Skilled Spy
+A skilled spy discreetly gathering information infiltrating enemy territories or conducting covert operations demonstrating their stealth and resourcefulness in a medieval setting
+
+Priest
+A priest performing religious ceremonies providing spiritual guidance or using healing abilities to aid and support the inhabitants of a medieval castle
+
+Veteran Officer
+A veteran officer commanding troops planning defensive or offensive strategies and offering advice on military matters to ensure the safety and security of a medieval castle
+
+Siege Ballista
+A siege ballista in action launching large projectiles at enemy fortifications or troops showcasing its importance in both offensive and defensive castle operations
+
+Troop of Pike Men
+A troop of pike men forming a strong defensive line or launching coordinated attacks against enemy forces demonstrating their training and discipline in a medieval battle setting
+
+Troop of Archers
+A troop of archers raining arrows down upon enemy troops or fortifications from a distance highlighting their skill and accuracy in supporting castle defenses or offensives
+
+Group of Hunters
+A group of hunters tracking trapping and hunting wildlife in the surrounding lands of a medieval castle providing fresh game for the castle's food supply
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Scene 1: Castle ceremony with the king
 

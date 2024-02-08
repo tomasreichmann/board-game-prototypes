@@ -1,9 +1,13 @@
 "slug","icon","title","description","count"
 w-atk,"punchBlast",Weak Attack,"Enemy attacks closest target for base damage - 1",2
-basic-atk,"plainDagger",Basic Attack,"Enemy attacks closest target for base damage",3
+basic-atk,"plainDagger",Basic Attack,"Enemy attacks closest target for base damage",5
 dble-w-atk,"crossMark",Double Weak Attack,"Enemy attacks closest target 2x for base damage - 1",2
 str-atk,"batteredAxe",Strong Attack,"Enemy attacks closest target for base damage + 1",2
-defend,"checkedShield",Defend,"Enemy blocks up to 2 damage from the next attack",1
-move,"run",Move,"Enemy will move or run away",2
-special,"mightyForce",Special,"Triggers an enemy's special ability",2
-boss,"crownedSkull",Boss,"Triggers Boss's action. GM draws any played Boss cards back to their hand at the end of the round",2
+defend,"checkedShield",Defend,"Enemy blocks up to 2 damage from the next attack",2
+move,"run",Move,"Enemy will move or run away",3
+special,"mightyForce",Special,"Triggers an enemy's special ability",3
+boss,"crownedSkull",Boss,"Triggers Boss's action. GM draws any played Boss cards back to their hand at the end of the round",3
+mystery,"doubleFaceMask",Mystery,"This can be anything",3
+hazard,"gooeyImpact",Hazard,"Activate a threat that is not related to enemies",3
+hinder,"stickyBoot",Hinder,"Enemy will impose a debuff (e.g. restrain, slow, weaken, frighten, sicken, debuff)",2
+help,"magicPalm",Help,"Enemy will help themselves or their allies (e.g. heal, boost, strenghten, protect, dispel, encourage)",2

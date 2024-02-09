@@ -94,7 +94,7 @@ export default function ComponentsRoute() {
                     );
                 })}
             </div>
-            <div className="pb-2 md:pb-10 print:p-0 px-2 md:px-10 ">
+            <div className="pb-2 md:pb-10 px-2 md:px-10 print:p-0 print:md:p-0">
                 <div>
                     <Toggle buttonContent="Show Colors" initialCollapsed>
                         <ColorList />

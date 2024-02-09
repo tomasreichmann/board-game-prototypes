@@ -10,12 +10,17 @@ export type ThreatCardProps = React.PropsWithChildren<{ className?: string } & T
 
 const colorClassNameMap: { [key: string]: string } = {
     punchBlast: "text-kac-fire-light",
-    plainDagger: "text-kac-fire",
+    plainDagger: "text-kac-blood",
     crossMark: "text-kac-fire",
-    batteredAxe: "text-kac-blood",
+    batteredAxe: "text-kac-fire",
     checkedShield: "text-kac-cloth",
+    run: "text-kac-bone-dark",
     mightyForce: "text-kac-curse",
     crownedSkull: "text-kac-gold-dark",
+    gooeyImpact: "text-kac-curse-dark",
+    doubleFaceMask: "text-kac-cloth-dark",
+    stickyBoot: "text-kac-monster-dark",
+    magicPalm: "text-kac-gold-dark",
 };
 
 export default function ThreatCard({ className, slug, title, icon, description, children }: ThreatCardProps) {
@@ -56,7 +61,7 @@ export const ThreatCardBackFace = ({ className, children }: Pick<ThreatCardProps
             )}
         >
             <div className="w-32 h-32 flex flex-col justify-center items-center relative">
-                <Icon icon="splash" className={"text-kac-fire-dark w-full absolute"} />
+                <Icon icon="splash" className={"text-kac-blood w-full absolute"} />
                 <Icon icon="fangs" className={"text-white h-10 relative z-1 mt-2"} />
                 <div className="font-kacHeading text-white text-sm uppercase text-center relative z-1">Threat</div>
             </div>

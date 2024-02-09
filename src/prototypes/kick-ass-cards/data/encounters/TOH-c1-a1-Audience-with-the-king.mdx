@@ -91,41 +91,120 @@ _As you leave the hall with the chancellor, you hear an echo of an incomprehensi
 -   As a **group**, players can pick as many extra things from the list as much remains on the "Kings patience" counter.
 -   List of supplies
     -   Armored warhorse
+    -   Group of hunters
+    -   Full plate armor
+    -   Priest
+    -   Skilled alchemist
+    -   Skilled blacksmith
+    -   Skilled carpenter
+    -   Skilled mason
+    -   Skilled spy
+    -   Troop of archers
+    -   Troop of pike men
+    -   Veteran officer
     -   Marterwork Two-handed sword
     -   Masterwork heavy crossbow
-    -   Full plate armor
+    -   Siege ballista
     -   Wagon of food and provisions
-    -   Wagon of quality stone
     -   Wagon of hard wood
     -   Wagon of luxury goods
-    -   Skilled carpenter
-    -   Skilled blacksmith
-    -   Skilled mason
-    -   Skilled alchemist
-    -   Skilled spy
-    -   Priest
-    -   Veteran officer
-    -   Siege ballista
-    -   A troop of pike men
-    -   A troop of archers
-    -   A group of hunters
+    -   Wagon of quality stone
 
 ❗TODO image: Quartermaster
 ❗TODO image: Castle Špice Deed
 
 <List>
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/warhorse.png"
+        imagePosition="center top"
+        name="Armored Warhorse"
+        toughness={3}
+        threat="Mounted characters do +1 Effect on attack when moving in a straight line at full speed."
+        notes="A trained warhorse armoured with heavy steel barding. Moves 2 zones per round."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/alchemist.png"
+        imagePosition="center top"
+        name="Skilled Alchemist"
+        toughness={2}
+        notes="Civilian artisan. Creates potions, elixirs, bombs, or substances for medicinal or protective purposes."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/blacksmith.png"
+        imagePosition="center top"
+        name="Skilled Blacksmith"
+        toughness={2}
+        notes="Civilian artisan. Creates, repairs, or maintains metal items and equipment."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/carpenter.png"
+        imagePosition="center top"
+        name="Skilled Carpenter"
+        toughness={2}
+        notes="Civilian artisan. Constructs, repairs, or maintains wooden structures, furniture, or tools."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/mason.png"
+        imagePosition="center top"
+        name="Skilled Mason"
+        toughness={2}
+        notes="Civilian artisan. Constructs, repairs, or maintains stone structures."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/priest.png"
+        imagePosition="center top"
+        name="Priest"
+        toughness={2}
+        notes="Civilian artisan. Performs religious ceremonies, offers spiritual guidance, and cares for the wounded."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/spy.png"
+        imagePosition="center top"
+        name="Spy"
+        toughness={2}
+        notes="Civilian artisan. Gathers information, infiltrates enemy positions, and conducts covert operations."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/veteran.png"
+        imagePosition="center top"
+        name="Veteran Officer"
+        toughness={3}
+        threat="Strikes for 1 Effect (slashing). +1 Effect vs non-soldier units."
+        notes="Soldier. Commands troops or garrisons, and trains soldiers."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/archers.png"
+        imagePosition="center top"
+        name="Troop of Archers"
+        toughness={2}
+        threat="Strikes any zone for 1 Effect (piercing) from a distance without having direct line of sight."
+        notes="Troop of soldiers. Skilled bowmen capable of raining arrows down upon enemy troops or fortifications."
+    />
+    <Actor
+        {...defaultActorProps}
+        imageUri="/public/TOH/characters/spearmen.png"
+        imagePosition="center top"
+        name="Troop of Pike Men"
+        toughness={3}
+        threat="Strikes for 1 Effect (piercing). +1 Effect vs cavalery. Damages attackers for 1 Effect (piercing) when defending."
+        notes="Troop of soldiers. Well-trained soldiers armed with polearms."
+    />
+
     <Asset
         {...defaultAssetProps}
         size="US game"
         icon="/LP/icons/bag.png"
         title="Castle Špice Deed"
         effect="This document grants the ownership of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk"
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Armored Warhorse"
-        effect="A trained warhorse armoured with heavy steel barding."
     />
     <Actor
         size="US game"
@@ -178,66 +257,26 @@ _As you leave the hall with the chancellor, you hear an echo of an incomprehensi
         title="Wagon of Luxury Goods"
         effect="Valuable goods for trade, decoration, or personal use."
     />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Skilled Carpenter"
-        effect="Constructing, repairing, or maintaining wooden structures."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Skilled Blacksmith"
-        effect="Creating, repairing, or maintaining metal items required in a castle."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Skilled Mason"
-        effect="Constructing, repairing, or maintaining stone structures or features."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Skilled Alchemist"
-        effect="Creating potions, elixirs, or substances for medicinal or protective purposes."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Skilled Spy"
-        effect="Gathering information, infiltrating enemy territories, and conducting covert operations."
-    />
+
+
+
+
+
     <Asset
         {...defaultAssetProps}
         icon="/LP/icons/bag.png"
         title="Priest"
         effect="Performing religious ceremonies, offering spiritual guidance, and possibly possessing healing abilities."
     />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Veteran Officer"
-        effect="Commanding troops, planning defensive or offensive strategies, and advising on military matters."
-    />
+
     <Asset
         {...defaultAssetProps}
         icon="/LP/icons/bag.png"
         title="Siege Ballista"
         effect="Hurls large projectiles at enemy fortifications or troops, aiding in offensive and defensive operations."
     />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Troop of Pike Men"
-        effect="Well-trained soldiers specializing in pikes for defensive line or coordinated attacks."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Troop of Archers"
-        effect="Skilled bowmen capable of raining arrows down upon enemy troops or fortifications."
-    />
+
+
     <Asset
         {...defaultAssetProps}
         icon="/LP/icons/bag.png"

@@ -66,14 +66,14 @@ _"Are you ready to take the vow?"_
 
 -   If the players agree:
 
-_A chancellor approaches and unrolls a big scroll for you to see. He says: "Lords and ladies, kindly read this oath and repeat out loud."_  
+_A chancellor approaches and unrolls a big scroll for you to see. You know him, his name is Filip Spisec, he comes from Hrotec, he used to work for the old king. He says: "Lords and ladies, kindly read this oath and repeat out loud."_  
 _The scroll reads:  
 "By blood and valor, we solemnly pledge our absolute loyalty to our rightful king, Svatopluk of Hlohovec. We vow to protect and rule our given lands in the name and will of the king, or they shall be forfeited. In the presence of God and the men gathered here, this we swear."_
 
 
 ![](/TOH/items/oath-scroll.jpg)
 
-**🎭 The king is waiting**
+**🎭 The king is waiting to hear**
 
 _Take good care of the once great castle. Prove yourselves to be protectors of our land against all that threatens us from without..._
 
@@ -85,23 +85,23 @@ _The king turns to you and says firmly: **"You know what to do. The chancellor w
 
 _As you leave the hall with the chancellor, you hear an echo of an incomprehensible but clearly heated argument between the king Svatopluk and his sister Rostislava._
 
--   The chancellor takes the nobles to a quartermaster.
+-   The chancellor (Filip Spisec) takes the nobles to a quartermaster.
 -   He gives them the deed to the castle
 -   Players can **each** pick one thing from the list supplies.
 -   As a **group**, players can pick as many extra things from the list as much remains on the "Kings patience" counter.
 -   List of supplies
-    -   Armored warhorse
-    -   Group of hunters
+    -   Armored warhorse (Pegas)
+    -   Group of hunters (Chief Marián Richter)
     -   Full plate armor
-    -   Priest
-    -   Skilled alchemist
-    -   Skilled blacksmith
-    -   Skilled carpenter
-    -   Skilled mason
-    -   Skilled spy
-    -   Troop of archers
-    -   Troop of pike men
-    -   Veteran officer
+    -   Priest (Otec Matouš)
+    -   Skilled alchemist (Petra Zelenková)
+    -   Skilled blacksmith (Pavla Brusová)
+    -   Skilled carpenter (Emanuel Rakman)
+    -   Skilled mason (Alfons Svoboda)
+    -   Skilled spy (Martina Kočková)
+    -   Troop of archers (Sergant Světlana Hrnková)
+    -   Troop of pike men (Janus Švec)
+    -   Veteran officer (Captain Damián Kros)
     -   Marterwork Two-handed sword
     -   Masterwork heavy crossbow
     -   Siege ballista
@@ -111,7 +111,6 @@ _As you leave the hall with the chancellor, you hear an echo of an incomprehensi
     -   Wagon of quality stone
 
 ❗TODO image: Quartermaster
-❗TODO image: Castle Špice Deed
 
 <List>
     <Actor
@@ -202,178 +201,85 @@ _As you leave the hall with the chancellor, you hear an echo of an incomprehensi
     <Asset
         {...defaultAssetProps}
         size="US game"
-        icon="/LP/icons/bag.png"
+        icon="/public/TOH/items/castle-deed.png"
         title="Castle Špice Deed"
         effect="This document grants the ownership of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk"
     />
-    <Actor
-        size="US game"
-        imageUri="/LP/scifi_dragon.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Armored Warhorse"
-        toughness={6}
-        notes="A trained warhorse armoured with heavy steel barding"
+    <Asset
+        {...defaultAssetProps}
+        icon="/public/TOH/items/two-handed-sword.png"
+        title="Masterwork Great Sword"
+        effect="Can attack 2 engaged enemies in the same zone using the same Effect (slashing)."
     />
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Masterwork Two-handed Sword"
-        effect="Superior balance, damage, and durability in battle."
+        icon="/public/TOH/items/crossbow.png"
+        title="Masterwork Crossbow"
+        effect="Can attack any zone in line of sight."
     />
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Masterwork Heavy Crossbow"
-        effect="Increased range, power, and accuracy in combat."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
+        icon="/public/TOH/items/full-plate-armor.png"
         title="Full Plate Armor"
-        effect="Excellent protection against various physical attacks."
+        effect="Reduces damage from slashing and piercing attacks by 2, but not below 1 Wound per attack."
     />
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Wagon of Food and Provisions"
-        effect="Necessary supplies for travel and sustenance at a castle."
+        icon="/public/TOH/items/wagon-food.png"
+        title="Wagon of Food"
+        effect="Carries food that can feed your party and your troops for one month."
     />
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Wagon of Quality Stone"
-        effect="High-grade stone for castle construction and repair."
+        icon="/public/TOH/items/wagon-stone.png"
+        title="Wagon of Stone"
+        effect="High-grade stone for construction and repair of stone structures."
     />
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Wagon of Hard Wood"
-        effect="Sturdy, high-quality wood for castle woodworking projects."
+        icon="/public/TOH/items/wagon-logs.png"
+        title="Wagon of Wood"
+        effect="Sturdy, high-quality wood for wooden structures, roofs woodworking projects."
     />
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
+        icon="/public/TOH/items/wagon-luxury-goods.png"
         title="Wagon of Luxury Goods"
         effect="Valuable goods for trade, decoration, or personal use."
     />
-
-
-
-
-
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
-        title="Priest"
-        effect="Performing religious ceremonies, offering spiritual guidance, and possibly possessing healing abilities."
-    />
-
-    <Asset
-        {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
+        icon="/public/TOH/items/ballista.png"
         title="Siege Ballista"
-        effect="Hurls large projectiles at enemy fortifications or troops, aiding in offensive and defensive operations."
+        effect="Can attack structures, vehicles or enemies in any but current zone in line of sight. One action to load, second to shoot."
     />
-
-
     <Asset
         {...defaultAssetProps}
-        icon="/LP/icons/bag.png"
+        icon="/public/TOH/characters/hunters.png"
         title="Group of Hunters"
         effect="Experienced hunters providing fresh game and helping maintain surrounding lands."
     />
 </List>
 
+-   With lady Rostislava in the capitol, the chancelor thinks it would be best to leave for the castle Špice as soon as possible.
+-   The Hrotec family has still some wealth and tax income from far away villages. 
 
-Castle Špice Deed
-A detailed illustration of the official document for the Castle Špice Deed showcasing its calligraphic text and royal seal on a parchment background
+💡 **Note on Wealth**
 
-Armored Warhorse
-A powerful armored warhorse standing regally adorned with metallic armor and reigns set in a medieval backdrop
+-   This is a good time to explain that the Hrotec family has Wealth of level 3.
+-   They have an income of level 3 from their current holdings. Troops and craftspeople from the quartermaster are paid for by the king. From the current income, they can employ 3 more skilled craftspeople or 3 loads of resources and they don't need to worry about having enough money to hire unskilled workers, geting decent food or shelter while in a settlement.  
+-   To level up their wealth, they need to get 3 more level 3 incomes (e.g. taxes from a village or income from a large business or a mine).
 
-Masterwork Two-handed Sword
-An exquisite masterwork two-handed sword showcasing its detailed craftsmanship metallic blade and intricate hilt
+<Asset
+    {...defaultAssetProps}
+    size="US game"
+    cornerIcon="crownCoin"
+    icon="/public/TOH/items/fine-chicken.png"
+    title="Wealth level 3"
+    effect="Wealthy leisure with businesses and staff<BR>1 level 3 income OR 3 level 2 incomes<BR>Booming business or a village tax income<BR>Savings for a season"
+/>
 
-Masterwork Heavy Crossbow
-A finely crafted masterwork heavy crossbow featuring its wooden stock intricate mechanism and metal components
-
-Full Plate Armor
-A complete set of full plate armor displayed with its metallic plates shoulder guards chest plate and leg guards
-
-Wagon of Food and Provisions
-A wooden wagon filled with various food supplies and provisions including barrels sacks bread and cured meats
-
-Wagon of Quality Stone
-A wagon transporting a large quantity of quality stone building materials with its large wheels pulled by horses
-
-Wagon of Hard Wood
-A wooden wagon loaded with neatly stacked hardwood logs showcasing the transportation of lumber for various projects
-
-Wagon of Luxury Goods
-An ornately designed wagon filled with luxury goods such as silk spices and precious items used for trade and transportation
-
-Skilled Carpenter
-A skilled carpenter at work crafting wooden structures furniture or tools within a medieval castle setting
-
-Skilled Blacksmith
-A skilled blacksmith creating repairing or maintaining metal items such as weapons armor and tools showcasing their expertise in a medieval forge
-
-Skilled Mason
-A skilled mason constructing repairing or maintaining stone structures or features within a medieval castle highlighting their craftsmanship and attention to detail
-
-Skilled Alchemist
-A skilled alchemist preparing potions elixirs or other alchemical substances in their workshop utilizing various tools ingredients and equipment for medicinal or protective purposes
-
-Skilled Spy
-A skilled spy discreetly gathering information infiltrating enemy territories or conducting covert operations demonstrating their stealth and resourcefulness in a medieval setting
-
-Priest
-A priest performing religious ceremonies providing spiritual guidance or using healing abilities to aid and support the inhabitants of a medieval castle
-
-Veteran Officer
-A veteran officer commanding troops planning defensive or offensive strategies and offering advice on military matters to ensure the safety and security of a medieval castle
-
-Siege Ballista
-A siege ballista in action launching large projectiles at enemy fortifications or troops showcasing its importance in both offensive and defensive castle operations
-
-Troop of Pike Men
-A troop of pike men forming a strong defensive line or launching coordinated attacks against enemy forces demonstrating their training and discipline in a medieval battle setting
-
-Troop of Archers
-A troop of archers raining arrows down upon enemy troops or fortifications from a distance highlighting their skill and accuracy in supporting castle defenses or offensives
-
-Group of Hunters
-A group of hunters tracking trapping and hunting wildlife in the surrounding lands of a medieval castle providing fresh game for the castle's food supply
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Scene 1: Castle ceremony with the king
-
-Heroes, members of a noble family are summoned to meet the king at the capitol.
-During a ceremony with the king, heroes receive a castle and swear an oath to restore it and clear the land of bandits
-King's brother appears and confronts king, angry about the castle being given to heroes
-King banishes his brother and warns heroes about him
-King urges heroes to act quickly due to potential threats from bandits and the land's lack of leadership
-Heroes must now embark on their quest to restore the castle and maintain control of the land amidst political tensions.
+**🎭 Do you want to do anything else before leaving the capitol?**
 
 ## Scene 2: On the road to the castle
 

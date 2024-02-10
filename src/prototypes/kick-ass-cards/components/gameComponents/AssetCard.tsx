@@ -11,7 +11,10 @@ import { twMerge } from "tailwind-merge";
 type OptionalKeysType = "slug" | "cost" | "cardCount";
 
 export type AssetCardProps = React.PropsWithChildren<
-    { className?: string; size?: PaperProps["size"] } & Omit<AssetType, OptionalKeysType> &
+    { className?: string; size?: PaperProps["size"]; cornerIcon?: IconType; cornerIconClassName?: string } & Omit<
+        AssetType,
+        OptionalKeysType
+    > &
         Partial<Pick<AssetType, OptionalKeysType>>
 >;
 
@@ -67,6 +70,8 @@ const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMa
 export default function AssetCard({
     className,
     size = "Mini US game",
+    cornerIcon = "chest",
+    cornerIconClassName,
     slug,
     title,
     icon,
@@ -88,7 +93,10 @@ export default function AssetCard({
     return (
         <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}>
             <div className="flex flex-row items-center gap-2">
-                <Icon icon="chest" className={"text-kac-gold-dark text-opacity-50 h-4"} />
+                <Icon
+                    icon={cornerIcon}
+                    className={twMerge("text-kac-gold-dark text-opacity-50 h-4", cornerIconClassName)}
+                />
                 <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
             </div>
 

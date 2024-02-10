@@ -2,11 +2,21 @@
 campaign: Throne of Hawthorn
 chapter: 0
 act: 0
+defaultClockProps:
+    {
+        size: "US game",
+        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+    }
 defaultActorProps:
     {
         size: "US game",
         className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
         imagePosition: "center top",
+    }
+defaultAssetProps:
+    {
+        size: "Mini US game",
+        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
     }
 defaultMiniProps:
     {
@@ -135,6 +145,58 @@ Each level has a different lenght of time the character can stay at this level l
     </tr>
   </tbody>
 </table>
+
+<List>
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        cornerIcon="crownCoin"
+        icon="/public/TOH/items/empty-bowl.png"
+        title="Wealth level 0"
+        effect="Struggling to survive, broke<BR>No income<BR>No savings"
+    />
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        cornerIcon="crownCoin"
+        icon="/public/TOH/items/porridge.png"
+        title="Wealth level 1"
+        effect="Basic necessities (food and shelter)<BR>1 level 1 income<BR>Unskill labour wage (guard or farmer)<BR>Savings for a week"
+    />
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        cornerIcon="crownCoin"
+        icon="/public/TOH/items/ribs.png"
+        title="Wealth level 2"
+        effect="Comfortable living with some luxury and small real estate<BR>1 level 2 income OR 2 level 1 incomes<BR>Skilled farmer wage or small business<BR>Savings for a month"
+    />
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        cornerIcon="crownCoin"
+        icon="/public/TOH/items/fine-chicken.png"
+        title="Wealth level 3"
+        effect="Wealthy leisure with businesses and staff<BR>1 level 3 income OR 3 level 2 incomes<BR>Booming business or a village tax income<BR>Savings for a season"
+    />
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        cornerIcon="crownCoin"
+        icon="/public/TOH/items/treasure-chest.png"
+        title="Wealth level 4"
+        effect="Owning a town or military camp, employing armed forces<BR>1 level 4 income OR 4 level 3 incomes<BR>a town tax income<BR>Savings for a year"
+    />
+    <Asset
+        {...defaultAssetProps}
+        size="US game"
+        cornerIcon="crownCoin"
+        icon="/public/TOH/items/crown.png"
+        title="Wealth level 5"
+        effect="Wealth of a country<BR>1 level 5 income OR 5 level 4 incomes<BR>Country size tax income<BR>Savings for a year"
+    />
+
+</List>
 
 ### Reputation
 

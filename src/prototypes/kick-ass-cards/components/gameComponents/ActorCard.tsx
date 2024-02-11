@@ -15,6 +15,8 @@ export type ActorCardProps = React.PropsWithChildren<
         className?: string;
         size?: PaperProps["size"];
         imagePosition?: CSSProperties["objectPosition"];
+        imageClassName?: string;
+        imageWrapperClassName?: string;
         notesClassName?: string;
         forPrint?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
@@ -28,6 +30,8 @@ export default function ActorCard({
     size = forPrint ? "US game" : undefined,
     name = "",
     imageUri,
+    imageClassName,
+    imageWrapperClassName,
     occupation = forPrint ? "" : null,
     toughness = 0,
     currentToughness = toughness,
@@ -48,11 +52,17 @@ export default function ActorCard({
             )}
         >
             <div className="flex-1 flex flex-col gap-2">
-                <div className="flex-1 relative rounded flex flex-col text-kac-steel-light border-2 border-kac-steel h-16">
+                <div
+                    className={twMerge(
+                        "imageWrapperClassName",
+                        "flex-1 relative rounded flex flex-col text-kac-steel-light border-2 border-kac-steel h-16 z-10",
+                        imageWrapperClassName
+                    )}
+                >
                     {imageUri ? (
                         <ImageComponent
                             src={imageUri}
-                            className="w-full h-full rounded-sm"
+                            className={twMerge("imageClassName", "w-full h-full rounded-sm", imageClassName)}
                             objectFit="cover"
                             objectPosition={imagePosition}
                         />

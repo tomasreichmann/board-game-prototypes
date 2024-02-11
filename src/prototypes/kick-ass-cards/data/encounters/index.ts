@@ -142,5 +142,6 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("ISV-c1-a0-Info", "Info", ISV),
     ...makeEncounterDefinition("TOH-c0-a0-GM-Info", "GM Info", TOH),
     ...makeEncounterDefinition("TOH-c1-a1-Audience-with-the-king", "Audience with the king", TOH),
+    ...makeEncounterDefinition("TOH-c1-a2-On-The-Road-to-Spice", "On the Road to Špice", TOH),
 };
 console.log("encountersMap", encountersMap);

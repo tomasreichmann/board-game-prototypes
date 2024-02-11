@@ -23,6 +23,7 @@ import GenericMdxArticle, {
     MdxArticleProps as GenericMdxArticleProps,
 } from "../../../../components/content/MdxArticle";
 import Toggle from "../../../../components/Toggle";
+import Aside from "./Aside";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -34,6 +35,7 @@ export type MdxArticleProps = GenericMdxArticleProps;
 
 export const defaultMdxComponentMap = {
     Alert,
+    Aside,
     List: ComponentList,
     p: Paragraph,
     li: ListItem,
@@ -61,7 +63,6 @@ export default function MdxArticle({
     children,
 }: MdxArticleProps) {
     return (
-        
         <GenericMdxArticle
             className={className}
             ArticleComponent={ArticleComponent}

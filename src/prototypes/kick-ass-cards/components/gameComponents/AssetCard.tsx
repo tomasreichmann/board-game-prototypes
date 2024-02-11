@@ -11,10 +11,13 @@ import { twMerge } from "tailwind-merge";
 type OptionalKeysType = "slug" | "cost" | "cardCount";
 
 export type AssetCardProps = React.PropsWithChildren<
-    { className?: string; size?: PaperProps["size"]; cornerIcon?: IconType; cornerIconClassName?: string } & Omit<
-        AssetType,
-        OptionalKeysType
-    > &
+    {
+        className?: string;
+        size?: PaperProps["size"];
+        cornerIcon?: IconType;
+        cornerIconClassName?: string;
+        iconClassName?: string;
+    } & Omit<AssetType, OptionalKeysType> &
         Partial<Pick<AssetType, OptionalKeysType>>
 >;
 
@@ -70,6 +73,7 @@ const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMa
 export default function AssetCard({
     className,
     size = "Mini US game",
+    iconClassName,
     cornerIcon = "chest",
     cornerIconClassName,
     slug,
@@ -84,11 +88,12 @@ export default function AssetCard({
             className={twMerge(
                 "max-h-fit",
                 outcomeColorClassNameMap[icon] || "text-iron-light",
-                effectSizeClassNameMap[icon] || "h-16"
+                effectSizeClassNameMap[icon] || "h-16",
+                iconClassName
             )}
         />
     ) : (
-        <Image className="max-h-fit h-24" src={icon} objectFit="contain" />
+        <Image className={twMerge("max-h-fit h-24", iconClassName)} src={icon} objectFit="contain" />
     );
     return (
         <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}>

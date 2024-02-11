@@ -1,7 +1,7 @@
 ---
 campaign: Throne of Hawthorn
 chapter: 1
-act: 1
+act: 2
 defaultClockProps:
     {
         size: "US game",
@@ -30,14 +30,16 @@ defaultMiniProps:
     }
 ---
 
-# Scene 1 - Audience with the king
+# Scene 1 - On the road to Špice
 
 ❗TODO title image
-❗TODO music
-
 ![](/TOH/locations/hlohovec-throne-room.jpg)
 
-💡 This scene introduces the player characters and the main quest - Receive the castle and rebuild it.
+💡 This act introduces combat rules, shows players problems of the Špice region and introduces the bandits.
+
+
+
+
 
 _Troubled dreams plague the noble Hrotec family on their long journey to the capital city of Hlohovec. For weeks now, ravens and thorns haunt their restless nights - ominous signs since King Miroslav’s accursed deal robbed them of their ancestral home.
 The same deal that stripped this landlocked realm of a vital mountain fortress guarding their borders. King Miroslav’s promise to reimburse the family’s lost lands is now in question since his unexpected death mere weeks ago. Summoned now to the capital, the unfortunate nobles of the house Hrotec fear they will be stripped of their station by the young king Svatopluk._
@@ -45,12 +47,11 @@ The same deal that stripped this landlocked realm of a vital mountain fortress g
 _The lavish reconstructed citadel towers into view first, no wartime encampment but a gilded palace built with borrowed fortunes. In the opulent, tapestry-laden hall, the herald announces their arrival with little fanfare.
 Yet young King Svatopluk himself awaits atop the ruby-studded granite throne. Murmurs ripple through the gallery of onlooking lords._
 
-<Aside>
-
 **🎭 Players, each describe what do you look like, how you approach the king and what does he see as you approach his throne.**  
 **💡 As players describe their appearance and behaviour, look for things that can reduce king's patience. For example not addressing him properly, arguing or wasting his time.
 You can make this clear by putting the "King's patience" card in front of the players. Make sure to describe how king reacts when players annoy him.**
 
+<List>
     <Clock
         {...defaultClockProps}
         title="King's patience"
@@ -59,14 +60,13 @@ You can make this clear by putting the "King's patience" card in front of the pl
         threat="Reduced king's support"
         reward="Increased king's support"
     />
-
-</Aside>
-
--   The king addresses you as you approach:  
-_"Esteemed lords (and ladies) of the House of Hrotec, You come in troubled times. After my father the king’s tragic passing, chaos threatens our realm - bandits exploit our weakness and rivals hunger for our lands. I see that fate has dealt you an unfair hand. Your ancestral home has been taken from you and you were left without any lands to call your own. Yet I intend to uphold my father’s vow to you. Swear to me your steadfast loyalty and the castle of Špice shall belong to your house forevermore."_  
-_"Are you ready to take the vow?"_
+</List>
 
 ![](/TOH/characters/king-svatopluk.png)
+
+*   The king addresses you as you approach:
+_"Esteemed lords (and ladies) of the House of Hrotec, You come in troubled times. After my father the king’s tragic passing, chaos threatens our realm - bandits exploit our weakness and rivals hunger for our lands. I see that fate has dealt you an unfair hand. Your ancestral home has been taken from you and you were left without any lands to call your own. Yet I intend to uphold my father’s vow to you. Swear to me your steadfast loyalty and the castle of Špice shall belong to your house forevermore."_  
+_"Are you ready to take the vow?"_
 
 **🎭 How does the Hrotec family respond?**
 
@@ -79,7 +79,7 @@ _The scroll reads:
 
 ![](/TOH/items/oath-scroll.jpg)
 
-**🎭 The king is waiting to hear your oath**
+**🎭 The king is waiting to hear**
 
 _Take good care of the once great castle. Prove yourselves to be protectors of our land against all that threatens us from without..._
 
@@ -89,42 +89,15 @@ _Suddenly, you hear a loud bang as some distant door slams open. The king stops 
 
 _The king turns to you and says firmly: **"You know what to do. The chancellor will se you out."** He raises his head to the lords and ladies in the room: **"Leave us."**_
 
-# Scene 2 - Quartermaster
+_As you leave the hall with the chancellor, you hear an echo of an incomprehensible but clearly heated argument between the king Svatopluk and his sister Rostislava._
 
-❗TODO image: Lavish castle halls
+## Scene 2 - Quartermaster
 
-_As you leave the hall with Filip Spisec the chancellor, you hear an echo of an incomprehensible but clearly heated argument between the king Svatopluk and his sister Rostislava. The chancellor ignores it and hands you the deed to the castle instead. You walk through the lavish halls of the citadel and listen to Filip as he explains what does your deed entitle to._
-
-<Aside>
-    
 -   The chancellor (Filip Spisec) takes the nobles to a quartermaster.
--   He gives them the deed to the castle and explains that it entitles them to.
-    -   Use the castle as they see fit
-    -   Exploit region's natural resources
-    -   Collect taxes from the lands
-    -   Settle disputes between locals
-    -   Raise army in the king's name
-
-<Asset
-    {...defaultAssetProps}
-    broadcastProps={{className: "shrink w-auto"}}
-    size="US game"
-    icon="/TOH/items/castle-deed.png"
-    iconClassName="h-auto"
-    title="Castle Špice Deed"
-    effect="This document grants the ownership and the right to collect taxes of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk."
-/>
-
-</Aside>
-
-❗TODO image: Quartermaster
-
-_After a long walk, you arrive at the quatermaster's desk. A big man with a limp is standing at the desk writing something into a big ledger. Behind him, porters are milling around, carrying crates or wheeling barrels from the warehouse to the wagons parked at the back of the courtyard._
-
-**🎭 Players, each pick one thing from the list supplies.  
-Than as a group, pick as many extra things from the list as how much remains on the "Kings patience" counter.**
-
--  🏺 **List of supplies**
+-   He gives them the deed to the castle
+-   Players can **each** pick one thing from the list supplies.
+-   As a **group**, players can pick as many extra things from the list as much remains on the "Kings patience" counter.
+-   List of supplies
     -   Armored warhorse (Pegas)
     -   Group of hunters (Chief Marián Richter)
     -   Full plate armor
@@ -144,6 +117,8 @@ Than as a group, pick as many extra things from the list as how much remains on 
     -   Wagon of hard wood
     -   Wagon of luxury goods
     -   Wagon of quality stone
+
+❗TODO image: Quartermaster
 
 <List>
     <Actor
@@ -233,6 +208,14 @@ Than as a group, pick as many extra things from the list as how much remains on 
 
     <Asset
         {...defaultAssetProps}
+        size="US game"
+        icon="/TOH/items/castle-deed.png"
+        iconClassName="h-auto"
+        title="Castle Špice Deed"
+        effect="This document grants the ownership and the right to collect taxes of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk."
+    />
+    <Asset
+        {...defaultAssetProps}
         icon="/TOH/items/two-handed-sword.png"
         title="Masterwork Great Sword"
         effect="Can attack 2 engaged enemies in the same zone using the same Effect (slashing)."
@@ -290,9 +273,7 @@ Than as a group, pick as many extra things from the list as how much remains on 
 -   With lady Rostislava in the capitol, the chancelor thinks it would be best to leave for the castle Špice as soon as possible.
 -   The Hrotec family has still some wealth and tax income from far away villages. 
 
-## 💡 Note on Wealth
-
-<Aside>
+💡 **Note on Wealth**
 
 -   This is a good time to explain that the Hrotec family has Wealth of level 3.
 -   They have an income of level 3 once they start collecting taxes from the Špice region. Troops and craftspeople from the quartermaster are paid for by the king. From the current income, they can employ 3 more skilled craftspeople or 3 loads of resources and they don't need to worry about having enough money to hire unskilled workers, geting decent food nor shelter while in a settlement.  
@@ -308,8 +289,81 @@ Than as a group, pick as many extra things from the list as how much remains on 
     effect="Wealthy leisure with businesses and staff<BR>1 level 3 income OR 3 level 2 incomes<BR>Booming business or a village tax income<BR>Savings for a season"
 />
 
-</Aside>
-
 **🎭 Do you want to do anything else before leaving the Hlohovec capital city?**
 
-### Proceed to the next chapter
+## Scene 2: On the road to the castle
+
+Heroes travel through lawless lands to reach their castle
+Heroes encounter travelers on the road threatened by wild animals
+If heroes save the travelers, they will share news about the problems with bandits in their land.
+The bandits are about to take the castle and heroes must travel faster
+The bandit chief in disguise tries to lead them into an ambush
+
+## Scene 3 (optional): Bandit ambush
+
+Bandits ambush heroes ruining their supplies and run away
+
+## Scene 4: The arrival
+
+Heroes arrive at castle and must confront bandit chief to regain control
+Bandits use hit and run tactics to harass the heroes
+Final showdown against the bandit chief ends with him taking a hostage
+Heroes have to decide to save the hostage and let the bandit chief go or kill both
+
+## Scene 5: The castle restoration
+
+During several months heroes gather support from the locals to help them rebuild the castle and restore order in the region
+Heroes can negotiate resources from the locals
+Heroes can dedicate some if their forces to set up patrols and get rid of the wild animals and leftover bandits
+Heroes can get levy and raise more troops from the locals
+Heroes can investigate castle’s history to uncover the ghost of the former lord and obtain his hidden treasure
+Heroes learn about a king’s brother’s rebel army on its way to the castle
+
+## Scene 6: Meeting the king’s brother
+
+King's brother comes and wants to meet at neutral ground
+He tries to persuade heroes to join his side promising treasures and land in return
+Players learn about kings army on the way to the castle
+Players think about what it means if they break the oath to the king
+King’s brother threatens the players, if they refuse his offer and orders his army to capture the castle
+
+## Scene 7: Gathering allies
+
+Heroes have limited time before the army arrives each to meet with one of the neighboring lords or influential locals
+Heroes have to decide if they want threaten them or bribe them to gain their support
+They need to decide where to send their forces, who to protect and who to let fend for themselves
+Both armies are headed toward the castle, creating a sense of urgency and pressure
+Heroes face a critical decision: defend castle against king's brother or join him against king's forces
+
+## Scene 8: Castle siege
+
+Heroes command their troops to defend the castle
+Heroes launch a counter attack to capture enemy’s supplies
+King’s brother flees, if he gets close to being captured
+King’s commander will negotiate for his life, if captured
+There are magical artifacts, masterwork equipment and talented people captured after the battle.
+Heroes learn that a second army has already besieged the capital city
+The fate of the kingdom will be decided there
+
+## Scene 9: To the capital city
+
+Heroes have time to assemble a small convoy and try to reach the capital city in time to influence the outcome of the siege
+Heroes must manage their convoy on a difficult journey to the capital
+Allies who are unhappy with heroes' decisions and notable people the heroes wronged in the past threaten to leave convoy or even join the enemy
+They must make amends or face consequences, such as attacks or sabotage from disgruntled individuals
+
+## Scene 10: King’s citadel under siege
+
+Heroes arrive at capital just as it is being besieged by brother's forces
+They meet with the leader of the opposing force (the king or his brother) that try to persuade them to switch sides
+There is an option to betray both and try to get the crown for themselves
+Heroes must manage the fallout of their earlier actions and navigate shifting alliances as they advance through the battles within the city
+In the final showdown they need to defeat the King, his brother or both
+
+## Scene 11: The dust settles
+
+The capital city lies in ruins and people leave their burnt down houses
+People of kingdom react to heroes' choices and either leave in fear or celebrate the heroes and follow them to their castle as the new capital
+Everyone gathers at the castle for a feast and celebration
+Heroes decide how they want to celebrate
+Players take turns describing what happened with notable characters they met along their way and what impact did the heroes’ actions have on future of the kingdom

@@ -8,6 +8,7 @@ import bearHead from "./media/bear-head.svg";
 import bigDiamondRing from "./media/big-diamond-ring.svg";
 import blackBook from "./media/black-book.svg";
 import bladeBite from "./media/blade-bite.svg";
+import bodyBalance from "./media/body-balance.svg";
 import bolas from "./media/bolas.svg";
 import bookCover from "./media/book-cover.svg";
 import bracers from "./media/bracers.svg";
@@ -129,6 +130,7 @@ import walkingBoot from "./media/walking-boot.svg";
 import warlockEye from "./media/warlock-eye.svg";
 import warlordHelmet from "./media/warlord-helmet.svg";
 import weight from "./media/weight.svg";
+import whirlwind from "./media/whirlwind.svg";
 import williamTellSkull from "./media/william-tell-skull.svg";
 import wolfHead from "./media/wolf-head.svg";
 import wolfTrap from "./media/wolf-trap.svg";
@@ -146,6 +148,7 @@ export const iconMap = {
     bigDiamondRing,
     blackBook,
     bladeBite,
+    bodyBalance,
     bolas,
     bookCover,
     bracers,
@@ -267,6 +270,7 @@ export const iconMap = {
     warlockEye,
     warlordHelmet,
     weight,
+    whirlwind,
     williamTellSkull,
     wolfHead,
     wolfTrap,

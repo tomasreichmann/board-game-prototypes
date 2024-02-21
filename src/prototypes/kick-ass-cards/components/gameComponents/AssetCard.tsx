@@ -18,7 +18,7 @@ export type AssetCardProps = React.PropsWithChildren<
         cornerIconClassName?: string;
         iconClassName?: string;
     } & Omit<AssetType, OptionalKeysType> &
-        Partial<Pick<AssetType, OptionalKeysType>>
+        Partial<Pick<AssetType, OptionalKeysType> & Partial<PaperProps>>
 >;
 
 const effectSizeClassNameMap: { [key in IconType]?: string } = {
@@ -72,7 +72,6 @@ const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMa
 
 export default function AssetCard({
     className,
-    size = "Mini US game",
     iconClassName,
     cornerIcon = "chest",
     cornerIconClassName,
@@ -81,6 +80,9 @@ export default function AssetCard({
     icon,
     effect,
     children,
+    bleedMm = 0,
+    size = "Mini European",
+    ...restProps
 }: AssetCardProps) {
     const graphics = isIcon(icon) ? (
         <Icon
@@ -96,24 +98,68 @@ export default function AssetCard({
         <Image className={twMerge("max-h-fit h-24", iconClassName)} src={icon} objectFit="contain" />
     );
     return (
-        <PaperOrDiv size={size} className={clsx("AssetCard bg-white p-5 flex flex-col gap-2 rounded-lg", className)}>
-            <div className="flex flex-row items-center gap-2">
-                <Icon
-                    icon={cornerIcon}
-                    className={twMerge("text-kac-gold-dark text-opacity-50 h-4", cornerIconClassName)}
-                />
-                <div className="flex-1 text-slate-400 text-center text-xs pr-4">{slug}</div>
-            </div>
+        <PaperOrDiv
+            size={size}
+            bleedMm={bleedMm}
+            className={clsx(
+                "AssetCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
+                className
+            )}
+            {...restProps}
+        >
+            <div
+                className="relative flex flex-col justify-center items-stretch flex-1 p-3"
+                style={{ margin: `${bleedMm}mm` }}
+            >
+                <div className="flex flex-row items-center gap-2 mb-2">
+                    <Icon
+                        icon={cornerIcon}
+                        className={twMerge("text-kac-gold-dark text-opacity-50 h-4", cornerIconClassName)}
+                    />
+                    <div className="flex-1 text-slate-400 text-xs">{slug}</div>
+                </div>
 
-            {graphics}
+                {graphics}
 
-            <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light">
-                <div className="font-kacHeading text-kac-iron-light text-sm text-center">{title}</div>
+                <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light mb-1 mt-2">
+                    <div className="font-kacHeading text-kac-iron-light text-sm text-center leading-none">{title}</div>
+                </div>
+                <div className="flex-1 text-xs text-center text-kac-iron-light leading-tight min-h-[6em]">
+                    <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
+                </div>
+                {children}
             </div>
-            <div className="flex-1 text-xs text-center text-kac-iron-light">
-                <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
-            </div>
-            {children}
         </PaperOrDiv>
     );
 }
+
+export const AssetCardBackFace = ({
+    className,
+    children,
+    size = "Mini European",
+    ...restProps
+}: Partial<PaperProps>) => {
+    return (
+        <PaperOrDiv
+            size={size}
+            className={twMerge(
+                "AssetCardBackFace gap-2 rounded-lg print:rounded-none bg-kac-gold-dark flex flex-col justify-stretch items-stretch",
+                className
+            )}
+            {...restProps}
+        >
+            <div className="m-[3mm] relative flex flex-col justify-center items-center flex-1 p-3">
+                <div className="w-32 h-32 flex flex-col justify-center items-center relative">
+                    <div
+                        className={
+                            "w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-gold-darker absolute bg-kac-gold-light"
+                        }
+                    />
+                    <Icon icon="chest" className={"text-kac-gold-darker h-10 relative z-1 mt-2"} />
+                    <div className="font-kacBody text-kac-gold-darker text-xs text-center relative z-1">Asset</div>
+                </div>
+                {children}
+            </div>
+        </PaperOrDiv>
+    );
+};

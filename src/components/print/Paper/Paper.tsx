@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import clsx from "clsx";
 import { allSizes } from "../paperSizes";
 
@@ -13,6 +13,7 @@ export type PaperProps = React.PropsWithChildren<{
     bleedRightMm?: number;
     bleedBottomMm?: number;
     bleedLeftMm?: number;
+    style?: CSSProperties;
 }>;
 
 export const PaperOrDiv = ({ size, ...restProps }: Omit<PaperProps, "size"> & { size?: PaperProps["size"] }) => {
@@ -31,6 +32,7 @@ export default function Paper({
     bleedRightMm = bleedMm,
     bleedBottomMm = bleedMm,
     bleedLeftMm = bleedMm,
+    style,
     children,
 }: PaperProps) {
     const sizeInMm = allSizes[size].mm;
@@ -42,6 +44,7 @@ export default function Paper({
             style={{
                 width: width + bleedLeftMm + bleedRightMm + "mm",
                 height: height + bleedTopMm + bleedBottomMm + "mm",
+                ...style,
             }}
         >
             {children}

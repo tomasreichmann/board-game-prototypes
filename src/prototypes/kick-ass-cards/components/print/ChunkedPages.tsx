@@ -1,13 +1,15 @@
 import React from "react";
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
-import PrintPage from "../../../../components/print/PrintPage/PrintPage";
+import PrintPage, { PrintPageProps } from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
 
 type ChunkedPagesProps<T, B> = {
     Component: React.ComponentType<T>;
     BackFaceComponent?: React.ComponentType<B>;
     getBackFaceProps?: (item: T) => B;
+    frontFacePrintPageProps?: Partial<PrintPageProps>;
+    backFacePrintPageProps?: Partial<PrintPageProps>;
     items: T[];
     itemsPerPage: number;
     label: string;
@@ -20,6 +22,8 @@ export default function ChunkedPages<T, B>({
     items,
     itemsPerPage,
     label,
+    frontFacePrintPageProps,
+    backFacePrintPageProps,
 }: ChunkedPagesProps<T, B>) {
     const pagesPerCard = BackFaceComponent ? 2 : 1;
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
@@ -27,38 +31,38 @@ export default function ChunkedPages<T, B>({
         <>
             {chunk(items, itemsPerPage).map((pageItems, pageIndex) => {
                 const backPage = BackFaceComponent ? (
-                    <PrintPage key={"action-deck-page-" + pageIndex + "-back"}>
+                    <PrintPage key={"action-deck-page-" + pageIndex + "-back"} {...frontFacePrintPageProps}>
                         <div className="flex flex-row-reverse flex-wrap content-center items-center justify-center">
                             {pageItems.map((item, itemIndex) => {
                                 const backFaceProps = getBackFaceProps ? getBackFaceProps(item) : item;
                                 return (
                                     <BackFaceComponent
                                         key={`chunked-page-item-${itemIndex}`}
-                                        {...(backFaceProps as B)}
                                         className="relative"
+                                        {...(backFaceProps as B)}
                                     >
                                         <PrintMarkerCorners />
                                     </BackFaceComponent>
                                 );
                             })}
-                            <h2 className="text-2xl font-kacHeading text-kac-steel-dark w-full text-center">
+                            <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-">
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
-                            </h2>
+                            </div>
                         </div>
                     </PrintPage>
                 ) : undefined;
                 return (
                     <React.Fragment key={"action-deck-page-" + pageIndex}>
-                        <PrintPage key={"action-deck-page-" + pageIndex}>
+                        <PrintPage key={"action-deck-page-" + pageIndex} {...backFacePrintPageProps}>
                             <div className="flex flex-wrap content-center items-center justify-center">
                                 {pageItems.map((item, itemIndex) => (
-                                    <Component key={`chunked-page-item-${itemIndex}`} {...item} className="relative">
+                                    <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item}>
                                         <PrintMarkerCorners />
                                     </Component>
                                 ))}
-                                <h2 className="text-2xl font-kacHeading text-kac-steel-dark w-full text-center">
+                                <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-">
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}
-                                </h2>
+                                </div>
                             </div>
                         </PrintPage>
                         {backPage}
@@ -68,6 +72,7 @@ export default function ChunkedPages<T, B>({
             <DataToggle
                 data={items}
                 initialCollapsed
+                buttonContent={<>{label}: Show data</>}
                 className="print:hidden flex flex-col w-full items-start relative"
             />
         </>

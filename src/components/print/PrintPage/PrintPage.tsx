@@ -31,21 +31,18 @@ export default function PrintPage({
         "--PrintPage-margin-left": marginsInMm[3] + "mm",
         "--PrintPage-bleed": bleedInMm + "mm",
     } as unknown as React.CSSProperties;
+    const margin = [0, 1, 2, 3].map((marginIndex) => `${marginsInMm[marginIndex] - bleedInMm}mm`).join(" ");
     return (
         <div className={clsx("PrintPage", className)} style={pageStyle}>
             <style>{`
 @media print {
   @page {
     size: ${sizeInMm[0]}mm ${sizeInMm[1]}mm;
-    margin: ${marginsInMm[0] - bleedInMm}mm ${marginsInMm[1] - bleedInMm}mm ${
-                marginsInMm[2] - bleedInMm
-            }mm ${marginsInMm[3] - bleedInMm}mm;
+    margin: ${margin};
   }
 }
       `}</style>
-            <div className={clsx("PrintPage_content", contentClassName)}>
-                {children}
-            </div>
+            <div className={clsx("PrintPage_content", contentClassName)}>{children}</div>
         </div>
     );
 }

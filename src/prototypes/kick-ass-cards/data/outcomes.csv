@@ -1,6 +1,6 @@
 slug,title,icon,description,instructions
 special,Speciální akce,mightyForce,"Aktivuj svojí speciální akci<BR>+3 Efekt",
 success,Úspěch,bullseye,"+2 Efekt",
-partial,Částečný úspěch,dodge,"+1 Efekt,<BR>nebo úspěch + Komplikace",
+partial,Částečný úspěch,thrustBend,"+1 Efekt,<BR>nebo úspěch + Komplikace",
 fumble,Selhání,knockout,"Ihned oznam, pokud máš 3 Selhání v ruce ➜ Katastrofa",
-chaos,Chaos,thrustBend,"Stalo se něco neočekávaného.<BR>Nelze použít na obranu",
+chaos,Chaos,whirlwind,"Stalo se něco neočekávaného.<BR>Nelze použít na obranu",

@@ -1,10 +1,10 @@
-"slug","title","icon","requirements","effect","cardCount",
-"heat-sink","Chladič","/LP/icons/cooler.png","syntetický","Akce: Dotkni se dvou spojenců ve své zóně (včetně sebe) a odhoď všechny páry jejich karet Horko a Mráz.",1,
-"seductive","Svůdník","/LP/icons/lips.png",,"Získáš zdarma Posílení na začátku sociálního setkání s postavou, která tě může považovat za přitažlivou.",1,
-"elusive","Úskočný","/LP/icons/elusive.png",,"Jednou za kolo se můžeš přesunout do sousední zóny, aniž bys utržil zranění při obraně.",1,
-"evasive","Úhybný manévr ","/LP/icons/drift.png",,"+1 Efekt na pilotování při vyhýbání se něčemu.",1,
-"recklessPiloting","Zbrklé pilotování","/LP/icons/stunt-jump.png",,"+1 Efekt na pilotování při způsobování poškození.",1,
-"charge","Do boje","/LP/icons/charge.png",,"+1 Efekt na útok v souboji na blízko po přesunu do zóny.",1,
-"sharpshooter","Ostrostřelec","/LP/icons/bullseye.png",zbraň na dálku nebo hod,"+1 Efekt na střelbu nebo hod na neživý objekt.",1,
-"sniper","Odstřelovač","/LP/icons/scope.png",zbraň na dálku,"+1 Efekt na střelbu dvě nebo více zón daleko.",1,
-"upload","Upload","/LP/icons/upload.png","syntetický","Můžeš nahrát svou mysl do jiného bezvládného stroje",1,
+"slug","title","icon","requirements","effect","cardCount"
+"heat-sink","Chladič","/LP/icons/cooler.png","syntetický","Akce: Dotkni se dvou spojenců ve své zóně (včetně sebe) a odhoď všechny páry jejich karet Horko a Mráz.",1
+"seductive","Svůdník","/LP/icons/lips.png",,"Získáš zdarma Posílení na začátku sociálního setkání s postavou, která tě může považovat za přitažlivou.",1
+"elusive","Úskočný","/LP/icons/elusive.png",,"Jednou za kolo se můžeš přesunout do sousední zóny, aniž bys utržil zranění při obraně.",1
+"evasive","Úhybný manévr ","/LP/icons/drift.png",,"+1 Efekt na pilotování při vyhýbání se něčemu.",1
+"recklessPiloting","Zbrklé pilotování","/LP/icons/stunt-jump.png",,"+1 Efekt na pilotování při způsobování poškození.",1
+"charge","Do boje","/LP/icons/charge.png",,"+1 Efekt na útok v souboji na blízko po přesunu do zóny.",1
+"sharpshooter","Ostrostřelec","/LP/icons/bullseye.png",zbraň na dálku nebo hod,"+1 Efekt na střelbu nebo hod na neživý objekt.",1
+"sniper","Odstřelovač","/LP/icons/scope.png",zbraň na dálku,"+1 Efekt na střelbu dvě nebo více zón daleko.",1
+"upload","Upload","/LP/icons/upload.png","syntetický","Můžeš nahrát svou mysl do jiného bezvládného stroje",1

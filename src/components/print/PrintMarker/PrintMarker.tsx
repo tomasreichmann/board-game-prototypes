@@ -19,6 +19,8 @@ type PrintMarkerProps = {
     bleedBottomMm?: number;
     bleedLeftMm?: number;
     offsetMm?: number;
+    lineWidthMm?: number;
+    lineLengthMm?: number;
     color?: React.CSSProperties["color"];
 };
 
@@ -38,6 +40,8 @@ const PrintMarker = ({
     noRightMarker,
     noBottomMarker,
     noLeftMarker,
+    lineWidthMm = 0.1,
+    lineLengthMm = 1.5,
     color = "black",
 }: PrintMarkerProps) => {
     return (
@@ -58,6 +62,8 @@ const PrintMarker = ({
                     "--PrintMarker-bleed-bottom": bleedBottomMm + "mm",
                     "--PrintMarker-bleed-left": bleedLeftMm + "mm",
                     "--PrintMarker-offset": offsetMm + "mm",
+                    "--PrintMarker-length": lineLengthMm + "mm",
+                    "--PrintMarker-width": lineWidthMm + "mm",
                 } as unknown as React.CSSProperties
             }
         >

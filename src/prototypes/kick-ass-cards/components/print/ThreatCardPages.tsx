@@ -7,7 +7,9 @@ export default function ThreatCardPages() {
         <ChunkedPages
             Component={ThreatCard}
             BackFaceComponent={ThreatCardBackFace}
-            items={threatsData}
+            frontFacePrintPageProps={{ bleedInMm: 0, contentClassName: "p-[3mm]" }}
+            backFacePrintPageProps={{ bleedInMm: 0, contentClassName: "p-[3mm]" }}
+            items={threatsData.map((item) => ({ ...item, bleedMm: 3, className: "relative -m-[3mm]" }))}
             itemsPerPage={4 * 4}
             label="Threats"
         />

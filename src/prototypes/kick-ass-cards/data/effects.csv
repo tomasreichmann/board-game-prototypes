@@ -7,10 +7,10 @@ panicked,Panika,shouting,"3x Tíseň: zachvátila tě panika. Místo z ruky hra
 hopeless,Beznaděj,run,"4x Tíseň: postava může jen utíkat, nebo se vzdát. Zbav se Tísňě k zotavení.",4
 stuck,"Uvíznutí",stickyBoot,"Nemůžeš se pohybovat, dokud se neosvobodíš.",4
 hindered,"Obtíž",weight,"Můžeš se pohybovat, nebo provádět akce, ale ne oboje, dokud se neuvolníš.",4
-boost,"Posílení",sprint,"Tvoje příští akce má +1 Efekt nebo +1 Pohyb navíc.",4
+boost,"Posílení",sprint,"Tvoje příští akce nebo obrana má +1 Efekt nebo +1 Pohyb navíc.",4
 freezing,"Mráz",thermometerCold,"Pokud máš na konci tahu 2x Mráz, získáš Tíseň, dokud se neohřeješ.",8
 hot,"Horko",thermometerHot,"Pokud máš na konci tahu 2x Horko, získáš Zranění, dokud se neochladíš.",8
-complication,Komplikace,footTrip,"Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň.",4
+complication,Komplikace,footTrip,"Komplikace ti ztěžuje život. Příští akce nebo obrana má -1 Efekt, poté odstraň.",4
 infection,Spórová infekce,"/LP/icons/spore-infection.png",+1 Zkáza,0
 doom,Zkáza,"/LP/icons/doom.png",3x Zkáza: Transformace v Monstrum,12
 salvation,Spása,"/LP/icons/salvation.png",3x Spása: Transformace zpět v Hrdinu,4

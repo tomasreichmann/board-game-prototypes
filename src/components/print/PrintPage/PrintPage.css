@@ -1,6 +1,7 @@
 .PrintPage {
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
     display: flex;
     flex-shrink: 0;
     flex-direction: column;
@@ -75,9 +76,6 @@
     }
 
     .PrintPage_content {
-        padding: 0;
         box-shadow: none;
-        margin: 0;
-        background-color: transparent;
     }
 }

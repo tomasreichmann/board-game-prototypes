@@ -45,7 +45,7 @@ export default function ChunkedPages<T, B>({
                                     </BackFaceComponent>
                                 );
                             })}
-                            <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-">
+                            <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
                             </div>
                         </div>
@@ -60,7 +60,7 @@ export default function ChunkedPages<T, B>({
                                         <PrintMarkerCorners />
                                     </Component>
                                 ))}
-                                <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-">
+                                <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}
                                 </div>
                             </div>

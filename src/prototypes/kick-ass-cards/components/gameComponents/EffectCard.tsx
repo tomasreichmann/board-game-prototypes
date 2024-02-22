@@ -63,6 +63,7 @@ export default function EffectCard({
     icon,
     effect,
     children,
+    bleedMm = 0,
     ...restProps
 }: EffectCardProps) {
     const graphics = getGraphics(icon);
@@ -70,13 +71,17 @@ export default function EffectCard({
     return (
         <PaperOrDiv
             size={size}
+            bleedMm={bleedMm}
             className={twMerge(
                 "EffectCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
                 className
             )}
             {...restProps}
         >
-            <div className="m-[3mm] relative flex flex-col justify-center items-stretch flex-1 p-3">
+            <div
+                className="relative flex flex-col justify-center items-stretch flex-1 p-3"
+                style={{ margin: `${bleedMm}mm` }}
+            >
                 <div className="flex flex-row items-center gap-2">
                     {smallGraphics}
                     <div className="flex-1 text-slate-400 text-center text-xs">{slug}</div>

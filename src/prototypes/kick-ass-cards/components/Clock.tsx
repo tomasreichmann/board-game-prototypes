@@ -35,28 +35,28 @@ export default function Clock({
             )}
         >
             <div className="relative flex-1 flex flex-col gap-2">
+                <Icon icon="sandsOfTime" className="absolute top-0 right-0 h-5 text-kac-bone-dark" />
                 <DiceCounter current={current} total={total} className="flex-1 text-kac-steel" />
                 {title !== null && (
-                    <h2 className="text-sm font-kacHeading leading-tight flex flex-row gap-2">
-                        <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
+                    <h2 className="text-sm font-kacHeading leading-tight text-balance mt-1 mb-1 text-center">
                         {title || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
                     </h2>
                 )}
                 {threat !== null && (
-                    <div className="text-sm text-kac-blood font-kacBody leading-tight flex flex-row gap-2">
+                    <div className="text-sm text-kac-blood font-kacBody flex flex-row gap-2">
                         <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block" />
                         {threat ? (
-                            <p className="flex-grow text-sm font-kacBody">{threat}</p>
+                            <p className="flex-grow text-sm font-kacBody leading-tight">{threat}</p>
                         ) : (
                             <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}
                     </div>
                 )}
                 {reward !== null && (
-                    <div className="text-sm text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-2">
+                    <div className="text-sm text-kac-gold-dark font-kacBody flex flex-row gap-2">
                         <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
                         {reward ? (
-                            <p className="flex-grow text-sm font-kacBody">{reward}</p>
+                            <p className="flex-grow text-sm font-kacBody leading-tight">{reward}</p>
                         ) : (
                             <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}

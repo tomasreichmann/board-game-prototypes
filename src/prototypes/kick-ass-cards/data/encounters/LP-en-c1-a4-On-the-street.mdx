@@ -35,7 +35,7 @@ act: 4
 <List>
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
+        size="Bridge"
         title="Viktor in critical condition"
         current={0}
         total={6}
@@ -44,12 +44,12 @@ act: 4
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Destruction of New Vega"
-        current={0}
-        total={4}
+        size="Bridge"
+        title="Saving New Vega"
+        current={2}
+        total={6}
         threat="New Vega is consumed by spores"
-        reward="Title: Hero of New Vega"
+        reward="Title: Heroes of New Vega"
     />
 </List>
 
@@ -57,7 +57,7 @@ act: 4
 
 -   Freight cart
 -   There are stacked barrels of StarSynth - a well-known chemical brand
-    -   (Breaking each barrel releases toxic substances, injuring everyone in the area and increasing Destruction of New Vega by 1)
+    -   (Breaking each barrel releases toxic substances, injuring everyone in the area and decreasing Saving New Vega by 1)
 -   One barrel is secured with a magnetic lock
     -   (can be hacked or broken)
     -   (contains 1x Rapid-regen, 1x SPED, 1x Rage)
@@ -66,19 +66,18 @@ act: 4
 <List>
     <Actor
         name="Spore Sirens"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_several_screaming_slender_6_feet_tall_feminine-looking_70707d8f-a4ff-474f-974a-608f4d82b3c9.png"
         occupation="Infected inhabitants of the water world"
         notes="Action: Nerve-racking scream - Zone: +1&nbsp;Distress, Bite - Injury"
         toughness={6}
-        threat="Destruction of New Vega +1"
-        reward="Medigel"
+        reward="Medigel, Saving New Vega +1"
     />
     <Asset
         title="Rapid-regen"
         icon="/LP/icons/syringe-2.png"
-        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;destruction)"
+        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;Doom)"
         className="drop-shadow-md print:drop-shadow-none"
     />
     <Asset
@@ -122,31 +121,24 @@ act: 4
     <Effect
         icon="thermometerHot"
         title="Spore Fever"
-        effect="+1&nbsp;temperature each round until cured"
+        effect="+1&nbsp;Heat each round until cured"
         className="drop-shadow-md print:drop-shadow-none"
     />
     <Actor
-        size="US game"
+        name="Infected Recharge Tower"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/sci-fi_electric_tesla_tower_spiky_cannon_charging_with_lightning_in_the_middle_of_space_station_corridor.jpg"
-        name="Infected Recharge Tower"
-        notes="Action: Once every 3&nbsp;rounds, it sends an electrical discharge up to 2&nbsp;zones away, injuring Androids for 2x&nbsp;Injury and organics for 2x&nbsp;Distress in the entire zone; A hit for 1 round disables vehicles; Resistant to conventional weapons"
+        toughness={6}
+        threat="Once every 3&nbsp;rounds, it sends an electrical discharge up to 2&nbsp;zones away, injuring Androids for 2x&nbsp;Injury and organics for 2x&nbsp;Distress in the entire zone; A hit for 1 round disables vehicles; Resistant to conventional weapons"
+        reward="2x Overclocking Battery, Saving New Vega&nbsp;+1"
     />
     <Actor
         name="Firefighting Drones"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg"
-        notes="Action: -1&nbsp;temperature to everyone in the zone where the fire is burning; Destruction: +1&nbsp;Destruction of New Vega"
-    />
-    <Clock
-        title="Disabling the Recharge Tower"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        current={0}
-        total={6}
-        threat="Destruction of New Vega&nbsp;+1"
-        reward="2x Overclocking Battery"
+        notes="Action: -1&nbsp;Heat to everyone in the zone where the fire is burning; Destruction: -1&nbsp;Saving New Vega"
     />
     <Asset
         title="Overclocking Battery"
@@ -179,7 +171,7 @@ act: 4
 ## Robotics Workshop
 
 -   You can place Viktor's body into one of the cryogenic modules stacked in the workshop.
-    -   (Some modules contain New Vega citizens in stasis. For each rescued person, -1&nbsp;Destruction of New Vega)
+    -   (Some modules contain New Vega citizens in stasis. For each rescued person, Saving New Vega&nbsp;+1)
 -   Two people can carry the module (Hindered), or you can use robotic arms.
 -   The problem is that one of the arms is obviously infected.
 -   A van and a mercenary fighter are parked at the warehouse.
@@ -189,25 +181,19 @@ act: 4
 <List>
     <Actor
         name="Infected Robotic Arm"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
-        notes="Action: Grab - Stuck / complication, Crush - 2x&nbsp;Injury"
+        toughness={6}
+        reward="Robotic Prosthesis"
+        threat="Grab - Stuck / Complication, Crush - 2x&nbsp;Injury"
     />
     <Actor
         name="Spore Swarm"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/alien-swarm.jpg"
-        notes="Infected with spores +1x&nbsp;Destruction; Immune to shooting and melee attacks. Weak to fire and area attacks."
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Disabling the Robotic Arm"
-        current={0}
-        total={6}
-        reward="Robotic Prosthesis"
+        notes="Infected with spores +1x&nbsp;Doom; Immune to shooting and melee attacks. Weak to fire and area attacks."
     />
 </List>
 
@@ -218,17 +204,11 @@ act: 4
 <List>
     <Actor
         name="Infected Robotic Arm"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
-        notes="Action: Throwing Scrap - 2x&nbsp;Injury up to 2&nbsp;zones away, Throwing Away - 1x&nbsp;Distress and throwing up to 2&nbsp;zones away"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Disabling the Robotic Arm"
-        current={0}
-        total={6}
+        threat="Throwing Scrap - 2x&nbsp;Injury up to 2&nbsp;zones away, Throwing Away - 1x&nbsp;Distress and throwing up to 2&nbsp;zones away"
+        toughness={6}
         reward="Targeting Eye Implant"
     />
     <Asset
@@ -249,10 +229,10 @@ act: 4
 <List>
     <Actor
         name="Confused Cargo Beetle"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png"
-        notes="Action: When injured: Scream - +1&nbsp;Distress in the given and adjacent zones; Impact - movement + 1x Injury to everyone in the zone; Wing Gust - move everything in the zone away from the beetle"
+        notes="Action: When injured: Scream - +1&nbsp;Distress in the given and adjacent zones; Impact - movement +1 Injury to everyone in the zone; Wing Gust - move everything in the zone away from the beetle"
     />
 </List>
 
@@ -269,25 +249,19 @@ act: 4
 <List>
     <Actor
         name="Infected Robo-Mercenary"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_futuristic_killer_military_robot_with_leaves_flowers_a_eb1a5d76-ca30-4811-a6d8-6fa94a15d1af.png"
         imagePosition="center 30%"
-        notes="Action: Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Zone on fire (+1&nbsp;Heat to everyone in the zone at the beginning of the turn), Blade Fury 2x/1x&nbsp;Injury. Resistant to shooting and melee attacks."
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Disabling the Robo-Mercenary"
-        current={0}
-        total={8}
-        threat="New Vega&nbsp;Destruction +1"
+        toughness={8}
         reward="1x Overclocking Battery, 1x Flamethrower Arm"
+        threat="New Vega&nbsp;Destruction +1"
+        notes="Action: Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Zone on fire (+1&nbsp;Heat to everyone in the zone at the beginning of the turn), Blade Fury 2x&nbsp;Injury. Resistant to shooting and melee attacks (-1&nbsp;Effect)."
     />
     <Asset
         icon="/LP/icons/flamethrower-arm.jpg"
         title="Flamethrower Arm"
-        effect="1x&nbsp;Injury, Igniting the zone. +1&nbsp;Destruction when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
+        effect="1x&nbsp;Injury, +1&nbsp;Heat to all in the zone. +1&nbsp;Destruction when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
         imagePosition
         className="drop-shadow-md print:drop-shadow-none"
     />

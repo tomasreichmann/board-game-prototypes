@@ -11,7 +11,7 @@ act: 5
 <Player url="https://youtu.be/Vb-jZDiGrDo?t=0" controls height={100} />
 
 -   You are at the cargo airlock
--   (We continue to monitor the **New Vega Destruction** threat)
+-   (We continue to monitor the **Saving New Vega** threat)
 
 ## Crowd at the entrance
 
@@ -30,14 +30,14 @@ act: 5
 <List>
     <Actor
         name="Security Robots"
-        size="US game"
+        size="Bridge"
         className="not-prose drop-shadow-md print:drop-shadow-none"
         imageUri="/LP/ScrattCZ_two_sci-fi_crowds_of_angry_humanoids_shouting_at_each__70560736-bf42-4734-a7e3-f55f7450352b.png"
         imagePosition="center 30%"
-        notes="Action: Scanning - +1 effectiveness against anything in the zone until the end of the conflict. Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Disintegrator 2x/1x&nbsp;Injury. Resistant to shooting and melee attacks."
+        notes="Action: Scanning - +1 Effect against anything in the zone until the end of the conflict. Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Disintegrator 2x/1x&nbsp;Injury. Resistant to shooting and melee attacks."
     />
     <Actor
-        size="US game"
+        size="Bridge"
         imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
         imagePosition="center top"
         className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
@@ -46,7 +46,7 @@ act: 5
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
+        size="Bridge"
         title="Suspicion of Security Robots"
         current={0}
         total={4}
@@ -55,16 +55,16 @@ act: 5
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
+        size="Bridge"
         title="Disabling the Security Robots"
         current={0}
         total={8}
-        threat="New Vega Destruction +1"
+        threat="Saving New Vega -1"
         reward="1x Disintegrator, 1x Flamethrower Arm"
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
+        size="Bridge"
         title="Gathering of the Spore Drone Crowd"
         current={0}
         total={8}
@@ -72,29 +72,29 @@ act: 5
     />
     <Clock
         className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
+        size="Bridge"
         title="Panic"
         current={0}
         total={6}
         threat="Everyone +1 Stress"
-        reward="New Vega Destruction -1"
+        reward="Saving New Vega +1"
     />
     <Asset
         icon="/LP/icons/flamethrower-arm.jpg"
         title="Flamethrower Arm"
-        effect="+1 effectiveness against the target + Igniting the zone. +1&nbsp;Destruction when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
+        effect="1x&nbsp;Injury, +1&nbsp;Heat to all in the zone. +1&nbsp;Doom when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
         className="drop-shadow-md print:drop-shadow-none"
     />
     <Asset
         icon="/LP/icons/rifle-3.png"
         title="Disintegrator"
-        effect="+1 effectiveness against organic targets"
+        effect="+1 Effect against organic targets"
         className="drop-shadow-md print:drop-shadow-none"
     />
     <Effect
         icon="/LP/icons/spore-infection-2.png"
         title="Spore Infection"
-        effect="+1&nbsp;Destruction"
+        effect="+1&nbsp;Doom"
         className="drop-shadow-md print:drop-shadow-none"
     />
 
@@ -106,7 +106,7 @@ act: 5
 
 -   The local security personnel are trying to maintain order and navigate ships to the airlock one by one.
 -   There is a dismounted plasma tower here.
-    -   Theoretically, it can be connected to an Android and fired once or twice with +2 effectiveness, but it will cause significant difficulties +3 Stress + Difficulty until recharged.
+    -   Theoretically, it can be connected to an Android and fired once or twice with +2 Effect, but it will cause significant difficulties +3 Stress + Difficulty until recharged.
 -   There is a large queue in front of you.
 
 ![](/LP/rat_man.jpg)
@@ -162,7 +162,7 @@ act: 5
     <Asset
         title="Rapid-regen"
         icon="/LP/icons/syringe-2.png"
-        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;havoc)"
+        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;Doom)"
         className="drop-shadow-md print:drop-shadow-none"
     />
     <Asset

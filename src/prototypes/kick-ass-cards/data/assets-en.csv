@@ -4,11 +4,11 @@
 "instahack","Insta-hack","/LP/icons/gadget.png","Temporarily gains control over a device","",5
 "grapple-gun","Grapple gun","/LP/icons/rifle.png","Pulls an object to the gun or the gun to an object","",2
 "glue-nade","Glue grenade","/LP/icons/bag.png","Sticks everything in the zone for 1 round Hindered","",3
-"emp-nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round","",3
+"emp-nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead","",3
 "frag-grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone","",5
 "gravi-emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance","",1
-"freeze-grenade","Freezing grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Freezing","",2
-"air-conditioning","Air conditioning","/LP/icons/device-2.png","+/- Freezing/Heat in the zone","",1
+"freeze-grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Frost","",2
+"air-conditioning","Air conditioning","/LP/icons/device-2.png","+/- Frost/Heat in the zone","",1
 "scanner","Scanner","/LP/icons/tablet.png","Multipurpose scanner","",3
 "magnetic-gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects","",1
 "multi-bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance","",2

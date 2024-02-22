@@ -8,8 +8,8 @@ hopeless,Beznaděj,run,"4x Tíseň: postava může jen utíkat, nebo se vzdát.
 stuck,"Uvíznutí",stickyBoot,"Nemůžeš se pohybovat, dokud se neosvobodíš.",4
 hindered,"Obtíž",weight,"Můžeš se pohybovat, nebo provádět akce, ale ne oboje, dokud se neuvolníš.",4
 boost,"Posílení",sprint,"Tvoje příští akce nebo obrana má +1 Efekt nebo +1 Pohyb navíc.",4
-freezing,"Mráz",thermometerCold,"Pokud máš na konci tahu 2x Mráz, získáš Tíseň, dokud se neohřeješ.",8
-hot,"Horko",thermometerHot,"Pokud máš na konci tahu 2x Horko, získáš Zranění, dokud se neochladíš.",8
+frost,"Mráz",thermometerCold,"Pokud máš na konci tahu 2x Mráz, získáš Tíseň, dokud se neohřeješ.",8
+heat,"Horko",thermometerHot,"Pokud máš na konci tahu 2x Horko, získáš Zranění, dokud se neochladíš.",8
 complication,Komplikace,footTrip,"Komplikace ti ztěžuje život. Příští akce nebo obrana má -1 Efekt, poté odstraň.",4
 infection,Spórová infekce,"/LP/icons/spore-infection.png",+1 Zkáza,0
 doom,Zkáza,"/LP/icons/doom.png",3x Zkáza: Transformace v Monstrum,12

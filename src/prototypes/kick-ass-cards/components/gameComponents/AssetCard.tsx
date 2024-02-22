@@ -112,16 +112,16 @@ export default function AssetCard({
                 style={{ margin: `${bleedMm}mm` }}
             >
                 <div className="flex flex-row items-center gap-2 mb-2">
+                    <div className="flex-1 text-slate-400 text-xs">{slug}</div>
                     <Icon
                         icon={cornerIcon}
                         className={twMerge("text-kac-gold-dark text-opacity-50 h-4", cornerIconClassName)}
                     />
-                    <div className="flex-1 text-slate-400 text-xs">{slug}</div>
                 </div>
 
                 {graphics}
 
-                <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light mb-1 mt-2">
+                <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light mb-2 mt-2">
                     <div className="font-kacHeading text-kac-iron-light text-sm text-center leading-none">{title}</div>
                 </div>
                 <div className="flex-1 text-xs text-center text-kac-iron-light leading-tight min-h-[6em]">

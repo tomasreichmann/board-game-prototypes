@@ -51,7 +51,7 @@ export default function ActorCard({
                 className
             )}
         >
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col gap-1">
                 <div
                     className={twMerge(
                         "imageWrapperClassName",
@@ -79,9 +79,13 @@ export default function ActorCard({
                         />
                     )}
                 </div>
-                <div className="text-sm flex flex-row gap-4">
-                    <h2 className="flex-1 text-md font-kacHeading leading-tight flex flex-row gap-2">
-                        <Icon icon="fountainPen" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
+                <div className={"text-sm flex flex-row gap-4 mt-1 mb-1"}>
+                    <h2
+                        className={twMerge(
+                            "flex-1 text-md font-kacHeading leading-none mt-1",
+                            toughness > 0 ? "text-left" : "text-center"
+                        )}
+                    >
                         {name || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
                         {age !== undefined ? ` (${age})` : ""}
                     </h2>
@@ -93,16 +97,16 @@ export default function ActorCard({
                     )}
                 </div>
                 {occupation !== null && (
-                    <h2 className="text-sm flex flex-row gap-2">
-                        <Icon icon="toolbox" className="h-5 mr-1 flex-shrink-0 inline-block text-kac-steel-dark" />
+                    <h3 className="text-xs leading-tight flex flex-row gap-2">
+                        <Icon icon="toolbox" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
                         {occupation || <div className="flex-1 border-b-2 border-dashed mt-[2em] " />}
-                    </h2>
+                    </h3>
                 )}
                 {threat !== null && (
                     <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-3">
-                        <Icon icon="deathSkull" className="h-4 mt-1 flex-shrink-0 inline-block text-xs" />
+                        <Icon icon="deathSkull" className="h-4 mt-1 flex-shrink-0 inline-block" />
                         {threat ? (
-                            <p className="flex-grow text-xs font-kacBody">{threat}</p>
+                            <p className="flex-grow text-xs font-kacBody mt-1">{threat}</p>
                         ) : (
                             <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}
@@ -110,9 +114,9 @@ export default function ActorCard({
                 )}
                 {reward !== null && (
                     <div className="text-xs text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-3">
-                        <Icon icon="chest" className="h-4 mt-1 flex-shrink-0 inline-block text-xs" />
+                        <Icon icon="chest" className="h-4 mt-1 flex-shrink-0 inline-block" />
                         {reward ? (
-                            <p className="flex-grow text-xs font-kacBody">{reward}</p>
+                            <p className="flex-grow text-xs font-kacBody mt-1">{reward}</p>
                         ) : (
                             <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
                         )}

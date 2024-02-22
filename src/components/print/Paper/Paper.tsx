@@ -2,8 +2,6 @@ import React, { CSSProperties } from "react";
 import clsx from "clsx";
 import { allSizes } from "../paperSizes";
 
-// import "./Paper.css";
-
 export type PaperProps = React.PropsWithChildren<{
     className?: string;
     size: keyof typeof allSizes;

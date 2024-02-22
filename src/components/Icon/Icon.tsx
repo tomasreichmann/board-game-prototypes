@@ -85,6 +85,7 @@ import pointyHat from "./media/pointy-hat.svg";
 import poisonBottle from "./media/poison-bottle.svg";
 import prankGlasses from "./media/prank-glasses.svg";
 import print from "./media/print.svg";
+import pummeled from "./media/pummeled.svg";
 import punchBlast from "./media/punch-blast.svg";
 import push from "./media/push.svg";
 import quicksand from "./media/quicksand.svg";
@@ -92,6 +93,7 @@ import rollerSkate from "./media/roller-skate.svg";
 import ropeCoil from "./media/rope-coil.svg";
 import run from "./media/run.svg";
 import rupee from "./media/rupee.svg";
+import sandsOfTime from "./media/sands-of-time.svg";
 import scrollQuill from "./media/scroll-quill.svg";
 import sewingString from "./media/sewing-string.svg";
 import shieldOpposition from "./media/shield-opposition.svg";
@@ -225,6 +227,7 @@ export const iconMap = {
     poisonBottle,
     prankGlasses,
     print,
+    pummeled,
     punchBlast,
     push,
     quicksand,
@@ -232,6 +235,7 @@ export const iconMap = {
     ropeCoil,
     run,
     rupee,
+    sandsOfTime,
     scrollQuill,
     sewingString,
     shieldOpposition,

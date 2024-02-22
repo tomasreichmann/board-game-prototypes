@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { OutcomeType } from "../../types";
 import Icon, { IconType } from "../Icon";
@@ -53,7 +52,7 @@ export default function OutcomeCard({
                 style={{ margin: `${bleedMm}mm` }}
             >
                 <div className="flex flex-row items-center gap-1">
-                    <Icon icon={icon} className={clsx("h-5", colorClassName || "text-kac-iron-light")} />
+                    <Icon icon={icon} className={twMerge("h-5", colorClassName || "text-kac-iron-light")} />
                     <div className="flex-1 text-slate-400 text-center text-xs">{slug}</div>
                     <Icon icon="cardRandom" className={"text-kac-steel h-5"} />
                 </div>
@@ -61,7 +60,7 @@ export default function OutcomeCard({
                 <div className="flex-1 flex flex-col items-center justify-end h-0">
                     <Icon
                         icon={icon}
-                        className={clsx(
+                        className={twMerge(
                             "max-h-fit mb-2",
                             colorClassName || "text-kac-iron-light",
                             effectSizeClassNameMap[icon] || "h-16"

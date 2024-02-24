@@ -95,20 +95,23 @@ export default function AssetCard({
             )}
         />
     ) : (
-        <Image className={twMerge("max-h-fit h-24", iconClassName)} src={icon} objectFit="contain" />
+        <div className="flex-1 relative flex flex-col items-center justify-center">
+            <Image
+                className={twMerge("absolute left-0 top-0 h-full w-full max-h-24", iconClassName)}
+                objectFit="contain"
+                src={icon}
+            />
+        </div>
     );
     return (
         <PaperOrDiv
             size={size}
             bleedMm={bleedMm}
-            className={clsx(
-                "AssetCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
-                className
-            )}
+            className={clsx("AssetCard bg-white rounded-lg print:rounded-none flex flex-col items-stretch", className)}
             {...restProps}
         >
             <div
-                className="relative flex flex-col justify-center items-stretch flex-1 p-3"
+                className="flex-1 relative flex flex-col justify-center items-stretch p-3"
                 style={{ margin: `${bleedMm}mm` }}
             >
                 <div className="flex flex-row items-center gap-2 mb-2">
@@ -121,10 +124,10 @@ export default function AssetCard({
 
                 {graphics}
 
-                <div className="flex-1 flex flex-col items-center justify-end gap-1 text-kac-iron-light mb-2 mt-2">
+                <div className="flex flex-col items-center justify-end gap-1 text-kac-iron-light mb-2 mt-2">
                     <div className="font-kacHeading text-kac-iron-light text-sm text-center leading-none">{title}</div>
                 </div>
-                <div className="flex-1 text-xs text-center text-kac-iron-light leading-tight min-h-[6em]">
+                <div className="text-xs text-center text-kac-iron-light leading-tight min-h-[6em]">
                     <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
                 </div>
                 {children}

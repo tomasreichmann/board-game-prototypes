@@ -1,0 +1,7 @@
+"slug","title","imageUri","description","incomeRequirements","incomeDescription","savingsDuration"
+"wealth-0","Wealth Level 0","/TOH/items/empty-bowl.png","Struggling to survive, broke","-","No income","No savings"
+"wealth-1","Wealth Level 1","/TOH/items/porridge.png","Basic necessities (food and shelter)","1 level 1 income","Unskilled labour wage (guard or farmer)","Savings for a week"
+"wealth-2","Wealth Level 2","/TOH/items/ribs.png","Comfortable living with some luxury and a small real estate","1 level 2 income OR 2 level 1 incomes","Skilled craftsman's wage or small business income","Savings for a month"
+"wealth-3","Wealth Level 3","/TOH/items/fine-chicken.png","Life of luxury with staff","1 level 3 income OR 3 level 2 incomes","Large business or a village tax income","Savings for a season"
+"wealth-4","Wealth Level 4","/TOH/items/treasure-chest.png","Aristocracy controling a town or military camp, employing armed forces","1 level 4 income OR 4 level 3 incomes","a town tax income","Savings for a year"
+"wealth-5","Wealth Level 5","/TOH/items/crown.png","Royalty commanding a wealth of a country","1 level 5 income OR 5 level 4 incomes","Country size tax income","Savings for a year"

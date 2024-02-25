@@ -16,6 +16,7 @@ export type AssetCardProps = React.PropsWithChildren<
         size?: PaperProps["size"];
         cornerIcon?: IconType;
         cornerIconClassName?: string;
+        effectClassName?: string;
         iconClassName?: string;
     } & Omit<AssetType, OptionalKeysType> &
         Partial<Pick<AssetType, OptionalKeysType> & Partial<PaperProps>>
@@ -56,16 +57,6 @@ const outcomeColorClassNameMap: { [key in IconType]?: string } = {
     magicPotion: "text-kac-bone-dark",
     woodenCrate: "text-kac-bone-dark",
     slingshot: "text-kac-bone-dark",
-    /*mightyForce: "text-kac-fire",
-    bullseye: "text-kac-monster",
-    dodge: "text-kac-monster-light",
-    knockout: "text-kac-steel-dark",
-    thrustBend: "text-kac-cloth",
-    drop: "text-kac-blood",
-    stickyBoot: "text-kac-curse-light",
-    sunbeams: "text-kac-gold",
-    sprint: "text-kac-gold-dark",
-    warlockEye: "text-kac-curse",*/
 };
 
 const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;
@@ -75,6 +66,7 @@ export default function AssetCard({
     iconClassName,
     cornerIcon = "chest",
     cornerIconClassName,
+    effectClassName,
     slug,
     title,
     icon,
@@ -127,7 +119,12 @@ export default function AssetCard({
                 <div className="flex flex-col items-center justify-end gap-1 text-kac-iron-light mb-2 mt-2">
                     <div className="font-kacHeading text-kac-iron-light text-sm text-center leading-none">{title}</div>
                 </div>
-                <div className="text-xs text-center text-kac-iron-light leading-tight min-h-[6em]">
+                <div
+                    className={twMerge(
+                        "text-xs text-center text-kac-iron-light leading-tight min-h-[6em]",
+                        effectClassName
+                    )}
+                >
                     <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
                 </div>
                 {children}

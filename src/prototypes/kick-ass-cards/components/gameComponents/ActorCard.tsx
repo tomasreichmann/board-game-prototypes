@@ -99,7 +99,11 @@ export default function ActorCard({
                 {occupation !== null && (
                     <h3 className="text-xs leading-tight flex flex-row gap-2">
                         <Icon icon="toolbox" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
-                        {occupation || <div className="flex-1 border-b-2 border-dashed mt-[2em] " />}
+                        {occupation ? (
+                            <p className="flex-grow mt-1">{occupation}</p>
+                        ) : (
+                            <div className="flex-1 border-b-2 border-dashed mt-[2em] " />
+                        )}
                     </h3>
                 )}
                 {threat !== null && (

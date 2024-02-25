@@ -4,12 +4,12 @@ chapter: 1
 act: 2
 defaultClockProps:
     {
-        size: "US game",
+        size: "Bridge",
         className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
     }
 defaultActorProps:
     {
-        size: "US game",
+        size: "Bridge",
         className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
         imagePosition: "center top",
         imageClassName: "bg-transparent",
@@ -17,7 +17,7 @@ defaultActorProps:
     }
 defaultAssetProps:
     {
-        size: "Mini US game",
+        size: "Mini European",
         className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
     }
 defaultMiniProps:
@@ -30,266 +30,144 @@ defaultMiniProps:
     }
 ---
 
-# Scene 1 - On the road to Špice
+# Act 2 - On the road to Spice
+
+## Scene 1 - The spooked horses
 
 ❗TODO title image
 ![](/TOH/locations/hlohovec-throne-room.jpg)
 
 💡 This act introduces combat rules, shows players problems of the Špice region and introduces the bandits.
 
+_Your noble family ventures forth from the grandeur of the capital in a long train of horses, carriages, and supplies towards the borderlands. You ride on horseback at the front and a couple of armed guards protect the caravan from the rear. As they travel further from the shining city, the road becomes less traveled and less maintained as nature starts to grow over it._  
+_The few travellers you meet mostly keep to themselves not accustomed to noble men visiting to their region. You notice a few abandoned carts and even a couple piles of bones lying by the side of the road here and there._
 
+_You are nearing a fork in the road, one arm coming from a small village on your right, the other continuing on through a forest towards the castle. You hear a ruccus and neighing from behind a nearby hill when a horse cart emerges from behind it. Something spooked the horses and they are running uncontrolled towards the fork. Cart is jumping on the rocks behind them with two characters trying to get hold of the reigns._  
+_The cart takes a sharp turn right on the fork throwing one of the characters against a tree and into the bushes. The cart with the other person is speeding away from you. You see the royal symbol on the back of the cart and hear clinking of coins falling into the dust on the road._
 
+**🎭 What do you do?**
 
+-   If players decide to not chase the cart, the cart will be lost. The tracks lead to the castle.
+-   🔎 The cart belongs to a tax collector **Bohdan Vlk** that was just thrown off it and is unconscious.
+    -   He will be unconscious for some time, then he wakes up.
+    -   He will explain the tax collector's wagon was ambushed by bandits with the help of a bandit disguised as a replacement guard. He took the cart, Bohdan fought back but he fell off the wagon.
+    -   Appearance: Bogdan is a tall, lean man in his 40s with sharp features and black hair graying at the temples. He dresses in a long dark blue kaftan coat over a simple linen shirt and black trousers.  
+    He carries a large coin purse and writing implements at his belt for recording payments. He is dirty and bloodied with a large bruise on his head from the fall.
+    -   Character: He is very direct, serious and meticulous man especially when it comes to finances. He does not suffer fools or delays in financial matters lightly. Those who try cheating the tax system earn his swift anger.
+    -   Motivation: He takes pride in being good at his job and providing well for his family.
+-   🔎 The other person is a local bandit leader **Ota ze Skoryce** disguised as a collector's guard **Otakar ze Špice**.
 
-_Troubled dreams plague the noble Hrotec family on their long journey to the capital city of Hlohovec. For weeks now, ravens and thorns haunt their restless nights - ominous signs since King Miroslav’s accursed deal robbed them of their ancestral home.
-The same deal that stripped this landlocked realm of a vital mountain fortress guarding their borders. King Miroslav’s promise to reimburse the family’s lost lands is now in question since his unexpected death mere weeks ago. Summoned now to the capital, the unfortunate nobles of the house Hrotec fear they will be stripped of their station by the young king Svatopluk._
+### Chasing the Cart
 
-_The lavish reconstructed citadel towers into view first, no wartime encampment but a gilded palace built with borrowed fortunes. In the opulent, tapestry-laden hall, the herald announces their arrival with little fanfare.
-Yet young King Svatopluk himself awaits atop the ruby-studded granite throne. Murmurs ripple through the gallery of onlooking lords._
+_You spur your tired horses and start after the uncontrollable cart. They whine and snort loudly, but you pick up speed and leave the rest of your convoy behind in a cloud of dust. Your horses are tired after a long trip, but they can keep up for a while._
 
-**🎭 Players, each describe what do you look like, how you approach the king and what does he see as you approach his throne.**  
-**💡 As players describe their appearance and behaviour, look for things that can reduce king's patience. For example not addressing him properly, arguing or wasting his time.
-You can make this clear by putting the "King's patience" card in front of the players. Make sure to describe how king reacts when players annoy him.**
+**🎭 The cart is getting away, how do you want to catch it?**
 
 <List>
     <Clock
         {...defaultClockProps}
-        title="King's patience"
-        current={4}
-        total={4}
-        threat="Reduced king's support"
-        reward="Increased king's support"
+        title="Closing in on the cart"
+        current={8}
+        total={8}
+        threat="Cart gets away"
+        reward="Catch the cart"
+    />
+    <Clock
+        {...defaultClockProps}
+        title="Horses are tired"
+        current={3}
+        total={3}
+        threat="Cart gets away"
+        note="Ticks down every round"
+        reward="Catch the cart"
     />
 </List>
 
-![](/TOH/characters/king-svatopluk.png)
+### Cought the cart
 
-*   The king addresses you as you approach:
-_"Esteemed lords (and ladies) of the House of Hrotec, You come in troubled times. After my father the king’s tragic passing, chaos threatens our realm - bandits exploit our weakness and rivals hunger for our lands. I see that fate has dealt you an unfair hand. Your ancestral home has been taken from you and you were left without any lands to call your own. Yet I intend to uphold my father’s vow to you. Swear to me your steadfast loyalty and the castle of Špice shall belong to your house forevermore."_  
-_"Are you ready to take the vow?"_
+**🎭 Describe how did you managed to make the cart stop**
 
-**🎭 How does the Hrotec family respond?**
+-   🔎 Ota ze Skoryce disguised as a tax collector guard will pretend to be grateful for the nobles intervention.
+    -   He will make excuses to leave
+    -   If the nobles won't let him go, he will ask them to accompany him to a nearby inn, where he wants wait for reinforcements. That is a lie. He will lead them to an ambush.
+    -   He might even make a run for it.
 
--   If the players agree:
+### Ambush
 
-_A chancellor approaches and unrolls a big scroll for you to see. You know him, his name is Filip Spisec, he comes from Hrotec, he used to work for the old king. He says: "Lords and ladies, kindly read this oath and repeat out loud."_  
-_The scroll reads:  
-"By blood and valor, we solemnly pledge our absolute loyalty to our rightful king, Svatopluk of Hlohovec. We vow to protect and rule our given lands in the name and will of the king, or they shall be forfeited. In the presence of God and the men gathered here, this we swear."_
+_You see tracks leading off from the main road into the forest. You follow the tracks into a small mossy clearing under a big oak where they disappear.  
+You looked around and suddenly the mossy ground opens up and a group of bandits spring out of their hiding. They wait for nothing and strike while you are surprised._
 
+### 💡 This is a battle encounter
 
-![](/TOH/items/oath-scroll.jpg)
-
-**🎭 The king is waiting to hear**
-
-_Take good care of the once great castle. Prove yourselves to be protectors of our land against all that threatens us from without..._
-
-_Suddenly, you hear a loud bang as some distant door slams open. The king stops mid sentence and looks up, his forehead wrinkling. Everybody looks back at the big throne room door. Heavy rushed footsteps echo through the hall as an armored figure approaches through a crowd of nobles. You see a tall woman with sharp features and short brown wavy hair clad in heavy armor. She takes off her metal gauntlets and throws them to the floor with a metal clang and shouts at the king: "What is the meaning of this?! That crown does not belong to you."_
-
-❗TODO image: Rostislava
-
-_The king turns to you and says firmly: **"You know what to do. The chancellor will se you out."** He raises his head to the lords and ladies in the room: **"Leave us."**_
-
-_As you leave the hall with the chancellor, you hear an echo of an incomprehensible but clearly heated argument between the king Svatopluk and his sister Rostislava._
-
-## Scene 2 - Quartermaster
-
--   The chancellor (Filip Spisec) takes the nobles to a quartermaster.
--   He gives them the deed to the castle
--   Players can **each** pick one thing from the list supplies.
--   As a **group**, players can pick as many extra things from the list as much remains on the "Kings patience" counter.
--   List of supplies
-    -   Armored warhorse (Pegas)
-    -   Group of hunters (Chief Marián Richter)
-    -   Full plate armor
-    -   Priest (Otec Matouš)
-    -   Skilled alchemist (Petra Zelenková)
-    -   Skilled blacksmith (Pavla Brusová)
-    -   Skilled carpenter (Emanuel Rakman)
-    -   Skilled mason (Alfons Svoboda)
-    -   Skilled spy (Martina Kočková)
-    -   Troop of archers (Sergant Světlana Hrnková)
-    -   Troop of pike men (Janus Švec)
-    -   Veteran officer (Captain Damián Kros)
-    -   Marterwork Two-handed sword
-    -   Masterwork heavy crossbow
-    -   Siege ballista
-    -   Wagon of food and provisions
-    -   Wagon of hard wood
-    -   Wagon of luxury goods
-    -   Wagon of quality stone
-
-❗TODO image: Quartermaster
+-   Deal out an enemy Actor card in front of each player.
+-   You can deal some of the cards face down and reveal them only before the player's turn.
+-   Draw 2 + 1 card for each enemy from the Threat deck
+-   Any time before each player's turn, place a Threat card from your hand next to the enemy Actor to show what are they planning to do.
+-   Players take turns clockwise or in any order they choose.
+-   On their turn, player can move 1 zone and perform one action in any order.
+-   The action can be an attack, interacting with some object, driving a vehicle, investigating and so on.
+-   To see how their actions are effective, they need to play an Outcome card. The amount of Effect the Outcome card has tells how successful the action was.
+-   For example:
+    -   Player attacks a bandit with a sword
+    -   Player plays a Success Outcome card with 2 Effect.
+    -   This reduces the bandit's Toughness by 2.
+-   When the player's turn ends, the Actors in front of the player take their turn.
+-   They act according to their Threat card.
+-   The players can defend from this attack by playing an Outcome card. This reduces the damage or blocks it completely.
+-   For each unblocked Effect of attack the player receives an Injury.
+-   At the end of the player's turn they draw up to 2 Outcome cards from their deck to a maximum of 3.
+-   Players can defend other players by playing their Outcome card in their turn. This means they will have less cards on their own turn.
 
 <List>
     <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/warhorse.png"
-        imagePosition="center top"
-        name="Armored Warhorse"
-        toughness={3}
-        threat="Mounted characters do +1 Effect on attack when moving in a straight line at full speed."
-        notes="A trained warhorse armoured with heavy steel barding. Moves 2 zones per round."
+        name="Dragan the Butcher"
+        occupation="Huge, slow and scary bandit"
+        size="Bridge"
+        reward="Sack of plundered jewelry"
+        threat="Chops with an axe for 2 Effect or swings to attack all in his zone for 1 Effect"
+        toughness={4}
+        currentToughness={4}
+        imagePosition="top"
+        className="drop-shadow"
+        imageUri="/TOH/characters/axe-bandit.png"
     />
     <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/alchemist.png"
-        imagePosition="center top"
-        name="Skilled Alchemist"
+        name="Janusz Padly"
+        occupation="Bandit, deserter"
+        size="Bridge"
+        reward="Stolen rations"
+        threat="Attacks with a sword for 1 Effect, defends first attack of 1 Effect every round"
+        toughness={4}
+        currentToughness={3}
+        imagePosition="top"
+        className="drop-shadow"
+        imageUri="/TOH/characters/bandit-deserter.png"
+    />
+    <Actor
+        name="Mila Szeptava"
+        occupation="Nimble and sneaky Bandit"
+        size="Bridge"
+        reward="Poisoned brandy"
+        threat="Appears hidden. Attacks for 1 Effect, Defense requires +1 Effect"
         toughness={2}
-        notes="Civilian artisan. Creates potions, elixirs, bombs, or substances for medicinal or protective purposes."
+        currentToughness={2}
+        imagePosition="top"
+        className="drop-shadow"
+        imageUri="/TOH/characters/bandit-sabre.png"
     />
     <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/blacksmith.png"
-        imagePosition="center top"
-        name="Skilled Blacksmith"
-        toughness={2}
-        notes="Civilian artisan. Creates, repairs, or maintains metal items and equipment."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/carpenter.png"
-        imagePosition="center top"
-        name="Skilled Carpenter"
-        toughness={2}
-        notes="Civilian artisan. Constructs, repairs, or maintains wooden structures, furniture, or tools."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/mason.png"
-        imagePosition="center top"
-        name="Skilled Mason"
-        toughness={2}
-        notes="Civilian artisan. Constructs, repairs, or maintains stone structures."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/priest.png"
-        imagePosition="center top"
-        name="Priest"
-        toughness={2}
-        notes="Civilian artisan. Performs religious ceremonies, offers spiritual guidance, and cares for the wounded."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/spy.png"
-        imagePosition="center top"
-        name="Spy"
-        toughness={2}
-        notes="Civilian artisan. Gathers information, infiltrates enemy positions, and conducts covert operations."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/veteran.png"
-        imagePosition="center top"
-        name="Veteran Officer"
-        toughness={3}
-        threat="Strikes for 1 Effect (slashing). +1 Effect vs non-soldier units."
-        notes="Soldier. Commands troops or garrisons, and trains soldiers."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/archers.png"
-        imagePosition="center top"
-        name="Troop of Archers"
-        toughness={2}
-        threat="Strikes any zone for 1 Effect (piercing) from a distance without having direct line of sight."
-        notes="Troop of soldiers. Skilled bowmen capable of raining arrows down upon enemy troops or fortifications."
-    />
-    <Actor
-        {...defaultActorProps}
-        imageUri="/TOH/characters/spearmen.png"
-        imagePosition="center top"
-        name="Troop of Pike Men"
-        toughness={3}
-        threat="Strikes for 1 Effect (piercing). +1 Effect vs cavalery. Damages attackers for 1 Effect (piercing) when defending."
-        notes="Troop of soldiers. Well-trained soldiers armed with polearms."
-    />
-
-    <Asset
-        {...defaultAssetProps}
-        size="US game"
-        icon="/TOH/items/castle-deed.png"
-        iconClassName="h-auto"
-        title="Castle Špice Deed"
-        effect="This document grants the ownership and the right to collect taxes of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/two-handed-sword.png"
-        title="Masterwork Great Sword"
-        effect="Can attack 2 engaged enemies in the same zone using the same Effect (slashing)."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/crossbow.png"
-        title="Masterwork Crossbow"
-        effect="Can attack any zone in line of sight."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/full-plate-armor.png"
-        title="Full Plate Armor"
-        effect="Reduces damage from slashing and piercing attacks by 2, but not below 1 Wound per attack."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/wagon-food.png"
-        title="Wagon of Food"
-        effect="Carries food that can feed your party and your troops for one month."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/wagon-stone.png"
-        title="Wagon of Stone"
-        effect="High-grade stone for construction and repair of stone structures."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/wagon-logs.png"
-        title="Wagon of Wood"
-        effect="Sturdy, high-quality wood for wooden structures, roofs woodworking projects."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/wagon-luxury-goods.png"
-        title="Wagon of Luxury Goods"
-        effect="Valuable goods for trade, decoration, or personal use."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/items/ballista.png"
-        title="Siege Ballista"
-        effect="Can attack structures, vehicles or enemies in any but current zone in line of sight. One action to load, second to shoot."
-    />
-    <Asset
-        {...defaultAssetProps}
-        icon="/TOH/characters/hunters.png"
-        title="Group of Hunters"
-        effect="Experienced hunters providing fresh game and helping maintain surrounding lands."
+        name="Zofia the Daring"
+        occupation="A thrill-seeking bandit leader"
+        size="Bridge"
+        reward="Pouch of stolen trinkets and a deck of marked cards"
+        threat="Attacks for 1 Effect per enemy in zone (max 3)"
+        toughness={4}
+        currentToughness={3}
+        imagePosition="top"
+        className="drop-shadow"
+        imageUri="/TOH/characters/bandit-redhead.png"
     />
 </List>
-
--   With lady Rostislava in the capitol, the chancelor thinks it would be best to leave for the castle Špice as soon as possible.
--   The Hrotec family has still some wealth and tax income from far away villages. 
-
-💡 **Note on Wealth**
-
--   This is a good time to explain that the Hrotec family has Wealth of level 3.
--   They have an income of level 3 once they start collecting taxes from the Špice region. Troops and craftspeople from the quartermaster are paid for by the king. From the current income, they can employ 3 more skilled craftspeople or 3 loads of resources and they don't need to worry about having enough money to hire unskilled workers, geting decent food nor shelter while in a settlement.  
--   To level up their wealth, they need to get 3 more level 3 incomes (e.g. taxes from a village or income from a large business or a mine).
-
-<Asset
-    {...defaultAssetProps}
-    size="US game"
-    cornerIcon="crownCoin"
-    icon="/TOH/items/fine-chicken.png"
-    iconClassName="h-auto"
-    title="Wealth level 3"
-    effect="Wealthy leisure with businesses and staff<BR>1 level 3 income OR 3 level 2 incomes<BR>Booming business or a village tax income<BR>Savings for a season"
-/>
-
-**🎭 Do you want to do anything else before leaving the Hlohovec capital city?**
 
 ## Scene 2: On the road to the castle
 

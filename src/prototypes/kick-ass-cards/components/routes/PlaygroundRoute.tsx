@@ -9,13 +9,16 @@ import generateHistory from "../../generators/generateHistory";
 import generateCulture from "../../generators/generateCulture";
 import Generator from "../generation/Generator";
 import StepGenerator from "../generation/StepGenerator";
+import { StepGeneratorProvider } from "../generation/useStepGenerator";
 
 export default function PlaygroundRoute() {
     return (
         <>
             <Navigation />
-            <div className="mt-4 print:m-0 w-full text-kac-iron p-4 bg-white">
-                <StepGenerator />
+            <div className="flex-grow print:m-0 w-full text-kac-iron p-4 bg-white">
+                <StepGeneratorProvider>
+                    <StepGenerator />
+                </StepGeneratorProvider>
                 {false && (
                     <>
                         <Generator />

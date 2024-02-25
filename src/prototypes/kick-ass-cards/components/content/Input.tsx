@@ -7,6 +7,7 @@ const variants = cva(["Input", "w-full", "max-w-xs"], {
     variants: {
         type: {
             text: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            textarea: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             password: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             email: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             number: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
@@ -30,9 +31,12 @@ const variants = cva(["Input", "w-full", "max-w-xs"], {
 
 export type InputProps = React.PropsWithChildren<{
     label?: React.ReactNode;
+    labelClassName?: string;
     error?: React.ReactNode;
+    textareaProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
     type:
         | "number"
+        | "textarea"
         | "text"
         | "password"
         | "email"
@@ -48,12 +52,33 @@ export type InputProps = React.PropsWithChildren<{
     Omit<InputHTMLAttributes<HTMLInputElement>, "type"> &
     VariantProps<typeof variants>;
 
-export default function Input({ className, children, label, type, disabled, error, ...restProps }: InputProps) {
+export default function Input({
+    className,
+    children,
+    label,
+    labelClassName,
+    type,
+    disabled,
+    error,
+    textareaProps,
+    ...restProps
+}: InputProps) {
     const inputClassName = twMerge(variants({ type, disabled }), className);
-    const input = <input type={type} className={inputClassName} {...restProps} />;
+
+    let input = <input type={type} className={inputClassName} {...restProps} />;
+    if (type === "textarea") {
+        input = (
+            <textarea
+                className={inputClassName}
+                value={restProps.value}
+                onChange={restProps.onChange as any}
+                {...textareaProps}
+            />
+        );
+    }
 
     return (
-        <label className="Input flex flex-col w-full max-w-xs">
+        <label className={twMerge("Input flex flex-col w-full max-w-xs", labelClassName)}>
             {label && (
                 <Text variant="body" className="text-kac-steel">
                     {label}

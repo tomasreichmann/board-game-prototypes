@@ -2,35 +2,20 @@
 campaign: Throne of Hawthorn
 chapter: 1
 act: 1
-defaultClockProps:
-    {
-        size: "US game",
-        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
-    }
-defaultActorProps:
-    {
-        size: "US game",
-        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
-        imagePosition: "center top",
-        imageClassName: "bg-transparent",
-        imageWrapperClassName: "border-0 rounded-none",
-    }
-defaultAssetProps:
-    {
-        size: "Mini US game",
-        className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
-    }
-defaultMiniProps:
-    {
-        baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
-        backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
-        baseWidth: "0.5in",
-        height: "2in",
-        width: "1in",
-    }
 ---
 
-# Scene 1 - Audience with the king
+import {
+  defaultClockProps,
+  defaultActorProps,
+  defaultAssetProps,
+  defaultMiniProps,
+  wealthData,
+  wealthAssets, 
+} from "./TOH-common-en";
+
+# Act 1 - At the king's court
+
+## Scene 1 - Audience with the king
 
 ❗TODO title image
 ❗TODO music
@@ -89,7 +74,7 @@ _Suddenly, you hear a loud bang as some distant door slams open. The king stops 
 
 _The king turns to you and says firmly: **"You know what to do. The chancellor will se you out."** He raises his head to the lords and ladies in the room: **"Leave us."**_
 
-# Scene 2 - Quartermaster
+## Scene 2 - Quartermaster
 
 ❗TODO image: Lavish castle halls
 
@@ -108,9 +93,9 @@ _As you leave the hall with Filip Spisec the chancellor, you hear an echo of an 
 <Asset
     {...defaultAssetProps}
     broadcastProps={{className: "shrink w-auto"}}
-    size="US game"
+    size="Bridge"
     icon="/TOH/items/castle-deed.png"
-    iconClassName="h-auto"
+    iconClassName="max-h-none"
     title="Castle Špice Deed"
     effect="This document grants the ownership and the right to collect taxes of the Castle Špice and surrounding region to the Hrotec family as long as they are faithful to the king Svatopluk."
 />
@@ -300,16 +285,11 @@ Than as a group, pick as many extra things from the list as how much remains on 
 
 <Asset
     {...defaultAssetProps}
-    size="US game"
-    cornerIcon="crownCoin"
-    icon="/TOH/items/fine-chicken.png"
-    iconClassName="h-auto"
-    title="Wealth level 3"
-    effect="Wealthy leisure with businesses and staff<BR>1 level 3 income OR 3 level 2 incomes<BR>Booming business or a village tax income<BR>Savings for a season"
+    {...wealthAssets[3]}
 />
 
 </Aside>
 
 **🎭 Do you want to do anything else before leaving the Hlohovec capital city?**
 
-### Proceed to the next chapter
+### Proceed to the next act

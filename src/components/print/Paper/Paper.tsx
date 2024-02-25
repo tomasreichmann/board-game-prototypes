@@ -33,6 +33,9 @@ export default function Paper({
     style,
     children,
 }: PaperProps) {
+    if (!allSizes[size]) {
+        throw new Error(`Unknown paper size: ${size}`);
+    }
     const sizeInMm = allSizes[size].mm;
     const [width, height] = orientation === "landscape" ? [...sizeInMm].reverse() : sizeInMm;
 

@@ -1,17 +1,9 @@
 import { useEffect } from "react";
 import ActorCard, { ActorCardProps } from "../gameComponents/ActorCard";
 import { DeepRandomType } from "../../generators/resolveRandom";
-import personScheme, {
-    GenderEnum,
-    ageOptions,
-    firstNameOptions,
-    genderOptions,
-    lastNameOptions,
-    occupationOptions,
-} from "../../generators/schemes/personScheme";
+
 import VisualizeRandom from "./VisualizeRandom";
-import catScheme from "../../generators/schemes/catScheme";
-import dogScheme from "../../generators/schemes/dogScheme";
+
 import DataPreview from "../../../../components/DataPreview";
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
 import { PresetType, StepEnum, steps } from "./stepGeneratorTypes";
@@ -25,6 +17,9 @@ import getComponentCode from "./getComponentCode";
 import Toggle from "../../../../components/Toggle";
 import copyToClipboard from "../../../../utils/copyToClipboard";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
+import actorPreset from "../../generators/presets/ActorPreset";
+import catPreset from "../../generators/presets/catPreset";
+import dogPreset from "../../generators/presets/dogPreset";
 
 export type StepGeneratorProps = {
     localStorageKey?: string;
@@ -36,106 +31,7 @@ export type StepGeneratorProps = {
 
 export type StepGeneratorStoreType = {};
 
-const createPreset = <T extends any>(
-    name: PresetType<T>["name"],
-    scheme: PresetType<T>["scheme"],
-    Component: PresetType<T>["Component"],
-    componentName: PresetType<T>["componentName"],
-    defaultProps: PresetType<T>["defaultProps"] = {},
-    additionalProps: PresetType<T>["additionalProps"] = {},
-    sampleProps: PresetType<T>["sampleProps"] = {},
-    propPrompts: PresetType<T>["propPrompts"] = {}
-): PresetType<any> => ({
-    name,
-    scheme,
-    Component,
-    componentName,
-    defaultProps,
-    additionalProps,
-    sampleProps,
-    propPrompts,
-});
-
-const nameOptions: DeepRandomType<string> = {
-    _rTemplate: "${firstName} ${lastName}",
-    _variables: { firstName: firstNameOptions, lastName: lastNameOptions },
-};
-
-const imageUriOptions: DeepRandomType<string> = {
-    _rArray: [
-        { _rValue: "/ISV/minis/vampire1.jpg", _prop: "gender", _equals: "male" },
-        { _rValue: "/ISV/minis/vampire4.jpg", _prop: "gender", _equals: "female" },
-    ],
-};
-
-const actorOptions: DeepRandomType<Partial<ActorCardProps & { gender: GenderEnum }>> = {
-    _rObject: {
-        gender: genderOptions,
-        name: nameOptions,
-        age: ageOptions,
-        occupation: occupationOptions,
-        imageUri: imageUriOptions,
-        threat: undefined,
-        reward: undefined,
-        notes: undefined,
-    },
-};
-
-const defaultPresets = [
-    createPreset<ActorCardProps>(
-        "Actor",
-        actorOptions,
-        ActorCard,
-        "Actor",
-        {
-            name: "name",
-            notes: "notes",
-            occupation: "occupation",
-            size: "Bridge",
-            reward: "reward",
-            threat: "threat",
-            toughness: 1,
-            currentToughness: 1,
-            imagePosition: "top",
-            className: "drop-shadow",
-            imageUri: "/ISV/minis/vampire4.jpg",
-        },
-        {},
-        {
-            name: "Marek z Dusiny",
-            occupation: "Forest Bandit",
-            threat: "Attacks with a dagger for 1 Effect, +1 Effect if attacking from an ambush",
-            notes: "Retreats and hides in the bushes if hurt",
-            reward: "Forest camouflage",
-            imageUri:
-                "ethereal fantasy concept art of a bandit wearing a camouflage of forest branches holding a dagger on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy",
-        },
-        {
-            imageUri: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
-            size: `do not change. Use: "Bridge"`,
-            toughness: `Use whole numbers between 1 and 4`,
-            currentToughness: `Use same value as toughness unless it makes sense the character is wounded`,
-            threat: `Describes attacks or other ways how the character can threaten others`,
-            className: `Do not change, Use: "drop-shadow"`,
-            imagePosition: `Do not change. Use: "top"`,
-        }
-    ),
-    createPreset("Cat", catScheme, ActorCard, "Actor", {
-        name: "cat",
-        size: "Mini US game",
-        className: "drop-shadow",
-        imageUri: "/ISV/minis/animals/cat1.jpg",
-    }),
-    createPreset("Dog", dogScheme, ActorCard, "Actor", {
-        name: "dog",
-        size: "Mini US game",
-        className: "drop-shadow",
-        imageUri: "/ISV/minis/animals/dog1.jpg",
-    }),
-    createPreset("PersonAppeared", { _rObject: { data: personScheme } }, DataPreview, "DataPreview", {
-        data: "personAppeared",
-    }),
-];
+const defaultPresets = [actorPreset, catPreset, dogPreset];
 
 const defaultContextPrompt =
     "I am writing a western slavic medieval fantasy RPG adventure Throne of Hawthorn. Language is English, but names should be of western slavic origin including proper accents.";

@@ -17,9 +17,10 @@ import getComponentCode from "./getComponentCode";
 import Toggle from "../../../../components/Toggle";
 import copyToClipboard from "../../../../utils/copyToClipboard";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
-import actorPreset from "../../generators/presets/ActorPreset";
+import actorPreset from "../../generators/presets/actorPreset";
 import catPreset from "../../generators/presets/catPreset";
 import dogPreset from "../../generators/presets/dogPreset";
+import assetPreset from "../../generators/presets/assetPreset";
 
 export type StepGeneratorProps = {
     localStorageKey?: string;
@@ -31,7 +32,7 @@ export type StepGeneratorProps = {
 
 export type StepGeneratorStoreType = {};
 
-const defaultPresets = [actorPreset, catPreset, dogPreset];
+const defaultPresets = [actorPreset, assetPreset, catPreset, dogPreset];
 
 const defaultContextPrompt =
     "I am writing a western slavic medieval fantasy RPG adventure Throne of Hawthorn. Language is English, but names should be of western slavic origin including proper accents.";

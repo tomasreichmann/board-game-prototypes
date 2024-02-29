@@ -26,8 +26,8 @@ const getGraphics = (icon: StuntType["icon"]) => {
             <Icon
                 icon={icon}
                 className={twMerge(
-                    "flex-1 max-h-full",
-                    outcomeColorClassNameMap[icon] || "text-iron-light",
+                    "absolute left-0 top-1/2 -translate-y-1/2 h-full w-full object-contain max-h-16",
+                    outcomeColorClassNameMap[icon] || "text-kac-bone-dark",
                     effectSizeClassNameMap[icon] || "h-16"
                 )}
             />

@@ -13,6 +13,7 @@ import bolas from "./media/bolas.svg";
 import bookCover from "./media/book-cover.svg";
 import bracers from "./media/bracers.svg";
 import brokenBottle from "./media/broken-bottle.svg";
+import bugleCall from "./media/bugle-call.svg";
 import bullseye from "./media/bullseye.svg";
 import caltrops from "./media/caltrops.svg";
 import campingTent from "./media/camping-tent.svg";
@@ -31,13 +32,12 @@ import crowbar from "./media/crowbar.svg";
 import crownCoin from "./media/crown-coin.svg";
 import crownedSkull from "./media/crowned-skull.svg";
 import crystalBall from "./media/crystal-ball.svg";
-import dx from "./media/dx.svg";
-import d4 from "./media/d4.svg";
-import d6 from "./media/d6.svg";
-import d8 from "./media/d8.svg";
 import d10 from "./media/d10.svg";
 import d12 from "./media/d12.svg";
 import d20 from "./media/d20.svg";
+import d4 from "./media/d4.svg";
+import d6 from "./media/d6.svg";
+import d8 from "./media/d8.svg";
 import dart from "./media/dart.svg";
 import deathSkull from "./media/death-skull.svg";
 import divert from "./media/divert.svg";
@@ -46,22 +46,25 @@ import doubleFaceMask from "./media/double-face-mask.svg";
 import drinkMe from "./media/drink-me.svg";
 import drop from "./media/drop.svg";
 import dwarfKing from "./media/dwarf-king.svg";
+import dx from "./media/dx.svg";
+import enrage from "./media/enrage.svg";
 import explosiveMaterials from "./media/explosive-materials.svg";
 import fairyWand from "./media/fairy-wand.svg";
 import fangs from "./media/fangs.svg";
 import fireRing from "./media/fire-ring.svg";
-import footTrip from "./media/foot-trip.svg";
 import fizzingFlask from "./media/fizzing-flask.svg";
 import flatPlatform from "./media/flat-platform.svg";
+import footTrip from "./media/foot-trip.svg";
 import fountainPen from "./media/fountain-pen.svg";
 import globeRing from "./media/globe-ring.svg";
 import gooeyImpact from "./media/gooey-impact.svg";
 import grapple from "./media/grapple.svg";
 import halt from "./media/halt.svg";
 import hangingSign from "./media/hanging-sign.svg";
-import heartBottle from "./media/heart-bottle.svg";
 import heartBeats from "./media/heart-beats.svg";
+import heartBottle from "./media/heart-bottle.svg";
 import highShot from "./media/high-shot.svg";
+import histogram from "./media/histogram.svg";
 import humanEar from "./media/human-ear.svg";
 import key from "./media/key.svg";
 import kickAssCards from "./media/kick-ass-cards.svg";
@@ -108,6 +111,7 @@ import smokeBomb from "./media/smoke-bomb.svg";
 import spikedShield from "./media/spiked-shield.svg";
 import splash from "./media/splash.svg";
 import sprint from "./media/sprint.svg";
+import starStruck from "./media/star-struck.svg";
 import stickyBoot from "./media/sticky-boot.svg";
 import stoneBlock from "./media/stone-block.svg";
 import sunbeams from "./media/sunbeams.svg";
@@ -120,6 +124,7 @@ import teleport from "./media/teleport.svg";
 import templarShield from "./media/templar-shield.svg";
 import thermometerCold from "./media/thermometer-cold.svg";
 import thermometerHot from "./media/thermometer-hot.svg";
+import think from "./media/think.svg";
 import thirdEye from "./media/third-eye.svg";
 import thrownKnife from "./media/thrown-knife.svg";
 import thrust from "./media/thrust.svg";
@@ -127,6 +132,7 @@ import thrustBend from "./media/thrust-bend.svg";
 import thrustDown from "./media/thrust-down.svg";
 import tiedScroll from "./media/tied-scroll.svg";
 import toolbox from "./media/toolbox.svg";
+import treasureMap from "./media/treasure-map.svg";
 import tripleSkulls from "./media/triple-skulls.svg";
 import walkingBoot from "./media/walking-boot.svg";
 import warlockEye from "./media/warlock-eye.svg";
@@ -155,6 +161,7 @@ export const iconMap = {
     bookCover,
     bracers,
     brokenBottle,
+    bugleCall,
     bullseye,
     caltrops,
     campingTent,
@@ -188,6 +195,7 @@ export const iconMap = {
     drop,
     dwarfKing,
     dx,
+    enrage,
     explosiveMaterials,
     fairyWand,
     fangs,
@@ -204,6 +212,7 @@ export const iconMap = {
     heartBeats,
     heartBottle,
     highShot,
+    histogram,
     humanEar,
     key,
     kickAssCards,
@@ -250,6 +259,7 @@ export const iconMap = {
     spikedShield,
     splash,
     sprint,
+    starStruck,
     stickyBoot,
     stoneBlock,
     sunbeams,
@@ -262,6 +272,7 @@ export const iconMap = {
     templarShield,
     thermometerCold,
     thermometerHot,
+    think,
     thirdEye,
     thrownKnife,
     thrust,
@@ -269,6 +280,7 @@ export const iconMap = {
     thrustDown,
     tiedScroll,
     toolbox,
+    treasureMap,
     tripleSkulls,
     walkingBoot,
     warlockEye,

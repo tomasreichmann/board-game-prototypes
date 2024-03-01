@@ -31,73 +31,36 @@ import * as C from "./LP-common-en";
 
 <List>
     <Actor
-        name="Security Robots"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_two_sci-fi_crowds_of_angry_humanoids_shouting_at_each__70560736-bf42-4734-a7e3-f55f7450352b.png"
-        imagePosition="center 30%"
-        notes="Action: Scanning - +1 Effect against anything in the zone until the end of the conflict. Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Disintegrator 2x/1x&nbsp;Injury. Resistant to shooting and melee attacks."
+        {...C.defaultActorProps}
+        {...C.characters.security_robots}
     />
     <Actor
-        size="Bridge"
-        imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Endless Crowd of Spore Drones"
-        notes="Lashing Attack: 1x Injury; Infection: if Defense fails -> Spore Infection"
+        {...C.defaultActorProps}
+        {...C.characters.endless_swarm_of_spore_drones}
     />
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Bridge"
-        title="Suspicion of Security Robots"
-        current={0}
-        total={4}
-        threat="Gunfire"
-        reward="Access to the airlock"
+        {...C.defaultClockProps}
+        {...C.clocks.suspicion_of_security_robots}
     />
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Bridge"
-        title="Disabling the Security Robots"
-        current={0}
-        total={8}
-        threat="Saving New Vega -1"
-        reward="1x Disintegrator, 1x Flamethrower Arm"
+        {...C.defaultClockProps}
+        {...C.clocks.gathering_of_the_spore_drone_crowd}
     />
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Bridge"
-        title="Gathering of the Spore Drone Crowd"
-        current={0}
-        total={8}
-        threat="Spore Drone Crowd Attacks"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Bridge"
-        title="Panic"
-        current={0}
-        total={6}
-        threat="Everyone +1 Stress"
-        reward="Saving New Vega +1"
+        {...C.defaultClockProps}
+        {...C.clocks.panic_at_the_airlock}
     />
     <Asset
-        icon="/LP/icons/flamethrower-arm.jpg"
-        title="Flamethrower Arm"
-        effect="1x&nbsp;Injury, +1&nbsp;Heat to all in the zone. +1&nbsp;Doom when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.flamethrower_arm}
     />
     <Asset
-        icon="/LP/icons/rifle-3.png"
-        title="Disintegrator"
-        effect="+1 Effect against organic targets"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.disintegrator}
     />
     <Effect
-        icon="/LP/icons/spore-infection-2.png"
-        title="Spore Infection"
-        effect="+1&nbsp;Doom"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultEffectProps}
+        {...C.effects.spore_infection}
     />
 
 </List>
@@ -150,34 +113,24 @@ import * as C from "./LP-common-en";
 
 <List>
     <Asset
-        title="Medi-gel"
-        icon="/LP/icons/injection.png"
-        effect="repairs organic damage"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.medi_gel}
     />
     <Asset
-        title="Nano-gel"
-        icon="/LP/icons/tube.png"
-        effect="repairs mechanical damage"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.nano_gel}
     />
     <Asset
-        title="Rapid-regen"
-        icon="/LP/icons/syringe-2.png"
-        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;Doom)"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.rapid_regen}
     />
     <Asset
-        title="Lepidlonate"
-        icon="/LP/icons/bag.png"
-        effect="grenade that seals everything in the area for 1 round"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.gluenade}
     />
     <Asset
-        title="EMP grenade"
-        icon="/LP/icons/capsule.png"
-        effect="grenade that disables all electronics in the area for 1 round"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.emp_grenade}
     />
 </List>
 

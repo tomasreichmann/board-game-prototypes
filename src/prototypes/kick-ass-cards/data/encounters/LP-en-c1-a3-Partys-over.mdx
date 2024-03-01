@@ -47,45 +47,37 @@ import * as C from "./LP-common-en";
 
 **What do you do?**
 
-import Opa from "./LP-character-Opa.mdx";
-import Ela from "./LP-character-Ela.mdx";
-import Aia from "./LP-character-Aia.mdx";
-import Isa from "./LP-character-Isa.mdx";
-import Una from "./LP-character-Una.mdx";
-
-<div className="flex flex-row gap-4 flex-wrap my-4">
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Delay"
-        threat="It may be too late for Viktor"
-        current={0}
-        total={6}
+<List>
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.aia}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Endless swarm of spore drones"
-        occupation="Once thinking and feeling beings, now just empty shells with the impulse to kill"
+        {...C.defaultActorProps}
+        {...C.characters.ela}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/ScrattCZ_a_portrait_of_a_man_with_well-groomed_beard_with_roots_1b41648b-212a-4659-b5d3-e746c9d3d069.png"
-        imagePosition="center 30%"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Buxus"
-        occupation="Spore hybrid of Dr. Zimostraz" 
+        {...C.defaultActorProps}
+        {...C.characters.isa}
     />
-
-    <Opa size="Jumbo" />
-    <Ela size="Jumbo" />
-    <Aia size="Jumbo" />
-    <Isa size="Jumbo" />
-    <Una size="Jumbo" />
-
-</div>
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.opa}
+    />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.una}
+    />
+    <Clock {...C.defaultClockProps} {...C.clocks.too_late_for_viktor} />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.endless_swarm_of_spore_drones}
+    />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.buxus}
+    />
+</List>
 
 ![](/LP/maps/club-zones.jpg)
 

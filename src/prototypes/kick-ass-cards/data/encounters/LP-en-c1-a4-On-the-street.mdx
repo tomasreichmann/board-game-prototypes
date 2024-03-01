@@ -35,24 +35,8 @@ import * as C from "./LP-common-en";
 -   This is the way to another airlock (in the bottom right corner).
 
 <List>
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Bridge"
-        title="Viktor in critical condition"
-        current={0}
-        total={6}
-        threat="Viktor succumbs to his injuries"
-        reward="Viktor is stabilized"
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="Bridge"
-        title="Saving New Vega"
-        current={2}
-        total={6}
-        threat="New Vega is consumed by spores"
-        reward="Title: Heroes of New Vega"
-    />
+    <Clock {...C.defaultClockProps} {...C.clocks.viktor_in_critical_condition} />
+    <Clock {...C.defaultClockProps} {...C.clocks.saving_new_vega} />
 </List>
 
 ## Loading Dock
@@ -67,38 +51,24 @@ import * as C from "./LP-common-en";
 
 <List>
     <Actor
-        name="Spore Sirens"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_several_screaming_slender_6_feet_tall_feminine-looking_70707d8f-a4ff-474f-974a-608f4d82b3c9.png"
-        occupation="Infected inhabitants of the water world"
-        notes="Action: Nerve-racking scream - Zone: +1&nbsp;Distress, Bite - Injury"
-        toughness={6}
-        reward="Medigel, Saving New Vega +1"
+        {...C.defaultActorProps}
+        {...C.characters.spore_sirens}
     />
     <Asset
-        title="Rapid-regen"
-        icon="/LP/icons/syringe-2.png"
-        effect="Instantly heals all organic injuries. Tissue may mutate (+1&nbsp;Doom)"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.rapid_regen}
     />
     <Asset
-        title="SPED"
-        icon="/LP/icons/nose-spray.png"
-        effect="+1&nbsp;movement, multiplies landing distance by 3&nbsp;rounds"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.sped}
     />
     <Asset
-        title="Rage"
-        icon="/LP/icons/syringe.png"
-        effect="+1&nbsp;effect on strength actions and close-range attacks for 3&nbsp;rounds"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.rage}
     />
     <Asset
-        title="Medigel"
-        icon="/LP/icons/injection.png"
-        effect="-1&nbsp;organic Injury"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.medi_gel}
     />
 </List>
 
@@ -121,50 +91,32 @@ import * as C from "./LP-common-en";
 
 <List>
     <Effect
-        icon="thermometerHot"
-        title="Spore Fever"
-        effect="+1&nbsp;Heat each round until cured"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultEffectProps}
+        {...C.effects.spore_fever}
     />
     <Actor
-        name="Infected Recharge Tower"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/sci-fi_electric_tesla_tower_spiky_cannon_charging_with_lightning_in_the_middle_of_space_station_corridor.jpg"
-        toughness={6}
-        threat="Once every 3&nbsp;rounds, it sends an electrical discharge up to 2&nbsp;zones away, injuring Androids for 2x&nbsp;Injury and organics for 2x&nbsp;Distress in the entire zone; A hit for 1 round disables vehicles; Resistant to conventional weapons"
-        reward="2x Overclocking Battery, Saving New Vega&nbsp;+1"
+        {...C.defaultActorProps}
+        {...C.characters.infected_recharge_tower}
     />
     <Actor
-        name="Firefighting Drones"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg"
-        notes="Action: -1&nbsp;Heat to everyone in the zone where the fire is burning; Destruction: -1&nbsp;Saving New Vega"
+        {...C.defaultActorProps}
+        {...C.characters.firefighting_drones}
     />
     <Asset
-        title="Overclocking Battery"
-        icon="/LP/icons/battery.png"
-        effect="Once, +2&nbsp;effect on action for Androids"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.overclocking_battery}
     />
     <Asset
-        title="Medigel"
-        icon="/LP/icons/injection.png"
-        effect="-1&nbsp;organic Injury"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.medi_gel}
     />
     <Asset
-        title="Nano-gel"
-        icon="/LP/icons/tube.png"
-        effect="-1&nbsp;mechanical Injury"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.nano_gel}
     />
     <Asset
-        title="Instahack"
-        icon="/LP/icons/gadget.png"
-        effect="Temporary control of a device for 1 round"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.instahack}
     />
 </List>
 
@@ -182,20 +134,12 @@ import * as C from "./LP-common-en";
 
 <List>
     <Actor
-        name="Infected Robotic Arm"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
-        toughness={6}
-        reward="Robotic Prosthesis"
-        threat="Grab - Stuck / Complication, Crush - 2x&nbsp;Injury"
+        {...C.defaultActorProps}
+        {...C.characters.infected_robotic_arm}
     />
     <Actor
-        name="Spore Swarm"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/alien-swarm.jpg"
-        notes="Infected with spores +1x&nbsp;Doom; Immune to shooting and melee attacks. Weak to fire and area attacks."
+        {...C.defaultActorProps}
+        {...C.characters.spore_swarm}
     />
 </List>
 
@@ -205,19 +149,12 @@ import * as C from "./LP-common-en";
 
 <List>
     <Actor
-        name="Infected Robotic Arm"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_sci-fi_industrial_floor-mounted_robotic_arm_with_clamp_59d24f3a-44d0-4133-8141-09fc23307af6.png"
-        threat="Throwing Scrap - 2x&nbsp;Injury up to 2&nbsp;zones away, Throwing Away - 1x&nbsp;Distress and throwing up to 2&nbsp;zones away"
-        toughness={6}
-        reward="Targeting Eye Implant"
+        {...C.defaultActorProps}
+        {...C.characters.infected_robotic_arm_2}
     />
     <Asset
-        title="Targeting Eye Implant"
-        effect="+1&nbsp;Effect on shooting actions. +1&nbsp;Destruction."
-        icon="/LP/targeting-implant.png"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.targeting_eye_implant}
     />
 </List>
 
@@ -230,11 +167,8 @@ import * as C from "./LP-common-en";
 
 <List>
     <Actor
-        name="Confused Cargo Beetle"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png"
-        notes="Action: When injured: Scream - +1&nbsp;Distress in the given and adjacent zones; Impact - movement +1 Injury to everyone in the zone; Wing Gust - move everything in the zone away from the beetle"
+        {...C.defaultActorProps}
+        {...C.characters.confused_cargo_beetle}
     />
 </List>
 
@@ -250,34 +184,20 @@ import * as C from "./LP-common-en";
 
 <List>
     <Actor
-        name="Infected Robo-Mercenary"
-        size="Bridge"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/ScrattCZ_futuristic_killer_military_robot_with_leaves_flowers_a_eb1a5d76-ca30-4811-a6d8-6fa94a15d1af.png"
-        imagePosition="center 30%"
-        toughness={8}
-        reward="1x Overclocking Battery, 1x Flamethrower Arm"
-        threat="New Vega&nbsp;Destruction +1"
-        notes="Action: Flamethrower - 1x&nbsp;Injury, +1&nbsp;Heat, Zone on fire (+1&nbsp;Heat to everyone in the zone at the beginning of the turn), Blade Fury 2x&nbsp;Injury. Resistant to shooting and melee attacks (-1&nbsp;Effect)."
+        {...C.defaultActorProps}
+        {...C.characters.infected_robo_mercenary}
     />
     <Asset
-        icon="/LP/icons/flamethrower-arm.jpg"
-        title="Flamethrower Arm"
-        effect="1x&nbsp;Injury, +1&nbsp;Heat to all in the zone. +1&nbsp;Destruction when installed (+1&nbsp;Heat when used, +2&nbsp;Injury when uninstalled)"
-        imagePosition
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.flamethrower_arm}
     />
     <Asset
-        title="Overclocking Battery"
-        icon="/LP/icons/battery.png"
-        effect="Once +2&nbsp;effect on action for Androids"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.overclocking_battery}
     />
     <Asset
-        title="BFG"
-        icon="/LP/icons/bfg.png"
-        effect="Huge weapon: 1 round absorbs all heat from the zone, in the next round brings destruction."
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.bfg}
     />
 </List>
 

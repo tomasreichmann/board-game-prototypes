@@ -12,22 +12,22 @@ const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType
 
 export type ActorCardProps = React.PropsWithChildren<
     {
+        slug?: string;
         className?: string;
-        size?: PaperProps["size"];
         imagePosition?: CSSProperties["objectPosition"];
         imageClassName?: string;
         imageWrapperClassName?: string;
         notesClassName?: string;
         forPrint?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
-    } & Partial<ActorType>
+    } & Partial<ActorType> &
+        Partial<PaperProps>
 >;
 
 export default function ActorCard({
     className,
     imagePosition,
     forPrint,
-    size = forPrint ? "US game" : undefined,
     name = "",
     imageUri,
     imageClassName,
@@ -42,27 +42,34 @@ export default function ActorCard({
     notes = forPrint ? "" : null,
     ImageComponent = Image,
     children,
+    bleedMm = 0,
+    size = "Bridge",
+    ...restProps
 }: ActorCardProps) {
     return (
         <PaperOrDiv
             size={size}
+            bleedMm={bleedMm}
             className={twMerge(
-                "ActorCard relative bg-white p-5 flex flex-column gap-5 text-kac-steel-dark rounded-lg",
+                "ActorCard relative bg-white text-kac-steel-dark rounded-lg print:rounded-none flex flex-col items-stretch",
                 className
             )}
+            {...restProps}
         >
-            <div className="flex-1 flex flex-col gap-1">
+            <div
+                className="flex-1 relative flex flex-col justify-center items-stretch p-3"
+                style={{ margin: `${bleedMm}mm` }}
+            >
                 <div
                     className={twMerge(
-                        "imageWrapperClassName",
-                        "flex-1 relative rounded flex flex-col text-kac-steel-light border-2 border-kac-steel h-16 z-10",
+                        "flex-1 relative rounded flex flex-col border-2 border-kac-steel h-16 z-10",
                         imageWrapperClassName
                     )}
                 >
                     {imageUri ? (
                         <ImageComponent
                             src={imageUri}
-                            className={twMerge("imageClassName", "w-full h-full rounded-sm", imageClassName)}
+                            className={twMerge("absolute w-full h-full rounded-sm", imageClassName)}
                             objectFit="cover"
                             objectPosition={imagePosition}
                         />
@@ -142,8 +149,34 @@ export default function ActorCard({
                         </div>
                     </div>
                 )}
+                {children}
             </div>
-            {children}
         </PaperOrDiv>
     );
 }
+
+export const ActorCardBackFace = ({ className, children, size = "Bridge", ...restProps }: Partial<PaperProps>) => {
+    return (
+        <PaperOrDiv
+            size={size}
+            className={twMerge(
+                "ActorCardBackFace gap-2 rounded-lg print:rounded-none bg-kac-monster flex flex-col justify-stretch items-stretch",
+                className
+            )}
+            {...restProps}
+        >
+            <div className="m-[3mm] relative flex flex-col justify-center items-center flex-1 p-3">
+                <div className="w-32 h-32 flex flex-col justify-center items-center relative">
+                    <div
+                        className={
+                            "w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-monster-dark absolute bg-kac-gold-light"
+                        }
+                    />
+                    <Icon icon="doubleFaceMask" className={"text-kac-monster-dark h-10 relative z-1 mt-2"} />
+                    <div className="font-kacBody text-kac-monster-dark text-xs text-center relative z-1">Actor</div>
+                </div>
+                {children}
+            </div>
+        </PaperOrDiv>
+    );
+};

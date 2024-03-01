@@ -21,6 +21,7 @@ import PaperMiniPages from "../print/PaperMiniPages";
 import InfoCardPages from "../print/InfoCardPages";
 import StuntCardPages from "../print/StuntCardPages";
 import { Navigation } from "../Navigation";
+import LPCardPages from "../../data/encounters/LP-print";
 
 const defaultSectionVisibility = true;
 
@@ -49,6 +50,12 @@ const sections = [
         slug: "Paper Minis",
         label: "Paper Minis",
         Component: PaperMiniPages,
+        isVisibleByDefault: defaultSectionVisibility,
+    },
+    {
+        slug: "Cold Revenge",
+        label: "Cold Revenge",
+        Component: LPCardPages,
         isVisibleByDefault: defaultSectionVisibility,
     },
 ];

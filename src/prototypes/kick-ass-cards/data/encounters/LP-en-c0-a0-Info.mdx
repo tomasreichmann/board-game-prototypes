@@ -142,3 +142,46 @@ This story is about a hostile and dying universe, in which players must maintain
 <List>
     <Effect {...effects[13]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
 </List>
+
+# Sample characters
+
+## Name: Holden Cantos
+
+### Backstory
+I was born in a small planet far away from civilization. Life to me was cruel and I lost my legs when was 8 years old because of hypothermia. Lately, I was sold to a famous crafter, who needed cheap hands for dirty work, so from him I got two upgrades: gravity crouches which allows me to move and float in few meters above the ground and brain implant that lowers my mental abilities, so I can’t be my masters rival.
+
+Working as a journeyman in his workshop, I learned how work some primitive mechanisms and craft not complicated technology. (for example, I can build small robots or fix slight issues on a spaceship, but crafting a gun or repairing engine is too complicated)
+When the Clan, during their assault on our planet, killed my master and robbed the workshop, I had to chose between death or serving to Her.
+
+Specialization:  handyman
+Equipment: I have a common mechanic toolset
+Virtue: I collect all technology that I can find and try to learn it. Mostly it fails or explodes in my hands
+Vice: People can be mean and think that I’m retarded because of my implant. So recently we’ve started finding our most annoying clan members with signs of lobotomy, we still haven’t found the criminal.
+Injury: My gravity crutches do not allow me to act as a common man and sometimes needs recharging
+Special actions: I can boost my crutches, so they start firing with plasma heating enemies around or bonding metals. Works shortly and only when I have fuel.
+
+<List>
+    <Actor
+        {...C.defaultActorProps}
+        name="Amara"
+        notes="Uses her ankh to control drones for reconnaissance and attack"
+        occupation="Mercenary"
+        size="Bridge"
+        threat="Attacks with a laser sun gun"
+        toughness={4}
+        currentToughness={4}
+        imageUri="/LP/characters/amara.png"
+    />
+    <Actor
+        {...C.defaultActorProps}
+        name="Holden Cantos"
+        occupation="Handyman"
+        size="Bridge"
+        threat="Boosts turbine to burn stuff and melt metal"
+        notes="Builds drones for recon and attack"
+        toughness="4"
+        currentToughness="4"
+        imagePosition="top"
+        imageUri="/LP/characters/holden.png"
+    />
+</List>

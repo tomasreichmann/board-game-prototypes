@@ -4,6 +4,8 @@ chapter: 1
 act: 1
 ---
 
+import * as C from "./LP-common-en";
+
 ![](/LP/ScrattCZ_alien_planet_attacked_by_spores_dark_concept_art_detai_2a97da17-705d-4333-9396-deeef27bbf87.png)
 
 # (Summary for GM: Mission to rescue the Clan Gynie research team on the planet Sporefall)
@@ -104,15 +106,16 @@ In addition, you have brought valuable equipment - an energy cell, a drone swarm
 The Clan thanks you for your bravery.
 Nevertheless, please kindly summarize how the rescue operation went."
 
-<Clock
-    className="my-2 not-prose drop-shadow-md print:drop-shadow-none"
-    size="US game"
-    title="Podezření Klanu"
-    threat="Sledovaní Klanem"
-    reward="Hrdinové Klanu"
-    current={0}
-    total={4}
-/>
+<List>
+    <Clock
+        {...C.defaultClockProps} 
+        title="Podezření Klanu"
+        threat="Sledovaní Klanem"
+        reward="Hrdinové Klanu"
+        current={0}
+        total={4}
+    />
+</List>
 
 ##### Ona's Questions:
 

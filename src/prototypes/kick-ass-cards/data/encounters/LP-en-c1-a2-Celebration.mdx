@@ -4,6 +4,8 @@ chapter: 1
 act: 2
 ---
 
+import * as C from "./LP-common-en";
+
 # Chapter 1 - Act 2 - Celebration of Victory
 
 <Player url="https://www.youtube.com/watch?v=j0QntTKRCY4&ab_channel=Beatport" controls height={100} />
@@ -15,23 +17,40 @@ act: 2
 
 import Vyzkumnice from "./LP-akt1-Vyzkumnice.mdx";
 
-<Vyzkumnice />
+<List>
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.aia}
+    />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.ela}
+    />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.isa}
+    />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.opa}
+    />
+    <Actor
+        {...C.defaultActorProps}
+        {...C.characters.una}
+    />
+</List>
 
 ## Drinks with Viktor
 
 import Viktor from "./LP-character-Viktor.mdx";
 
-<div className="flex flex-row gap-4 flex-wrap my-4">
+<List>
     <Actor
-        name="Viktor"
-        size="US game"
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        imageUri="/LP/viktor.png"
-        imagePosition="center 30%"
-        occupation="Ship engineer"
-        notes="Confidence 0/4"
+        {...C.defaultActorProps}
+        {...C.characters.victor}
     />
-</div>
+</List>
+
 
 -   Viktor came to you and brought drinks - all at once: the ice in them has already melted.
 -   Viktor installed the drone swarm and weapon systems that you captured at Sporefall on your ship, while Ona requested to send the energy cell to the Clan.
@@ -44,77 +63,43 @@ import Viktor from "./LP-character-Viktor.mdx";
     -   A sticker that can be used to track the position via a communicator.
 -   Viktor complains that the Clan ignores him and does not appreciate his participation. It seems that the researchers are not talking to him.
 
-<div className="flex flex-row gap-4 flex-wrap my-4">
+<List>
     <Asset
-        icon="/LP/icons/injection.png"
-        title="Medi-gel"
-        effect="Repairs organic damage"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.medi_gel}
     />
     <Asset
-        icon="/LP/icons/tube.png"
-        title="Nano-gel"
-        effect="Repairs mechanical damage"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.nano_gel}
     />
     <Asset
-        icon="/LP/icons/gadget.png"
-        title="Instahack"
-        effect="Temporarily gains control over a device for 1 turn"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.instahack}
     />
     <Asset
-        icon="/LP/icons/rifle.png"
-        title="Grapple gun"
-        effect="Shoots a grappling hook and pulls to the target"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.grapple_gun}
     />
     <Asset
-        icon="/LP/icons/bag.png"
-        title="Lepidlonát"
-        effect="Grenade that sticks everything in the zone for 1 turn"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.gluenade}
     />
     <Asset
-        icon="/LP/icons/capsule.png"
-        title="EMP grenade"
-        effect="Grenade that temporarily disables all electronics in the zone for 1 turn"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.items.emp_grenade}
     />
-</div>
+</List>
 
 ## How will you celebrate?
 
 -   You can stay at the hotel bar
 -   You can head to the casino
 
-<div className="flex flex-row gap-4 flex-wrap my-4">
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Building respect for Viktor among the researchers"
-        reward="Mental stim - 2 actions"
-        current={0}
-        total={6}
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Openning up the researchers"
-        reward="Consumable"
-        current={0}
-        total={6}
-    />
-    <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Crew reputation"
-        reward="Each: Magnetic chip"
-        threat="Damn hooligans"
-        current={3}
-        total={6}
-    />
-</div>
+<List>
+    <Clock {...C.defaultClockProps} {...C.clocks.researcher_respect} />
+    <Clock {...C.defaultClockProps} {...C.clocks.calm_down_the_researchers} />
+    <Clock {...C.defaultClockProps} {...C.clocks.crew_reputation} />
+</List>
 
 ## Casino
 

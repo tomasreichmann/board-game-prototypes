@@ -10,6 +10,10 @@ export const defaultActorProps = {
     className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
     imagePosition: "center top",
 };
+export const defaultEffectProps = {
+    size: "Mini European",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+};
 export const defaultAssetProps = {
     size: "Mini European",
     className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",

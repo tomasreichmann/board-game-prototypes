@@ -4,6 +4,8 @@ chapter: 0
 act: 0
 ---
 
+import * as C from "./LP-common-en";
+
 # Cold Revenge
 
 <Heading imageUri="/LP/ScrattCZ_a_squad_of_sci-fi_heroes_heat_death_of_the_universe_hy_472c154b-c146-4e49-b43f-78288b4d7018.png" />
@@ -50,13 +52,13 @@ Kick Ass Cards is a tabletop game system to run narrative games. It is setting i
 import outcomes from "../outcomes-en.csv";
 
 <Hand
-    className="h-[300px] max-w-[800px]"
+    className="h-[350px] max-w-[800px]"
     items={[
-        <Outcome {...outcomes[0]} className="not-prose" />,
-        <Outcome {...outcomes[1]} className="not-prose" />,
-        <Outcome {...outcomes[2]} className="not-prose" />,
-        <Outcome {...outcomes[3]} className="not-prose" />,
-        <Outcome {...outcomes[4]} className="not-prose" />,
+        <Outcome {...C.defaultAssetProps} {...outcomes[0]} />,
+        <Outcome {...C.defaultAssetProps} {...outcomes[1]} />,
+        <Outcome {...C.defaultAssetProps} {...outcomes[2]} />,
+        <Outcome {...C.defaultAssetProps} {...outcomes[3]} />,
+        <Outcome {...C.defaultAssetProps} {...outcomes[4]} />,
     ]}
 />
 
@@ -77,9 +79,9 @@ import effects from "../effects-en.csv";
 -   Injuries can be removed by specific cards or by a treatment action.
 
 <List>
-    <Effect {...effects[0]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[2]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[3]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[0]} className={C.defaultEffectProps.className + " not-prose card-up card"} broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[2]} className={C.defaultEffectProps.className + " not-prose card-up card"} broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[3]} className={C.defaultEffectProps.className + " not-prose card-up card"} broadcastProps={{ hideControls: true }} />
 </List>
 
 ### Distress
@@ -90,9 +92,9 @@ import effects from "../effects-en.csv";
 -   Hope can be restored by resting, encouraging ally actions, or indulging in their Vice.
 
 <List>
-    <Effect {...effects[1]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[4]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[5]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[1]} className={C.defaultEffectProps.className + " not-prose card-up card"} broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[4]} className={C.defaultEffectProps.className + " not-prose card-up card"} broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[5]} className={C.defaultEffectProps.className + " not-prose card-up card"} broadcastProps={{ hideControls: true }} />
 </List>
 
 ## Stunts
@@ -120,8 +122,8 @@ This story is about a hostile and dying universe, in which players must maintain
 -   If a character has two or more Frost cards at the end of the turn, they gain a Distress card.
 
 <List>
-    <Effect {...effects[9]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[10]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[9]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...C.defaultEffectProps} {...effects[10]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
 </List>
 
 ### Doom

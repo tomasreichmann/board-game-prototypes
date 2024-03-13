@@ -4,7 +4,7 @@ import StuntCard, { StuntCardBackFace } from "../gameComponents/StuntCard";
 import ChunkedPages from "./ChunkedPages";
 
 const CARDS_PER_PAGE = 4 * 4;
-const allStunts = multiplyByCount(tricks, "cardCount", defaultCountAdapter).map((item) => ({
+const allStunts = multiplyByCount(tricks, "count", defaultCountAdapter).map((item) => ({
     ...item,
     bleedMm: 3,
     className: "relative -m-[3mm]",

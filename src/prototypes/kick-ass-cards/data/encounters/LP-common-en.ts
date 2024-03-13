@@ -2,6 +2,7 @@ import { ClockProps } from "../../components/Clock";
 import { ActorCardProps } from "../../components/gameComponents/ActorCard";
 import { AssetCardProps } from "../../components/gameComponents/AssetCard";
 import { EffectCardProps } from "../../components/gameComponents/EffectCard";
+import { WithCount } from "../../types";
 
 export const defaultClockProps = {
     size: "Bridge" as ClockProps["size"],
@@ -175,6 +176,8 @@ export const characters = {
     } as ActorCardProps,
 };
 
+type ItemType = WithCount<AssetCardProps & { slug: string }>;
+
 export const items = {
     medi_gel: {
         slug: "medi_gel",
@@ -182,98 +185,98 @@ export const items = {
         title: "Medi-gel",
         effect: "Repairs organic damage",
         count: 5,
-    } as AssetCardProps,
+    } as ItemType,
     nano_gel: {
         slug: "nano_gel",
         icon: "/LP/icons/tube.png",
         title: "Nano-gel",
         effect: "Repairs mechanical damage",
         count: 5,
-    } as AssetCardProps,
+    } as ItemType,
     instahack: {
         slug: "instahack",
         icon: "/LP/icons/gadget.png",
         title: "Instahack",
         effect: "Temporarily gains control over a device for 1 turn",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     grapple_gun: {
         slug: "grapple_gun",
         icon: "/LP/icons/rifle.png",
         title: "Grapple gun",
         effect: "Shoots a grappling hook and pulls to the target",
         count: 1,
-    } as AssetCardProps,
+    } as ItemType,
     gluenade: {
         slug: "gluenade",
         icon: "/LP/icons/bag.png",
         title: "Gluenade",
         effect: "Grenade that sticks everything in the zone for 1 turn",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     emp_grenade: {
         slug: "emp_grenade",
         icon: "/LP/icons/capsule.png",
         title: "EMP grenade",
         effect: "Grenade that temporarily disables all electronics in the zone for 1 turn",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     rapid_regen: {
         slug: "rapid_regen",
         icon: "/LP/icons/syringe-2.png",
         title: "Rapid-regen",
         effect: "Instantly heals all organic injuries. Tissue may mutate (+1 Doom)",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     sped: {
         slug: "sped",
         icon: "/LP/icons/nose-spray.png",
         title: "SPED",
         effect: "+1 movement, multiplies landing distance by 3 rounds",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     rage: {
         slug: "rage",
         icon: "/LP/icons/syringe.png",
         title: "Rage",
         effect: "+1 effect on strength actions and close-range attacks for 3 rounds",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     overclocking_battery: {
         slug: "overclocking_battery",
         icon: "/LP/icons/battery.png",
         title: "Overclocking Battery",
         effect: "Once, +2 effect on action for Synthetics or machines",
         count: 4,
-    } as AssetCardProps,
+    } as ItemType,
     targeting_eye_implant: {
         slug: "targeting_eye_implant",
         icon: "/LP/targeting-implant.png",
         title: "Targeting Eye Implant",
         effect: "+1 Effect on shooting actions. +1 Destruction.",
         count: 1,
-    } as AssetCardProps,
+    } as ItemType,
     flamethrower_arm: {
         slug: "flamethrower_arm",
         icon: "/LP/icons/flamethrower-arm.jpg",
         title: "Flamethrower Arm",
         effect: "1x Injury, +1 Heat to all in the zone. +1 Destruction when installed (+1 Heat when used, +2 Injury when uninstalled)",
         count: 2,
-    } as AssetCardProps,
+    } as ItemType,
     bfg: {
         slug: "bfg",
         icon: "/LP/icons/bfg.png",
         title: "BFG",
         effect: "Huge weapon: 1 round absorbs 1 heat from anyone in the zone, in the next damages all in all zones in a straight line for the amount of heat absorbed.",
         count: 1,
-    } as AssetCardProps,
+    } as ItemType,
     disintegrator: {
         slug: "disintegrator",
         icon: "/LP/icons/rifle-3.png",
         title: "Disintegrator",
         effect: "+1 Effect against organic targets",
         count: 1,
-    } as AssetCardProps,
+    } as ItemType,
 };
 
 export const clocks = {

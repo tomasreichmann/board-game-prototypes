@@ -5,6 +5,6 @@ import multiplyByCount from "../../../utils/multiplyByCount";
 
 export const effectMap = arrayToMap(effectData, "slug") as { [key in string]: EffectType };
 
-const effects: EffectType[] = multiplyByCount(effectData, "cardCount", ({ cardCount, ...item }) => item);
+const effects: EffectType[] = multiplyByCount(effectData, "count", ({ count, ...item }) => item);
 
 export default effects;

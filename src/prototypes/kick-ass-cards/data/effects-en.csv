@@ -1,4 +1,4 @@
-"slug","title","icon","effect","cardCount"
+"slug","title","icon","effect","count"
 "wound","Injury","drop","2x+ Injury: Dazed,<BR>4x Injury: Unconscious.<BR>Heal to remove",16
 "distress","Distress","tearTracks","3x Distress: Panic.<BR>4x Distress: Hopeless.<BR>Rest or indulge in your Vice to recover",16
 "dazed","Dazed","sleepy","2x+ Injury: Your Success counts as Partial success.<BR>Get rid of Injuries to recover",4

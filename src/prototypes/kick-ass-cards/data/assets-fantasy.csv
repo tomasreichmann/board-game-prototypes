@@ -1,4 +1,4 @@
-slug,title,icon,effect,cost,cardCount
+slug,title,icon,effect,cost,count
 bandages,Bandages,bandageRoll,Remove to convert replace a wound in your Outcome deck with a Complication.,,5
 weapon-concealed,Concealed Weapon,plainDagger,You can attack an armed opponent with full effect.  You can conceal this weapon.,,5
 shield,Shield,checkedShield,You can fully defend using a Partial Success.,,0

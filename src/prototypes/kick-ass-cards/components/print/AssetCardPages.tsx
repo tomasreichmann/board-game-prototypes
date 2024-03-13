@@ -4,7 +4,7 @@ import AssetCard, { AssetCardBackFace } from "../gameComponents/AssetCard";
 import ChunkedPages from "./ChunkedPages";
 
 const CARDS_PER_PAGE = 4 * 4;
-const assetItems = multiplyByCount(assets, "cardCount", defaultCountAdapter).map((item) => ({
+const assetItems = multiplyByCount(assets, "count", defaultCountAdapter).map((item) => ({
     ...item,
     bleedMm: 3,
     className: "relative -m-[3mm]",

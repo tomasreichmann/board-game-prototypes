@@ -20,7 +20,7 @@ export default function InfoRoute() {
     return (
         <>
             <Navigation />
-            <div className="mt-4 print:m-0 w-full text-kac-iron p-2 md:px-10 bg-white">
+            <div className="flex-1 mt-4 print:m-0 w-full text-kac-iron p-2 md:px-10 bg-white">
                 <div className="flex flex-col gap-4 lg:flex-row items-start">
                     <div className="flex flex-col gap-4 flex-1 max-w-xl">
                         <MdxArticle mdx={homeInfoMdx} className="mt-4" />

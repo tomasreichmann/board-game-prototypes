@@ -1,4 +1,4 @@
-slug,title,icon,effect,cost,cardCount
+slug,title,icon,effect,cost,count
 medi-gel,Medi-gel,/LP/icons/injection.png,Oprava organického poškození,,6
 nano-gel,Nano-gel,/LP/icons/tube.png,Oprava mechanického poškození,,6
 instahack,Insta-hack,/LP/icons/gadget.png,Dočasné získání kontroly nad zařízením,,5

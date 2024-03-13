@@ -6,9 +6,8 @@ import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import Image from "../Image";
 import { twMerge } from "tailwind-merge";
-// import "./AssetCard.css";
 
-type OptionalKeysType = "slug" | "cost" | "cardCount";
+type OptionalKeysType = "slug" | "cost" | "count";
 
 export type AssetCardProps = React.PropsWithChildren<
     {

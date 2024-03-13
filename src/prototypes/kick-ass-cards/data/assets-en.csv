@@ -1,4 +1,4 @@
-"slug","title","icon","effect","cost","cardCount"
+"slug","title","icon","effect","cost","count"
 "medi-gel","Medi-gel","/LP/icons/injection.png","Repairs organic damage","",6
 "nano-gel","Nano-gel","/LP/icons/tube.png","Repairs mechanical damage","",6
 "instahack","Insta-hack","/LP/icons/gadget.png","Temporarily gains control over a device","",5

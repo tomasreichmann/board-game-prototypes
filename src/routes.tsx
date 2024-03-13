@@ -1,8 +1,11 @@
-import IndexRoute from "./routes/IndexRoute/IndexRoute";
+import IndexRoute from "./routes/IndexRoute";
+import SettingsRoute from "./routes/SettingsRoute";
 import prototypes from "./prototypes/prototypes";
 import ErrorBoundary from "./components/ErrorBoundary";
+
 import { RouteDefinition } from "./routeTypes";
-import { Route, Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+import LlmRoute from "./routes/LlmRoute";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -21,13 +24,23 @@ const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     ));
 };
 
-const routes: RouteDefinition[] = [
+export const routes: RouteDefinition[] = [
     {
         name: "Home",
         path: "/",
         Component: IndexRoute,
     },
     ...prototypes,
+    {
+        name: "LLM",
+        path: "/llm",
+        Component: LlmRoute,
+    },
+    {
+        name: "Settings",
+        path: "/settings",
+        Component: SettingsRoute,
+    },
 ];
 
 const routeStructure = createRouteElementsFromObject(routes);

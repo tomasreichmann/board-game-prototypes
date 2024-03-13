@@ -1,4 +1,4 @@
-"slug","title","icon","requirements","effect","cardCount"
+"slug","title","icon","requirements","effect","count"
 "heat-sink","Heat Sink","/LP/icons/cooler.png","synthetic","Action: touch two allies in your zone (incl. self) and discard their Heat and Frost cards against each other.",1
 "seductive","Seductive","/LP/icons/lips.png",,"Receive a free Boost at the start of a social Encounter with a character that may find you attractive.",1
 "elusive","Elusive","/LP/icons/elusive.png",,"Once per round, you can move to an adjacent zone when you defend without taking an Injury.",1

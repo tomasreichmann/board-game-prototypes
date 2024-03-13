@@ -5,7 +5,7 @@ import { EffectType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 
-export type EffectCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<EffectType, "cardCount">>;
+export type EffectCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<EffectType, "count">>;
 
 const effectSizeClassNameMap: { [key: string]: string } = {
     "/LP/icons/doom.png": "h-24",

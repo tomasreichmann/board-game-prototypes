@@ -32,7 +32,7 @@ export type AssetType = {
     icon: IconType | string;
     effect: string;
     cost: number;
-    cardCount: number;
+    count: number;
 };
 
 export type EffectType = {
@@ -40,7 +40,7 @@ export type EffectType = {
     title: string;
     icon?: IconType | string;
     effect: string;
-    cardCount: number;
+    count: number;
 };
 
 export type StuntType = {

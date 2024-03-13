@@ -4,7 +4,7 @@ import EffectCard, { EffectCardBackFace } from "../gameComponents/EffectCard";
 import ChunkedPages from "./ChunkedPages";
 
 const CARDS_PER_PAGE = 4 * 4;
-const allEffects = multiplyByCount(effects, "cardCount", defaultCountAdapter).map((item) => ({
+const allEffects = multiplyByCount(effects, "count", defaultCountAdapter).map((item) => ({
     ...item,
     bleedMm: 3,
     className: "relative -m-[3mm]",

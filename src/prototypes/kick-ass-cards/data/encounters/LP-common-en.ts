@@ -1,20 +1,23 @@
+import { ClockProps } from "../../components/Clock";
 import { ActorCardProps } from "../../components/gameComponents/ActorCard";
+import { AssetCardProps } from "../../components/gameComponents/AssetCard";
+import { EffectCardProps } from "../../components/gameComponents/EffectCard";
 
 export const defaultClockProps = {
-    size: "Bridge",
+    size: "Bridge" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
 };
 export const defaultActorProps = {
-    size: "Bridge",
+    size: "Bridge" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
     imagePosition: "center top",
 };
 export const defaultEffectProps = {
-    size: "Mini European",
+    size: "Mini European" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
 };
 export const defaultAssetProps = {
-    size: "Mini European",
+    size: "Mini European" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
 };
 export const defaultMiniProps = {
@@ -25,7 +28,7 @@ export const defaultMiniProps = {
     width: "1in",
 };
 
-export const characters: { [key: string]: ActorCardProps } = {
+export const characters = {
     aia: {
         slug: "aia",
         imageUri: "/LP/Aia.png",
@@ -33,7 +36,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center top",
         occupation: "Head Researcher, Geneticist",
         notes: "Aia is the team leader and a renowned geneticist. She has increased intelligence and problem-solving abilities, as well as heightened senses and physical strength. However, she has a tendency to be overly competitive and can be ruthless in her goals. Her hidden talent is that she is a skilled musician and has a beautiful voice.",
-    },
+    } as ActorCardProps,
     ela: {
         slug: "ela",
         imageUri: "/LP/Ela.png",
@@ -41,7 +44,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center top",
         occupation: "Doctor",
         notes: "Ela is a doctor and a team expert in physiological modifications. She has increased healing abilities and strong resistance to diseases. Her hidden weakness is that she has a weakness for sweets and sometimes indulges in them when no one is around. Her hidden talent is that she is a talented artist and has a natural gift for drawing and painting.",
-    },
+    } as ActorCardProps,
     isa: {
         slug: "isa",
         imageUri: "/LP/Isa.png",
@@ -49,7 +52,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center top",
         occupation: "IT Specialist",
         notes: "Isa is a computer scientist and a team expert in hacking. She has increased information processing speed and memory and can directly interface with technology using her mind. She can be too trusting and has fallen for scams several times. She is a skilled fighter and has won many tournaments.",
-    },
+    } as ActorCardProps,
     opa: {
         slug: "opa",
         imageUri: "/LP/Opa.png",
@@ -57,7 +60,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center top",
         occupation: "Botanist",
         notes: "Opa is a botanist and a team expert in plant genetics. She has the ability to photosynthesize and communicate with plants telepathically. Her hidden weakness is that she has a gambling addiction and has bet on everything from card games to sports several times. Her hidden talent is that she is a skilled cook and can prepare a variety of delicious dishes.",
-    },
+    } as ActorCardProps,
     una: {
         slug: "una",
         imageUri: "/LP/Una.png",
@@ -65,7 +68,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center top",
         occupation: "Geologist",
         notes: "Una is a geologist and a team expert in terraforming. She has increased endurance and the ability to survive in extreme conditions. Her weakness is that she can be prone to anger and can be quick to anger. Her hidden talent is that she is a talented dancer and has won many awards for her performances.",
-    },
+    } as ActorCardProps,
     victor: {
         slug: "victor",
         imageUri: "/LP/viktor.png",
@@ -73,7 +76,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center top",
         occupation: "Ship Engineer",
         notes: "Confidence 0/4",
-    },
+    } as ActorCardProps,
     endless_swarm_of_spore_drones: {
         slug: "endless_swarm_of_spore_drones",
         imageUri:
@@ -82,7 +85,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         name: "Endless swarm of spore drones",
         occupation: "Once thinking and feeling beings, now just empty shells with the impulse to kill",
         notes: "Lashing Attack: 1x Injury; Infection: if Defense fails -> Spore Infection",
-    },
+    } as ActorCardProps,
     buxus: {
         slug: "buxus",
         size: "US game",
@@ -91,7 +94,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         imagePosition: "center 30%",
         name: "Buxus",
         occupation: "Spore hybrid of Dr. Zimostraz",
-    },
+    } as ActorCardProps,
     spore_sirens: {
         slug: "spore_sirens",
         imageUri:
@@ -101,7 +104,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         notes: "Action: Nerve-racking scream - Zone: +1 Distress, Bite - Crew reputation",
         toughness: 6,
         reward: "Medigel, Saving New Vega +1",
-    },
+    } as ActorCardProps,
     infected_recharge_tower: {
         slug: "infected_recharge_tower",
         imageUri:
@@ -110,14 +113,14 @@ export const characters: { [key: string]: ActorCardProps } = {
         toughness: 6,
         threat: "Once every 3 rounds, it sends an electrical discharge up to 2 zones away, injuring Androids for 2x Injury and organics for 2x Distress in the entire zone; A hit for 1 round disables vehicles; Resistant to conventional weapons",
         reward: "2x Overclocking Battery, Saving New Vega +1",
-    },
+    } as ActorCardProps,
     firefighting_drones: {
         slug: "firefighting_drones",
         imageUri:
             "/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg",
         name: "Firefighting Drones",
         notes: "Action: -1 Heat to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
-    },
+    } as ActorCardProps,
     infected_robotic_arm: {
         slug: "infected_robotic_arm",
         imageUri:
@@ -126,13 +129,13 @@ export const characters: { [key: string]: ActorCardProps } = {
         toughness: 6,
         reward: "Robotic Prosthesis",
         threat: "Grab - Stuck / Complication, Crush - 2x Injury",
-    },
+    } as ActorCardProps,
     spore_swarm: {
         slug: "spore_swarm",
         imageUri: "/LP/alien-swarm.jpg",
         name: "Spore Swarm",
         notes: "Infected with spores +1x Doom; Immune to shooting and melee attacks. Weak to fire and area attacks.",
-    },
+    } as ActorCardProps,
     infected_robotic_arm_2: {
         slug: "infected_robotic_arm_2",
         imageUri:
@@ -141,14 +144,14 @@ export const characters: { [key: string]: ActorCardProps } = {
         toughness: 6,
         threat: "Throwing Scrap - 2x Injury up to 2 zones away, Throwing Away - 1x Distress and throwing up to 2 zones away",
         reward: "Targeting Eye Implant",
-    },
+    } as ActorCardProps,
     confused_cargo_beetle: {
         slug: "confused_cargo_beetle",
         imageUri:
             "/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png",
         name: "Confused Cargo Beetle",
         notes: "Action: When injured: Scream - +1 Distress in the given and adjacent zones; Impact - movement +1",
-    },
+    } as ActorCardProps,
     infected_robo_mercenary: {
         slug: "infected_robo_mercenary",
         imageUri:
@@ -158,7 +161,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         reward: "1x Overclocking Battery, 1x Flamethrower Arm",
         threat: "SavingNew Vega -1",
         notes: "Action: -1 Heat to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
-    },
+    } as ActorCardProps,
     security_robots: {
         slug: "security_robots",
         imageUri:
@@ -169,7 +172,7 @@ export const characters: { [key: string]: ActorCardProps } = {
         notes: "Action: Scanning - +1 Effect against anything in the zone until the end of the conflict.",
         threat: "Flamethrower - 1x Injury, +1 Heat, Disintegrator 2x/1x Injury. Resistant to shooting and melee attacks.",
         reward: "1x Disintegrator, 1x Flamethrower Arm, Saving New Vega -1",
-    },
+    } as ActorCardProps,
 };
 
 export const items = {
@@ -179,98 +182,98 @@ export const items = {
         title: "Medi-gel",
         effect: "Repairs organic damage",
         count: 5,
-    },
+    } as AssetCardProps,
     nano_gel: {
         slug: "nano_gel",
         icon: "/LP/icons/tube.png",
         title: "Nano-gel",
         effect: "Repairs mechanical damage",
         count: 5,
-    },
+    } as AssetCardProps,
     instahack: {
         slug: "instahack",
         icon: "/LP/icons/gadget.png",
         title: "Instahack",
         effect: "Temporarily gains control over a device for 1 turn",
         count: 2,
-    },
+    } as AssetCardProps,
     grapple_gun: {
         slug: "grapple_gun",
         icon: "/LP/icons/rifle.png",
         title: "Grapple gun",
         effect: "Shoots a grappling hook and pulls to the target",
         count: 1,
-    },
+    } as AssetCardProps,
     gluenade: {
         slug: "gluenade",
         icon: "/LP/icons/bag.png",
         title: "Gluenade",
         effect: "Grenade that sticks everything in the zone for 1 turn",
         count: 2,
-    },
+    } as AssetCardProps,
     emp_grenade: {
         slug: "emp_grenade",
         icon: "/LP/icons/capsule.png",
         title: "EMP grenade",
         effect: "Grenade that temporarily disables all electronics in the zone for 1 turn",
         count: 2,
-    },
+    } as AssetCardProps,
     rapid_regen: {
         slug: "rapid_regen",
         icon: "/LP/icons/syringe-2.png",
         title: "Rapid-regen",
         effect: "Instantly heals all organic injuries. Tissue may mutate (+1 Doom)",
         count: 2,
-    },
+    } as AssetCardProps,
     sped: {
         slug: "sped",
         icon: "/LP/icons/nose-spray.png",
         title: "SPED",
         effect: "+1 movement, multiplies landing distance by 3 rounds",
         count: 2,
-    },
+    } as AssetCardProps,
     rage: {
         slug: "rage",
         icon: "/LP/icons/syringe.png",
         title: "Rage",
         effect: "+1 effect on strength actions and close-range attacks for 3 rounds",
         count: 2,
-    },
+    } as AssetCardProps,
     overclocking_battery: {
         slug: "overclocking_battery",
         icon: "/LP/icons/battery.png",
         title: "Overclocking Battery",
         effect: "Once, +2 effect on action for Synthetics or machines",
         count: 4,
-    },
+    } as AssetCardProps,
     targeting_eye_implant: {
         slug: "targeting_eye_implant",
         icon: "/LP/targeting-implant.png",
         title: "Targeting Eye Implant",
         effect: "+1 Effect on shooting actions. +1 Destruction.",
         count: 1,
-    },
+    } as AssetCardProps,
     flamethrower_arm: {
         slug: "flamethrower_arm",
         icon: "/LP/icons/flamethrower-arm.jpg",
         title: "Flamethrower Arm",
         effect: "1x Injury, +1 Heat to all in the zone. +1 Destruction when installed (+1 Heat when used, +2 Injury when uninstalled)",
         count: 2,
-    },
+    } as AssetCardProps,
     bfg: {
         slug: "bfg",
         icon: "/LP/icons/bfg.png",
         title: "BFG",
         effect: "Huge weapon: 1 round absorbs 1 heat from anyone in the zone, in the next damages all in all zones in a straight line for the amount of heat absorbed.",
         count: 1,
-    },
+    } as AssetCardProps,
     disintegrator: {
         slug: "disintegrator",
         icon: "/LP/icons/rifle-3.png",
         title: "Disintegrator",
         effect: "+1 Effect against organic targets",
         count: 1,
-    },
+    } as AssetCardProps,
 };
 
 export const clocks = {
@@ -280,14 +283,14 @@ export const clocks = {
         reward: "Mental stim - 2 actions",
         current: 0,
         total: 6,
-    },
+    } as ClockProps,
     calm_down_the_researchers: {
         slug: "calm_down_the_researchers",
         title: "Calm down the researchers",
         reward: "Consumable",
         current: 0,
         total: 6,
-    },
+    } as ClockProps,
     crew_reputation: {
         slug: "crew_reputation",
         title: "Crew reputation",
@@ -295,7 +298,7 @@ export const clocks = {
         threat: "Title: Damn hooligans",
         current: 3,
         total: 6,
-    },
+    } as ClockProps,
     too_late_for_viktor: {
         slug: "too_late_for_viktor",
         title: "Delay",
@@ -303,7 +306,7 @@ export const clocks = {
         note: "Ticks down every whole round",
         current: 6,
         total: 6,
-    },
+    } as ClockProps,
     viktor_in_critical_condition: {
         slug: "viktor_in_critical_condition",
         title: "Viktor in critical condition",
@@ -311,7 +314,7 @@ export const clocks = {
         total: 6,
         threat: "Viktor succumbs to his injuries",
         reward: "Viktor is stabilized",
-    },
+    } as ClockProps,
     saving_new_vega: {
         slug: "saving_new_vega",
         title: "Saving New Vega",
@@ -319,7 +322,7 @@ export const clocks = {
         total: 6,
         threat: "New Vega is consumed by spores",
         reward: "Title: Heroes of New Vega",
-    },
+    } as ClockProps,
     suspicion_of_security_robots: {
         slug: "suspicion_of_security_robots",
         title: "Suspicion of Security Robots",
@@ -327,14 +330,14 @@ export const clocks = {
         total: 4,
         threat: "They open fire",
         reward: "Access to the airlock",
-    },
+    } as ClockProps,
     gathering_of_the_spore_drone_crowd: {
         slug: "gathering_of_the_spore_drone_crowd",
         title: "Gathering of the Spore Drone Crowd",
         current: 8,
         total: 8,
         threat: "Spore Drone Crowd Attacks",
-    },
+    } as ClockProps,
     panic_at_the_airlock: {
         slug: "panic_at_the_airlock",
         title: "Panic at the airlock",
@@ -342,7 +345,7 @@ export const clocks = {
         total: 6,
         threat: "Everyone +1 Stress",
         reward: "Saving New Vega +1",
-    },
+    } as ClockProps,
 };
 
 export const effects = {
@@ -351,11 +354,11 @@ export const effects = {
         icon: "thermometerHot",
         title: "Spore Fever",
         effect: "+1 Heat each round until cured",
-    },
+    } as EffectCardProps,
     spore_infection: {
         slug: "spore_infection",
         icon: "/LP/icons/spore-infection-2.png",
         title: "Spore Infection",
         effect: "+1 Doom",
-    },
+    } as EffectCardProps,
 };

@@ -5,14 +5,16 @@ import Hand from "../layout/Hand";
 import AssetCard from "../gameComponents/AssetCard";
 import Spread from "../layout/Spread";
 import EffectCard from "../gameComponents/EffectCard";
-import OutcomeCard from "../gameComponents/OutcomeCard";
+import OutcomeCard, { OutcomeCardBackFace } from "../gameComponents/OutcomeCard";
 import ActorCard from "../gameComponents/ActorCard";
 import Clock from "../Clock";
 import MdxArticle from "../layout/MdxArticle";
 import homeInfoMdx from "../../articles/homeInfo.mdx";
 import { Navigation } from "../Navigation";
 import Deck from "../layout/Deck";
-import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
+import { characters, clocks, defaultClockProps, items } from "../../data/encounters/LP-common-en";
+import { outcomeMap } from "../../data/outcomeDeck";
+import { effectMap } from "../../data/effects-deck-en";
 
 export default function InfoRoute() {
     return (
@@ -31,109 +33,43 @@ export default function InfoRoute() {
                             style={{ transform: "rotate3d(1, 0, 0, 5deg)", transformOrigin: "50% 100%" }}
                         >
                             <Spread
-                                className="w-full max-w-[600px] h-[350px]"
+                                className="w-full max-w-[700px] h-[350px]"
                                 items={[
-                                    <ActorCard
-                                        name="robo-bezpečáci"
-                                        size="US game"
-                                        imageUri="/LP/ScrattCZ_two_sci-fi_crowds_of_angry_humanoids_shouting_at_each__70560736-bf42-4734-a7e3-f55f7450352b.png"
-                                        imagePosition="center 30%"
-                                        toughness={6}
-                                        threat="Skenování - efektivita +1&nbsp;v zóně. Dezintegrátor 2x&nbsp;Zranění."
-                                        reward="1x&nbsp;Desintegrátor, 1x&nbsp;Přetaktovací baterie"
-                                        notes="-1 Efekt proti střelbě a konvenčním zbraním na blízko"
-                                    />,
-                                    <ActorCard
-                                        size="US game"
-                                        imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
-                                        imagePosition="center top"
-                                        name="Nekončící dav spórových dronů"
-                                        threat="Sápavý výpad: 1x Zranění"
-                                        notes="Infekce: při Selhání obrany -> Spórová nákaza"
-                                    />,
-                                    <Clock
-                                        size="US game"
-                                        title="Podezření robo-bezpečáků"
-                                        current={0}
-                                        total={4}
-                                        threat="Palba"
-                                        reward="Průchod k airlocku"
-                                    />,
+                                    <ActorCard {...characters.security_robots} />,
+                                    <ActorCard {...characters.endless_swarm_of_spore_drones} />,
+                                    <Clock {...defaultClockProps} {...clocks.suspicion_of_security_robots} />,
                                 ]}
                             />
                             <div className="w-full flex flex-row items-center my-4 max-w-[700px] self-center">
                                 <Deck
                                     className="w-[300px] h-[250px]"
                                     items={[
-                                        <OutcomeBackFace className="drop-shadow-md" />,
-                                        <OutcomeBackFace className="drop-shadow-md" />,
-                                        <OutcomeBackFace className="drop-shadow-md" />,
-                                        <OutcomeBackFace className="drop-shadow-md" />,
-                                        <OutcomeBackFace className="drop-shadow-md" />,
-                                        <OutcomeBackFace className="drop-shadow-md" />,
-                                        <OutcomeBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace className="drop-shadow-md" />,
                                     ]}
                                 />
                                 <Hand
                                     className="flex-1 max-w-[400px] h-[300px] z-10"
                                     items={[
-                                        <OutcomeCard
-                                            key="0"
-                                            slug="success"
-                                            title="Úspěch"
-                                            icon="bullseye"
-                                            description="Uspěl jsi (+2&ensp;Efekt)."
-                                        />,
-                                        <OutcomeCard
-                                            key="1"
-                                            slug="partial"
-                                            title="Částečný úspěch"
-                                            icon="dodge"
-                                            description="Částečně jsi uspěl (+1 Efekt nebo Úspěch + Komplikace)."
-                                        />,
-                                        <OutcomeCard
-                                            key="2"
-                                            slug="fumble"
-                                            title="Selhání"
-                                            icon="knockout"
-                                            description="Nepodařilo se ti to."
-                                        />,
+                                        <OutcomeCard key="0" {...outcomeMap.success} />,
+                                        <OutcomeCard key="1" {...outcomeMap.fumble} />,
+                                        <OutcomeCard key="2" {...outcomeMap.special} />,
                                     ]}
                                 />
                             </div>
                             <Spread
-                                className="w-full max-w-[900px] h-[250px]"
+                                className="w-full max-w-[1000px] h-[250px]"
                                 items={[
-                                    <EffectCard
-                                        key="wound"
-                                        title="Zranění"
-                                        icon="drop"
-                                        effect="-1 Vědomí. Nepřátelé ho mohou využít pro +1 Efekt proti tobě. Vyleč se k odstranění."
-                                    />,
-                                    <EffectCard
-                                        key="complication"
-                                        title="Komplikace"
-                                        icon="stickyBoot"
-                                        effect="Komplikace ti ztěžuje život. Příští akce má -1 Efekt, poté odstraň."
-                                    />,
-                                    <AssetCard
-                                        title="Rapid-regen"
-                                        icon="/LP/icons/syringe-2.png"
-                                        effect="Vyléčí instantně všechna organická zranění. Tkáň může zmutovat (+1&nbsp;zkáza)"
-                                        key="0"
-                                    />,
-                                    <AssetCard
-                                        title="Rage"
-                                        icon="/LP/icons/syringe.png"
-                                        effect="+1&nbsp;efekt na akce síly a útoku na blízko na 3&nbsp;kola"
-                                        key="2"
-                                    />,
-                                    <AssetCard
-                                        title="Medi-gel"
-                                        icon="/LP/icons/injection.png"
-                                        effect="-1&nbsp;organické Zranění"
-                                        key="3"
-                                    />,
+                                    <EffectCard key="wound" {...effectMap.wound} />,
+                                    <EffectCard key="complication" {...effectMap.complication} />,
+                                    <AssetCard key="rapid_regen" {...items.rapid_regen} />,
+                                    <AssetCard key="rage" {...items.rage} />,
+                                    <AssetCard key="medi_gel" {...items.medi_gel} />,
                                 ]}
                             />
                         </div>

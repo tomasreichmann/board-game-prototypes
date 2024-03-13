@@ -7,27 +7,27 @@ import { WithCount } from "../../types";
 export const defaultClockProps = {
     size: "Bridge" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
-};
+} as const;
 export const defaultActorProps = {
     size: "Bridge" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
     imagePosition: "center top",
-};
+} as const;
 export const defaultEffectProps = {
     size: "Mini European" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
-};
+} as const;
 export const defaultAssetProps = {
     size: "Mini European" as ClockProps["size"],
     className: "not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
-};
+} as const;
 export const defaultMiniProps = {
     baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
     backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
     baseWidth: "0.5in",
     height: "2in",
     width: "1in",
-};
+} as const;
 
 export const characters = {
     aia: {

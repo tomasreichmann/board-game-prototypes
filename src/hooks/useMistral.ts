@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import MistralClient, { ChatCompletionResponse, ChatCompletionResponseChoice } from "@mistralai/mistralai";
 
 import { useLocalSettings } from "./useLocalSettings";
+import { useLocalStorage } from "./useLocalStorage";
 
 const NO_KEY_ERROR = "No Mistral key provided. Set it in settings.";
 
@@ -25,17 +26,6 @@ export enum MistralFormatEnum {
     "text" = "text",
 }
 
-type ResponseChoice = {
-    index: 0;
-    message: {
-        role: "assistant";
-        content: "I'm an AI language model and I don't have the ability to generate images directly. However, I can help you generate descriptive text that could be used to create an image in your mind or guide a computer program to generate an image based on your specifications. If you're looking for a specific image, I can help you search for it online or try to describe it in detail so you can create it yourself.";
-        tool_calls: null;
-    };
-    finish_reason: "stop";
-    logprobs: null;
-};
-
 type HistoryItemType =
     | {
           type: "message";
@@ -46,7 +36,11 @@ type HistoryItemType =
           response: ChatCompletionResponse;
       };
 
+const defaultLocalHistoryKey = "mistralHistory";
+
 export type MistralOptionsType = {
+    includeHistoryLength?: number;
+    historyKey?: string;
     model?: MistralModelEnum;
     format?: MistralFormatEnum;
     temperature?: number;
@@ -65,19 +59,20 @@ export const useMistral = ({
     maxTokens = 100,
     stream = false,
     safePrompt = false,
+    historyKey = defaultLocalHistoryKey,
+    includeHistoryLength = 3,
     randomSeed,
 }: MistralOptionsType = {}) => {
     const [{ mistralKey }] = useLocalSettings(["mistralKey"]);
+    const [history, setHistory] = useLocalStorage<HistoryItemType[]>(historyKey);
     const [status, setStatus] = useState<{
         isPending: boolean;
         value: any;
-        history: HistoryItemType[];
         error: Error | null;
     }>({
         isPending: false,
         value: null,
         error: null,
-        history: [],
     });
 
     useEffect(() => {
@@ -106,45 +101,61 @@ export const useMistral = ({
         return new MistralClient(mistralKey);
     }, [mistralKey]);
 
+    const clearHistory = () => {
+        setHistory([]);
+    };
+
     const sendMessage = useCallback(
         async (message: string) => {
             if (!client) {
                 setStatus((status) => ({
                     ...status,
-                    history: [...status.history, { type: "message", message }],
                     error: new Error(NO_KEY_ERROR),
                 }));
                 return;
             }
-            setStatus((status) => ({
-                ...status,
-                history: [...status.history, { type: "message", message }],
-                isPending: true,
-                value: null,
-                error: null,
-            }));
-            const chatResponse = await client.chat({
-                model: model,
-                temperature,
-                topP,
-                maxTokens,
-                safePrompt,
-                randomSeed,
-                responseFormat: {
-                    type: format as any,
-                },
-                messages: [{ role: "user", content: message }],
+            setHistory((history) => {
+                const includedHistory = (history || []).slice(-includeHistoryLength).map((historyItem) => {
+                    if (historyItem.type === "message") {
+                        return { role: "user", content: historyItem.message };
+                    }
+                    // if (historyItem.type === "response") {
+                    return historyItem.response.choices[0].message;
+                    // }
+                });
+                setStatus((status) => ({
+                    ...status,
+                    isPending: true,
+                    value: null,
+                    error: null,
+                }));
+                client
+                    .chat({
+                        model: model,
+                        temperature,
+                        topP,
+                        maxTokens,
+                        safePrompt,
+                        randomSeed,
+                        responseFormat: {
+                            type: format as any,
+                        },
+                        messages: [...includedHistory, { role: "user", content: message }],
+                    })
+                    .then((chatResponse) => {
+                        setStatus((status) => ({
+                            ...status,
+                            isPending: false,
+                            value: chatResponse,
+                            error: null,
+                        }));
+                        setHistory((history) => [...(history || []), { type: "response", response: chatResponse }]);
+                    });
+                return [...(history || []), { type: "message", message }];
             });
-            setStatus((status) => ({
-                ...status,
-                history: [...status.history, { type: "response", response: chatResponse }],
-                isPending: false,
-                value: chatResponse,
-                error: null,
-            }));
         },
         [client]
     );
 
-    return { ...status, sendMessage };
+    return { ...status, history: history || [], sendMessage, clearHistory };
 };

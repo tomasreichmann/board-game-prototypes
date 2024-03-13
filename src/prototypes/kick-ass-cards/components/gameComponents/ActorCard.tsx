@@ -19,6 +19,7 @@ export type ActorCardProps = React.PropsWithChildren<
         imageWrapperClassName?: string;
         notesClassName?: string;
         forPrint?: boolean;
+        hideCounter?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
     } & Partial<ActorType> &
         Partial<PaperProps>
@@ -40,6 +41,7 @@ export default function ActorCard({
     threat = forPrint ? "" : null,
     reward = forPrint ? "" : null,
     notes = forPrint ? "" : null,
+    hideCounter = false,
     ImageComponent = Image,
     children,
     bleedMm = 0,
@@ -76,11 +78,11 @@ export default function ActorCard({
                     ) : (
                         <CharacterOutlineImage style={{}} className="h-full w-full text-kac-steel-light" />
                     )}
-                    {toughness > 0 && (
+                    {toughness > 0 && !hideCounter && (
                         <DiceCounter
                             current={currentToughness}
                             total={toughness}
-                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent drop-shadow-sm opacity-50 text-white h-20"
+                            className="absolute right-2 bottom-2 bg-transparent opacity-80 text-kac-steel-light drop-shadow-[0_0_1px_rgba(0,0,0,1)] h-20"
                             iconClassName="h-3/4 max-h-20"
                             currentClassName="text-red-300"
                         />

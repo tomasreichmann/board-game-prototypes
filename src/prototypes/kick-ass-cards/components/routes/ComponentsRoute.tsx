@@ -21,7 +21,7 @@ import PaperMiniPages from "../print/PaperMiniPages";
 import InfoCardPages from "../print/InfoCardPages";
 import StuntCardPages from "../print/StuntCardPages";
 import { Navigation } from "../Navigation";
-import LPCardPages from "../../data/encounters/LP-print";
+import LPCardPages from "../../data/encounters/LP-en-print";
 
 const defaultSectionVisibility = true;
 

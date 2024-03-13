@@ -6,9 +6,16 @@ import Toggle, { ToggleProps } from "./Toggle";
 export type ToggleDataProps = {
     data: any;
     className?: string;
+    previewClassName?: string;
 } & Partial<ToggleProps>;
 
-export default function ToggleData({ data, className, initialCollapsed, ...restProps }: ToggleDataProps) {
+export default function ToggleData({
+    data,
+    className,
+    previewClassName,
+    initialCollapsed,
+    ...restProps
+}: ToggleDataProps) {
     return (
         <Toggle
             className={twMerge("print:hidden flex flex-col max-w-full items-start relative", className)}
@@ -16,7 +23,7 @@ export default function ToggleData({ data, className, initialCollapsed, ...restP
             {...restProps}
         >
             <ErrorBoundary>
-                <DataPreview data={data} />
+                <DataPreview data={data} className={previewClassName} />
             </ErrorBoundary>
         </Toggle>
     );

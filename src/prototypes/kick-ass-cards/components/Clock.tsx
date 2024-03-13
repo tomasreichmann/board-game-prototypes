@@ -4,21 +4,22 @@ import { PaperOrDiv, PaperProps } from "../../../components/print/Paper/Paper";
 import { twMerge } from "tailwind-merge";
 import DiceCounter from "./DiceCounter";
 
-export type ClockProps = React.PropsWithChildren<{
-    className?: string;
-    size?: PaperProps["size"];
-    forPrint?: boolean;
-    title?: string | null;
-    reward?: string | null;
-    threat?: string | null;
-    note?: string | null;
-    total: number;
-    current?: number;
-}>;
+export type ClockProps = React.PropsWithChildren<
+    {
+        className?: string;
+        size?: PaperProps["size"];
+        forPrint?: boolean;
+        title?: string | null;
+        reward?: string | null;
+        threat?: string | null;
+        note?: string | null;
+        total: number;
+        current?: number;
+    } & Partial<PaperProps>
+>;
 
 export default function Clock({
     className,
-    size,
     forPrint,
     title = forPrint ? "" : null,
     reward = forPrint ? "" : null,
@@ -27,17 +28,21 @@ export default function Clock({
     total,
     current = 0,
     children,
+    bleedMm = 0,
+    size = "Bridge",
+    ...restProps
 }: ClockProps) {
     return (
         <PaperOrDiv
             size={size}
-            className={twMerge(
-                "Clock p-5 flex flex-col gap-5 text-kac-steel-dark min-w-[4cm] bg-white relative rounded-lg",
-                className
-            )}
+            bleedMm={bleedMm}
+            className={twMerge("Clock flex flex-col text-kac-steel-dark bg-white relative rounded-lg", className)}
+            {...restProps}
         >
-            <div className="relative flex-1 flex flex-col gap-2">
-                <Icon icon="sandsOfTime" className="absolute top-0 right-0 h-5 text-kac-bone-dark" />
+            <div className="flex-1 relative flex flex-col p-5 gap-2" style={{ margin: `${bleedMm}mm` }}>
+                <div className="relative">
+                    <Icon icon="sandsOfTime" className="absolute top-0 right-0 h-5 text-kac-bone-dark" />
+                </div>
                 <DiceCounter current={current} total={total} className="flex-1 text-kac-steel" />
                 {title !== null && (
                     <h2 className="text-sm font-kacHeading leading-tight text-balance mt-1 mb-1 text-center">
@@ -78,9 +83,8 @@ export default function Clock({
                         )}
                     </div>
                 )}
+                {children}
             </div>
-
-            {children}
         </PaperOrDiv>
     );
 }

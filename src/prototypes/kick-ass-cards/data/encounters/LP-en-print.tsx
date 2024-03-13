@@ -1,11 +1,12 @@
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiplyByCount";
+import Clock from "../../components/Clock";
 import ActorCard, { ActorCardBackFace } from "../../components/gameComponents/ActorCard";
 import AssetCard, { AssetCardBackFace } from "../../components/gameComponents/AssetCard";
 import PaperMini from "../../components/gameComponents/PaperMini";
 import ChunkedPages from "../../components/print/ChunkedPages";
-import { characters, defaultActorProps, items } from "./LP-common-en";
+import { characters, clocks, defaultActorProps, defaultClockProps, items } from "./LP-common-en";
 
 const sizePerPageMap = {
     small: 4 * 4,
@@ -67,6 +68,7 @@ export default function LPCardPages() {
                         threat="Attacks with a laser sun gun"
                         toughness={4}
                         currentToughness={4}
+                        hideCounter
                         imageUri="/LP/characters/amara.png"
                         children={<PrintMarkerCorners />}
                     />
@@ -81,8 +83,25 @@ export default function LPCardPages() {
                         notes="Builds drones for recon and attack"
                         toughness={4}
                         currentToughness={4}
+                        hideCounter
                         imagePosition="top"
                         imageUri="/LP/characters/holden.png"
+                        children={<PrintMarkerCorners />}
+                    />
+                    <ActorCard
+                        {...defaultActorProps}
+                        bleedMm={3}
+                        className="m-[-3mm]"
+                        name="L'Anaes"
+                        occupation="Mercenary"
+                        size="Bridge"
+                        threat="Special: Release mind affecting spores"
+                        notes="Fearless, Simple minded, Badly healed broken bone"
+                        toughness={4}
+                        currentToughness={4}
+                        hideCounter
+                        imagePosition="top"
+                        imageUri="/LP/characters/lanaes.png"
                         children={<PrintMarkerCorners />}
                     />
                     <PaperMini
@@ -109,9 +128,60 @@ export default function LPCardPages() {
                         height="2in"
                         width="1in"
                     />
+                    <PaperMini
+                        className="mt-10"
+                        imageUri="/LP/characters/lanaes.png"
+                        baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        baseContent="L'Anaes"
+                        imageStyle={{ backgroundPosition: "center bottom" }}
+                        backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                        backBaseContent="L'Anaes"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        className="mt-10"
+                        imageUri="/LP/characters/drones.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center"
+                        baseContent="Drones"
+                        imageStyle={{ backgroundPosition: "center bottom" }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center"
+                        backBaseContent="Drones"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        className="mt-10"
+                        imageUri="/LP/characters/scarabeus.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center"
+                        baseContent="Scarabeus"
+                        imageStyle={{ backgroundPosition: "center bottom" }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center"
+                        backBaseContent="Scarabeus"
+                        baseWidth="0.5in"
+                        height="1in"
+                        width="1in"
+                    />
                     <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
                         Player characters
                     </div>
+                </div>
+            </PrintPage>
+            <PrintPage key={"clock-deck-page"}>
+                <div className="flex flex-wrap content-center items-center justify-center">
+                    {Object.values(clocks).map((clock) => (
+                        <Clock
+                            key={clock.slug}
+                            {...defaultClockProps}
+                            bleedMm={3}
+                            {...clock}
+                            className="m-[-3mm]"
+                            children={<PrintMarkerCorners />}
+                        />
+                    ))}
+                    <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">Clocks</div>
                 </div>
             </PrintPage>
         </>

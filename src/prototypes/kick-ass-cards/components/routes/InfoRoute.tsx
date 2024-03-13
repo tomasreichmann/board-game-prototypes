@@ -27,7 +27,10 @@ export default function InfoRoute() {
                         <Playtesters />
                         <Credits />
                     </div>
-                    <div className="mb-10 preserve3d flex-1 min-w[400px]" style={{ perspective: 500 }}>
+                    <div
+                        className="mb-10 preserve3d flex-1 min-w[400px] self-stretch lg:self-start scale-75 my-[-25vw] mx-[-25vw] sm:scale-100 sm:m-0 "
+                        style={{ perspective: 500 }}
+                    >
                         <div
                             className="flex flex-col -gap-10 items-center "
                             style={{ transform: "rotate3d(1, 0, 0, 5deg)", transformOrigin: "50% 100%" }}

@@ -102,6 +102,7 @@ export const useMistral = ({
     }, [mistralKey]);
 
     const clearHistory = () => {
+        console.log("clearing history");
         setHistory([]);
     };
 
@@ -134,14 +135,14 @@ export const useMistral = ({
                         model: model,
                         temperature,
                         topP,
-                        maxTokens,
+                        max_tokens: maxTokens,
                         safePrompt,
                         randomSeed,
-                        responseFormat: {
+                        /*responseFormat: {
                             type: format as any,
-                        },
+                        },*/
                         messages: [...includedHistory, { role: "user", content: message }],
-                    })
+                    } as any)
                     .then((chatResponse) => {
                         setStatus((status) => ({
                             ...status,
@@ -150,6 +151,21 @@ export const useMistral = ({
                             error: null,
                         }));
                         setHistory((history) => [...(history || []), { type: "response", response: chatResponse }]);
+                    })
+                    .catch((error) => {
+                        setStatus((status) => ({
+                            ...status,
+                            isPending: false,
+                            value: null,
+                            error: new Error(
+                                (error?.detail || [{ msg: "Request Error" }])
+                                    .map(
+                                        ({ msg = "Request Error", ...error }: Record<string, any> = {}) =>
+                                            msg + "\n" + JSON.stringify(error)
+                                    )
+                                    .join("\n")
+                            ),
+                        }));
                     });
                 return [...(history || []), { type: "message", message }];
             });

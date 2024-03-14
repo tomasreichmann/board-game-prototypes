@@ -130,15 +130,15 @@ const variants = cva(["Button"], {
 
 export type ButtonLinkType = {
     href: string;
-} & HTMLAttributes<HTMLAnchorElement>;
+} & HTMLAttributes<HTMLAnchorElement> &
+    VariantProps<typeof variants>;
 
 export type ButtonButtonType = {
     onClick: HTMLAttributes<HTMLButtonElement>["onClick"];
-} & HTMLAttributes<HTMLButtonElement>;
+} & HTMLAttributes<HTMLButtonElement> &
+    VariantProps<typeof variants>;
 
-export type ButtonProps = React.PropsWithChildren<{}> &
-    VariantProps<typeof variants> &
-    (ButtonLinkType | ButtonButtonType);
+export type ButtonProps = ButtonLinkType | ButtonButtonType;
 
 export default function Button({ className, children, variant = "solid", color, disabled, ...restProps }: ButtonProps) {
     const classNames = twMerge(variants({ variant, color, disabled }), className);

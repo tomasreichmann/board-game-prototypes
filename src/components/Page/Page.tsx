@@ -7,9 +7,9 @@ export type PageProps = React.PropsWithChildren<{ className?: string; Navigation
 
 export default function Page({ className, NavigationComponent = Navigation, children }: PageProps) {
     return (
-        <div className={twMerge("p-10", className)}>
+        <div className={className}>
             <NavigationComponent />
-            {children}
+            <div className="flex-1 p-8 pt-0 flex flex-col">{children}</div>
         </div>
     );
 }

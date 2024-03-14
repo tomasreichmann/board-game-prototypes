@@ -17,7 +17,7 @@ export type SelectProps = React.PropsWithChildren<{
     InputHTMLAttributes<HTMLSelectElement>;
 
 export default function Select({
-    className,
+    className = "max-w-xs",
     options,
     children,
     label,
@@ -31,7 +31,7 @@ export default function Select({
     ...restProps
 }: SelectProps) {
     return (
-        <label className={twMerge("Select flex flex-col w-full max-w-xs", className)}>
+        <label className={twMerge("Select flex flex-col w-full", className)}>
             {label && (
                 <Text variant="body" {...labelProps} className={twMerge("text-kac-steel", labelClassName)}>
                     {label}

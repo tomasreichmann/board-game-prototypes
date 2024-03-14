@@ -50,12 +50,14 @@ export default function LlmRoute() {
                                                 <div
                                                     key={historyIndex}
                                                     className={twMerge(
-                                                        "flex flex-col items-stretch text-sm text-right mt-2",
+                                                        "flex flex-col items-stretch text-sm mt-2 pl-8",
                                                         isLast && "text-md"
                                                     )}
                                                 >
-                                                    <div className="text-xs text-slate-400">User</div>
-                                                    {historyItem.message}
+                                                    <div className="text-xs text-slate-400 text-right ">User</div>
+                                                    <pre className="w-full whitespace-pre-wrap font-sans">
+                                                        {historyItem.message}
+                                                    </pre>
                                                 </div>
                                             );
                                         }
@@ -64,14 +66,16 @@ export default function LlmRoute() {
                                                 <div
                                                     key={historyIndex}
                                                     className={twMerge(
-                                                        "flex flex-col items-stretch text-sm mt-2",
+                                                        "flex flex-col items-stretch text-sm mt-2 pr-8",
                                                         isLast && "text-md"
                                                     )}
                                                 >
                                                     <div className="text-xs capitalize text-slate-400">
                                                         {historyItem.response.choices[0].message.role}
                                                     </div>
-                                                    {historyItem.response.choices[0].message.content}
+                                                    <pre className="w-full whitespace-pre-wrap font-sans">
+                                                        {historyItem.response.choices[0].message.content}
+                                                    </pre>
                                                 </div>
                                             );
                                         }
@@ -97,12 +101,20 @@ export default function LlmRoute() {
                         />
                         <Button
                             disabled={!message || isPending}
-                            className="w-full"
+                            className="w-full leading-none min-h-14"
                             onClick={() => {
                                 sendMessageCallback(message);
                             }}
                         >
-                            Send{isPending ? "..." : <span className="opacity-50 text-xs"> CTRL + ENTER</span>}
+                            {isPending ? (
+                                <span className="inline-block h-6 w-6 m-1 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em]" />
+                            ) : (
+                                <>
+                                    "Send"
+                                    <br />
+                                    <span className="opacity-50 text-xs"> CTRL + ENTER</span>
+                                </>
+                            )}
                         </Button>
                         <div className="flex flex-row flex-wrap gap-2 pb-8">
                             <ButtonWithConfirmation color="danger" className="flex-1 text-sm" onClick={clearHistory}>
@@ -113,7 +125,7 @@ export default function LlmRoute() {
                                 type="number"
                                 value={mistralOptions.includeHistoryLength}
                                 label="Include History"
-                                labelClassName="text-sm max-w-32"
+                                labelClassName="text-sm max-w-24"
                                 onChange={(e) => {
                                     setMistralOptions((options) => ({
                                         ...options,
@@ -154,8 +166,9 @@ export default function LlmRoute() {
                                 }}
                             />
                             <Select
-                                className="max-w-xs"
+                                className="max-w-40"
                                 label="Model"
+                                labelClassName="text-sm"
                                 options={Object.entries(MistralModelEnum).map(([_, value]) => ({
                                     label: value,
                                     value,

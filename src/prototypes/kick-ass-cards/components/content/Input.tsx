@@ -56,7 +56,7 @@ export default function Input({
     className,
     children,
     label,
-    labelClassName,
+    labelClassName = "max-w-xs",
     type,
     disabled,
     error,
@@ -78,7 +78,7 @@ export default function Input({
     }
 
     return (
-        <label className={twMerge("Input flex flex-col w-full max-w-xs", labelClassName)}>
+        <label className={twMerge("Input flex flex-col w-full", labelClassName)}>
             {label && (
                 <Text variant="body" className="text-kac-steel">
                     {label}

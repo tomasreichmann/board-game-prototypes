@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useEffect } from "react";
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
 import { StepEnum, StepGeneratorStateType } from "./stepGeneratorTypes";
 import copyToClipboard from "../../../../utils/copyToClipboard";
@@ -8,6 +8,9 @@ import ToggleData from "../../../../components/DataToggle";
 import { twMerge } from "tailwind-merge";
 import Button from "../content/Button";
 import getComponentCode from "./getComponentCode";
+import { MistralModelEnum, useMistral } from "../../../../hooks/useMistral";
+import Pending from "../../../../components/form/Pending";
+import DataPreview from "../../../../components/DataPreview";
 
 const getGenerationPrompt = (state: StepGeneratorStateType) => {
     if (!state.presetName || !state.presetProps) {
@@ -29,12 +32,12 @@ const getGenerationPrompt = (state: StepGeneratorStateType) => {
             })
             .join("\n") +
         "\n" +
-        `This is a sample ${state.presetName} React component:` +
+        `This is a sample ${preset.componentName} React component:` +
         "\n" +
-        getComponentCode(state.presetName, { ...state.presetProps, ...(preset.sampleProps || {}) }) +
+        getComponentCode(preset.componentName, { ...state.presetProps, ...(preset.sampleProps || {}) }) +
         "\n" +
         `Give me ${state.generationCount > 1 ? `${state.generationCount} variants of` : ""} the ${
-            state.presetName
+            preset.componentName
         } code according to the sample.`
     );
 };
@@ -115,6 +118,11 @@ function getCodeBlocks(code: string, componentName: string): string[] {
 
 export default function GenerationStep({ className, children }: HTMLAttributes<HTMLDivElement>) {
     const { state, dispatch } = useStepGenerator();
+    const mistral = useMistral({
+        model: MistralModelEnum["open-mixtral-8x7b"],
+        maxTokens: 100 * state.generationCount,
+        includeHistoryLength: 0,
+    });
     const preset = state.presets.find((preset) => preset.name === state.presetName);
     if (!state.presetName || !state.presetProps || !preset) {
         dispatch({ type: StepGeneratorActionTypeEnum.SetStep, step: StepEnum.Preset });
@@ -135,6 +143,16 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
             props,
         };
     });
+
+    useEffect(() => {
+        if (!mistral.value) {
+            return;
+        }
+        dispatch({
+            type: StepGeneratorActionTypeEnum.Update,
+            updater: (state) => ({ ...state, generationResult: mistral.value?.choices[0]?.message.content || "" }),
+        });
+    }, [mistral.value]);
 
     return (
         <div className="flex-1 flex flex-col">
@@ -176,21 +194,33 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
                 }
             />
 
-            <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">Generation prompt </h2>
+            <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">Generation prompt</h2>
             <div className="relative">
                 <pre className="rounded-md border-2 border-slate-500 bg-slate-100 p-2 whitespace-pre-wrap text-kac-steel-dark">
                     {generationPrompt}
                 </pre>
-                <Button
-                    className="absolute bottom-full translate-y-2 right-0"
-                    color="primary"
-                    onClick={() => copyToClipboard(generationPrompt)}
-                >
-                    Copy
-                </Button>
+                <div className="absolute bottom-full translate-y-2 right-0 flex flex-row gap-4 items-start">
+                    {mistral.error && <p className="text-red-500">{mistral.error.message}</p>}
+                    <Button color="success" onClick={() => copyToClipboard(generationPrompt)}>
+                        Copy
+                    </Button>
+                    <Button
+                        color="primary"
+                        disabled={mistral.isPending || generationPrompt.trim().length === 0}
+                        onClick={() => {
+                            if (generationPrompt.trim().length === 0) return;
+                            console.log("send message", generationPrompt);
+                            mistral.sendMessage(generationPrompt);
+                        }}
+                    >
+                        {mistral.isPending ? <Pending className="w-6 h-6" /> : "Generate"}
+                    </Button>
+                </div>
             </div>
 
-            <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">Paste Result</h2>
+            <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">
+                Generation Result <span className="text-sm font-kacBody">you can paste here too</span>
+            </h2>
             <textarea
                 value={state.generationResult}
                 className="rounded-md border-2 border-slate-500 bg-slate-100 p-2 min-h-32"
@@ -245,8 +275,13 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
                             );
                         })}
                     </div>
+                    <div className="flex flex-row flex-wrap gap-4 mt-4">
+                        <ToggleData data={codeBlocks} buttonContent="Code Blocks" />
+                        <ToggleData data={previews} buttonContent="Preview Data" />
+                    </div>
                 </>
             )}
+            {children}
         </div>
     );
 }

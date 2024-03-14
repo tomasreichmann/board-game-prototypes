@@ -67,7 +67,7 @@ export const useMistral = ({
     const [history, setHistory] = useLocalStorage<HistoryItemType[]>(historyKey);
     const [status, setStatus] = useState<{
         isPending: boolean;
-        value: any;
+        value: ChatCompletionResponse | null;
         error: Error | null;
     }>({
         isPending: false,
@@ -153,18 +153,19 @@ export const useMistral = ({
                         setHistory((history) => [...(history || []), { type: "response", response: chatResponse }]);
                     })
                     .catch((error) => {
+                        console.warn("useMistral error:", error);
+                        let errorMessage = "Request Error: ";
+                        if (error?.message) {
+                            errorMessage += error.message;
+                        }
+                        if (error?.detail && Array.isArray(error.detail) && error.detail.length) {
+                            errorMessage += "\n" + error.detail.map((error: any) => JSON.stringify(error)).join("\n");
+                        }
                         setStatus((status) => ({
                             ...status,
                             isPending: false,
                             value: null,
-                            error: new Error(
-                                (error?.detail || [{ msg: "Request Error" }])
-                                    .map(
-                                        ({ msg = "Request Error", ...error }: Record<string, any> = {}) =>
-                                            msg + "\n" + JSON.stringify(error)
-                                    )
-                                    .join("\n")
-                            ),
+                            error: new Error(errorMessage),
                         }));
                     });
                 return [...(history || []), { type: "message", message }];

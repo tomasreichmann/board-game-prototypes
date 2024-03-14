@@ -10,6 +10,8 @@ import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import { twMerge } from "tailwind-merge";
 import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
 import Select from "../prototypes/kick-ass-cards/components/content/Select";
+import copyToClipboard from "../utils/copyToClipboard";
+import Pending from "../components/form/Pending";
 
 export default function LlmRoute() {
     const [mistralOptions, setMistralOptions] = useState<MistralOptionsType>({
@@ -50,13 +52,23 @@ export default function LlmRoute() {
                                                 <div
                                                     key={historyIndex}
                                                     className={twMerge(
-                                                        "flex flex-col items-stretch text-sm mt-2 pl-8",
+                                                        "flex flex-col items-stretch text-sm mt-4 pl-8",
                                                         isLast && "text-md"
                                                     )}
                                                 >
-                                                    <div className="text-xs text-slate-400 text-right ">User</div>
-                                                    <pre className="w-full whitespace-pre-wrap font-sans">
-                                                        {historyItem.message}
+                                                    <div className="text-xs text-right">
+                                                        <span className="text-slate-400">User</span>
+                                                    </div>
+                                                    <pre className="w-full whitespace-pre-wrap font-sans bg-kac-steel-light px-4 py-1 rounded-md shadow-inner">
+                                                        {historyItem.message}&ensp;
+                                                        <Button
+                                                            variant="text"
+                                                            color="success"
+                                                            className="text-xs px-2 py-1 inline-block bg-transparent"
+                                                            onClick={() => copyToClipboard(historyItem.message)}
+                                                        >
+                                                            Copy
+                                                        </Button>
                                                     </pre>
                                                 </div>
                                             );
@@ -66,15 +78,28 @@ export default function LlmRoute() {
                                                 <div
                                                     key={historyIndex}
                                                     className={twMerge(
-                                                        "flex flex-col items-stretch text-sm mt-2 pr-8",
+                                                        "flex flex-col items-stretch text-sm mt-4 pr-8",
                                                         isLast && "text-md"
                                                     )}
                                                 >
                                                     <div className="text-xs capitalize text-slate-400">
                                                         {historyItem.response.choices[0].message.role}
                                                     </div>
+
                                                     <pre className="w-full whitespace-pre-wrap font-sans">
-                                                        {historyItem.response.choices[0].message.content}
+                                                        {historyItem.response.choices[0].message.content}&ensp;
+                                                        <Button
+                                                            variant="text"
+                                                            color="success"
+                                                            className="text-xs px-2 py-1 inline-block bg-transparent"
+                                                            onClick={() =>
+                                                                copyToClipboard(
+                                                                    historyItem.response.choices[0].message.content
+                                                                )
+                                                            }
+                                                        >
+                                                            Copy
+                                                        </Button>
                                                     </pre>
                                                 </div>
                                             );
@@ -95,7 +120,7 @@ export default function LlmRoute() {
                                     }
                                 },
                             }}
-                            className="w-full max-w-none"
+                            className="w-full max-w-none px-4 py-2 bg-kac-steel-light rounded-md shadow-inner"
                             labelClassName="w-full max-w-none"
                             label="Message"
                         />
@@ -107,10 +132,10 @@ export default function LlmRoute() {
                             }}
                         >
                             {isPending ? (
-                                <span className="inline-block h-6 w-6 m-1 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em]" />
+                                <Pending />
                             ) : (
                                 <>
-                                    "Send"
+                                    Send
                                     <br />
                                     <span className="opacity-50 text-xs"> CTRL + ENTER</span>
                                 </>
@@ -121,7 +146,7 @@ export default function LlmRoute() {
                                 Clear History
                             </ButtonWithConfirmation>
                             <Input
-                                className="max-w-32"
+                                className="max-w-32 text-kac-steel-dark"
                                 type="number"
                                 value={mistralOptions.includeHistoryLength}
                                 label="Include History"

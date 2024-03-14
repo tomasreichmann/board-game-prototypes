@@ -16,8 +16,10 @@ const valueTypeInputTypeMap = {
 export default function SettingsRoute() {
     const [settingsStore, setSettingsStore] = useLocalStorage(localSettingsKey);
 
-    const settings = settingsStore || {
+    const settings = {
         mistralKey: "",
+        sdUri: "http://127.0.0.1:7860/",
+        ...(settingsStore || {}),
     };
 
     const items = (Object.keys(settings) as (keyof typeof settings)[]).map((key) => {

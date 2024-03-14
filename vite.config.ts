@@ -47,7 +47,10 @@ export default defineConfig(() => {
             }),
             dsv(),
             //mdx({ remarkPlugins: [[remarkFrontmatter, "toml"]] }),
-            mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkImages, remarkUnwrapImages], providerImportSource: "@mdx-js/react" }),
+            mdx({
+                remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkImages, remarkUnwrapImages],
+                providerImportSource: "@mdx-js/react",
+            }),
         ],
     };
 });

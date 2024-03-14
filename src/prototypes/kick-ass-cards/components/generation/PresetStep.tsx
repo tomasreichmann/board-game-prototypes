@@ -1,9 +1,9 @@
 import { HTMLAttributes } from "react";
 import clsx from "clsx";
-import { Button } from "react-daisyui";
 import ComponentList from "../ComponentList";
 
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
+import Button from "../content/Button";
 
 export default function PresetStep({ className, children }: HTMLAttributes<HTMLDivElement>) {
     const { state, dispatch } = useStepGenerator();
@@ -18,8 +18,7 @@ export default function PresetStep({ className, children }: HTMLAttributes<HTMLD
                                 onClick={() =>
                                     dispatch({ type: StepGeneratorActionTypeEnum.SetPreset, presetName: preset.name })
                                 }
-                                color="secondary"
-                                className="h-auto text-left normal-case font-normal"
+                                color="primary"
                             >
                                 Select: {preset.name}
                             </Button>

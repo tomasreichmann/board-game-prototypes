@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { RouteDefinition } from "./routeTypes";
 import { Route } from "react-router-dom";
 import LlmRoute from "./routes/LlmRoute";
+import SDRoute from "./routes/SDRoute";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -35,6 +36,11 @@ export const routes: RouteDefinition[] = [
         name: "LLM",
         path: "/llm",
         Component: LlmRoute,
+    },
+    {
+        name: "SD",
+        path: "/sd",
+        Component: SDRoute,
     },
     {
         name: "Settings",

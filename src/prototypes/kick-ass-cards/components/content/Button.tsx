@@ -73,22 +73,22 @@ const variants = cva(["Button"], {
         {
             variant: "text",
             color: "primary",
-            className: ["text-kac-gold-dark", "hover:text-kac-gold-dark"],
+            className: ["text-kac-gold-dark", "hover:text-kac-gold-dark", "hover:border-kac-primary"],
         },
         {
             variant: "text",
             color: "danger",
-            className: ["text-kac-blood-dark", "hover:text-kac-blood-dark"],
+            className: ["text-kac-blood-dark", "hover:text-kac-blood-dark", "hover:border-kac-blood"],
         },
         {
             variant: "text",
             color: "success",
-            className: ["text-kac-monster-dark", "hover:text-kac-monster-dark"],
+            className: ["text-kac-monster-dark", "hover:text-kac-monster-dark", "hover:border-kac-monster"],
         },
         {
             variant: "text",
             color: "info",
-            className: ["text-kac-cloth-dark", "hover:text-kac-cloth-dark"],
+            className: ["text-kac-cloth-dark", "hover:text-kac-cloth-dark", "hover:border-kac-cloth-dark"],
         },
         {
             variant: "outline",

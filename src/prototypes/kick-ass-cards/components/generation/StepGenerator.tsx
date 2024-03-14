@@ -1,10 +1,4 @@
 import { useEffect } from "react";
-import ActorCard, { ActorCardProps } from "../gameComponents/ActorCard";
-import { DeepRandomType } from "../../generators/resolveRandom";
-
-import VisualizeRandom from "./VisualizeRandom";
-
-import DataPreview from "../../../../components/DataPreview";
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
 import { PresetType, StepEnum, steps } from "./stepGeneratorTypes";
 import PresetStep from "./PresetStep";
@@ -94,7 +88,11 @@ export default function StepGenerator({
                 <div className="flex flex-col gap-2">
                     <ErrorBoundary className="text-kac-steel">
                         {PreviewComponent && <PreviewComponent {...defaultProps} {...state.presetProps} />}
-                        <Button disabled={!previewCode} onClick={() => previewCode && copyToClipboard(previewCode)}>
+                        <Button
+                            color="success"
+                            disabled={!previewCode}
+                            onClick={() => previewCode && copyToClipboard(previewCode)}
+                        >
                             Copy code
                         </Button>
                         {preset?.componentName && state.presetProps && (

@@ -29,6 +29,8 @@ export const defaultMiniProps = {
     width: "1in",
 } as const;
 
+type ActorType = ActorCardProps & { slug: string };
+
 export const characters = {
     aia: {
         slug: "aia",
@@ -37,7 +39,7 @@ export const characters = {
         imagePosition: "center top",
         occupation: "Head Researcher, Geneticist",
         notes: "Aia is the team leader and a renowned geneticist. She has increased intelligence and problem-solving abilities, as well as heightened senses and physical strength. However, she has a tendency to be overly competitive and can be ruthless in her goals. Her hidden talent is that she is a skilled musician and has a beautiful voice.",
-    } as ActorCardProps,
+    } as ActorType,
     ela: {
         slug: "ela",
         imageUri: "/LP/Ela.png",
@@ -45,7 +47,7 @@ export const characters = {
         imagePosition: "center top",
         occupation: "Doctor",
         notes: "Ela is a doctor and a team expert in physiological modifications. She has increased healing abilities and strong resistance to diseases. Her hidden weakness is that she has a weakness for sweets and sometimes indulges in them when no one is around. Her hidden talent is that she is a talented artist and has a natural gift for drawing and painting.",
-    } as ActorCardProps,
+    } as ActorType,
     isa: {
         slug: "isa",
         imageUri: "/LP/Isa.png",
@@ -53,7 +55,7 @@ export const characters = {
         imagePosition: "center top",
         occupation: "IT Specialist",
         notes: "Isa is a computer scientist and a team expert in hacking. She has increased information processing speed and memory and can directly interface with technology using her mind. She can be too trusting and has fallen for scams several times. She is a skilled fighter and has won many tournaments.",
-    } as ActorCardProps,
+    } as ActorType,
     opa: {
         slug: "opa",
         imageUri: "/LP/Opa.png",
@@ -61,7 +63,7 @@ export const characters = {
         imagePosition: "center top",
         occupation: "Botanist",
         notes: "Opa is a botanist and a team expert in plant genetics. She has the ability to photosynthesize and communicate with plants telepathically. Her hidden weakness is that she has a gambling addiction and has bet on everything from card games to sports several times. Her hidden talent is that she is a skilled cook and can prepare a variety of delicious dishes.",
-    } as ActorCardProps,
+    } as ActorType,
     una: {
         slug: "una",
         imageUri: "/LP/Una.png",
@@ -69,7 +71,7 @@ export const characters = {
         imagePosition: "center top",
         occupation: "Geologist",
         notes: "Una is a geologist and a team expert in terraforming. She has increased endurance and the ability to survive in extreme conditions. Her weakness is that she can be prone to anger and can be quick to anger. Her hidden talent is that she is a talented dancer and has won many awards for her performances.",
-    } as ActorCardProps,
+    } as ActorType,
     victor: {
         slug: "victor",
         imageUri: "/LP/viktor.png",
@@ -77,7 +79,7 @@ export const characters = {
         imagePosition: "center top",
         occupation: "Ship Engineer",
         notes: "Confidence 0/4",
-    } as ActorCardProps,
+    } as ActorType,
     endless_swarm_of_spore_drones: {
         slug: "endless_swarm_of_spore_drones",
         imageUri:
@@ -86,7 +88,7 @@ export const characters = {
         name: "Endless swarm of spore drones",
         occupation: "Once thinking and feeling beings, now just empty shells with the impulse to kill",
         notes: "Lashing Attack: 1x Injury; Infection: if Defense fails -> Spore Infection",
-    } as ActorCardProps,
+    } as ActorType,
     buxus: {
         slug: "buxus",
         size: "US game",
@@ -95,7 +97,7 @@ export const characters = {
         imagePosition: "center 30%",
         name: "Buxus",
         occupation: "Spore hybrid of Dr. Zimostraz",
-    } as ActorCardProps,
+    } as ActorType,
     spore_sirens: {
         slug: "spore_sirens",
         imageUri:
@@ -105,7 +107,7 @@ export const characters = {
         notes: "Action: Nerve-racking scream - Zone: +1 Distress, Bite - Crew reputation",
         toughness: 6,
         reward: "Medigel, Saving New Vega +1",
-    } as ActorCardProps,
+    } as ActorType,
     infected_recharge_tower: {
         slug: "infected_recharge_tower",
         imageUri:
@@ -114,14 +116,14 @@ export const characters = {
         toughness: 6,
         threat: "Once every 3 rounds, it sends an electrical discharge up to 2 zones away, injuring Androids for 2x Injury and organics for 2x Distress in the entire zone; A hit for 1 round disables vehicles; Resistant to conventional weapons",
         reward: "2x Overclocking Battery, Saving New Vega +1",
-    } as ActorCardProps,
+    } as ActorType,
     firefighting_drones: {
         slug: "firefighting_drones",
         imageUri:
             "/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg",
         name: "Firefighting Drones",
         notes: "Action: -1 Heat to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
-    } as ActorCardProps,
+    } as ActorType,
     infected_robotic_arm: {
         slug: "infected_robotic_arm",
         imageUri:
@@ -130,13 +132,13 @@ export const characters = {
         toughness: 6,
         reward: "Robotic Prosthesis",
         threat: "Grab - Stuck / Complication, Crush - 2x Injury",
-    } as ActorCardProps,
+    } as ActorType,
     spore_swarm: {
         slug: "spore_swarm",
         imageUri: "/LP/alien-swarm.jpg",
         name: "Spore Swarm",
         notes: "Infected with spores +1x Doom; Immune to shooting and melee attacks. Weak to fire and area attacks.",
-    } as ActorCardProps,
+    } as ActorType,
     infected_robotic_arm_2: {
         slug: "infected_robotic_arm_2",
         imageUri:
@@ -145,14 +147,14 @@ export const characters = {
         toughness: 6,
         threat: "Throwing Scrap - 2x Injury up to 2 zones away, Throwing Away - 1x Distress and throwing up to 2 zones away",
         reward: "Targeting Eye Implant",
-    } as ActorCardProps,
+    } as ActorType,
     confused_cargo_beetle: {
         slug: "confused_cargo_beetle",
         imageUri:
             "/LP/ScrattCZ_huge_flying_alien_with_electric_tentacles_and_weeds_gr_3507de64-ba9e-4db4-a383-a7d4e892dd34.png",
         name: "Confused Cargo Beetle",
         notes: "Action: When injured: Scream - +1 Distress in the given and adjacent zones; Impact - movement +1",
-    } as ActorCardProps,
+    } as ActorType,
     infected_robo_mercenary: {
         slug: "infected_robo_mercenary",
         imageUri:
@@ -162,7 +164,7 @@ export const characters = {
         reward: "1x Overclocking Battery, 1x Flamethrower Arm",
         threat: "SavingNew Vega -1",
         notes: "Action: -1 Heat to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
-    } as ActorCardProps,
+    } as ActorType,
     security_robots: {
         slug: "security_robots",
         imageUri:
@@ -173,7 +175,7 @@ export const characters = {
         notes: "Action: Scanning - +1 Effect against anything in the zone until the end of the conflict.",
         threat: "Flamethrower - 1x Injury, +1 Heat, Disintegrator 2x/1x Injury. Resistant to shooting and melee attacks.",
         reward: "1x Disintegrator, 1x Flamethrower Arm, Saving New Vega -1",
-    } as ActorCardProps,
+    } as ActorType,
 };
 
 type ItemType = WithCount<AssetCardProps & { slug: string }>;
@@ -279,6 +281,8 @@ export const items = {
     } as ItemType,
 };
 
+type ClockType = ClockProps & { slug: string };
+
 export const clocks = {
     researcher_respect: {
         slug: "researcher_respect",
@@ -286,14 +290,14 @@ export const clocks = {
         reward: "Mental stim - 2 actions",
         current: 0,
         total: 6,
-    } as ClockProps,
+    } as ClockType,
     calm_down_the_researchers: {
         slug: "calm_down_the_researchers",
         title: "Calm down the researchers",
         reward: "Consumable",
         current: 0,
         total: 6,
-    } as ClockProps,
+    } as ClockType,
     crew_reputation: {
         slug: "crew_reputation",
         title: "Crew reputation",
@@ -301,7 +305,7 @@ export const clocks = {
         threat: "Title: Damn hooligans",
         current: 3,
         total: 6,
-    } as ClockProps,
+    } as ClockType,
     too_late_for_viktor: {
         slug: "too_late_for_viktor",
         title: "Delay",
@@ -309,7 +313,7 @@ export const clocks = {
         note: "Ticks down every whole round",
         current: 6,
         total: 6,
-    } as ClockProps,
+    } as ClockType,
     viktor_in_critical_condition: {
         slug: "viktor_in_critical_condition",
         title: "Viktor in critical condition",
@@ -317,7 +321,7 @@ export const clocks = {
         total: 6,
         threat: "Viktor succumbs to his injuries",
         reward: "Viktor is stabilized",
-    } as ClockProps,
+    } as ClockType,
     saving_new_vega: {
         slug: "saving_new_vega",
         title: "Saving New Vega",
@@ -325,7 +329,7 @@ export const clocks = {
         total: 6,
         threat: "New Vega is consumed by spores",
         reward: "Title: Heroes of New Vega",
-    } as ClockProps,
+    } as ClockType,
     suspicion_of_security_robots: {
         slug: "suspicion_of_security_robots",
         title: "Suspicion of Security Robots",
@@ -333,14 +337,14 @@ export const clocks = {
         total: 4,
         threat: "They open fire",
         reward: "Access to the airlock",
-    } as ClockProps,
+    } as ClockType,
     gathering_of_the_spore_drone_crowd: {
         slug: "gathering_of_the_spore_drone_crowd",
         title: "Gathering of the Spore Drone Crowd",
         current: 8,
         total: 8,
         threat: "Spore Drone Crowd Attacks",
-    } as ClockProps,
+    } as ClockType,
     panic_at_the_airlock: {
         slug: "panic_at_the_airlock",
         title: "Panic at the airlock",
@@ -348,8 +352,10 @@ export const clocks = {
         total: 6,
         threat: "Everyone +1 Stress",
         reward: "Saving New Vega +1",
-    } as ClockProps,
+    } as ClockType,
 };
+
+type EffectType = EffectCardProps & { slug: string };
 
 export const effects = {
     spore_fever: {
@@ -357,11 +363,11 @@ export const effects = {
         icon: "thermometerHot",
         title: "Spore Fever",
         effect: "+1 Heat each round until cured",
-    } as EffectCardProps,
+    } as EffectType,
     spore_infection: {
         slug: "spore_infection",
         icon: "/LP/icons/spore-infection-2.png",
         title: "Spore Infection",
         effect: "+1 Doom",
-    } as EffectCardProps,
+    } as EffectType,
 };

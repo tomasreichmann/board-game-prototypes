@@ -23,7 +23,7 @@ export default function SDRoute() {
 
     return (
         <Page className="SDRoute flex-1 h-svh flex flex-col box-border">
-            <h1 className="text-3l font-bold mb-10">LLM Prototype</h1>
+            <h1 className="text-3l font-bold mb-10">Stable Diffusion Prototype</h1>
             <div className="flex-1 flex flex-col sm:flex-row gap-8">
                 <div className="relative flex-1 flex flex-col items-center">
                     <div className="flex-1 flex flex-col gap-4 w-full max-w-xl pb-2">

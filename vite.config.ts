@@ -38,15 +38,15 @@ export default defineConfig(() => {
         plugins: [
             react(),
             svgr({
-                exportAsDefault: true,
+                include: "**/*.svg",
                 svgrOptions: {
+                    exportType: "default",
                     typescript: false,
                     dimensions: false,
                     replaceAttrValues: { "#000": "currentColor", "#000000": "currentColor" },
                 },
             }),
             dsv(),
-            //mdx({ remarkPlugins: [[remarkFrontmatter, "toml"]] }),
             mdx({
                 remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkImages, remarkUnwrapImages],
                 providerImportSource: "@mdx-js/react",

@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-// import StableDiffusionApi, { Txt2ImgOptions } from "a1111-webui-api";
 
 import { useLocalSettings } from "./useLocalSettings";
 
@@ -12,6 +11,7 @@ export type SDOptionsType = {
 
 export const useSD = ({ defaultSampler = "DPM++ 2M Karras", defaultStepCount = 20 }: SDOptionsType = {}) => {
     const [{ sdUri }] = useLocalSettings(["sdUri"]);
+    console.log("sdUri", sdUri);
     const [status, setStatus] = useState<{
         isPending: boolean;
         value: any | null; // TODO: type this
@@ -41,20 +41,9 @@ export const useSD = ({ defaultSampler = "DPM++ 2M Karras", defaultStepCount = 2
         });
     }, [sdUri]);
 
-    const api = useMemo(() => {
-        if (!sdUri) {
-            return null;
-        }
-        /*return new StableDiffusionApi({
-            baseUrl: sdUri,
-            defaultSampler,
-            defaultStepCount,
-        });*/
-    }, [sdUri]);
-
     const txt2Image = useCallback(
         async (prompt: string, options: Omit<{}, "prompt"> = {}) => {
-            if (!api) {
+            if (!sdUri) {
                 setStatus((status) => ({
                     ...status,
                     error: new Error(NO_KEY_ERROR),
@@ -66,16 +55,23 @@ export const useSD = ({ defaultSampler = "DPM++ 2M Karras", defaultStepCount = 2
                 isPending: true,
                 value: null,
             }));
-            /*
-            const result = await api.txt2img({
+
+            const data = JSON.stringify({
                 prompt,
                 ...options,
             });
-            result.image
-                .toFormat("png")
-                .toBuffer()
-                .then((data) => {
-                    console.log(data);
+            const uri = sdUri + "sdapi/v1/txt2img";
+            console.log("request", uri, data);
+            fetch(uri, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: data,
+            })
+                .then((rawData) => {
+                    const data = rawData.json();
+                    console.log("result", data);
                     setStatus((status) => ({
                         ...status,
                         isPending: false,
@@ -83,14 +79,15 @@ export const useSD = ({ defaultSampler = "DPM++ 2M Karras", defaultStepCount = 2
                     }));
                 })
                 .catch((error) => {
+                    console.error("Error", error);
                     setStatus((status) => ({
                         ...status,
                         isPending: false,
                         error,
                     }));
-                });*/
+                });
         },
-        [api]
+        [sdUri]
     );
 
     return { ...status, txt2Image };

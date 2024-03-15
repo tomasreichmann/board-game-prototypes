@@ -1,4 +1,4 @@
-import react, { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from "react";
 import { Button } from "react-daisyui";
 import { twMerge } from "tailwind-merge";
 import { routes } from "../../routes";

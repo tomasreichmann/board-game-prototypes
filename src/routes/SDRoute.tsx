@@ -7,11 +7,19 @@ import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import Pending from "../components/form/Pending";
 import { SDOptionsType, useSD } from "../hooks/useSD";
 
+const base64ToUrl = (base64: string) => {
+    return `data:image/png;base64,${base64}`;
+};
+
 export default function SDRoute() {
-    const [sdOptions, setSdOptions] = useState<SDOptionsType>();
+    const [sdOptions, setSdOptions] = useState<SDOptionsType>({});
     const { txt2Image, ...status } = useSD(sdOptions);
     const { isPending, error, value } = status;
     const [prompt, setPrompt] = useState("");
+
+    const setSdOptionProperty = useCallback((property: string, value: any) => {
+        setSdOptions((sdOptions) => ({ ...sdOptions, [property]: value }));
+    }, []);
 
     const txt2ImageCallback = useCallback(
         (prompt: string) => {
@@ -29,8 +37,16 @@ export default function SDRoute() {
                     <div className="flex-1 flex flex-col gap-4 w-full max-w-xl pb-2">
                         <div className="relative flex-1 w-full flex flex-col gap-4 overflow-auto min-h-[400px]">
                             <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto">
-                                <div className="pr-4">
-                                    <ToggleData data={value} />
+                                <div className="flex-1 pr-4 flex flex-col max-w-full">
+                                    {error && <div className="text-red-500">Error: {error.message}</div>}
+                                    {value && (
+                                        <div className="flex flex-row flex-wrap">
+                                            {value?.images?.map((imageData: string, index: number) => (
+                                                <img key={index} src={base64ToUrl(imageData)} className="w-64 h-64" />
+                                            ))}
+                                        </div>
+                                    )}
+                                    <ToggleData data={value} className="max-w-full" previewClassName="max-h-[20vh]" />
                                 </div>
                             </div>
                         </div>

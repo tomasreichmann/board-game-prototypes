@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLAttributes, useState } from "react";
+import { HTMLAttributes, useEffect, useState } from "react";
 import Button, { ButtonButtonType, ButtonProps } from "./Button";
 
 export type ButtonWithConfirmationProps = ButtonButtonType & {
@@ -25,6 +25,16 @@ export default function ButtonWithConfirmation({
             setIsConfirming(false);
         }
     };
+
+    // un-confirm after 3s
+    useEffect(() => {
+        if (isConfirming) {
+            const timer = setTimeout(() => {
+                setIsConfirming(false);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [isConfirming]);
 
     if (isConfirming) {
         const { className: confirmClassName, ...confirmRestProps } = confirmProps ?? {};

@@ -12,6 +12,7 @@ import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/cont
 import Select from "../prototypes/kick-ass-cards/components/content/Select";
 import copyToClipboard from "../utils/copyToClipboard";
 import Pending from "../components/form/Pending";
+import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
 
 export default function LlmRoute() {
     const [mistralOptions, setMistralOptions] = useState<MistralOptionsType>({
@@ -108,8 +109,9 @@ export default function LlmRoute() {
                                 </div>
                             </div>
                         </div>
-                        <Input
+                        <SmartInput
                             type="textarea"
+                            isCopyable
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
                             textareaProps={{
@@ -120,8 +122,9 @@ export default function LlmRoute() {
                                     }
                                 },
                             }}
-                            className="w-full max-w-none px-4 py-2 bg-kac-steel-light rounded-md shadow-inner"
-                            labelClassName="w-full max-w-none"
+                            className="w-full bg-kac-steel-light rounded-md shadow-inner"
+                            labelClassName="w-full px-4 pt-2"
+                            inputClassName="w-full px-4 pb-2 rounded-md"
                             label="Message"
                         />
                         <Button

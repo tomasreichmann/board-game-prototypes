@@ -1,19 +1,37 @@
 import Page from "../components/Page/Page";
 
 import ToggleData from "../components/DataToggle";
-import Input from "../prototypes/kick-ass-cards/components/content/Input";
 import { useCallback, useState } from "react";
 import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import Pending from "../components/form/Pending";
 import { SDOptionsType, useSD } from "../hooks/useSD";
+import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
+import { InputProps } from "../prototypes/kick-ass-cards/components/content/Input";
+import Text from "../prototypes/kick-ass-cards/components/content/Text";
+import Select from "../prototypes/kick-ass-cards/components/content/Select";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const base64ToUrl = (base64: string) => {
     return `data:image/png;base64,${base64}`;
 };
 
+/* const lightningJuggernautPreset: {
+    label: string;
+    value: Partial<SDOptionsType>;
+} = {
+    label: "Lightning RealVis",
+    value: {
+        steps: 4,
+        sampler_name: "DPM++ SDE Karras",
+        cfg_scale: 2,
+        width: 1024,
+        height: 1024,
+    },
+}; */
+
 export default function SDRoute() {
     const [sdOptions, setSdOptions] = useState<SDOptionsType>({});
-    const { txt2Image, ...status } = useSD(sdOptions);
+    const { txt2Image, presetOptions, selectedPresetOption, setSelectedPresetOption, ...status } = useSD(sdOptions);
     const { isPending, error, value } = status;
     const [prompt, setPrompt] = useState("");
 
@@ -24,7 +42,6 @@ export default function SDRoute() {
     const txt2ImageCallback = useCallback(
         (prompt: string) => {
             txt2Image(prompt);
-            setPrompt("");
         },
         [txt2Image]
     );
@@ -44,15 +61,32 @@ export default function SDRoute() {
                                             {value?.images?.map((imageData: string, index: number) => (
                                                 <img key={index} src={base64ToUrl(imageData)} className="w-64 h-64" />
                                             ))}
+                                            <ToggleData
+                                                data={value}
+                                                initialCollapsed
+                                                className="max-w-full"
+                                                previewClassName="max-h-[20vh]"
+                                            />
                                         </div>
                                     )}
-                                    <ToggleData data={value} className="max-w-full" previewClassName="max-h-[20vh]" />
+                                    {!value && (
+                                        <Text variant="h4" color="heading" className="text-center">
+                                            Enter a prompt to generate an image
+                                        </Text>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                        <Input
+                        <SmartInput
                             type="textarea"
                             value={prompt}
+                            isCopyable
+                            onNewPreset={(value) => {
+                                console.log("onNewPreset", value);
+                            }}
+                            onRemovePreset={(value) => {
+                                console.log("onRemovePreset", value);
+                            }}
                             onChange={(e) => setPrompt(e.target.value)}
                             textareaProps={{
                                 onKeyDown: (e) => {
@@ -62,27 +96,64 @@ export default function SDRoute() {
                                     }
                                 },
                             }}
-                            className="w-full max-w-none px-4 py-2 bg-kac-steel-light rounded-md shadow-inner"
-                            labelClassName="w-full max-w-none"
+                            className="w-full bg-kac-gold-light text-kac-iron-light bg-opacity-25 rounded-md shadow-inner"
+                            labelClassName="w-full px-4 pt-2 text-sm text-kac-steel-dark text-opacity-75 font-kacHeading"
+                            inputClassName="w-full px-4 pb-2 rounded-md"
                             label="Prompt"
                         />
-                        <Button
-                            disabled={!prompt || isPending}
-                            className="w-full leading-none min-h-14"
-                            onClick={() => {
-                                txt2ImageCallback(prompt);
+                        <SmartInput
+                            type="textarea"
+                            value={sdOptions.negative_prompt}
+                            isCopyable
+                            onNewPreset={(value) => {
+                                console.log("onNewPreset", value);
                             }}
-                        >
-                            {isPending ? (
-                                <Pending />
-                            ) : (
-                                <>
-                                    Send
-                                    <br />
-                                    <span className="opacity-50 text-xs"> CTRL + ENTER</span>
-                                </>
-                            )}
-                        </Button>
+                            onRemovePreset={(value) => {
+                                console.log("onRemovePreset", value);
+                            }}
+                            onChange={(e) => setSdOptionProperty("negative_prompt", e.target.value)}
+                            textareaProps={{
+                                onKeyDown: (e) => {
+                                    if (e.ctrlKey && e.key === "Enter") {
+                                        e.preventDefault();
+                                        txt2ImageCallback(prompt);
+                                    }
+                                },
+                                rows: 1,
+                            }}
+                            className="w-full bg-kac-curse-light bg-opacity-25 rounded-md shadow-inner text-sm"
+                            labelClassName="w-full px-4 pt-2 text-xs text-kac-steel-dark text-opacity-75 font-kacHeading"
+                            inputClassName="w-full px-4 pb-2 rounded-md"
+                            label="Negative Prompt"
+                        />
+                        <div className="flex flex-row flex-wrap gap-2 items-end">
+                            <Select
+                                label="Preset"
+                                labelClassName="font-kacHeading text-xs text-kac-steel-dark text-opacity-75"
+                                selectClassName="px-2 py-1 rounded-md"
+                                className="max-w-64 font-kacBody"
+                                value={selectedPresetOption?.value}
+                                options={presetOptions || []}
+                                onChange={(e) => setSdOptionProperty("mistralModel", e.target.value)}
+                            />
+                            <Button
+                                disabled={!prompt || isPending}
+                                className="flex-1 leading-none min-h-14 font-kacHeading"
+                                onClick={() => {
+                                    txt2ImageCallback(prompt);
+                                }}
+                            >
+                                {isPending ? (
+                                    <Pending />
+                                ) : (
+                                    <>
+                                        Send
+                                        <br />
+                                        <span className="opacity-75 text-xs"> CTRL + ENTER</span>
+                                    </>
+                                )}
+                            </Button>
+                        </div>
                         <div className="flex flex-row flex-wrap gap-2 pb-8">
                             {/* <ButtonWithConfirmation color="danger" className="flex-1 text-sm" onClick={clearHistory}>
                                 Clear History
@@ -151,13 +222,7 @@ export default function SDRoute() {
                         {error && <p className="text-red-500 mt-2">{error.message}</p>}
                     </div>
                 </div>
-                <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative">
-                    <ToggleData
-                        data={{ status }}
-                        previewClassName="flex-1 shrink"
-                        className="absolute left-0 top-0 bottom-0 right-0"
-                    />
-                </div>
+                <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative"></div>
             </div>
         </Page>
     );

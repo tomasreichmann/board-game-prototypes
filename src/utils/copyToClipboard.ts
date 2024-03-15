@@ -8,9 +8,9 @@ export default function copyToClipboard(text: string) {
     return navigator.clipboard
         .writeText(text)
         .then(() => {
-            console.log("Text copied to clipboard");
+            console.log("Text " + text + " copied to clipboard");
         })
         .catch((err) => {
-            console.error("Error copying text: ", err);
+            console.error("Error copying text: ", err, text);
         });
 }

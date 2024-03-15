@@ -48,6 +48,17 @@ const defaultVariantColorMap = {
 
 export type TextProps = React.PropsWithChildren<{
     className?: string;
+    Component?:
+        | React.ComponentType<React.PropsWithChildren<any>>
+        | "div"
+        | "span"
+        | "h1"
+        | "h2"
+        | "h3"
+        | "h4"
+        | "h5"
+        | "h6"
+        | "p";
 }> &
     VariantProps<typeof variants> &
     HTMLAttributes<HTMLParagraphElement | HTMLHeadingElement>;
@@ -56,14 +67,15 @@ export default function Text({
     className,
     children,
     variant = "body",
+    Component,
     color = defaultVariantColorMap[variant || "body"],
     ...restProps
 }: TextProps) {
-    const Component = variantComponentMap[variant || "body"];
+    const ResolvedComponent = Component || variantComponentMap[variant || "body"];
     return (
-        <Component className={twMerge(variants({ variant, color }), className)} {...restProps}>
+        <ResolvedComponent className={twMerge(variants({ variant, color }), className)} {...restProps}>
             {children}
-        </Component>
+        </ResolvedComponent>
     );
 }
 

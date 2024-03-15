@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useLocalSettings } from "./useLocalSettings";
+import { useLocalStorage } from "./useLocalStorage";
 
 const NO_KEY_ERROR = "No URI available. Set it in settings.";
 
@@ -57,15 +58,66 @@ export type SDOptionsType = {
     save_images?: boolean;
 };
 
+export type SDPresetType = {
+    label: string;
+    value: Partial<SDOptionsType>;
+};
+
+const lightningRealVisPreset: SDPresetType = {
+    label: "Lightning RealVis",
+    value: {
+        steps: 4,
+        sampler_name: "DPM++ SDE Karras",
+        cfg_scale: 2,
+        width: 1024,
+        height: 1024,
+    },
+};
+
+const noPreset: SDPresetType = {
+    label: "-",
+    value: {},
+};
+const noPresetOption = {
+    label: "-",
+    value: "-",
+};
+
+const initialPresets = [noPreset, lightningRealVisPreset];
+
+const defaultOptions: SDOptionsType = {
+    sampler_name: "DPM++ 2M Karras",
+    steps: 20,
+    width: 1024,
+    height: 1024,
+    save_images: true,
+};
+
+export const SD_METADATA_KEY = "SD_METADATA";
+export const SD_PRESETS_KEY = "SD_PRESETS";
+export const SD_SELECTED_PRESET_KEY = "SD_SELECTED_PRESET_KEY";
+
 export const useSD = (options: SDOptionsType) => {
+    const [metadata, setMetadata] = useLocalStorage(SD_METADATA_KEY);
+    const [presets, setPresets] = useLocalStorage<SDPresetType[]>(SD_PRESETS_KEY);
+    const [selectedPresetOption, setSelectedPresetOption] =
+        useLocalStorage<typeof noPresetOption>(SD_SELECTED_PRESET_KEY);
+
+    const selectedPreset = useMemo(
+        () => presets?.find((preset) => preset.label === selectedPresetOption?.label) || {},
+        [presets, options]
+    );
+
+    useEffect(() => {
+        if (!presets) {
+            setPresets(initialPresets);
+        }
+    }, [presets, setPresets]);
+
     const defaultedOptions = useMemo(
         () =>
             ({
-                sampler_name: "DPM++ 2M Karras",
-                steps: 20,
-                width: 1024,
-                height: 1024,
-                save_images: true,
+                ...defaultOptions,
                 ...options,
             } as SDOptionsType),
         [options]
@@ -119,6 +171,7 @@ export const useSD = (options: SDOptionsType) => {
             const data = JSON.stringify({
                 prompt,
                 ...defaultedOptions,
+                ...selectedPreset,
                 ...options,
             });
             const uri = sdUri + "sdapi/v1/txt2img";
@@ -151,5 +204,15 @@ export const useSD = (options: SDOptionsType) => {
         [sdUri]
     );
 
-    return { ...status, txt2Image };
+    const presetOptions = useMemo(() => {
+        if (!presets) {
+            return [noPresetOption];
+        }
+        return presets.map((preset) => ({
+            label: preset.label,
+            value: preset.label,
+        }));
+    }, [presets]);
+
+    return { ...status, presets, presetOptions, selectedPresetOption, setSelectedPresetOption, txt2Image };
 };

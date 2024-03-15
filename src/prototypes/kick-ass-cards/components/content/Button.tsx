@@ -5,7 +5,7 @@ import { HTMLAttributes } from "react";
 const variants = cva(["Button"], {
     variants: {
         variant: {
-            text: ["underline", "hover:no-underline"],
+            text: ["underline", "bg-transparent", "hover:no-underline"],
             solid: [
                 "px-4",
                 "py-2",
@@ -21,7 +21,7 @@ const variants = cva(["Button"], {
             outline: ["px-4", "py-2", "rounded-md", "border-2"],
         },
         disabled: {
-            true: ["pointer-events-none"],
+            true: ["pointer-events-none", "hover:outline-0", "focus:outline-0"],
         },
         color: {
             primary: [],

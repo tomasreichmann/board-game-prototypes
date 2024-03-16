@@ -130,6 +130,7 @@ const variants = cva(["Button"], {
 
 export type ButtonLinkType = {
     href: string;
+    download?: string;
 } & HTMLAttributes<HTMLAnchorElement> &
     VariantProps<typeof variants>;
 

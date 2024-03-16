@@ -35,6 +35,8 @@ export type InputProps = React.PropsWithChildren<{
     error?: React.ReactNode;
     inputClassName?: string;
     errorClassName?: string;
+    description?: React.ReactNode;
+    descriptionClassName?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
     textareaRef?: React.RefObject<HTMLTextAreaElement>;
     textareaProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -63,12 +65,14 @@ export default function Input({
     labelClassName,
     inputClassName,
     errorClassName,
+    descriptionClassName,
+    description,
     type,
     disabled,
     error,
     inputRef,
     textareaRef,
-    textareaProps,
+    textareaProps: { className: textareaClassName, ...textareaProps } = {},
     ...restProps
 }: InputProps) {
     const combinedInputClassName = twMerge(variants({ type, disabled }), inputClassName);
@@ -77,7 +81,7 @@ export default function Input({
     if (type === "textarea") {
         input = (
             <textarea
-                className={combinedInputClassName}
+                className={twMerge(combinedInputClassName, textareaClassName)}
                 value={restProps.value}
                 ref={textareaRef}
                 onChange={restProps.onChange as any}
@@ -91,6 +95,7 @@ export default function Input({
             {label && (
                 <Text Component="span" variant="body" className={twMerge("text-kac-steel", labelClassName)}>
                     {label}
+                    {description && <span className="text-kac-steel text-xs ml-2">{description}</span>}
                 </Text>
             )}
             {input}

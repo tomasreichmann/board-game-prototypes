@@ -6,12 +6,14 @@ import Button, { ButtonButtonType, ButtonProps } from "./Button";
 export type ButtonWithConfirmationProps = ButtonButtonType & {
     confirmText?: string;
     confirmProps?: Partial<ButtonButtonType>;
+    timeoutMs?: number | null;
 };
 
 export default function ButtonWithConfirmation({
     className,
     children,
     confirmProps = { color: "danger", children: <>Confirm {children}</> },
+    timeoutMs = 3000,
     onClick,
     ...restProps
 }: ButtonWithConfirmationProps) {
@@ -28,13 +30,13 @@ export default function ButtonWithConfirmation({
 
     // un-confirm after 3s
     useEffect(() => {
-        if (isConfirming) {
+        if (isConfirming && timeoutMs) {
             const timer = setTimeout(() => {
                 setIsConfirming(false);
-            }, 3000);
+            }, timeoutMs);
             return () => clearTimeout(timer);
         }
-    }, [isConfirming]);
+    }, [isConfirming, timeoutMs]);
 
     if (isConfirming) {
         const { className: confirmClassName, ...confirmRestProps } = confirmProps ?? {};

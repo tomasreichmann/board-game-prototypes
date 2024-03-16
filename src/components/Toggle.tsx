@@ -11,11 +11,12 @@ export type ToggleProps = React.PropsWithChildren<{
 export default function Toggle({
     className = "print:hidden flex flex-col w-full items-start relative",
     buttonContent = "Show Data",
-    buttonProps = {
-        size: "sm",
-        className: "mb-2",
-        children: buttonContent,
-    },
+    buttonProps: {
+        size: buttonSize = "sm",
+        className: buttonClassName,
+        children: buttonChildren = buttonContent,
+        ...buttonProps
+    } = {},
     initialCollapsed,
     children,
 }: ToggleProps) {
@@ -23,8 +24,10 @@ export default function Toggle({
     return (
         <div className={className}>
             <Button
+                className={buttonClassName}
                 {...buttonProps}
-                children={buttonContent || buttonProps.children}
+                size={buttonSize}
+                children={buttonChildren}
                 variant={isCollapsed ? undefined : "outline"}
                 onClick={() => setIsCollapsed((isCollapsed) => !isCollapsed)}
             />

@@ -114,7 +114,7 @@ export default function SDRoute() {
                 <div className="flex-1 flex flex-col gap-4 w-full pb-2">
                     <div className="relative flex-1 w-full flex flex-col gap-4 overflow-auto min-h-[400px]">
                         <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto">
-                            <div className="flex-1 pr-4 flex flex-col w-full max-w-full">
+                            <div className="flex-1 pr-4 flex flex-col w-full max-w-full gap-4">
                                 {error && <div className="text-red-500">Error: {error.message}</div>}
                                 {history?.map((historyItem) => {
                                     if (historyItem.type === "response") {

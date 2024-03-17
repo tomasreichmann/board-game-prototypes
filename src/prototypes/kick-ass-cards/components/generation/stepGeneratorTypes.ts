@@ -1,4 +1,6 @@
 import { DeepRandomType } from "../../generators/resolveRandom";
+import { AnyRecord } from "../content/Form";
+import { PropsWithAiPrefixes } from "./ComponentMetaEditor";
 
 export enum StepEnum {
     Preset = "Preset",
@@ -21,13 +23,13 @@ export type StepGeneratorStateType = {
     generationCount: number;
 };
 
-export type PresetType<T> = {
+export type PresetType<T extends AnyRecord> = {
     name: string;
     scheme: DeepRandomType<T>;
     Component: React.ComponentType<T>;
     componentName: string;
-    propPrompts?: { [key in keyof T]?: string };
+    propPrompts?: PropsWithAiPrefixes<{ [key in keyof T]?: string }>;
     defaultProps: Partial<T>;
-    sampleProps?: Partial<T>;
+    sampleProps?: Partial<PropsWithAiPrefixes<T>>;
     additionalProps: Partial<T>;
 };

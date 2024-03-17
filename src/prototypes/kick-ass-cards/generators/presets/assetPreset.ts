@@ -190,13 +190,16 @@ const assetPreset = createPreset<AssetCardProps>(
         effect: "Attacks for 1 Effect (slashing). Can attack 2 engaged enemies in the same zone using the same Effect.",
     },
     {},
-    { title: "Longsword", icon: "/DND/weapons/longsword.svg", effect: "Attacks for 1 Effect (slashing)" },
+    {
+        title: "Longsword",
+        SD_icon:
+            "ethereal fantasy concept art of slavic medieval longsword on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art",
+        effect: "Attacks for 1 Effect (slashing)",
+    },
     {
         title: "1-4 words",
-        icon: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art". Always omit background description`,
-        size: `do not change. Use: "Mini European"`,
-        className: `Do not change, Use: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none"`,
-        effect: "Weapons attack for 1 Effect (type slashing/crushing/piercing). Polearms can attack in neighboring zones. Ranged weapons can attack further in either line of sight or ballistically.",
+        SD_icon: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art". Always omit background description`,
+        effect: "Weapons attack for 1 Effect (type slashing/crushing/piercing). Pole arms can attack in neighboring zones. Ranged weapons can attack further in either line of sight or ballistically.",
     }
 );
 

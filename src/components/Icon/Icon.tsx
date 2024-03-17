@@ -303,7 +303,7 @@ export const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in
 export type IconProps<AliasMap extends IconMap> = {
     className?: string;
     icon: IconType | keyof AliasMap;
-    params?: { [key: string]: any };
+    params?: React.SVGAttributes<SVGSVGElement>;
     aliasMap?: IconMap;
 };
 

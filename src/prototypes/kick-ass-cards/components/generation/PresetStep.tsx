@@ -26,6 +26,7 @@ export default function PresetStep({ className, children }: HTMLAttributes<HTMLD
                     ))}
                 </ComponentList>
             </div>
+            {children}
         </div>
     );
 }

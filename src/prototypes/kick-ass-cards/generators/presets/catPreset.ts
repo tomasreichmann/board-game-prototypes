@@ -9,8 +9,9 @@ const catPreset = createPreset(
     "Actor",
     {
         name: "cat",
-        size: "Mini European",
+        size: "Bridge",
         className: "drop-shadow",
+        toughness: 1,
         imageUri: "/ISV/minis/animals/cat1.jpg",
     },
     {},
@@ -20,16 +21,13 @@ const catPreset = createPreset(
         threat: "Will scratch you if you snuggle her too hard",
         notes: "Likes to jump on curtains",
         reward: "Brings dead rats from time to time",
-        imageUri:
+        SD_imageUri:
             "ethereal fantasy concept art of a black cat on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy",
     },
     {
-        imageUri: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
-        size: `do not change. Use: "Mini European"`,
-        threat: `Describes attacks or other ways how the character can threaten others`,
-        reward: `Describes how does defeating the character or allying with the character reward a player`,
-        className: `Do not change, Use: "drop-shadow"`,
-        imagePosition: `Do not change. Use: "top"`,
+        SD_imageUri: `A Stable Diffusion XL prompt. Make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
+        threat: `Describes attacks or other ways how the cat can threaten others`,
+        reward: `Describes how does defeating the cat or allying with the cat reward a player`,
     }
 );
 

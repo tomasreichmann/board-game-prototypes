@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocalSettings } from "./useLocalSettings";
 import { useLocalStorage } from "./useLocalStorage";
-import sdApiSchema from "../schemas/sdApiSchema";
 import uuid from "../utils/uuid";
 import getImageUrlFromBase64 from "../utils/getImageUrlFromBase64";
 
 const NO_KEY_ERROR = "No URI available. Set it in settings.";
 
 // TODO magically infer SDOptionsType type from
+// import sdApiSchema from "../schemas/sdApiSchema";
 // import { TypeFromTypeString } from "../prototypes/kick-ass-cards/components/content/Form";
 // const properties = sdApiSchema.components.schemas.Options.properties;
 
@@ -387,7 +387,7 @@ export const useSD = (config: SDConfigType = {}) => {
             const data = JSON.stringify(combinedOptions);
             const uri = sdUri + "sdapi/v1/txt2img";
 
-            fetch(uri, {
+            return fetch(uri, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -429,6 +429,8 @@ export const useSD = (config: SDConfigType = {}) => {
                         isPending: false,
                         value: dataWithBlobUris,
                     }));
+
+                    return dataWithBlobUris;
                 })
                 .catch((error) => {
                     console.error("Error", error);

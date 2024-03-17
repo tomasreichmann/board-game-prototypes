@@ -61,17 +61,16 @@ const actorPreset = createPreset<ActorCardProps>(
         threat: "Attacks with a dagger for 1 Effect, +1 Effect if attacking from an ambush",
         notes: "Retreats and hides in the bushes if hurt",
         reward: "Forest camouflage",
-        imageUri:
+        toughness: 2,
+        currentToughness: 2,
+        SD_imageUri:
             "ethereal fantasy concept art of a bandit wearing a camouflage of forest branches holding a dagger on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy",
     },
     {
-        imageUri: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
-        size: `do not change. Use: "Bridge"`,
+        SD_imageUri: `A Stable Diffusion XL prompt. Make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
         toughness: `Use whole numbers between 1 and 4`,
         currentToughness: `Use same value as toughness unless it makes sense the character is wounded`,
         threat: `Describes attacks or other ways how the character can threaten others`,
-        className: `Do not change, Use: "drop-shadow"`,
-        imagePosition: `Do not change. Use: "top"`,
     }
 );
 

@@ -9,8 +9,9 @@ const dogPreset = createPreset(
     "Actor",
     {
         name: "dog",
-        size: "Mini European",
+        size: "Bridge",
         className: "drop-shadow",
+        toughness: 1,
         imageUri: "/ISV/minis/animals/dog1.jpg",
     },
     {},
@@ -20,16 +21,13 @@ const dogPreset = createPreset(
         threat: "Bites you if you smell like a cat",
         notes: "Likes to play fetch",
         reward: "Expensive leather collar",
-        imageUri:
-            "ethereal fantasy concept art of a black cat on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy",
+        SD_imageUri:
+            "ethereal fantasy concept art of a friendly dog on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy",
     },
     {
-        imageUri: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
-        size: `do not change. Use: "Mini European"`,
-        threat: `Describes attacks or other ways how the character can threaten others`,
-        reward: `Describes how does defeating the character or allying with the character reward a player`,
-        className: `Do not change, Use: "drop-shadow"`,
-        imagePosition: `Do not change. Use: "top"`,
+        SD_imageUri: `A Stable Diffusion XL prompt. Make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
+        threat: `Describes attacks or other ways how the dog can threaten others`,
+        reward: `Describes how does defeating the dog or allying with the dog reward a player`,
     }
 );
 

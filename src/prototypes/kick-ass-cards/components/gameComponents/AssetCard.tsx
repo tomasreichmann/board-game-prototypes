@@ -1,11 +1,13 @@
 import React from "react";
-import clsx from "clsx";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { AssetType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import Image from "../Image";
 import { twMerge } from "tailwind-merge";
+import { JSONSchema7Definition } from "json-schema";
+import { cardSizes } from "../../../../components/print/paperSizes";
+import ComponentMetaType from "../generation/ComponentMetaType";
 
 type OptionalKeysType = "slug" | "cost" | "count";
 
@@ -20,6 +22,85 @@ export type AssetCardProps = React.PropsWithChildren<
     } & Omit<AssetType, OptionalKeysType> &
         Partial<Pick<AssetType, OptionalKeysType> & Partial<PaperProps>>
 >;
+
+export const assetCardSchema: JSONSchema7Definition = {
+    title: "AssetCard",
+    type: "object",
+    properties: {
+        className: {
+            title: "Class Name",
+            type: "string",
+        },
+        size: {
+            title: "Size",
+            type: "string",
+            enum: Object.keys(cardSizes),
+        },
+        cornerIcon: {
+            title: "Corner Icon",
+            type: "string",
+            enum: Object.keys(iconMap),
+        },
+        cornerIconClassName: {
+            title: "Corner Icon Class Name",
+            type: "string",
+        },
+        effectClassName: {
+            title: "Effect Class Name",
+            type: "string",
+        },
+        iconClassName: {
+            title: "Icon Class Name",
+            type: "string",
+        },
+        slug: {
+            title: "Slug",
+            type: "string",
+        },
+        title: {
+            title: "Title",
+            type: "string",
+        },
+        icon: {
+            title: "Icon",
+            type: "string",
+            enum: Object.keys(iconMap),
+        },
+        effect: {
+            title: "Effect",
+            type: "string",
+        },
+        cost: {
+            title: "Cost",
+            type: "integer",
+        },
+        count: {
+            title: "Count",
+            type: "integer",
+        },
+    },
+};
+
+export const assetCardMeta: ComponentMetaType<AssetCardProps> = {
+    componentName: "AssetCard",
+    Component: AssetCard,
+    description: "AssetCard",
+    generationConfig: {
+        props: {
+            title: {
+                llm: true,
+            },
+            icon: {
+                llm: true,
+                sd: true,
+            },
+            effect: {
+                llm: true,
+            },
+        },
+    },
+    schema: assetCardSchema,
+};
 
 const effectSizeClassNameMap: { [key in IconType]?: string } = {
     //SPECIAL: "h-24",
@@ -98,7 +179,10 @@ export default function AssetCard({
         <PaperOrDiv
             size={size}
             bleedMm={bleedMm}
-            className={clsx("AssetCard bg-white rounded-lg print:rounded-none flex flex-col items-stretch", className)}
+            className={twMerge(
+                "AssetCard bg-white rounded-lg print:rounded-none flex flex-col items-stretch",
+                className
+            )}
             {...restProps}
         >
             <div

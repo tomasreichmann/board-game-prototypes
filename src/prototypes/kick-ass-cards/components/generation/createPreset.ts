@@ -1,6 +1,7 @@
+import { AnyRecord } from "../content/Form";
 import { PresetType } from "./stepGeneratorTypes";
 
-const createPreset = <T extends any>(
+const createPreset = <T extends AnyRecord>(
     name: PresetType<T>["name"],
     scheme: PresetType<T>["scheme"],
     Component: PresetType<T>["Component"],

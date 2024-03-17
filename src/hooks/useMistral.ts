@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import MistralClient, { ChatCompletionResponse, ChatCompletionResponseChoice } from "@mistralai/mistralai";
+import MistralClient, { ChatCompletionResponse } from "@mistralai/mistralai";
 
 import { useLocalSettings } from "./useLocalSettings";
 import { useLocalStorage } from "./useLocalStorage";
@@ -7,13 +7,6 @@ import { useLocalStorage } from "./useLocalStorage";
 const NO_KEY_ERROR = "No Mistral key provided. Set it in settings.";
 
 export enum MistralModelEnum {
-    /*
-    open-mistral-7b (aka mistral-tiny-2312)
-    open-mixtral-8x7b (aka mistral-small-2312)
-    mistral-small-latest (aka mistral-small-2402)
-    mistral-medium-latest (aka mistral-medium-2312)
-    mistral-large-latest (aka mistral-large-2402)
-    */
     "open-mistral-7b" = "open-mistral-7b",
     "open-mixtral-8x7b" = "open-mixtral-8x7b",
     "mistral-small-latest" = "mistral-small-latest",
@@ -116,7 +109,8 @@ export const useMistral = ({
                 return;
             }
             setHistory((history) => {
-                const includedHistory = (history || []).slice(-includeHistoryLength).map((historyItem) => {
+                const lastHistoryItems = includeHistoryLength > 0 ? (history || []).slice(-includeHistoryLength) : [];
+                const includedHistory = lastHistoryItems.map((historyItem) => {
                     if (historyItem.type === "message") {
                         return { role: "user", content: historyItem.message };
                     }

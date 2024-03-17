@@ -40,7 +40,7 @@ const reducer = (state: StepGeneratorStateType, action: StepGeneratorActionType)
         return newState;
     }
     if (action.type === StepGeneratorActionTypeEnum.SetStep) {
-        return { ...state, step: action.step };
+        return { ...state, step: action.step, generationResult: undefined };
     }
     if (action.type === StepGeneratorActionTypeEnum.SetPresets) {
         return { ...state, presets: action.presets, step: StepEnum.Preset };

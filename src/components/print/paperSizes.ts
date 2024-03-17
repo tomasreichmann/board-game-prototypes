@@ -341,4 +341,6 @@ export const allSizes = {
     ...cardSizes,
 };
 
+export const allPaperSizes = allSizes;
+
 export default universalPaperSizes;

@@ -17,10 +17,10 @@ const valueTypeToInputType = (value: any): InputProps["type"] | undefined => {
     return "text";
 };
 
-const inferPropertyFromValue = <Keys extends string>(key: Keys, value: Record<Keys, any>) => {
+const inferPropertyFromValue = <ValueType extends AnyRecord>(key: keyof ValueType, value: Partial<ValueType>) => {
     return {
         prop: key,
-        label: camelCaseToTitleCase(key),
+        label: camelCaseToTitleCase(String(key)),
         type: valueTypeToInputType(value?.[key]) || "text",
         placeholder: value?.[key] ? JSON.stringify(value?.[key]) : undefined,
     };
@@ -42,23 +42,25 @@ export type FormPropertySchemaType<T extends FormPropertyTypeType> = {
     description?: string;
     default?: TypeFromTypeString<T>;
 };
-export type FormSchemaType<Keys extends string> = {
+export type FormSchemaType<Keys extends string | number | symbol> = {
     [key in Keys]?: InputProps;
 };
 /* export type FormSchemaType<Keys extends string> = {
     [key in Keys]?: FormPropertySchemaType<FormPropertyTypeType>;
 }; */
 
-export type FormProps<Keys extends string, V extends Record<Keys, any>> = {
+export type AnyRecord = Record<string | number | symbol, any>;
+
+export type FormProps<ValueType extends AnyRecord> = {
     className?: string;
     propertiesClassName?: string;
     children?: React.ReactNode;
-    errorMap?: Partial<Record<Keys, Error>>;
-    schema?: Partial<FormSchemaType<Keys>>;
+    errorMap?: Partial<Record<keyof ValueType, Error>>;
+    schema?: Partial<FormSchemaType<keyof ValueType>>;
     defaultInputProps?: Partial<InputProps>;
-    value?: Partial<V>;
-    onChange?: (value: Partial<V>) => void;
-    onSubmit?: (value: Partial<V>) => void;
+    value?: Partial<ValueType>;
+    onChange?: (value: Partial<ValueType>) => void;
+    onSubmit?: (value: Partial<ValueType>) => void;
     onReset?: () => void;
 };
 
@@ -78,7 +80,7 @@ const getDefaultValue = (value: any, property: InputProps) => {
     return "";
 };
 
-export default function Form<Keys extends string, V extends Record<Keys, any>>({
+export default function Form<ValueType extends AnyRecord>({
     className,
     propertiesClassName,
     children,
@@ -89,26 +91,26 @@ export default function Form<Keys extends string, V extends Record<Keys, any>>({
     onChange,
     onSubmit,
     onReset,
-}: FormProps<Keys, V>) {
-    const [valueWithChanges, setValueWithChanges] = useState<Partial<V>>(value || ({} as Partial<V>));
+}: FormProps<ValueType>) {
+    const [valueWithChanges, setValueWithChanges] = useState<Partial<ValueType>>(value || ({} as Partial<ValueType>));
 
     useEffect(() => {
-        setValueWithChanges(value || ({} as Partial<V>));
+        setValueWithChanges(value || ({} as Partial<ValueType>));
     }, [value]);
 
     const properties = useMemo(() => {
         if (schema) {
-            return (Object.keys(schema) as Keys[]).map((key) => {
+            return (Object.keys(schema) as (keyof ValueType)[]).map((key) => {
                 const property = schema[key];
                 return {
-                    ...inferPropertyFromValue(key, value || ({} as Partial<V>)),
+                    ...inferPropertyFromValue(key, value || ({} as Partial<ValueType>)),
                     prop: key,
                     ...property,
                 };
             });
         }
-        return (Object.keys(value || {}) as Keys[]).map((key) => {
-            return inferPropertyFromValue(key, value || ({} as Partial<V>));
+        return (Object.keys(value || {}) as (keyof ValueType)[]).map((key) => {
+            return inferPropertyFromValue(key, value || ({} as Partial<ValueType>));
         });
     }, [schema]);
 
@@ -119,10 +121,10 @@ export default function Form<Keys extends string, V extends Record<Keys, any>>({
                 {properties.map((property) => (
                     <Input
                         {...defaultInputProps}
-                        key={property.prop as Keys}
+                        key={String(property.prop as keyof ValueType)}
                         {...property}
-                        value={getDefaultValue(valueWithChanges?.[property.prop as Keys], property)}
-                        error={errorMap?.[property.prop as Keys]?.message || undefined}
+                        value={getDefaultValue(valueWithChanges?.[property.prop as keyof ValueType], property)}
+                        error={errorMap?.[property.prop as keyof ValueType]?.message || undefined}
                         onChange={(event) => {
                             setValueWithChanges((value) => ({
                                 ...value,
@@ -133,7 +135,7 @@ export default function Form<Keys extends string, V extends Record<Keys, any>>({
                                 ...value,
                                 [property.prop]:
                                     property.type === "number" ? Number(event.target.value) : event.target.value,
-                            } as V);
+                            } as ValueType);
                         }}
                     />
                 ))}

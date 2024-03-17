@@ -2,15 +2,35 @@ import { HTMLAttributes, useEffect } from "react";
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
 import { StepEnum, StepGeneratorStateType } from "./stepGeneratorTypes";
 import copyToClipboard from "../../../../utils/copyToClipboard";
-import ErrorBoundary from "../../../../components/ErrorBoundary";
-import Toggle from "../../../../components/Toggle";
-import ToggleData from "../../../../components/DataToggle";
 import { twMerge } from "tailwind-merge";
 import Button from "../content/Button";
 import getComponentCode from "./getComponentCode";
 import { MistralModelEnum, useMistral } from "../../../../hooks/useMistral";
 import Pending from "../../../../components/form/Pending";
-import DataPreview from "../../../../components/DataPreview";
+import PreviewCode from "./PreviewCode";
+import { LLM_PREFIX, SD_PREFIX } from "./ComponentMetaEditor";
+
+const getSampleProps = (state: StepGeneratorStateType) => {
+    const preset = state.presets.find((preset) => preset.name === state.presetName);
+    if (!preset) {
+        console.warn(`Preset "${state.presetName}" not found`);
+        return state.presetProps || {};
+    }
+    const combinedProps = { ...(preset.sampleProps || {}) };
+    Object.keys(combinedProps).forEach((key) => {
+        if (key.startsWith(SD_PREFIX)) {
+            const nonPrefixedKey = key.slice(SD_PREFIX.length);
+            delete combinedProps[nonPrefixedKey];
+            return;
+        }
+        if (key.startsWith(LLM_PREFIX)) {
+            const nonPrefixedKey = key.slice(LLM_PREFIX.length);
+            delete combinedProps[nonPrefixedKey];
+            return;
+        }
+    });
+    return combinedProps;
+};
 
 const getGenerationPrompt = (state: StepGeneratorStateType) => {
     if (!state.presetName || !state.presetProps) {
@@ -23,8 +43,16 @@ const getGenerationPrompt = (state: StepGeneratorStateType) => {
     return (
         state.contextPrompt +
         "\n" +
-        `I want to add a new ${state.presetName} element: ${state.elementPrompt}` +
+        `I want to add a new ${preset.componentName} element with a ${state.presetName} preset: ${state.elementPrompt}` +
         "\n" +
+        "\n" +
+        `This is a sample ${preset.componentName} React component:` +
+        "\n" +
+        "```jsx\n" +
+        getComponentCode(preset.componentName, getSampleProps(state)) +
+        "\n" +
+        "```\n\n" +
+        `${state.presetName} prop hints:\n` +
         Object.keys(state.propPrompts || {})
             .map((key) => {
                 const prop = state?.propPrompts?.[key];
@@ -32,97 +60,16 @@ const getGenerationPrompt = (state: StepGeneratorStateType) => {
             })
             .join("\n") +
         "\n" +
-        `This is a sample ${preset.componentName} React component:` +
         "\n" +
-        getComponentCode(preset.componentName, { ...state.presetProps, ...(preset.sampleProps || {}) }) +
-        "\n" +
+        "Put the code between ```jsx and ```. Do not escape any characters in property names. Do not include comments in code.\n" +
         `Give me ${state.generationCount > 1 ? `${state.generationCount} variants of` : ""} the ${
             preset.componentName
         } code according to the sample.`
     );
 };
 
-/**
- * Parses the value of a property.
- * Example: '={123}' will return 123
- * Example: '="abc"' will return "abc"
- * Example: '' will return true
- *
- * @param {string} value - the value to parse
- * @return {type} description of the parsed value
- */
-const parsePropValue = (value: string) => {
-    if (!value) {
-        return true;
-    }
-    if (value.startsWith('="') && value.endsWith('"')) {
-        return value.slice(2, -1);
-    }
-    const isInBrackets = value.startsWith("={") && value.endsWith("}");
-    if (isInBrackets) {
-        const valueInBrackets = value.slice(2, -1);
-        const numberParse = Number(valueInBrackets);
-        if (!isNaN(numberParse)) {
-            return numberParse;
-        }
-        if (valueInBrackets === "true") {
-            return true;
-        }
-        if (valueInBrackets === "false") {
-            return false;
-        }
-        if (valueInBrackets === "null") {
-            return null;
-        }
-    }
-    return value;
-};
-
-/**
- * Parses the given string of React code and extracts the props as an object.
- *
- * @param {string} codeString - the string of React code
- * @return {object} an object containing the extracted props
- */
-function getPropsFromCodeString(codeString: string): { [key: string]: string | number | boolean | null } {
-    const props: { [key: string]: string | number | boolean | null } = {};
-    const propRegex = /(\w+)(=["{]?[^"}]*["'}])?/g;
-    let match;
-    while ((match = propRegex.exec(codeString)) !== null) {
-        const key = match[1];
-        const value = parsePropValue(match[2]);
-        props[key] = value;
-    }
-    return props;
-}
-
-function getCodeBlocks(code: string, componentName: string): string[] {
-    const codeBlocks: string[] = [];
-    const fragments = (" " + code).split("<" + componentName).slice(1);
-    fragments.forEach((fragment) => {
-        codeBlocks.push(
-            "<" +
-                componentName +
-                "\n" +
-                fragment
-                    .replaceAll(/\/\/.*\n/g, "")
-                    .replaceAll(/\/\*.*\*\//g, "")
-                    .trim()
-                    .split(new RegExp(`\/>`, "g"))[0] +
-                "/>"
-        );
-    });
-
-    return codeBlocks;
-}
-
 export default function GenerationStep({ className, children }: HTMLAttributes<HTMLDivElement>) {
     const { state, dispatch } = useStepGenerator();
-    const mistral = useMistral({
-        model: MistralModelEnum["open-mixtral-8x7b"],
-        maxTokens: 100 * state.generationCount,
-        includeHistoryLength: 0,
-    });
     const preset = state.presets.find((preset) => preset.name === state.presetName);
     if (!state.presetName || !state.presetProps || !preset) {
         dispatch({ type: StepGeneratorActionTypeEnum.SetStep, step: StepEnum.Preset });
@@ -130,18 +77,10 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
     }
 
     const generationPrompt = getGenerationPrompt(state);
-
-    const codeBlocks =
-        state.generationResult && preset.componentName
-            ? getCodeBlocks(state.generationResult, preset.componentName)
-            : [];
-    const previews = codeBlocks.map((codeBlock) => {
-        const propsCode = codeBlock.slice(codeBlock.indexOf("\n") + 1, codeBlock.lastIndexOf("\n"));
-        const props = getPropsFromCodeString(propsCode);
-        return {
-            codeBlock,
-            props,
-        };
+    const mistral = useMistral({
+        model: MistralModelEnum["open-mixtral-8x7b"],
+        maxTokens: 100 * state.generationCount,
+        includeHistoryLength: 0,
     });
 
     useEffect(() => {
@@ -155,7 +94,7 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
     }, [mistral.value]);
 
     return (
-        <div className="flex-1 flex flex-col">
+        <div className={twMerge("flex-1 flex flex-col", className)}>
             <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">Context prompt</h2>
             <textarea
                 value={state.contextPrompt}
@@ -196,7 +135,7 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
 
             <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">Generation prompt</h2>
             <div className="relative">
-                <pre className="rounded-md border-2 border-slate-500 bg-slate-100 p-2 whitespace-pre-wrap text-kac-steel-dark">
+                <pre className="rounded-md border-2 border-slate-500 bg-slate-100 p-2 whitespace-pre-wrap text-kac-steel-dark resize-y h-[200px] text-sm overflow-auto">
                     {generationPrompt}
                 </pre>
                 <div className="absolute bottom-full translate-y-2 right-0 flex flex-row gap-4 items-start">
@@ -221,6 +160,99 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
             <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">
                 Generation Result <span className="text-sm font-kacBody">you can paste here too</span>
             </h2>
+            <div className="flex flex-row gap-4">
+                <Button
+                    color="success"
+                    onClick={() => {
+                        const sample = `1. <Actor
+name="Vladislav z Novgoroda"
+notes="Summons his elite guards if threatened"
+occupation="Warlord"
+size="Bridge"
+reward="Rare spices and exotic treasures"
+threat="Wields a two-handed sword for 2 Effects and commands his guards to attack"
+toughness={4}
+currentToughness={4}
+SD_imageUri="ethereal full body fantasy concept art of a warlord with a two-handed sword on solid white background, (soft white vignette:0.3), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+/>
+2. <Actor
+name="Bohdan z Kieva"
+notes="Threatens to destroy villages if not obeyed"
+occupation="Conquering Warlord"
+reward="Valuable resources and precious metals"
+threat="Commands a ballista to attack from a distance for 2 Effects"
+toughness={3}
+currentToughness={3}
+SD_imageUri="ethereal full body fantasy concept art of a warlord with a ballista on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+/>
+3. <Actor
+name="Michal z Smolenska"
+notes="Fights with a relentless fury"
+occupation="Invading Warlord"
+reward="Prisoners of war and territorial control"
+threat="Attacks with a battle axe for 2 Effects and enrages when wounded"
+toughness={4}
+currentToughness={4}
+SD_imageUri="ethereal full body fantasy concept art of a warlord with a battle axe on solid white background, (soft white vignette:0.3), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+/>
+4. <Actor
+name="Jaroslav z Vladimira"
+notes="Manipulates and bribes to get what he wants"
+occupation="Power-hungry Warlord"
+reward="Power and political influence"
+threat="Persuades others to attack for 1 Effect and promises rewards for loyalty"
+toughness={2}
+currentToughness={2}
+SD_imageUri="ethereal full body fantasy concept art of a warlord with a scroll on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+/>`;
+                        dispatch({
+                            type: StepGeneratorActionTypeEnum.Update,
+                            updater: (state) => ({ ...state, generationResult: sample }),
+                        });
+                    }}
+                >
+                    Paste some Actors
+                </Button>
+                <Button
+                    color="success"
+                    onClick={() => {
+                        const sample = `1. <Asset
+                    size="Mini European"
+                    SD_icon="ethereal fantasy concept art of a broadaxe on solid white background, (soft white vignette:0.3), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+                    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+                    title="Broadaxe"
+                    effect="Attacks for 1 Effect (crushing)"
+                    />
+                    2. <Asset
+                    size="Mini European"
+                    SD_icon="ethereal fantasy concept art of a war hammer on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+                    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+                    title="War Hammer"
+                    effect="Attacks for 1 Effect (crushing)"
+                    />
+                    3. <Asset
+                    size="Mini European"
+                    SD_icon="ethereal fantasy concept art of a crossbow on solid white background, (soft white vignette:0.3), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+                    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+                    title="Crossbow"
+                    effect="Attacks for 1 Effect (piercing) ballistically"
+                    />
+                    4. <Asset
+                    size="Mini European"
+                    SD_icon="ethereal fantasy concept art of a morning star on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy"
+                    className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
+                    title="Morning Star"
+                    effect="Attacks for 1 Effect (crushing)"
+                    />`;
+                        dispatch({
+                            type: StepGeneratorActionTypeEnum.Update,
+                            updater: (state) => ({ ...state, generationResult: sample }),
+                        });
+                    }}
+                >
+                    Paste some Assets
+                </Button>
+            </div>
             <textarea
                 value={state.generationResult}
                 className="rounded-md border-2 border-slate-500 bg-slate-100 p-2 min-h-32"
@@ -234,51 +266,7 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
             {state.generationResult && (
                 <>
                     <h2 className="font-kacHeading text-lg text-kac-cloth mt-4">Preview</h2>
-                    <div className={twMerge("flex flex-row flex-wrap gap-4", className)}>
-                        {previews.map(({ codeBlock, props }, index) => {
-                            const Component = preset.Component;
-                            return (
-                                <div key={index} className="flex flex-col gap-2">
-                                    <ErrorBoundary className="text-kac-steel">
-                                        <Component {...props} />
-                                    </ErrorBoundary>
-                                    <div className="flex flex-row gap-4 justify-between">
-                                        <div className="flex flex-col gap-2 items-stretch">
-                                            <Toggle
-                                                className="w-auto"
-                                                buttonContent="Code Block"
-                                                buttonProps={{ className: "shrink-0 h-auto btn-sm" }}
-                                                initialCollapsed
-                                            >
-                                                <pre className="rounded-md border-2 border-slate-500 bg-slate-100 p-2 whitespace-pre-wrap">
-                                                    {codeBlock}
-                                                </pre>
-                                            </Toggle>
-                                            <ToggleData
-                                                initialCollapsed
-                                                data={props}
-                                                className="w-auto"
-                                                buttonContent="Props"
-                                                buttonProps={{ className: "shrink-0 h-auto btn-sm" }}
-                                            />
-                                        </div>
-                                        <Button
-                                            color="success"
-                                            onClick={() =>
-                                                dispatch({ type: StepGeneratorActionTypeEnum.FineTune, props })
-                                            }
-                                        >
-                                            Fine Tune
-                                        </Button>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className="flex flex-row flex-wrap gap-4 mt-4">
-                        <ToggleData data={codeBlocks} buttonContent="Code Blocks" />
-                        <ToggleData data={previews} buttonContent="Preview Data" />
-                    </div>
+                    <PreviewCode />
                 </>
             )}
             {children}

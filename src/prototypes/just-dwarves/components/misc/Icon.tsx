@@ -84,7 +84,7 @@ const isUriIcon = (icon: IconProps["icon"]): icon is keyof typeof uriMap => {
 export default function Icon(props: IconProps) {
     if (isUriIcon(props.icon)) {
         const { icon, params, ...restProps } = props;
-        return <ImgIcon src={uriMap[icon]} {...restProps} {...params} />;
+        return <ImgIcon src={uriMap[icon]} {...restProps} />;
     }
     return <GenericIcon {...props} />;
 }

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
 
-export type PaperCraftBoxProps = React.PropsWithChildren<{
+export type CardBoxProps = React.PropsWithChildren<{
     className?: string;
     classNamePartVisible?: string;
     classNameLabel?: string;
@@ -76,7 +76,7 @@ const Label = ({
     </div>
 );
 
-export default function PaperCraftBox({
+export default function CardBox({
     contentWidth,
     contentHeight,
     contentDepth,
@@ -94,22 +94,56 @@ export default function PaperCraftBox({
     contentRight,
     contentBottom,
     contentBack,
-
     children,
-}: PaperCraftBoxProps) {
-    const cutTopStyle = { borderTop: "1px solid rgba(0,0,0,0.25)", ...cutStyles.top };
-    const cutRightStyle = { borderRight: "1px solid rgba(0,0,0,0.25)", ...cutStyles.right };
-    const cutBottomStyle = { borderBottom: "1px solid rgba(0,0,0,0.25)", ...cutStyles.bottom };
-    const cutLeftStyle = { borderLeft: "1px solid rgba(0,0,0,0.25)", ...cutStyles.left };
-    const bendRightStyle = { borderRight: "1px dotted rgba(0,0,0,0.25)", ...bendStyles.right };
-    const bendBottomStyle = { borderBottom: "1px dotted rgba(0,0,0,0.25)", ...bendStyles.bottom };
-    const bendLeftStyle = { borderLeft: "1px dotted rgba(0,0,0,0.25)", ...bendStyles.left };
+}: CardBoxProps) {
+    const cutTopStyle = {
+        borderTopWidth: "1px",
+        borderTopStyle: "solid",
+        borderTopColor: "rgba(0,0,0,0.25)",
+        ...cutStyles.top,
+    } as CSSProperties;
+    const cutRightStyle = {
+        borderRightWidth: "1px",
+        borderRightStyle: "solid",
+        borderRightColor: "rgba(0,0,0,0.25)",
+        ...cutStyles.right,
+    } as CSSProperties;
+    const cutBottomStyle = {
+        borderBottomWidth: "1px",
+        borderBottomStyle: "solid",
+        borderBottomColor: "rgba(0,0,0,0.25)",
+        ...cutStyles.bottom,
+    } as CSSProperties;
+    const cutLeftStyle = {
+        borderLeftWidth: "1px",
+        borderLeftStyle: "solid",
+        borderLeftColor: "rgba(0,0,0,0.25)",
+        ...cutStyles.left,
+    } as CSSProperties;
+    const bendRightStyle = {
+        borderRightWidth: "1px",
+        borderRightStyle: "dotted",
+        borderRightColor: "rgba(0,0,0,0.25)",
+        ...bendStyles.right,
+    } as CSSProperties;
+    const bendBottomStyle = {
+        borderBottomWidth: "1px",
+        borderBottomStyle: "dotted",
+        borderBottomColor: "rgba(0,0,0,0.25)",
+        ...bendStyles.bottom,
+    } as CSSProperties;
+    const bendLeftStyle = {
+        borderLeftWidth: "1px",
+        borderLeftStyle: "dotted",
+        borderLeftColor: "rgba(0,0,0,0.25)",
+        ...bendStyles.left,
+    } as CSSProperties;
 
     return (
         <div className={twMerge("CardBox relative", className)}>
             <div className="flex flex-col items-center">
                 <div
-                    className={twMerge("Left relative flex flex-row justify-center", classNamePartVisible)}
+                    className={twMerge("Right relative flex flex-row justify-center", classNamePartVisible)}
                     style={{
                         width: contentHeight + "mm",
                         height: contentDepth + "mm",
@@ -118,7 +152,7 @@ export default function PaperCraftBox({
                     }}
                 >
                     <div
-                        className="LeftBottomFlap flex flex-row justify-center absolute"
+                        className="RightBottomFlap flex flex-row justify-center absolute"
                         style={{
                             width: contentWidth * 0.25 + "mm",
                             height: contentDepth - paperThickness * 4 + "mm",
@@ -131,7 +165,7 @@ export default function PaperCraftBox({
                         }}
                     />
                     <div
-                        className="LeftTopFlap flex flex-row justify-center absolute"
+                        className="RightTopFlap flex flex-row justify-center absolute"
                         style={{
                             width: contentWidth * 0.25 + "mm",
                             height: contentDepth - paperThickness * 4 + "mm",
@@ -145,15 +179,15 @@ export default function PaperCraftBox({
                     />
                     {showLabels && (
                         <Label className={classNameLabel} rotate={-180}>
-                            contentLeft
+                            contentRight
                         </Label>
                     )}
                     <Content rotate={-180} style={{ width: contentHeight + "mm", height: contentDepth + "mm" }}>
-                        {contentLeft}
+                        {contentRight}
                     </Content>
                 </div>
                 <div
-                    className={twMerge("Front relative flex flex-row justify-center", classNamePartVisible)}
+                    className={twMerge("Back relative flex flex-row justify-center", classNamePartVisible)}
                     style={{
                         width: contentHeight + "mm",
                         height: contentWidth + "mm",
@@ -161,14 +195,15 @@ export default function PaperCraftBox({
                         ...bendBottomStyle,
                     }}
                 >
-                    <div
-                        className="FrontBend absolute top-0 right-0 bottom-0"
+                    {/* For easier opening of the lid */}
+                    {/* <div
+                        className="BackBend absolute top-0 right-0 bottom-0"
                         style={{
                             ...cutTopStyle,
-                            ...cutLeftStyle,
+                            ...bendRightStyle,
                             ...cutBottomStyle,
                         }}
-                    />
+                    /> */}
                     <div
                         className={twMerge("Top flex flex-row justify-center absolute", classNamePartVisible)}
                         style={{
@@ -231,19 +266,19 @@ export default function PaperCraftBox({
                     </div>
                     {showLabels && (
                         <Label className={classNameLabel} rotate={90}>
-                            contentFront
+                            contentBack
                         </Label>
                     )}
                     <Content rotate={90} style={{ width: contentWidth + "mm", height: contentHeight + "mm" }}>
-                        {contentFront}
+                        {contentBack}
                     </Content>
                 </div>
                 <div
-                    className={twMerge("Right relative flex flex-row justify-center", classNamePartVisible)}
+                    className={twMerge("Left relative flex flex-row justify-center", classNamePartVisible)}
                     style={{ width: contentHeight + "mm", height: contentDepth + "mm", ...bendBottomStyle }}
                 >
                     <div
-                        className="RightBottomFlap flex flex-row justify-center absolute"
+                        className="LeftBottomFlap flex flex-row justify-center absolute"
                         style={{
                             width: contentWidth * 0.25 + "mm",
                             height: contentDepth - paperThickness * 4 + "mm",
@@ -256,7 +291,7 @@ export default function PaperCraftBox({
                         }}
                     />
                     <div
-                        className="RightTopFlap flex flex-row justify-center absolute"
+                        className="LeftTopFlap flex flex-row justify-center absolute"
                         style={{
                             width: contentWidth * 0.25 + "mm",
                             height: contentDepth - paperThickness * 4 + "mm",
@@ -268,13 +303,13 @@ export default function PaperCraftBox({
                             ...cutBottomStyle,
                         }}
                     />
-                    {showLabels && <Label className={classNameLabel}>contentRight</Label>}
+                    {showLabels && <Label className={classNameLabel}>contentLeft</Label>}
                     <Content style={{ width: contentHeight + "mm", height: contentDepth + "mm" }}>
-                        {contentRight}
+                        {contentLeft}
                     </Content>
                 </div>
                 <div
-                    className={twMerge("Back relative flex flex-row justify-center", classNamePartVisible)}
+                    className={twMerge("Front relative flex flex-row justify-center", classNamePartVisible)}
                     style={{
                         width: contentHeight + "mm",
                         height: contentWidth + "mm",
@@ -344,11 +379,11 @@ export default function PaperCraftBox({
                     </div>
                     {showLabels && (
                         <Label className={classNameLabel} rotate={90}>
-                            contentBack
+                            contentFront
                         </Label>
                     )}
                     <Content rotate={90} style={{ width: contentWidth + "mm", height: contentHeight + "mm" }}>
-                        {contentBack}
+                        {contentFront}
                     </Content>
                 </div>
                 <div

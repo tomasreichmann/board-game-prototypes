@@ -1,18 +1,91 @@
-import Page from "../components/Page/Page";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-
-import ToggleData from "../components/DataToggle";
-import { useLocalSettings } from "../hooks/useLocalSettings";
-import { MistralFormatEnum, MistralModelEnum, MistralOptionsType, useMistral } from "../hooks/useMistral";
-import Input from "../prototypes/kick-ass-cards/components/content/Input";
 import { useCallback, useState } from "react";
-import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import { twMerge } from "tailwind-merge";
+import { MistralFormatEnum, MistralOptionsType, useMistral } from "../hooks/useMistral";
+import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
-import Select from "../prototypes/kick-ass-cards/components/content/Select";
 import copyToClipboard from "../utils/copyToClipboard";
+import Input from "../prototypes/kick-ass-cards/components/content/Input";
+import Page from "../components/Page/Page";
 import Pending from "../components/form/Pending";
+import Select from "../prototypes/kick-ass-cards/components/content/Select";
 import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
+import ToggleData from "../components/DataToggle";
+import JobManager, { JobType, LLMRequestType, LLMResponseType, TaskTypeEnum } from "../services/JobManager/JobManager";
+import { MistralModelEnum } from "../services/Mistral/Mistral";
+
+const myMockJob: JobType = {
+    tasks: [
+        {
+            id: "TASK_1",
+            type: TaskTypeEnum.LLM,
+            prompt: "This is a test prompt",
+            parserKey: "allJsonBlocksInMarkdown",
+            parserOptions: { minResults: 3 },
+            validatorKey: "validateArrayOfAssetCardProps",
+        },
+    ],
+    onTaskDone: (...params) => {
+        console.log("onTaskDone", ...params);
+    },
+    onTaskParse: (...params) => {
+        console.log("onTaskParse", ...params);
+    },
+    onTaskValidate: (...params) => {
+        console.log("onTaskValidate", ...params);
+    },
+    onTaskError: (...params) => {
+        console.log("onTaskError", ...params);
+    },
+    onDone: (...params) => {
+        console.log("onDone", ...params);
+    },
+    onError: (...params) => {
+        console.log("onError", ...params);
+    },
+};
+
+const mockLlmApi = (() => {
+    let responsePointer = 0;
+    const responses = [
+        `
+        whatever
+\`\`\`json
+{
+    "slug": "sample",
+    "title": "Sample Asset",
+    "effect": "This is a sample asset for testing purposes."
+}
+\`\`\`    
+whatever
+\`\`\`json
+{
+    "slug": "sample-2",
+    "title": "Sample Asset 2",
+    "effect": "This is another sample asset for testing purposes."
+}
+\`\`\`  
+whatever  
+`,
+        "more mock response",
+        "even more mock response",
+    ];
+    return {
+        reset: () => {
+            responsePointer = 0;
+        },
+        sendRequest: async (request: LLMRequestType): Promise<LLMResponseType> => {
+            const response = responses[responsePointer];
+            console.log({ request, response });
+            if (response) {
+                responsePointer = responsePointer++;
+                return { response };
+            }
+            throw Error("No more responses");
+        },
+    };
+})();
+
+const mockJobManager = JobManager({ llmApi: mockLlmApi });
 
 export default function LlmRoute() {
     const [mistralOptions, setMistralOptions] = useState<MistralOptionsType>({
@@ -21,11 +94,12 @@ export default function LlmRoute() {
         format: MistralFormatEnum.json_object,
         temperature: 0.7,
         topP: 1,
-        maxTokens: 100,
+        maxTokens: 500,
         stream: false,
         safePrompt: false,
     });
     const { sendMessage, clearHistory, ...status } = useMistral(mistralOptions);
+    console.log({ mistralOptions });
     const { isPending, error, history } = status;
     const [message, setMessage] = useState("");
 
@@ -69,6 +143,14 @@ export default function LlmRoute() {
                                                             onClick={() => copyToClipboard(historyItem.message)}
                                                         >
                                                             Copy
+                                                        </Button>
+                                                        <Button
+                                                            variant="text"
+                                                            color="primary"
+                                                            className="text-xs px-2 py-1 inline-block bg-transparent"
+                                                            onClick={() => setMessage(historyItem.message)}
+                                                        >
+                                                            Reuse
                                                         </Button>
                                                     </pre>
                                                 </div>
@@ -171,6 +253,7 @@ export default function LlmRoute() {
                                 label="Max Tokens"
                                 labelClassName="text-sm max-w-20"
                                 onChange={(e) => {
+                                    console.log(parseInt(e.target.value));
                                     setMistralOptions((options) => ({
                                         ...options,
                                         maxTokens: parseInt(e.target.value),
@@ -212,12 +295,10 @@ export default function LlmRoute() {
                         {error && <p className="text-red-500 mt-2">{error.message}</p>}
                     </div>
                 </div>
-                <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative">
-                    <ToggleData
-                        data={{ status }}
-                        previewClassName="flex-1 shrink"
-                        className="absolute left-0 top-0 bottom-0 right-0"
-                    />
+                <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative gap-4">
+                    <ToggleData data={{ status }} previewClassName="flex-1 shrink" />
+                    <Button onClick={() => mockJobManager.runJob(myMockJob)}>Send Mock Job</Button>
+                    <Button onClick={() => mockLlmApi.reset()}>Reset Mock Api</Button>
                 </div>
             </div>
         </Page>

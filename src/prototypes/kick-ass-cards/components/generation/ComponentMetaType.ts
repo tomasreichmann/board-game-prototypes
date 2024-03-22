@@ -1,6 +1,6 @@
-import { JSONSchema7Definition } from "json-schema";
 import { SDOptionsType } from "../../../../hooks/useSD";
 import { MistralOptionsType } from "../../../../hooks/useMistral";
+import { JSONSchemaType } from "ajv";
 
 type ComponentMetaType<PropType extends {}> = {
     componentName: string;
@@ -32,6 +32,6 @@ type ComponentMetaType<PropType extends {}> = {
         };
     };
     Component: React.ComponentType<PropType>;
-    schema: JSONSchema7Definition;
+    schema: JSONSchemaType<any>;
 };
 export default ComponentMetaType;

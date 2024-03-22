@@ -21,7 +21,7 @@ export function IconOrImage<T extends {} = IconProps<IconMap>>({
     className,
     IconComponent = Icon as unknown as React.ComponentType<T>,
     getIconComponentProps = defaultGetIconComponentProps as unknown as (props: GetIconComponentPropsParamType) => T,
-    getImgProps = defaultGetIconComponentProps as unknown as (props: GetIconComponentPropsParamType) => T,
+    getImgProps = defaultGetImgProps as unknown as (props: GetIconComponentPropsParamType) => T,
     isIcon = defaultIsIcon,
 }: IconOrImageProps<T>) {
     if (!icon) {

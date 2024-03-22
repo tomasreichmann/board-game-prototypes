@@ -50,7 +50,7 @@ export default defineConfig(() => {
             mdx({
                 remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkImages, remarkUnwrapImages],
                 providerImportSource: "@mdx-js/react",
-            }),
+            }) as any,
         ],
     };
 });

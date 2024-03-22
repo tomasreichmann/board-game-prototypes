@@ -19,12 +19,8 @@ import * as C from "./LP-common-en";
 
 <List>
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Leaving the interstellar corridor"
-        current={0}
-        total={12}
-        threat="Within range of the Clan"
+        {...C.defaultClockProps}
+        {...C.clocks.leaving_the_interstellar_corridor}
     />
 </List>
 
@@ -43,7 +39,7 @@ The hangar doors are still wide open.
 -   The hangar is a huge room where personal ships and fighters can land, and cargo can be unloaded and stored.
 -   The hangar doors are still open and the room is without pressure and atmosphere.
 -   There are several containers left:
-    -   Container with explosives: Lepidlonate, EMP grenade, 2x Fragmentation grenade
+    -   Container with explosives: Gluenade, EMP grenade, 2x Frag grenade
     -   Container with cooling mixture: Can make 3x Frost grenade
     -   Container with frozen creature: Vulcan Dragon - a lizard the size of a horse that breathes fire.
         -   (not aggressive, but not intelligent and requires a Success to execute even simple commands, otherwise it may interpret them its own way)
@@ -54,58 +50,38 @@ The hangar doors are still wide open.
 
 <List>
     <Actor
-        size="US game"
-        imageUri="/LP/scifi_dragon.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Vulcan Dragon"
-        toughness={6}
-        notes="Action: Fire Breath - +1 Injury and 2x Heat; Bite: 2x Injury. Scaly skin - immune to fire damage, Max. 1 Injury per 1 attack."
+        {...C.defaultActorProps}
+        {...C.actors.vulcan_dragon}
     />
 
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Destroying the spore bush"
-        current={0}
-        total={6}
-        threat="Vibrations of breaking branches resonate throughout the hallway"
-        reward="Path to the captain's cabin"
+        {...C.defaultClockProps}
+        {...C.clocks.destroying_the_spore_bush}
     />
 
     <Asset
-        icon="/LP/icons/bag.png"
-        title="Lepidlonate"
-        effect="A grenade that sticks everything in the zone for 1 round"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.gluenade}
     />
 
     <Asset
-        icon="/LP/icons/capsule.png"
-        title="EMP grenade"
-        effect="A grenade that disables everything electronic in the zone for 1 round"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.emp_grenade}
     />
 
     <Asset
-        icon="/LP/icons/shell.png"
-        title="Fragmentation grenade"
-        effect="Damages everything in the zone"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.frag_grenade}
     />
 
     <Asset
-        icon="/LP/icons/liquid-grenade.png"
-        title="Frost grenade"
-        effect="Everyone in the zone is frozen. +2 Frost"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.frost_grenade}
     />
 
     <Asset
-        icon="/LP/icons/pill-bottle.png"
-        title="Anxiolytics"
-        effect="-2 Anxiety"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.anxiolytics}
     />
 
 </List>
@@ -126,33 +102,16 @@ The hangar doors are still wide open.
 
 <List>
     <Actor
-        size="US game"
-        imageUri="/LP/green_tentacle.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Freezing Vine"
-        toughness={4}
-        threat="Grabbing a character - Stuck, Choking a character - 3x Injury, Throwing a character onto another - +1 Injury to both, Splashing with cooling liquid - Everyone in the zone +1 Cold."
-        notes="Retracts into the fog and becomes invisible with each hit."
+        {...C.defaultActorProps}
+        {...C.actors.freezing_vine}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/green_tentacle.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Freezing Vine"
-        toughness={4}
-        threat="Grabbing a character - Stuck, Choking a character - 3x Injury, Throwing a character onto another - +1 Injury to both, Splashing with cooling liquid - Everyone in the zone +1 Cold."
-        notes="Retracts into the fog and becomes invisible with each hit."
+        {...C.defaultActorProps}
+        {...C.actors.freezing_vine_2}
     />
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Destroying the spore bush"
-        current={0}
-        total={6}
-        threat="Vibrations of breaking branches resonate throughout the hallway"
-        reward="Path to the captain's cabin"
+        {...C.defaultClockProps}
+        {...C.clocks.destroying_the_spore_bush}
     />
 
 </List>
@@ -194,18 +153,12 @@ The hangar doors are still wide open.
 
 <List>
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Convincing the children to open the door"
-        current={0}
-        total={6}
-        reward="Access to the infirmary"
+        {...C.defaultClockProps}
+        {...C.clocks.convincing_the_children_to_open_the_door}
     />
     <Asset
-        icon="/LP/icons/pill-bottle.png"
-        title="Anxiolytics"
-        effect="-2&nbsp;Doom"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.anxiolytics}
     />
 </List>
 
@@ -219,38 +172,29 @@ The hangar doors are still wide open.
         -   He has 3x Anxiolytics, SPED with him.
         -   After examining him, it can be seen that three injections are sticking out of his back.
 -   The infirmary was equipped with a state-of-the-art medical hologram. - The hologram system, located in the console in the infirmary, is infected with a spore infection. - The hologram is trying to take out the crew and spread the spore infection. - The hologram is not visible and can only be detected by monitoring the ship's cyber systems. - After opening the door, the hologram can move anywhere on the ship but cannot open doors. - The ability of the hologram to pick up objects can be prevented by destroying the holographic projectors in each room. - Every time someone is alone in the room, the hologram attacks them, for example, with an injection in the back causing Complications, Doom, or Injury. - An experienced engineer can remove the spore infection from the hologram. The hologram then serves as a doctor and can even revive Victor.
-    <List>
-        <Asset
-            icon="/LP/icons/injection.png"
-            title="Medi-gel"
-            effect="Repairs organic damage"
-            className="drop-shadow-md print:drop-shadow-none"
-        />
-        <Asset
-            icon="/LP/icons/pill-bottle.png"
-            title="Anxiolytics"
-            effect="-2&nbsp;Doom"
-            className="drop-shadow-md print:drop-shadow-none"
-        />
-        <Asset
-            icon="/LP/icons/syringe-2.png"
-            title="Rapid-regen"
-            effect="Instantly heals all organic injuries. Regenerated tissue can mutate (+1&nbsp;Doom)"
-            className="drop-shadow-md print:drop-shadow-none"
-        />
-        <Asset
-            icon="/LP/icons/nose-spray.png"
-            title="SPED"
-            effect="+1&nbsp;move, multiplies the landing distance by 3&nbsp;rounds"
-            className="drop-shadow-md print:drop-shadow-none"
-        />
-        <Asset
-            icon="/LP/icons/syringe.png"
-            title="Rage"
-            effect="+1&nbsp;effect on strength actions and close combat for 3&nbsp;rounds"
-            className="drop-shadow-md print:drop-shadow-none"
-        />
-    </List>
+
+<List>
+    <Asset
+        {...C.defaultAssetProps}
+        {...C.assets.medi_gel}
+    />
+    <Asset
+        {...C.defaultAssetProps}
+        {...C.assets.anxiolytics}
+    />
+    <Asset
+        {...C.defaultAssetProps}
+        {...C.assets.rapid_regen}
+    />
+    <Asset
+        {...C.defaultAssetProps}
+        {...C.assets.sped}
+    />
+    <Asset
+        {...C.defaultAssetProps}
+        {...C.assets.rage}
+    />
+</List>
 
 ![](/LP/mess_hall_drones.jpg)
 
@@ -263,36 +207,20 @@ The hangar doors are still wide open.
 
 <List>
     <Actor
-        size="US game"
-        imageUri="/LP/kitchen_robot.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Robotic chef"
-        toughness={6}
-        threat="Every turn: Capture and escape, Throwing food - Complications"
-        reward="Overclocking battery"
+        {...C.defaultActorProps}
+        {...C.actors.robotic_chef}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Spore drone swarm"
-        toughness={12}
-        threat="Every turn: Grappling - +1&nbsp;Injury or Capture"
-        reward="1x&nbsp;Medi-gel, 1x&nbsp;Anxiolytics, Disintegrator"
+        {...C.defaultActorProps}
+        {...C.actors.spore_drone_swarm}
     />
     <Asset
-        icon="/LP/icons/rifle-3.png"
-        title="Disintegrator"
-        effect="+1&nbsp;Effect against organic targets"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.disintegrator}
     />
     <Asset
-        title="Overclocking battery"
-        icon="/LP/icons/battery.png"
-        effect="Once: +2&nbsp;effect on action for Androids"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.overclock_bat}
     />
 </List>
 
@@ -320,37 +248,20 @@ The hangar doors are still wide open.
 
 <List>
     <Clock
-        className="not-prose drop-shadow-md print:drop-shadow-none"
-        size="US game"
-        title="Core stabilization"
-        current={0}
-        total={6}
-        threat="Every round, growing spores grab at anything that moves and embed their thorns: +1&nbsp;Injury"
-        reward="The core is no longer at risk of exploding"
+        {...C.defaultClockProps}
+        {...C.clocks.core_stabilization}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/spore_bush.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Spore weed"
-        toughness={1}
-        threat="Every turn: Grappling - +1&nbsp;Injury"
+        {...C.defaultActorProps}
+        {...C.actors.spore_weed}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/drone_engineer.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Synthetic engineer overrun by a spore infection"
-        toughness={1}
-        notes="The engineer cannot move or speak properly. Only parts of sentences are understandable. The engineer knows all the ship's systems very well."
+        {...C.defaultActorProps}
+        {...C.actors.synthetic_engineer_overrun_by_a_spore_infection}
     />
     <Asset
-        icon="/LP/icons/tube.png"
-        title="Nano-gel"
-        effect="Repairs mechanical damage"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.nano_gel}
     />
 </List>
 
@@ -379,7 +290,7 @@ The hangar doors are still wide open.
     -   The pods are covered in spores, which need to be neutralized except for one, which has jammed doors.
     -   Pod A is empty - Buxus will escape in it if the ship is about to be destroyed.
     -   Pod B - A spore vine that holds a plasma torpedo. If the ship's core is stable, Buxus will use the torpedo for a suicidal destruction of the ship and dispersal of spores in all directions.
-    -   Pod C - The pod is overgrown with spores and a dead insectoid is wedged inside, carrying 1x Medi-gel, 1x Rapid-regen, 1x Fragmentation grenade.
+    -   Pod C - The pod is overgrown with spores and a dead insectoid is wedged inside, carrying 1x Medi-gel, 1x Rapid-regen, 1x Frag grenade.
     -   Pod D - Doctor King is barricaded inside.
 -   Every dead NPC will become a spore drone.
 
@@ -414,59 +325,32 @@ The hangar doors are still wide open.
 
 <List>
     <Asset
-        icon="/LP/icons/shell.png"
-        title="Fragmentation grenade"
-        effect="Causes damage to everything in the zone"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.frag_grenade}
     />
     <Asset
-        icon="/LP/icons/injection.png"
-        title="Medi-gel"
-        effect="Repairs organic damage"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.medi_gel}
     />
     <Asset
-        icon="/LP/icons/syringe-2.png"
-        title="Rapid-regen"
-        effect="Instantly heals all organic injuries. Regenerated tissue may mutate (+1&nbsp;Scourge)"
-        className="drop-shadow-md print:drop-shadow-none"
+        {...C.defaultAssetProps}
+        {...C.assets.rapid_regen}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/green_tentacle.jpg"
-        imagePosition="center top"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Sapling vine"
-        toughness={4}
-        threat="Grabs character - Stuck, Blocks physical attacks on Buxus with a trapped character, Throws character at another - +1&nbsp;Injury to both"
+        {...C.defaultActorProps}
+        {...C.actors.sapling_vine}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/BlipBlop_Dark_fantasy_zombie_spores_animated_body_left_for_dead_e0a2eb85-983f-4aea-ac67-02c4e62e618d.png"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Spore drone"
-        toughness={2}
-        threat="Bite: +1&nbsp;Injury, Grab: Stuck"
+        {...C.defaultActorProps}
+        {...C.actors.spore_drone}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/buxus_final.jpg"
-        imagePosition="center 30%"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Buxus"
-        toughness={6}
-        occupation="Spore hybrid of Dr. Zimostráž"
-        threat="Controls the ship, Spore cloud - tries to control character to harm others, creates Sapling vine."
+        {...C.defaultActorProps}
+        {...C.actors.buxus_in_control}
     />
     <Actor
-        size="US game"
-        imageUri="/LP/buxus_monster.jpg"
-        className="not-prose drop-shadow-md print:drop-shadow-none print:filter-none"
-        name="Buxus Monstrum"
-        toughness={8}
-        threat="Releases a cloud of ice spores every round: +1&nbsp;Distress, +1&nbsp;Frost in the zone. Throws bridge equipment +2&nbsp;Injury."
-        note="Receives +1&nbsp;Injury from heat-based attacks."
-        reward="+1&nbsp;Salvation"
+        {...C.defaultActorProps}
+        {...C.actors.buxus_monstrum}
     />
 
 </List>

@@ -12,7 +12,7 @@ import MdxArticle from "../layout/MdxArticle";
 import homeInfoMdx from "../../articles/homeInfo.mdx";
 import { Navigation } from "../Navigation";
 import Deck from "../layout/Deck";
-import { characters, clocks, defaultClockProps, items } from "../../data/encounters/LP-common-en";
+import { actors, clocks, defaultClockProps, assets } from "../../data/encounters/LP-common-en";
 import { outcomeMap } from "../../data/outcomeDeck";
 import { effectMap } from "../../data/effects-deck-en";
 
@@ -38,8 +38,8 @@ export default function InfoRoute() {
                             <Spread
                                 className="w-full max-w-[700px] h-[350px]"
                                 items={[
-                                    <ActorCard {...characters.security_robots} />,
-                                    <ActorCard {...characters.endless_swarm_of_spore_drones} />,
+                                    <ActorCard {...actors.security_robots} />,
+                                    <ActorCard {...actors.endless_swarm_of_spore_drones} />,
                                     <Clock {...defaultClockProps} {...clocks.suspicion_of_security_robots} />,
                                 ]}
                             />
@@ -70,9 +70,9 @@ export default function InfoRoute() {
                                 items={[
                                     <EffectCard key="wound" {...effectMap.wound} />,
                                     <EffectCard key="complication" {...effectMap.complication} />,
-                                    <AssetCard key="rapid_regen" {...items.rapid_regen} />,
-                                    <AssetCard key="rage" {...items.rage} />,
-                                    <AssetCard key="medi_gel" {...items.medi_gel} />,
+                                    <AssetCard key="rapid_regen" {...assets.rapid_regen} />,
+                                    <AssetCard key="rage" {...assets.rage} />,
+                                    <AssetCard key="medi_gel" {...assets.medi_gel} />,
                                 ]}
                             />
                         </div>

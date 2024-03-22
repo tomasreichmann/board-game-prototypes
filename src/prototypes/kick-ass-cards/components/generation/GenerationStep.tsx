@@ -5,10 +5,11 @@ import copyToClipboard from "../../../../utils/copyToClipboard";
 import { twMerge } from "tailwind-merge";
 import Button from "../content/Button";
 import getComponentCode from "./getComponentCode";
-import { MistralModelEnum, useMistral } from "../../../../hooks/useMistral";
+import { useMistral } from "../../../../hooks/useMistral";
 import Pending from "../../../../components/form/Pending";
 import PreviewCode from "./PreviewCode";
 import { LLM_PREFIX, SD_PREFIX } from "./ComponentMetaEditor";
+import { MistralModelEnum } from "../../../../services/Mistral/Mistral";
 
 const getSampleProps = (state: StepGeneratorStateType) => {
     const preset = state.presets.find((preset) => preset.name === state.presetName);

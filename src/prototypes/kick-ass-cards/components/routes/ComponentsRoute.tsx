@@ -100,6 +100,14 @@ export default function ComponentsRoute() {
                         </div>
                     );
                 })}
+                <div className="flex flex-row gap-x-1 content-start items-center flex-wrap text-md">
+                    <button
+                        className="bg-transparent p-0 underline hover:no-underline text-kac-monster hover:text-kac-monster-light"
+                        onClick={() => setSectionVisibility(sectionVisibility.map(() => !sectionVisibility[0]))}
+                    >
+                        toggle all
+                    </button>
+                </div>
             </div>
             <div className="pb-2 md:pb-10 px-2 md:px-10 print:p-0 print:md:p-0">
                 <div>

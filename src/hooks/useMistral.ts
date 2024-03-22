@@ -1,18 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import MistralClient, { ChatCompletionResponse } from "@mistralai/mistralai";
+import { ChatCompletionResponse } from "@mistralai/mistralai";
 
 import { useLocalSettings } from "./useLocalSettings";
 import { useLocalStorage } from "./useLocalStorage";
+import Mistral, { MistralModelEnum } from "../services/Mistral/Mistral";
 
 const NO_KEY_ERROR = "No Mistral key provided. Set it in settings.";
-
-export enum MistralModelEnum {
-    "open-mistral-7b" = "open-mistral-7b",
-    "open-mixtral-8x7b" = "open-mixtral-8x7b",
-    "mistral-small-latest" = "mistral-small-latest",
-    "mistral-medium-latest" = "mistral-medium-latest",
-    "mistral-large-latest" = "mistral-large-latest",
-}
 
 export enum MistralFormatEnum {
     "json_object" = "json_object",
@@ -91,8 +84,23 @@ export const useMistral = ({
         if (!mistralKey) {
             return null;
         }
-        return new MistralClient(mistralKey);
+        return Mistral(mistralKey);
     }, [mistralKey]);
+
+    const chatOptions = useMemo(() => {
+        return {
+            model,
+            format,
+            temperature,
+            topP,
+            maxTokens,
+            stream,
+            safePrompt,
+            historyKey,
+            includeHistoryLength,
+            randomSeed,
+        };
+    }, [model, format, temperature, topP, maxTokens, stream, safePrompt, historyKey, includeHistoryLength, randomSeed]);
 
     const clearHistory = () => {
         console.log("clearing history");
@@ -125,18 +133,7 @@ export const useMistral = ({
                     error: null,
                 }));
                 client
-                    .chat({
-                        model: model,
-                        temperature,
-                        topP,
-                        max_tokens: maxTokens,
-                        safePrompt,
-                        randomSeed,
-                        /*responseFormat: {
-                            type: format as any,
-                        },*/
-                        messages: [...includedHistory, { role: "user", content: message }],
-                    } as any)
+                    .chat(message, { chatOptions, history: includedHistory } as any)
                     .then((chatResponse) => {
                         setStatus((status) => ({
                             ...status,
@@ -165,7 +162,7 @@ export const useMistral = ({
                 return [...(history || []), { type: "message", message }];
             });
         },
-        [client]
+        [client, chatOptions]
     );
 
     return { ...status, history: history || [], sendMessage, clearHistory };

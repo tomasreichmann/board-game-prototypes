@@ -1,13 +1,14 @@
 import React from "react";
+import Ajv, { JSONSchemaType } from "ajv";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { AssetType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import Image from "../Image";
 import { twMerge } from "tailwind-merge";
-import { JSONSchema7Definition } from "json-schema";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import ComponentMetaType from "../generation/ComponentMetaType";
+import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 
 type OptionalKeysType = "slug" | "cost" | "count";
 
@@ -23,60 +24,72 @@ export type AssetCardProps = React.PropsWithChildren<
         Partial<Pick<AssetType, OptionalKeysType> & Partial<PaperProps>>
 >;
 
-export const assetCardSchema: JSONSchema7Definition = {
+export const assetCardSchema: JSONSchemaType<any> = {
     title: "AssetCard",
     type: "object",
     properties: {
         className: {
             title: "Class Name",
             type: "string",
+            nullable: true,
         },
         size: {
             title: "Size",
             type: "string",
             enum: Object.keys(cardSizes),
+            nullable: true,
         },
         cornerIcon: {
             title: "Corner Icon",
             type: "string",
             enum: Object.keys(iconMap),
+            nullable: true,
         },
         cornerIconClassName: {
             title: "Corner Icon Class Name",
             type: "string",
+            nullable: true,
         },
         effectClassName: {
             title: "Effect Class Name",
             type: "string",
+            nullable: true,
         },
         iconClassName: {
             title: "Icon Class Name",
             type: "string",
+            nullable: true,
         },
         slug: {
             title: "Slug",
             type: "string",
+            nullable: true,
         },
         title: {
             title: "Title",
             type: "string",
+            nullable: true,
         },
         icon: {
             title: "Icon",
             type: "string",
             enum: Object.keys(iconMap),
+            nullable: true,
         },
         effect: {
             title: "Effect",
             type: "string",
+            nullable: true,
         },
         cost: {
             title: "Cost",
             type: "integer",
+            nullable: true,
         },
         count: {
             title: "Count",
             type: "integer",
+            nullable: true,
         },
     },
 };
@@ -190,6 +203,10 @@ export default function AssetCard({
                 style={{ margin: `${bleedMm}mm` }}
             >
                 <div className="flex flex-row items-center gap-2 mb-2">
+                    <IconOrImage
+                        icon={icon}
+                        className={twMerge("h-5", effectClassName || "text-kac-iron-light object-contain")}
+                    />
                     <div className="flex-1 text-slate-400 text-xs">{slug}</div>
                     <Icon
                         icon={cornerIcon}

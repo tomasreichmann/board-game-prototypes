@@ -7,17 +7,36 @@ import ActorCard, { ActorCardBackFace } from "../../components/gameComponents/Ac
 import AssetCard, { AssetCardBackFace } from "../../components/gameComponents/AssetCard";
 import PaperMini from "../../components/gameComponents/PaperMini";
 import ChunkedPages from "../../components/print/ChunkedPages";
-import { actors, clocks, defaultActorProps, defaultClockProps, assets } from "./LP-common-en";
+import {
+    actors,
+    clocks,
+    defaultActorProps,
+    defaultClockProps,
+    defaultEffectProps,
+    assets,
+    effects,
+} from "./LP-common-en";
 import Button from "../../components/content/Button";
 import PaperCraftBox from "../../components/PaperCraftBox";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import Icon from "../../components/Icon";
 import CardBox from "../../../../components/print/CardBox";
+import EffectCard, { EffectCardBackFace } from "../../components/gameComponents/EffectCard";
 
 const sizePerPageMap = {
     small: 4 * 4,
     medium: 3 * 3,
 };
+const effectItems = multiplyByCount(
+    Object.values(effects).map((item) => ({
+        count: 1,
+        ...item,
+        bleedMm: 3,
+        className: "relative -m-[3mm]",
+    })),
+    "count",
+    defaultCountAdapter
+);
 const assetItems = multiplyByCount(Object.values(assets), "count", defaultCountAdapter).map((item) => ({
     ...item,
     bleedMm: 3,
@@ -29,12 +48,13 @@ const actorItems = Object.values(actors).map((item) => ({
     className: "relative -m-[3mm]",
 }));
 
-const sections = ["Actors", "Assets", "PCs", "Clocks", "Boxes"] as const;
+const sections = ["Actors", "Assets", "PCs", "Clocks", "Effects", "Boxes"] as const;
 const defaultSectionVisibility = {
     Actors: true,
     Assets: true,
     PCs: true,
     Clocks: true,
+    Effects: true,
     Boxes: true,
 };
 
@@ -372,6 +392,23 @@ export default function LPCardPages() {
                         contentClassName: "p-[3mm]",
                     }}
                     label="Clocks"
+                />
+            )}
+            {displayedSections["Effects"] && (
+                <ChunkedPages
+                    Component={EffectCard}
+                    BackFaceComponent={EffectCardBackFace}
+                    items={effectItems}
+                    itemsPerPage={sizePerPageMap.small}
+                    frontFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    backFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    label="Effects"
                 />
             )}
         </>

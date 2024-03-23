@@ -432,14 +432,14 @@ export const assets = {
         slug: "targ_impl",
         icon: "/LP/targeting-implant.png",
         title: "Targeting Eye Implant",
-        effect: "+1 Effect on shooting actions. +1 Destruction.",
+        effect: "+1 Effect on shooting actions. +1 Doom.",
         count: 1,
     } as AssetType,
     flameth_arm: {
         slug: "flameth_arm",
         icon: "/LP/icons/flamethrower-arm.jpg",
         title: "Flamethrower Arm",
-        effect: "1x Injury, +1 Heat to all in the zone. +1 Destruction when installed (+1 Heat when used, +2 Injury when uninstalled)",
+        effect: "1x Injury, +1 Heat to all in the zone. +1 Doom when installed (+1 Heat when used, +2 Injury when uninstalled)",
         count: 2,
     } as AssetType,
     bfg: {
@@ -642,22 +642,26 @@ export const effects = {
         icon: "thermometerHot",
         title: "Spore Fever",
         effect: "+1 Heat each round until cured",
+        count: 2,
     } as EffectType,
     spore_infection: {
         slug: "spore_infection",
         icon: "/LP/icons/spore-infection-2.png",
         title: "Spore Infection",
         effect: "+1 Doom",
+        count: 2,
     } as EffectType,
     overclock_body: {
         icon: "/LP/icons/overclock-body.png",
         title: "Overclock Body",
         effect: "+1 Effect on Body actions, -3 Injury, +1 Doom",
+        count: 6,
     } as EffectType,
     overclock_mind: {
         icon: "/LP/icons/overclock-mind.png",
         title: "Overclock Mind",
         effect: "+1 Effect on Mind actions, -3 Distress, +1 Doom",
+        count: 6,
     } as EffectType,
     techno_doom_i: {
         icon: "/LP/icons/techno-doom.png",

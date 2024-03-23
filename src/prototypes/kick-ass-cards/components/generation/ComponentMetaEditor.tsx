@@ -9,6 +9,7 @@ import getComponentCode from "./getComponentCode";
 import Button from "../content/Button";
 import { SDResultType, useSD } from "../../../../hooks/useSD";
 import { twMerge } from "tailwind-merge";
+import { JSONSchemaType } from "ajv";
 
 export type StripNumbersAndSymbols<Key extends keyof AnyRecord> = Exclude<Key, number | symbol>;
 export type PrefixKeyType<
@@ -40,7 +41,7 @@ export type ComponentMetaEditorProps<PropType extends AnyRecord> = {
     defaultSdImageUri?: string;
 } & ComponentMetaType<PropType>;
 
-const getDefaultsFromSchema = (schema: JSONSchema7Definition) => {
+const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
     if (typeof schema === "object" && "default" in schema) {
         return schema.default as any;
     }
@@ -60,7 +61,7 @@ const getDefaultsFromSchema = (schema: JSONSchema7Definition) => {
     return undefined;
 };
 
-const getInputPropsFromSchemaProperty = (property: JSONSchema7Definition): InputProps => {
+const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): InputProps => {
     const inputProps: InputProps = { type: "text" };
     if (typeof property === "boolean") {
         inputProps.type = "checkbox";
@@ -95,12 +96,12 @@ const getInputPropsFromSchemaProperty = (property: JSONSchema7Definition): Input
 };
 
 const getFormSchemaFromSchema = <ValueType extends AnyRecord>(
-    schema: JSONSchema7Definition
+    schema: JSONSchemaType<any>
 ): FormProps<ValueType>["schema"] => {
     if (typeof schema === "object" && schema.properties?.length) {
         return Object.fromEntries(
             Object.entries(schema.properties).map(([propKey, propValue]) => {
-                const inputProps = getInputPropsFromSchemaProperty(propValue);
+                const inputProps = getInputPropsFromSchemaProperty(propValue as JSONSchemaType<any>);
                 return [propKey, inputProps];
             })
         ) as FormProps<ValueType>["schema"];

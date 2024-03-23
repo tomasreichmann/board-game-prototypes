@@ -67,10 +67,13 @@ const actorPreset = createPreset<ActorCardProps>(
             "ethereal fantasy concept art of a bandit wearing a camouflage of forest branches holding a dagger on solid white background, (strong white vignette:0.7), center composition, SK_Fantasy painterly, fantasy art, dreamy",
     },
     {
+        name: "A name of the character, 1-4 words.",
         SD_imageUri: `A Stable Diffusion XL prompt. Make sure to include "ethereal full body fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art, dreamy". Always omit background description`,
         toughness: `Use whole numbers between 1 and 4`,
         currentToughness: `Use same value as toughness unless it makes sense the character is wounded`,
-        threat: `Describes attacks or other ways how the character can threaten others`,
+        threat: `Describes attacks or other ways how the character can threaten others. Maximum 150 characters.`,
+        notes: "Additional character notes. Maximum 150 characters.",
+        reward: "What can a player get from defeating or allying with the character.",
     }
 );
 

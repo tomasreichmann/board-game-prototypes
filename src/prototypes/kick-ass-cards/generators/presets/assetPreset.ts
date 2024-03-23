@@ -199,7 +199,7 @@ const assetPreset = createPreset<AssetCardProps>(
     {
         title: "1-4 words",
         SD_icon: `use a stable diffusion prompt instead of an URI and make sure to include "ethereal fantasy concept art" and "on solid white background, <lora:white_1_0:1>, center composition, SK_Fantasy painterly, fantasy art". Always omit background description`,
-        effect: "Weapons attack for 1 Effect (type slashing/crushing/piercing). Pole arms can attack in neighboring zones. Ranged weapons can attack further in either line of sight or ballistically.",
+        effect: "Weapons attack for 1 Effect (type slashing/crushing/piercing). Pole arms can attack in neighboring zones. Ranged weapons can attack further in either line of sight or ballistically. Maximum 150 characters.",
     }
 );
 

@@ -119,7 +119,7 @@ export default function LlmRoute() {
                     <div className="flex-1 flex flex-col gap-4 w-full max-w-xl pb-2">
                         <div className="relative flex-1 w-full flex flex-col gap-4 overflow-auto min-h-[400px]">
                             <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto">
-                                <div className="pr-4">
+                                <div className="pr-4 max-w-full">
                                     {history.map((historyItem, historyIndex) => {
                                         const isLast = historyIndex === history.length - 1;
                                         if (historyItem.type === "message") {

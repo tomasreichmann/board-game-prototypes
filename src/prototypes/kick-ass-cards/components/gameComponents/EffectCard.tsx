@@ -5,7 +5,11 @@ import { EffectType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 
-export type EffectCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<EffectType, "count">>;
+type OptionalKeysType = "slug" | "count";
+
+export type EffectCardProps = React.PropsWithChildren<
+    Partial<PaperProps> & Omit<EffectType, OptionalKeysType> & Partial<Pick<EffectType, OptionalKeysType>>
+>;
 
 const effectSizeClassNameMap: { [key: string]: string } = {
     "/LP/icons/doom.png": "h-24",

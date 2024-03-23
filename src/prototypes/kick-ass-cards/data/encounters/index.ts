@@ -44,12 +44,14 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("LP-en-c1-a2-Celebration", "LP-en-c1-a2-Celebration", LP_EN),
     ...makeEncounterDefinition("LP-en-c1-a3-Partys-over", "LP-en-c1-a3-Partys-over", LP_EN),
     ...makeEncounterDefinition("LP-en-c1-a4-On-the-street", "LP-en-c1-a4-On-the-street", LP_EN),
-    ...makeEncounterDefinition("LP-en-c1-a5-Departure", "LP-en-c1-a5-Departure", LP_EN),
-    ...makeEncounterDefinition("LP-en-c2-a1-Boarding", "LP-en-c2-a1-Boarding", LP_EN),
+    ...makeEncounterDefinition("LP-en-c1-a5-Boarding", "LP-en-c1-a5-Boarding", LP_EN),
+    ...makeEncounterDefinition("LP-en-c2-a1-Departure", "LP-en-c2-a1-Departure", LP_EN),
     ...makeEncounterDefinition("LP-en-c2-a2-Spore-ship", "LP-en-c2-a2-Spore-ship", LP_EN),
+
     ...makeEncounterDefinition("ISV-c0-a0-Prequel-GM-Info", "Prequel - Informace pro vypravěče", ISV),
     ...makeEncounterDefinition("ISV-c0-a1-Prequel", "Prequel", ISV),
     ...makeEncounterDefinition("ISV-c1-a0-Info", "Info", ISV),
+
     ...makeEncounterDefinition("TOH-c0-a0-GM-Info", "GM Info", TOH),
     ...makeEncounterDefinition("TOH-c1-a1-Audience-with-the-king", "Audience with the king", TOH),
     ...makeEncounterDefinition("TOH-c1-a2-On-The-Road-to-Spice", "On the Road to Špice", TOH),

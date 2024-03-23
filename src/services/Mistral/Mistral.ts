@@ -58,6 +58,7 @@ const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptio
             temperature,
             topP,
             max_tokens: maxTokens, // Wrong types in d.ts
+            maxTokens,
             safePrompt,
             randomSeed,
             /*responseFormat: {

@@ -79,8 +79,8 @@ export default function GenerationStep({ className, children }: HTMLAttributes<H
 
     const generationPrompt = getGenerationPrompt(state);
     const mistral = useMistral({
-        model: MistralModelEnum["open-mixtral-8x7b"],
-        maxTokens: 100 * state.generationCount,
+        model: MistralModelEnum["mistral-medium-latest"],
+        maxTokens: 100 + 150 * state.generationCount,
         includeHistoryLength: 0,
     });
 

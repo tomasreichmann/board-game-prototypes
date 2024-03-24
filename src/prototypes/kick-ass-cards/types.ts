@@ -40,7 +40,7 @@ export type EffectType = {
     title: string;
     icon?: IconType | string;
     effect: string;
-    count: number;
+    count?: number;
 };
 
 export type StuntType = {

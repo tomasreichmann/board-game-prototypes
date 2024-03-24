@@ -7,6 +7,7 @@ import { RouteDefinition } from "./routeTypes";
 import { Route } from "react-router-dom";
 import LlmRoute from "./routes/LlmRoute";
 import SDRoute from "./routes/SDRoute";
+import LlmJobRoute from "./routes/LlmJobRoute";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -36,6 +37,11 @@ export const routes: RouteDefinition[] = [
         name: "LLM",
         path: "/llm",
         Component: LlmRoute,
+    },
+    {
+        name: "LLM Job",
+        path: "/llm-job",
+        Component: LlmJobRoute,
     },
     {
         name: "SD",

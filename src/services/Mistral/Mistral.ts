@@ -1,4 +1,4 @@
-import MistralClient, { ToolCalls } from "@mistralai/mistralai";
+import MistralClient, { ChatCompletionResponse, ChatCompletionResponseChoice, ToolCalls } from "@mistralai/mistralai";
 import { localSettingsKey } from "../../hooks/useLocalSettings";
 
 const getMistralKeyFromLocalSettings = () => {
@@ -37,6 +37,8 @@ export type MistralChatOptionsType = {
     randomSeed?: number;
 };
 
+export type MistralHistoryItem = ChatCompletionResponseChoice["message"];
+
 // Service type
 const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptionsType = {}) => {
     const client = new MistralClient(mistralKey);
@@ -51,9 +53,10 @@ const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptio
             maxTokens = 100,
             safePrompt = false,
             randomSeed,
-        }: MistralChatOptionsType
-    ) =>
-        client.chat({
+        }: Omit<MistralChatOptionsType, "prompt">
+    ) => {
+        console.log("maxTokens", maxTokens);
+        return client.chat({
             model,
             temperature,
             topP,
@@ -66,6 +69,7 @@ const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptio
             },*/
             messages: [...history, { role: "user", content: prompt }],
         } as any);
+    };
 
     return {
         chat,

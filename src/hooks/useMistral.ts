@@ -116,6 +116,7 @@ export const useMistral = ({
                 }));
                 return;
             }
+
             setHistory((history) => {
                 const lastHistoryItems = includeHistoryLength > 0 ? (history || []).slice(-includeHistoryLength) : [];
                 const includedHistory = lastHistoryItems.map((historyItem) => {
@@ -133,7 +134,7 @@ export const useMistral = ({
                     error: null,
                 }));
                 client
-                    .chat(message, { chatOptions, history: includedHistory } as any)
+                    .chat(message, { ...chatOptions, history: includedHistory })
                     .then((chatResponse) => {
                         setStatus((status) => ({
                             ...status,

@@ -12,15 +12,15 @@ export type ButtonWithConfirmationProps = ButtonButtonType & {
 export default function ButtonWithConfirmation({
     className,
     children,
-    confirmProps = { color: "danger", children: <>Confirm {children}</> },
-    timeoutMs = 3000,
+    confirmText = "Confirm" + (typeof children === "string" ? " " + children + "?" : ""),
+    confirmProps = {},
+    timeoutMs = 4000,
     onClick,
     ...restProps
 }: ButtonWithConfirmationProps) {
     const [isConfirming, setIsConfirming] = useState(false);
-
     const handleOnClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-        if (!isConfirming && confirmProps) {
+        if (!isConfirming) {
             setIsConfirming(true);
         } else if (onClick) {
             onClick(e);
@@ -39,10 +39,21 @@ export default function ButtonWithConfirmation({
     }, [isConfirming, timeoutMs]);
 
     if (isConfirming) {
-        const { className: confirmClassName, ...confirmRestProps } = confirmProps ?? {};
+        const {
+            className: confirmClassName,
+            color: confirmColor = "danger",
+            children: confirmChildren = confirmText,
+            ...confirmRestProps
+        } = confirmProps ?? {};
         return (
-            <Button className={twMerge(className)} onClick={handleOnClick} {...restProps} {...confirmRestProps}>
-                {confirmProps?.children ?? "Confirm"}
+            <Button
+                className={twMerge(className, confirmProps.className)}
+                color={confirmColor}
+                onClick={handleOnClick}
+                {...restProps}
+                {...confirmRestProps}
+            >
+                {confirmChildren}
             </Button>
         );
     }

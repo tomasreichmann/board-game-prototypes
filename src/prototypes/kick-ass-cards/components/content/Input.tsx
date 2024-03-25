@@ -72,7 +72,7 @@ export default function Input({
     error,
     inputRef,
     textareaRef,
-    textareaProps: { className: textareaClassName, ...textareaProps } = {},
+    textareaProps: { className: textareaClassName, disabled: textareaDisabled = disabled, ...textareaProps } = {},
     ...restProps
 }: InputProps) {
     const combinedInputClassName = twMerge(variants({ type, disabled }), inputClassName);
@@ -85,6 +85,7 @@ export default function Input({
                 value={restProps.value}
                 ref={textareaRef}
                 onChange={restProps.onChange as any}
+                disabled={textareaDisabled}
                 {...textareaProps}
             />
         );

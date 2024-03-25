@@ -33,7 +33,7 @@ export default function SmartInput({
 
     const smallButtonClassName = "px-2 py-1 rounded-md text-xs";
     const combinedLabelClassName = twMerge("w-full flex flex-row relative gap-2", labelClassName);
-    const copyControl = isCopyable && (
+    const copyControl = isCopyable && restProps.value && (
         <Button
             color="success"
             variant="text"

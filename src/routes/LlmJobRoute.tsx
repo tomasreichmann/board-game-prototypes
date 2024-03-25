@@ -45,6 +45,11 @@ const jobList: JobType[] = [
             title: "Scene",
             type: "object",
             properties: {
+                title: {
+                    title: "Title",
+                    type: "string",
+                    nullable: true,
+                },
                 context: {
                     title: "Context",
                     type: "string",
@@ -56,6 +61,11 @@ const jobList: JobType[] = [
                     nullable: true,
                 },
             },
+        },
+        descriptions: {
+            title: "Name of the scene capturing the basic essence with 1 world or 1 sentence. Plaintext format",
+            context: "What is the whole artwork about. Markdown format",
+            story: "What happens within the scene. Markdown format",
         },
         focusedProperty: null,
         promptIncludes: {
@@ -76,18 +86,22 @@ const getFocusInfoPrompt = (job: JobType) => {
     if (!job.focusedProperty) {
         return "";
     }
-    return `Let's focus on a ${job.name} ${job.schema.properties[job.focusedProperty].title}: `;
+    const description = job?.descriptions?.[job.focusedProperty] || "";
+    const descriptionPostfix = description ? ` (${description})` : "";
+    return `Let's focus on a ${job.name} ${job.schema.properties[job.focusedProperty].title} ${descriptionPostfix}: `;
 };
 
 const getPropertyPrompt = (job: JobType, key: string) => {
-    return `${job.name} ${key} is: ${job.data[key]}`;
+    const description = job?.descriptions?.[key] || "";
+    const descriptionPostfix = description ? ` (${description})` : "";
+    return `${job.name} ${key}${descriptionPostfix} is: ${job.data[key]}`;
 };
 
 export default function LlmJobRoute() {
     const [job, setJob] = useState<JobType | null>(null);
     const [mistralOptions, setMistralOptions] = useState<MistralOptionsType>({
         model: MistralModelEnum["open-mistral-7b"],
-        includeHistoryLength: 0,
+        includeHistoryLength: 6,
         format: MistralFormatEnum.json_object,
         temperature: 0.7,
         topP: 1,
@@ -95,109 +109,178 @@ export default function LlmJobRoute() {
         stream: false,
         safePrompt: false,
     });
-    const { sendMessage, clearHistory, ...status } = useMistral(mistralOptions);
-    const { isPending, error, history } = status;
-    const [message, setMessage] = useState("");
 
-    const sendMessageCallback = useCallback(
-        (message: string) => {
-            sendMessage(message);
-            setMessage("");
-        },
-        [sendMessage]
-    );
+    const [isPending, setIsPending] = useState(false);
+    const [error, setError] = useState<Error | null>(null);
+
+    const sendMessageCallback = useCallback(() => {
+        if (!job || !job.prompt || !job.focusedProperty) {
+            return;
+        }
+
+        setIsPending(true);
+
+        const promptIncludes: string[] = [];
+        if (job.promptIncludes._jobInfo) {
+            promptIncludes.push(getJobInfoPrompt(job));
+        }
+        const propertyIncludeKeys = Object.keys(job.data).filter((key) => job.promptIncludes[key]);
+        propertyIncludeKeys.forEach((key) => {
+            promptIncludes.push(getPropertyPrompt(job, key));
+        });
+
+        if (job.promptIncludes._focusInfo) {
+            promptIncludes.push(getFocusInfoPrompt(job));
+        }
+        const combinedPrompt = promptIncludes.join("\n") + job.prompt;
+
+        setJob((job) => {
+            if (!job) {
+                return job;
+            }
+            return {
+                ...job,
+                history: {
+                    ...(job || {}).history,
+                    [(job || {}).focusedProperty as string]: [
+                        ...((job || {}).history[(job || {}).focusedProperty as string] || []),
+                        {
+                            role: "user",
+                            content: combinedPrompt,
+                        } as MessageType,
+                    ],
+                },
+            };
+        });
+
+        llmClient
+            .chat(combinedPrompt, {
+                ...mistralOptions,
+                history: (job.history[job.focusedProperty] as MessageType[]) || ([] as MessageType[]),
+            })
+            .then((response) => {
+                setIsPending(false);
+                setJob((job) => {
+                    if (!job) {
+                        return job;
+                    }
+                    return {
+                        ...job,
+                        history: {
+                            ...(job || {}).history,
+                            [(job || {}).focusedProperty as string]: [
+                                ...((job || {}).history[(job || {}).focusedProperty as string] || []),
+                                response.choices[0].message,
+                            ],
+                        },
+                    } as JobType;
+                });
+            });
+    }, [job?.prompt, job?.focusedProperty, mistralOptions, setJob, setIsPending]);
+
+    const isPromptDisabled = !job || !job.focusedProperty || isPending;
 
     return (
-        <Page className="LlmRoute flex-1 h-svh flex flex-col box-border">
+        <Page className="LlmRoute flex-1 h-svh flex flex-col box-border font-kacBody">
             <h1 className="text-3l font-bold mb-10">LLM Prototype</h1>
             <div className="flex-1 flex flex-col sm:flex-row gap-8">
                 <div className="relative flex-1 flex flex-col items-center">
                     <div className="flex-1 flex flex-col gap-4 w-full pb-2">
                         <div className="relative flex-1 w-full flex flex-col gap-4 overflow-auto min-h-[400px]">
                             <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto">
-                                <div className="pr-4 max-w-full">
+                                <div className="pr-4 w-full">
                                     {!job && (
                                         <div className="flex flex-col gap-4">
                                             <Text variant="h3" className="text-kac-steel-dark">
                                                 Select a job
                                             </Text>
+                                            <div className="w-full flex flex-row flex-wrap gap-4"></div>
                                             {jobList.map((job) => (
                                                 <Button
                                                     key={job.name}
                                                     color="primary"
-                                                    className="w-full"
+                                                    className="w-full flex flex-col items-stretch text-center max-w-64"
+                                                    variant="outline"
                                                     onClick={() => setJob(job)}
                                                 >
-                                                    {job.name}
+                                                    <Text variant="h4" className="text-kac-gold-darker text-center">
+                                                        {job.name}
+                                                    </Text>
+                                                    <Text variant="body">{job.description}</Text>
                                                 </Button>
                                             ))}
                                         </div>
                                     )}
                                     {job && (
-                                        <div className="flex flex-col gap-4">
-                                            <Text variant="h3" className="text-kac-steel-dark">
-                                                {job.name}{" "}
+                                        <div className="w-full flex flex-col">
+                                            <Text
+                                                variant="h3"
+                                                className="flex-1 flex flex-row gap-4 text-kac-steel-dark mb-0"
+                                            >
+                                                <span className="flex-1 block">
+                                                    {job.name}
+                                                    {job.focusedProperty ? ` > ${job.focusedProperty}` : ""}
+                                                </span>
                                                 {job.focusedProperty && (
-                                                    <>
-                                                        - {job.focusedProperty}{" "}
-                                                        <Button
-                                                            onClick={() =>
-                                                                setJob(
-                                                                    (job) =>
-                                                                        ({ ...job, focusedProperty: null } as JobType)
-                                                                )
-                                                            }
-                                                            color="info"
-                                                            variant="text"
-                                                            className="text-sm px-2 py-1"
-                                                        >
-                                                            Back
-                                                        </Button>
-                                                    </>
-                                                )}{" "}
-                                                <Button
+                                                    <Button
+                                                        onClick={() =>
+                                                            setJob(
+                                                                (job) =>
+                                                                    ({
+                                                                        ...job,
+                                                                        focusedProperty: null,
+                                                                    } as JobType)
+                                                            )
+                                                        }
+                                                        color="info"
+                                                        variant="text"
+                                                        className="text-sm px-2 py-1"
+                                                    >
+                                                        Back
+                                                    </Button>
+                                                )}
+                                                <ButtonWithConfirmation
                                                     onClick={() => setJob(null)}
                                                     color="danger"
                                                     variant="text"
+                                                    confirmText="Closing job will discard all data. Are you sure?"
                                                     className="text-sm px-2 py-1"
                                                 >
                                                     Close Job
-                                                </Button>
+                                                </ButtonWithConfirmation>
                                             </Text>
                                             {!job.focusedProperty && (
                                                 <div className="flex flex-col gap-4">
-                                                    <Text variant="h3" className="text-kac-steel-dark">
-                                                        This is what we have so far:
+                                                    <Text variant="body" className="text-kac-steel-dark">
+                                                        Pick a property to focus on.
                                                     </Text>
-                                                    <div className="flex flex-col">
+                                                    <div className="flex flex-col gap-2">
                                                         {Object.keys(job.schema.properties)?.map((propertyKey) => {
                                                             const key = propertyKey as keyof JobType["data"];
                                                             return (
                                                                 <div key={key} className="flex flex-row gap-4">
-                                                                    <Text variant="h4" className="text-kac-steel-dark">
+                                                                    <Button
+                                                                        key={job.name}
+                                                                        color="primary"
+                                                                        className="font-bold"
+                                                                        onClick={() =>
+                                                                            setJob(
+                                                                                (job) =>
+                                                                                    ({
+                                                                                        ...job,
+                                                                                        focusedProperty: key,
+                                                                                    } as JobType)
+                                                                            )
+                                                                        }
+                                                                    >
                                                                         {key}
-                                                                    </Text>
+                                                                    </Button>
                                                                     <Text
                                                                         variant="body"
                                                                         className="text-kac-steel-dark"
                                                                     >
                                                                         {job.data[key]}
                                                                     </Text>
-                                                                    <Button
-                                                                        key={job.name}
-                                                                        color="primary"
-                                                                        onClick={() =>
-                                                                            setJob(
-                                                                                (job) =>
-                                                                                    ({
-                                                                                        ...job,
-                                                                                        focusedProperty: propertyKey,
-                                                                                    } as JobType)
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        Focus
-                                                                    </Button>
                                                                 </div>
                                                             );
                                                         })}
@@ -208,6 +291,7 @@ export default function LlmJobRoute() {
                                                 <div className="flex flex-col gap-4">
                                                     <Input
                                                         type="textarea"
+                                                        label="Content"
                                                         value={job.data[job.focusedProperty as keyof JobType["data"]]}
                                                         onChange={(e) =>
                                                             setJob(
@@ -277,7 +361,7 @@ export default function LlmJobRoute() {
                                                         <Input
                                                             type="checkbox"
                                                             label={getJobInfoPrompt(job)}
-                                                            className="flex-row-reverse items-baseline w-auto text-right self-start"
+                                                            className="flex-row-reverse items-baseline w-auto self-start"
                                                             inputClassName="w-auto mr-4"
                                                             checked={job.promptIncludes._jobInfo}
                                                             onChange={(e) =>
@@ -304,7 +388,7 @@ export default function LlmJobRoute() {
                                                                     <Input
                                                                         type="checkbox"
                                                                         label={getPropertyPrompt(job, propertyKey)}
-                                                                        className="flex-row-reverse items-baseline w-auto text-right self-start"
+                                                                        className="flex-row-reverse items-baseline w-auto self-start"
                                                                         inputClassName="w-auto mr-4"
                                                                         checked={job.promptIncludes[propertyKey]}
                                                                         onChange={(e) =>
@@ -327,7 +411,7 @@ export default function LlmJobRoute() {
                                                         <Input
                                                             type="checkbox"
                                                             label={getFocusInfoPrompt(job)}
-                                                            className="flex-row-reverse items-baseline w-auto text-right self-start"
+                                                            className="flex-row-reverse items-baseline w-auto self-start"
                                                             inputClassName="w-auto mr-4"
                                                             checked={job.promptIncludes._focusInfo}
                                                             onChange={(e) =>
@@ -345,104 +429,6 @@ export default function LlmJobRoute() {
                                                                 })
                                                             }
                                                         />
-                                                        <Input
-                                                            className="flex-1"
-                                                            label="Prompt"
-                                                            type="textarea"
-                                                            value={job.prompt}
-                                                            onChange={(e) =>
-                                                                setJob(
-                                                                    (job) =>
-                                                                        ({
-                                                                            ...job,
-                                                                            prompt: e.target.value,
-                                                                        } as JobType)
-                                                                )
-                                                            }
-                                                        />
-                                                        <Button
-                                                            onClick={() => {
-                                                                if (!job.prompt || !job.focusedProperty) {
-                                                                    return;
-                                                                }
-
-                                                                const promptIncludes: string[] = [];
-                                                                if (job.promptIncludes._jobInfo) {
-                                                                    promptIncludes.push(getJobInfoPrompt(job));
-                                                                }
-                                                                const propertyIncludeKeys = Object.keys(
-                                                                    job.data
-                                                                ).filter((key) => job.promptIncludes[key]);
-                                                                propertyIncludeKeys.forEach((key) => {
-                                                                    promptIncludes.push(getPropertyPrompt(job, key));
-                                                                });
-
-                                                                if (job.promptIncludes._focusInfo) {
-                                                                    promptIncludes.push(getFocusInfoPrompt(job));
-                                                                }
-                                                                const combinedPrompt =
-                                                                    promptIncludes.join("\n") + job.prompt;
-
-                                                                setJob((job) => {
-                                                                    if (!job) {
-                                                                        return job;
-                                                                    }
-                                                                    return {
-                                                                        ...job,
-                                                                        history: {
-                                                                            ...(job || {}).history,
-                                                                            [(job || {}).focusedProperty as string]: [
-                                                                                ...((job || {}).history[
-                                                                                    (job || {})
-                                                                                        .focusedProperty as string
-                                                                                ] || []),
-                                                                                {
-                                                                                    role: "user",
-                                                                                    content: combinedPrompt,
-                                                                                } as MessageType,
-                                                                            ],
-                                                                        },
-                                                                    };
-                                                                });
-
-                                                                llmClient
-                                                                    .chat(combinedPrompt, {
-                                                                        ...mistralOptions,
-                                                                        history:
-                                                                            (job.history[
-                                                                                job.focusedProperty
-                                                                            ] as MessageType[]) ||
-                                                                            ([] as MessageType[]),
-                                                                    })
-                                                                    .then((response) => {
-                                                                        setJob((job) => {
-                                                                            if (!job) {
-                                                                                return job;
-                                                                            }
-                                                                            return {
-                                                                                ...job,
-                                                                                history: {
-                                                                                    ...(job || {}).history,
-                                                                                    [(job || {})
-                                                                                        .focusedProperty as string]: [
-                                                                                        ...((job || {}).history[
-                                                                                            (job || {})
-                                                                                                .focusedProperty as string
-                                                                                        ] || []),
-                                                                                        response.choices[0].message,
-                                                                                    ],
-                                                                                },
-                                                                            } as JobType;
-                                                                        });
-                                                                    });
-                                                            }}
-                                                            color="primary"
-                                                            disabled={!job.prompt}
-                                                            variant="text"
-                                                            className="text-sm px-2 py-1"
-                                                        >
-                                                            Send
-                                                        </Button>
                                                     </div>
                                                 </div>
                                             )}
@@ -451,47 +437,44 @@ export default function LlmJobRoute() {
                                 </div>
                             </div>
                         </div>
-                        <SmartInput
-                            type="textarea"
-                            isCopyable
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            textareaProps={{
-                                onKeyDown: (e) => {
-                                    if (e.ctrlKey && e.key === "Enter") {
-                                        e.preventDefault();
-                                        sendMessageCallback(message);
-                                    }
-                                },
-                            }}
-                            className="w-full bg-kac-steel-light rounded-md shadow-inner"
-                            labelClassName="w-full px-4 pt-2"
-                            inputClassName="w-full px-4 pb-2 rounded-md"
-                            label="Message"
-                        />
-                        <Button
-                            disabled={!message || isPending}
-                            className="w-full leading-none min-h-14"
-                            onClick={() => {
-                                sendMessageCallback(message);
-                            }}
-                        >
-                            {isPending ? (
-                                <Pending />
-                            ) : (
-                                <>
-                                    Send
-                                    <br />
-                                    <span className="opacity-50 text-xs"> CTRL + ENTER</span>
-                                </>
-                            )}
-                        </Button>
+                        {!isPromptDisabled && (
+                            <SmartInput
+                                type="textarea"
+                                isCopyable
+                                value={job?.prompt || ""}
+                                disabled={isPromptDisabled}
+                                onChange={(e) =>
+                                    setJob(
+                                        (job) =>
+                                            ({
+                                                ...job,
+                                                prompt: e.target.value,
+                                            } as JobType)
+                                    )
+                                }
+                                textareaProps={{
+                                    onKeyDown: (e) => {
+                                        if (e.ctrlKey && e.key === "Enter") {
+                                            e.preventDefault();
+                                            sendMessageCallback();
+                                        }
+                                    },
+                                }}
+                                className={twMerge(
+                                    "w-full bg-kac-steel-light rounded-md shadow-inner",
+                                    isPromptDisabled && "opacity-50"
+                                )}
+                                labelClassName="w-full px-4 pt-2"
+                                inputClassName="w-full px-4 pb-2 rounded-md"
+                                label="Ask LLM"
+                            />
+                        )}
                         <div className="flex flex-row flex-wrap gap-2 pb-8">
-                            <ButtonWithConfirmation color="danger" className="flex-1 text-sm" onClick={clearHistory}>
+                            {/* <ButtonWithConfirmation color="danger" className="flex-1 text-sm" onClick={clearHistory}>
                                 Clear History
-                            </ButtonWithConfirmation>
+                            </ButtonWithConfirmation> */}
                             <Input
-                                className="max-w-32 text-kac-steel-dark"
+                                className="max-w-24 text-kac-steel-dark"
                                 type="number"
                                 value={mistralOptions.includeHistoryLength}
                                 label="Include History"
@@ -550,7 +533,23 @@ export default function LlmJobRoute() {
                                     }));
                                 }}
                             />
+                            <Button
+                                disabled={!job || isPending}
+                                className="flex-1 leading-none min-h-14"
+                                onClick={sendMessageCallback}
+                            >
+                                {isPending ? (
+                                    <Pending />
+                                ) : (
+                                    <>
+                                        Send
+                                        <br />
+                                        <span className="opacity-50 text-xs"> CTRL + ENTER</span>
+                                    </>
+                                )}
+                            </Button>
                         </div>
+
                         {error && <p className="text-red-500 mt-2">{error.message}</p>}
                     </div>
                 </div>

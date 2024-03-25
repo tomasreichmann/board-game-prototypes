@@ -182,36 +182,44 @@ export default function LlmJobRoute() {
 
     return (
         <Page className="LlmRoute flex-1 h-svh flex flex-col box-border font-kacBody">
-            <h1 className="text-3l font-bold mb-10">LLM Prototype</h1>
+            <div className="flex flex-row gap-4 items-baseline">
+                <Text variant="h1" className="whitespace-nowrap">
+                    LLM Job Prototype
+                </Text>
+                <Text variant="body" className="flex-1">
+                    Job is a data structure with metadata describing it. You can traverse the data and talk to LLM about
+                    it using other parts of the data structure as context
+                </Text>
+            </div>
             <div className="flex-1 flex flex-col sm:flex-row gap-8">
                 <div className="relative flex-1 flex flex-col items-center">
                     <div className="flex-1 flex flex-col gap-4 w-full pb-2">
                         <div className="relative flex-1 w-full flex flex-col gap-4 overflow-auto min-h-[400px]">
-                            <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto">
-                                <div className="pr-4 w-full">
-                                    {!job && (
-                                        <div className="flex flex-col gap-4">
-                                            <Text variant="h3" className="text-kac-steel-dark">
-                                                Select a job
+                            {!job && (
+                                <div className="flex-1 flex flex-col items-center justify-center gap-4">
+                                    <Text variant="h3" className="text-center">
+                                        Select a job
+                                    </Text>
+                                    <div className="w-full flex flex-row flex-wrap gap-4"></div>
+                                    {jobList.map((job) => (
+                                        <Button
+                                            key={job.name}
+                                            color="primary"
+                                            className="w-full flex flex-col items-stretch text-center max-w-64"
+                                            variant="outline"
+                                            onClick={() => setJob(job)}
+                                        >
+                                            <Text variant="h4" className="text-kac-gold-darker text-center">
+                                                {job.name}
                                             </Text>
-                                            <div className="w-full flex flex-row flex-wrap gap-4"></div>
-                                            {jobList.map((job) => (
-                                                <Button
-                                                    key={job.name}
-                                                    color="primary"
-                                                    className="w-full flex flex-col items-stretch text-center max-w-64"
-                                                    variant="outline"
-                                                    onClick={() => setJob(job)}
-                                                >
-                                                    <Text variant="h4" className="text-kac-gold-darker text-center">
-                                                        {job.name}
-                                                    </Text>
-                                                    <Text variant="body">{job.description}</Text>
-                                                </Button>
-                                            ))}
-                                        </div>
-                                    )}
-                                    {job && (
+                                            <Text variant="body">{job.description}</Text>
+                                        </Button>
+                                    ))}
+                                </div>
+                            )}
+                            {job && (
+                                <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto">
+                                    <div className="pr-4 w-full">
                                         <div className="w-full flex flex-col">
                                             <Text
                                                 variant="h3"
@@ -433,124 +441,127 @@ export default function LlmJobRoute() {
                                                 </div>
                                             )}
                                         </div>
-                                    )}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                         {!isPromptDisabled && (
-                            <SmartInput
-                                type="textarea"
-                                isCopyable
-                                value={job?.prompt || ""}
-                                disabled={isPromptDisabled}
-                                onChange={(e) =>
-                                    setJob(
-                                        (job) =>
-                                            ({
-                                                ...job,
-                                                prompt: e.target.value,
-                                            } as JobType)
-                                    )
-                                }
-                                textareaProps={{
-                                    onKeyDown: (e) => {
-                                        if (e.ctrlKey && e.key === "Enter") {
-                                            e.preventDefault();
-                                            sendMessageCallback();
-                                        }
-                                    },
-                                }}
-                                className={twMerge(
-                                    "w-full bg-kac-steel-light rounded-md shadow-inner",
-                                    isPromptDisabled && "opacity-50"
-                                )}
-                                labelClassName="w-full px-4 pt-2"
-                                inputClassName="w-full px-4 pb-2 rounded-md"
-                                label="Ask LLM"
-                            />
-                        )}
-                        <div className="flex flex-row flex-wrap gap-2 pb-8">
-                            {/* <ButtonWithConfirmation color="danger" className="flex-1 text-sm" onClick={clearHistory}>
+                            <>
+                                <SmartInput
+                                    type="textarea"
+                                    isCopyable
+                                    value={job?.prompt || ""}
+                                    disabled={isPromptDisabled}
+                                    onChange={(e) =>
+                                        setJob(
+                                            (job) =>
+                                                ({
+                                                    ...job,
+                                                    prompt: e.target.value,
+                                                } as JobType)
+                                        )
+                                    }
+                                    textareaProps={{
+                                        onKeyDown: (e) => {
+                                            if (e.ctrlKey && e.key === "Enter") {
+                                                e.preventDefault();
+                                                sendMessageCallback();
+                                            }
+                                        },
+                                    }}
+                                    className={twMerge(
+                                        "w-full bg-kac-steel-light rounded-md shadow-inner",
+                                        isPromptDisabled && "opacity-50"
+                                    )}
+                                    labelClassName="w-full px-4 pt-2"
+                                    inputClassName="w-full px-4 pb-2 rounded-md"
+                                    label="Ask LLM"
+                                />
+
+                                <div className="flex flex-row flex-wrap gap-2 pb-8">
+                                    {/* <ButtonWithConfirmation color="danger" className="flex-1 text-sm" onClick={clearHistory}>
                                 Clear History
                             </ButtonWithConfirmation> */}
-                            <Input
-                                className="max-w-24 text-kac-steel-dark"
-                                type="number"
-                                value={mistralOptions.includeHistoryLength}
-                                label="Include History"
-                                labelClassName="text-sm max-w-24"
-                                onChange={(e) => {
-                                    setMistralOptions((options) => ({
-                                        ...options,
-                                        includeHistoryLength: parseInt(e.target.value),
-                                    }));
-                                }}
-                            />
-                            <Input
-                                className="max-w-20"
-                                type="number"
-                                value={mistralOptions.maxTokens}
-                                min={10}
-                                step={10}
-                                max={1000}
-                                label="Max Tokens"
-                                labelClassName="text-sm max-w-20"
-                                onChange={(e) => {
-                                    setMistralOptions((options) => ({
-                                        ...options,
-                                        maxTokens: parseInt(e.target.value),
-                                    }));
-                                }}
-                            />
-                            <Input
-                                className="max-w-20"
-                                type="number"
-                                value={mistralOptions.temperature}
-                                min={0}
-                                step={0.1}
-                                max={1}
-                                label="Temperature"
-                                labelClassName="text-sm max-w-20"
-                                onChange={(e) => {
-                                    setMistralOptions((options) => ({
-                                        ...options,
-                                        temperature: parseInt(e.target.value),
-                                    }));
-                                }}
-                            />
-                            <Select
-                                className="max-w-40"
-                                label="Model"
-                                labelClassName="text-sm"
-                                options={Object.entries(MistralModelEnum).map(([_, value]) => ({
-                                    label: value,
-                                    value,
-                                }))}
-                                onChange={(event) => {
-                                    setMistralOptions((options) => ({
-                                        ...options,
-                                        model: event.target.value as MistralModelEnum,
-                                    }));
-                                }}
-                            />
-                            <Button
-                                disabled={!job || isPending}
-                                className="flex-1 leading-none min-h-14"
-                                onClick={sendMessageCallback}
-                            >
-                                {isPending ? (
-                                    <Pending />
-                                ) : (
-                                    <>
-                                        Send
-                                        <br />
-                                        <span className="opacity-50 text-xs"> CTRL + ENTER</span>
-                                    </>
-                                )}
-                            </Button>
-                        </div>
+                                    <Input
+                                        className="max-w-24 text-kac-steel-dark"
+                                        type="number"
+                                        value={mistralOptions.includeHistoryLength}
+                                        label="Include History"
+                                        labelClassName="text-sm max-w-24"
+                                        onChange={(e) => {
+                                            setMistralOptions((options) => ({
+                                                ...options,
+                                                includeHistoryLength: parseInt(e.target.value),
+                                            }));
+                                        }}
+                                    />
+                                    <Input
+                                        className="max-w-20"
+                                        type="number"
+                                        value={mistralOptions.maxTokens}
+                                        min={10}
+                                        step={10}
+                                        max={1000}
+                                        label="Max Tokens"
+                                        labelClassName="text-sm max-w-20"
+                                        onChange={(e) => {
+                                            setMistralOptions((options) => ({
+                                                ...options,
+                                                maxTokens: parseInt(e.target.value),
+                                            }));
+                                        }}
+                                    />
+                                    <Input
+                                        className="max-w-20"
+                                        type="number"
+                                        value={mistralOptions.temperature}
+                                        min={0}
+                                        step={0.1}
+                                        max={1}
+                                        label="Temperature"
+                                        labelClassName="text-sm max-w-20"
+                                        onChange={(e) => {
+                                            setMistralOptions((options) => ({
+                                                ...options,
+                                                temperature: parseInt(e.target.value),
+                                            }));
+                                        }}
+                                    />
+                                    <Select
+                                        className="max-w-40"
+                                        label="Model"
+                                        labelClassName="text-sm"
+                                        options={Object.entries(MistralModelEnum).map(([_, value]) => ({
+                                            label: value,
+                                            value,
+                                        }))}
+                                        onChange={(event) => {
+                                            setMistralOptions((options) => ({
+                                                ...options,
+                                                model: event.target.value as MistralModelEnum,
+                                            }));
+                                        }}
+                                    />
+                                    <Button
+                                        disabled={!job || isPending}
+                                        className="flex-1 leading-none min-h-14"
+                                        onClick={sendMessageCallback}
+                                    >
+                                        {isPending ? (
+                                            <Pending />
+                                        ) : (
+                                            <>
+                                                Send
+                                                <br />
+                                                <span className="opacity-50 text-xs"> CTRL + ENTER</span>
+                                            </>
+                                        )}
+                                    </Button>
+                                </div>
 
-                        {error && <p className="text-red-500 mt-2">{error.message}</p>}
+                                {error && <p className="text-red-500 mt-2">{error.message}</p>}
+                            </>
+                        )}
                     </div>
                 </div>
                 <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative gap-4">

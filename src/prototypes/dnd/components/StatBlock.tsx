@@ -365,7 +365,7 @@ export const statBlockSchemaWithGeneratedProps = {
         ...statBlockSchema.properties,
         ...{
             SD_imageUri: {
-                title: "Image description (Stable Diffusion XL prompt)",
+                title: "Image description (Stable Diffusion XL prompt; add 'in style of DnD')",
                 type: "string",
             },
         },
@@ -447,27 +447,28 @@ export default function StatBlock({
                         </p>
                     </>
                 )}
-                {abilityScores && Object.entries(abilityScores).length > 0 && (
-                    <>
-                        <hr className="my-1 border-t-2 border-kac-blood" />
-                        <div className="flex flex-row gap-2">
-                            {Object.entries(abilityScores).map(([key, value]) => (
-                                <div key={key} className="flex flex-col items-center">
-                                    <h4 className="text-md font-bold text-kac-iron uppercase">{key.slice(0, 3)}</h4>
-                                    <p className="text-sm text-kac-iron">
-                                        {value} (
-                                        <span className="font-bold">
-                                            {value >= 12 ? "+" : ""}
-                                            {Math.floor((value - 10) / 2)}
-                                        </span>
-                                        )
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                        <hr className="my-1 border-t-2 border-kac-blood" />
-                    </>
-                )}
+                {abilityScores &&
+                    Object.entries(abilityScores).filter(([, value]) => value !== undefined).length > 0 && (
+                        <>
+                            <hr className="my-1 border-t-2 border-kac-blood" />
+                            <div className="flex flex-row gap-2">
+                                {Object.entries(abilityScores).map(([key, value]) => (
+                                    <div key={key} className="flex flex-col items-center">
+                                        <h4 className="text-md font-bold text-kac-iron uppercase">{key.slice(0, 3)}</h4>
+                                        <p className="text-sm text-kac-iron">
+                                            {value} (
+                                            <span className="font-bold">
+                                                {value >= 12 ? "+" : ""}
+                                                {Math.floor((value - 10) / 2)}
+                                            </span>
+                                            )
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                            <hr className="my-1 border-t-2 border-kac-blood" />
+                        </>
+                    )}
 
                 {senses && senses.special && Boolean(senses.special?.length) && (
                     <div>
@@ -507,7 +508,7 @@ export default function StatBlock({
                         <p className="text-sm inline">{languages.join(", ")}</p>
                     </div>
                 )}
-                {challenge && (
+                {Boolean(challenge) && (
                     <div>
                         <h3 className="font-bold inline mr-2 text-sm text-kac-iron mb-1 mt-4">Challenge</h3>
                         <p className="text-sm inline">{challenge}</p>
@@ -516,7 +517,7 @@ export default function StatBlock({
                 <hr className="my-1 border-t-2 border-kac-blood" />
             </div>
             <div className="col-span-1">
-                {imageUri && <img src={imageUri} alt="" className="h-full object-contain object-center" />}
+                {imageUri && <img src={imageUri} alt="" className="h-full object-contain object-top" />}
                 {"SD_imageUri" in restProps && <p>{(restProps as any).SD_imageUri}</p>}
             </div>
             <div className="col-span-2 columns-2">
@@ -526,9 +527,9 @@ export default function StatBlock({
                         <p className="text-sm">{trait.description}</p>
                     </div>
                 ))}
-                {actions && (
+                {actions && actions.length > 0 && (
                     <>
-                        <h3 className="text-lg font-bold text-kac-iron mt-2 mb-1 border-b-2 border-kac-blood">
+                        <h3 className="text-lg font-bold text-kac-iron mt-2 mb-1 border-b-2 border-kac-blood break-after-avoid">
                             Actions
                         </h3>
                         {actions.map((action) => (

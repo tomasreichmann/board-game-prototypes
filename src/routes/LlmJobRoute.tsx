@@ -1,18 +1,25 @@
 import { useCallback, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { MistralFormatEnum, MistralOptionsType, useMistral } from "../hooks/useMistral";
+import { MistralOptionsType } from "../hooks/useMistral";
 import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
-import copyToClipboard from "../utils/copyToClipboard";
 import Input from "../prototypes/kick-ass-cards/components/content/Input";
 import Page from "../components/Page/Page";
 import Pending from "../components/form/Pending";
 import Select from "../prototypes/kick-ass-cards/components/content/Select";
 import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
 import ToggleData from "../components/DataToggle";
-import Mistral, { MessageType, MistralChatOptionsType, MistralModelEnum } from "../services/Mistral/Mistral";
-import Text from "../prototypes/kick-ass-cards/components/content/Text";
+import Mistral, { MessageType, MistralModelEnum, ToolChoice } from "../services/Mistral/Mistral";
+import Text, { TextProps, textMeta } from "../prototypes/kick-ass-cards/components/content/Text";
 import { JSONSchemaType } from "ajv";
+import uuid from "../utils/uuid";
+import { ChatCompletionResponse, ChatCompletionResponseChoice } from "@mistralai/mistralai";
+import StatBlock, {
+    StatBlockProps,
+    statBlockMeta,
+    statBlockSchemaWithGeneratedProps,
+} from "../prototypes/dnd/components/StatBlock";
+import ComponentMetaEditor from "../prototypes/kick-ass-cards/components/generation/ComponentMetaEditor";
 
 type AnyRecord = Record<string, any>;
 
@@ -29,6 +36,8 @@ type JobType = {
     history: {
         [key: string]: MessageType[];
     };
+    forceToolCall?: boolean;
+    chatOptions?: Partial<MistralOptionsType>;
     promptIncludes: {
         _jobInfo: boolean;
         _focusInfo: boolean;
@@ -73,6 +82,50 @@ const jobList: JobType[] = [
             _focusInfo: true,
         },
         history: {},
+        chatOptions: {
+            tools: [
+                {
+                    type: "function",
+                    description:
+                        "renderText function displays a styled Text component to the user with styles based on the variant and color props. Always use this tool if the user asks you to show or render any text.",
+                    function: {
+                        name: "renderText",
+                        parameters: textMeta.schema,
+                    },
+                },
+            ],
+            toolChoice: ToolChoice.auto,
+        },
+    },
+    {
+        name: "Stat Block",
+        description: "A Dungeons and Dragons 5e stat block.",
+        data: {},
+        schema: statBlockMeta.schema,
+        descriptions: {
+            SD_imageUri: "Stable Diffusion XL prompt",
+        },
+        focusedProperty: null,
+        promptIncludes: {
+            _jobInfo: true,
+            _focusInfo: true,
+        },
+        history: {},
+        chatOptions: {
+            tools: [
+                {
+                    name: "renderStatBlock",
+                    description: "Renders the Stat Block component for preview",
+                    type: "function",
+                    function: {
+                        name: "renderStatBlock",
+                        description: "Renders the Stat Block component for preview",
+                        parameters: statBlockSchemaWithGeneratedProps,
+                    },
+                },
+            ],
+            toolChoice: ToolChoice.any,
+        },
     },
 ];
 
@@ -88,7 +141,8 @@ const getFocusInfoPrompt = (job: JobType) => {
     }
     const description = job?.descriptions?.[job.focusedProperty] || "";
     const descriptionPostfix = description ? ` (${description})` : "";
-    return `Let's focus on a ${job.name} ${job.schema.properties[job.focusedProperty].title} ${descriptionPostfix}: `;
+    const focusedPropertySchema = job.schema.properties[job.focusedProperty];
+    return `Let's focus on a ${job.name} ${focusedPropertySchema.title || job.focusedProperty}${descriptionPostfix}: `;
 };
 
 const getPropertyPrompt = (job: JobType, key: string) => {
@@ -97,12 +151,42 @@ const getPropertyPrompt = (job: JobType, key: string) => {
     return `${job.name} ${key}${descriptionPostfix} is: ${job.data[key]}`;
 };
 
+const renderStatBlock = (props: StatBlockProps) => {
+    console.log("renderStatBlock props", props);
+    return (
+        <ComponentMetaEditor
+            key={uuid()}
+            initialProps={props}
+            {...statBlockMeta}
+            schema={statBlockSchemaWithGeneratedProps}
+        />
+    );
+    //return <StatBlock key={uuid()} {...props} />;
+};
+
+const renderText = (options: { variant: TextProps["variant"]; color: TextProps["color"]; children: string }) => {
+    const { variant = "body", color = "body", children = "No content" } = options;
+    console.log("renderText options", options);
+    const element = (
+        <Text key={uuid()} variant={variant} color={color}>
+            {children}
+        </Text>
+    );
+    /*setPreview((preview) => {
+        return [...preview, element];
+    });*/
+    return element;
+};
+
 export default function LlmJobRoute() {
     const [job, setJob] = useState<JobType | null>(null);
+    const [preview, setPreview] = useState<React.ReactNode[]>([]);
     const [mistralOptions, setMistralOptions] = useState<MistralOptionsType>({
-        model: MistralModelEnum["open-mistral-7b"],
+        // model: MistralModelEnum["open-mistral-7b"],
+        // model: MistralModelEnum["open-mixtral-8x7b"],
+        model: MistralModelEnum["mistral-small-latest"],
         includeHistoryLength: 6,
-        format: MistralFormatEnum.json_object,
+        // format: MistralFormatEnum.json_object,
         temperature: 0.7,
         topP: 1,
         maxTokens: 500,
@@ -113,14 +197,37 @@ export default function LlmJobRoute() {
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState<Error | null>(null);
 
+    const callTool = useCallback(
+        (name: string, argString: string) => {
+            console.log("callTool", name, argString);
+            const toolFunctionMap = {
+                renderText,
+                renderStatBlock,
+            };
+            const params = JSON.parse(argString);
+            const func = toolFunctionMap[name as keyof typeof toolFunctionMap];
+            if (!func) {
+                throw new Error(`Tool function ${name} not found`);
+            }
+            return func(params);
+        },
+        [renderText]
+    );
+
     const sendMessageCallback = useCallback(() => {
         if (!job || !job.prompt || !job.focusedProperty) {
             return;
         }
 
+        setError(null);
         setIsPending(true);
 
         const promptIncludes: string[] = [];
+        if (job.prompt.toLowerCase().includes("render") || job.prompt.toLowerCase().includes("show")) {
+            promptIncludes.push(
+                "Always use a tool call to display the output. Do not respond with 'assistant' message.\n"
+            );
+        }
         if (job.promptIncludes._jobInfo) {
             promptIncludes.push(getJobInfoPrompt(job));
         }
@@ -132,6 +239,7 @@ export default function LlmJobRoute() {
         if (job.promptIncludes._focusInfo) {
             promptIncludes.push(getFocusInfoPrompt(job));
         }
+
         const combinedPrompt = promptIncludes.join("\n") + job.prompt;
 
         setJob((job) => {
@@ -153,30 +261,71 @@ export default function LlmJobRoute() {
             };
         });
 
+        const toolOptions = job.forceToolCall ? { toolChoice: ToolChoice.any } : {};
+
         llmClient
             .chat(combinedPrompt, {
+                ...job?.chatOptions,
                 ...mistralOptions,
+                ...toolOptions,
                 history: (job.history[job.focusedProperty] as MessageType[]) || ([] as MessageType[]),
             })
-            .then((response) => {
+            .then((responseWithWrongType) => {
+                const response = responseWithWrongType as ChatCompletionResponse & {
+                    choices: (ChatCompletionResponseChoice & { message: MessageType })[];
+                };
+                console.log(
+                    "llmClient response tool calls",
+                    response.choices[0].message?.tool_calls?.length,
+                    response.choices[0].message?.tool_calls?.map((call) => call.function.name).join(", ")
+                );
+                const newHistoryItems: MessageType[] = [];
+                if (response.choices[0].message.content) {
+                    newHistoryItems.push(response.choices[0].message);
+                }
+                if (response.choices[0].message.tool_calls?.length) {
+                    const toolCalls = response.choices[0].message.tool_calls;
+                    const toolCallHistory = toolCalls
+                        .map((toolCall) => {
+                            if ("function" in toolCall) {
+                                return {
+                                    role: toolCall.function.name,
+                                    content: callTool(toolCall.function.name, toolCall.function.arguments),
+                                };
+                            }
+                            return null;
+                        })
+                        .filter((toolCall) => toolCall !== null) as MessageType[];
+                    console.log({ toolCalls, toolCallHistory });
+                    newHistoryItems.push(...toolCallHistory);
+                }
+
                 setIsPending(false);
                 setJob((job) => {
+                    console.log("setJob", Math.random());
                     if (!job) {
                         return job;
                     }
-                    return {
+                    const newJob: JobType = {
                         ...job,
-                        history: {
-                            ...(job || {}).history,
-                            [(job || {}).focusedProperty as string]: [
-                                ...((job || {}).history[(job || {}).focusedProperty as string] || []),
-                                response.choices[0].message,
-                            ],
-                        },
-                    } as JobType;
+                    };
+                    const newPropHistory = [
+                        ...(newJob.history[newJob.focusedProperty as string] || []),
+                        ...newHistoryItems,
+                    ];
+
+                    newJob.history = {
+                        ...newJob.history,
+                        [newJob.focusedProperty as string]: newPropHistory,
+                    };
+                    return newJob;
                 });
+            })
+            .catch((error) => {
+                setIsPending(false);
+                setError(error);
             });
-    }, [job?.prompt, job?.focusedProperty, mistralOptions, setJob, setIsPending]);
+    }, [job?.prompt, job?.focusedProperty, mistralOptions, setJob, setIsPending, callTool]);
 
     const isPromptDisabled = !job || !job.focusedProperty || isPending;
 
@@ -326,41 +475,45 @@ export default function LlmJobRoute() {
                                                                     >
                                                                         {message.role}
                                                                     </Text>
-                                                                    <Text variant="body" className="">
-                                                                        {message.content}{" "}
-                                                                        <Button
-                                                                            onClick={() =>
-                                                                                setJob((job) => {
-                                                                                    if (message.role === "user") {
+                                                                    {typeof message.content === "string" ? (
+                                                                        <Text variant="body" className="">
+                                                                            {message.content}{" "}
+                                                                            <Button
+                                                                                onClick={() =>
+                                                                                    setJob((job) => {
+                                                                                        if (message.role === "user") {
+                                                                                            return {
+                                                                                                ...job,
+                                                                                                prompt: message.content,
+                                                                                            } as JobType;
+                                                                                        }
                                                                                         return {
                                                                                             ...job,
-                                                                                            prompt: message.content,
+                                                                                            data: {
+                                                                                                ...(job || {}).data,
+                                                                                                [(job || {})
+                                                                                                    .focusedProperty as keyof JobType["data"]]:
+                                                                                                    message.content,
+                                                                                            },
                                                                                         } as JobType;
-                                                                                    }
-                                                                                    return {
-                                                                                        ...job,
-                                                                                        data: {
-                                                                                            ...(job || {}).data,
-                                                                                            [(job || {})
-                                                                                                .focusedProperty as keyof JobType["data"]]:
-                                                                                                message.content,
-                                                                                        },
-                                                                                    } as JobType;
-                                                                                })
-                                                                            }
-                                                                            color={
-                                                                                message.role === "user"
-                                                                                    ? "primary"
-                                                                                    : "success"
-                                                                            }
-                                                                            variant="text"
-                                                                            className="text-sm px-2 py-1"
-                                                                        >
-                                                                            {message.role === "user"
-                                                                                ? "Copy to prompt"
-                                                                                : "Use as data"}
-                                                                        </Button>
-                                                                    </Text>
+                                                                                    })
+                                                                                }
+                                                                                color={
+                                                                                    message.role === "user"
+                                                                                        ? "primary"
+                                                                                        : "success"
+                                                                                }
+                                                                                variant="text"
+                                                                                className="text-sm px-2 py-1"
+                                                                            >
+                                                                                {message.role === "user"
+                                                                                    ? "Copy to prompt"
+                                                                                    : "Use as data"}
+                                                                            </Button>
+                                                                        </Text>
+                                                                    ) : (
+                                                                        message.content
+                                                                    )}
                                                                 </div>
                                                             )
                                                         )}
@@ -368,9 +521,35 @@ export default function LlmJobRoute() {
                                                     <div className="flex flex-col gap-2">
                                                         <Input
                                                             type="checkbox"
+                                                            label="Force a Tool Call"
+                                                            className="flex-row-reverse items-baseline w-auto self-start"
+                                                            inputClassName="w-auto mr-2"
+                                                            labelClassName="text-kac-iron"
+                                                            disabled={
+                                                                !job.chatOptions?.toolChoice ||
+                                                                job.chatOptions.toolChoice === ToolChoice.none ||
+                                                                !job.chatOptions.tools ||
+                                                                job.chatOptions.tools.length === 0
+                                                            }
+                                                            checked={Boolean(job.forceToolCall)}
+                                                            onChange={(e) =>
+                                                                setJob((job) => {
+                                                                    if (!job) {
+                                                                        return job;
+                                                                    }
+                                                                    return {
+                                                                        ...job,
+                                                                        forceToolCall: e.target.checked,
+                                                                    };
+                                                                })
+                                                            }
+                                                        />
+                                                        <Input
+                                                            type="checkbox"
                                                             label={getJobInfoPrompt(job)}
                                                             className="flex-row-reverse items-baseline w-auto self-start"
-                                                            inputClassName="w-auto mr-4"
+                                                            inputClassName="w-auto mr-2"
+                                                            labelClassName="text-kac-iron"
                                                             checked={job.promptIncludes._jobInfo}
                                                             onChange={(e) =>
                                                                 setJob((job) => {
@@ -397,7 +576,8 @@ export default function LlmJobRoute() {
                                                                         type="checkbox"
                                                                         label={getPropertyPrompt(job, propertyKey)}
                                                                         className="flex-row-reverse items-baseline w-auto self-start"
-                                                                        inputClassName="w-auto mr-4"
+                                                                        inputClassName="w-auto mr-2"
+                                                                        labelClassName="text-kac-iron"
                                                                         checked={job.promptIncludes[propertyKey]}
                                                                         onChange={(e) =>
                                                                             setJob((job) => {
@@ -420,7 +600,8 @@ export default function LlmJobRoute() {
                                                             type="checkbox"
                                                             label={getFocusInfoPrompt(job)}
                                                             className="flex-row-reverse items-baseline w-auto self-start"
-                                                            inputClassName="w-auto mr-4"
+                                                            inputClassName="w-auto mr-2"
+                                                            labelClassName="text-kac-iron"
                                                             checked={job.promptIncludes._focusInfo}
                                                             onChange={(e) =>
                                                                 setJob((job) => {
@@ -535,6 +716,7 @@ export default function LlmJobRoute() {
                                             label: value,
                                             value,
                                         }))}
+                                        value={mistralOptions.model}
                                         onChange={(event) => {
                                             setMistralOptions((options) => ({
                                                 ...options,
@@ -565,7 +747,8 @@ export default function LlmJobRoute() {
                     </div>
                 </div>
                 <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative gap-4">
-                    <ToggleData data={{ status, job }} previewClassName="flex-1 shrink" initialCollapsed />
+                    {preview}
+                    <ToggleData data={{ job }} previewClassName="flex-1 shrink" initialCollapsed />
                 </div>
             </div>
         </Page>

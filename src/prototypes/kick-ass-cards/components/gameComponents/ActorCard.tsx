@@ -1,11 +1,14 @@
 import React, { CSSProperties, SVGProps } from "react";
+import { twMerge } from "tailwind-merge";
+import { JSONSchemaType } from "ajv";
 import { ActorType } from "../../types";
 import CharacterOutline from "../../media/character-outline.svg";
-import Icon from "../Icon";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import Image, { ImageProps } from "../Image";
-import { twMerge } from "tailwind-merge";
+import Icon from "../Icon";
 import DiceCounter from "../DiceCounter";
+import { cardSizes } from "../../../../components/print/paperSizes";
+import ComponentMetaType from "../generation/ComponentMetaType";
 // import "./ActorCard.css";
 
 const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
@@ -25,22 +28,163 @@ export type ActorCardProps = React.PropsWithChildren<
         Partial<PaperProps>
 >;
 
+export const actorCardSchema: JSONSchemaType<any> = {
+    title: "ActorCard",
+    type: "object",
+    properties: {
+        className: {
+            title: "Class Name",
+            type: "string",
+            nullable: true,
+        },
+        forPrint: {
+            title: "For Print",
+            type: "boolean",
+            nullable: true,
+            default: false,
+        },
+
+        slug: {
+            title: "Slug",
+            type: "string",
+            nullable: true,
+        },
+        name: {
+            title: "Name",
+            type: "string",
+            nullable: true,
+        },
+        imageUri: {
+            title: "Image",
+            type: "string",
+            nullable: true,
+        },
+        imageClassName: {
+            title: "Image Class Name",
+            type: "string",
+            nullable: true,
+        },
+        imagePosition: {
+            title: "Image Position",
+            type: "string",
+            nullable: true,
+        },
+        imageWrapperClassName: {
+            title: "Image Wrapper Class Name",
+            type: "string",
+            nullable: true,
+        },
+        occupation: {
+            title: "Occupation",
+            type: "string",
+            nullable: true,
+        },
+        toughness: {
+            title: "Toughness",
+            type: "number",
+            nullable: true,
+        },
+        currentToughness: {
+            title: "Current Toughness",
+            type: "number",
+            nullable: true,
+        },
+        age: {
+            title: "Age",
+            type: "number",
+            nullable: true,
+        },
+
+        threat: {
+            title: "Threat",
+            type: "string",
+            nullable: true,
+        },
+        reward: {
+            title: "Reward",
+            type: "string",
+            nullable: true,
+        },
+        notes: {
+            title: "Notes",
+            type: "string",
+            nullable: true,
+        },
+        notesClassName: {
+            title: "Notes Class Name",
+            type: "string",
+            nullable: true,
+        },
+        hideCounter: {
+            title: "Hide Counter",
+            type: "boolean",
+            nullable: true,
+        },
+        children: {
+            title: "Children",
+            type: "string",
+            nullable: true,
+        },
+        bleedMm: {
+            title: "Bleed",
+            type: "number",
+            nullable: true,
+        },
+        size: {
+            title: "Size",
+            type: "string",
+            enum: Object.keys(cardSizes),
+            nullable: true,
+        },
+    },
+};
+
+export const actorCardMeta: ComponentMetaType<ActorCardProps> = {
+    componentName: "ActorCard",
+    Component: ActorCard,
+    description: "ActorCard",
+    generationConfig: {
+        props: {
+            name: {
+                llm: true,
+            },
+            imageUri: {
+                llm: true,
+                sd: true,
+            },
+            occupation: {
+                llm: true,
+            },
+            reward: {
+                llm: true,
+            },
+            threat: {
+                llm: true,
+            },
+            notes: {
+                llm: true,
+            },
+        },
+    },
+    schema: actorCardSchema,
+};
+
 export default function ActorCard({
     className,
-    imagePosition,
     forPrint,
     name = "",
     imageUri,
     imageClassName,
+    imagePosition,
     imageWrapperClassName,
     occupation = forPrint ? "" : null,
     toughness = 0,
     currentToughness = toughness,
-    notesClassName,
     age,
     threat = forPrint ? "" : null,
     reward = forPrint ? "" : null,
     notes = forPrint ? "" : null,
+    notesClassName,
     hideCounter = false,
     ImageComponent = Image,
     children,
@@ -76,7 +220,7 @@ export default function ActorCard({
                             objectPosition={imagePosition}
                         />
                     ) : (
-                        <CharacterOutlineImage style={{}} className="h-full w-full text-kac-steel-light" />
+                        <CharacterOutlineImage style={{}} className="absolute h-full w-full text-kac-steel-light" />
                     )}
                     {toughness > 0 && !hideCounter && (
                         <DiceCounter

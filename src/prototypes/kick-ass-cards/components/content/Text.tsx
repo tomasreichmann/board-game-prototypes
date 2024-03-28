@@ -1,6 +1,8 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
+import { JSONSchemaType } from "ajv";
+import ComponentMetaType from "../generation/ComponentMetaType";
 
 export const variantComponentMap = {
     body: "p" as const,
@@ -62,6 +64,48 @@ export type TextProps = React.PropsWithChildren<{
 }> &
     VariantProps<typeof variants> &
     HTMLAttributes<HTMLParagraphElement | HTMLHeadingElement>;
+
+export const textSchema: JSONSchemaType<Pick<TextProps, "variant" | "color"> & { children: any }> = {
+    type: "object",
+    properties: {
+        variant: {
+            type: "string",
+            enum: ["body", "h1", "h2", "h3", "h4", "h5", "h6"],
+            nullable: true,
+        },
+        color: {
+            type: "string",
+            enum: ["body", "heading", "danger", "success"],
+            nullable: true,
+        },
+        children: {
+            type: "string",
+            nullable: true,
+        },
+    },
+    additionalProperties: true,
+};
+
+export const textMeta: ComponentMetaType<TextProps> = {
+    componentName: "Text",
+    Component: Text,
+    description:
+        "Text component renders text with a font style defined by the variant prop and color defined by the color prop.",
+    generationConfig: {
+        props: {
+            children: {
+                llm: true,
+            },
+            color: {
+                llm: true,
+            },
+            variant: {
+                llm: true,
+            },
+        },
+    },
+    schema: textSchema,
+};
 
 export default function Text({
     className,

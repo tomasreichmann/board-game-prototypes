@@ -3,7 +3,7 @@ import { ChatCompletionResponse } from "@mistralai/mistralai";
 
 import { useLocalSettings } from "./useLocalSettings";
 import { useLocalStorage } from "./useLocalStorage";
-import Mistral, { MistralModelEnum } from "../services/Mistral/Mistral";
+import Mistral, { MistralChatOptionsType, MistralModelEnum } from "../services/Mistral/Mistral";
 
 const NO_KEY_ERROR = "No Mistral key provided. Set it in settings.";
 
@@ -25,28 +25,19 @@ type HistoryItemType =
 const defaultLocalHistoryKey = "mistralHistory";
 
 export type MistralOptionsType = {
-    includeHistoryLength?: number;
     historyKey?: string;
-    model?: MistralModelEnum;
-    format?: MistralFormatEnum;
-    temperature?: number;
-    topP?: number;
-    maxTokens?: number;
-    stream?: boolean;
-    safePrompt?: boolean;
-    randomSeed?: number;
-};
+} & MistralChatOptionsType;
 
 export const useMistral = ({
     model = MistralModelEnum["open-mistral-7b"],
-    format = MistralFormatEnum.json_object,
+    // format = MistralFormatEnum.json_object,
     temperature = 0.7,
     topP = 1,
     maxTokens = 100,
     stream = false,
     safePrompt = false,
     historyKey = defaultLocalHistoryKey,
-    includeHistoryLength = 3,
+    includeHistoryLength = 6,
     randomSeed,
 }: MistralOptionsType = {}) => {
     const [{ mistralKey }] = useLocalSettings(["mistralKey"]);
@@ -90,7 +81,7 @@ export const useMistral = ({
     const chatOptions = useMemo(() => {
         return {
             model,
-            format,
+            // format,
             temperature,
             topP,
             maxTokens,
@@ -100,7 +91,17 @@ export const useMistral = ({
             includeHistoryLength,
             randomSeed,
         };
-    }, [model, format, temperature, topP, maxTokens, stream, safePrompt, historyKey, includeHistoryLength, randomSeed]);
+    }, [
+        model,
+        /* format,  */ temperature,
+        topP,
+        maxTokens,
+        stream,
+        safePrompt,
+        historyKey,
+        includeHistoryLength,
+        randomSeed,
+    ]);
 
     const clearHistory = () => {
         console.log("clearing history");

@@ -1,5 +1,11 @@
-import MistralClient, { ChatCompletionResponse, ChatCompletionResponseChoice, ToolCalls } from "@mistralai/mistralai";
+import MistralClient, {
+    ChatCompletionResponse,
+    ChatCompletionResponseChoice,
+    ResponseFormat,
+    ToolCalls,
+} from "@mistralai/mistralai";
 import { localSettingsKey } from "../../hooks/useLocalSettings";
+import { JSONSchemaType } from "ajv";
 
 const getMistralKeyFromLocalSettings = () => {
     // localSettingsKey
@@ -23,21 +29,42 @@ export enum MistralModelEnum {
     "mistral-large-latest" = "mistral-large-latest",
 }
 
-export type MessageType = { role: string; name?: string; content: string | string[]; tool_calls?: ToolCalls[] };
+export enum ToolChoice {
+    auto = "auto",
+    any = "any",
+    none = "none",
+}
+
+export type MessageType = {
+    role: string;
+    name?: string;
+    content: string | string[] | JSX.Element;
+    tool_calls?: ToolCalls[];
+};
 
 export type MistralChatOptionsType = {
-    history: MessageType[];
-    prompt: string;
+    includeHistoryLength?: number;
     model?: MistralModelEnum;
+    history?: MessageType[];
+    tools?: { type: string; name?: string; description?: string; parameters?: JSONSchemaType<any>; function: any }[];
     temperature?: number;
-    topP?: number;
     maxTokens?: number;
+    topP?: number;
+    randomSeed?: number;
     stream?: boolean;
     safePrompt?: boolean;
-    randomSeed?: number;
+    toolChoice?: ToolChoice;
+    responseFormat?: ResponseFormat;
 };
 
 export type MistralHistoryItem = ChatCompletionResponseChoice["message"];
+
+const modelsWithToolCallSupport = [
+    MistralModelEnum["open-mistral-7b"],
+    MistralModelEnum["mistral-small-latest"],
+    MistralModelEnum["mistral-medium-latest"],
+    MistralModelEnum["mistral-large-latest"],
+];
 
 // Service type
 const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptionsType = {}) => {
@@ -46,28 +73,51 @@ const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptio
     const chat = (
         prompt: string,
         {
+            includeHistoryLength = 6,
             history = [],
             model = MistralModelEnum["open-mistral-7b"],
             temperature = 0.7,
             topP = 1,
             maxTokens = 100,
             safePrompt = false,
-            randomSeed,
-        }: Omit<MistralChatOptionsType, "prompt">
+            toolChoice = ToolChoice.auto,
+            tools,
+            ...restOptions
+        }: MistralChatOptionsType
     ) => {
-        console.log("maxTokens", maxTokens);
+        console.log({ toolChoice, tools });
+
+        const includedHistory = includeHistoryLength > 0 ? history.slice(-includeHistoryLength) : [];
+        const isToolCallingSupported = modelsWithToolCallSupport.includes(model);
+        const toolOptions = isToolCallingSupported
+            ? {
+                  toolChoice,
+                  tools,
+              }
+            : {
+                  toolChoice: ToolChoice.none,
+              };
+        if (!isToolCallingSupported) {
+            if (toolChoice !== ToolChoice.none) {
+                ({
+                    [ToolChoice.auto]: console.warn,
+                    [ToolChoice.any]: console.error,
+                })[toolChoice]?.(`Tool calling is not supported for this model. Tools removed.`);
+            }
+        }
         return client.chat({
             model,
-            temperature,
-            topP,
             max_tokens: maxTokens, // Wrong types in d.ts
             maxTokens,
+            temperature,
+            topP,
             safePrompt,
-            randomSeed,
+            ...toolOptions,
+            ...restOptions,
             /*responseFormat: {
                 type: format as any,
             },*/
-            messages: [...history, { role: "user", content: prompt }],
+            messages: [...includedHistory, { role: "user", content: prompt }],
         } as any);
     };
 

@@ -3,6 +3,7 @@ import { SyntheticEvent, useEffect, useMemo, useState } from "react";
 import Button from "./Button";
 import camelCaseToTitleCase from "../../../../utils/camelCaseToTitleCase";
 import Input, { InputProps } from "./Input";
+import { AnyRecord } from "../../../../utils/simpleTypes";
 
 const valueTypeToInputType = (value: any): InputProps["type"] | undefined => {
     if (value === null || value === undefined) {
@@ -48,8 +49,6 @@ export type FormSchemaType<Keys extends string | number | symbol> = {
 /* export type FormSchemaType<Keys extends string> = {
     [key in Keys]?: FormPropertySchemaType<FormPropertyTypeType>;
 }; */
-
-export type AnyRecord = Record<string | number | symbol, any>;
 
 export type FormProps<ValueType extends AnyRecord> = {
     className?: string;

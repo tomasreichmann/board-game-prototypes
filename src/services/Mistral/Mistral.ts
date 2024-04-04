@@ -1,9 +1,4 @@
-import MistralClient, {
-    ChatCompletionResponse,
-    ChatCompletionResponseChoice,
-    ResponseFormat,
-    ToolCalls,
-} from "@mistralai/mistralai";
+import MistralClient, { ChatCompletionResponseChoice, ResponseFormat, ToolCalls } from "@mistralai/mistralai";
 import { localSettingsKey } from "../../hooks/useLocalSettings";
 import { JSONSchemaType } from "ajv";
 
@@ -17,7 +12,7 @@ const getMistralKeyFromLocalSettings = () => {
     throw new Error("Local settings not found");
 };
 
-export type MistralOptionsType = {
+export type MistralServiceOptionsType = {
     mistralKey?: string;
 };
 
@@ -40,13 +35,21 @@ export type MessageType = {
     name?: string;
     content: string | string[] | JSX.Element;
     tool_calls?: ToolCalls[];
+    finishReason?: string;
+};
+
+export type MistralChatToolType = {
+    type: string;
+    name?: string;
+    description?: string;
+    function: { name: string; function: Function; parameters?: JSONSchemaType<any> };
 };
 
 export type MistralChatOptionsType = {
     includeHistoryLength?: number;
     model?: MistralModelEnum;
     history?: MessageType[];
-    tools?: { type: string; name?: string; description?: string; parameters?: JSONSchemaType<any>; function: any }[];
+    tools?: MistralChatToolType[];
     temperature?: number;
     maxTokens?: number;
     topP?: number;
@@ -67,7 +70,7 @@ const modelsWithToolCallSupport = [
 ];
 
 // Service type
-const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptionsType = {}) => {
+const MistralService = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralServiceOptionsType = {}) => {
     const client = new MistralClient(mistralKey);
 
     const chat = (
@@ -126,4 +129,4 @@ const Mistral = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralOptio
     };
 };
 
-export default Mistral;
+export default MistralService;

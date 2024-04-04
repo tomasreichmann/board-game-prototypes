@@ -25,11 +25,7 @@ export default function MdxArticle({
     const Component = mdx;
     return (
         <ArticleComponent className={className}>
-            <MDXProvider
-                    components={
-                        componentMap
-                    }
-                >
+            <MDXProvider components={componentMap}>
                 <Component components={componentMap} />
             </MDXProvider>
             {children}

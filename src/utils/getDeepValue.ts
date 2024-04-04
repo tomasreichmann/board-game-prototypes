@@ -7,6 +7,9 @@
  */
 export default function getDeepValue<Data>(data: Data, selector: string): unknown {
     let value: any = data;
+    if (selector === "") {
+        return data;
+    }
     selector.split(".").forEach((property) => {
         if (Array.isArray(value) && !isNaN(Number(property))) {
             const index = Number(property);
@@ -14,7 +17,7 @@ export default function getDeepValue<Data>(data: Data, selector: string): unknow
         } else if (typeof value === "object" && value !== null && property in value) {
             value = value[property];
         } else {
-            return undefined;
+            value = undefined;
         }
     });
 

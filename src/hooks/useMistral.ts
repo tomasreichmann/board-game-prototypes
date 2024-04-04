@@ -3,7 +3,7 @@ import { ChatCompletionResponse } from "@mistralai/mistralai";
 
 import { useLocalSettings } from "./useLocalSettings";
 import { useLocalStorage } from "./useLocalStorage";
-import Mistral, { MistralChatOptionsType, MistralModelEnum } from "../services/Mistral/Mistral";
+import MistralClient, { MistralChatOptionsType, MistralModelEnum } from "../services/Mistral/Mistral";
 
 const NO_KEY_ERROR = "No Mistral key provided. Set it in settings.";
 
@@ -75,7 +75,7 @@ export const useMistral = ({
         if (!mistralKey) {
             return null;
         }
-        return Mistral(mistralKey);
+        return MistralClient(mistralKey);
     }, [mistralKey]);
 
     const chatOptions = useMemo(() => {

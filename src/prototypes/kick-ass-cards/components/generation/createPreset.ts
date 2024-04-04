@@ -1,9 +1,9 @@
-import { AnyRecord } from "../content/Form";
+import { AnyRecord } from "../../../../utils/simpleTypes";
 import { PresetType } from "./stepGeneratorTypes";
 
 const createPreset = <T extends AnyRecord>(
     name: PresetType<T>["name"],
-    scheme: PresetType<T>["scheme"],
+    meta: PresetType<T>["meta"],
     Component: PresetType<T>["Component"],
     componentName: PresetType<T>["componentName"],
     defaultProps: PresetType<T>["defaultProps"] = {},
@@ -12,7 +12,8 @@ const createPreset = <T extends AnyRecord>(
     propPrompts: PresetType<T>["propPrompts"] = {}
 ): PresetType<any> => ({
     name,
-    scheme,
+    scheme: meta.schema,
+    meta,
     Component,
     componentName,
     defaultProps,

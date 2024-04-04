@@ -1,10 +1,9 @@
-import ActorCard from "../../components/gameComponents/ActorCard";
+import ActorCard, { actorCardMeta } from "../../components/gameComponents/ActorCard";
 import createPreset from "../../components/generation/createPreset";
-import dogScheme from "../../generators/schemes/dogScheme";
 
 const dogPreset = createPreset(
     "Dog",
-    dogScheme,
+    actorCardMeta,
     ActorCard,
     "Actor",
     {

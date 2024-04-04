@@ -1,3 +1,4 @@
+import ai from "./media/ai.svg";
 import arrowLeft from "./media/arrow-left.svg";
 import arrowRight from "./media/arrow-right.svg";
 import backpack from "./media/backpack.svg";
@@ -146,6 +147,7 @@ import woodBeam from "./media/wood-beam.svg";
 import woodenCrate from "./media/wooden-crate.svg";
 
 export const iconMap = {
+    ai,
     arrowLeft,
     arrowRight,
     backpack,

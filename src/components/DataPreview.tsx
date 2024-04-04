@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import safeStringify from "../utils/safeStringify";
 
 export type DataPreviewProps = {
     data: any;
@@ -13,7 +14,7 @@ export default function DataPreview({ data, className }: DataPreviewProps) {
                 className
             )}
         >
-            {JSON.stringify(data, null, 2)}
+            {safeStringify(data, null, 2)}
         </pre>
     );
 }

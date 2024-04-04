@@ -1,6 +1,7 @@
+import { AnyRecord } from "../../../../utils/simpleTypes";
 import { DeepRandomType } from "../../generators/resolveRandom";
-import { AnyRecord } from "../content/Form";
 import { PropsWithAiPrefixes } from "./ComponentMetaEditor";
+import ComponentMetaType from "./ComponentMetaType";
 
 export enum StepEnum {
     Preset = "Preset",
@@ -26,6 +27,7 @@ export type StepGeneratorStateType = {
 export type PresetType<T extends AnyRecord> = {
     name: string;
     scheme: DeepRandomType<T>;
+    meta: ComponentMetaType<T>;
     Component: React.ComponentType<T>;
     componentName: string;
     propPrompts?: PropsWithAiPrefixes<{ [key in keyof T]?: string }>;

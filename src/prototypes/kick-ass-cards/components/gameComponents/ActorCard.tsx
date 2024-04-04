@@ -28,15 +28,10 @@ export type ActorCardProps = React.PropsWithChildren<
         Partial<PaperProps>
 >;
 
-export const actorCardSchema: JSONSchemaType<any> = {
+export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof PaperProps | "ImageComponent">> = {
     title: "ActorCard",
     type: "object",
     properties: {
-        className: {
-            title: "Class Name",
-            type: "string",
-            nullable: true,
-        },
         forPrint: {
             title: "For Print",
             type: "boolean",
@@ -94,6 +89,11 @@ export const actorCardSchema: JSONSchemaType<any> = {
             type: "number",
             nullable: true,
         },
+        gender: {
+            title: "Gender",
+            type: "string",
+            nullable: true,
+        },
 
         threat: {
             title: "Threat",
@@ -118,22 +118,6 @@ export const actorCardSchema: JSONSchemaType<any> = {
         hideCounter: {
             title: "Hide Counter",
             type: "boolean",
-            nullable: true,
-        },
-        children: {
-            title: "Children",
-            type: "string",
-            nullable: true,
-        },
-        bleedMm: {
-            title: "Bleed",
-            type: "number",
-            nullable: true,
-        },
-        size: {
-            title: "Size",
-            type: "string",
-            enum: Object.keys(cardSizes),
             nullable: true,
         },
     },
@@ -166,7 +150,7 @@ export const actorCardMeta: ComponentMetaType<ActorCardProps> = {
             },
         },
     },
-    schema: actorCardSchema,
+    schema: actorCardSchema as any, // TODO: fix,
 };
 
 export default function ActorCard({

@@ -1,4 +1,4 @@
-import ActorCard, { ActorCardProps } from "../../components/gameComponents/ActorCard";
+import ActorCard, { ActorCardProps, actorCardMeta } from "../../components/gameComponents/ActorCard";
 import createPreset from "../../components/generation/createPreset";
 import { DeepRandomType } from "../resolveRandom";
 
@@ -38,7 +38,7 @@ const actorOptions: DeepRandomType<Partial<ActorCardProps & { gender: GenderEnum
 
 const actorPreset = createPreset<ActorCardProps>(
     "Actor",
-    actorOptions,
+    actorCardMeta,
     ActorCard,
     "Actor",
     {

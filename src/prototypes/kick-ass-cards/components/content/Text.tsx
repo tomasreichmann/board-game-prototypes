@@ -104,7 +104,7 @@ export const textMeta: ComponentMetaType<TextProps> = {
             },
         },
     },
-    schema: textSchema,
+    schema: textSchema as JSONSchemaType<TextProps>,
 };
 
 export default function Text({

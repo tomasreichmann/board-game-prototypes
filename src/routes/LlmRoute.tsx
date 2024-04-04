@@ -91,7 +91,7 @@ export default function LlmRoute() {
     const [mistralOptions, setMistralOptions] = useState<MistralOptionsType>({
         model: MistralModelEnum["open-mistral-7b"],
         includeHistoryLength: 0,
-        format: MistralFormatEnum.json_object,
+        // format: MistralFormatEnum.json_object,
         temperature: 0.7,
         topP: 1,
         maxTokens: 500,

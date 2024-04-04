@@ -122,7 +122,7 @@ export default function PreviewCode({ className, children }: PreviewCodeProps) {
                                 />
                             </div>
                             <ComponentMetaEditor
-                                {...assetCardMeta}
+                                {...preset.meta}
                                 componentName={preset.componentName}
                                 Component={preset.Component}
                                 initialProps={props}

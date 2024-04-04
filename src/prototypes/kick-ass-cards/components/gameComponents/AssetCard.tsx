@@ -6,7 +6,6 @@ import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import Image from "../Image";
 import { twMerge } from "tailwind-merge";
-import { cardSizes } from "../../../../components/print/paperSizes";
 import ComponentMetaType from "../generation/ComponentMetaType";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 
@@ -24,25 +23,14 @@ export type AssetCardProps = React.PropsWithChildren<
         Partial<Pick<AssetType, OptionalKeysType> & Partial<PaperProps>>
 >;
 
-export const assetCardSchema: JSONSchemaType<any> = {
+export const assetCardSchema: JSONSchemaType<Omit<AssetCardProps, keyof PaperProps>> = {
     title: "AssetCard",
     type: "object",
     properties: {
-        className: {
-            title: "Class Name",
-            type: "string",
-            nullable: true,
-        },
-        size: {
-            title: "Size",
-            type: "string",
-            enum: Object.keys(cardSizes),
-            nullable: true,
-        },
         cornerIcon: {
             title: "Corner Icon",
             type: "string",
-            enum: Object.keys(iconMap),
+            // enum: Object.keys(iconMap),
             nullable: true,
         },
         cornerIconClassName: {
@@ -68,18 +56,15 @@ export const assetCardSchema: JSONSchemaType<any> = {
         title: {
             title: "Title",
             type: "string",
-            nullable: true,
         },
         icon: {
             title: "Icon",
             type: "string",
-            enum: Object.keys(iconMap),
-            nullable: true,
+            // enum: Object.keys(iconMap),
         },
         effect: {
             title: "Effect",
             type: "string",
-            nullable: true,
         },
         cost: {
             title: "Cost",
@@ -92,6 +77,7 @@ export const assetCardSchema: JSONSchemaType<any> = {
             nullable: true,
         },
     },
+    required: ["title"],
 };
 
 export const assetCardMeta: ComponentMetaType<AssetCardProps> = {
@@ -112,7 +98,7 @@ export const assetCardMeta: ComponentMetaType<AssetCardProps> = {
             },
         },
     },
-    schema: assetCardSchema,
+    schema: assetCardSchema as JSONSchemaType<AssetCardProps>,
 };
 
 const effectSizeClassNameMap: { [key in IconType]?: string } = {

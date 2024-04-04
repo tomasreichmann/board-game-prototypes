@@ -5,6 +5,7 @@ import { JSONSchemaType } from "ajv";
 type ComponentMetaType<PropType extends {}> = {
     componentName: string;
     description?: string;
+    sampleProps?: PropType;
     generationConfig: {
         llmContext?: string;
         llmOptions?: MistralOptionsType;
@@ -32,6 +33,6 @@ type ComponentMetaType<PropType extends {}> = {
         };
     };
     Component: React.ComponentType<PropType>;
-    schema: JSONSchemaType<any>;
+    schema: JSONSchemaType<PropType>;
 };
 export default ComponentMetaType;

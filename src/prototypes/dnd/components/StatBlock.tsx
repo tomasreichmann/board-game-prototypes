@@ -86,52 +86,65 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
     properties: {
         className: {
             type: "string",
+            title: "Class name",
             nullable: true,
         },
 
         name: {
             type: "string",
+            title: "Name",
         },
         imageUri: {
             type: "string",
+            title: "Image URI",
             nullable: true,
         },
         size: {
             type: "string",
+            title: "Size",
             enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"],
         },
         type: {
             type: "string",
+            title: "Type",
         },
         armorClass: {
             type: "number",
+            title: "Armor class",
         },
         hitPoints: {
             type: "number",
+            title: "Hit points",
         },
         speed: {
             type: "object",
             nullable: true,
+            title: "Speed",
             properties: {
                 walk: {
                     type: ["number", "string"],
                     nullable: true,
+                    title: "Walking speed",
                 },
                 burrow: {
                     type: ["number", "string"],
                     nullable: true,
+                    title: "Burrowing speed",
                 },
                 climb: {
                     type: ["number", "string"],
                     nullable: true,
+                    title: "Climbing speed",
                 },
                 fly: {
                     type: ["number", "string"],
                     nullable: true,
+                    title: "Flying speed",
                 },
                 swim: {
                     type: ["number", "string"],
                     nullable: true,
+                    title: "Swimming speed",
                 },
             },
             required: [],
@@ -151,48 +164,60 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
                 "Unaligned",
                 "Any alignment",
             ],
+            title: "Alignment",
         },
         armorType: {
             type: "string",
             nullable: true,
+            title: "Armor type",
         },
         abilityScores: {
             type: "object",
             properties: {
                 strength: {
                     type: "number",
+                    title: "Strength score",
                 },
                 dexterity: {
                     type: "number",
+                    title: "Dexterity score",
                 },
                 constitution: {
                     type: "number",
+                    title: "Constitution score",
                 },
                 intelligence: {
                     type: "number",
+                    title: "Intelligence score",
                 },
                 wisdom: {
                     type: "number",
+                    title: "Wisdom score",
                 },
                 charisma: {
                     type: "number",
+                    title: "Charisma score",
                 },
             },
             required: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
+            title: "Ability scores",
         },
         savingThrows: {
             type: "object",
             nullable: true,
+            title: "Saving throws",
             required: [],
         },
         skills: {
             type: "object",
             nullable: true,
+            title: "Skills",
             required: [],
         },
         vulnerabilities: {
             type: "array",
             nullable: true,
+            title: "Vulnerabilities",
             items: {
                 type: "string",
             },
@@ -200,6 +225,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         resistances: {
             type: "array",
             nullable: true,
+            title: "Resistances",
             items: {
                 type: "string",
             },
@@ -207,6 +233,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         immunities: {
             type: "array",
             nullable: true,
+            title: "Immunities",
             items: {
                 type: "string",
             },
@@ -214,19 +241,23 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         conditionImmunities: {
             type: "array",
             nullable: true,
+            title: "Condition immunities",
             items: {
                 type: "string",
             },
         },
         senses: {
             type: "object",
+            title: "Senses",
             properties: {
                 passive: {
                     type: "number",
+                    title: "Passive Perception",
                 },
                 special: {
                     type: "array",
                     nullable: true,
+                    title: "Special Senses",
                     items: {
                         type: "string",
                         enum: ["blindsight", "darkvision", "tremorsense", "truesight"],
@@ -238,6 +269,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         languages: {
             type: "array",
             nullable: true,
+            title: "Languages",
             items: {
                 type: "string",
             },
@@ -245,21 +277,26 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         telepathy: {
             nullable: true,
             type: "number",
+            title: "Telepathy",
         },
         challenge: {
             type: "number",
+            title: "Challenge",
         },
         traits: {
             type: "array",
             nullable: true,
+            title: "Traits",
             items: {
                 type: "object",
                 properties: {
                     name: {
                         type: "string",
+                        title: "Name",
                     },
                     description: {
                         type: "string",
+                        title: "Description",
                     },
                 },
                 required: ["name", "description"],
@@ -268,14 +305,17 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         actions: {
             type: "array",
             nullable: true,
+            title: "Actions",
             items: {
                 type: "object",
                 properties: {
                     name: {
                         type: "string",
+                        title: "Name",
                     },
                     description: {
                         type: "string",
+                        title: "Description",
                     },
                     attack: {
                         type: "object",
@@ -284,17 +324,21 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
                             type: {
                                 type: "string",
                                 enum: ["melee", "ranged"],
+                                title: "Type",
                             },
                             range: {
                                 type: ["number", "string"],
                                 nullable: true,
+                                title: "Range",
                             },
                             hit: {
                                 type: "string",
+                                title: "Hit",
                             },
                             miss: {
                                 type: "string",
                                 nullable: true,
+                                title: "Miss",
                             },
                         },
                         required: ["type", "hit"],
@@ -311,13 +355,16 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
                 properties: {
                     name: {
                         type: "string",
+                        title: "Name",
                     },
                     description: {
                         type: "string",
+                        title: "Description",
                     },
                 },
                 required: ["name", "description"],
             },
+            title: "Reactions",
         },
         legendaryActions: {
             type: "array",
@@ -327,25 +374,31 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
                 properties: {
                     name: {
                         type: "string",
+                        title: "Name",
                     },
                     description: {
                         type: "string",
+                        title: "Description",
                     },
                 },
                 required: ["name", "description"],
             },
+            title: "Legendary Actions",
         },
         lairActions: {
             type: "array",
             nullable: true,
+            title: "Lair Actions",
             items: {
                 type: "object",
                 properties: {
                     name: {
                         type: "string",
+                        title: "Name",
                     },
                     description: {
                         type: "string",
+                        title: "Description",
                     },
                 },
                 required: ["name", "description"],
@@ -354,6 +407,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         regionalEffects: {
             type: "string",
             nullable: true,
+            title: "Regional Effects",
         },
     },
     required: ["name", "size", "type", "armorClass", "hitPoints", "senses"],
@@ -374,7 +428,7 @@ export const statBlockSchemaWithGeneratedProps = {
 } as JSONSchemaType<any>;
 
 export const statBlockMeta: ComponentMetaType<StatBlockProps> = {
-    schema: statBlockSchema as JSONSchemaType<Omit<StatBlockProps, "children">>,
+    schema: statBlockSchema as JSONSchemaType<StatBlockProps>,
     componentName: "StatBlock",
     Component: StatBlock,
     generationConfig: {
@@ -408,15 +462,17 @@ export default function StatBlock({
     actions,
     ...restProps
 }: StatBlockProps) {
+    const hasImage = Boolean(imageUri || ("SD_imageUri" in restProps && restProps.SD_imageUri));
     return (
         <div
             className={twMerge(
-                "max-w-xl p-6 bg-white rounded-lg shadow-lg",
-                "grid grid-cols-1 gap-4 md:grid-cols-2",
+                "max-w-xl p-6 bg-white rounded-lg shadow-lg border-2 border-kac-steel-light",
+                "grid grid-cols-1 gap-4 ",
+                hasImage && "md:grid-cols-2",
                 className
             )}
         >
-            <div className="col-span-1">
+            <div className={twMerge("col-span-1")}>
                 <h2 className="text-2xl text-kac-blood">{name}</h2>
                 <p className="text-md text-kac-iron mt-1 italic">
                     {size} {type} {alignment && alignment !== "Unaligned" ? `, ${alignment}` : ""}
@@ -516,40 +572,45 @@ export default function StatBlock({
                 )}
                 <hr className="my-1 border-t-2 border-kac-blood" />
             </div>
-            <div className="col-span-1">
-                {imageUri && <img src={imageUri} alt="" className="h-full object-contain object-top" />}
-                {"SD_imageUri" in restProps && <p>{(restProps as any).SD_imageUri}</p>}
-            </div>
-            <div className="col-span-2 columns-2">
-                {traits?.map((trait) => (
-                    <div className="break-inside-avoid">
-                        <h3 className="text-sm font-bold text-kac-iron mb-1">{trait.name}</h3>
-                        <p className="text-sm">{trait.description}</p>
-                    </div>
-                ))}
-                {actions && actions.length > 0 && (
-                    <>
-                        <h3 className="text-lg font-bold text-kac-iron mt-2 mb-1 border-b-2 border-kac-blood break-after-avoid">
-                            Actions
-                        </h3>
-                        {actions.map((action) => (
+            {hasImage && (
+                <div className="col-span-1">
+                    {imageUri && <img src={imageUri} alt="" className="h-full object-contain object-top" />}
+                    {"SD_imageUri" in restProps && <p>{(restProps as any).SD_imageUri}</p>}
+                </div>
+            )}
+            {(traits && traits?.length > 0) ||
+                (actions && actions?.length > 0 && (
+                    <div className="col-span-2 columns-2">
+                        {traits?.map((trait) => (
                             <div className="break-inside-avoid">
-                                <h4 className="font-bold text-md mb-1 text-kac-iron">{action.name}</h4>
-                                <p className="text-sm">{action.description}</p>
-                                {action.attack && (
-                                    <div>
-                                        <h4 className="text-sm mb-1 mt-2">Attack</h4>
-                                        <p className="text-sm">
-                                            {`${action.attack.type} ${action.attack.range || ""}, `}
-                                            {action.attack.hit}, {action.attack.miss || ""}
-                                        </p>
-                                    </div>
-                                )}
+                                <h3 className="text-sm font-bold text-kac-iron mb-1">{trait.name}</h3>
+                                <p className="text-sm">{trait.description}</p>
                             </div>
                         ))}
-                    </>
-                )}
-            </div>
+                        {actions && actions.length > 0 && (
+                            <>
+                                <h3 className="text-lg font-bold text-kac-iron mt-2 mb-1 border-b-2 border-kac-blood break-after-avoid">
+                                    Actions
+                                </h3>
+                                {actions.map((action) => (
+                                    <div className="break-inside-avoid">
+                                        <h4 className="font-bold text-md mb-1 text-kac-iron">{action.name}</h4>
+                                        <p className="text-sm">{action.description}</p>
+                                        {action.attack && (
+                                            <div>
+                                                <h4 className="text-sm mb-1 mt-2">Attack</h4>
+                                                <p className="text-sm">
+                                                    {`${action.attack.type} ${action.attack.range || ""}, `}
+                                                    {action.attack.hit}, {action.attack.miss || ""}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                    </div>
+                ))}
         </div>
     );
 }

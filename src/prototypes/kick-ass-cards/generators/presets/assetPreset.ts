@@ -1,4 +1,4 @@
-import AssetCard, { AssetCardProps } from "../../components/gameComponents/AssetCard";
+import AssetCard, { AssetCardProps, assetCardMeta } from "../../components/gameComponents/AssetCard";
 import createPreset from "../../components/generation/createPreset";
 import { DeepRandomType } from "../resolveRandom";
 
@@ -179,7 +179,7 @@ const assetOptions: DeepRandomType<{ title: string; icon: string; effect: string
 
 const assetPreset = createPreset<AssetCardProps>(
     "Asset",
-    assetOptions,
+    assetCardMeta,
     AssetCard,
     "Asset",
     {

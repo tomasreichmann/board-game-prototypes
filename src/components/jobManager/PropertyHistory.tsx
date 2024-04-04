@@ -110,6 +110,29 @@ export default function PropertyHistory({ job, setJob }: PropertyHistoryProps) {
                                 Copy to prompt
                             </Button>
                         )}
+                        {message.role === "tool" && (
+                            <Button
+                                onClick={() =>
+                                    setJob((job) => {
+                                        if (!job) {
+                                            return job;
+                                        }
+                                        return {
+                                            ...job,
+                                            prompt:
+                                                typeof message.content === "string"
+                                                    ? message.content
+                                                    : safeStringify(message.content, null, 2),
+                                        } as JobType;
+                                    })
+                                }
+                                color="primary"
+                                variant="text"
+                                className="text-sm px-2 py-1"
+                            >
+                                Copy to prompt
+                            </Button>
+                        )}
                         {message.finishReason === "length" && (
                             <Text variant="body" className={twMerge("text-sm text-kac-blood-dark")}>
                                 <Icon icon="halt" className="w-4 h-4 mr-1" />

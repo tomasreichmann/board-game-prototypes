@@ -9,7 +9,7 @@ export default function Page({ className, NavigationComponent = Navigation, chil
     return (
         <div className={className}>
             <NavigationComponent />
-            <div className="flex-1 p-8 pt-0 flex flex-col">{children}</div>
+            <div className="flex-1 px-4 md:px-8 py-4 md:pb-8 flex flex-col">{children}</div>
         </div>
     );
 }

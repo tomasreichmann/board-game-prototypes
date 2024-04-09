@@ -11,6 +11,7 @@ const variants = cva(["Input", "w-full"], {
             password: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             email: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             number: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
+            range: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             date: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             datetime: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
             checkbox: ["bg-transparent", "border-b-2", "border-kac-steel", "focus:outline-0", "focus:border-kac-iron"],
@@ -42,6 +43,7 @@ export type InputProps = React.PropsWithChildren<{
     textareaProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
     type:
         | "number"
+        | "range"
         | "textarea"
         | "text"
         | "password"

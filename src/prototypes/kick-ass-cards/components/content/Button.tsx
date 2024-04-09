@@ -5,7 +5,15 @@ import { HTMLAttributes } from "react";
 const variants = cva(["Button"], {
     variants: {
         variant: {
-            text: ["underline", "bg-transparent", "hover:no-underline"],
+            text: [
+                "underline",
+                "bg-transparent",
+                "border",
+                "border-transparent",
+                "rounded-md",
+                "underline",
+                "hover:no-underline",
+            ],
             solid: [
                 "px-4",
                 "py-2",
@@ -38,7 +46,13 @@ const variants = cva(["Button"], {
         {
             variant: "solid",
             color: "primary",
-            className: ["bg-kac-gold-dark", "hover:bg-kac-gold", "hover:outline-kac-gold", "focus:outline-kac-gold"],
+            className: [
+                "bg-kac-gold-dark",
+                "hover:bg-kac-gold",
+                "hover:outline-kac-gold",
+                "focus:outline-kac-gold",
+                "hover:text-white",
+            ],
         },
         {
             variant: "solid",
@@ -48,6 +62,7 @@ const variants = cva(["Button"], {
                 "hover:bg-kac-blood",
                 "hover:outline-kac-blood",
                 "focus:outline-kac-blood",
+                "hover:text-white",
             ],
         },
         {
@@ -58,6 +73,7 @@ const variants = cva(["Button"], {
                 "hover:bg-kac-monster",
                 "hover:outline-kac-monster",
                 "focus:outline-kac-monster",
+                "hover:text-white",
             ],
         },
         {
@@ -68,6 +84,7 @@ const variants = cva(["Button"], {
                 "hover:bg-kac-cloth",
                 "hover:outline-kac-cloth",
                 "focus:outline-kac-cloth",
+                "hover:text-white",
             ],
         },
         {
@@ -131,6 +148,7 @@ const variants = cva(["Button"], {
 export type ButtonLinkType = {
     href: string;
     download?: string;
+    target?: string;
 } & HTMLAttributes<HTMLAnchorElement> &
     VariantProps<typeof variants>;
 

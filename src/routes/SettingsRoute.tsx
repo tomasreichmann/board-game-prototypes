@@ -1,5 +1,6 @@
 import Page from "../components/Page/Page";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { defaultSettings } from "../hooks/useLocalSettings";
 import Input from "../prototypes/kick-ass-cards/components/content/Input";
 import ToggleData from "../components/DataToggle";
 import camelCaseToTitleCase from "../utils/camelCaseToTitleCase";
@@ -17,8 +18,7 @@ export default function SettingsRoute() {
     const [settingsStore, setSettingsStore] = useLocalStorage(localSettingsKey);
 
     const settings = {
-        mistralKey: "",
-        sdUri: "http://127.0.0.1:7860/",
+        ...defaultSettings,
         ...(settingsStore || {}),
     };
 

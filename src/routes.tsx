@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 import LlmRoute from "./routes/LlmRoute";
 import SDRoute from "./routes/SDRoute";
 import LlmJobRoute from "./routes/LlmJobRoute";
+import AiHordeRoute from "./routes/AiHordeRoute";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -47,6 +48,11 @@ export const routes: RouteDefinition[] = [
         name: "SD",
         path: "/sd",
         Component: SDRoute,
+    },
+    {
+        name: "AI Horde",
+        path: "/ai-horde",
+        Component: AiHordeRoute,
     },
     {
         name: "Settings",

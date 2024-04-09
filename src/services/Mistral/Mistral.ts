@@ -1,15 +1,14 @@
 import MistralClient, { ChatCompletionResponseChoice, ResponseFormat, ToolCalls } from "@mistralai/mistralai";
-import { localSettingsKey } from "../../hooks/useLocalSettings";
+import { getSettingsKey, localSettingsKey } from "../../hooks/useLocalSettings";
 import { JSONSchemaType } from "ajv";
 
 const getMistralKeyFromLocalSettings = () => {
     // localSettingsKey
-    const localSettings = localStorage.getItem(localSettingsKey);
-    if (localSettings) {
-        const { mistralKey } = JSON.parse(localSettings);
-        return mistralKey as string;
+    const key = getSettingsKey("mistralKey");
+    if (!key) {
+        console.warn("Local settings not found");
     }
-    throw new Error("Local settings not found");
+    return key;
 };
 
 export type MistralServiceOptionsType = {
@@ -70,7 +69,7 @@ const modelsWithToolCallSupport = [
 ];
 
 // Service type
-const MistralService = ({ mistralKey = getMistralKeyFromLocalSettings() }: MistralServiceOptionsType = {}) => {
+const MistralService = ({ mistralKey = getMistralKeyFromLocalSettings() || "" }: MistralServiceOptionsType = {}) => {
     const client = new MistralClient(mistralKey);
 
     const chat = (
@@ -88,6 +87,10 @@ const MistralService = ({ mistralKey = getMistralKeyFromLocalSettings() }: Mistr
             ...restOptions
         }: MistralChatOptionsType
     ) => {
+        if (!mistralKey) {
+            console.error("Mistral key not found");
+            return Promise.reject("Mistral key not found");
+        }
         console.log({ toolChoice, tools });
 
         const includedHistory = includeHistoryLength > 0 ? history.slice(-includeHistoryLength) : [];

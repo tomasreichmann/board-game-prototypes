@@ -20,6 +20,9 @@ import path from "path";
 
 export default defineConfig(() => {
     return {
+        define: {
+            "process.env": {},
+        },
         build: {
             commonjsOptions: {
                 include: ["tailwind-config.cjs", "node_modules/**"],

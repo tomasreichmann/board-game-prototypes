@@ -212,7 +212,7 @@ export default function LlmJobRoute() {
         setIsPending(false);
 
         setJob((job) => {
-            if (!job) {
+            if (!job || !llmClient) {
                 return job;
             }
             const focusPointer = job.focusPointer || "";

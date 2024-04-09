@@ -11,8 +11,8 @@ export const updateState = <StoreType>(rawData: string | null, setter: (data: St
     setter(parseStoredData<StoreType>(rawData));
 };
 
-export const useLocalStorage = <StoreType>(storageKey: string | null) => {
-    const initialState = storageKey ? () => parseStoredData<StoreType>(getStoredData(storageKey)) : null;
+export const useLocalStorage = <StoreType>(storageKey: string | null, defaultValue: StoreType | null = null) => {
+    const initialState = storageKey ? () => parseStoredData<StoreType>(getStoredData(storageKey)) : defaultValue;
     const [storeData, setStoreData] = useState<StoreType | null>(initialState);
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import ToggleData from "../components/DataToggle";
 import { SyntheticEvent, useCallback, useState } from "react";
 import Button from "../prototypes/kick-ass-cards/components/content/Button";
 import Pending from "../components/form/Pending";
-import { SDOptionsType, useSD } from "../hooks/useSD";
+import { useSD } from "../hooks/useSD";
 import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
 import { InputProps } from "../prototypes/kick-ass-cards/components/content/Input";
 import Text from "../prototypes/kick-ass-cards/components/content/Text";
@@ -13,30 +13,8 @@ import sdApiSchema from "../schemas/sdApiSchema";
 import Form from "../prototypes/kick-ass-cards/components/content/Form";
 import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
 import copyToClipboard from "../utils/copyToClipboard";
-
-const base64ToUrl = (base64: string) => {
-    return `data:image/png;base64,${base64}`;
-};
-
-const stringToSafeFileName = (str: string) => {
-    return str
-        .replace(/\s+/g, "-") // Replace spaces with -
-        .replace(/[^\w\-]+/g, "") // Remove all non-word chars
-        .replace(/\-\-+/g, "-") // Replace multiple - with single -
-        .replace(/^-+/, "") // Trim - from start of text
-        .replace(/-+$/, ""); // Trim - from end of text
-};
-
-const openImageInNewTab = (url: string) => {
-    const tabRef = window.open("about:blank");
-    const image = new Image();
-    image.src = url;
-    setTimeout(function () {
-        if (tabRef) {
-            tabRef.document.getElementsByTagName("body")[0].innerHTML = image.outerHTML;
-        }
-    }, 0);
-};
+import { stringToFileName } from "../utils/stringToFilename";
+import openImageInNewTab from "../utils/openImageInNewTab";
 
 const smallButtonClassName = "px-2 py-1 rounded-md text-xs";
 
@@ -146,7 +124,7 @@ export default function SDRoute() {
                                                                 />
                                                                 <Button
                                                                     href={imageUri}
-                                                                    download={`image-${stringToSafeFileName(
+                                                                    download={`image-${stringToFileName(
                                                                         historyItem?.response?.parameters?.prompt +
                                                                             "-" +
                                                                             historyItem?.requestId +

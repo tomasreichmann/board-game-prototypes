@@ -7,28 +7,71 @@ import Pending from "../components/form/Pending";
 import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
 import Text from "../prototypes/kick-ass-cards/components/content/Text";
 import { useAiHorde } from "../hooks/useAiHorde";
-import { HistoryItemType } from "../services/AiHorde/aiHordeTypes";
+import { GenerationStablePresetOptionType, HistoryItemType } from "../services/AiHorde/aiHordeTypes";
 import GeneratedImage from "../components/form/GeneratedImage";
 import { range } from "lodash";
 import openImageInNewTab from "../utils/openImageInNewTab";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import TextPreview from "../components/content/TextPreview";
-import { generationOptionsDefaults } from "../services/AiHorde/AiHorde";
+import { generationOptionsDefaults, presets } from "../services/AiHorde/AiHorde";
 import Select from "../prototypes/kick-ass-cards/components/content/Select";
 import Input from "../prototypes/kick-ass-cards/components/content/Input";
 import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
 
-export const AiHordeHistoryStorageKey = "ai-horde-history";
-export const AiHordeOptionsStorageKey = "ai-horde-options";
+export const AiHordeConfigStorageKey = "ai-horde-config";
 const negativePromptDelimiter = " ### ";
+
+type AiHordeConfig = {
+    history: HistoryItemType[];
+    options: typeof generationOptionsDefaults;
+    selectedPresetLabel?: string;
+};
+
+const defaultConfig: AiHordeConfig = {
+    history: [],
+    options: generationOptionsDefaults,
+};
+
+const presetOptions = [
+    { label: "", value: "" },
+    ...presets.map((options) => ({
+        label: options.label,
+        value: options.label,
+    })),
+];
 
 export default function AiHordeRoute() {
     const { generateImage, getPendingPropsFromCheck } = useAiHorde();
-    const [historyOrNull, setHistory] = useLocalStorage(AiHordeHistoryStorageKey, [] as HistoryItemType[]);
-    const history = historyOrNull || [];
-    const [optionsOrNull, setOptions] = useLocalStorage(AiHordeOptionsStorageKey, generationOptionsDefaults);
-    const options = optionsOrNull || generationOptionsDefaults;
+    const [configOrNull, setConfig] = useLocalStorage(AiHordeConfigStorageKey, defaultConfig);
+    const config = configOrNull || defaultConfig;
+    const { options, history } = config;
     const [prompt = "", negativePrompt = ""] = (options.prompt || "").split(negativePromptDelimiter);
+
+    const setHistory = useCallback(
+        (history: HistoryItemType[] | ((history: HistoryItemType[]) => HistoryItemType[])) => {
+            const setter = typeof history === "function" ? history : () => history;
+            setConfig((configOrNull) => {
+                const config = configOrNull || defaultConfig;
+                return { ...config, history: setter(config.history) };
+            });
+        },
+        [setConfig]
+    );
+
+    const setOptions = useCallback(
+        (
+            options:
+                | typeof generationOptionsDefaults
+                | ((options: typeof generationOptionsDefaults) => typeof generationOptionsDefaults)
+        ) => {
+            const setter = typeof options === "function" ? options : () => options;
+            setConfig((configOrNull) => {
+                const config = configOrNull || defaultConfig;
+                return { ...config, options: setter(config.options) };
+            });
+        },
+        [setConfig]
+    );
 
     const setOptionProperty = useCallback(
         (property: keyof typeof generationOptionsDefaults, value: any) => {
@@ -191,9 +234,9 @@ export default function AiHordeRoute() {
                                     );
                                 })}
                                 <ToggleData
-                                    data={history}
+                                    data={config}
                                     initialCollapsed
-                                    buttonContent="Show All History Data"
+                                    buttonContent="Show All Config Data"
                                     className="max-w-full text-xs font-kacHeading mt-4"
                                     buttonProps={{ size: "xs" }}
                                     previewClassName="max-h-[20vh] max-w-full"
@@ -261,7 +304,34 @@ export default function AiHordeRoute() {
                         >
                             Clear History
                         </ButtonWithConfirmation>
-                        {/* TODO: Implement presets, size, steps, cfg */}
+                        <ButtonWithConfirmation
+                            color="danger"
+                            className="flex-1 text-sm max-w-64"
+                            onClick={() => setOptions(generationOptionsDefaults)}
+                        >
+                            Reset Options
+                        </ButtonWithConfirmation>
+                        <Select
+                            options={presetOptions}
+                            value=""
+                            label="Apply Preset"
+                            onChange={(event) =>
+                                setOptions((prevOptions) => {
+                                    const selectedPreset = presets.find(
+                                        (preset) => preset.label === event.target.value
+                                    );
+                                    if (!selectedPreset) {
+                                        console.error("No preset found for", event.target.value);
+                                        return prevOptions;
+                                    }
+                                    return {
+                                        ...prevOptions,
+                                        ...selectedPreset.preset,
+                                        params: { ...prevOptions.params, ...selectedPreset.preset.params },
+                                    };
+                                })
+                            }
+                        />
                         <Input
                             type="range"
                             label={"Images " + (options?.params?.n ?? 1)}

@@ -29,7 +29,7 @@ const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
 
 export const routes: RouteDefinition[] = [
     {
-        name: "Home",
+        name: "Board Game Prototypes",
         path: "/",
         Component: IndexRoute,
     },

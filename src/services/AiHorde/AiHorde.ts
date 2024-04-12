@@ -38,7 +38,7 @@ export const deliberate3_sd15PresetOption: GenerationStablePresetOptionType = {
 };
 
 export const albedobase_sdxlPresetOption: GenerationStablePresetOptionType = {
-    label: "AlbedoBase XL (SDXL)",
+    label: "AlbedoBase XL",
     preset: {
         models: ["AlbedoBase XL (SDXL)"],
         params: {
@@ -52,7 +52,7 @@ export const albedobase_sdxlPresetOption: GenerationStablePresetOptionType = {
 };
 
 export const icbinp_sdxlPresetOption: GenerationStablePresetOptionType = {
-    label: "ICBINP - I Can't Believe It's Not Photography",
+    label: "ICBINP",
     preset: {
         models: ["ICBINP - I Can't Believe It's Not Photography"],
         params: {
@@ -66,7 +66,7 @@ export const icbinp_sdxlPresetOption: GenerationStablePresetOptionType = {
 };
 
 export const stableCascadePresetOption: GenerationStablePresetOptionType = {
-    label: "Stable Cascade 1.0",
+    label: "Stable Cascade",
     preset: {
         models: ["Stable Cascade 1.0"],
         params: {
@@ -118,11 +118,17 @@ export const presets = [
     stableCascadePresetOption,
 ];
 
+const publicApiKey = "0000000000";
+
 const AiHorde = (initialConfig: AiHordeConfigType = {}) => {
     const config = {
-        apiKey: initialConfig.apiKey || getSettingsKey("aiHordeToken") || "0000000000",
+        apiKey: initialConfig.apiKey || getSettingsKey("aiHordeToken") || publicApiKey,
         clientAgent: initialConfig.clientAgent || clientAgent,
         apiUri: initialConfig.apiUri || "https://aihorde.net/api/v2",
+    };
+
+    const isPublicApiKey = () => {
+        return config.apiKey === publicApiKey;
     };
 
     const getHeaders = (fieldsMask?: string) => {
@@ -315,6 +321,7 @@ const AiHorde = (initialConfig: AiHordeConfigType = {}) => {
     };
 
     return {
+        isPublicApiKey,
         generateImage,
         postImageGeneration,
         checkImageGenerationStatus,

@@ -3,11 +3,10 @@ import Page from "../components/Page/Page";
 import ToggleData from "../components/DataToggle";
 import { useCallback } from "react";
 import Button from "../prototypes/kick-ass-cards/components/content/Button";
-import Pending from "../components/form/Pending";
 import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
 import Text from "../prototypes/kick-ass-cards/components/content/Text";
 import { useAiHorde } from "../hooks/useAiHorde";
-import { GenerationStablePresetOptionType, HistoryItemType } from "../services/AiHorde/aiHordeTypes";
+import { HistoryItemType } from "../services/AiHorde/aiHordeTypes";
 import GeneratedImage from "../components/form/GeneratedImage";
 import { range } from "lodash";
 import openImageInNewTab from "../utils/openImageInNewTab";
@@ -41,7 +40,7 @@ const presetOptions = [
 ];
 
 export default function AiHordeRoute() {
-    const { generateImage, getPendingPropsFromCheck } = useAiHorde();
+    const { generateImage, getPendingPropsFromCheck, isPublicApiKey } = useAiHorde();
     const [configOrNull, setConfig] = useLocalStorage(AiHordeConfigStorageKey, defaultConfig);
     const config = configOrNull || defaultConfig;
     const { options, history } = config;
@@ -173,6 +172,16 @@ export default function AiHordeRoute() {
                     agents to generate images using Stable Diffusion. Images are hosted on Cloudflare for as little as
                     10 minutes, so make sure to <strong>save them locally</strong>.
                 </TextPreview>
+                {isPublicApiKey() && (
+                    <Text variant="body" color="danger" className="mt-2">
+                        ⚠️ This app is using a public API key. The generation will take quite a bit longer. Set a
+                        private API key in{" "}
+                        <Button variant="text" href="/settings" className="underline">
+                            Settings
+                        </Button>
+                        .
+                    </Text>
+                )}
             </Text>
             <div className="relative flex-1 flex flex-col items-center">
                 <div className="flex-1 flex flex-col gap-4 w-full pb-2">
@@ -233,14 +242,24 @@ export default function AiHordeRoute() {
                                         </div>
                                     );
                                 })}
-                                <ToggleData
-                                    data={config}
-                                    initialCollapsed
-                                    buttonContent="Show All Config Data"
-                                    className="max-w-full text-xs font-kacHeading mt-4"
-                                    buttonProps={{ size: "xs" }}
-                                    previewClassName="max-h-[20vh] max-w-full"
-                                />
+                                <div className="flex flex-row flex-wrap gap-4">
+                                    <ToggleData
+                                        data={config.history}
+                                        initialCollapsed
+                                        buttonContent="Show History"
+                                        className="max-w-full text-xs font-kacHeading"
+                                        buttonProps={{ size: "xs" }}
+                                        previewClassName="max-h-[20vh] max-w-full"
+                                    />
+                                    <ToggleData
+                                        data={config.options}
+                                        initialCollapsed
+                                        buttonContent="Show Options"
+                                        className="max-w-full text-xs font-kacHeading"
+                                        buttonProps={{ size: "xs" }}
+                                        previewClassName="max-h-[20vh] max-w-full"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -313,6 +332,8 @@ export default function AiHordeRoute() {
                         </ButtonWithConfirmation>
                         <Select
                             options={presetOptions}
+                            className="max-w-32 text-xs"
+                            labelClassName="text-xs"
                             value=""
                             label="Apply Preset"
                             onChange={(event) =>

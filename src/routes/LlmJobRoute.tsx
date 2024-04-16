@@ -399,7 +399,7 @@ export default function LlmJobRoute() {
                                         }
                                         const newData = setDeepValue(
                                             job?.data,
-                                            job?.focusPointer || "",
+                                            getDeepPointer(job?.focusPointer || ""),
                                             job?.schema,
                                             newValue
                                         );

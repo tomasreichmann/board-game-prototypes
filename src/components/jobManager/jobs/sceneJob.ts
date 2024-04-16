@@ -8,6 +8,12 @@ const sceneJob: JobType = {
     data: {},
     previewMeta: sceneMeta,
     schema: sceneMeta.schema as JSONSchemaType<any>, // TODO: fix this
+    includeFocusInfo: true,
+    includeJobInfo: true,
+    pointer: "",
+    pointersToGenerate: {},
+    pointersToInclude: {},
+    relatedProperties: [],
     descriptions: {
         title: "Name of the scene capturing the basic essence with 1 world or 1 sentence. Plaintext format",
         context: "What is the whole artwork about. Markdown format",

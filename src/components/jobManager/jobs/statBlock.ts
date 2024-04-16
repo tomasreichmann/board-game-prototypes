@@ -9,6 +9,12 @@ const statBlockJob: JobType = {
     data: {},
     previewMeta: statBlockMeta,
     schema: statBlockMeta.schema as JSONSchemaType<any>,
+    includeFocusInfo: true,
+    includeJobInfo: true,
+    pointer: "",
+    pointersToGenerate: {},
+    pointersToInclude: {},
+    relatedProperties: [],
     descriptions: {
         SD_imageUri: "Stable Diffusion XL prompt",
     },

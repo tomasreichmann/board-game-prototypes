@@ -9,6 +9,7 @@ import LlmRoute from "./routes/LlmRoute";
 import SDRoute from "./routes/SDRoute";
 import LlmJobRoute from "./routes/LlmJobRoute";
 import AiHordeRoute from "./routes/AiHordeRoute";
+import LlmJobRoute2 from "./routes/LlmJobRoute2";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -43,6 +44,11 @@ export const routes: RouteDefinition[] = [
         name: "LLM Job",
         path: "/llm-job",
         Component: LlmJobRoute,
+    },
+    {
+        name: "LLM Job 2",
+        path: "/llm-job-2",
+        Component: LlmJobRoute2,
     },
     {
         name: "SD",

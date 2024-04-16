@@ -12,13 +12,22 @@ type JobType = {
     descriptions?: {
         [key: string]: string;
     };
-    focusedProperty?: string | null;
-    focusPointer?: string | null;
+    pointer: string; // updated pointer where "" is root, e.g. "key.subKey.0"
+    pointersToGenerate: { [key: string]: true | undefined };
+    pointersToInclude: { [key: string]: true | undefined };
+    relatedProperties: JSONSchemaType<any>[];
+    includeJobInfo: boolean;
+    includeFocusInfo: boolean;
+    forceToolCall?: boolean;
+    error?: Error;
     prompt?: string;
     history: {
         [key: string]: MessageType[];
     };
-    forceToolCall?: boolean;
+
+    // deprecated
+    focusedProperty?: string | null;
+    focusPointer?: string | null;
     chatOptions?: Partial<MistralChatOptionsType>;
     propertiesToGenerate?: {
         [key: string]: boolean;

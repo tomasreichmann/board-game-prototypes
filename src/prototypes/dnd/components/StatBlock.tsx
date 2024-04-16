@@ -5,10 +5,10 @@ import ComponentMetaType from "../../kick-ass-cards/components/generation/Compon
 
 export type StatBlockProps = PropsWithChildren<{
     className?: string;
-    name: string;
+    name?: string;
     imageUri?: string;
-    size: "Tiny" | "Small" | "Medium" | "Large" | "Huge" | "Gargantuan";
-    type: string;
+    size?: "Tiny" | "Small" | "Medium" | "Large" | "Huge" | "Gargantuan";
+    type?: string;
     alignment:
         | "Lawful Good"
         | "Neutral Good"
@@ -21,7 +21,7 @@ export type StatBlockProps = PropsWithChildren<{
         | "Chaotic Evil"
         | "Unaligned"
         | "Any alignment";
-    armorClass: number;
+    armorClass?: number;
     armorType?: string;
     hitPoints: number;
     speed?: {
@@ -31,7 +31,7 @@ export type StatBlockProps = PropsWithChildren<{
         fly?: number | string;
         swim?: number | string;
     };
-    abilityScores: {
+    abilityScores?: {
         strength: number;
         dexterity: number;
         constitution: number;
@@ -45,7 +45,7 @@ export type StatBlockProps = PropsWithChildren<{
     resistances?: string[];
     immunities?: string[];
     conditionImmunities?: string[];
-    senses: {
+    senses?: {
         passive: number;
         special?: ("blindsight" | "darkvision" | "tremorsense" | "truesight")[];
     };
@@ -93,6 +93,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         name: {
             type: "string",
             title: "Name",
+            nullable: true,
         },
         imageUri: {
             type: "string",
@@ -103,14 +104,17 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
             type: "string",
             title: "Size",
             enum: ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"],
+            nullable: true,
         },
         type: {
             type: "string",
             title: "Type",
+            nullable: true,
         },
         armorClass: {
             type: "number",
             title: "Armor class",
+            nullable: true,
         },
         hitPoints: {
             type: "number",
@@ -199,6 +203,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
                     title: "Charisma score",
                 },
             },
+            nullable: true,
             required: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
             title: "Ability scores",
         },
@@ -249,6 +254,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
         senses: {
             type: "object",
             title: "Senses",
+            nullable: true,
             properties: {
                 passive: {
                     type: "number",
@@ -410,7 +416,7 @@ export const statBlockSchema: JSONSchemaType<Omit<StatBlockProps, "children">> =
             title: "Regional Effects",
         },
     },
-    required: ["name", "size", "type", "armorClass", "hitPoints", "senses"],
+    required: [],
 };
 
 export const statBlockSchemaWithGeneratedProps = {

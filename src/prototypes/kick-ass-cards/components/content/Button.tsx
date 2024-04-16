@@ -130,7 +130,7 @@ const variants = cva(["Button"], {
         {
             disabled: true,
             variant: "text",
-            className: ["bg-kac-steel-dark"],
+            className: ["text-kac-steel-dark", "hover:text-kac-steel-dark", "hover:border-kac-steel-dark"],
         },
         {
             disabled: true,

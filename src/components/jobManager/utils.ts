@@ -20,6 +20,27 @@ export const getDeepPointer = (focusPointer: string) => {
     );
 };
 
+export const getSchemaAtDeepPointer = (schema: JSONSchemaType<any>, deepPointer: string, delimiter = ".") => {
+    console.log("getSchemaAtDeepPointer", { schema, deepPointer });
+    const pointerFragments = deepPointer.split(delimiter);
+    if (pointerFragments.length === 0) {
+        return schema;
+    }
+    let pointerFragmentsLeft = pointerFragments;
+    let currentFragment;
+    let currentSchema = schema;
+    while ((currentFragment = pointerFragmentsLeft.shift())) {
+        const lastSchemaType = currentSchema.type;
+        if (lastSchemaType === "object") {
+            currentSchema = currentSchema.properties[currentFragment];
+        }
+        if (lastSchemaType === "array") {
+            currentSchema = currentSchema.items;
+        }
+    }
+    return currentSchema;
+};
+
 export const getSchemaAtPointer = (schema: JSONSchemaType<any>, focusPointer?: string | null) => {
     if (!focusPointer || focusPointer === "/") {
         return schema;
@@ -28,6 +49,13 @@ export const getSchemaAtPointer = (schema: JSONSchemaType<any>, focusPointer?: s
         | JSONSchemaType<any>
         | null
         | undefined;
+};
+
+export const appendKeyToDeepPointer = (deepPointer: string, key: string, delimiter = ".") => {
+    if (deepPointer === "") {
+        return key;
+    }
+    return [deepPointer, key].join(delimiter);
 };
 
 export const pointerToDeepValueSelector = (pointer: string) =>

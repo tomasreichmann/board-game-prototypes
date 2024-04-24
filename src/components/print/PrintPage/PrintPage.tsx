@@ -3,6 +3,7 @@ import clsx from "clsx";
 import paperSizes from "../paperSizes";
 
 import "./PrintPage.css";
+import { PaperProps } from "../Paper/Paper";
 
 export type PrintPageProps = React.PropsWithChildren<{
     className?: string;
@@ -11,20 +12,26 @@ export type PrintPageProps = React.PropsWithChildren<{
     sizeInMm?: number[];
     marginsInMm?: number[];
     bleedInMm?: number;
+    orientation?: PaperProps["orientation"];
 }>;
 
 export default function PrintPage({
     className,
     contentClassName,
     size = "A4",
+    orientation = "portrait",
     sizeInMm = paperSizes[size].mm,
     marginsInMm = [10, 10, 10, 10],
     bleedInMm = 3,
     children,
 }: PrintPageProps) {
+    const widthSizeIndex = orientation === "portrait" ? 0 : 1;
+    const heightSizeIndex = orientation === "portrait" ? 1 : 0;
+    const widthMm = sizeInMm[widthSizeIndex];
+    const heightMm = sizeInMm[heightSizeIndex];
     const pageStyle: React.CSSProperties = {
-        "--PrintPage-width": sizeInMm[0] + "mm",
-        "--PrintPage-height": sizeInMm[1] + "mm",
+        "--PrintPage-width": widthMm + "mm",
+        "--PrintPage-height": heightMm + "mm",
         "--PrintPage-margin-top": marginsInMm[0] + "mm",
         "--PrintPage-margin-right": marginsInMm[1] + "mm",
         "--PrintPage-margin-bottom": marginsInMm[2] + "mm",
@@ -37,7 +44,7 @@ export default function PrintPage({
             <style>{`
 @media print {
   @page {
-    size: ${sizeInMm[0]}mm ${sizeInMm[1]}mm;
+    size: ${widthMm}mm ${heightMm}mm;
     margin: ${margin};
   }
 }

@@ -15,6 +15,7 @@ const LP = "Ledová pomsta";
 const LP_EN = "Cold Revenge";
 const ISV = "In Sanguine Veritas";
 const TOH = "Throne of Hawthorne";
+const B139 = "B-day #139 LARP";
 
 const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
     [key]: {
@@ -55,5 +56,8 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("TOH-c0-a0-GM-Info", "GM Info", TOH),
     ...makeEncounterDefinition("TOH-c1-a1-Audience-with-the-king", "Audience with the king", TOH),
     ...makeEncounterDefinition("TOH-c1-a2-On-The-Road-to-Spice", "On the Road to Špice", TOH),
+
+    ...makeEncounterDefinition("B139-info-cs", "Info", B139),
+    ...makeEncounterDefinition("B139-rules-cs", "Pravidla", B139),
 };
 console.log("encountersMap", encountersMap);

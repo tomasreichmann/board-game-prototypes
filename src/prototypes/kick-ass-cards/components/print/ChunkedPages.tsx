@@ -31,8 +31,8 @@ export default function ChunkedPages<T, B>({
         <>
             {chunk(items, itemsPerPage).map((pageItems, pageIndex) => {
                 const backPage = BackFaceComponent ? (
-                    <PrintPage key={"action-deck-page-" + pageIndex + "-back"} {...frontFacePrintPageProps}>
-                        <div className="flex flex-row-reverse flex-wrap content-center items-center justify-center">
+                    <PrintPage key={"chunked-back-page-" + pageIndex + "-back"} {...backFacePrintPageProps}>
+                        <div className="flex-1 flex flex-row-reverse flex-wrap content-start items-center justify-center">
                             {pageItems.map((item, itemIndex) => {
                                 const backFaceProps = getBackFaceProps ? getBackFaceProps(item) : item;
                                 return (
@@ -52,9 +52,9 @@ export default function ChunkedPages<T, B>({
                     </PrintPage>
                 ) : undefined;
                 return (
-                    <React.Fragment key={"action-deck-page-" + pageIndex}>
-                        <PrintPage key={"action-deck-page-" + pageIndex} {...backFacePrintPageProps}>
-                            <div className="flex flex-wrap content-center items-center justify-center">
+                    <React.Fragment key={"chunked-page-" + pageIndex}>
+                        <PrintPage key={"chunked-front-page-" + pageIndex} {...frontFacePrintPageProps}>
+                            <div className="flex-1 flex flex-wrap content-start items-center justify-center">
                                 {pageItems.map((item, itemIndex) => (
                                     <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item}>
                                         <PrintMarkerCorners />

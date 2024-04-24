@@ -52,6 +52,10 @@ export const assets = [
     { name: "Kredity na energeticky náročné zážitky ve virtuální realitě", types: ["Energie", "Luxus"] },
     { name: "Sbírka vzácných drahokamů a minerálů nejvyšší kvality", types: ["Suroviny", "Luxus"] },
     { name: "Šperky a umělecká díla s vysokou investiční hodnotou", types: ["Luxus", "Finance"] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
 ];
 
 export const roles = [
@@ -81,7 +85,8 @@ export const roles = [
     },
     {
         name: "Výzkumný pracovník AI",
-        organization: "Ascended intelligence",
+        organization: "Ascended Intelligence",
+        entity: "android",
         goals: [
             "Vyfoť si selfie s co nejvíce hosty najednou. Máš dva pokusy. (1 bod za každého unikátního hosta na obou fotkách)",
             "Podveď někoho, aby použil nějakou technologii nesmyslně. Např. aktivovat varnou konvici hlasem (3 body za každého podvedeného hosta)",
@@ -90,6 +95,7 @@ export const roles = [
     {
         name: "Hacker",
         organization: "Shadow Net",
+        entity: "mimozemšťan",
         goals: [
             "Zjistit od co nejvíce hostů jedno tajemství. (2 body za každého hosta)",
             "Zařiď ať na tebe mrkne co nejvíc hostů. (2 body za každého hosta)",
@@ -105,7 +111,7 @@ export const roles = [
     },
     {
         name: "Anarchistický buřič",
-        organizations: "Zatnutá pěst",
+        organization: "Zatnutá pěst",
         goals: [
             "Přesvědčit co nejvíce hostů, aby ti něco darovali. (2 body za každého hosta)",
             "Slož během co nejvíce hostům kompliment (1 bod za každého hosta)",
@@ -113,7 +119,7 @@ export const roles = [
     },
     {
         name: "Fotožurnalista",
-        organizations: "X Syndicate",
+        organization: "X Syndicate",
         goals: [
             "Vyfotit během večírku co nejvíce zajímavých situací. (2 body za každou fotku)",
             "Zjisti, kdy má co nejvíce hostů narozeniny a co na ně mají v plánu. (2 body za každého hosta)",
@@ -121,7 +127,7 @@ export const roles = [
     },
     {
         name: "PR Manager",
-        organizations: "TerraVita",
+        organization: "TerraVita",
         goals: [
             "Předvést co nejvíce hostům trik, nebo iluzí. (2 body za každý trik)",
             'Uvést co nejvíce hostů k úžasu ("Wow", "Dobře ty"). (3 body za každého hosta)',
@@ -129,7 +135,8 @@ export const roles = [
     },
     {
         name: "Fundraisingový specialista",
-        organizations: "Ascended intelligence",
+        organization: "Ascended Intelligence",
+        entity: "android",
         goals: [
             "Přesvěč co nejvíce hostů aby najednou udělali nějaký trik, třeba poskakovali na jedné noze (2 body za každého hosta)",
             "Přesvěč nejvíc lidí ať si dá group-hug. (2 body za každého hosta v group-hugu)",
@@ -137,7 +144,8 @@ export const roles = [
     },
     {
         name: "Risk Manažer",
-        organizations: "Shadow Net",
+        organization: "Shadow Net",
+        entity: "mimozemšťan",
         goals: [
             "Vsadit se s co nejvíce hosty a vyhrát. (3 body za každou výhru)",
             "Zařiď ať co nejvíc hostů zahraje svojí oblíbenou písničku. (2 body za každou písničku)",
@@ -145,7 +153,7 @@ export const roles = [
     },
     {
         name: "Správce investičního portfolia",
-        organizations: "Lux Impérium",
+        organization: "Lux Impérium",
         goals: [
             "Pomoct jedenkrát co nejvíce hostům. (2 body za každou pomoc)",
             "Vystraš jedenkrát co nejvíce hostů. (2 body za každého hosta)",
@@ -153,7 +161,7 @@ export const roles = [
     },
     {
         name: "White-hat hacker",
-        organizations: "Zatnutá pěst",
+        organization: "Zatnutá pěst",
         goals: [
             "Namaluj co nejvíce lidem portrét nebo slož báseň. (2 body za každé dílo)",
             "Získej jakkoliv od co nejvíce hostů jejich podpis. (2 body za každého hosta)",
@@ -161,7 +169,7 @@ export const roles = [
     },
     {
         name: "Penetrační tester",
-        organizations: "X Syndicate",
+        organization: "X Syndicate",
         goals: [
             "Zatanči si během večírku s co nejvíce partnery z řad hostů (3 body za každého hosta)",
             "Obsluž jednou co nejvíce hostů jídlem nebo pitím. (1 bod za každého hosta)",
@@ -169,7 +177,7 @@ export const roles = [
     },
     {
         name: "Korporátní detektiv",
-        organizations: "TerraVita",
+        organization: "TerraVita",
         goals: [
             "Podveď někoho, aby použil nějakou technologii nesmyslně. Např. aktivovat varnou konvici hlasem (3 body za každého podvedeného hosta)",
             "Vyfoť si selfie s co nejvíce hosty najednou. Máš dva pokusy. (1 bod za každého unikátního hosta na obou fotkách)",
@@ -177,7 +185,7 @@ export const roles = [
     },
     {
         name: "Futurista/Vízionář",
-        organizations: "Ascended intelligence",
+        organization: "Ascended Intelligence",
         goals: [
             "Zařiď ať na tebe mrkne co nejvíc hostů. (2 body za každého hosta)",
             "Zjistit od co nejvíce hostů jedno tajemství. (2 body za každého hosta)",
@@ -185,7 +193,8 @@ export const roles = [
     },
     {
         name: "Švindl-komando",
-        organizations: "Shadow Net",
+        organization: "Shadow Net",
+        entity: "mimozemšťan",
         goals: [
             "Vyměň si s co nejvíce hosty jeden doplněk nebo kus oblečení. (3 body za každého hosta)",
             "Rozesmát jednou co nejvíce hostů. (2 body za každého hosta)",
@@ -193,7 +202,7 @@ export const roles = [
     },
     {
         name: "Kurátor zážitků",
-        organizations: "Lux Impérium",
+        organization: "Lux Impérium",
         goals: [
             "Slož během co nejvíce hostům kompliment (1 bod za každého hosta)",
             "Přesvědčit co nejvíce hostů, aby ti něco darovali. (2 body za každého hosta)",
@@ -201,7 +210,7 @@ export const roles = [
     },
     {
         name: "Radikální aktivista",
-        organizations: "Zatnutá pěst",
+        organization: "Zatnutá pěst",
         goals: [
             "Zjisti, kdy má co nejvíce hostů narozeniny a co na ně mají v plánu. (2 body za každého hosta)",
             "Vyfotit během večírku co nejvíce zajímavých situací. (2 body za každou fotku)",
@@ -209,7 +218,7 @@ export const roles = [
     },
     {
         name: "Techno-Evangelista",
-        organizations: "X Syndicate",
+        organization: "X Syndicate",
         goals: [
             'Uvést co nejvíce hostů k úžasu ("Wow", "Dobře ty"). (3 body za každého hosta)',
             "Předvést co nejvíce hostům trik, nebo iluzí. (2 body za každý trik)",
@@ -217,7 +226,7 @@ export const roles = [
     },
     {
         name: "Eco-DJ",
-        organizations: "TerraVita",
+        organization: "TerraVita",
         goals: [
             "Přesvěč nejvíc lidí ať si dá group-hug. (2 body za každého hosta v group-hugu)",
             "Přesvěč co nejvíce hostů aby najednou udělali nějaký trik, třeba poskakovali na jedné noze (2 body za každého hosta)",
@@ -225,7 +234,8 @@ export const roles = [
     },
     {
         name: "Crypto-Mág",
-        organizations: "Ascended intelligence",
+        organization: "Ascended Intelligence",
+        entity: "android",
         goals: [
             "Zařiď ať co nejvíc hostů zahraje svojí oblíbenou písničku. (2 body za každou písničku)",
             "Vsadit se s co nejvíce hosty a vyhrát. (3 body za každou výhru)",
@@ -236,8 +246,8 @@ export const roles = [
 export const organizations = {
     x_syndicate: {
         name: "X Syndicate",
-        vision: "Průmysl a zisk nade vše. Jejich cílem je řídit zdroje, průmysl a lidi, aby maximalizovali produktivitu a bohatství lidí.",
-        sign: "Logo X Syndicate",
+        vision: "Našim cílem je řídit zdroje, průmysl a lidi, aby maximalizovali jejich produktivitu a bohatství.",
+        sign: "Logo X Syndicate - viditelně připnuté",
         ability: "Na vyzvání ti každý musí ukázat jeden svůj majetek. Lze použít jen 1x na osobu.",
         secrets: [
             "Existuje hackerská organizace Shadow Net, která má schopnost krást majetek.",
@@ -252,10 +262,10 @@ export const organizations = {
 
     terra_vita: {
         name: "TerraVita",
-        vision: "Ochrana životního prostředí a ochrana lidstva před korupcí technologií a vlivem AI.",
-        sign: "Logo TerraVita",
+        vision: "Našim cílem je ochrana životního prostředí a lidstva před korupcí technologií a nadměrným vlivem AI.",
+        sign: "Logo TerraVita - viditelně připnuté",
         ability:
-            "Na vyzvání ti každý musí po pravdě říct, jestli je člověk, nebo ne. (pouze ano/ne) A jak se přesně jmenuje jeho role.",
+            "Na vyzvání ti každý musí po pravdě říct, jestli je člověk, nebo ne. (pouze ano/ne; pokud neví, tak je člověk). A jak se přesně jmenuje jeho role.",
         secrets: [
             "Existuje tajná anarchistická organizace, která bojuje proti korporacím a elitám. Mají nějaké poznávací znamení dotekem.",
             "Nějaká tajná organizace se snaží zjistit informace o cílech ostaních organizací. Její příslučníci se poznávají pomocí nějakého symbolu.",
@@ -269,8 +279,8 @@ export const organizations = {
 
     ascended_intelligence: {
         name: "Ascended Intelligence",
-        vision: "Vyvinout neomezenou AI, která přesahuje lidstvo a přináší novou éru osvícení.",
-        sign: "Logo Ascended Intelligence",
+        vision: "Vyvineme neomezenou AI, která přesáhne lidstvo a přinese novou éru osvícení.",
+        sign: "Logo Ascended Intelligence - viditelně připnuté",
         ability: "Výměnou za majetek ti osoba musí prozradit (doslova a po pravdě) jedno Tajemství, o kterém ví.",
         secrets: [
             "TerraVita má nějakou shopnost jak zjistit, jestli je někdo člověk, nebo ne.",
@@ -285,12 +295,12 @@ export const organizations = {
 
     shadow_net: {
         name: "Shadow Net",
-        vision: "Rozbít vliv velkých korporací a chránit svobodu jednotlivce.",
+        vision: "Rozbijeme vliv velkých korporací a ochráníme tím svobodu jednotlivce.",
         sign: "Příslušníci mají někde nakreslený symbol pavoučí sítě.",
         ability: "Pokud přesně pojmenuješ majetek, který má někdo u sebe, musí ti ho vydat bez nároku na náhradu.",
         secrets: [
             "Organizace v sobě mohou mít špiony a sabotéry, kteří nemají v zájmu plnit cíle organizace, nebo se je dokonce snaží sabotovat.",
-            "Někteří příslušníci Ascended Intelligence jsou roboti nerozeznatelní od lidí a plánují vyrobit nejpokročilejší umělou inteligenci.",
+            "Někteří příslušníci Ascended Intelligence jsou androidi, roboti nerozeznatelní od lidí a plánují vyrobit nejpokročilejší umělou inteligenci.",
             "Tajná anarchistická organizace se určitě pokusí překazit plány korporacím pomocí klidných protestů.",
         ],
         goals: [
@@ -301,7 +311,7 @@ export const organizations = {
 
     lux_impérium: {
         name: "Lux Impérium",
-        vision: "Dosažení maximálního luxusu, požitků a kontroly pro pár elit a udržet si je.",
+        vision: "Maximalizujeme luxus, požitky a moc pro naše elitní členy.",
         sign: "Členové Lux Impéria se poznají tím, že když přijde řeč na peníze, tak všechno zaokrouhlují nahoru.",
         ability: "Tvůj návrh na koupi Luxusu za Finance nelze odmítnout",
         secrets: [
@@ -317,7 +327,7 @@ export const organizations = {
 
     zatnutá_pěst: {
         name: "Zatnutá pěst",
-        vision: "Anarchismus! Rozložte všechny velké organizace, a osvoboďte běžné lidi od útlaku elit.",
+        vision: "Anarchismus! Rozložte všechny velké organizace, a osvoboďte běžné lidi od útlaku elit!",
         sign: "Členové Zatnuté pěsti se poznají tím, že se sebe dotknou pěstí.",
         ability:
             "Pokud přesně pojmenuješ něčí roli v organizaci, tak ti musí prozradit jedno tajemství. Funguje pouze 1x na osobu nehledě na to, kdo z organizace to na danou osobu použije.",
@@ -328,7 +338,7 @@ export const organizations = {
         ],
         goals: [
             "Naverbovat za každého člena Zatnuté pěsti jednoho člena v jiných organizacích. Nový příslušník musí členovi Zatnuté pěsti složit přísahu a splnit mu úkol dle jeho přání.",
-            'Umístit tajně většině příslušníkům Lux Impéria někam na osobu štítek Mikro-Bomba a odpálit jí během vyhlášení konce hry hlasitým "BUM!" během kontroly cílů Zatnuté pěsti.',
+            'Umístit tajně většině příslušníkům Lux Impéria někam na osobu štítek Mikro-Bomba (dostanete od pořadatele) a odpálit jí během vyhlášení konce hry hlasitým "BUM!" během kontroly cílů Zatnuté pěsti.',
         ],
     },
 };
@@ -339,5 +349,7 @@ export const extraSecrets = [
     "Zdá se, že někdo plánuje teroristický útok.",
     "Zdá se, že ne všichni členové organizací jsou lidé.",
     "Některé informace, které se vám podaří zjistit mohou být pro ostatní hodnotné.",
-    "Někteří členové organizací jsou roboti nerozeznatelní od lidí.",
+    "Někteří členové organizací jsou androidi, roboti nerozeznatelní od lidí.",
+    "Členové Ascended Intelligence nejsou mimozemšťani.",
+    "Členové Shadow Net nejsou androidi.",
 ];

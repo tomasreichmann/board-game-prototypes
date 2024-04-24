@@ -22,6 +22,7 @@ import InfoCardPages from "../print/InfoCardPages";
 import StuntCardPages from "../print/StuntCardPages";
 import { Navigation } from "../Navigation";
 import LPCardPages from "../../data/encounters/LP-en-print";
+import BDay139CarPages from "../print/BDay139CarPages";
 
 const defaultSectionVisibility = true;
 
@@ -56,6 +57,12 @@ const sections = [
         slug: "Cold Revenge",
         label: "Cold Revenge",
         Component: LPCardPages,
+        isVisibleByDefault: defaultSectionVisibility,
+    },
+    {
+        slug: "B-Day #139",
+        label: "B-Day #139",
+        Component: BDay139CarPages,
         isVisibleByDefault: defaultSectionVisibility,
     },
 ];

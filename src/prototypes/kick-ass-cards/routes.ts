@@ -12,6 +12,7 @@ import { RouteDefinition } from "../../routeTypes";
 import SmartDocRoute from "./components/routes/SmartDocRoute";
 import WorldBuilderRoute from "./components/routes/WorldBuilderRoute";
 import SettingsRoute from "./components/routes/SettingsRoute";
+import AdventuresRoute from "./components/routes/AdventuresRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
@@ -30,6 +31,11 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         name: "Components",
         path: kickAssCardsPath + "/components",
         Component: ComponentsRoute,
+    },
+    {
+        name: "Adventures",
+        path: kickAssCardsPath + "/adventures",
+        Component: AdventuresRoute,
     },
     {
         name: "Smart Doc",

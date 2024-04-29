@@ -18,16 +18,17 @@ const variants = cva(["Text"], {
     variants: {
         variant: {
             body: ["text-kac-iron", "text-md"],
-            h1: ["font-kacHeading", "text-4xl"],
-            h2: ["font-kacHeading", "text-3xl"],
-            h3: ["font-kacHeading", "text-2xl"],
-            h4: ["font-kacHeading", "text-xl"],
-            h5: ["font-kacHeading", "text-lg"],
-            h6: ["font-kacHeading", "text-md"],
+            h1: ["font-kacHeading", "text-4xl", "leading-tight", "tracking-tighter"],
+            h2: ["font-kacHeading", "text-3xl", "leading-tight", "tracking-tighter"],
+            h3: ["font-kacHeading", "text-2xl", "leading-tight", "tracking-tighter"],
+            h4: ["font-kacHeading", "text-xl", "leading-tight", "tracking-tighter"],
+            h5: ["font-kacHeading", "text-lg", "leading-tight", "tracking-tighter"],
+            h6: ["font-kacHeading", "text-md", "leading-tight", "tracking-tighter"],
         },
         color: {
             body: ["text-kac-iron"],
             heading: ["text-kac-cloth-dark"],
+            warning: ["text-kac-curse"],
             danger: ["text-kac-blood"],
             success: ["text-kac-monster-dark"],
         },

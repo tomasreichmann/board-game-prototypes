@@ -52,10 +52,10 @@ export const assets = [
     { name: "Kredity na energeticky náročné zážitky ve virtuální realitě", types: ["Energie", "Luxus"] },
     { name: "Sbírka vzácných drahokamů a minerálů nejvyšší kvality", types: ["Suroviny", "Luxus"] },
     { name: "Šperky a umělecká díla s vysokou investiční hodnotou", types: ["Luxus", "Finance"] },
-    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
-    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
-    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
-    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: [] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: ["Bomba"] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: ["Bomba"] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: ["Bomba"] },
+    { name: " MICRO-BOMBA hlasově ovládaná bomba schopná usmrtit osobu, která jí má u sebe", types: ["Bomba"] },
 ];
 
 export const roles = [
@@ -313,7 +313,7 @@ export const organizations = {
         name: "Lux Impérium",
         vision: "Maximalizujeme luxus, požitky a moc pro naše elitní členy.",
         sign: "Členové Lux Impéria se poznají tím, že když přijde řeč na peníze, tak všechno zaokrouhlují nahoru.",
-        ability: "Tvůj návrh na koupi Luxusu za Finance nelze odmítnout",
+        ability: "Tvůj návrh na koupi Majetku typu Luxus za jiný Majetek nelze odmítnout",
         secrets: [
             "Mezi lidmi se pohybují mimozemšťané, kteří plánují invazi.",
             "X Syndicate se snaží odhalit členy nějaké tajné organizace. Mají možnost zjistit, kdo má jaký majetek.",
@@ -344,11 +344,12 @@ export const organizations = {
 };
 
 export const extraSecrets = [
+    "Některé informace, které se vám podaří zjistit mohou být pro ostatní hodnotné.",
+    "Na splnění svých cílů se organizace nevyhne kooperaci a vyjednávání s ostatními organizacemi.",
     "Každá organizace věří nějakému tajemství, které je buď nepřesné, nebo naprosto lživé.",
     "Pohybují se tu členové třech tajných organizací. A každá má nějaké tajné poznávací znamení.",
     "Zdá se, že někdo plánuje teroristický útok.",
     "Zdá se, že ne všichni členové organizací jsou lidé.",
-    "Některé informace, které se vám podaří zjistit mohou být pro ostatní hodnotné.",
     "Někteří členové organizací jsou androidi, roboti nerozeznatelní od lidí.",
     "Členové Ascended Intelligence nejsou mimozemšťani.",
     "Členové Shadow Net nejsou androidi.",

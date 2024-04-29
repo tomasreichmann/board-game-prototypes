@@ -1,9 +1,10 @@
 import React from "react";
-import clsx from "clsx";
 import paperSizes from "../paperSizes";
 
 import "./PrintPage.css";
 import { PaperProps } from "../Paper/Paper";
+import { Button } from "react-daisyui";
+import { twMerge } from "tailwind-merge";
 
 export type PrintPageProps = React.PropsWithChildren<{
     className?: string;
@@ -13,6 +14,7 @@ export type PrintPageProps = React.PropsWithChildren<{
     marginsInMm?: number[];
     bleedInMm?: number;
     orientation?: PaperProps["orientation"];
+    showControls?: boolean;
 }>;
 
 export default function PrintPage({
@@ -23,8 +25,24 @@ export default function PrintPage({
     sizeInMm = paperSizes[size].mm,
     marginsInMm = [10, 10, 10, 10],
     bleedInMm = 3,
+    showControls,
     children,
 }: PrintPageProps) {
+    const [isHidden, setIsHidden] = React.useState(false);
+    const hiddenToggle = showControls && (
+        <Button
+            className={twMerge("print:hidden", !isHidden && "absolute right-0 top-0")}
+            variant="outline"
+            size="sm"
+            onClick={() => setIsHidden(!isHidden)}
+            color="warning"
+        >
+            {isHidden ? "Show" : "Hide"}
+        </Button>
+    );
+    if (isHidden) {
+        return <div className={className}>{hiddenToggle}</div>;
+    }
     const widthSizeIndex = orientation === "portrait" ? 0 : 1;
     const heightSizeIndex = orientation === "portrait" ? 1 : 0;
     const widthMm = sizeInMm[widthSizeIndex];
@@ -39,8 +57,10 @@ export default function PrintPage({
         "--PrintPage-bleed": bleedInMm + "mm",
     } as unknown as React.CSSProperties;
     const margin = [0, 1, 2, 3].map((marginIndex) => `${marginsInMm[marginIndex] - bleedInMm}mm`).join(" ");
+
     return (
-        <div className={clsx("PrintPage", className)} style={pageStyle}>
+        <div className={twMerge("PrintPage", className)} style={pageStyle}>
+            {hiddenToggle}
             <style>{`
 @media print {
   @page {
@@ -49,7 +69,7 @@ export default function PrintPage({
   }
 }
       `}</style>
-            <div className={clsx("PrintPage_content", contentClassName)}>{children}</div>
+            <div className={twMerge("PrintPage_content", contentClassName)}>{children}</div>
         </div>
     );
 }

@@ -6,6 +6,8 @@ import { twMerge } from "tailwind-merge";
 import Text from "../content/Text";
 import { range } from "lodash";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
+import MdxArticle from "../content/MdxArticle";
+import RulesMdx from "../../data/encounters/B139-rules-cs.mdx";
 
 type OrganizationType = {
     name: string;
@@ -23,6 +25,7 @@ const typeColorMap: Record<string, string> = {
     Technologie: "#82b3ed",
     Energie: "#01ffb2",
     Luxus: "#c9a8e8",
+    Bomba: "#ff8888",
 };
 
 const organizationNameMap: Record<string, OrganizationType> = {
@@ -57,7 +60,7 @@ const AssetCard = ({ name, types, className, ...restProps }: (typeof assets)[num
         }}
     >
         <div className="w-[150px] h-[110px] flex flex-col items-center justify-between">
-            <div className="text-md opacity-80">{name}</div>
+            <div className="text-md opacity-80 text-gray-50">{name}</div>
             <div className="text-sm opacity-80 text-gray-400">
                 {types.map((type, index) => (
                     <React.Fragment key={index}>
@@ -204,6 +207,9 @@ const logosProps = range(3 * 4).map((index) => ({
 export default function BDay139CarPages() {
     return (
         <>
+            <PrintPage size="A4" bleedInMm={0} showControls>
+                <MdxArticle mdx={RulesMdx} />
+            </PrintPage>
             <ChunkedPages
                 Component={RoleCard}
                 items={rolesProps}
@@ -212,6 +218,7 @@ export default function BDay139CarPages() {
                     orientation: "landscape",
                     bleedInMm: 0,
                     className: "flex flex-col",
+                    showControls: true,
                     contentClassName: "p-[3mm] flex-1 flex relative items-stretch contents-stretch",
                 }}
                 backFacePrintPageProps={{
@@ -228,6 +235,7 @@ export default function BDay139CarPages() {
                     orientation: "landscape",
                     bleedInMm: 0,
                     contentClassName: "p-[3mm]",
+                    showControls: true,
                 }}
                 backFacePrintPageProps={{
                     bleedInMm: 0,
@@ -243,6 +251,7 @@ export default function BDay139CarPages() {
                     orientation: "landscape",
                     bleedInMm: 0,
                     contentClassName: "p-[3mm]",
+                    showControls: true,
                 }}
                 backFacePrintPageProps={{
                     bleedInMm: 0,
@@ -250,7 +259,7 @@ export default function BDay139CarPages() {
                 }}
                 label="Logos"
             />
-            <PrintPage size="A4" orientation="landscape">
+            <PrintPage size="A4" orientation="landscape" showControls>
                 <div className="flex flex-col flex-wrap"></div>
                 {extraSecrets.map((secret, index) => (
                     <div className="p-4 w-1/2" key={index}>

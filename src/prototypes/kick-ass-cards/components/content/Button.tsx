@@ -8,34 +8,55 @@ const variants = cva(["Button"], {
             text: [
                 "underline",
                 "bg-transparent",
-                "border",
-                "border-transparent",
                 "rounded-md",
                 "underline",
                 "hover:no-underline",
+                "hover:outline-0",
+                "focus:outline-2",
+                "border-0",
+                "p-0",
             ],
             solid: [
                 "px-4",
                 "py-2",
                 "rounded-md",
                 "text-white",
-                "hover:outline",
-                "hover:outline-1",
+                "outline",
+                "outline-0",
+                "outline-transparent",
+                "hover:outline-2",
                 "focus:outline",
                 "focus:outline-2",
-                "transition-colors",
+                "transition-all",
                 "border-0",
             ],
-            outline: ["px-4", "py-2", "rounded-md", "border-2"],
+            outline: [
+                "px-4",
+                "py-2",
+                "rounded-md",
+                "outline",
+                "outline-2",
+                "border-0",
+                "hover:border-0",
+                "focus:border-0",
+            ],
         },
         disabled: {
             true: ["pointer-events-none", "hover:outline-0", "focus:outline-0"],
         },
         color: {
             primary: [],
+            secondary: [],
             danger: [],
             success: [],
             info: [],
+        },
+        size: {
+            xs: ["text-xs"],
+            sm: ["text-sm"],
+            md: ["text-md"],
+            lg: ["text-lg"],
+            xl: ["text-xl"],
         },
     },
     defaultVariants: {
@@ -44,6 +65,32 @@ const variants = cva(["Button"], {
     },
     compoundVariants: [
         {
+            size: "xs",
+            variant: ["solid", "outline"],
+            className: ["px-1", "py-0.5"],
+        },
+        {
+            size: "sm",
+            variant: ["solid", "outline"],
+            className: ["px-2", "py-1"],
+        },
+        {
+            size: "md",
+            variant: ["solid", "outline"],
+            className: ["px-4", "py-2"],
+        },
+        {
+            size: "lg",
+            variant: ["solid", "outline"],
+            className: ["px-8", "py-3"],
+        },
+        {
+            size: "xl",
+            variant: ["solid", "outline"],
+            className: ["px-12", "py-4"],
+        },
+
+        {
             variant: "solid",
             color: "primary",
             className: [
@@ -51,6 +98,17 @@ const variants = cva(["Button"], {
                 "hover:bg-kac-gold",
                 "hover:outline-kac-gold",
                 "focus:outline-kac-gold",
+                "hover:text-white",
+            ],
+        },
+        {
+            variant: "solid",
+            color: "secondary",
+            className: [
+                "bg-kac-bone-dark",
+                "hover:bg-kac-bone",
+                "hover:outline-kac-bone",
+                "focus:outline-kac-bone",
                 "hover:text-white",
             ],
         },
@@ -94,6 +152,11 @@ const variants = cva(["Button"], {
         },
         {
             variant: "text",
+            color: "secondary",
+            className: ["text-kac-bone-dark", "hover:text-kac-bone-dark", "hover:border-kac-bone"],
+        },
+        {
+            variant: "text",
             color: "danger",
             className: ["text-kac-blood-dark", "hover:text-kac-blood-dark", "hover:border-kac-blood"],
         },
@@ -110,27 +173,37 @@ const variants = cva(["Button"], {
         {
             variant: "outline",
             color: "primary",
-            className: ["border-kac-gold-dark", "hover:border-kac-gold"],
+            className: ["outline-2", "outline-kac-gold-dark", "hover:outline-kac-gold"],
+        },
+        {
+            variant: "outline",
+            color: "secondary",
+            className: ["outline-2", "outline-kac-bone-dark", "hover:outline-kac-bone"],
         },
         {
             variant: "outline",
             color: "danger",
-            className: ["border-kac-blood-dark", "hover:border-kac-blood"],
+            className: ["outline-2", "outline-kac-blood-dark", "hover:outline-kac-blood-light"],
         },
         {
             variant: "outline",
             color: "success",
-            className: ["border-kac-monster-dark", "hover:border-kac-monster"],
+            className: ["outline-2", "outline-kac-monster-dark", "hover:outline-kac-monster"],
         },
         {
             variant: "outline",
             color: "info",
-            className: ["border-kac-cloth-dark", "hover:border-kac-cloth"],
+            className: ["outline-2", "outline-kac-cloth-dark", "hover:outline-kac-cloth"],
         },
         {
             disabled: true,
             variant: "text",
-            className: ["text-kac-steel-dark", "hover:text-kac-steel-dark", "hover:border-kac-steel-dark"],
+            className: [
+                "outline-2",
+                "text-kac-steel-dark",
+                "hover:text-kac-steel-dark",
+                "hover:outline-kac-steel-dark",
+            ],
         },
         {
             disabled: true,
@@ -140,7 +213,7 @@ const variants = cva(["Button"], {
         {
             disabled: true,
             variant: "outline",
-            className: ["border-kac-steel-dark", "text-kac-steel-dark"],
+            className: ["outline-2", "outline-kac-steel-dark", "text-kac-steel-dark"],
         },
     ],
 });
@@ -159,8 +232,16 @@ export type ButtonButtonType = {
 
 export type ButtonProps = ButtonLinkType | ButtonButtonType;
 
-export default function Button({ className, children, variant = "solid", color, disabled, ...restProps }: ButtonProps) {
-    const classNames = twMerge(variants({ variant, color, disabled }), className);
+export default function Button({
+    className,
+    children,
+    variant = "solid",
+    color,
+    size,
+    disabled,
+    ...restProps
+}: ButtonProps) {
+    const classNames = twMerge(variants({ variant, color, size, disabled }), className);
     if ("href" in restProps) {
         return (
             <a {...restProps} className={classNames}>

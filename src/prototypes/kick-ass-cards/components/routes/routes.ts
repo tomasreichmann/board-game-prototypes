@@ -1,23 +1,25 @@
-import ComponentsRoute from "./components/routes/ComponentsRoute";
-import EncounterRoute from "./components/routes/EncounterRoute";
-import EncountersRoute from "./components/routes/EncountersRoute";
-import InfoRoute from "./components/routes/InfoRoute";
-import MachimagikaRoute from "./components/routes/PlayRoute";
-import PrintRoute from "./components/routes/PrintRoute";
-import ScreenRoute from "./components/routes/ScreenRoute";
-import PlaygroundRoute from "./components/routes/PlaygroundRoute";
-import SmartDocsRoute from "./components/routes/SmartDocsRoute";
+import ComponentsRoute from "./ComponentsRoute";
+import EncounterRoute from "./EncounterRoute";
+import EncountersRoute from "./EncountersRoute";
+import InfoRoute from "./InfoRoute";
+import MachimagikaRoute from "./PlayRoute";
+import PrintRoute from "./PrintRoute";
+import ScreenRoute from "./ScreenRoute";
+import PlaygroundRoute from "./PlaygroundRoute";
+import SmartDocsRoute from "./SmartDocsRoute";
 
-import { RouteDefinition } from "../../routeTypes";
-import SmartDocRoute from "./components/routes/SmartDocRoute";
-import WorldBuilderRoute from "./components/routes/WorldBuilderRoute";
-import SettingsRoute from "./components/routes/SettingsRoute";
-import AdventuresRoute from "./components/routes/AdventuresRoute";
+import { RouteDefinition } from "../../../../routeTypes";
+import SmartDocRoute from "./SmartDocRoute";
+import WorldBuilderRoute from "./WorldBuilderRoute";
+import SettingsRoute from "./SettingsRoute";
+import AdventuresRoute from "./AdventuresRoute";
+import AdventureRoute from "./AdventureRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
 export const kickAssCardsPrintStorageKey = "kick-ass-cards-print";
 export const smartDocsPath = kickAssCardsPath + "/smart-docs";
+export const adventuresPath = kickAssCardsPath + "/adventures";
 
 export const sidebarPath = "__sidebar";
 
@@ -25,6 +27,7 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
     {
         name: "Kick Ass Cards",
         path: kickAssCardsPath + "/",
+        hideFromNav: true,
         Component: InfoRoute,
     },
     {
@@ -33,13 +36,20 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         Component: ComponentsRoute,
     },
     {
+        name: "Adventure",
+        path: adventuresPath + "/:adventureId",
+        hideFromNav: true,
+        Component: AdventureRoute,
+    },
+    {
         name: "Adventures",
-        path: kickAssCardsPath + "/adventures",
+        path: adventuresPath,
         Component: AdventuresRoute,
     },
     {
         name: "Smart Doc",
         path: smartDocsPath + "/:path",
+        hideFromNav: true,
         Component: SmartDocRoute,
     },
     {
@@ -90,3 +100,5 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         Component: SettingsRoute,
     },
 ];
+
+export const kickAssCardsNavigationSubRoutes = kickAssCardsSubRoutes.filter((route) => !route?.hideFromNav);

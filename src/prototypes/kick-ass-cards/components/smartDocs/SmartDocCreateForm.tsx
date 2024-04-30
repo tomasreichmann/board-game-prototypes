@@ -1,8 +1,7 @@
 import { twMerge } from "tailwind-merge";
-import { smartDocsPath } from "../../routes";
+import { smartDocsPath } from "../routes/routes";
 import { useState } from "react";
 import { kebabCase } from "lodash";
-import DataPreview from "../../../../components/DataPreview";
 import Input from "../content/Input";
 import Button from "../content/Button";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";

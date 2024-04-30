@@ -1,5 +1,5 @@
 import { PaperProps } from "../../../../components/print/Paper/Paper";
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
 

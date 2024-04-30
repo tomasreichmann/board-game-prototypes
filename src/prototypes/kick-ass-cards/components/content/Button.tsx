@@ -47,6 +47,7 @@ const variants = cva(["Button"], {
         color: {
             primary: [],
             secondary: [],
+            warning: [],
             danger: [],
             success: [],
             info: [],
@@ -114,6 +115,17 @@ const variants = cva(["Button"], {
         },
         {
             variant: "solid",
+            color: "warning",
+            className: [
+                "bg-kac-curse-dark",
+                "hover:bg-kac-curse",
+                "hover:outline-kac-curse",
+                "focus:outline-kac-curse",
+                "hover:text-white",
+            ],
+        },
+        {
+            variant: "solid",
             color: "danger",
             className: [
                 "bg-kac-blood-dark",
@@ -158,6 +170,11 @@ const variants = cva(["Button"], {
         {
             variant: "text",
             color: "danger",
+            className: ["text-kac-warning-dark", "hover:text-kac-warning-dark", "hover:border-kac-warning"],
+        },
+        {
+            variant: "text",
+            color: "danger",
             className: ["text-kac-blood-dark", "hover:text-kac-blood-dark", "hover:border-kac-blood"],
         },
         {
@@ -179,6 +196,11 @@ const variants = cva(["Button"], {
             variant: "outline",
             color: "secondary",
             className: ["outline-2", "outline-kac-bone-dark", "hover:outline-kac-bone"],
+        },
+        {
+            variant: "outline",
+            color: "warning",
+            className: ["outline-2", "outline-kac-warning-dark", "hover:outline-kac-warning-light"],
         },
         {
             variant: "outline",

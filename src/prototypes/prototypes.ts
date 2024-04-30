@@ -1,5 +1,5 @@
 import KickAssCardsPrototype from "./kick-ass-cards/KickAssCardsPrototype";
-import { kickAssCardsPath, kickAssCardsSubRoutes } from "./kick-ass-cards/routes";
+import { kickAssCardsPath, kickAssCardsSubRoutes } from "./kick-ass-cards/components/routes/routes";
 import DungeonTimePrototype from "./dungeon-time/DungeonTimePrototype";
 import { RouteDefinition } from "../routeTypes";
 import JustDwarvesPrototype, {

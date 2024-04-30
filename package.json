@@ -10,6 +10,8 @@
         "deploy": "npm run build && netlify deploy"
     },
     "dependencies": {
+        "@clerk/clerk-react": "^5.0.1",
+        "@clerk/themes": "^2.1.0",
         "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
         "@mdx-js/mdx": "^3.0.1",
         "@mdx-js/react": "^2.3.0",
@@ -65,7 +67,7 @@
         "clsx": "^1.2.1",
         "google-spreadsheet": "^3.3.0",
         "postcss": "^8.4.16",
-        "tailwindcss": "^3.3.5",
+        "tailwindcss": "^3.4.3",
         "tailwindcss-animate": "^1.0.6",
         "tailwindcss-themer": "^2.0.2",
         "typescript": "^5.4.3",

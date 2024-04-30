@@ -33,11 +33,11 @@ import outcomes from "../data/outcomes-en.csv";
 <Hand
     className="h-[300px] max-w-[800px]"
     items={[
-        <Outcome {...outcomes[0]} className="not-prose" />,
-        <Outcome {...outcomes[1]} className="not-prose" />,
-        <Outcome {...outcomes[2]} className="not-prose" />,
-        <Outcome {...outcomes[3]} className="not-prose" />,
-        <Outcome {...outcomes[4]} className="not-prose" />,
+        <Outcome key={outcomes[0].slug} {...outcomes[0]} className="not-prose" />,
+        <Outcome key={outcomes[1].slug} {...outcomes[1]} className="not-prose" />,
+        <Outcome key={outcomes[2].slug} {...outcomes[2]} className="not-prose" />,
+        <Outcome key={outcomes[3].slug} {...outcomes[3]} className="not-prose" />,
+        <Outcome key={outcomes[4].slug} {...outcomes[4]} className="not-prose" />,
     ]}
 />
 

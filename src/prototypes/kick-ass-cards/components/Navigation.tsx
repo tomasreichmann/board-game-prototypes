@@ -1,7 +1,7 @@
 import react, { HTMLAttributes } from "react";
 import { Button } from "react-daisyui";
 import { twMerge } from "tailwind-merge";
-import { kickAssCardsPath, kickAssCardsSubRoutes } from "../routes";
+import { kickAssCardsNavigationSubRoutes, kickAssCardsPath, kickAssCardsSubRoutes } from "./routes/routes";
 import Icon from "./Icon";
 
 export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HTMLDivElement>) => (
@@ -27,7 +27,7 @@ export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HT
                 </a>
             </h1>
             <div className="flex flex-row flex-wrap gap-4 items-center">
-                {kickAssCardsSubRoutes.slice(1).map(({ name, path }) => (
+                {kickAssCardsNavigationSubRoutes.map(({ name, path }) => (
                     <Button key={path} href={path} size="xs" color="secondary">
                         {name}
                     </Button>

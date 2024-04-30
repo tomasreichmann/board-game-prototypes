@@ -1,8 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { smartDocsPath } from "../../routes";
-import { SmartDocFileType } from "./smartDocs";
-import Button from "../content/Button";
-import smartDocElementMap, { getDefaultProps } from "./smartDocElementMap";
+import smartDocElementMap from "./smartDocElementMap";
 import SmartDocElement from "./SmartDocElement";
 
 export type SmartDocElementPanelProps = React.PropsWithChildren<{

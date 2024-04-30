@@ -1,4 +1,4 @@
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { ClockProps } from "../Clock";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";

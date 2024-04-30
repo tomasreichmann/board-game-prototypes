@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { smartDocsPath } from "../../routes";
+import { smartDocsPath } from "../routes/routes";
 import { SmartDocFileType } from "./smartDocs";
 import Button from "../content/Button";
 

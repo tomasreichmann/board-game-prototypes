@@ -1,4 +1,4 @@
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { AssetCardProps } from "../gameComponents/AssetCard";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";

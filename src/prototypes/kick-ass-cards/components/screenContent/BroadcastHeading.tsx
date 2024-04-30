@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../../routes";
+import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { HeadingProps } from "../Heading";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";

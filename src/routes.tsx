@@ -67,6 +67,8 @@ export const routes: RouteDefinition[] = [
     },
 ];
 
+export const navRoutes = routes.filter((route) => !route?.hideFromNav);
+
 const routeStructure = createRouteElementsFromObject(routes);
 
 export default routeStructure;

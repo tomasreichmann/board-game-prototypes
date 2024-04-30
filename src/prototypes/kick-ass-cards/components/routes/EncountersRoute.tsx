@@ -1,7 +1,7 @@
 import { encountersMap, EnounterDefinition } from "../../data/encounters";
 import { Outlet, useParams } from "react-router-dom";
 import getCompareFnByStringKey from "../../../../utils/getCompareFnByStringKey";
-import { kickAssCardsPath } from "../../routes";
+import { kickAssCardsPath } from "./routes";
 import { Navigation } from "../Navigation";
 
 const groupByCampaign = (encMap: typeof encountersMap) => {

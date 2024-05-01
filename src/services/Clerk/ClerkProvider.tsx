@@ -32,7 +32,7 @@ export const ClerkFirebaseIntegration = ({ children }: { children: React.ReactNo
 export default function ClerkProvider({ children }: { children: React.ReactNode }) {
     if (!PUBLISHABLE_KEY) {
         console.error(new Error("Missing Publishable Key"));
-        return <>children</>;
+        return <>{children}</>;
     }
 
     return (

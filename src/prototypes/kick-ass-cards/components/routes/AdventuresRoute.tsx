@@ -4,11 +4,12 @@ import ToggleData from "../../../../components/DataToggle";
 import Button from "../content/Button";
 import { createAdventure, useAdventures } from "../../services/firestoreController";
 import { adventuresPath } from "./routes";
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
+import { SignedIn, useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";
+import SignedOutWarning from "../adventures/SignedOutWarning";
 
 export default function AdventuresRoute() {
-    const { isSignedIn, user } = useUser();
+    const { user } = useUser();
     const { adventures, adventuresError } = useAdventures();
 
     const onCreateAdventure = () => {
@@ -37,13 +38,7 @@ export default function AdventuresRoute() {
                     <ClerkUser />
                 </div>
 
-                {!isSignedIn && (
-                    <SignedOut>
-                        <Text color="warning" variant="body" className="self-center font-bold">
-                            Some Adventures might be hidden until you sign in.
-                        </Text>
-                    </SignedOut>
-                )}
+                <SignedOutWarning text="⚠ Some Adventures might be hidden until you sign in." />
 
                 {adventuresError && (
                     <>

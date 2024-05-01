@@ -16,6 +16,7 @@ const LP_EN = "Cold Revenge";
 const ISV = "In Sanguine Veritas";
 const TOH = "Throne of Hawthorne";
 const B139 = "B-day #139 LARP";
+const TTT = "Trauma Team Troubles";
 
 const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
     [key]: {
@@ -59,5 +60,7 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
 
     ...makeEncounterDefinition("B139-info-cs", "Info", B139),
     ...makeEncounterDefinition("B139-rules-cs", "Pravidla", B139),
+
+    ...makeEncounterDefinition("TTT-info", "Info", TTT),
 };
 console.log("encountersMap", encountersMap);

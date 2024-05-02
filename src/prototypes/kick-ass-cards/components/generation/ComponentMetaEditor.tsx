@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import ComponentMetaType from "./ComponentMetaType";
-import Form, { FormProps } from "../content/Form";
-import { InputProps } from "../content/Input";
+import Form, { getDefaultsFromSchema, getFormSchemaFromSchema } from "../content/Form";
 import Toggle from "../../../../components/Toggle";
 import ToggleData from "../../../../components/DataToggle";
 import getComponentCode from "./getComponentCode";
@@ -42,74 +41,6 @@ export type ComponentMetaEditorProps<PropType extends AnyRecord> = {
     defaultSdImageUri?: string;
 } & ComponentMetaType<PropType>;
 
-const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
-    if (typeof schema === "object" && "default" in schema) {
-        return schema.default as any;
-    }
-    if (typeof schema === "object" && "const" in schema) {
-        return schema.const;
-    }
-    if (typeof schema === "object" && schema.type === "array") {
-        return [];
-    }
-    if (typeof schema === "object" && schema.type === "object") {
-        const value = {} as AnyRecord;
-        for (const key in schema.properties) {
-            value[key] = getDefaultsFromSchema(schema.properties[key]);
-        }
-        return value;
-    }
-    return undefined;
-};
-
-const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): InputProps => {
-    const inputProps: InputProps = { type: "text" };
-    if (typeof property === "boolean") {
-        inputProps.type = "checkbox";
-        return inputProps;
-    }
-    if (property.type === "integer") {
-        inputProps.type = "number";
-        inputProps.step = "1";
-        property.minimum && (inputProps.min = property.minimum);
-        property.maximum && (inputProps.max = property.maximum);
-        return inputProps;
-    }
-    if (property.type === "number") {
-        inputProps.type = "number";
-        property.minimum && (inputProps.min = property.minimum);
-        property.maximum && (inputProps.max = property.maximum);
-        return inputProps;
-    }
-    if (property.type === "string") {
-        inputProps.type = "text";
-        property.minLength && (inputProps.minLength = property.minLength);
-        property.maxLength && (inputProps.maxLength = property.maxLength);
-        property.pattern && (inputProps.pattern = property.pattern);
-        return inputProps;
-    }
-    if (property.type === "boolean") {
-        inputProps.type = "checkbox";
-        return inputProps;
-    }
-
-    return inputProps;
-};
-
-const getFormSchemaFromSchema = <ValueType extends AnyRecord>(
-    schema: JSONSchemaType<any>
-): FormProps<ValueType>["schema"] => {
-    if (typeof schema === "object" && schema.properties?.length) {
-        return Object.fromEntries(
-            Object.entries(schema.properties).map(([propKey, propValue]) => {
-                const inputProps = getInputPropsFromSchemaProperty(propValue as JSONSchemaType<any>);
-                return [propKey, inputProps];
-            })
-        ) as FormProps<ValueType>["schema"];
-    }
-    return undefined;
-};
-
 const sdPromiseCache: Map<string, Promise<void | SDResultType>> = new Map();
 
 export default function ComponentMetaEditor<PropType extends {}>({
@@ -124,8 +55,8 @@ export default function ComponentMetaEditor<PropType extends {}>({
     defaultSdImageUri = "/loading.gif",
 }: ComponentMetaEditorProps<PropType>) {
     const [isEditing, setIsEditing] = useState(initialIsEditing);
-    const [resolvedSdProps, setResolvedSdProps] = useState({} as Partial<PropType>);
-    const [resolvedLlmProps, setResolvedLlmProps] = useState({} as Partial<PropType>);
+    /* const [resolvedSdProps, setResolvedSdProps] = useState({} as Partial<PropType>);
+    const [resolvedLlmProps, setResolvedLlmProps] = useState({} as Partial<PropType>); */
     const { txt2Image } = useSD();
 
     const { strippedInitialProps, sdProps, llmProps } = useMemo(() => {

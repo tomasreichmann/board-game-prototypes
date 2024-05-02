@@ -13,19 +13,9 @@ import {
     FieldPath,
 } from "firebase/firestore";
 import db from "../../../services/Firebase/cloudFirestore";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { auth } from "../../../services/Firebase/firebase";
 import { UserResource } from "@clerk/types";
-
-/* export const executeQuery = async (query: string, errorMessage = "Error executing query: ") => {
-    try {
-        return await query;
-    } catch (e) {
-        console.error(errorMessage, e);
-        return Promise.reject(e);
-    }
-}
- */
 
 export enum DocStatusEnum {
     Draft = "Draft",
@@ -232,7 +222,32 @@ export const useAdventure = (adventureId: string | undefined) => {
     const docRef = useMemo(() => (adventureId ? doc(db, "adventures", adventureId) : undefined), [adventureId]);
     const { data, error } = useDocument(docRef, `Adventure with id "${adventureId}" does not exist`);
 
-    return { adventure: data as AdventureDocType | undefined, adventureError: error };
+    const update = useCallback(
+        async (data: UpdateData<DocumentData>) => {
+            if (!adventureId) {
+                return;
+            }
+            await updateDocument("adventures", adventureId, data);
+        },
+        [adventureId]
+    );
+
+    const remove = useCallback(
+        async (data: UpdateData<DocumentData>) => {
+            if (!adventureId) {
+                return;
+            }
+            await deleteAdventure(adventureId);
+        },
+        [adventureId]
+    );
+
+    return {
+        adventure: data as AdventureDocType | undefined,
+        adventureError: error,
+        updateAdventure: update,
+        deleteAdventure: remove,
+    };
 };
 
 const adventuresCollection = collection(db, "adventures");

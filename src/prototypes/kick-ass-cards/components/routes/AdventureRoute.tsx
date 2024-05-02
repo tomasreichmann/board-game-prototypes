@@ -1,41 +1,37 @@
 import { Navigation } from "../Navigation";
-import Text, { H1, H5 } from "../content/Text";
+import Text, { H5 } from "../content/Text";
 import ToggleData from "../../../../components/DataToggle";
 import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
-import {
-    AdventureDocType,
-    checkWriteAccess,
-    claimDocument,
-    deleteAdventure,
-    useAdventure,
-} from "../../services/firestoreController";
+import { checkWriteAccess, claimDocument, deleteAdventure, useAdventure } from "../../services/firestoreController";
 import { useParams } from "react-router-dom";
 import { adventuresPath } from "./routes";
 import PendingTimer from "../../../../components/PendingTimer";
-import { SignedOut, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";
 import SignedOutWarning from "../adventures/SignedOutWarning";
-import Adventure, { AdventureFormType, adventureFormSchema } from "../adventures/Adventure";
+import Adventure, { AdventureFormType, adventureFormJsonSchema } from "../adventures/Adventure";
 import { useCallback, useMemo, useState } from "react";
-import Form from "../content/Form";
+import Form, { getDefaultsFromSchema, getFormSchemaFromSchema } from "../content/Form";
+import { JSONSchemaType } from "ajv";
 
 const AdventureContent = () => {
     const [isEditing, setIsEditing] = useState(false);
     const { adventureId } = useParams<"adventureId">();
     const { user } = useUser();
 
-    const { adventure, adventureError } = useAdventure(adventureId);
+    const { adventure, adventureError, updateAdventure } = useAdventure(adventureId);
 
     const hasWriteAccess = checkWriteAccess(adventure?.meta);
     const canClaim = user?.id && !adventure?.meta?.author;
     // const canAbandon = user?.id && adventure?.meta?.author?.uid === user?.id;
     const onChange = useCallback((data: Partial<AdventureFormType>) => {
         console.log(data);
+        updateAdventure(data);
     }, []);
 
     const adventureFormData = useMemo(() => {
         if (!adventure) {
-            return null;
+            return undefined;
         }
         const { id, meta, content, ...adventureFormData } = adventure;
         return adventureFormData;
@@ -75,6 +71,11 @@ const AdventureContent = () => {
             </div>
         );
     }
+
+    const defaultProps = getDefaultsFromSchema(
+        adventureFormJsonSchema as JSONSchemaType<any>
+    ) as Partial<AdventureFormType>;
+    const formSchema = getFormSchemaFromSchema(adventureFormJsonSchema as JSONSchemaType<any>);
 
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white">
@@ -130,19 +131,20 @@ const AdventureContent = () => {
                 <div className="flex-1" />
                 <ClerkUser />
             </div>
-            <div className="flex flex-col-reverse md:flex-row gap-4">
-                <Adventure
-                    className="flex-1"
-                    {...adventure}
-                    warnings={<SignedOutWarning text="⚠ Some features might be hidden until you sign in." />}
-                />
+            <SignedOutWarning text="⚠ Some features might be hidden until you sign in." />
+            <div className="flex flex-col-reverse md:flex-row items-stretch gap-4">
+                <Adventure className="flex-1" {...adventure} />
 
-                {isEditing && adventureFormData && <>isEditing</>}
-                {/* <Form<AdventureFormType>
-                        schema={adventureFormSchema}
-                        value={adventureFormData}
-                        onChange={onChange}
-                    /> */}
+                {isEditing && adventureFormData && (
+                    <div className="flex flex-col gap-4 relative md:w-[20vw]">
+                        <Form<AdventureFormType>
+                            schema={formSchema}
+                            value={adventureFormData || defaultProps}
+                            onChange={onChange}
+                        />
+                        <ToggleData data={{ adventureFormJsonSchema, formSchema, adventureFormData }} />
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -333,6 +333,16 @@ export const cardSizes = {
         points: [288, 432],
         inches: [4, 6],
     },
+    "50x70": {
+        mm: [50, 70],
+        points: [134, 200],
+        inches: [1.97, 2.76],
+    },
+    "40x60": {
+        mm: [40, 60],
+        points: [114, 171],
+        inches: [1.57, 2.36],
+    },
 };
 
 export const allSizes = {

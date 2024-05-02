@@ -4,6 +4,77 @@ import Button from "./Button";
 import camelCaseToTitleCase from "../../../../utils/camelCaseToTitleCase";
 import Input, { InputProps } from "./Input";
 import { AnyRecord } from "../../../../utils/simpleTypes";
+import { JSONSchemaType } from "ajv";
+
+export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
+    if (typeof schema === "object" && "default" in schema) {
+        return schema.default as any;
+    }
+    if (typeof schema === "object" && "const" in schema) {
+        return schema.const;
+    }
+    if (typeof schema === "object" && schema.type === "array") {
+        return [];
+    }
+    if (typeof schema === "object" && schema.type === "object") {
+        const value = {} as AnyRecord;
+        for (const key in schema.properties) {
+            value[key] = getDefaultsFromSchema(schema.properties[key]);
+        }
+        return value;
+    }
+    return undefined;
+};
+
+export const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): InputProps => {
+    const inputProps: InputProps = { type: "text" };
+    if (typeof property === "boolean") {
+        inputProps.type = "checkbox";
+        return inputProps;
+    }
+    if (property.type === "integer") {
+        inputProps.type = "number";
+        inputProps.step = "1";
+        property.minimum && (inputProps.min = property.minimum);
+        property.maximum && (inputProps.max = property.maximum);
+        return inputProps;
+    }
+    if (property.type === "number") {
+        inputProps.type = "number";
+        property.minimum && (inputProps.min = property.minimum);
+        property.maximum && (inputProps.max = property.maximum);
+        return inputProps;
+    }
+    if (property.type === "string") {
+        inputProps.type = "text";
+        property.minLength && (inputProps.minLength = property.minLength);
+        property.maxLength && (inputProps.maxLength = property.maxLength);
+        property.pattern && (inputProps.pattern = property.pattern);
+        return inputProps;
+    }
+    if (property.type === "boolean") {
+        inputProps.type = "checkbox";
+        return inputProps;
+    }
+
+    return inputProps;
+};
+
+export const getFormSchemaFromSchema = <ValueType extends AnyRecord>(
+    schema: JSONSchemaType<any>
+): FormProps<ValueType>["schema"] => {
+    if (typeof schema === "object") {
+        return Object.fromEntries(
+            Object.entries(schema.properties).map(([propKey, propValue]) => {
+                const inputProps = getInputPropsFromSchemaProperty(propValue as JSONSchemaType<any>);
+                return [propKey, inputProps];
+            })
+        ) as FormProps<ValueType>["schema"];
+    }
+    // TODO add support for nested props
+    // TODO add support for arrays
+    return undefined;
+};
 
 const valueTypeToInputType = (value: any): InputProps["type"] | undefined => {
     if (value === null || value === undefined) {

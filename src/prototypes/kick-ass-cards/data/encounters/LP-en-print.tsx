@@ -15,6 +15,7 @@ import {
     defaultEffectProps,
     assets,
     effects,
+    defaultAssetProps,
 } from "./LP-common-en";
 import Button from "../../components/content/Button";
 import PaperCraftBox from "../../components/PaperCraftBox";
@@ -29,6 +30,7 @@ const sizePerPageMap = {
 };
 const effectItems = multiplyByCount(
     Object.values(effects).map((item) => ({
+        ...defaultEffectProps,
         count: 1,
         ...item,
         bleedMm: 3,
@@ -38,11 +40,13 @@ const effectItems = multiplyByCount(
     defaultCountAdapter
 );
 const assetItems = multiplyByCount(Object.values(assets), "count", defaultCountAdapter).map((item) => ({
+    ...defaultAssetProps,
     ...item,
     bleedMm: 3,
     className: "relative -m-[3mm]",
 }));
 const actorItems = Object.values(actors).map((item) => ({
+    ...defaultActorProps,
     ...item,
     bleedMm: 3,
     className: "relative -m-[3mm]",
@@ -83,6 +87,194 @@ export default function LPCardPages() {
                     </Button>
                 ))}
             </div>
+
+            {displayedSections["Assets"] && (
+                <ChunkedPages
+                    Component={AssetCard}
+                    BackFaceComponent={AssetCardBackFace}
+                    items={assetItems}
+                    itemsPerPage={sizePerPageMap.small}
+                    frontFacePrintPageProps={{
+                        bleedInMm: 10,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    backFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    label="Assets"
+                />
+            )}
+            {displayedSections["Actors"] && (
+                <ChunkedPages
+                    Component={ActorCard}
+                    BackFaceComponent={ActorCardBackFace}
+                    items={actorItems.map((item) => ({
+                        ...defaultActorProps,
+                        ...item,
+                    }))}
+                    itemsPerPage={sizePerPageMap.medium}
+                    frontFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    backFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    label="Actors"
+                />
+            )}
+            {displayedSections["PCs"] && (
+                <PrintPage key={"action-deck-page"}>
+                    <div className="flex flex-wrap content-center items-center justify-center">
+                        <ActorCard
+                            {...defaultActorProps}
+                            bleedMm={3}
+                            className="m-[-3mm]"
+                            name="Amara"
+                            notes="Uses her ankh to control drones for reconnaissance and attack"
+                            occupation="Mercenary"
+                            threat="Attacks with a laser sun gun"
+                            toughness={4}
+                            currentToughness={4}
+                            hideCounter
+                            imageUri="/LP/characters/amara.png"
+                            children={<PrintMarkerCorners />}
+                        />
+                        <ActorCard
+                            {...defaultActorProps}
+                            bleedMm={3}
+                            className="m-[-3mm]"
+                            name="Holden Cantos"
+                            occupation="Handyman"
+                            threat="Boosts turbine to burn stuff and melt metal"
+                            notes="Builds drones for recon and attack"
+                            toughness={4}
+                            currentToughness={4}
+                            hideCounter
+                            imagePosition="top"
+                            imageUri="/LP/characters/holden.png"
+                            children={<PrintMarkerCorners />}
+                        />
+                        <ActorCard
+                            {...defaultActorProps}
+                            bleedMm={3}
+                            className="m-[-3mm]"
+                            name="L'Anaes"
+                            occupation="Mercenary"
+                            threat="Special: Release mind affecting spores"
+                            notes="Fearless, Simple minded, Badly healed broken bone"
+                            toughness={4}
+                            currentToughness={4}
+                            hideCounter
+                            imagePosition="top"
+                            imageUri="/LP/characters/lanaes.png"
+                            children={<PrintMarkerCorners />}
+                        />
+                        <PaperMini
+                            className="ml-4 mt-10"
+                            imageUri="/LP/characters/holden.png"
+                            baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                            baseContent="Holden"
+                            imageStyle={{ backgroundPosition: "center bottom" }}
+                            backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                            backBaseContent="Holden"
+                            baseWidth="0.5in"
+                            height="2in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            className="mt-10"
+                            imageUri="/LP/characters/amara.png"
+                            baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                            baseContent="Amara"
+                            imageStyle={{ backgroundPosition: "center bottom" }}
+                            backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                            backBaseContent="Amara"
+                            baseWidth="0.5in"
+                            height="2in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            className="mt-10"
+                            imageUri="/LP/characters/lanaes.png"
+                            baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                            baseContent="L'Anaes"
+                            imageStyle={{ backgroundPosition: "center bottom" }}
+                            backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
+                            backBaseContent="L'Anaes"
+                            baseWidth="0.5in"
+                            height="2in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            className="mt-10"
+                            imageUri="/LP/characters/drones.png"
+                            baseClassName="pt-2 bg-kac-cloth text-white text-center"
+                            baseContent="Drones"
+                            imageStyle={{ backgroundPosition: "center bottom" }}
+                            backBaseClassName="pt-2 bg-kac-cloth text-white text-center"
+                            backBaseContent="Drones"
+                            baseWidth="0.5in"
+                            height="2in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            className="mt-10"
+                            imageUri="/LP/characters/scarabeus.png"
+                            baseClassName="pt-2 bg-kac-cloth text-white text-center"
+                            baseContent="Scarabeus"
+                            imageStyle={{ backgroundPosition: "center bottom" }}
+                            backBaseClassName="pt-2 bg-kac-cloth text-white text-center"
+                            backBaseContent="Scarabeus"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
+                            Player characters
+                        </div>
+                    </div>
+                </PrintPage>
+            )}
+            {displayedSections["Clocks"] && (
+                <ChunkedPages
+                    Component={Clock}
+                    items={Object.values(clocks).map((item) => ({
+                        ...defaultClockProps,
+                        className: undefined,
+                        ...item,
+                    }))}
+                    itemsPerPage={sizePerPageMap.medium}
+                    frontFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    backFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    label="Clocks"
+                />
+            )}
+            {displayedSections["Effects"] && (
+                <ChunkedPages
+                    Component={EffectCard}
+                    BackFaceComponent={EffectCardBackFace}
+                    items={effectItems}
+                    itemsPerPage={sizePerPageMap.small}
+                    frontFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    backFacePrintPageProps={{
+                        bleedInMm: 0,
+                        contentClassName: "p-[3mm]",
+                    }}
+                    label="Effects"
+                />
+            )}
             {displayedSections["Boxes"] && (
                 <>
                     <PrintPage bleedInMm={0} contentClassName="w-full h-full">
@@ -220,196 +412,6 @@ export default function LPCardPages() {
                         />
                     </PrintPage>
                 </>
-            )}
-            {displayedSections["Assets"] && (
-                <ChunkedPages
-                    Component={AssetCard}
-                    BackFaceComponent={AssetCardBackFace}
-                    items={assetItems}
-                    itemsPerPage={sizePerPageMap.small}
-                    frontFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    backFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    label="Assets"
-                />
-            )}
-            {displayedSections["Actors"] && (
-                <ChunkedPages
-                    Component={ActorCard}
-                    BackFaceComponent={ActorCardBackFace}
-                    items={actorItems.map((item) => ({
-                        ...defaultActorProps,
-                        ...item,
-                    }))}
-                    itemsPerPage={sizePerPageMap.medium}
-                    frontFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    backFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    label="Actors"
-                />
-            )}
-            {displayedSections["PCs"] && (
-                <PrintPage key={"action-deck-page"}>
-                    <div className="flex flex-wrap content-center items-center justify-center">
-                        <ActorCard
-                            {...defaultActorProps}
-                            bleedMm={3}
-                            className="m-[-3mm]"
-                            name="Amara"
-                            notes="Uses her ankh to control drones for reconnaissance and attack"
-                            occupation="Mercenary"
-                            size="Bridge"
-                            threat="Attacks with a laser sun gun"
-                            toughness={4}
-                            currentToughness={4}
-                            hideCounter
-                            imageUri="/LP/characters/amara.png"
-                            children={<PrintMarkerCorners />}
-                        />
-                        <ActorCard
-                            {...defaultActorProps}
-                            bleedMm={3}
-                            className="m-[-3mm]"
-                            name="Holden Cantos"
-                            occupation="Handyman"
-                            size="Bridge"
-                            threat="Boosts turbine to burn stuff and melt metal"
-                            notes="Builds drones for recon and attack"
-                            toughness={4}
-                            currentToughness={4}
-                            hideCounter
-                            imagePosition="top"
-                            imageUri="/LP/characters/holden.png"
-                            children={<PrintMarkerCorners />}
-                        />
-                        <ActorCard
-                            {...defaultActorProps}
-                            bleedMm={3}
-                            className="m-[-3mm]"
-                            name="L'Anaes"
-                            occupation="Mercenary"
-                            size="Bridge"
-                            threat="Special: Release mind affecting spores"
-                            notes="Fearless, Simple minded, Badly healed broken bone"
-                            toughness={4}
-                            currentToughness={4}
-                            hideCounter
-                            imagePosition="top"
-                            imageUri="/LP/characters/lanaes.png"
-                            children={<PrintMarkerCorners />}
-                        />
-                        <PaperMini
-                            className="ml-4 mt-10"
-                            imageUri="/LP/characters/holden.png"
-                            baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
-                            baseContent="Holden"
-                            imageStyle={{ backgroundPosition: "center bottom" }}
-                            backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
-                            backBaseContent="Holden"
-                            baseWidth="0.5in"
-                            height="2in"
-                            width="1in"
-                        />
-                        <PaperMini
-                            className="mt-10"
-                            imageUri="/LP/characters/amara.png"
-                            baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
-                            baseContent="Amara"
-                            imageStyle={{ backgroundPosition: "center bottom" }}
-                            backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
-                            backBaseContent="Amara"
-                            baseWidth="0.5in"
-                            height="2in"
-                            width="1in"
-                        />
-                        <PaperMini
-                            className="mt-10"
-                            imageUri="/LP/characters/lanaes.png"
-                            baseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
-                            baseContent="L'Anaes"
-                            imageStyle={{ backgroundPosition: "center bottom" }}
-                            backBaseClassName="pt-2 bg-kac-cloth-dark text-white text-center"
-                            backBaseContent="L'Anaes"
-                            baseWidth="0.5in"
-                            height="2in"
-                            width="1in"
-                        />
-                        <PaperMini
-                            className="mt-10"
-                            imageUri="/LP/characters/drones.png"
-                            baseClassName="pt-2 bg-kac-cloth text-white text-center"
-                            baseContent="Drones"
-                            imageStyle={{ backgroundPosition: "center bottom" }}
-                            backBaseClassName="pt-2 bg-kac-cloth text-white text-center"
-                            backBaseContent="Drones"
-                            baseWidth="0.5in"
-                            height="2in"
-                            width="1in"
-                        />
-                        <PaperMini
-                            className="mt-10"
-                            imageUri="/LP/characters/scarabeus.png"
-                            baseClassName="pt-2 bg-kac-cloth text-white text-center"
-                            baseContent="Scarabeus"
-                            imageStyle={{ backgroundPosition: "center bottom" }}
-                            backBaseClassName="pt-2 bg-kac-cloth text-white text-center"
-                            backBaseContent="Scarabeus"
-                            baseWidth="0.5in"
-                            height="1in"
-                            width="1in"
-                        />
-                        <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
-                            Player characters
-                        </div>
-                    </div>
-                </PrintPage>
-            )}
-            {displayedSections["Clocks"] && (
-                <ChunkedPages
-                    Component={Clock}
-                    items={Object.values(clocks).map((item) => ({
-                        ...defaultClockProps,
-                        className: undefined,
-                        ...item,
-                    }))}
-                    itemsPerPage={sizePerPageMap.medium}
-                    frontFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    backFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    label="Clocks"
-                />
-            )}
-            {displayedSections["Effects"] && (
-                <ChunkedPages
-                    Component={EffectCard}
-                    BackFaceComponent={EffectCardBackFace}
-                    items={effectItems}
-                    itemsPerPage={sizePerPageMap.small}
-                    frontFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    backFacePrintPageProps={{
-                        bleedInMm: 0,
-                        contentClassName: "p-[3mm]",
-                    }}
-                    label="Effects"
-                />
             )}
         </>
     );

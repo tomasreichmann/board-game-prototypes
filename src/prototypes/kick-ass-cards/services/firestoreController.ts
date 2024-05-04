@@ -149,6 +149,17 @@ export const updateAdventure = async (adventureId: string, data: UpdateData<Docu
     return updateDocument("adventures", adventureId, data);
 };
 
+export const createAdventureDocument = async (
+    adventureId: string,
+    user: UserResource,
+    partialData?: Partial<AdventureDocumentDocType>
+) => {
+    const meta = getDocMeta(user);
+    const name = meta.author.displayName ? `${meta.author.displayName}'s document` : "Anonymous document";
+    const data = { name, meta, ...partialData };
+    return createDocument(["adventures", adventureId, "contents"].join("/"), data);
+};
+
 export const getAdventure = async (adventureId: string) => {
     try {
         return await doc(db, "adventures", adventureId);
@@ -214,8 +225,28 @@ export type AdventureDocType = {
     name?: string;
     description?: string;
     imageUri?: string;
-    content?: any[];
+    contents?: AdventureDocumentDocType[];
     meta?: DocMetaType;
+};
+
+export type AdventureDocumentDocType = {
+    id: string;
+    name?: string;
+    contents?: any[];
+    meta?: DocMetaType;
+};
+
+export enum ContentItemTypeEnum {
+    Mdx = "Mdx",
+    Image = "Image",
+    Heading = "Heading",
+    List = "List",
+}
+
+export type ContentItemType = {
+    id: string;
+    type: string;
+    props: any;
 };
 
 export const useAdventure = (adventureId: string | undefined) => {
@@ -232,21 +263,52 @@ export const useAdventure = (adventureId: string | undefined) => {
         [adventureId]
     );
 
-    const remove = useCallback(
-        async (data: UpdateData<DocumentData>) => {
-            if (!adventureId) {
-                return;
-            }
-            await deleteAdventure(adventureId);
-        },
-        [adventureId]
-    );
+    const remove = useCallback(async () => {
+        if (!adventureId) {
+            return;
+        }
+        await deleteAdventure(adventureId);
+    }, [adventureId]);
 
     return {
         adventure: data as AdventureDocType | undefined,
         adventureError: error,
         updateAdventure: update,
         deleteAdventure: remove,
+    };
+};
+
+export const useAdventureDocument = (adventureId: string | undefined, documentId: string | undefined) => {
+    const collectionPath = ["adventures", adventureId, "contents"].join("/");
+    const docPath = [collectionPath, documentId].join("/");
+    const docRef = useMemo(() => (adventureId ? doc(db, docPath) : undefined), [adventureId, documentId]);
+    const { data, error } = useDocument(
+        docRef,
+        `Document with id "${adventureId}" within adventure with id "${adventureId}" does not exist`
+    );
+
+    const update = useCallback(
+        async (data: UpdateData<DocumentData>) => {
+            if (!adventureId || !documentId) {
+                return;
+            }
+            await updateDocument(collectionPath, documentId, data);
+        },
+        [adventureId, documentId, collectionPath]
+    );
+
+    const remove = useCallback(async () => {
+        if (!adventureId || !documentId) {
+            return;
+        }
+        await deleteDocument(collectionPath, documentId);
+    }, [adventureId, documentId, collectionPath]);
+
+    return {
+        document: data as AdventureDocumentDocType | undefined,
+        documentError: error,
+        updateDocument: update,
+        deleteDocument: remove,
     };
 };
 

@@ -1,11 +1,14 @@
 import Text from "../content/Text";
-import { AdventureDocType } from "../../services/firestoreController";
+import { AdventureDocType, checkWriteAccess, createAdventureDocument } from "../../services/firestoreController";
 import { JSONSchemaType } from "ajv";
 import ToggleData from "../../../../components/DataToggle";
 import Heading from "../Heading";
 import { twMerge } from "tailwind-merge";
+import Button from "../content/Button";
+import { useUser } from "@clerk/clerk-react";
+import { adventuresPath } from "../routes/routes";
 
-export type AdventureFormType = Omit<AdventureDocType, "id" | "meta" | "content">;
+export type AdventureFormType = Omit<AdventureDocType, "id" | "meta" | "contents">;
 
 export const adventureFormJsonSchema: JSONSchemaType<AdventureFormType> = {
     type: "object",
@@ -17,6 +20,7 @@ export const adventureFormJsonSchema: JSONSchemaType<AdventureFormType> = {
         description: {
             nullable: true,
             type: "string",
+            maxLength: 1000,
         },
         imageUri: {
             nullable: true,
@@ -32,7 +36,20 @@ export type AdventureProps = {
 } & AdventureDocType;
 
 export default function Adventure(props: AdventureProps) {
-    const { className, name, description, content = [], imageUri } = props;
+    const { id, className, name, description, meta, contents = [], imageUri } = props;
+
+    const { user } = useUser();
+
+    const hasWriteAccess = checkWriteAccess(meta);
+
+    const createContent = () => {
+        if (user) {
+            createAdventureDocument(id, user).then((docRef) => {
+                window.location.assign([adventuresPath, id, "docs", docRef.id].join("/"));
+            });
+        }
+    };
+
     return (
         <div className={twMerge("flex flex-col pb-8", className)}>
             <Heading
@@ -47,18 +64,24 @@ export default function Adventure(props: AdventureProps) {
                 </Text>
             )}
 
-            {content.length === 0 && (
+            {hasWriteAccess && (
+                <Button variant="solid" color="primary" className="mt-4" onClick={createContent}>
+                    Create new document
+                </Button>
+            )}
+
+            {contents.length === 0 && (
                 <Text
                     variant="body"
                     color="body"
                     className="text-lg mt-4 text-center font-bold text-kac-steel-dark py-8"
                 >
-                    No content yet
+                    No documents yet
                 </Text>
             )}
 
-            {content.length > 0 && <ToggleData data={{ content }} />}
-            <ToggleData data={{ content }} />
+            {contents.length > 0 && <ToggleData data={{ contents }} />}
+            <ToggleData data={{ contents }} />
         </div>
     );
 }

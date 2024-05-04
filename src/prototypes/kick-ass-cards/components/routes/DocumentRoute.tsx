@@ -2,7 +2,13 @@ import { Navigation } from "../Navigation";
 import Text, { H5 } from "../content/Text";
 import ToggleData from "../../../../components/DataToggle";
 import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
-import { checkWriteAccess, claimDocument, deleteAdventure, useAdventure } from "../../services/firestoreController";
+import {
+    checkWriteAccess,
+    claimDocument,
+    deleteAdventure,
+    useAdventure,
+    useAdventureDocument,
+} from "../../services/firestoreController";
 import { useParams } from "react-router-dom";
 import { adventuresPath } from "./routes";
 import PendingTimer from "../../../../components/PendingTimer";
@@ -13,29 +19,30 @@ import Adventure, { AdventureFormType, adventureFormJsonSchema } from "../advent
 import { useCallback, useMemo, useState } from "react";
 import Form, { getDefaultsFromSchema, getFormSchemaFromSchema } from "../content/Form";
 import { JSONSchemaType } from "ajv";
+import Document, { adventureDocumentFormJsonSchema } from "../adventures/Document";
 
-const AdventureContent = () => {
+const DocumentContent = () => {
     const [isEditing, setIsEditing] = useState(false);
-    const { adventureId } = useParams<"adventureId">();
+    const { adventureId, documentId } = useParams<"adventureId" | "documentId">();
     const { user } = useUser();
 
-    const { adventure, adventureError, updateAdventure } = useAdventure(adventureId);
+    const { document, documentError, updateDocument, deleteDocument } = useAdventureDocument(adventureId, documentId);
 
-    const hasWriteAccess = checkWriteAccess(adventure?.meta);
-    const canClaim = user?.id && !adventure?.meta?.author;
+    const hasWriteAccess = checkWriteAccess(document?.meta);
+    const canClaim = user?.id && !document?.meta?.author;
     // const canAbandon = user?.id && adventure?.meta?.author?.uid === user?.id;
     const onChange = useCallback((data: Partial<AdventureFormType>) => {
         console.log(data);
-        updateAdventure(data);
+        updateDocument(data);
     }, []);
 
-    const adventureFormData = useMemo(() => {
-        if (!adventure) {
+    const documentFormData = useMemo(() => {
+        if (!document) {
             return undefined;
         }
-        const { id, meta, contents, ...adventureFormData } = adventure;
-        return adventureFormData;
-    }, [adventure]);
+        const { id, meta, contents, ...documentFormData } = document;
+        return documentFormData;
+    }, [document]);
 
     if (!adventureId) {
         return (
@@ -50,21 +57,34 @@ const AdventureContent = () => {
         );
     }
 
-    if (adventureError) {
+    if (!documentId) {
         return (
             <div className="flex-1 flex flex-col gap-2 justify-center items-center p-8 bg-white">
                 <H5 color="danger" className="text-center">
-                    ⚠ Error loading an Adventure with ID "{adventureId}"
+                    ⚠ Invalid Document Id
                 </H5>
                 <Text color="danger" variant="body" className="text-center">
-                    {adventureError.message}
+                    "{documentId}"
                 </Text>
-                <SignedOutWarning text="⚠ Some adventures might be unavailable until you sign in." />
             </div>
         );
     }
 
-    if (!adventure) {
+    if (documentError) {
+        return (
+            <div className="flex-1 flex flex-col gap-2 justify-center items-center p-8 bg-white">
+                <H5 color="danger" className="text-center">
+                    ⚠ Error loading an document with ID "{documentId}" in adventure with ID "{adventureId}"
+                </H5>
+                <Text color="danger" variant="body" className="text-center">
+                    {documentError.message}
+                </Text>
+                <SignedOutWarning text="⚠ Some documents might be unavailable until you sign in." />
+            </div>
+        );
+    }
+
+    if (!document) {
         return (
             <div className="flex-1 flex flex-col gap-2 justify-center items-center">
                 <PendingTimer />
@@ -73,9 +93,9 @@ const AdventureContent = () => {
     }
 
     const defaultProps = getDefaultsFromSchema(
-        adventureFormJsonSchema as JSONSchemaType<any>
+        adventureDocumentFormJsonSchema as JSONSchemaType<any>
     ) as Partial<AdventureFormType>;
-    const formSchema = getFormSchemaFromSchema(adventureFormJsonSchema as JSONSchemaType<any>);
+    const formSchema = getFormSchemaFromSchema(adventureDocumentFormJsonSchema as JSONSchemaType<any>);
 
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white">
@@ -106,7 +126,7 @@ const AdventureContent = () => {
                             variant="outline"
                             size="sm"
                             onClick={() => {
-                                deleteAdventure(adventureId).then(() => {
+                                deleteDocument().then(() => {
                                     window.location.href = adventuresPath;
                                 });
                             }}
@@ -121,7 +141,7 @@ const AdventureContent = () => {
                             color="danger"
                             size="sm"
                             onClick={() => {
-                                claimDocument("adventures", adventureId, user);
+                                claimDocument(["adventures", adventureId, "content"].join("/"), documentId, user);
                             }}
                         >
                             Claim
@@ -133,16 +153,16 @@ const AdventureContent = () => {
             </div>
             <SignedOutWarning text="⚠ Some features might be hidden until you sign in." />
             <div className="flex flex-col-reverse md:flex-row items-stretch gap-4">
-                <Adventure className="flex-1" {...adventure} />
+                <Document className="flex-1" {...document} />
 
-                {isEditing && adventureFormData && (
+                {isEditing && documentFormData && (
                     <div className="flex flex-col gap-4 relative md:w-[20vw]">
                         <Form<AdventureFormType>
                             schema={formSchema}
-                            value={adventureFormData || defaultProps}
+                            value={documentFormData || defaultProps}
                             onChange={onChange}
                         />
-                        <ToggleData data={{ adventureFormJsonSchema, formSchema, adventureFormData }} />
+                        <ToggleData data={{ adventureFormJsonSchema, formSchema, documentFormData }} />
                     </div>
                 )}
             </div>
@@ -150,11 +170,11 @@ const AdventureContent = () => {
     );
 };
 
-export default function AdventureRoute() {
+export default function DocumentRoute() {
     return (
         <>
             <Navigation />
-            <AdventureContent />
+            <DocumentContent />
         </>
     );
 }

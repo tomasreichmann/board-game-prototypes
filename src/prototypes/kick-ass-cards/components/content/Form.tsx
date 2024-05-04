@@ -46,7 +46,9 @@ export const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): 
         return inputProps;
     }
     if (property.type === "string") {
-        inputProps.type = "text";
+        const isLong =
+            (property.maxLength && property.maxLength > 100) || (property.minLength && property.minLength > 100);
+        inputProps.type = isLong ? "textarea" : "text";
         property.minLength && (inputProps.minLength = property.minLength);
         property.maxLength && (inputProps.maxLength = property.maxLength);
         property.pattern && (inputProps.pattern = property.pattern);
@@ -94,7 +96,7 @@ const inferPropertyFromValue = <ValueType extends AnyRecord>(key: keyof ValueTyp
         prop: key,
         label: camelCaseToTitleCase(String(key)),
         type: valueTypeToInputType(value?.[key]) || "text",
-        placeholder: value?.[key] ? JSON.stringify(value?.[key]) : undefined,
+        // placeholder: value?.[key] ? JSON.stringify(value?.[key]) : undefined,
     };
 };
 

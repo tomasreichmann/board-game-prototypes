@@ -71,10 +71,10 @@ export default function AdventuresRoute() {
                                 }}
                                 href={adventuresPath + "/" + adventure.id}
                             >
-                                <div className="flex flex-col bg-gradient-to-b from-white/0 to-50% to-white/90 p-4">
+                                <div className="flex flex-col bg-gradient-to-b from-white/0 to-50% to-white/90 p-4 pt-8">
                                     <H6 className="text-ellipsis">{adventure.name || "Untitled Adventure"}</H6>
                                     {adventure.description && (
-                                        <Text variant="body" className="text-sm">
+                                        <Text variant="body" className="text-xs leading-tight line-clamp-3">
                                             {adventure.description}
                                         </Text>
                                     )}

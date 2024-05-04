@@ -14,6 +14,7 @@ import WorldBuilderRoute from "./WorldBuilderRoute";
 import SettingsRoute from "./SettingsRoute";
 import AdventuresRoute from "./AdventuresRoute";
 import AdventureRoute from "./AdventureRoute";
+import DocumentRoute from "./DocumentRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
@@ -34,6 +35,12 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         name: "Components",
         path: kickAssCardsPath + "/components",
         Component: ComponentsRoute,
+    },
+    {
+        name: "Adventure",
+        path: adventuresPath + "/:adventureId/docs/:documentId",
+        hideFromNav: true,
+        Component: DocumentRoute,
     },
     {
         name: "Adventure",

@@ -2,11 +2,13 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import BroadcastImage from "./screenContent/BroadcastImage";
 import Image, { ImageProps } from "./Image";
+import { H2 } from "./content/Text";
 
 export type HeadingProps = React.PropsWithChildren<{
     className?: string;
     heading?: string | null;
     headingClassName?: string | null;
+    contentWrapperClassName?: string | null;
     imageUri?: string | null;
     imageClassName?: string | null;
     broadcast?: boolean;
@@ -17,12 +19,27 @@ export default function Heading({
     className,
     heading,
     headingClassName,
+    contentWrapperClassName,
     imageClassName,
     imageUri,
     broadcast,
     ImageComponent = broadcast ? BroadcastImage : Image,
     children,
 }: HeadingProps) {
+    const headingElement = heading && (
+        <H2 className={twMerge("text-3xl text-kac-steel-light z-10", headingClassName)}>{heading}</H2>
+    );
+    const content = contentWrapperClassName ? (
+        <div className={contentWrapperClassName}>
+            {headingElement}
+            {children}
+        </div>
+    ) : (
+        <>
+            {headingElement}
+            {children}
+        </>
+    );
     return (
         <div
             className={twMerge(
@@ -38,18 +55,7 @@ export default function Heading({
                     objectPosition="50% 25%"
                 />
             )}
-            {heading && (
-                <h2
-                    className={twMerge(
-                        "font-kacHeading text-3xl text-kac-steel-light text-center z-10 drop-shadow-2xl",
-                        headingClassName
-                    )}
-                >
-                    {heading}
-                </h2>
-            )}
-
-            {children}
+            {content}
         </div>
     );
 }

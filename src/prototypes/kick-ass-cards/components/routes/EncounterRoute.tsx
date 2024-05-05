@@ -46,15 +46,12 @@ export default function EncounterRoute() {
     if (!path) {
         return null;
     }
+
     return (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto">
             {isPending && <Pending />}
             <Article>
-                <MDXProvider
-                    components={
-                        defaultMdxComponentMap
-                    }
-                >
+                <MDXProvider components={defaultMdxComponentMap}>
                     {Encounter !== null && <Encounter key={path} />}
                 </MDXProvider>
             </Article>

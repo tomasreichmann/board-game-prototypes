@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import ComponentMetaType from "./ComponentMetaType";
-import Form, { getDefaultsFromSchema, getFormSchemaFromSchema } from "../content/Form";
+import Form, { getDefaultsFromSchema, getFormSchemaFromJsonSchema } from "../content/Form";
 import Toggle from "../../../../components/Toggle";
 import ToggleData from "../../../../components/DataToggle";
 import getComponentCode from "./getComponentCode";
@@ -80,7 +80,7 @@ export default function ComponentMetaEditor<PropType extends {}>({
 
     const { defaultProps, formSchema } = useMemo(() => {
         const defaultProps = getDefaultsFromSchema(schema as JSONSchemaType<any>) as Partial<PropType>;
-        const formSchema = getFormSchemaFromSchema(schema as JSONSchemaType<any>);
+        const formSchema = getFormSchemaFromJsonSchema(schema as JSONSchemaType<any>);
         return {
             formSchema,
             defaultProps,

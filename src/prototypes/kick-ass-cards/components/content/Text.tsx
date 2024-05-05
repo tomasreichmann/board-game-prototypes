@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, Ref, forwardRef } from "react";
 import { JSONSchemaType } from "ajv";
 import ComponentMetaType from "../generation/ComponentMetaType";
 
@@ -26,6 +26,7 @@ const variants = cva(["Text"], {
             h6: ["font-kacHeading", "text-md", "leading-tight", "tracking-tighter"],
         },
         color: {
+            inherit: ["text-inherit"],
             body: ["text-kac-iron"],
             heading: ["text-kac-cloth-dark"],
             warning: ["text-kac-curse"],
@@ -49,8 +50,11 @@ const defaultVariantColorMap = {
     h6: "heading" as const,
 };
 
+export type TextPropsEditable = Pick<TextProps, "variant" | "color" | "children">;
+
 export type TextProps = React.PropsWithChildren<{
     className?: string;
+    ref?: Ref<any>;
     Component?:
         | React.ComponentType<React.PropsWithChildren<any>>
         | "div"
@@ -114,11 +118,12 @@ export default function Text({
     variant = "body",
     Component,
     color = defaultVariantColorMap[variant || "body"],
+    ref,
     ...restProps
 }: TextProps) {
     const ResolvedComponent = Component || variantComponentMap[variant || "body"];
     return (
-        <ResolvedComponent className={twMerge(variants({ variant, color }), className)} {...restProps}>
+        <ResolvedComponent ref={ref} className={twMerge(variants({ variant, color }), className)} {...restProps}>
             {children}
         </ResolvedComponent>
     );

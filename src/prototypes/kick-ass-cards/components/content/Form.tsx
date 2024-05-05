@@ -5,6 +5,7 @@ import camelCaseToTitleCase from "../../../../utils/camelCaseToTitleCase";
 import Input, { InputProps } from "./Input";
 import { AnyRecord } from "../../../../utils/simpleTypes";
 import { JSONSchemaType } from "ajv";
+import ErrorBoundary from "../../../../components/ErrorBoundary";
 
 export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
     if (typeof schema === "object" && "default" in schema) {
@@ -28,7 +29,18 @@ export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
 
 export const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): InputProps => {
     const inputProps: InputProps = { type: "text" };
-    if (typeof property === "boolean") {
+    if (property.enum?.length ?? 0 > 0) {
+        inputProps.type = "select";
+        inputProps.selectOptions = property.enum.map((value: any) => ({ label: String(value), value }));
+        return inputProps;
+    }
+    if (property.default !== undefined) {
+        inputProps.defaultValue = property.default;
+    }
+    if (property.nullable) {
+        inputProps.clearable = true;
+    }
+    if (property.type === "boolean") {
         inputProps.type = "checkbox";
         return inputProps;
     }
@@ -62,7 +74,7 @@ export const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): 
     return inputProps;
 };
 
-export const getFormSchemaFromSchema = <ValueType extends AnyRecord>(
+export const getFormSchemaFromJsonSchema = <ValueType extends AnyRecord>(
     schema: JSONSchemaType<any>
 ): FormProps<ValueType>["schema"] => {
     if (typeof schema === "object") {
@@ -189,28 +201,36 @@ export default function Form<ValueType extends AnyRecord>({
     return (
         <form className={twMerge("flex flex-col gap-4", className)}>
             {children}
-            <div className={twMerge("flex flex-col gap-2 my-2", propertiesClassName)}>
-                {properties.map((property) => (
-                    <Input
-                        {...defaultInputProps}
-                        key={String(property.prop as keyof ValueType)}
-                        {...property}
-                        value={getDefaultValue(valueWithChanges?.[property.prop as keyof ValueType], property)}
-                        error={errorMap?.[property.prop as keyof ValueType]?.message || undefined}
-                        onChange={(event) => {
-                            setValueWithChanges((value) => ({
-                                ...value,
-                                [property.prop]:
-                                    property.type === "number" ? Number(event.target.value) : event.target.value,
-                            }));
-                            onChange?.({
-                                ...value,
-                                [property.prop]:
-                                    property.type === "number" ? Number(event.target.value) : event.target.value,
-                            } as ValueType);
-                        }}
-                    />
-                ))}
+            <div className={twMerge("flex flex-col gap-2", propertiesClassName)}>
+                <ErrorBoundary>
+                    {properties.map((property) => (
+                        <ErrorBoundary key={String(property.prop as keyof ValueType)}>
+                            <Input
+                                {...defaultInputProps}
+                                key={String(property.prop as keyof ValueType)}
+                                {...property}
+                                value={getDefaultValue(valueWithChanges?.[property.prop as keyof ValueType], property)}
+                                error={errorMap?.[property.prop as keyof ValueType]?.message || undefined}
+                                onChange={(event) => {
+                                    setValueWithChanges((value) => ({
+                                        ...value,
+                                        [property.prop]:
+                                            property.type === "number"
+                                                ? Number(event.target.value)
+                                                : event.target.value,
+                                    }));
+                                    onChange?.({
+                                        ...value,
+                                        [property.prop]:
+                                            property.type === "number"
+                                                ? Number(event.target.value)
+                                                : event.target.value,
+                                    } as ValueType);
+                                }}
+                            />
+                        </ErrorBoundary>
+                    ))}
+                </ErrorBoundary>
             </div>
             {onSubmit && (
                 <Button

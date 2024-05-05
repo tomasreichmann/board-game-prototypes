@@ -11,11 +11,16 @@ import {
     DocumentReference,
     Query,
     FieldPath,
+    deleteField,
 } from "firebase/firestore";
 import db from "../../../services/Firebase/cloudFirestore";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { auth } from "../../../services/Firebase/firebase";
 import { UserResource } from "@clerk/types";
+import { AnyRecord } from "../../../utils/simpleTypes";
+import { defaultMdxComponentMap } from "../components/content/MdxArticle";
+
+export const collectionWithDb = (path: string) => collection(db, path);
 
 export enum DocStatusEnum {
     Draft = "Draft",
@@ -26,11 +31,11 @@ export enum DocStatusEnum {
 export type UserMetaType = {
     uid: string | null;
     displayName: string | null;
-    photoURL: string | null;
+    imageUrl: string | null;
 };
 
 export type DocMetaType = {
-    createdAt?: Date;
+    createdAt?: number;
     author?: UserMetaType;
     isPublic?: boolean;
     status?: DocStatusEnum;
@@ -41,7 +46,7 @@ export type DocMetaType = {
 const getDocMeta = (user: UserResource) => {
     const author = getUserMeta(user);
     return {
-        createdAt: new Date(),
+        createdAt: Date.now(),
         author,
         isPublic: false,
         status: DocStatusEnum.Published, // TODO: change to Draft
@@ -74,7 +79,6 @@ export const checkWriteAccess = (meta?: DocMetaType, user = auth.currentUser) =>
 export const createDocument = async (path: string, data: DocumentData = {}) => {
     try {
         const docRef = await addDoc(collection(db, path), data);
-        console.log("Document written with ID: ", docRef.id);
         return docRef;
     } catch (e) {
         console.error("Error adding document: ", e);
@@ -110,9 +114,29 @@ export const deleteDocument = async (path: string, docId: string) => {
     }
 };
 
+const replaceUndefinedProperties = <T>(data: T): T => {
+    if (typeof data === "object") {
+        const containsUndefinedValues = Object.values(data as Object).some((value) => value === undefined);
+        return (
+            containsUndefinedValues
+                ? Object.fromEntries(Object.entries(data as Object).filter(([, value]) => value !== undefined))
+                : data
+        ) as T;
+    }
+    if (Array.isArray(data)) {
+        const containsUndefinedValues = data.some((value) => value === undefined);
+        if (containsUndefinedValues) {
+            return data.filter((item) => item !== undefined).map((item) => replaceUndefinedProperties(item)) as T;
+        }
+        return data;
+    }
+    return data;
+};
+
 export const updateDocument = async (path: string, docId: string, data: UpdateData<DocumentData>) => {
     try {
-        await updateDoc(doc(db, path, docId), data);
+        const filteredData = replaceUndefinedProperties(data);
+        await updateDoc(doc(db, path, docId), filteredData);
     } catch (e) {
         console.error("Error updating document: ", e);
         return Promise.reject(e);
@@ -123,11 +147,25 @@ export const updateDocumentFields = async (
     path: string,
     docId: string,
     field: string | FieldPath,
-    value: unknown,
+    value: unknown = deleteField(),
     ...moreFieldsAndValues: unknown[]
 ) => {
     try {
-        await updateDoc(doc(db, path, docId), field, value, ...moreFieldsAndValues);
+        const allFields = [field, value, ...moreFieldsAndValues].map((fieldOrValue, index) => {
+            const isValue = index % 2 === 1;
+            if (isValue) {
+                if (fieldOrValue === undefined) {
+                    return deleteField();
+                }
+                if (typeof fieldOrValue === "object") {
+                    return replaceUndefinedProperties(fieldOrValue as Object);
+                }
+                return fieldOrValue;
+            }
+            return fieldOrValue;
+        });
+        const [normField, normValue, ...normMoreFieldsAndValues] = allFields;
+        await updateDoc(doc(db, path, docId), normField as string | FieldPath, normValue, ...normMoreFieldsAndValues);
     } catch (e) {
         console.error("Error updating document fields: ", e);
         return Promise.reject(e);
@@ -160,6 +198,15 @@ export const createAdventureDocument = async (
     return createDocument(["adventures", adventureId, "contents"].join("/"), data);
 };
 
+export const createAdventureDocumentContent = async (
+    adventureId: string,
+    documentId: string,
+    contentItem: Omit<ContentItemType, "id">
+) => {
+    const collectionPath = ["adventures", adventureId, "contents", documentId, "contents"].join("/");
+    return createDocument(collectionPath, contentItem);
+};
+
 export const getAdventure = async (adventureId: string) => {
     try {
         return await doc(db, "adventures", adventureId);
@@ -169,16 +216,30 @@ export const getAdventure = async (adventureId: string) => {
     }
 };
 
-export const useDocument = (
-    ref: DocumentReference<DocumentData, DocumentData> | Query<DocumentData, DocumentData> | undefined,
+export const useQuery = <Ref extends DocumentReference<DocumentData, DocumentData> | Query<DocumentData, DocumentData>>(
+    ref: Ref | undefined,
     notFoundErrorMessage = "Error getting document"
 ) => {
-    const [data, setData] = useState<DocumentData>();
+    type DocumentWithIdType = DocumentData & { id: string };
+    type DataType = Ref["type"] extends "document" ? DocumentWithIdType : DocumentWithIdType[];
+    const [data, setData] = useState<DataType>();
     const [error, setError] = useState<FirestoreError>();
+
+    const rerenderRef = useRef({ roundedTime: Math.floor(Date.now() / 1000), count: 0 });
 
     useEffect(() => {
         setError(undefined);
         setData(undefined);
+        if (rerenderRef.current.roundedTime !== Math.floor(Date.now() / 1000)) {
+            rerenderRef.current.roundedTime = Math.floor(Date.now() / 1000);
+            rerenderRef.current.count = 1;
+        } else {
+            rerenderRef.current.count += 1;
+        }
+        if (rerenderRef.current.count > 10) {
+            throw new Error("Too many re-renders. Check ref reference integrity");
+        }
+
         if (!ref) {
             return;
         }
@@ -191,7 +252,7 @@ export const useDocument = (
                     if (!data) {
                         setError({ name: "Not found", code: "not-found", message: notFoundErrorMessage });
                     }
-                    setData({ ...snapshot.data(), id: snapshot.id });
+                    setData({ ...snapshot.data(), id: snapshot.id } as unknown as DataType);
                 },
                 (error) => {
                     setError(error);
@@ -202,12 +263,11 @@ export const useDocument = (
                 ref,
                 (snapshot) => {
                     const data: DocumentData[] = [];
-                    console.log("snapshot", snapshot);
                     snapshot.forEach((doc) => {
                         const docData = doc.data();
                         data.push({ ...docData, id: doc.id });
                     });
-                    setData(data);
+                    setData(data as unknown as DataType);
                 },
                 (error) => {
                     setError(error);
@@ -232,26 +292,33 @@ export type AdventureDocType = {
 export type AdventureDocumentDocType = {
     id: string;
     name?: string;
-    contents?: any[];
+    contents?: ContentItemType[];
     meta?: DocMetaType;
 };
 
-export enum ContentItemTypeEnum {
-    Mdx = "Mdx",
-    Image = "Image",
-    Heading = "Heading",
-    List = "List",
-}
+export type ContentItemTypeType = keyof typeof defaultMdxComponentMap;
 
 export type ContentItemType = {
     id: string;
-    type: string;
-    props: any;
+    type: ContentItemTypeType;
+    props: AnyRecord;
+    order: number;
 };
+
+export type ContentItemDragObjectType = {
+    type: ContentItemTypeType;
+};
+export type ContentItemDropResultType = {
+    mode?: "append" | "prepend";
+    path: string;
+    order: number;
+};
+
+export type ContentItemDnDResultType = ContentItemDragObjectType & ContentItemDropResultType;
 
 export const useAdventure = (adventureId: string | undefined) => {
     const docRef = useMemo(() => (adventureId ? doc(db, "adventures", adventureId) : undefined), [adventureId]);
-    const { data, error } = useDocument(docRef, `Adventure with id "${adventureId}" does not exist`);
+    const { data, error } = useQuery(docRef, `Adventure with id "${adventureId}" does not exist`);
 
     const update = useCallback(
         async (data: UpdateData<DocumentData>) => {
@@ -282,7 +349,7 @@ export const useAdventureDocument = (adventureId: string | undefined, documentId
     const collectionPath = ["adventures", adventureId, "contents"].join("/");
     const docPath = [collectionPath, documentId].join("/");
     const docRef = useMemo(() => (adventureId ? doc(db, docPath) : undefined), [adventureId, documentId]);
-    const { data, error } = useDocument(
+    const { data, error } = useQuery(
         docRef,
         `Document with id "${adventureId}" within adventure with id "${adventureId}" does not exist`
     );
@@ -314,7 +381,7 @@ export const useAdventureDocument = (adventureId: string | undefined, documentId
 
 const adventuresCollection = collection(db, "adventures");
 export const useAdventures = () => {
-    const { data, error } = useDocument(adventuresCollection);
+    const { data, error } = useQuery(adventuresCollection);
 
     return { adventures: data as AdventureDocType[] | undefined, adventuresError: error };
 };

@@ -1,11 +1,12 @@
 import { Navigation } from "../Navigation";
-import Text, { H5 } from "../content/Text";
+import Text from "../content/Text";
 import ToggleData from "../../../../components/DataToggle";
 import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
 import {
+    ContentItemDnDResultType,
     checkWriteAccess,
     claimDocument,
-    deleteAdventure,
+    createAdventureDocumentContent,
     useAdventure,
     useAdventureDocument,
 } from "../../services/firestoreController";
@@ -15,17 +16,24 @@ import PendingTimer from "../../../../components/PendingTimer";
 import { useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";
 import SignedOutWarning from "../adventures/SignedOutWarning";
-import Adventure, { AdventureFormType, adventureFormJsonSchema } from "../adventures/Adventure";
+import { AdventureFormType, adventureFormJsonSchema } from "../adventures/adventureFormSchema";
 import { useCallback, useMemo, useState } from "react";
-import Form, { getDefaultsFromSchema, getFormSchemaFromSchema } from "../content/Form";
+import Form, { getDefaultsFromSchema, getFormSchemaFromJsonSchema } from "../content/Form";
 import { JSONSchemaType } from "ajv";
-import Document, { adventureDocumentFormJsonSchema } from "../adventures/Document";
+import Document from "../adventures/Document";
+import Button from "../content/Button";
+import ErrorMessage from "../adventures/ErrorMessage";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { documentFormJsonSchema } from "../adventures/documentFormSchema";
+import ContentItemList from "../adventures/ContentItemList";
 
 const DocumentContent = () => {
     const [isEditing, setIsEditing] = useState(false);
     const { adventureId, documentId } = useParams<"adventureId" | "documentId">();
     const { user } = useUser();
 
+    const { adventure, adventureError } = useAdventure(adventureId);
     const { document, documentError, updateDocument, deleteDocument } = useAdventureDocument(adventureId, documentId);
 
     const hasWriteAccess = checkWriteAccess(document?.meta);
@@ -36,6 +44,21 @@ const DocumentContent = () => {
         updateDocument(data);
     }, []);
 
+    const onDrop = useCallback(
+        (result: ContentItemDnDResultType) => {
+            const { type, order } = result;
+            if (!adventureId || !documentId) {
+                console.warn("adventureId or documentId not found", {
+                    adventureId,
+                    documentId,
+                });
+                return;
+            }
+            createAdventureDocumentContent(adventureId, documentId, { type, props: {}, order });
+        },
+        [adventureId, documentId]
+    );
+
     const documentFormData = useMemo(() => {
         if (!document) {
             return undefined;
@@ -45,42 +68,36 @@ const DocumentContent = () => {
     }, [document]);
 
     if (!adventureId) {
-        return (
-            <div className="flex-1 flex flex-col gap-2 justify-center items-center p-8 bg-white">
-                <H5 color="danger" className="text-center">
-                    ⚠ Invalid Adventure Id
-                </H5>
-                <Text color="danger" variant="body" className="text-center">
-                    "{adventureId}"
-                </Text>
-            </div>
-        );
+        return <ErrorMessage heading="⚠ Invalid Adventure Id" body={`"${adventureId}"`} />;
     }
 
     if (!documentId) {
+        return <ErrorMessage heading="⚠ Invalid Document Id" body={`"${documentId}"`} />;
+    }
+
+    if (adventureError) {
         return (
-            <div className="flex-1 flex flex-col gap-2 justify-center items-center p-8 bg-white">
-                <H5 color="danger" className="text-center">
-                    ⚠ Invalid Document Id
-                </H5>
-                <Text color="danger" variant="body" className="text-center">
-                    "{documentId}"
-                </Text>
-            </div>
+            <ErrorMessage
+                heading={<>⚠ Error loading an adventure with ID "{adventureId}"</>}
+                body={adventureError.message}
+            >
+                <SignedOutWarning text="⚠ Some adventures might be unavailable until you sign in." />
+            </ErrorMessage>
         );
     }
 
     if (documentError) {
         return (
-            <div className="flex-1 flex flex-col gap-2 justify-center items-center p-8 bg-white">
-                <H5 color="danger" className="text-center">
-                    ⚠ Error loading an document with ID "{documentId}" in adventure with ID "{adventureId}"
-                </H5>
-                <Text color="danger" variant="body" className="text-center">
-                    {documentError.message}
-                </Text>
+            <ErrorMessage
+                heading={
+                    <>
+                        ⚠ Error loading a document with ID "{documentId}" in an adventure with ID "{adventureId}"
+                    </>
+                }
+                body={documentError.message}
+            >
                 <SignedOutWarning text="⚠ Some documents might be unavailable until you sign in." />
-            </div>
+            </ErrorMessage>
         );
     }
 
@@ -92,68 +109,95 @@ const DocumentContent = () => {
         );
     }
 
+    const path = `adventures/${adventureId}/contents/${documentId}`;
+
     const defaultProps = getDefaultsFromSchema(
-        adventureDocumentFormJsonSchema as JSONSchemaType<any>
+        documentFormJsonSchema as JSONSchemaType<any>
     ) as Partial<AdventureFormType>;
-    const formSchema = getFormSchemaFromSchema(adventureDocumentFormJsonSchema as JSONSchemaType<any>);
+    const formSchema = getFormSchemaFromJsonSchema(documentFormJsonSchema as JSONSchemaType<any>);
 
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white">
             <div className="flex flex-row gap-4 items-center mb-4">
-                {hasWriteAccess && (
-                    <div className="flex flex-row gap-2">
-                        <label className="inline-flex items-center cursor-pointer select-none">
-                            <Text>Preview</Text>
-                            <input
-                                type="checkbox"
-                                value=""
-                                className="sr-only peer"
-                                onChange={(event) => {
-                                    setIsEditing(event.target.checked);
-                                }}
-                                checked={isEditing}
-                            />
-                            <div className="relative mx-2 w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                            <Text>Edit</Text>
-                        </label>
-                    </div>
-                )}
-                {hasWriteAccess && (
-                    <div className="flex flex-row gap-2">
-                        <ButtonWithConfirmation
-                            color="danger"
-                            confirmText="Delete the whole adventure permanently, no backsies?"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => {
-                                deleteDocument().then(() => {
-                                    window.location.href = adventuresPath;
-                                });
-                            }}
-                        >
-                            Delete Adventure
-                        </ButtonWithConfirmation>
-                    </div>
-                )}
-                {canClaim && (
-                    <div className="flex flex-row gap-2">
-                        <ButtonWithConfirmation
-                            color="danger"
-                            size="sm"
-                            onClick={() => {
-                                claimDocument(["adventures", adventureId, "content"].join("/"), documentId, user);
-                            }}
-                        >
-                            Claim
-                        </ButtonWithConfirmation>
-                    </div>
-                )}
+                <div className="flex flex-row gap-2 items-baseline text-kac-steel-dark">
+                    <Button href={adventuresPath} variant="text" color="secondary">
+                        Adventures
+                    </Button>
+                    <span>/</span>
+                    <Button href={adventuresPath} variant="text" color="secondary">
+                        {adventure?.name || adventureId}
+                    </Button>
+                    <span>/</span>
+                    <Text className="text-kac-iron">{document.name || documentId}</Text>
+                </div>
                 <div className="flex-1" />
                 <ClerkUser />
             </div>
             <SignedOutWarning text="⚠ Some features might be hidden until you sign in." />
-            <div className="flex flex-col-reverse md:flex-row items-stretch gap-4">
-                <Document className="flex-1" {...document} />
+            <div className="flex flex-col-reverse md:flex-row items-stretch gap-8">
+                <Document
+                    className="flex-1"
+                    path={path}
+                    isEditing={isEditing}
+                    {...document}
+                    adventureId={adventureId}
+                    controls={
+                        <>
+                            {hasWriteAccess && (
+                                <div className="flex flex-row gap-2">
+                                    <ButtonWithConfirmation
+                                        color="danger"
+                                        confirmText="Delete the whole adventure permanently, no backsies?"
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => {
+                                            deleteDocument().then(() => {
+                                                window.location.href = adventuresPath;
+                                            });
+                                        }}
+                                    >
+                                        Delete Document
+                                    </ButtonWithConfirmation>
+                                </div>
+                            )}
+                            {canClaim && (
+                                <div className="flex flex-row gap-2">
+                                    <ButtonWithConfirmation
+                                        color="danger"
+                                        size="sm"
+                                        onClick={() => {
+                                            claimDocument(
+                                                ["adventures", adventureId, "content"].join("/"),
+                                                documentId,
+                                                user
+                                            );
+                                        }}
+                                    >
+                                        Claim
+                                    </ButtonWithConfirmation>
+                                </div>
+                            )}
+                            {hasWriteAccess && (
+                                <div className="flex flex-row gap-2">
+                                    <label className="inline-flex items-center cursor-pointer select-none">
+                                        <Text>Preview</Text>
+                                        <input
+                                            type="checkbox"
+                                            value=""
+                                            className="sr-only peer"
+                                            onChange={(event) => {
+                                                setIsEditing(event.target.checked);
+                                            }}
+                                            checked={isEditing}
+                                        />
+                                        <div className="relative mx-2 w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                        <Text>Edit</Text>
+                                    </label>
+                                </div>
+                            )}
+                        </>
+                    }
+                />
 
                 {isEditing && documentFormData && (
                     <div className="flex flex-col gap-4 relative md:w-[20vw]">
@@ -162,7 +206,12 @@ const DocumentContent = () => {
                             value={documentFormData || defaultProps}
                             onChange={onChange}
                         />
-                        <ToggleData data={{ adventureFormJsonSchema, formSchema, documentFormData }} />
+                        <ToggleData
+                            buttonContent="Form Data"
+                            initialCollapsed
+                            data={{ adventureFormJsonSchema, formSchema, documentFormData }}
+                        />
+                        <ContentItemList onDrop={onDrop} />
                     </div>
                 )}
             </div>
@@ -174,7 +223,9 @@ export default function DocumentRoute() {
     return (
         <>
             <Navigation />
-            <DocumentContent />
+            <DndProvider backend={HTML5Backend}>
+                <DocumentContent />
+            </DndProvider>
         </>
     );
 }

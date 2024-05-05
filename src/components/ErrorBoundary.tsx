@@ -1,5 +1,6 @@
 import React, { ErrorInfo, ReactNode } from "react";
 import { Alert, Button } from "react-daisyui";
+import { AnyRecord } from "../utils/simpleTypes";
 
 export type ErrorComponentProps = {
     className?: string;
@@ -46,6 +47,7 @@ export const DefaultErrorComponent = ({
 export type ErrorBoundaryProps = {
     className?: string;
     ErrorComponent?: React.ComponentType<ErrorComponentProps>;
+    extraErrorProps?: AnyRecord;
     children: ReactNode;
 };
 
@@ -68,6 +70,7 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, S
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         // You can also log the error to an error reporting service
         console.error("ErrorBoundary caught: ", error, errorInfo);
+        return false;
     }
 
     retry = () => {
@@ -80,7 +83,11 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, S
             const error = this.state.error as ErrorComponentProps["error"];
             const errorInfo = this.state.errorInfo as ErrorComponentProps["errorInfo"];
             // You can render any custom fallback UI
-            return <ErrorComponent {...{ className, error, errorInfo, retry: this.retry }} />;
+            return (
+                <ErrorComponent
+                    {...{ className, error, errorInfo, retry: this.retry, ...this.props.extraErrorProps }}
+                />
+            );
         }
 
         return this.props.children;

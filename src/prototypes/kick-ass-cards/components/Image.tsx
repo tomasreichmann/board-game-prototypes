@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 export type ImageProps = React.PropsWithChildren<{
     className?: string;
-    src: string;
+    src?: string;
     style?: React.CSSProperties;
     objectFit?: React.CSSProperties["objectFit"];
     objectPosition?: React.CSSProperties["objectPosition"];

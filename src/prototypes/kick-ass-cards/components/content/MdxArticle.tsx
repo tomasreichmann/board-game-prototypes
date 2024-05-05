@@ -24,6 +24,8 @@ import GenericMdxArticle, {
 } from "../../../../components/content/MdxArticle";
 import Toggle from "../../../../components/Toggle";
 import Aside from "./Aside";
+import Mdx from "./Mdx";
+import Text from "./Text";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -42,7 +44,8 @@ export const defaultMdxComponentMap = {
     Columns,
     Hand,
     Outcome: OutcomeCard,
-    img: EncounterImage as any,
+    img: EncounterImage,
+    Image: EncounterImage,
     Heading: BroadcastHeading,
     Player: ReactPlayer,
     Spread,
@@ -52,6 +55,8 @@ export const defaultMdxComponentMap = {
     Clock: BroadcastClock,
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,
+    Mdx,
+    Text,
     Toggle,
 };
 

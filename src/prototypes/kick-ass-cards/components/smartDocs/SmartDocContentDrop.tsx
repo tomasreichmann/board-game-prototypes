@@ -8,24 +8,27 @@ export type SmartDocContentDropProps = {
 };
 
 export default function SmartDocContentDrop({ path, mode }: SmartDocContentDropProps) {
-    const [{ canDrop, isOver }, drop] = useDrop(() => ({
-        accept: DragTypeEnum.Element,
-        drop: () => ({ path, mode }),
+    const [{ canDrop, isOver }, drop] = useDrop(
+        () => ({
+            accept: DragTypeEnum.Element,
+            drop: () => ({ path, mode }),
 
-        collect: (monitor) => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
+            collect: (monitor) => ({
+                isOver: monitor.isOver(),
+                canDrop: monitor.canDrop(),
+            }),
         }),
-    }));
+        [path, mode]
+    );
     return (
         <div
             ref={drop}
-            className="border-2 border-dotted border-kac-steel-dark p-2 rounded-md w-full min-h-8 text-center"
-            style={{
-                fontWeight: isOver ? "bold" : "normal",
-                borderStyle: isOver ? "solid" : "dotted",
-                display: canDrop ? "inline-block" : "none",
-            }}
+            className={twMerge(
+                "border-2 border-dotted border-kac-steel-dark p-2 rounded-md w-full min-h-8 text-center",
+                isOver ? "font-bold" : "font-normal",
+                isOver ? "border-solid" : "border-dotted",
+                canDrop ? "inline-block" : "hidden"
+            )}
         >
             &#10515;
         </div>

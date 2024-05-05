@@ -133,6 +133,7 @@ import thrustBend from "./media/thrust-bend.svg";
 import thrustDown from "./media/thrust-down.svg";
 import tiedScroll from "./media/tied-scroll.svg";
 import toolbox from "./media/toolbox.svg";
+import trashCan from "./media/trash-can.svg";
 import treasureMap from "./media/treasure-map.svg";
 import tripleSkulls from "./media/triple-skulls.svg";
 import walkingBoot from "./media/walking-boot.svg";
@@ -282,6 +283,7 @@ export const iconMap = {
     thrustDown,
     tiedScroll,
     toolbox,
+    trashCan,
     treasureMap,
     tripleSkulls,
     walkingBoot,

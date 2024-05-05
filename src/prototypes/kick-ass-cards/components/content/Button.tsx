@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLAttributes } from "react";
+import { ButtonHTMLAttributes, HTMLAttributes } from "react";
 
 const variants = cva(["Button"], {
     variants: {
@@ -33,6 +33,7 @@ const variants = cva(["Button"], {
             outline: [
                 "px-4",
                 "py-2",
+                "bg-transparent",
                 "rounded-md",
                 "outline",
                 "outline-2",
@@ -249,7 +250,7 @@ export type ButtonLinkType = {
 
 export type ButtonButtonType = {
     onClick: HTMLAttributes<HTMLButtonElement>["onClick"];
-} & HTMLAttributes<HTMLButtonElement> &
+} & ButtonHTMLAttributes<HTMLButtonElement> &
     VariantProps<typeof variants>;
 
 export type ButtonProps = ButtonLinkType | ButtonButtonType;

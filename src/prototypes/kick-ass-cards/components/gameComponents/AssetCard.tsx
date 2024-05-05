@@ -33,6 +33,12 @@ export const assetCardSchema: JSONSchemaType<Omit<AssetCardProps, keyof PaperPro
             // enum: Object.keys(iconMap),
             nullable: true,
         },
+        className: {
+            title: "class Name",
+            type: "string",
+            nullable: true,
+            default: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        },
         cornerIconClassName: {
             title: "Corner Icon Class Name",
             type: "string",
@@ -185,7 +191,7 @@ export default function AssetCard({
             {...restProps}
         >
             <div
-                className="flex-1 relative flex flex-col justify-center items-stretch p-3"
+                className="flex-1 relative flex flex-col justify-start items-stretch p-3"
                 style={{ margin: `${bleedMm}mm` }}
             >
                 <div className="flex flex-row items-center gap-2 mb-2">

@@ -54,6 +54,12 @@ export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof PaperPro
             type: "string",
             nullable: true,
         },
+        className: {
+            title: "Class Name",
+            type: "string",
+            nullable: true,
+            default: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        },
         imageClassName: {
             title: "Image Class Name",
             type: "string",

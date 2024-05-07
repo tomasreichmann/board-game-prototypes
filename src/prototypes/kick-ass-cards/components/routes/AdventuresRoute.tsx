@@ -7,6 +7,8 @@ import { adventuresPath } from "./routes";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";
 import SignedOutWarning from "../adventures/SignedOutWarning";
+import Markdown from "react-markdown";
+import { defaultMdxComponentMap } from "../content/MdxArticle";
 
 export default function AdventuresRoute() {
     const { user } = useUser();
@@ -75,7 +77,9 @@ export default function AdventuresRoute() {
                                     <H6 className="text-ellipsis">{adventure.name || "Untitled Adventure"}</H6>
                                     {adventure.description && (
                                         <Text variant="body" className="text-xs leading-tight line-clamp-3">
-                                            {adventure.description}
+                                            <Markdown components={defaultMdxComponentMap}>
+                                                {adventure.description}
+                                            </Markdown>
                                         </Text>
                                     )}
                                 </div>
@@ -84,9 +88,7 @@ export default function AdventuresRoute() {
                     </div>
                 )}
 
-                {adventures && <ToggleData data={adventures} />}
-
-                <ToggleData data={user} />
+                {adventures && <ToggleData buttonContent="Adventures data" data={adventures} initialCollapsed />}
             </div>
         </>
     );

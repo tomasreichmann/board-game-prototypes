@@ -248,7 +248,7 @@ export default function Document({ className, documentId, adventureId }: Documen
     return (
         <div className={twMerge("flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white")}>
             <div className="flex flex-row gap-4 items-center mb-4">
-                <div className="flex flex-row gap-2 items-baseline text-kac-steel-dark">
+                <div className="flex flex-row flex-wrap gap-2 items-baseline text-kac-steel-dark">
                     <Button href={adventuresPath} variant="text" color="secondary">
                         Adventures
                     </Button>
@@ -265,7 +265,7 @@ export default function Document({ className, documentId, adventureId }: Documen
             <SignedOutWarning text="⚠ Some features might be hidden until you sign in." />
             <div className="flex flex-col-reverse md:flex-row items-stretch gap-8">
                 <div className="flex-1 flex flex-col pb-8">
-                    <div className="flex flex-row gap-4 justify-between mb-8">
+                    <div className="flex flex-row flex-wrap gap-4 justify-between mb-8">
                         <H1>{document.name}</H1>
                         <div className="flex flex-row gap-4 items-center">
                             {hasWriteAccess && (

@@ -157,7 +157,7 @@ export default function Adventure({ id: adventureId, className }: AdventureProps
             )}
         >
             <div className="flex flex-row gap-4 items-center mb-4">
-                <div className="flex flex-row gap-2 items-baseline text-kac-steel-dark">
+                <div className="flex flex-row flex-wrap gap-2 items-baseline text-kac-steel-dark">
                     <Button href={adventuresPath} variant="text" color="secondary">
                         Adventures
                     </Button>
@@ -174,9 +174,9 @@ export default function Adventure({ id: adventureId, className }: AdventureProps
                         heading={name}
                         imageUri={imageUri}
                         headingClassName="text-left"
-                        contentWrapperClassName="absolute left-0 bottom-0 right-0 flex flex-row justify-between items-end px-8 pb-4 pt-8 text-left bg-gradient-to-b from-black/0 via-20% via-black/30 to-35% to-black/40 text-kac-steel-light"
+                        contentWrapperClassName="absolute left-0 bottom-0 right-0 flex flex-row flex-wrap justify-between items-end px-8 pb-4 pt-8 text-left bg-gradient-to-b from-black/0 via-20% via-black/30 to-35% to-black/40 text-kac-steel-light"
                     >
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-row justify-end gap-4">
                             {hasWriteAccess && (
                                 <div className="flex flex-row gap-2">
                                     <ButtonWithConfirmation

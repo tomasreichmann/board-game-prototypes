@@ -130,7 +130,6 @@ export default function Input({
             {label && (
                 <Text Component="span" variant="body" className={twMerge("text-kac-steel", labelClassName)}>
                     {label}
-                    {description && <span className="text-kac-steel text-xs ml-2">{description}</span>}
                     {clearable && (
                         <Button
                             variant="text"
@@ -163,6 +162,7 @@ export default function Input({
                             Default
                         </Button>
                     )}
+                    {description && <span className="text-kac-steel text-xs ml-2">{description}</span>}
                 </Text>
             )}
             {input}

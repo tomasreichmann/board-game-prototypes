@@ -6,6 +6,9 @@ import Input, { InputProps } from "./Input";
 import { AnyRecord } from "../../../../utils/simpleTypes";
 import { JSONSchemaType } from "ajv";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
+import Markdown from "react-markdown";
+import ToggleData from "../../../../components/DataToggle";
+import { defaultMdxComponentMap } from "./MdxArticle";
 
 export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
     if (typeof schema === "object" && "default" in schema) {
@@ -27,13 +30,14 @@ export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
     return undefined;
 };
 
-export const getInputPropsFromSchemaProperty = (property: JSONSchemaType<any>): InputProps => {
-    const inputProps: InputProps = { type: "text" };
+export const getInputPropsFromSchemaProperty = ({ description, ...property }: JSONSchemaType<any>): InputProps => {
+    const inputProps: InputProps = { type: "text", description };
     if (property.enum?.length ?? 0 > 0) {
         inputProps.type = "select";
         inputProps.selectOptions = property.enum.map((value: any) => ({ label: String(value), value }));
         return inputProps;
     }
+
     if (property.default !== undefined) {
         inputProps.defaultValue = property.default;
     }
@@ -182,55 +186,57 @@ export default function Form<ValueType extends AnyRecord>({
         setValueWithChanges(value || ({} as Partial<ValueType>));
     }, [value]);
 
-    const properties = useMemo(() => {
+    const properties: ({ prop: keyof ValueType; type: InputProps["type"] } & Partial<InputProps>)[] = useMemo(() => {
         if (schema) {
             return (Object.keys(schema) as (keyof ValueType)[]).map((key) => {
                 const property = schema[key];
                 return {
+                    // if property is missing in schema, infer it from value
                     ...inferPropertyFromValue(key, value || ({} as Partial<ValueType>)),
-                    prop: key,
                     ...property,
+                    prop: key,
                 };
             });
         }
         return (Object.keys(value || {}) as (keyof ValueType)[]).map((key) => {
             return inferPropertyFromValue(key, value || ({} as Partial<ValueType>));
         });
-    }, [schema]);
+    }, [schema, value]);
 
     return (
         <form className={twMerge("flex flex-col gap-4", className)}>
             {children}
             <div className={twMerge("flex flex-col gap-2", propertiesClassName)}>
-                <ErrorBoundary>
-                    {properties.map((property) => (
-                        <ErrorBoundary key={String(property.prop as keyof ValueType)}>
-                            <Input
-                                {...defaultInputProps}
-                                key={String(property.prop as keyof ValueType)}
-                                {...property}
-                                value={getDefaultValue(valueWithChanges?.[property.prop as keyof ValueType], property)}
-                                error={errorMap?.[property.prop as keyof ValueType]?.message || undefined}
-                                onChange={(event) => {
-                                    setValueWithChanges((value) => ({
-                                        ...value,
-                                        [property.prop]:
-                                            property.type === "number"
-                                                ? Number(event.target.value)
-                                                : event.target.value,
-                                    }));
-                                    onChange?.({
-                                        ...value,
-                                        [property.prop]:
-                                            property.type === "number"
-                                                ? Number(event.target.value)
-                                                : event.target.value,
-                                    } as ValueType);
-                                }}
-                            />
-                        </ErrorBoundary>
-                    ))}
-                </ErrorBoundary>
+                {properties.map(({ description, ...property }) => (
+                    <ErrorBoundary key={String(property.prop as keyof ValueType)}>
+                        <Input
+                            {...defaultInputProps}
+                            description={
+                                description && typeof description === "string" ? (
+                                    <>
+                                        <Markdown components={defaultMdxComponentMap}>{description}</Markdown>
+                                    </>
+                                ) : undefined
+                            }
+                            key={String(property.prop as keyof ValueType)}
+                            {...property}
+                            value={getDefaultValue(valueWithChanges?.[property.prop as keyof ValueType], property)}
+                            error={errorMap?.[property.prop as keyof ValueType]?.message || undefined}
+                            onChange={(event) => {
+                                setValueWithChanges((value) => ({
+                                    ...value,
+                                    [property.prop]:
+                                        property.type === "number" ? Number(event.target.value) : event.target.value,
+                                }));
+                                onChange?.({
+                                    ...value,
+                                    [property.prop]:
+                                        property.type === "number" ? Number(event.target.value) : event.target.value,
+                                } as ValueType);
+                            }}
+                        />
+                    </ErrorBoundary>
+                ))}
             </div>
             {onSubmit && (
                 <Button

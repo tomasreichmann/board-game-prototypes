@@ -317,7 +317,8 @@ export type ContentItemDropResultType = {
 export type ContentItemDnDResultType = ContentItemDragObjectType & ContentItemDropResultType;
 
 export const useAdventure = (adventureId: string | undefined) => {
-    const docRef = useMemo(() => (adventureId ? doc(db, "adventures", adventureId) : undefined), [adventureId]);
+    const adventuresPath = "adventures";
+    const docRef = useMemo(() => (adventureId ? doc(db, adventuresPath, adventureId) : undefined), [adventureId]);
     const { data, error } = useQuery(docRef, `Adventure with id "${adventureId}" does not exist`);
 
     const update = useCallback(
@@ -325,7 +326,7 @@ export const useAdventure = (adventureId: string | undefined) => {
             if (!adventureId) {
                 return;
             }
-            await updateDocument("adventures", adventureId, data);
+            await updateDocument(adventuresPath, adventureId, data);
         },
         [adventureId]
     );
@@ -337,11 +338,22 @@ export const useAdventure = (adventureId: string | undefined) => {
         await deleteAdventure(adventureId);
     }, [adventureId]);
 
+    const claim = useCallback(
+        async (user: UserResource) => {
+            if (!adventureId || auth.currentUser === null) {
+                return;
+            }
+            await claimDocument(adventuresPath, adventureId, user);
+        },
+        [adventureId]
+    );
+
     return {
         adventure: data as AdventureDocType | undefined,
         adventureError: error,
         updateAdventure: update,
         deleteAdventure: remove,
+        claimAdventure: claim,
     };
 };
 
@@ -371,11 +383,22 @@ export const useAdventureDocument = (adventureId: string | undefined, documentId
         await deleteDocument(collectionPath, documentId);
     }, [adventureId, documentId, collectionPath]);
 
+    const claim = useCallback(
+        async (user: UserResource) => {
+            if (!adventureId || !documentId || auth.currentUser === null) {
+                return;
+            }
+            await claimDocument(collectionPath, documentId, user);
+        },
+        [collectionPath, adventureId, documentId]
+    );
+
     return {
         document: data as AdventureDocumentDocType | undefined,
         documentError: error,
         updateDocument: update,
         deleteDocument: remove,
+        claimDocument: claim,
     };
 };
 

@@ -11,6 +11,7 @@ export const adventureFormJsonSchema: JSONSchemaType<AdventureFormType> = {
             type: "string",
         },
         description: {
+            description: "Supports [MDX](https://mdxjs.com/) syntax",
             nullable: true,
             type: "string",
             maxLength: 1000,

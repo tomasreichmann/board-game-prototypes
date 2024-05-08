@@ -2,6 +2,8 @@ import Text, { H1, H5 } from "../content/Text";
 import {
     AdventureDocumentDocType,
     ContentItemDnDResultType,
+    ContentItemDragObjectType,
+    ContentItemDropResultType,
     ContentItemType,
     checkWriteAccess,
     collectionWithDb,
@@ -24,7 +26,6 @@ import Form, { getDefaultsFromSchema, getFormSchemaFromJsonSchema } from "../con
 import contentFormSchemas from "./contentFormSchemas";
 import { AnyRecord } from "../../../../utils/simpleTypes";
 import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
-import Icon from "../Icon";
 import SignedOutWarning from "./SignedOutWarning";
 import { useUser } from "@clerk/clerk-react";
 import Button from "../content/Button";
@@ -34,20 +35,162 @@ import { AdventureFormType, adventureFormJsonSchema } from "./adventureFormSchem
 import { JSONSchemaType } from "ajv";
 import { documentFormJsonSchema } from "./documentFormSchema";
 import ContentItemList from "./ContentItemList";
+import EditableWrapper from "./EditableWrapper";
+import { useDrag, useDrop } from "react-dnd";
 
 export type AdventureDocumentFormType = Omit<AdventureDocumentDocType, "id" | "meta" | "contents">;
+
+export type DocumentContentItemProps = ContentItemType & {
+    nextContent?: ContentItemType;
+    prevContent?: ContentItemType;
+    isEditingMode?: boolean;
+    isSelected?: boolean;
+    isDraggingItem?: boolean;
+    contentsCollectionPath: string;
+    onEditToggle?: () => void;
+    onMoveDrop?: (result: ContentItemDnDResultType) => void;
+    setEditingPath: React.Dispatch<React.SetStateAction<string | undefined>>;
+};
+
+export const DocumentContentItem = ({
+    isEditingMode = false,
+    isSelected = false,
+    nextContent,
+    prevContent,
+    contentsCollectionPath,
+    onEditToggle,
+    onMoveDrop,
+    setEditingPath,
+    ...content
+}: DocumentContentItemProps) => {
+    const { type, id, order, props } = content;
+    const [{ isDragging: isDraggingThisItem }, dragRef] = useDrag<
+        ContentItemDragObjectType,
+        ContentItemDropResultType,
+        { isDragging: boolean; handlerId: string | symbol | null }
+    >(
+        () => ({
+            type: "any",
+            item: content,
+            end: (item, monitor) => {
+                const dropResult = monitor.getDropResult<ContentItemDnDResultType>(); // TODO Target type
+                if (item && dropResult) {
+                    console.log("ContentItemLabel drop", item, dropResult);
+                    onMoveDrop?.({ ...item, ...dropResult });
+                }
+            },
+            collect: (monitor) => ({
+                isDragging: monitor.isDragging(),
+                handlerId: monitor.getHandlerId(),
+            }),
+        }),
+        [type]
+    );
+
+    const removeContentItem = (id: string) => {
+        deleteDocument(contentsCollectionPath, id);
+    };
+
+    const schema = type in contentFormSchemas ? contentFormSchemas[type as keyof typeof contentFormSchemas] : undefined;
+
+    const propsWithDrops = useMemo(() => {
+        const reactNodeProperties = Object.entries(schema || {})?.filter(([, property]) => property?.isReactNode);
+        console.log({ reactNodeProperties, schema });
+        const dropProps =
+            reactNodeProperties.length > 0
+                ? Object.fromEntries(
+                      reactNodeProperties.map(([key]) => [
+                          key,
+                          <React.Fragment key={key}>
+                              <ContentDrop
+                                  className="min-w-8 min-h-8"
+                                  key={key}
+                                  path={[contentsCollectionPath, id, key].join("/")}
+                                  mode="insert"
+                                  order={0}
+                              />
+                              {props[key]}
+                          </React.Fragment>,
+                      ])
+                  )
+                : {};
+
+        return {
+            ...props,
+            ...dropProps,
+        };
+    }, [props, schema]);
+    if (content.type === "List") {
+        console.log(propsWithDrops);
+    }
+    const contentItemElement = (
+        <ContentItem
+            {...content}
+            props={propsWithDrops}
+            removeFaultyContentItem={() => removeContentItem(id)}
+            className="flex-1"
+        />
+    );
+
+    return (
+        <div
+            className={twMerge(
+                "relative flex self-stretch flex-col md:flex-row gap-4 flex-wrap items-start justify-between"
+            )}
+        >
+            {isEditingMode ? (
+                <EditableWrapper
+                    name={type}
+                    onToggleEdit={() =>
+                        setEditingPath((prevPath) =>
+                            [contentsCollectionPath, id].join("/") === prevPath
+                                ? undefined
+                                : [contentsCollectionPath, id].join("/")
+                        )
+                    }
+                    onDelete={() => removeContentItem(id)}
+                    isSelected={isSelected}
+                    dragRef={dragRef}
+                >
+                    {contentItemElement}
+                </EditableWrapper>
+            ) : (
+                contentItemElement
+            )}
+            {isSelected && schema && (
+                <Form
+                    className="flex-1 gap-0 max-w-[400px] overflow-auto min-h-[400px] max-h-svh"
+                    value={props}
+                    schema={schema}
+                    onChange={(value: AnyRecord) => {
+                        updateDocumentFields(contentsCollectionPath, id, "props", value);
+                    }}
+                ></Form>
+            )}
+
+            <ContentDrop
+                className={twMerge("w-full", isDraggingThisItem && "opacity-0 pointer-events-none")}
+                path={[contentsCollectionPath, id].join("/")}
+                mode="append"
+                order={getOrderInBetween(order, nextContent?.order)}
+            />
+        </div>
+    );
+};
 
 export const DocumentContent = ({
     adventureId,
     documentId,
     isEditing,
+    editingPath,
+    setEditingPath,
 }: {
     adventureId: string;
     documentId: string;
     isEditing?: boolean;
+    editingPath?: string;
+    setEditingPath: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
-    const [editingPath, setEditingPath] = useState<string | undefined>();
-
     const contentsCollectionPath = ["adventures", adventureId, "contents", documentId, "contents"].join("/");
     const contentsRef = useMemo(
         () => query(collectionWithDb(contentsCollectionPath), orderBy("order")),
@@ -55,13 +198,28 @@ export const DocumentContent = ({
     );
     const { data: contentsWithoutType, error: contentsError } = useQuery(contentsRef);
 
-    const removeContentItem = (id: string) => {
-        deleteDocument(contentsCollectionPath, id);
-    };
-
     const contents = contentsWithoutType as ContentItemType[] | undefined;
     const firstOrder = contents?.[0]?.order ?? 1;
     const prependFirstOrder = firstOrder - 1;
+
+    const onMoveDrop = useCallback(
+        (result: ContentItemDnDResultType) => {
+            const { id, order, mode } = result;
+            if (!adventureId || !documentId) {
+                console.warn("adventureId or documentId not found", {
+                    adventureId,
+                    documentId,
+                });
+                return;
+            }
+            if (mode === "insert") {
+                console.log("insert mode not supported yet", result);
+                return;
+            }
+            updateDocumentFields(contentsCollectionPath, id, "order", order);
+        },
+        [adventureId, documentId]
+    );
 
     return (
         <>
@@ -86,56 +244,23 @@ export const DocumentContent = ({
 
             {contents && (contents?.length ?? 0) > 0 && (
                 <div className="flex flex-col gap-4">
-                    {contents.map((content, index, contents) => (
-                        <div
-                            key={String(content.id || index)}
-                            className={twMerge(
-                                "relative flex self-stretch flex-col md:flex-row gap-4 flex-wrap",
-                                isEditing && "pb-4 mb-4 border-b-2 border-kac-steel-light"
-                            )}
-                        >
-                            <ContentItem
+                    {contents.map((content, index, contents) => {
+                        const contentPath = [contentsCollectionPath, content.id].join("/");
+                        return (
+                            <DocumentContentItem
+                                key={content.id}
                                 {...content}
-                                removeFaultyContentItem={() => removeContentItem(content.id)}
-                                className="flex-1"
+                                contentsCollectionPath={contentsCollectionPath}
+                                setEditingPath={setEditingPath}
+                                isEditingMode={isEditing}
+                                onEditToggle={() => setEditingPath(contentPath)}
+                                onMoveDrop={onMoveDrop}
+                                isSelected={isEditing && editingPath === contentPath}
+                                nextContent={contents[index + 1]}
+                                prevContent={contents[index - 1]}
                             />
-                            {isEditing && (
-                                <Form
-                                    className="flex-1 gap-0 max-w-[400px]"
-                                    value={content.props}
-                                    schema={
-                                        content.type in contentFormSchemas
-                                            ? contentFormSchemas[content.type as keyof typeof contentFormSchemas]
-                                            : undefined
-                                    }
-                                    onChange={(value: AnyRecord) => {
-                                        updateDocumentFields(contentsCollectionPath, content.id, "props", value);
-                                    }}
-                                >
-                                    <div className="flex flex-row justify-between items-end pb-2 mb-2 border-b-2 border-kac-steel-light">
-                                        <H5>{content.type}</H5>
-                                        <ButtonWithConfirmation
-                                            variant="outline"
-                                            color="danger"
-                                            confirmText="Delete content?"
-                                            size="sm"
-                                            type="button"
-                                            className="self-end text-kac-fire-dark"
-                                            onClick={() => removeContentItem(content.id)}
-                                        >
-                                            <Icon icon="trashCan" className="h-5" />
-                                        </ButtonWithConfirmation>
-                                    </div>
-                                </Form>
-                            )}
-                            <ContentDrop
-                                className="w-full"
-                                path={[contentsCollectionPath, content.id].join("/")}
-                                mode="append"
-                                order={getOrderInBetween(content.order, contents[index + 1]?.order)}
-                            />
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             )}
             <ToggleData buttonContent="Content data" initialCollapsed data={{ contents }} />
@@ -166,6 +291,7 @@ export type DocumentProps = {
 
 export default function Document({ className, documentId, adventureId }: DocumentProps) {
     const [isEditing, setIsEditing] = useState(false);
+    const [editingPath, setEditingPath] = useState<string | undefined>();
     const { adventure, adventureError } = useAdventure(adventureId);
     const { document, documentError, updateDocument, deleteDocument, claimDocument } = useAdventureDocument(
         adventureId,
@@ -173,9 +299,11 @@ export default function Document({ className, documentId, adventureId }: Documen
     );
     const { user } = useUser();
 
-    const onDrop = useCallback(
+    const contentsCollectionPath = ["adventures", adventureId, "contents", documentId, "contents"].join("/");
+
+    const onNewContentDrop = useCallback(
         (result: ContentItemDnDResultType) => {
-            const { type, order } = result;
+            const { type, order, mode } = result;
             if (!adventureId || !documentId) {
                 console.warn("adventureId or documentId not found", {
                     adventureId,
@@ -183,7 +311,16 @@ export default function Document({ className, documentId, adventureId }: Documen
                 });
                 return;
             }
-            createAdventureDocumentContent(adventureId, documentId, { type, props: {}, order });
+            if (mode === "insert") {
+                console.log("insert mode not supported yet", result);
+                return;
+            }
+            createAdventureDocumentContent(adventureId, documentId, { type, props: {}, order, name: type }).then(
+                (docRef) => {
+                    console.log("new content created", docRef.id, [contentsCollectionPath, docRef.id].join("/"));
+                    setEditingPath([contentsCollectionPath, docRef.id].join("/"));
+                }
+            );
         },
         [adventureId, documentId]
     );
@@ -240,6 +377,7 @@ export default function Document({ className, documentId, adventureId }: Documen
     const hasWriteAccess = checkWriteAccess(adventure?.meta);
     const canClaim = user?.id && !adventure?.meta?.author;
     const adventurePath = [adventuresPath, adventureId].join("/");
+
     const defaultProps = getDefaultsFromSchema(
         documentFormJsonSchema as JSONSchemaType<any>
     ) as Partial<AdventureFormType>;
@@ -319,7 +457,13 @@ export default function Document({ className, documentId, adventureId }: Documen
                         </div>
                     </div>
 
-                    <DocumentContent adventureId={adventureId} documentId={documentId} isEditing={isEditing} />
+                    <DocumentContent
+                        adventureId={adventureId}
+                        documentId={documentId}
+                        isEditing={isEditing}
+                        editingPath={editingPath}
+                        setEditingPath={setEditingPath}
+                    />
                 </div>
                 {isEditing && documentFormData && (
                     <div className="flex flex-col gap-4 relative md:w-[20vw]">
@@ -333,7 +477,7 @@ export default function Document({ className, documentId, adventureId }: Documen
                             initialCollapsed
                             data={{ adventureFormJsonSchema, formSchema, documentFormData }}
                         />
-                        <ContentItemList onDrop={onDrop} />
+                        <ContentItemList onDrop={onNewContentDrop} />
                     </div>
                 )}
             </div>

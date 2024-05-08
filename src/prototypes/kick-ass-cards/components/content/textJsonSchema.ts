@@ -1,7 +1,7 @@
 import { JSONSchemaType } from "ajv";
 import { TextPropsEditable } from "./Text";
 
-const textJsonSchema: JSONSchemaType<TextPropsEditable> = {
+export const textJsonSchema: JSONSchemaType<Pick<TextPropsEditable, "variant" | "color"> & { children: any }> = {
     type: "object",
     properties: {
         variant: {
@@ -11,10 +11,16 @@ const textJsonSchema: JSONSchemaType<TextPropsEditable> = {
         },
         color: {
             type: "string",
-            enum: ["body", "heading", "danger", "success"],
+            enum: ["body", "heading", "danger", "success", "white", "inherit"],
+            nullable: true,
+        },
+        size: {
+            type: "string",
+            enum: ["xs", "sm", "md", "lg", "xl"],
             nullable: true,
         },
         children: {
+            label: "Text",
             type: "string",
             nullable: true,
         },

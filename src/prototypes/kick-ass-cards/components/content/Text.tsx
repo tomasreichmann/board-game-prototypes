@@ -1,8 +1,9 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
-import { HTMLAttributes, Ref, forwardRef } from "react";
+import { HTMLAttributes, Ref } from "react";
 import { JSONSchemaType } from "ajv";
 import ComponentMetaType from "../generation/ComponentMetaType";
+import textJsonSchema from "./textJsonSchema";
 
 export const variantComponentMap = {
     body: "p" as const,
@@ -17,13 +18,13 @@ export const variantComponentMap = {
 const variants = cva(["Text"], {
     variants: {
         variant: {
-            body: ["text-kac-iron", "text-md"],
-            h1: ["font-kacHeading", "text-4xl", "leading-tight", "tracking-tighter"],
-            h2: ["font-kacHeading", "text-3xl", "leading-tight", "tracking-tighter"],
-            h3: ["font-kacHeading", "text-2xl", "leading-tight", "tracking-tighter"],
-            h4: ["font-kacHeading", "text-xl", "leading-tight", "tracking-tighter"],
-            h5: ["font-kacHeading", "text-lg", "leading-tight", "tracking-tighter"],
-            h6: ["font-kacHeading", "text-md", "leading-tight", "tracking-tighter"],
+            body: ["text-kac-iron"],
+            h1: ["font-kacHeading", "leading-tight", "tracking-tighter"],
+            h2: ["font-kacHeading", "leading-tight", "tracking-tighter"],
+            h3: ["font-kacHeading", "leading-tight", "tracking-tighter"],
+            h4: ["font-kacHeading", "leading-tight", "tracking-tighter"],
+            h5: ["font-kacHeading", "leading-tight", "tracking-tighter"],
+            h6: ["font-kacHeading", "leading-tight", "tracking-tighter"],
         },
         color: {
             inherit: ["text-inherit"],
@@ -32,6 +33,17 @@ const variants = cva(["Text"], {
             warning: ["text-kac-curse"],
             danger: ["text-kac-blood"],
             success: ["text-kac-monster-dark"],
+            white: ["text-white"],
+        },
+        size: {
+            xs: ["text-xs"],
+            sm: ["text-sm"],
+            md: ["text-md"],
+            lg: ["text-lg"],
+            xl: ["text-xl"],
+            xxl: ["text-2xl"],
+            xxxl: ["text-3xl"],
+            xxxxl: ["text-4xl"],
         },
     },
     defaultVariants: {
@@ -41,16 +53,26 @@ const variants = cva(["Text"], {
 });
 
 const defaultVariantColorMap = {
-    body: "body" as const,
-    h1: "heading" as const,
-    h2: "heading" as const,
-    h3: "heading" as const,
-    h4: "heading" as const,
-    h5: "heading" as const,
-    h6: "heading" as const,
-};
+    body: "body",
+    h1: "heading",
+    h2: "heading",
+    h3: "heading",
+    h4: "heading",
+    h5: "heading",
+    h6: "heading",
+} as const;
 
-export type TextPropsEditable = Pick<TextProps, "variant" | "color" | "children">;
+const defaultVariantSizeMap = {
+    body: "md",
+    h1: "xxxl",
+    h2: "xxl",
+    h3: "xl",
+    h4: "lg",
+    h5: "md",
+    h6: "sm",
+} as const;
+
+export type TextPropsEditable = Pick<TextProps, "variant" | "color" | "size" | "children">;
 
 export type TextProps = React.PropsWithChildren<{
     className?: string;
@@ -70,27 +92,6 @@ export type TextProps = React.PropsWithChildren<{
     VariantProps<typeof variants> &
     HTMLAttributes<HTMLParagraphElement | HTMLHeadingElement>;
 
-export const textSchema: JSONSchemaType<Pick<TextProps, "variant" | "color"> & { children: any }> = {
-    type: "object",
-    properties: {
-        variant: {
-            type: "string",
-            enum: ["body", "h1", "h2", "h3", "h4", "h5", "h6"],
-            nullable: true,
-        },
-        color: {
-            type: "string",
-            enum: ["body", "heading", "danger", "success"],
-            nullable: true,
-        },
-        children: {
-            type: "string",
-            nullable: true,
-        },
-    },
-    additionalProperties: true,
-};
-
 export const textMeta: ComponentMetaType<TextProps> = {
     componentName: "Text",
     Component: Text,
@@ -109,7 +110,7 @@ export const textMeta: ComponentMetaType<TextProps> = {
             },
         },
     },
-    schema: textSchema as JSONSchemaType<TextProps>,
+    schema: textJsonSchema as JSONSchemaType<TextProps>,
 };
 
 export default function Text({
@@ -118,12 +119,13 @@ export default function Text({
     variant = "body",
     Component,
     color = defaultVariantColorMap[variant || "body"],
+    size = defaultVariantSizeMap[variant || "body"],
     ref,
     ...restProps
 }: TextProps) {
     const ResolvedComponent = Component || variantComponentMap[variant || "body"];
     return (
-        <ResolvedComponent ref={ref} className={twMerge(variants({ variant, color }), className)} {...restProps}>
+        <ResolvedComponent ref={ref} className={twMerge(variants({ variant, color, size }), className)} {...restProps}>
             {children}
         </ResolvedComponent>
     );

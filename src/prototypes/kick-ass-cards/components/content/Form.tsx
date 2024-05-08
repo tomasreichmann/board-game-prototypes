@@ -7,7 +7,6 @@ import { AnyRecord } from "../../../../utils/simpleTypes";
 import { JSONSchemaType } from "ajv";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
 import Markdown from "react-markdown";
-import ToggleData from "../../../../components/DataToggle";
 import { defaultMdxComponentMap } from "./MdxArticle";
 
 export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
@@ -30,8 +29,13 @@ export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
     return undefined;
 };
 
-export const getInputPropsFromSchemaProperty = ({ description, ...property }: JSONSchemaType<any>): InputProps => {
-    const inputProps: InputProps = { type: "text", description };
+export const getInputPropsFromSchemaProperty = ({
+    description,
+    label,
+    isReactNode,
+    ...property
+}: JSONSchemaType<any> & { isReactNode?: boolean }): InputProps => {
+    const inputProps: InputProps = { type: "text", description, label, isReactNode };
     if (property.enum?.length ?? 0 > 0) {
         inputProps.type = "select";
         inputProps.selectOptions = property.enum.map((value: any) => ({ label: String(value), value }));
@@ -74,6 +78,14 @@ export const getInputPropsFromSchemaProperty = ({ description, ...property }: JS
         inputProps.type = "checkbox";
         return inputProps;
     }
+    if (property.type === "object") {
+        inputProps.type = "object";
+        return inputProps;
+    }
+    if (property.type === "array") {
+        inputProps.type = "array";
+        return inputProps;
+    }
 
     return inputProps;
 };
@@ -85,7 +97,7 @@ export const getFormSchemaFromJsonSchema = <ValueType extends AnyRecord>(
         return Object.fromEntries(
             Object.entries(schema.properties).map(([propKey, propValue]) => {
                 const inputProps = getInputPropsFromSchemaProperty(propValue as JSONSchemaType<any>);
-                return [propKey, inputProps];
+                return [propKey, { ...inputProps, label: inputProps.label || camelCaseToTitleCase(propKey) }];
             })
         ) as FormProps<ValueType>["schema"];
     }
@@ -103,6 +115,12 @@ const valueTypeToInputType = (value: any): InputProps["type"] | undefined => {
     }
     if (typeof value === "boolean") {
         return "checkbox";
+    }
+    if (typeof value === "object") {
+        return "object";
+    }
+    if (Array.isArray(value)) {
+        return "array";
     }
     return "text";
 };

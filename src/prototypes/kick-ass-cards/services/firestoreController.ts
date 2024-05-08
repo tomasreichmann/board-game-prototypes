@@ -19,6 +19,7 @@ import { auth } from "../../../services/Firebase/firebase";
 import { UserResource } from "@clerk/types";
 import { AnyRecord } from "../../../utils/simpleTypes";
 import { defaultMdxComponentMap } from "../components/content/MdxArticle";
+import { ContentDropProps } from "../components/adventures/ContentDrop";
 
 export const collectionWithDb = (path: string) => collection(db, path);
 
@@ -303,13 +304,12 @@ export type ContentItemType = {
     type: ContentItemTypeType;
     props: AnyRecord;
     order: number;
+    name: string;
 };
 
-export type ContentItemDragObjectType = {
-    type: ContentItemTypeType;
-};
+export type ContentItemDragObjectType = ContentItemType;
 export type ContentItemDropResultType = {
-    mode?: "append" | "prepend";
+    mode?: ContentDropProps["mode"];
     path: string;
     order: number;
 };

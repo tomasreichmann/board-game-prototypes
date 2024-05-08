@@ -15,6 +15,8 @@ export type HeadingProps = React.PropsWithChildren<{
     ImageComponent?: React.ComponentType<ImageProps>;
 }>;
 
+export type HeadingEditableProps = Omit<HeadingProps, "ImageComponent">;
+
 export default function Heading({
     className,
     heading,

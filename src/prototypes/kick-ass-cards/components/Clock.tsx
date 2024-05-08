@@ -3,7 +3,6 @@ import Icon from "./Icon";
 import { PaperOrDiv, PaperProps } from "../../../components/print/Paper/Paper";
 import { twMerge } from "tailwind-merge";
 import DiceCounter from "./DiceCounter";
-import { JSONSchemaType } from "ajv";
 
 export type ClockProps = React.PropsWithChildren<
     {
@@ -90,18 +89,3 @@ export default function Clock({
         </PaperOrDiv>
     );
 }
-
-export const clockSchema: JSONSchemaType<Omit<ClockProps, keyof PaperProps>> = {
-    type: "object",
-    properties: {
-        slug: { type: "string", nullable: true },
-        forPrint: { type: "boolean", nullable: true },
-        title: { type: "string", nullable: true },
-        reward: { type: "string", nullable: true },
-        threat: { type: "string", nullable: true },
-        note: { type: "string", nullable: true },
-        total: { type: "number" },
-        current: { type: "number", nullable: true },
-    },
-    required: ["total"],
-};

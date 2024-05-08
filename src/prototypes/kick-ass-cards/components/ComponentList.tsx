@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export type ComponentListProps = React.PropsWithChildren<{ className?: string }>;

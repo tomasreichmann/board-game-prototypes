@@ -3,7 +3,7 @@ import { EffectCardProps } from "./EffectCard";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { iconMap } from "../Icon";
 
-export const effectCardSchema: JSONSchemaType<Omit<EffectCardProps, keyof PaperProps>> = {
+export const effectCardJsonSchema: JSONSchemaType<Omit<EffectCardProps, keyof PaperProps>> = {
     type: "object",
     properties: {
         className: {
@@ -21,4 +21,4 @@ export const effectCardSchema: JSONSchemaType<Omit<EffectCardProps, keyof PaperP
     additionalProperties: false,
 };
 
-export default effectCardSchema;
+export default effectCardJsonSchema;

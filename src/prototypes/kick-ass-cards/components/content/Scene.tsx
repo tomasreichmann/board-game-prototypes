@@ -1,12 +1,12 @@
 import { twMerge } from "tailwind-merge";
 import ActorCard, { ActorCardProps, actorCardSchema } from "../gameComponents/ActorCard";
 import AssetCard, { AssetCardProps, assetCardSchema } from "../gameComponents/AssetCard";
-import Clock, { ClockProps, clockSchema } from "../Clock";
+import Clock, { ClockProps } from "../Clock";
 import Heading, { HeadingProps } from "../Heading";
 import Text from "./Text";
 import ComponentMetaType from "../generation/ComponentMetaType";
-// import { compileSync } from "@mdx-js/mdx";
 import { JSONSchemaType } from "ajv";
+import clockJsonSchema from "../clockJsonSchema";
 
 export type SceneProps = React.PropsWithChildren<
     {
@@ -109,7 +109,7 @@ const SceneTypeSchema = {
             type: "array",
             title: "Clocks",
             nullable: true,
-            items: clockSchema,
+            items: clockJsonSchema,
         },
         titleImageUri: { type: "string", nullable: true, title: "Title Image URI" },
         musicUri: { type: "string", nullable: true, title: "Music URI" },

@@ -25,7 +25,7 @@ export default function EditableWrapper({
     return (
         <div
             className={twMerge(
-                "relative flex flex-col p-1 group min-w-32 outline outline-kac-curse/10",
+                "relative flex flex-col p-1 group min-w-40 outline outline-kac-curse/10",
                 className,
                 isSelected
                     ? "outline-kac-curse bg-kac-curse-light/20"

@@ -11,6 +11,7 @@ import Text, { H5, H6 } from "../content/Text";
 import { useDrag } from "react-dnd";
 import contentFormSchemas from "./contentFormSchemas";
 import Toggle from "../../../../components/Toggle";
+import Markdown from "react-markdown";
 
 export type ContentItemListProps = {
     className?: string;
@@ -33,7 +34,7 @@ const componentContentTypes: ContentItemType["type"][] = ["Actor", "Asset", "Clo
 const deprecatedContentTypes: ContentItemType["type"][] = ["Player", "p", "li", "img", "Alert"];
 
 const contentTypeDescriptionMap = {
-    Mdx: "Rich text content in (MDX)[https://mdxjs.com/] format",
+    Mdx: "Rich text content in [MDX](https://mdxjs.com/) format",
     Text: "Simple text content like headings and paragraph text",
     Image: "Shareable Image",
     Actor: "Card for an PCs and NPCs",
@@ -90,19 +91,19 @@ export function ContentItemLabel({ type, description, onDrop }: ContentItemLabel
 
     return (
         <div
-            ref={drag}
             className={twMerge(
-                "relative cursor-grab pl-8 pr-4 py-2 bg-kac-steel rounded-md leading-tight",
+                "relative pl-12 pr-4 py-2 bg-kac-steel rounded-md leading-tight",
                 type in contentFormSchemas ? "bg-kac-bone" : ""
             )}
+            ref={drag}
         >
-            <div className="absolute top-0 left-0 w-4 h-full rounded-w flex flex-col justify-center items-center bg-white/20">
+            <div className="absolute top-0 left-0 w-8 h-full rounded-w flex flex-col justify-center items-center bg-white/20 cursor-grab ">
                 ⋮ 
             </div>
             <H6 color="body">{type}</H6>
             {description && (
                 <Text variant="body" size="xs">
-                    {description}
+                    <Markdown components={defaultMdxComponentMap}>{description}</Markdown>
                 </Text>
             )}
         </div>

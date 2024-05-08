@@ -94,8 +94,10 @@ export const DocumentContentItem = ({
     const schema = type in contentFormSchemas ? contentFormSchemas[type as keyof typeof contentFormSchemas] : undefined;
 
     const propsWithDrops = useMemo(() => {
+        if (!isEditingMode || !schema) {
+            return props;
+        }
         const reactNodeProperties = Object.entries(schema || {})?.filter(([, property]) => property?.isReactNode);
-        console.log({ reactNodeProperties, schema });
         const dropProps =
             reactNodeProperties.length > 0
                 ? Object.fromEntries(
@@ -119,10 +121,7 @@ export const DocumentContentItem = ({
             ...props,
             ...dropProps,
         };
-    }, [props, schema]);
-    if (content.type === "List") {
-        console.log(propsWithDrops);
-    }
+    }, [props, schema, isEditingMode]);
     const contentItemElement = (
         <ContentItem
             {...content}
@@ -168,12 +167,14 @@ export const DocumentContentItem = ({
                 ></Form>
             )}
 
-            <ContentDrop
-                className={twMerge("w-full", isDraggingThisItem && "opacity-0 pointer-events-none")}
-                path={[contentsCollectionPath, id].join("/")}
-                mode="append"
-                order={getOrderInBetween(order, nextContent?.order)}
-            />
+            {isEditingMode && (
+                <ContentDrop
+                    className={twMerge("w-full", isDraggingThisItem && "opacity-0 pointer-events-none")}
+                    path={[contentsCollectionPath, id].join("/")}
+                    mode="append"
+                    order={getOrderInBetween(order, nextContent?.order)}
+                />
+            )}
         </div>
     );
 };
@@ -240,7 +241,7 @@ export const DocumentContent = ({
                 </Text>
             )}
 
-            <ContentDrop path={contentsCollectionPath} mode="prepend" order={prependFirstOrder} />
+            {isEditing && <ContentDrop path={contentsCollectionPath} mode="prepend" order={prependFirstOrder} />}
 
             {contents && (contents?.length ?? 0) > 0 && (
                 <div className="flex flex-col gap-4">

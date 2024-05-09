@@ -15,6 +15,7 @@ export enum DeckTypeEnum {
 
 export type BuildingCardProps = React.PropsWithChildren<
     {
+        title?: string;
         slug?: string;
         className?: string;
         activation?: string;

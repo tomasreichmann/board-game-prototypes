@@ -23,6 +23,7 @@ import StuntCardPages from "../print/StuntCardPages";
 import { Navigation } from "../Navigation";
 import LPCardPages from "../../data/encounters/LP-en-print";
 import BDay139CarPages from "../print/BDay139CarPages";
+import MachiKoroPages from "../print/MachiKoroPages";
 
 const defaultSectionVisibility = true;
 
@@ -63,6 +64,12 @@ const sections = [
         slug: "B-Day #139",
         label: "B-Day #139",
         Component: BDay139CarPages,
+        isVisibleByDefault: defaultSectionVisibility,
+    },
+    {
+        slug: "Oscaru no Machi",
+        label: "Oscaru no Machi",
+        Component: MachiKoroPages,
         isVisibleByDefault: defaultSectionVisibility,
     },
 ];

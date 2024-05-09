@@ -343,6 +343,11 @@ export const cardSizes = {
         points: [114, 171],
         inches: [1.57, 2.36],
     },
+    standard: {
+        mm: [59, 92],
+        points: [167, 261],
+        inches: [2.32, 3.62],
+    },
 };
 
 export const allSizes = {

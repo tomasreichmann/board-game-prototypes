@@ -24,7 +24,7 @@ const buildings: BuildingCardProps[] = [
 export default function MachiKoroPages() {
     return (
         <>
-            <PrintPage sizeInMm={[106 * 2, 170]} bleedInMm={0} showControls>
+            <PrintPage size="A4" bleedInMm={0} showControls>
                 <MdxArticle mdx={RulesMdx} className={"leading-tight columns-2 prose-sm prose-h1:text-2xl"} />
             </PrintPage>
             <ChunkedPages
@@ -33,13 +33,14 @@ export default function MachiKoroPages() {
                 items={buildings}
                 itemsPerPage={3 * 1}
                 frontFacePrintPageProps={{
-                    orientation: "landscape",
+                    // orientation: "landscape",
                     bleedInMm: 0,
                     className: "flex flex-col",
                     showControls: true,
                     contentClassName: "p-[3mm] flex-1 flex relative items-stretch contents-stretch",
                 }}
                 backFacePrintPageProps={{
+                    showControls: true,
                     bleedInMm: 0,
                     contentClassName: "p-[3mm]",
                 }}

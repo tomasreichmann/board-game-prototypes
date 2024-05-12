@@ -9,75 +9,74 @@ import BuildingCard, {
     BuildingTypeEnum,
     DeckTypeEnum,
 } from "../machiKoro/BuildingCard";
+import "./MachiKoro.css";
 
 const buildings: BuildingCardProps[] = [
     {
         title: "Malý pohostinský řetězec",
-        activation: "3 x [food] (6-)",
+        imageUri: "/machi-koro/illustrations/restaurants.png",
+        activation: "3× [food] (6-)",
         deckType: DeckTypeEnum.Small,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
-        reward: 20,
-        description:
-            "Na zakázku japonského konglomerátu vybuduj 3 [food] objekty s aktivační hodnotou (6-) a odevzdej je za odměnu 20 mincí.",
+        reward: 12,
+        description: "Odevzdejte 3× [food] (6-) a vezměte si 12C z banku.",
     },
     {
         title: "Velký pohostinský řetězec",
-        activation: "4 x [food] (7+)",
+        activation: "4× [food] (7+)",
         deckType: DeckTypeEnum.Big,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
-        reward: 40,
-        description:
-            "Na zakázku japonského konglomerátu vybuduj 4 [food] objekty s aktivační hodnotou 7+ a odevzdej je za odměnu 40 mincí.",
+        reward: 24,
+        description: "Odevzdejte 4× [food] (7+) a vezměte si 24C z banku.",
     },
     {
         title: "Sousedská výměna",
-        activation: "2 x [any]",
+        activation: "2× [card]",
         deckType: DeckTypeEnum.Landmark,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
         reward: 0,
-        description:
-            "Bohatý soused nabízí výhodnou výměnu.\n2 z tvých libovolných podniků odevzdej a vezmi si 1 podnik z obecné nabídky.",
+        description: "Odevzdejte 2 libovolné podniky a postavte zdarma 1 podnik z obecné nabídky.",
     },
     {
         title: "Yakuza úřaduje",
-        activation: "1 x [special]",
+        activation: "1× [special]",
         deckType: DeckTypeEnum.Landmark,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
         reward: 15,
-        description: "Má-li hráč na tahu alespoň 3 [special], může odevzdat jednu z nich Yakuze za odměnu 15 mincí.",
+        description: "Máte-li alespoň 3× [special] , jednu odevzdejte a vezměte si 15C z banku.",
     },
     {
         title: "Konbini nadšenec",
-        activation: "3 x Maloobchod",
+        activation: "3× Samoobsluha",
         deckType: DeckTypeEnum.Small,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
         reward: 15,
-        description: "Jako fanatik do fami-chiki odevzdej 3 podniky Maloobchod za odměnu 15 mincí.",
+        description: "Odevzdejte 3× Samoobsluha a vezměte si 15C z banku.",
     },
     {
         title: "Malý pasivní příjem",
-        activation: "3 x [industry] (6-) / 3x [agriculture] (6-) / 3x [cow] (6-)",
+        activation: "3× [industry] / [agriculture] / [cow] (6-)",
         deckType: DeckTypeEnum.Small,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
         reward: 5,
         description:
-            "Pokud má hráč na tahu 3+ kopií podniků typu [industry],  [agriculture] nebo [cow] s aktivační hodnotou 6-,  může je investovat a odevzdat výměnou za tuto kartu\n\nPasivní příjem\nVlastník této karty si na začátku každého kola vezme z banky 3 mince.",
+            "Odevzdejte 3× stejný podnik [industry] / [agriculture] / [cow] (6-) a získejte… \n\n Pasivní příjem \n Na začátku každého kola si vezměte 3C z banku.",
     },
     {
         title: "Velký pasivní příjem",
-        activation: "4 x [industry] (7+) / 4x [agriculture] (7+)",
+        activation: "4× [industry] / [agriculture] (7+)",
         deckType: DeckTypeEnum.Big,
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
         reward: 10,
         description:
-            "Pokud má hráč na tahu 4+ kopií podniků typu [industry] nebo [agriculture] s aktivační hodnotou 7+,  může je investovat a odevzdat výměnou za tuto kartu\n\nPasivní příjem\nVlastník této karty si na začátku každého kola vezme z banky 10 mincí.",
+            "Odevzdejte 3× stejný podnik [industry] / [agriculture] (7+) a získejte… \n\n Pasivní příjem \n Na začátku každého kola si vezměte 10C z banku.",
     },
     {
         title: "Rozvinutý dopravní sektor ",
@@ -86,8 +85,7 @@ const buildings: BuildingCardProps[] = [
         type: BuildingTypeEnum.PublicTender,
         cost: 0,
         reward: 0,
-        description:
-            "Má-li hráč na tahu aktivovaný přístav, nádraží i letiště, může si vybrat a postavit 1 další [landmark] objekt.",
+        description: "Máte-li aktivovaný Přístav, Nádraží i Letiště, zdarma postavte 1 další dominantu.",
     },
 ];
 
@@ -101,7 +99,7 @@ export default function MachiKoroPages() {
                 Component={BuildingCard}
                 BackFaceComponent={BuildingCardBackFace}
                 items={buildings}
-                itemsPerPage={3 * 1}
+                itemsPerPage={3 * 3}
                 frontFacePrintPageProps={{
                     // orientation: "landscape",
                     bleedInMm: 0,

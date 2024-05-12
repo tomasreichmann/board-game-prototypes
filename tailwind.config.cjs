@@ -110,6 +110,7 @@ module.exports = {
                 "jd-shitty-paper-dark": "#2d0b3d",
                 "jd-golden-text": "#FED801",
                 "jd-golden-paper": "#fef1ca",
+                "mk-tender": "#5a3b00",
             },
             fontFamily: {
                 "jd-logo": ["New Rocker", "sans-serif"],
@@ -121,6 +122,8 @@ module.exports = {
                 kacLogo: ["Trade Winds", "sans-serif"],
                 kacHeading: ["Oxanium", "sans-serif"],
                 mmHeading: ["Quantico", "sans-serif"],
+                mkHeading: ["Archivo Black", "sans-serif"],
+                mkBody: ["Merriweather Sans", "sans-serif"],
             },
             backgroundPosition: {
                 "1/3": "center 33%",

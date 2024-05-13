@@ -75,7 +75,7 @@ export function ContentItemLabel({ type, description, onDrop }: ContentItemLabel
             type: "any",
             item: { type, id: "unknown", order: 0, props: {}, name: "new" },
             end: (item, monitor) => {
-                const dropResult = monitor.getDropResult<ContentItemDnDResultType>(); // TODO Target type
+                const dropResult = monitor.getDropResult<ContentItemDnDResultType>();
                 if (item && dropResult) {
                     console.log("ContentItemLabel drop", item, dropResult);
                     onDrop?.({ ...item, ...dropResult });

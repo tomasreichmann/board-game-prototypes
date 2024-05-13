@@ -17,7 +17,10 @@ export default function ContentDrop({ className, path, mode, order }: ContentDro
     >(
         () => ({
             accept: "any",
-            drop: () => ({ path, mode, order }),
+            drop: () => {
+                console.log("drop", { path, mode, order });
+                return { path, mode, order };
+            },
 
             collect: (monitor) => ({
                 isOver: monitor.isOver(),

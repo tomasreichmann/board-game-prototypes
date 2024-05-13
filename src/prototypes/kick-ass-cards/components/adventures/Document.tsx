@@ -111,7 +111,7 @@ export const DocumentContentItem = ({
                                   mode="insert"
                                   order={0}
                               />
-                              {props[key]}
+                              {props[key]} {/* TODO: this likely needs to be recursive somehow */}
                           </React.Fragment>,
                       ])
                   )
@@ -205,7 +205,7 @@ export const DocumentContent = ({
 
     const onMoveDrop = useCallback(
         (result: ContentItemDnDResultType) => {
-            const { id, order, mode } = result;
+            const { id, order, mode, path } = result;
             if (!adventureId || !documentId) {
                 console.warn("adventureId or documentId not found", {
                     adventureId,
@@ -215,11 +215,41 @@ export const DocumentContent = ({
             }
             if (mode === "insert") {
                 console.log("insert mode not supported yet", result);
+                const pathFragments = path.split("/");
+                const contentsCollectionPathLength = contentsCollectionPath.split("/").length;
+                const contentsCollectionPathFailsafe = pathFragments.slice(0, contentsCollectionPathLength).join("/");
+                if (contentsCollectionPathFailsafe !== contentsCollectionPath) {
+                    console.warn("content path not found", {
+                        pathFragments,
+                        contentsCollectionPathFailsafe,
+                        contentsCollectionPath,
+                    });
+                    return;
+                }
+                const contentId = pathFragments[contentsCollectionPathLength];
+                if (!contentId) {
+                    console.warn("contentId not found", {
+                        pathFragments,
+                        contentsCollectionPathFailsafe,
+                        contentsCollectionPath,
+                    });
+                    return;
+                }
+                const innerPath = pathFragments.slice(contentsCollectionPathLength + 1).join("/");
+                if (!innerPath) {
+                    console.warn("innerPath not found", {
+                        pathFragments,
+                        contentsCollectionPathFailsafe,
+                        contentsCollectionPath,
+                    });
+                    return;
+                }
+                updateDocumentFields(contentsCollectionPath, id, innerPath, order);
                 return;
             }
             updateDocumentFields(contentsCollectionPath, id, "order", order);
         },
-        [adventureId, documentId]
+        [adventureId, documentId, contentsCollectionPath]
     );
 
     return (
@@ -304,7 +334,7 @@ export default function Document({ className, documentId, adventureId }: Documen
 
     const onNewContentDrop = useCallback(
         (result: ContentItemDnDResultType) => {
-            const { type, order, mode } = result;
+            const { type, order, mode, path } = result;
             if (!adventureId || !documentId) {
                 console.warn("adventureId or documentId not found", {
                     adventureId,
@@ -312,16 +342,48 @@ export default function Document({ className, documentId, adventureId }: Documen
                 });
                 return;
             }
+            const newContentItem = { type, props: {}, order, name: type };
             if (mode === "insert") {
                 console.log("insert mode not supported yet", result);
+                const pathFragments = path.split("/");
+                const contentsCollectionPathLength = contentsCollectionPath.split("/").length;
+                const contentsCollectionPathFailsafe = pathFragments.slice(0, contentsCollectionPathLength).join("/");
+                if (contentsCollectionPathFailsafe !== contentsCollectionPath) {
+                    console.warn("content path not found", {
+                        pathFragments,
+                        contentsCollectionPathFailsafe,
+                        contentsCollectionPath,
+                    });
+                    return;
+                }
+                const contentId = pathFragments[contentsCollectionPathLength];
+                if (!contentId) {
+                    console.warn("contentId not found", {
+                        pathFragments,
+                        contentsCollectionPathFailsafe,
+                        contentsCollectionPath,
+                    });
+                    return;
+                }
+                const innerPath = pathFragments.slice(contentsCollectionPathLength + 1).join("/");
+                if (!innerPath) {
+                    console.warn("innerPath not found", {
+                        pathFragments,
+                        contentsCollectionPathFailsafe,
+                        contentsCollectionPath,
+                    });
+                    return;
+                }
+                console.log("updateDocumentFields", { path, pathFragments, contentsCollectionPathFailsafe });
+                updateDocumentFields(contentsCollectionPath, contentId, innerPath, newContentItem);
+                // TODO: Set array path
+                // TODO: Set deep editing path
                 return;
             }
-            createAdventureDocumentContent(adventureId, documentId, { type, props: {}, order, name: type }).then(
-                (docRef) => {
-                    console.log("new content created", docRef.id, [contentsCollectionPath, docRef.id].join("/"));
-                    setEditingPath([contentsCollectionPath, docRef.id].join("/"));
-                }
-            );
+            createAdventureDocumentContent(adventureId, documentId, newContentItem).then((docRef) => {
+                console.log("new content created", docRef.id, [contentsCollectionPath, docRef.id].join("/"));
+                setEditingPath([contentsCollectionPath, docRef.id].join("/"));
+            });
         },
         [adventureId, documentId]
     );

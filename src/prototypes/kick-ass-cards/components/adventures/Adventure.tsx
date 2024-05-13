@@ -245,7 +245,7 @@ export default function Adventure({ id: adventureId, className }: AdventureProps
                         </Button>
                     )}
                     {adventureId !== undefined && (
-                        <div className="grid md:grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-4 mt-4">
+                        <div className="grid md:grid-cols-[repeat(auto-fit,minmax(500px,1fr))] gap-4 mt-4">
                             <DocumentList adventureId={adventureId} />
                         </div>
                     )}

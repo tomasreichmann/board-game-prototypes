@@ -24,6 +24,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Velký pohostinský řetězec",
+        imageUri: "/machi-koro/illustrations/big-restaurant.png",
         activation: "4× [food] (7+)",
         deckType: DeckTypeEnum.Big,
         type: BuildingTypeEnum.PublicTender,
@@ -33,6 +34,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Sousedská výměna",
+        imageUri: "/machi-koro/illustrations/giving-agreement.png",
         activation: "2× [card]",
         deckType: DeckTypeEnum.Landmark,
         type: BuildingTypeEnum.PublicTender,
@@ -42,6 +44,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Yakuza úřaduje",
+        imageUri: "/machi-koro/illustrations/yakuza.png",
         activation: "1× [special]",
         deckType: DeckTypeEnum.Landmark,
         type: BuildingTypeEnum.PublicTender,
@@ -51,6 +54,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Konbini nadšenec",
+        imageUri: "/machi-koro/illustrations/8-12.png",
         activation: "3× Samoobsluha",
         deckType: DeckTypeEnum.Small,
         type: BuildingTypeEnum.PublicTender,
@@ -60,6 +64,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Malý pasivní příjem",
+        imageUri: "/machi-koro/illustrations/money.png",
         activation: "3× [industry] / [agriculture] / [cow] (6-)",
         deckType: DeckTypeEnum.Small,
         type: BuildingTypeEnum.PublicTender,
@@ -70,6 +75,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Velký pasivní příjem",
+        imageUri: "/machi-koro/illustrations/stack-money.png",
         activation: "4× [industry] / [agriculture] (7+)",
         deckType: DeckTypeEnum.Big,
         type: BuildingTypeEnum.PublicTender,
@@ -80,6 +86,7 @@ const buildings: BuildingCardProps[] = [
     },
     {
         title: "Rozvinutý dopravní sektor ",
+        imageUri: "/machi-koro/illustrations/transport.png",
         activation: "",
         deckType: DeckTypeEnum.Big,
         type: BuildingTypeEnum.PublicTender,

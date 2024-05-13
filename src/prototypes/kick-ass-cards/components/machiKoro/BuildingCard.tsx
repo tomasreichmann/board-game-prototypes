@@ -146,8 +146,8 @@ export default function BuildingCard({
                         </RichFragment>
                     ))}
                 </div>
-                <div className="absolute left-6 right-6 top-14 bottom-8 flex flex-col">
-                    <div className="text-center font-mkHeading text-mk-tender uppercase mt-4 leading-none">
+                <div className="absolute left-6 right-6 top-16 bottom-8 flex flex-col mt-1">
+                    <div className="text-center font-mkHeading text-mk-tender uppercase leading-none">
                         <img src="/machi-koro/handshake.svg" className="inline h-5 rounded-full bg-mk-tender" /> {title}
                     </div>
                     <div className="relative flex-1 -mx-3">
@@ -155,8 +155,8 @@ export default function BuildingCard({
                     </div>
                     <div
                         className={twMerge(
-                            "text-center font-mkBody font-[500] text-white mt-4 leading-tight text-sm [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]",
-                            (description?.length || 0) > 100 && "text-xs",
+                            "text-center font-mkBody font-[500] text-white leading-tight text-sm [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]",
+                            (description?.length || 0) > 60 && "text-xs",
                             (description?.length || 0) > 200 && "text-[0.65rem] leading-[1.2em]"
                         )}
                     >

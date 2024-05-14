@@ -8,7 +8,7 @@ import PaperCraftBox from "../PaperCraftBox";
 const copies = 6;
 
 export default function PlayerBoxPages() {
-    const safetyMargin = 5;
+    const safetyMargin = 5; // in mm
     return (
         <>
             {range(copies).map((pageIndex) => (

@@ -185,10 +185,17 @@ export default function BuildingCard({
     );
 }
 
-export const BuildingCardBackFace = ({ className, children, size = "standard", ...restProps }: Partial<PaperProps>) => {
+export const BuildingCardBackFace = ({
+    className,
+    children,
+    size = "standard",
+    bleedMm = 0,
+    ...restProps
+}: Partial<PaperProps>) => {
     return (
         <PaperOrDiv
             size={size}
+            bleedMm={bleedMm}
             className={twMerge(
                 "BuildingCardBackFace gap-2 rounded-lg print:rounded-none bg-white flex flex-col justify-stretch items-stretch",
                 className
@@ -196,8 +203,11 @@ export const BuildingCardBackFace = ({ className, children, size = "standard", .
             {...restProps}
         >
             <div
-                className="m-[3mm] relative flex flex-col justify-center items-center flex-1 p-3"
-                style={{ background: "url(/machi-koro/building-backface.png) no-repeat center center / contain" }}
+                className="relative flex flex-col justify-center items-center flex-1 p-3"
+                style={{
+                    margin: `${bleedMm}mm`,
+                    background: "url(/machi-koro/building-backface.png) no-repeat center center / contain",
+                }}
             >
                 {children}
             </div>

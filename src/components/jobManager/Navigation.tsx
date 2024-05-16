@@ -52,8 +52,12 @@ export default function Navigation({}: NavigationProps) {
               })
             : [];
 
-    const isAllKeysGenerated = false; // TODO
-    const isAllKeysIncluded = false; // TODO
+    const isAllKeysGenerated = relatedProperties.every((property) =>
+        property.$id ? state.pointersToGenerate?.[property.$id] : false
+    );
+    const isAllKeysIncluded = relatedProperties.every((property) =>
+        property.$id ? state.pointersToInclude?.[property.$id] : false
+    );
 
     return (
         <>
@@ -97,7 +101,7 @@ export default function Navigation({}: NavigationProps) {
                                 if (!job) {
                                     return job;
                                 }
-                                return immutableAssign(
+                                const result = immutableAssign(
                                     job,
                                     (job) => job.pointersToGenerate,
                                     (pointersToGenerate = {}) => ({
@@ -111,6 +115,8 @@ export default function Navigation({}: NavigationProps) {
                                         ),
                                     })
                                 );
+                                console.log("result", result.pointersToGenerate);
+                                return result;
                             })
                         }
                     />
@@ -149,8 +155,8 @@ export default function Navigation({}: NavigationProps) {
                 </div>
                 {relatedProperties.map((property) => {
                     const pointer = property.$id as string;
-                    const isSelectedToGenerate = false; // TODO
-                    const isSelectedToInclude = false; // TODO
+                    const isSelectedToGenerate = state.pointersToGenerate?.[pointer];
+                    const isSelectedToInclude = state.pointersToInclude?.[pointer];
                     const valueInData = getDeepValue(state.data, pointer);
                     const key = pointer.split("/").at(-1) as string;
                     return (

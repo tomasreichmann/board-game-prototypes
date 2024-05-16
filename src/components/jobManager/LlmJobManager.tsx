@@ -67,10 +67,13 @@ export default function LlmJobManager() {
                         {job && (
                             <>
                                 <div className="absolute top-0 left-0 right-4 h-4 bg-[linear-gradient(to_top,rgba(255,255,255,0)_0%,rgba(255,255,255,1)_100%)] z-10"></div>
-                                <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto pt-4"></div>
+                                <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse gap-4 items-center overflow-auto pt-4">
+                                    TODO: conversation No conversation yet
+                                </div>
                             </>
                         )}
                     </div>
+                    TODO: Prompt input TODO: Combined prompt input
                 </div>
             </div>
             <div className="sm:w-[25vw] md:w-[400px] overflow-auto flex flex-col relative gap-4">

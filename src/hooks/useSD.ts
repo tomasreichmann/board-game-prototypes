@@ -84,7 +84,7 @@ const sdXlPreset: SDPresetType = {
     label: "SDXL",
     value: {
         steps: 20,
-        sampler_name: "DPM++ 2M Karras",
+        sampler_name: "DPM++ 2M",
         cfg_scale: 7,
         width: 1024,
         height: 1024,
@@ -95,7 +95,7 @@ const sdXlLightningPreset: SDPresetType = {
     label: "SDXL Lightning",
     value: {
         steps: 4,
-        sampler_name: "DPM++ SDE Karras",
+        sampler_name: "DPM++ SDE",
         cfg_scale: 2,
         width: 1024,
         height: 1024,
@@ -106,7 +106,7 @@ const sd1_5Preset: SDPresetType = {
     label: "SD 1-5",
     value: {
         steps: 20,
-        sampler_name: "DPM++ 2M Karras",
+        sampler_name: "DPM++ 2M",
         cfg_scale: 7,
         width: 512,
         height: 512,
@@ -125,7 +125,7 @@ const noPresetOption = {
 const initialPresets = [noPreset, sdXlPreset, sdXlLightningPreset, sd1_5Preset];
 
 const defaultOptions: SDOptionsType = {
-    sampler_name: "DPM++ 2M Karras",
+    sampler_name: "DPM++ 2M",
     steps: 20,
     width: 1024,
     height: 1024,

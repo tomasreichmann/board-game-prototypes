@@ -1,5 +1,5 @@
 import { Navigation } from "../Navigation";
-import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
+import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
 import { deleteDocument } from "../../services/firestoreController";
 import { useParams } from "react-router-dom";
 import { adventuresPath } from "./routes";

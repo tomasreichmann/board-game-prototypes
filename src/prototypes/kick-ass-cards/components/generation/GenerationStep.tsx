@@ -3,7 +3,7 @@ import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerato
 import { StepEnum, StepGeneratorStateType } from "./stepGeneratorTypes";
 import copyToClipboard from "../../../../utils/copyToClipboard";
 import { twMerge } from "tailwind-merge";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import getComponentCode from "./getComponentCode";
 import { useMistral } from "../../../../hooks/useMistral";
 import Pending from "../../../../components/form/Pending";

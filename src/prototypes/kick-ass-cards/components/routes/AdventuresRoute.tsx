@@ -1,7 +1,7 @@
 import { Navigation } from "../Navigation";
 import Text, { H1, H5, H6 } from "../content/Text";
 import ToggleData from "../../../../components/DataToggle";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import { createAdventure, useAdventures } from "../../services/firestoreController";
 import { adventuresPath } from "./routes";
 import { SignedIn, useUser } from "@clerk/clerk-react";

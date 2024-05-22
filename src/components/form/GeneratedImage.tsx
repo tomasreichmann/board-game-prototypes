@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import PendingBar, { PendingBarProps } from "./PendingBar";
 
 export type GeneratedImageProps = React.HTMLAttributes<HTMLDivElement> & {

@@ -1,12 +1,12 @@
 import React from "react";
 import immutableAssign from "immutable-assign";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Text from "../../prototypes/kick-ass-cards/components/content/Text";
-import ButtonWithConfirmation from "../../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
+import ButtonWithConfirmation from "../../prototypes/kick-ass-cards/components/controls/ButtonWithConfirmation";
 import { JobManagerStateType, useJobManager } from "./JobManagerProvider";
 import { JobManagerActionTypeEnum, Setter } from "./jobManagerReducer";
 import { twMerge } from "tailwind-merge";
-import Input from "../../prototypes/kick-ass-cards/components/content/Input";
+import Input from "../../prototypes/kick-ass-cards/components/controls/Input";
 import JobType from "./jobType";
 import getDeepValue from "../../utils/getDeepValue";
 import safeStringify from "../../utils/safeStringify";

@@ -2,8 +2,8 @@ import { twMerge } from "tailwind-merge";
 import { smartDocsPath } from "../routes/routes";
 import { useState } from "react";
 import { kebabCase } from "lodash";
-import Input from "../content/Input";
-import Button from "../content/Button";
+import Input from "../controls/Input";
+import Button from "../controls/Button";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import { SmartDocFileType, SmartDocType, createSmartDoc, smartDocLSKeyPrefix, smartDocsLSKey } from "./smartDocs";
 

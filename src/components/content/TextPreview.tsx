@@ -1,6 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 
 export type TextPreviewProps = {
     initialCollapsed?: boolean;

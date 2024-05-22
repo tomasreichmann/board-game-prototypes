@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../../prototypes/kick-ass-cards/components/content/Input";
+import Input from "../../prototypes/kick-ass-cards/components/controls/Input";
 import getDeepValue from "../../utils/getDeepValue";
 import Icon from "../Icon/Icon";
 import { JobManagerStateType, useJobManager } from "./JobManagerProvider";
@@ -7,7 +7,7 @@ import { getSchemaAtDeepPointer } from "./utils";
 import { JobManagerActionTypeEnum, Setter } from "./jobManagerReducer";
 import JobType from "./jobType";
 import setDeepValue from "../../utils/setDeepValue";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Ajv from "ajv";
 import Text from "../../prototypes/kick-ass-cards/components/content/Text";
 

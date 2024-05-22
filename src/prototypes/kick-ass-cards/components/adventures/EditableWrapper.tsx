@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import Text from "../content/Text";
 import { PropsWithChildren } from "react";
-import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
+import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
 import { ConnectDragSource } from "react-dnd";
 
 export type EditableWrapperProps = PropsWithChildren<{

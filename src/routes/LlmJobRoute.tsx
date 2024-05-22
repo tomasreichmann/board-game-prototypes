@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { MistralOptionsType } from "../hooks/useMistral";
-import Button from "../prototypes/kick-ass-cards/components/content/Button";
-import Input from "../prototypes/kick-ass-cards/components/content/Input";
+import Button from "../prototypes/kick-ass-cards/components/controls/Button";
+import Input from "../prototypes/kick-ass-cards/components/controls/Input";
 import Page from "../components/Page/Page";
 import ToggleData from "../components/DataToggle";
 import MistralClient, {

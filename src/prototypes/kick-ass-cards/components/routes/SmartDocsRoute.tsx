@@ -4,7 +4,7 @@ import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import DataPreview from "../../../../components/DataPreview";
 import SmartDocList from "../smartDocs/SmartDocList";
 import { H2 } from "../content/Text";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import SmartDocCreateForm from "../smartDocs/SmartDocCreateForm";
 import { SmartDocFileType, smartDocLSKeyPrefix, smartDocsLSKey } from "../smartDocs/smartDocs";
 import { Navigation } from "../Navigation";

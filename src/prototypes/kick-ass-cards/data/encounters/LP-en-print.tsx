@@ -17,7 +17,7 @@ import {
     effects,
     defaultAssetProps,
 } from "./LP-common-en";
-import Button from "../../components/content/Button";
+import Button from "../../components/controls/Button";
 import PaperCraftBox from "../../components/PaperCraftBox";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import Icon from "../../components/Icon";

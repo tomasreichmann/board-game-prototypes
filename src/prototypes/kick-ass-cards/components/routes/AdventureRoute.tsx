@@ -4,7 +4,7 @@ import Adventure from "../adventures/Adventure";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
 import { ErrorBoundaryErrorMessage } from "../adventures/ErrorMessage";
 import { deleteAdventure } from "../../services/firestoreController";
-import ButtonWithConfirmation from "../content/ButtonWithConfirmation";
+import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
 
 export default function AdventureRoute() {
     const { adventureId } = useParams<"adventureId">();

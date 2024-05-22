@@ -29,6 +29,7 @@ const layoutContentTypes: ContentItemType["type"][] = [
     "Spread",
     "Paper",
     "Toggle",
+    "Button",
 ] as const;
 const componentContentTypes: ContentItemType["type"][] = ["Actor", "Asset", "Clock", "Effect", "Outcome", "PaperMini"];
 const deprecatedContentTypes: ContentItemType["type"][] = ["Player", "p", "li", "img", "Alert"];
@@ -51,6 +52,7 @@ const contentTypeDescriptionMap = {
     Spread: "layout for items in a spread",
     Paper: "layout in a standard paper or card size",
     Toggle: "layout for collapsible content",
+    Button: "button style links",
 
     Player: "DEPRECATED Player character card",
     p: "DEPRECATED layout for paragraph text",

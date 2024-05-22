@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { InputHTMLAttributes } from "react";
-import Text, { TextProps } from "./Text";
+import Text, { TextProps } from "../content/Text";
 
 export type SelectProps = React.PropsWithChildren<{
     label?: React.ReactNode;

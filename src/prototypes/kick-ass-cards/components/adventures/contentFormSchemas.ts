@@ -1,5 +1,5 @@
 import { JSONSchemaType } from "ajv";
-import { getFormSchemaFromJsonSchema } from "../content/Form";
+import { getFormSchemaFromJsonSchema } from "../controls/Form";
 import mdxJsonSchema from "../content/mdxSchema";
 import textJsonSchema from "../content/textJsonSchema";
 import { actorCardSchema } from "../gameComponents/ActorCard";

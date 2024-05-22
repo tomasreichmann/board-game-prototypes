@@ -1,7 +1,7 @@
 import Page from "../components/Page/Page";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { defaultSettings } from "../hooks/useLocalSettings";
-import Input from "../prototypes/kick-ass-cards/components/content/Input";
+import Input from "../prototypes/kick-ass-cards/components/controls/Input";
 import ToggleData from "../components/DataToggle";
 import camelCaseToTitleCase from "../utils/camelCaseToTitleCase";
 import { localSettingsKey } from "../hooks/useLocalSettings";

@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import ComponentMetaType from "./ComponentMetaType";
-import Form, { getDefaultsFromSchema, getFormSchemaFromJsonSchema } from "../content/Form";
+import Form, { getDefaultsFromSchema, getFormSchemaFromJsonSchema } from "../controls/Form";
 import Toggle from "../../../../components/Toggle";
 import ToggleData from "../../../../components/DataToggle";
 import getComponentCode from "./getComponentCode";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import { SDResultType, useSD } from "../../../../hooks/useSD";
 import { twMerge } from "tailwind-merge";
 import { JSONSchemaType } from "ajv";

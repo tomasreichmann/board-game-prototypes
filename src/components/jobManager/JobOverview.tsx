@@ -1,9 +1,9 @@
 import immutableAssign from "immutable-assign";
 import JobType from "./jobType";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Text from "../../prototypes/kick-ass-cards/components/content/Text";
-import ButtonWithConfirmation from "../../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
-import Input from "../../prototypes/kick-ass-cards/components/content/Input";
+import ButtonWithConfirmation from "../../prototypes/kick-ass-cards/components/controls/ButtonWithConfirmation";
+import Input from "../../prototypes/kick-ass-cards/components/controls/Input";
 import { JSONSchemaType } from "ajv";
 import { getParentPointer, isRootPointer } from "./utils";
 import safeStringify from "../../utils/safeStringify";

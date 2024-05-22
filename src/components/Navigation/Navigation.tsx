@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import { routes } from "../../routes";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 
 export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HTMLDivElement>) => {
     return (

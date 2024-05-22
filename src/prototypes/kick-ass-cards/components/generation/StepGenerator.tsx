@@ -4,7 +4,7 @@ import { PresetType, StepEnum, steps } from "./stepGeneratorTypes";
 import PresetStep from "./PresetStep";
 import GenerationStep from "./GenerationStep";
 import ToggleData from "../../../../components/DataToggle";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import FineTuneStep from "./FineTuneStep";
 import { twMerge } from "tailwind-merge";
 import getComponentCode from "./getComponentCode";

@@ -3,7 +3,7 @@ import { UserMetaType } from "../../services/firestoreController";
 import Text, { H5 } from "../content/Text";
 import { ErrorComponentProps } from "../../../../components/ErrorBoundary";
 import ToggleData from "../../../../components/DataToggle";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 
 export type ErrorMessageProps = React.PropsWithChildren<{
     className?: string;

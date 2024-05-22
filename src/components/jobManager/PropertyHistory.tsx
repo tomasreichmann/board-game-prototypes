@@ -2,14 +2,14 @@
 import Markdown from "react-markdown";
 
 import JobType from "./jobType";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Text from "../../prototypes/kick-ass-cards/components/content/Text";
 import { defaultComponentMap } from "../../prototypes/kick-ass-cards/components/ContentItem";
 import copyToClipboard from "../../utils/copyToClipboard";
 import { twMerge } from "tailwind-merge";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import safeStringify from "../../utils/safeStringify";
-import Article from "../../prototypes/kick-ass-cards/components/layout/Article";
+import ArticleWithTitle from "../../prototypes/kick-ass-cards/components/layout/ArticleWithTitle";
 import Icon from "../Icon/Icon";
 
 export type PropertyHistoryProps = {
@@ -22,9 +22,9 @@ export type PropertyHistoryItemContentProps = JobType["history"][string][number]
 export const PropertyHistoryItemContent = ({ content, role }: PropertyHistoryItemContentProps) => {
     if (role === "assistant" && typeof content === "string") {
         return (
-            <Article>
+            <ArticleWithTitle>
                 <Markdown>{content}</Markdown>
-            </Article>
+            </ArticleWithTitle>
         );
     }
     if (typeof content === "string") {

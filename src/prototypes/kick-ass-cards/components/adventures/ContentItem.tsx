@@ -3,7 +3,7 @@ import { ContentItemType } from "../../services/firestoreController";
 import { defaultMdxComponentMap } from "../content/MdxArticle";
 import ErrorMessage, { ErrorBoundaryErrorMessage } from "./ErrorMessage";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import ToggleData from "../../../../components/DataToggle";
 import { useMemo } from "react";
 

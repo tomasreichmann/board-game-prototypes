@@ -2,7 +2,7 @@ import { encountersMap } from "../../data/encounters";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Pending from "../../../../components/Pending";
-import Article from "../layout/Article";
+import ArticleWithTitle from "../layout/ArticleWithTitle";
 import { MDXProvider } from "@mdx-js/react";
 import { defaultMdxComponentMap } from "../content/MdxArticle";
 
@@ -50,11 +50,11 @@ export default function EncounterRoute() {
     return (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto">
             {isPending && <Pending />}
-            <Article>
+            <ArticleWithTitle>
                 <MDXProvider components={defaultMdxComponentMap}>
                     {Encounter !== null && <Encounter key={path} />}
                 </MDXProvider>
-            </Article>
+            </ArticleWithTitle>
         </div>
     );
 }

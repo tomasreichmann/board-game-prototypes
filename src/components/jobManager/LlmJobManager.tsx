@@ -1,4 +1,4 @@
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Text from "../../prototypes/kick-ass-cards/components/content/Text";
 import JobType from "./jobType";
 import sceneJob from "./jobs/sceneJob";

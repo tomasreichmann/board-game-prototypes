@@ -26,6 +26,7 @@ import Toggle from "../../../../components/Toggle";
 import Aside from "./Aside";
 import Mdx from "./Mdx";
 import Text from "./Text";
+import Button from "../controls/Button";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -40,6 +41,7 @@ export const defaultMdxComponentMap = {
     Aside,
     List: ComponentList,
     p: Paragraph,
+    Button,
     li: ListItem,
     Columns,
     Hand,

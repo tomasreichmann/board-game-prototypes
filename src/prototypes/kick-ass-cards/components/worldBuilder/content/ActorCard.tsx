@@ -7,8 +7,8 @@ import Editable, {
     EditableControlItemType,
     EditableProps,
 } from "../../../../../components/Editable/Editable";
-import Input from "../../content/Input";
-import Select from "../../content/Select";
+import Input from "../../controls/Input";
+import Select from "../../controls/Select";
 
 export type ActorCardProps = PropsWithChildren<{
     cardSize?: keyof typeof cardSizes;

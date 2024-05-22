@@ -1,15 +1,15 @@
 import immutableAssign from "immutable-assign";
 import { twMerge } from "tailwind-merge";
 import JobType from "./jobType";
-import SmartInput from "../../prototypes/kick-ass-cards/components/content/SmartInput";
-import Input from "../../prototypes/kick-ass-cards/components/content/Input";
+import SmartInput from "../../prototypes/kick-ass-cards/components/controls/SmartInput";
+import Input from "../../prototypes/kick-ass-cards/components/controls/Input";
 import { MistralOptionsType } from "../../hooks/useMistral";
-import Select from "../../prototypes/kick-ass-cards/components/content/Select";
+import Select from "../../prototypes/kick-ass-cards/components/controls/Select";
 import { MistralModelEnum } from "../../services/Mistral/Mistral";
-import Button from "../../prototypes/kick-ass-cards/components/content/Button";
+import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Pending from "../form/Pending";
 import Icon from "../Icon/Icon";
-import ButtonWithConfirmation from "../../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
+import ButtonWithConfirmation from "../../prototypes/kick-ass-cards/components/controls/ButtonWithConfirmation";
 
 export type InputFormProps = {
     job: JobType | null;

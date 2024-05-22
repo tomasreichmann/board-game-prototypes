@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigation } from "../Navigation";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import ToggleData from "../../../../components/DataToggle";
-import Input from "../content/Input";
+import Input from "../controls/Input";
 
 const valueTypeInputTypeMap = {
     string: "text",

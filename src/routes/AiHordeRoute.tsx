@@ -2,8 +2,8 @@ import Page from "../components/Page/Page";
 
 import ToggleData from "../components/DataToggle";
 import { useCallback } from "react";
-import Button from "../prototypes/kick-ass-cards/components/content/Button";
-import SmartInput from "../prototypes/kick-ass-cards/components/content/SmartInput";
+import Button from "../prototypes/kick-ass-cards/components/controls/Button";
+import SmartInput from "../prototypes/kick-ass-cards/components/controls/SmartInput";
 import Text from "../prototypes/kick-ass-cards/components/content/Text";
 import { useAiHorde } from "../hooks/useAiHorde";
 import { HistoryItemType } from "../services/AiHorde/aiHordeTypes";
@@ -13,9 +13,9 @@ import openImageInNewTab from "../utils/openImageInNewTab";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import TextPreview from "../components/content/TextPreview";
 import { generationOptionsDefaults, presets } from "../services/AiHorde/AiHorde";
-import Select from "../prototypes/kick-ass-cards/components/content/Select";
-import Input from "../prototypes/kick-ass-cards/components/content/Input";
-import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/content/ButtonWithConfirmation";
+import Select from "../prototypes/kick-ass-cards/components/controls/Select";
+import Input from "../prototypes/kick-ass-cards/components/controls/Input";
+import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/controls/ButtonWithConfirmation";
 
 export const AiHordeConfigStorageKey = "ai-horde-config";
 const negativePromptDelimiter = " ### ";

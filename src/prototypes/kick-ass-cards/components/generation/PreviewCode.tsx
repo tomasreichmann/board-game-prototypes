@@ -4,7 +4,7 @@ import ErrorBoundary from "../../../../components/ErrorBoundary";
 import ToggleData from "../../../../components/DataToggle";
 import Toggle from "../../../../components/Toggle";
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 import ComponentMetaEditor from "./ComponentMetaEditor";
 import { assetCardMeta } from "../gameComponents/AssetCard";
 

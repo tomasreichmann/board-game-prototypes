@@ -3,7 +3,7 @@ import clsx from "clsx";
 import ComponentList from "../ComponentList";
 
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
-import Button from "../content/Button";
+import Button from "../controls/Button";
 
 export default function PresetStep({ className, children }: HTMLAttributes<HTMLDivElement>) {
     const { state, dispatch } = useStepGenerator();

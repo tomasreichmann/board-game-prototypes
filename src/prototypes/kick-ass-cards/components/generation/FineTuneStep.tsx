@@ -5,7 +5,7 @@ import ComponentList from "../ComponentList";
 
 import { StepGeneratorActionTypeEnum, useStepGenerator } from "./useStepGenerator";
 import { twMerge } from "tailwind-merge";
-import Input from "../content/Input";
+import Input from "../controls/Input";
 
 const getTypeFromValue = (value: any) => {
     if (typeof value === "number") {

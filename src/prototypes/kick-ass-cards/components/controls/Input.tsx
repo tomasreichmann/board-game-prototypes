@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, useId } from "react";
-import Text from "./Text";
+import Text from "../content/Text";
 import Button from "./Button";
 import JsonInput from "./JsonInput";
 

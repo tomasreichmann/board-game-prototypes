@@ -7,7 +7,7 @@ import { AnyRecord } from "../../../../utils/simpleTypes";
 import { JSONSchemaType } from "ajv";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
 import Markdown from "react-markdown";
-import { defaultMdxComponentMap } from "./MdxArticle";
+import { defaultMdxComponentMap } from "../content/MdxArticle";
 
 export const getDefaultsFromSchema = (schema: JSONSchemaType<any>) => {
     if (typeof schema === "object" && "default" in schema) {

@@ -1,6 +1,6 @@
 import immutableAssign from "immutable-assign";
 import JobType from "./jobType";
-import Input from "../../prototypes/kick-ass-cards/components/content/Input";
+import Input from "../../prototypes/kick-ass-cards/components/controls/Input";
 import { ToolChoice } from "../../services/Mistral/Mistral";
 import { JSONSchemaType } from "ajv";
 import {

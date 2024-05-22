@@ -1,5 +1,5 @@
 import safeStringify from "../../../../utils/safeStringify";
-import Text, { TextProps } from "./Text";
+import Text, { TextProps } from "../content/Text";
 import { useEffect, useState } from "react";
 
 export type JsonInputProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {

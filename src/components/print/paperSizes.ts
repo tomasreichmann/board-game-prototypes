@@ -348,11 +348,20 @@ export const cardSizes = {
         points: [167, 261],
         inches: [2.32, 3.62],
     },
+    "52x86": {
+        mm: [52, 86],
+        points: [147, 244],
+        inches: [2.05, 3.39],
+    },
+};
+
+export const paperSizes = {
+    ...universalPaperSizes,
+    ...ansiPaperSizes,
 };
 
 export const allSizes = {
-    ...universalPaperSizes,
-    ...ansiPaperSizes,
+    ...paperSizes,
     ...cardSizes,
 };
 

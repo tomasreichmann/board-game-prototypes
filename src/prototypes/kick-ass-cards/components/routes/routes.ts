@@ -15,6 +15,7 @@ import SettingsRoute from "./SettingsRoute";
 import AdventuresRoute from "./AdventuresRoute";
 import AdventureRoute from "./AdventureRoute";
 import DocumentRoute from "./DocumentRoute";
+import PreparingTheGameRoute from "./PreparingTheGameRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
@@ -30,6 +31,11 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         path: kickAssCardsPath + "/",
         hideFromNav: true,
         Component: InfoRoute,
+    },
+    {
+        name: "Preparing the Game",
+        path: kickAssCardsPath + "/preparing-the-game",
+        Component: PreparingTheGameRoute,
     },
     {
         name: "Components",

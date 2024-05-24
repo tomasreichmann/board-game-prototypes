@@ -41,6 +41,7 @@
         "react-particles": "^2.10.1",
         "react-player": "^2.11.0",
         "react-router-dom": "^6.4.1",
+        "react-to-print": "^2.15.1",
         "react-use-measure": "^2.1.1",
         "remark-frontmatter": "^4.0.1",
         "remark-images": "^4.0.0",

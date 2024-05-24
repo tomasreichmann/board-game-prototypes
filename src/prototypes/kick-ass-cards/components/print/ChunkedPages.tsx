@@ -40,9 +40,7 @@ export default function ChunkedPages<T, B>({
                                         key={`chunked-page-item-${itemIndex}`}
                                         className="relative"
                                         {...(backFaceProps as B)}
-                                    >
-                                        <PrintMarkerCorners />
-                                    </BackFaceComponent>
+                                    />
                                 );
                             })}
                             <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
@@ -56,9 +54,7 @@ export default function ChunkedPages<T, B>({
                         <PrintPage key={"chunked-front-page-" + pageIndex} {...frontFacePrintPageProps}>
                             <div className="flex-1 flex flex-wrap content-start items-center justify-center">
                                 {pageItems.map((item, itemIndex) => (
-                                    <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item}>
-                                        <PrintMarkerCorners />
-                                    </Component>
+                                    <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item} />
                                 ))}
                                 <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}

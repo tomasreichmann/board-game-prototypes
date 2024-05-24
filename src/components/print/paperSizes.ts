@@ -348,10 +348,10 @@ export const cardSizes = {
         points: [167, 261],
         inches: [2.32, 3.62],
     },
-    "52x86": {
-        mm: [52, 86],
-        points: [147, 244],
-        inches: [2.05, 3.39],
+    "54x86": {
+        mm: [54, 86],
+        points: [153, 244],
+        inches: [2.13, 3.39],
     },
 };
 

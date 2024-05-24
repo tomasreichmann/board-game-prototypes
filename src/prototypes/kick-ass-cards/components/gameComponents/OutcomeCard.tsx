@@ -33,52 +33,65 @@ export default function OutcomeCard({
     icon,
     description,
     children,
-    bleedMm = 0,
     ...restProps
 }: OutcomeCardProps) {
     const colorClassName = outcomeColorClassNameMap[icon];
+    const {
+        bleedMm = 0,
+        bleedTopMm = bleedMm,
+        bleedRightMm = bleedMm,
+        bleedBottomMm = bleedMm,
+        bleedLeftMm = bleedMm,
+    } = restProps;
     return (
         <PaperOrDiv
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
-                "OutcomeCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
+                "OutcomeCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
                 className
             )}
             {...restProps}
         >
             <div
-                className="relative flex flex-col justify-center items-stretch flex-1 p-3"
-                style={{ margin: `${bleedMm}mm` }}
+                className="flex-1 flex flex-col justify-center items-stretch"
+                style={{
+                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
+                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
+                }}
             >
-                <div className="flex flex-row items-center gap-1">
-                    <Icon icon={icon} className={twMerge("h-5", colorClassName || "text-kac-iron-light")} />
-                    <div className="flex-1 text-slate-400 text-center text-xs">{slug}</div>
-                    <Icon icon="cardRandom" className={"text-kac-steel h-5"} />
-                </div>
-
-                <div className="flex-1 flex flex-col items-center justify-end h-0">
-                    <Icon
-                        icon={icon}
-                        className={twMerge(
-                            "max-h-fit mb-2",
-                            colorClassName || "text-kac-iron-light",
-                            effectSizeClassNameMap[icon] || "h-16"
-                        )}
-                    />
-                    <div
-                        className={twMerge(
-                            "font-kacHeading text-kac-cloth text-sm leading-none text-center mb-1",
-                            colorClassName
-                        )}
-                    >
-                        {title}
+                <div className="flex-1 relative flex flex-col justify-center items-stretch p-3">
+                    <div className="flex flex-row items-center gap-1">
+                        <Icon icon={icon} className={twMerge("h-5", colorClassName || "text-kac-iron-light")} />
+                        <div className="flex-1 text-slate-400 text-center text-xs">{slug}</div>
+                        <Icon icon="cardRandom" className={"text-kac-steel h-5"} />
                     </div>
+
+                    <div className="flex-1 flex flex-col items-center justify-end h-0">
+                        <Icon
+                            icon={icon}
+                            className={twMerge(
+                                "max-h-fit mb-2",
+                                colorClassName || "text-kac-iron-light",
+                                effectSizeClassNameMap[icon] || "h-[50%]"
+                            )}
+                        />
+                        <div
+                            className={twMerge(
+                                "font-kacHeading text-kac-cloth text-md leading-none text-center mb-1",
+                                colorClassName
+                            )}
+                        >
+                            {title}
+                        </div>
+                    </div>
+                    <div className="text-xs text-center min-h-[30%] text-kac-iron-light leading-tight text-balance">
+                        <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>
+                            {description}
+                        </RichText>
+                    </div>
+                    {children}
                 </div>
-                <div className="text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
-                    <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{description}</RichText>
-                </div>
-                {children}
             </div>
         </PaperOrDiv>
     );
@@ -90,26 +103,41 @@ export const OutcomeCardBackFace = ({
     children,
     ...restProps
 }: Partial<PaperProps>) => {
+    const {
+        bleedMm = 0,
+        bleedTopMm = bleedMm,
+        bleedRightMm = bleedMm,
+        bleedBottomMm = bleedMm,
+        bleedLeftMm = bleedMm,
+    } = restProps;
     return (
         <PaperOrDiv
             size={size}
             className={twMerge(
-                "OutcomeCardBackFace gap-2 rounded-lg print:rounded-none bg-kac-steel-dark flex flex-col justify-stretch items-stretch",
+                "OutcomeCardBackFace gap-2 print:rounded-none flex flex-col justify-stretch items-stretch",
                 className
             )}
             {...restProps}
         >
-            <div className="m-[3mm] relative flex flex-col justify-center items-center flex-1 p-3">
-                <div className="w-32 h-32 flex flex-col justify-center items-center relative">
-                    <div
-                        className={
-                            "text-kac-steel-light w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-steel absolute bg-kac-iron"
-                        }
-                    />
-                    <Icon icon="d20" className={"text-kac-steel h-10 relative z-1 mt-2"} />
-                    <div className="font-kacBody text-kac-steel text-xs text-center relative z-1">Outcome</div>
+            <div
+                className="flex-1 flex flex-col justify-center items-stretch bg-kac-steel-dark rounded-lg print:rounded-none"
+                style={{
+                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
+                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
+                }}
+            >
+                <div className="flex-1 relative flex flex-col justify-center items-center p-3">
+                    <div className="w-32 h-32 flex flex-col justify-center items-center relative">
+                        <div
+                            className={
+                                "text-kac-steel-light w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-steel absolute bg-kac-iron"
+                            }
+                        />
+                        <Icon icon="d20" className={"text-kac-steel h-10 relative z-1 mt-2"} />
+                        <div className="font-kacBody text-kac-steel text-xs text-center relative z-1">Outcome</div>
+                    </div>
+                    {children}
                 </div>
-                {children}
             </div>
         </PaperOrDiv>
     );

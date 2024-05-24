@@ -22,11 +22,13 @@ export type PaperAndCardControlsProps = {
     isPortrait: boolean;
     pageMarginsMm: [number, number, number, number];
     bleedMm: number;
+    gapMm: [number, number];
     setPaperSize: (paperSize: keyof typeof paperSizes) => void;
     setCardSize: (cardSize: keyof typeof cardSizes) => void;
     setPortrait: (portrait: boolean) => void;
     setPageMarginsMm: (marginsMm: [number, number, number, number]) => void;
     setBleedMm: (bleedMm: number) => void;
+    setGapMm: (gapMm: [number, number]) => void;
 };
 
 export default function PaperAndCardControls({
@@ -36,11 +38,13 @@ export default function PaperAndCardControls({
     isPortrait,
     pageMarginsMm,
     bleedMm,
+    gapMm,
     setPaperSize,
     setCardSize,
     setPortrait,
     setPageMarginsMm,
     setBleedMm,
+    setGapMm,
 }: PaperAndCardControlsProps) {
     return (
         <div className={twMerge("flex flex-row gap-4 items-end flex-wrap", className)}>
@@ -106,6 +110,20 @@ export default function PaperAndCardControls({
                         parseInt(event.target.value),
                     ])
                 }
+            />
+            <Input
+                type="number"
+                label="Gap horizontal (mm)"
+                className="w-32"
+                value={gapMm[0]}
+                onChange={(event) => setGapMm([parseInt(event.target.value), gapMm[1]])}
+            />
+            <Input
+                type="number"
+                label="Gap vertical (mm)"
+                className="w-32"
+                value={gapMm[1]}
+                onChange={(event) => setGapMm([gapMm[0], parseInt(event.target.value)])}
             />
             <div className="flex flex-col">
                 <Text Component="span" variant="body" className={twMerge("text-kac-steel")}>

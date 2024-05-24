@@ -17,11 +17,12 @@ const componentControlsMap = {
 
 export default function PreparingTheGameRoute() {
     const [defaultPaperSize, setDefaultPaperSize] = React.useState<keyof typeof paperSizes>("A4");
-    const [isDefaultPaperOrientationPortrait, setIsDefaultPaperOrientationPortrait] = React.useState(true);
-    const [defaultCardSize, setDefaultCardSize] = React.useState<keyof typeof cardSizes>("52x86");
+    const [isDefaultPaperOrientationPortrait, setIsDefaultPaperOrientationPortrait] = React.useState(false);
+    const [defaultCardSize, setDefaultCardSize] = React.useState<keyof typeof cardSizes>("54x86");
     const [defaultPageMarginsMm, setDefaultPageMarginsMm] = React.useState<[number, number, number, number]>([
-        12, 10, 12, 10,
+        9, 10, 9, 10,
     ]);
+    const [defaultGapMm, setDefaultGapMm] = React.useState<[number, number]>([2, 7]);
     const [defaultBleedMm, setDefaultBleedMm] = React.useState<number>(3);
 
     const [componentControls, setComponentControls] =
@@ -55,12 +56,21 @@ export default function PreparingTheGameRoute() {
                             isPortrait={isDefaultPaperOrientationPortrait}
                             pageMarginsMm={defaultPageMarginsMm}
                             bleedMm={defaultBleedMm}
+                            gapMm={defaultGapMm}
                             setPaperSize={setDefaultPaperSize}
                             setCardSize={setDefaultCardSize}
                             setPortrait={setIsDefaultPaperOrientationPortrait}
                             setPageMarginsMm={setDefaultPageMarginsMm}
                             setBleedMm={setDefaultBleedMm}
+                            setGapMm={setDefaultGapMm}
                         />
+
+                        {!isDefaultPaperOrientationPortrait && (
+                            <Text color="warning" variant="body" className="self-center font-bold my-4">
+                                ⚠ When printing on both sides in landscape paper orientation, make sure to set your
+                                printer to flip on short edge.
+                            </Text>
+                        )}
 
                         <H3 className="mt-4">Component types</H3>
                         <div className="flex flex-row gap-2 mt-2">
@@ -77,12 +87,12 @@ export default function PreparingTheGameRoute() {
                         <div className="flex-1 w-full overflow-auto">
                             <Print>
                                 <PrintComponent
-                                    className="mt-8"
                                     paperSize={defaultPaperSize}
                                     cardSize={defaultCardSize}
                                     pageOrientation={isDefaultPaperOrientationPortrait ? "portrait" : "landscape"}
                                     pageMarginsMm={defaultPageMarginsMm}
                                     bleedMm={defaultBleedMm}
+                                    gapMm={defaultGapMm}
                                 />
                             </Print>
                         </div>

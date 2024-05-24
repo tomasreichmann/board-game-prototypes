@@ -10,6 +10,7 @@ import SDRoute from "./routes/SDRoute";
 import LlmJobRoute from "./routes/LlmJobRoute";
 import AiHordeRoute from "./routes/AiHordeRoute";
 import LlmJobRoute2 from "./routes/LlmJobRoute2";
+import WgBusinessCardsRoute from "./routes/WGBusinessCardsRoute";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -59,6 +60,11 @@ export const routes: RouteDefinition[] = [
         name: "AI Horde",
         path: "/ai-horde",
         Component: AiHordeRoute,
+    },
+    {
+        name: "WG Business Cards",
+        path: "/wg-business-cards",
+        Component: WgBusinessCardsRoute,
     },
     {
         name: "Settings",

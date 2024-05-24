@@ -1,8 +1,9 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import { chunk } from "lodash";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import PrintPage, { PrintPageProps } from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
+import { twMerge } from "tailwind-merge";
 
 type ChunkedPagesProps<T, B> = {
     Component: React.ComponentType<T>;
@@ -10,6 +11,12 @@ type ChunkedPagesProps<T, B> = {
     getBackFaceProps?: (item: T) => B;
     frontFacePrintPageProps?: Partial<PrintPageProps>;
     backFacePrintPageProps?: Partial<PrintPageProps>;
+    pageContentClassName?: string;
+    pageContentProps?: HTMLAttributes<HTMLDivElement>;
+    frontFacePageContentClassName?: string;
+    frontFacePageContentProps?: HTMLAttributes<HTMLDivElement>;
+    backFacePageContentClassName?: string;
+    backFacePageContentProps?: HTMLAttributes<HTMLDivElement>;
     items: T[];
     itemsPerPage: number;
     label: string;
@@ -24,6 +31,12 @@ export default function ChunkedPages<T, B>({
     label,
     frontFacePrintPageProps,
     backFacePrintPageProps,
+    pageContentClassName,
+    frontFacePageContentClassName = pageContentClassName,
+    backFacePageContentClassName = pageContentClassName,
+    pageContentProps,
+    frontFacePageContentProps = pageContentProps,
+    backFacePageContentProps = pageContentProps,
 }: ChunkedPagesProps<T, B>) {
     const pagesPerCard = BackFaceComponent ? 2 : 1;
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
@@ -32,7 +45,13 @@ export default function ChunkedPages<T, B>({
             {chunk(items, itemsPerPage).map((pageItems, pageIndex) => {
                 const backPage = BackFaceComponent ? (
                     <PrintPage key={"chunked-back-page-" + pageIndex + "-back"} {...backFacePrintPageProps}>
-                        <div className="flex-1 flex flex-row-reverse flex-wrap content-start items-center justify-center">
+                        <div
+                            {...backFacePageContentProps}
+                            className={twMerge(
+                                "flex-1 flex flex-row-reverse flex-wrap content-start items-center justify-center",
+                                backFacePageContentClassName
+                            )}
+                        >
                             {pageItems.map((item, itemIndex) => {
                                 const backFaceProps = getBackFaceProps ? getBackFaceProps(item) : item;
                                 return (
@@ -43,7 +62,7 @@ export default function ChunkedPages<T, B>({
                                     />
                                 );
                             })}
-                            <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
+                            <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10 h-0">
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
                             </div>
                         </div>
@@ -52,7 +71,13 @@ export default function ChunkedPages<T, B>({
                 return (
                     <React.Fragment key={"chunked-page-" + pageIndex}>
                         <PrintPage key={"chunked-front-page-" + pageIndex} {...frontFacePrintPageProps}>
-                            <div className="flex-1 flex flex-wrap content-start items-center justify-center">
+                            <div
+                                {...frontFacePageContentProps}
+                                className={twMerge(
+                                    "flex-1 flex flex-wrap content-start items-center justify-center",
+                                    frontFacePageContentClassName
+                                )}
+                            >
                                 {pageItems.map((item, itemIndex) => (
                                     <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item} />
                                 ))}

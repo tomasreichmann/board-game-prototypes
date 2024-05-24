@@ -17,16 +17,17 @@ export type TemplatePrintControlsProps = {
     pageOrientation: "portrait" | "landscape";
     pageMarginsMm: [number, number, number, number];
     bleedMm: number;
+    gapMm: [number, number];
 };
 
 type SampleCardProps = PropsWithChildren<PaperProps>;
 
 const SampleCard = ({ children, slugClassName, bleedClassName, trimClassName, ...restProps }: SampleCardProps) => (
     <Paper
-        slugClassName={twMerge("outline outline-dashed outline-kac-cloth", slugClassName)}
-        bleedClassName={twMerge("outline outline-kac-blood", bleedClassName)}
+        slugClassName={twMerge("outline outline-[0.1mm] outline-dashed outline-kac-cloth", slugClassName)}
+        bleedClassName={twMerge("outline outline-[0.1mm] outline-kac-blood", bleedClassName)}
         trimClassName={twMerge(
-            "outline outline-kac-monster flex flex-col justify-center items-center text-md text-kac-body font-kacBody",
+            "outline outline-[0.1mm] outline-kac-monster flex flex-col justify-center items-center text-md text-kac-body font-kacBody",
             trimClassName
         )}
         {...restProps}
@@ -42,6 +43,7 @@ export default function TemplatePrintControls({
     pageOrientation,
     pageMarginsMm,
     bleedMm,
+    gapMm,
 }: TemplatePrintControlsProps) {
     const [itemCount, setItemCount] = useState(8);
     const [hasBackFace, setHasBackFace] = useState(true);
@@ -63,11 +65,13 @@ export default function TemplatePrintControls({
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
-            <div className="flex flex-row gap-2 items-end print:hidden">
+            <div className="flex flex-col gap-2 items-end print:hidden mt-4"></div>
+            <div className="flex flex-row gap-2 items-end print:hidden mt-4">
                 <Input
                     label="Card count"
                     type="number"
                     value={itemCount}
+                    className="w-32"
                     onChange={(event) => setItemCount(parseInt(event.target.value))}
                 />
                 <Input
@@ -77,12 +81,13 @@ export default function TemplatePrintControls({
                     onChange={(event) => setHasBackFace(event.target.checked)}
                 />
             </div>
-            <ToggleData data={{ cardsPerPage, items }} initialCollapsed className="print:hidden" />
+            <ToggleData data={{ cardsPerPage, items }} initialCollapsed className="print:hidden mt-4" />
             <ChunkedPages
                 Component={SampleCard}
                 BackFaceComponent={hasBackFace ? SampleCard : undefined}
                 items={items}
                 itemsPerPage={cardsPerPage}
+                pageContentProps={{ style: { gap: `${gapMm[1]}mm ${gapMm[0]}mm` } }}
                 frontFacePrintPageProps={{
                     size: paperSize,
                     orientation: pageOrientation,

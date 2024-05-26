@@ -11,10 +11,12 @@ import { flatten, range } from "lodash";
 import { PrintControlProps } from "./printControlsTypes";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
+import EffectCard, { EffectCardBackFace } from "../gameComponents/EffectCard";
+import effects from "../../data/effects-deck-en";
 
-export type OutcomeCardsPrintControlsProps = PrintControlProps;
+export type EffectCardsPrintControlsProps = PrintControlProps;
 
-export default function OutcomeCardsPrintControls({
+export default function EffectCardsPrintControls({
     className,
     paperSize,
     cardSize,
@@ -23,13 +25,10 @@ export default function OutcomeCardsPrintControls({
     bleedMm,
     gapMm,
     pageLabelPosition,
-}: OutcomeCardsPrintControlsProps) {
+}: EffectCardsPrintControlsProps) {
     const [deckCount, setDeckCount] = useState(1);
-    const outcomeSet = outcomes;
     const printMarkerSizeMm = bleedMm > 0 ? 1.5 : 0;
-    const allOutcomes = flatten(
-        range(deckCount).map((deckIndex) => outcomeSet.map((item) => ({ ...item, slug: deckIndex + "-" + item.slug })))
-    ).map((item) => ({
+    const items = effects.map((item) => ({
         ...item,
         bleedMm,
         size: cardSize,
@@ -47,7 +46,7 @@ export default function OutcomeCardsPrintControls({
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
-            <div className="print:hidden mt-4">
+            {/* <div className="print:hidden mt-4">
                 <Input
                     label="Deck count"
                     type="number"
@@ -55,8 +54,8 @@ export default function OutcomeCardsPrintControls({
                     onChange={(event) => setDeckCount(event.target.valueAsNumber || 1)}
                     className="w-32"
                 />
-            </div>
-            <ToggleData data={{ cardsPerPage, allOutcomes }} initialCollapsed className="print:hidden mt-4" />
+            </div> */}
+            <ToggleData data={{ cardsPerPage, items }} initialCollapsed className="print:hidden mt-4" />
             <Print
                 className="flex flex-col-reverse gap-2"
                 buttonProps={{
@@ -71,9 +70,9 @@ export default function OutcomeCardsPrintControls({
             >
                 <div className="flex flex-col items-center w-full">
                     <ChunkedPages
-                        Component={OutcomeCard}
-                        BackFaceComponent={OutcomeCardBackFace}
-                        items={allOutcomes}
+                        Component={EffectCard}
+                        BackFaceComponent={EffectCardBackFace}
+                        items={items}
                         itemsPerPage={cardsPerPage}
                         pageContentProps={{ style: { gap: `${gapMm[1]}mm ${gapMm[0]}mm` } }}
                         frontFacePrintPageProps={{
@@ -88,7 +87,7 @@ export default function OutcomeCardsPrintControls({
                             bleedInMm: 0,
                             marginsInMm: pageMarginsMm,
                         }}
-                        label="Outcomes"
+                        label="Effects"
                         labelPosition={pageLabelPosition}
                     />
                 </div>

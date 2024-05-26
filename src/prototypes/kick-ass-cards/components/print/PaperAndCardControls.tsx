@@ -4,6 +4,7 @@ import ToggleCheckbox from "../controls/ToggleCheckbox";
 import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
 import Input from "../controls/Input";
 import Text from "../content/Text";
+import { ChunkedPagesProps } from "./ChunkedPages";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -15,6 +16,13 @@ export const paperOptions = Object.entries(paperSizes).map(([key, { inches, mm }
     value: key,
 }));
 
+const pageLabelPositionOptions = [
+    { label: "top", value: "top" } as const,
+    { label: "bottom", value: "bottom" } as const,
+    { label: "left", value: "left" } as const,
+    { label: "right", value: "right" } as const,
+];
+
 export type PaperAndCardControlsProps = {
     className?: string;
     paperSize: keyof typeof paperSizes;
@@ -23,12 +31,14 @@ export type PaperAndCardControlsProps = {
     pageMarginsMm: [number, number, number, number];
     bleedMm: number;
     gapMm: [number, number];
+    pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"];
     setPaperSize: (paperSize: keyof typeof paperSizes) => void;
     setCardSize: (cardSize: keyof typeof cardSizes) => void;
     setPortrait: (portrait: boolean) => void;
     setPageMarginsMm: (marginsMm: [number, number, number, number]) => void;
     setBleedMm: (bleedMm: number) => void;
     setGapMm: (gapMm: [number, number]) => void;
+    setPageLabelPosition: (labelPosition: ChunkedPagesProps<any, any>["labelPosition"]) => void;
 };
 
 export default function PaperAndCardControls({
@@ -39,12 +49,14 @@ export default function PaperAndCardControls({
     pageMarginsMm,
     bleedMm,
     gapMm,
+    pageLabelPosition,
     setPaperSize,
     setCardSize,
     setPortrait,
     setPageMarginsMm,
     setBleedMm,
     setGapMm,
+    setPageLabelPosition,
 }: PaperAndCardControlsProps) {
     return (
         <div className={twMerge("flex flex-row gap-4 items-end flex-wrap", className)}>
@@ -138,6 +150,15 @@ export default function PaperAndCardControls({
             </div>
             <Select
                 className="w-48"
+                label="Page label position"
+                options={pageLabelPositionOptions}
+                value={pageLabelPosition}
+                onChange={(event) =>
+                    setPageLabelPosition(event.target.value as PaperAndCardControlsProps["pageLabelPosition"])
+                }
+            />
+            <Select
+                className="w-48"
                 label="Default card size"
                 options={cardOptions}
                 value={cardSize}
@@ -160,48 +181,3 @@ export type PrintControlsProps = {
     defaultCardSize?: keyof typeof cardSizes;
     defaultIsPortrait?: boolean;
 };
-
-/* export default function PrintControls({
-    className,
-    defaultPaperSize,
-    defaultCardSize,
-    defaultIsPortrait,
-}: PrintControlsProps) {
-    const [paperSize, setPaperSize] = React.useState<keyof typeof paperSizes>(defaultPaperSize ?? "A4");
-    const [cardSize, setCardSize] = React.useState<keyof typeof cardSizes>(defaultCardSize ?? "Bridge");
-    const [isPaperOrientationPortrait, setIsPaperOrientationPortrait] = React.useState(defaultIsPortrait ?? true);
-    
-    const isDirtyRef = React.useRef(false);
-
-    // Prevent updating sizes when default change if the user already interacted with them
-    React.useEffect(() => {
-        isDirtyRef.current = true;
-    }, [paperSize, cardSize, isPaperOrientationPortrait]);
-
-    React.useEffect(() => {
-        if (!isDirtyRef.current) {
-            return;
-        }
-        setPaperSize(defaultPaperSize ?? "A4");
-        setCardSize(defaultCardSize ?? "Bridge");
-        setIsPaperOrientationPortrait(defaultIsPortrait ?? true);
-    }, [defaultCardSize, defaultPaperSize, defaultIsPortrait]);
-
-    return (
-        <div className={twMerge("flex flex-col gap-4", className)}>
-            <PaperAndCardControls
-                paperSize={paperSize}
-                cardSize={cardSize}
-                isPortrait={isPaperOrientationPortrait}
-                setPaperSize={setPaperSize}
-                setCardSize={setCardSize}
-                setPortrait={setIsPaperOrientationPortrait}
-            />
-            <PrintPage
-                size={paperSize ?? defaultPaperSize ?? "A4"}
-                orientation={isPaperOrientationPortrait ? "portrait" : "landscape"}
-                bleedInMm={0}
-            ></PrintPage>
-        </div>
-    );
-} */

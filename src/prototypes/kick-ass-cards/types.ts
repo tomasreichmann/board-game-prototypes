@@ -38,7 +38,7 @@ export type AssetType = {
 export type EffectType = {
     slug?: string;
     title: string;
-    icon?: IconType | string;
+    icon: IconType | string;
     effect: string;
     count?: number;
 };

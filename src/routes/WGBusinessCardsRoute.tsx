@@ -5,6 +5,7 @@ import Text from "../prototypes/kick-ass-cards/components/content/Text";
 import WgBusinessCardsPrintControls from "../prototypes/kick-ass-cards/components/print/WgBusinessCardsPrintControls";
 import { paperSizes, cardSizes } from "../components/print/paperSizes";
 import PaperAndCardControls from "../prototypes/kick-ass-cards/components/print/PaperAndCardControls";
+import { ChunkedPagesProps } from "../prototypes/kick-ass-cards/components/print/ChunkedPages";
 
 export default function WgBusinessCardRoute() {
     const [defaultPaperSize, setDefaultPaperSize] = useState<keyof typeof paperSizes>("A4");
@@ -13,6 +14,7 @@ export default function WgBusinessCardRoute() {
     const [defaultPageMarginsMm, setDefaultPageMarginsMm] = useState<[number, number, number, number]>([9, 10, 9, 10]);
     const [defaultGapMm, setDefaultGapMm] = useState<[number, number]>([2, 2]);
     const [defaultBleedMm, setDefaultBleedMm] = useState<number>(3);
+    const [pageLabelPosition, setPageLabelPosition] = useState<ChunkedPagesProps<any, any>["labelPosition"]>("left");
 
     return (
         <Page className="SDRoute flex-1 h-svh flex flex-col box-border font-kacBody">
@@ -27,12 +29,14 @@ export default function WgBusinessCardRoute() {
                 pageMarginsMm={defaultPageMarginsMm}
                 bleedMm={defaultBleedMm}
                 gapMm={defaultGapMm}
+                pageLabelPosition={pageLabelPosition}
                 setPaperSize={setDefaultPaperSize}
                 setCardSize={setDefaultCardSize}
                 setPortrait={setIsDefaultPaperOrientationPortrait}
                 setPageMarginsMm={setDefaultPageMarginsMm}
                 setBleedMm={setDefaultBleedMm}
                 setGapMm={setDefaultGapMm}
+                setPageLabelPosition={setPageLabelPosition}
             />
 
             {!isDefaultPaperOrientationPortrait && (
@@ -48,6 +52,7 @@ export default function WgBusinessCardRoute() {
                 pageMarginsMm={defaultPageMarginsMm}
                 bleedMm={defaultBleedMm}
                 gapMm={defaultGapMm}
+                pageLabelPosition={pageLabelPosition}
             />
         </Page>
     );

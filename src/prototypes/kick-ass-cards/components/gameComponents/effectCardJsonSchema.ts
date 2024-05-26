@@ -13,11 +13,11 @@ export const effectCardJsonSchema: JSONSchemaType<Omit<EffectCardProps, keyof Pa
         },
         slug: { type: "string", nullable: true },
         title: { type: "string" },
-        icon: { type: "string", enum: Object.keys(iconMap), nullable: true },
+        icon: { type: "string", enum: Object.keys(iconMap) },
         effect: { type: "string" },
         count: { type: "integer", minimum: 0, nullable: true },
     },
-    required: ["title", "effect"],
+    required: ["title", "effect", "icon"],
     additionalProperties: false,
 };
 

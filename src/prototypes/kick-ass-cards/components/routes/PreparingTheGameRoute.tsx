@@ -8,11 +8,13 @@ import PaperAndCardControls from "../print/PaperAndCardControls";
 import OutcomeCardsPrintControls from "../print/OutcomeCardsPrintControls";
 import Button from "../controls/Button";
 import TemplatePrintControls from "../print/TemplatePrintControls";
-import Print from "../../../../components/print/Print";
+import { ChunkedPagesProps } from "../print/ChunkedPages";
+import EffectCardsPrintControls from "../print/EffectCardsPrintControls";
 
 const componentControlsMap = {
     Template: TemplatePrintControls,
     "Outcome Cards": OutcomeCardsPrintControls,
+    "Effect Cards": EffectCardsPrintControls,
 };
 
 export default function PreparingTheGameRoute() {
@@ -22,11 +24,12 @@ export default function PreparingTheGameRoute() {
     const [defaultPageMarginsMm, setDefaultPageMarginsMm] = React.useState<[number, number, number, number]>([
         9, 10, 9, 10,
     ]);
-    const [defaultGapMm, setDefaultGapMm] = React.useState<[number, number]>([2, 7]);
+    const [defaultGapMm, setDefaultGapMm] = React.useState<[number, number]>([2, 2]);
     const [defaultBleedMm, setDefaultBleedMm] = React.useState<number>(3);
+    const [pageLabelPosition, setPageLabelPosition] =
+        React.useState<ChunkedPagesProps<any, any>["labelPosition"]>("left");
 
-    const [componentControls, setComponentControls] =
-        React.useState<keyof typeof componentControlsMap>("Outcome Cards");
+    const [componentControls, setComponentControls] = React.useState<keyof typeof componentControlsMap>("Template");
 
     const PrintComponent = componentControlsMap[componentControls];
 
@@ -57,6 +60,8 @@ export default function PreparingTheGameRoute() {
                             pageMarginsMm={defaultPageMarginsMm}
                             bleedMm={defaultBleedMm}
                             gapMm={defaultGapMm}
+                            pageLabelPosition={pageLabelPosition}
+                            setPageLabelPosition={setPageLabelPosition}
                             setPaperSize={setDefaultPaperSize}
                             setCardSize={setDefaultCardSize}
                             setPortrait={setIsDefaultPaperOrientationPortrait}
@@ -84,17 +89,16 @@ export default function PreparingTheGameRoute() {
                                 </Button>
                             ))}
                         </div>
-                        <div className="flex-1 w-full overflow-auto">
-                            <Print>
-                                <PrintComponent
-                                    paperSize={defaultPaperSize}
-                                    cardSize={defaultCardSize}
-                                    pageOrientation={isDefaultPaperOrientationPortrait ? "portrait" : "landscape"}
-                                    pageMarginsMm={defaultPageMarginsMm}
-                                    bleedMm={defaultBleedMm}
-                                    gapMm={defaultGapMm}
-                                />
-                            </Print>
+                        <div className="flex-1 w-full overflow-auto -mx-4 px-4">
+                            <PrintComponent
+                                paperSize={defaultPaperSize}
+                                cardSize={defaultCardSize}
+                                pageOrientation={isDefaultPaperOrientationPortrait ? "portrait" : "landscape"}
+                                pageMarginsMm={defaultPageMarginsMm}
+                                bleedMm={defaultBleedMm}
+                                gapMm={defaultGapMm}
+                                pageLabelPosition={pageLabelPosition}
+                            />
                         </div>
                     </div>
                 </section>

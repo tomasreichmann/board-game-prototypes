@@ -5,7 +5,7 @@ import PrintPage, { PrintPageProps } from "../../../../components/print/PrintPag
 import DataToggle from "../../../../components/DataToggle";
 import { twMerge } from "tailwind-merge";
 
-type ChunkedPagesProps<T, B> = {
+export type ChunkedPagesProps<T, B> = {
     Component: React.ComponentType<T>;
     BackFaceComponent?: React.ComponentType<B>;
     getBackFaceProps?: (item: T) => B;
@@ -19,7 +19,8 @@ type ChunkedPagesProps<T, B> = {
     backFacePageContentProps?: HTMLAttributes<HTMLDivElement>;
     items: T[];
     itemsPerPage: number;
-    label: string;
+    label?: string;
+    labelPosition?: "top" | "bottom" | "left" | "right";
 };
 
 export default function ChunkedPages<T, B>({
@@ -29,6 +30,7 @@ export default function ChunkedPages<T, B>({
     items,
     itemsPerPage,
     label,
+    labelPosition = "bottom",
     frontFacePrintPageProps,
     backFacePrintPageProps,
     pageContentClassName,
@@ -40,6 +42,13 @@ export default function ChunkedPages<T, B>({
 }: ChunkedPagesProps<T, B>) {
     const pagesPerCard = BackFaceComponent ? 2 : 1;
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
+    const labelClassName = twMerge(
+        "text-xs font-kacHeading text-kac-iron w-full text-center z-10 absolute",
+        labelPosition === "bottom" && "bottom-[12mm]",
+        labelPosition === "top" && "top-[12mm]",
+        labelPosition === "left" && "left-[12mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
+        labelPosition === "right" && "right-[12mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
+    );
     return (
         <>
             {chunk(items, itemsPerPage).map((pageItems, pageIndex) => {
@@ -62,7 +71,7 @@ export default function ChunkedPages<T, B>({
                                     />
                                 );
                             })}
-                            <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10 h-0">
+                            <div className={labelClassName}>
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
                             </div>
                         </div>
@@ -81,7 +90,7 @@ export default function ChunkedPages<T, B>({
                                 {pageItems.map((item, itemIndex) => (
                                     <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item} />
                                 ))}
-                                <div className="text-xs font-kacHeading text-kac-iron w-full text-center mt-2 z-10">
+                                <div className={labelClassName}>
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}
                                 </div>
                             </div>

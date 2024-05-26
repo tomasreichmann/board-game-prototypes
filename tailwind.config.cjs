@@ -142,6 +142,9 @@ module.exports = {
                     "100%": { opacity: 0 },
                 },
             },
+            dropShadow: {
+                "md-heavy": ["0 1px 2px rgb(0 0 0 / 0.5)", "0 1px 1px rgb(0 0 0 / 0.25)"],
+            },
         },
     },
     daisyui: {

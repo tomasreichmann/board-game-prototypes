@@ -4,6 +4,7 @@ import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper
 import { EffectType } from "../../types";
 import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
+import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 
 type OptionalKeysType = "slug" | "count";
 
@@ -11,52 +12,20 @@ export type EffectCardProps = React.PropsWithChildren<
     Partial<PaperProps> & Omit<EffectType, OptionalKeysType> & Partial<Pick<EffectType, OptionalKeysType>>
 >;
 
-const effectSizeClassNameMap: { [key: string]: string } = {
-    "/LP/icons/doom.png": "h-24",
-    "/LP/icons/salvation.png": "h-24",
-};
-
-const outcomeColorClassNameMap: { [key in IconType]?: string } = {
-    drop: "text-kac-blood",
+const colorClassNameMap = {
+    "/KAC/blood.png": "text-kac-blood",
     weight: "text-kac-steel-dark",
-    knockout: "text-kac-iron-dark",
-    run: "text-kac-iron-dark",
-    shouting: "text-kac-curse",
+    "/KAC/unconscious.png": "text-kac-steel-dark",
+    "/KAC/flee.png": "text-kac-iron-dark",
+    "/KAC/panicked.png": "text-kac-curse",
     sleepy: "text-kac-cloth-dark",
     sprint: "text-kac-gold-dark",
     quicksand: "text-kac-bone-dark",
     footTrip: "text-kac-bone-dark",
-    stickyBoot: "text-kac-monster",
-    tearTracks: "text-kac-cloth",
+    "/KAC/frozen.png": "text-kac-cloth-dark",
+    "/KAC/distress.png": "text-kac-cloth",
     thermometerCold: "text-kac-cloth-dark",
     thermometerHot: "text-kac-fire",
-};
-
-const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;
-const getGraphics = (icon: EffectType["icon"], className?: string) => {
-    if (!icon) {
-        return null;
-    }
-    if (isIcon(icon)) {
-        return (
-            <Icon
-                icon={icon}
-                className={twMerge(
-                    "max-h-fit",
-                    outcomeColorClassNameMap[icon] || "text-iron-light",
-                    effectSizeClassNameMap[icon] || "h-16",
-                    className
-                )}
-            />
-        );
-    }
-    return (
-        <img
-            className={twMerge("max-h-fit h-16", effectSizeClassNameMap[icon] || "h-16", className)}
-            src={icon}
-            alt=""
-        />
-    );
 };
 
 export default function EffectCard({
@@ -67,11 +36,19 @@ export default function EffectCard({
     icon,
     effect,
     children,
-    bleedMm = 0,
     ...restProps
 }: EffectCardProps) {
-    const graphics = getGraphics(icon);
-    const smallGraphics = getGraphics(icon, "h-4");
+    const {
+        bleedMm = 0,
+        bleedTopMm = bleedMm,
+        bleedRightMm = bleedMm,
+        bleedBottomMm = bleedMm,
+        bleedLeftMm = bleedMm,
+    } = restProps;
+
+    const colorClassName =
+        icon in colorClassNameMap ? colorClassNameMap[icon as keyof typeof colorClassNameMap] : "text-kac-steel-dark";
+
     return (
         <PaperOrDiv
             size={size}
@@ -83,29 +60,48 @@ export default function EffectCard({
             {...restProps}
         >
             <div
-                className="relative flex flex-col justify-center items-stretch flex-1 p-3"
-                style={{ margin: `${bleedMm}mm` }}
+                className="relative flex-1 flex flex-col justify-center items-stretch"
+                style={{
+                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
+                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
+                }}
             >
-                <div className="flex flex-row items-center gap-2">
-                    {smallGraphics}
-                    <div className="flex-1 text-slate-400 text-center text-xs">{slug}</div>
-                    <Icon icon="heartBeats" className={"text-kac-skin-dark h-4"} />
-                </div>
-                <div className="flex-1 flex flex-col items-center justify-end gap-1 h-0">
-                    {graphics}
-                    <div
-                        className={twMerge(
-                            "font-kacHeading text-kac-iron-light text-sm text-center leading-none mb-1 mt-2",
-                            icon && isIcon(icon) && outcomeColorClassNameMap[icon]
-                        )}
-                    >
-                        {title}
+                <img
+                    src="/KAC/paper.png"
+                    alt=""
+                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
+                />
+
+                <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
+                    <div className="flex flex-row items-center gap-1">
+                        <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
+                        <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div>
+                        <IconOrImage icon="/KAC/heartbeat.png" className={"text-kac-skin-dark h-6"} />
                     </div>
+                    <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
+                        <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
+                            <IconOrImage
+                                icon={icon}
+                                className={twMerge(
+                                    "absolute w-full h-full object-contain drop-shadow",
+                                    colorClassName || "text-kac-iron-light"
+                                )}
+                            />
+                        </div>
+                        <div
+                            className={twMerge(
+                                "font-kacLogo text-kac-cloth text-lg leading-none text-center mb-1",
+                                colorClassName
+                            )}
+                        >
+                            {title}
+                        </div>
+                    </div>
+                    <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
+                        <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
+                    </div>
+                    {children}
                 </div>
-                <div className="text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
-                    <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
-                </div>
-                {children}
             </div>
         </PaperOrDiv>
     );
@@ -115,33 +111,43 @@ export const EffectCardBackFace = ({
     className,
     size = "Mini European",
     children,
-    bleedMm = 0,
     ...restProps
 }: Partial<PaperProps>) => {
+    const {
+        bleedMm = 0,
+        bleedTopMm = bleedMm,
+        bleedRightMm = bleedMm,
+        bleedBottomMm = bleedMm,
+        bleedLeftMm = bleedMm,
+    } = restProps;
     return (
         <PaperOrDiv
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
-                "EffectCardBackFace gap-2 rounded-lg print:rounded-none bg-kac-skin-light flex flex-col justify-stretch items-stretch",
+                "EffectCardBackFace gap-2 rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
                 className
             )}
             {...restProps}
         >
             <div
-                className="relative flex flex-col justify-center items-center flex-1 p-3"
-                style={{ margin: `${bleedMm}mm` }}
+                className="relative flex-1 flex flex-col justify-center items-stretch bg-kac-steel-dark rounded-lg print:rounded-none"
+                style={{
+                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
+                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
+                }}
             >
-                <div className="w-32 h-32 flex flex-col justify-center items-center relative">
-                    <div
-                        className={
-                            "text-kac-blood w-8/12 aspect-square rounded-full border-[0.2mm] border-skin-dark absolute bg-kac-blood-light"
-                        }
-                    />
-                    <Icon icon="heartBeats" className={"text-kac-skin-light h-10 relative z-1 mt-2"} />
-                    <div className="font-kacBody text-kac-skin-light text-xs text-center relative z-1">Effect</div>
+                <img
+                    src="/KAC/effect-back-face.png"
+                    alt=""
+                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
+                />
+                <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
+                    <div className="text-white text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                        Effect
+                    </div>
+                    {children}
                 </div>
-                {children}
             </div>
         </PaperOrDiv>
     );

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
-import ChunkedPages from "./ChunkedPages";
+import ChunkedPages, { ChunkedPagesProps } from "./ChunkedPages";
 import { getPaperFitCountByFormat } from "../../../../components/print/PrintPage/PrintPage";
 import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
@@ -17,6 +17,7 @@ export type WgBusinessCardsPrintControlsProps = {
     pageMarginsMm: [number, number, number, number];
     bleedMm: number;
     gapMm: [number, number];
+    pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"];
 };
 
 export default function WgBusinessCardsPrintControls({
@@ -27,6 +28,7 @@ export default function WgBusinessCardsPrintControls({
     pageMarginsMm,
     bleedMm,
     gapMm,
+    pageLabelPosition,
 }: WgBusinessCardsPrintControlsProps) {
     const [itemCount, setItemCount] = useState(8);
     const [item, setItem] = useState({
@@ -137,6 +139,7 @@ export default function WgBusinessCardsPrintControls({
                         marginsInMm: pageMarginsMm,
                     }}
                     label="WG Business Card"
+                    labelPosition={pageLabelPosition}
                 />
             </Print>
         </div>

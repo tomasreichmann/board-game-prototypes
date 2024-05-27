@@ -19,15 +19,15 @@ const colorClassNameMap = {
     "/KAC/flee.png": "text-kac-iron-dark",
     "/KAC/panicked.png": "text-kac-curse",
     sleepy: "text-kac-cloth-dark",
-    sprint: "text-kac-gold-dark",
+    "/KAC/sprint.png": "text-kac-monster-dark",
     quicksand: "text-kac-bone-dark",
     "/KAC/complication.png": "text-kac-fire-light",
     "/KAC/frozen.png": "text-kac-cloth-dark",
     "/KAC/distress.png": "text-kac-cloth",
     "/LP/icons/doom.png": "text-kac-iron-dark",
     "/LP/icons/salvation.png": "text-kac-gold-dark",
-    thermometerCold: "text-kac-cloth-dark",
-    thermometerHot: "text-kac-fire",
+    "/KAC/frost.png": "text-kac-cloth-dark",
+    "/KAC/sun.png": "text-kac-fire",
 };
 
 export default function EffectCard({

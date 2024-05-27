@@ -21,9 +21,11 @@ const colorClassNameMap = {
     sleepy: "text-kac-cloth-dark",
     sprint: "text-kac-gold-dark",
     quicksand: "text-kac-bone-dark",
-    footTrip: "text-kac-bone-dark",
+    "/KAC/complication.png": "text-kac-fire-light",
     "/KAC/frozen.png": "text-kac-cloth-dark",
     "/KAC/distress.png": "text-kac-cloth",
+    "/LP/icons/doom.png": "text-kac-iron-dark",
+    "/LP/icons/salvation.png": "text-kac-gold-dark",
     thermometerCold: "text-kac-cloth-dark",
     thermometerHot: "text-kac-fire",
 };

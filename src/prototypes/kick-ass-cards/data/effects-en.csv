@@ -9,7 +9,7 @@
 "boost","Boost","sprint","Your next action or defense has +1 Effect or +1 Move",4
 "frost","Frost","thermometerCold","Every turn you end with 2x Frost or more, you receive a Distress",8
 "heat","Heat","thermometerHot","Every turn you end with 2x Heat or more, you receive an Injury",8
-"complication","Complication","footTrip","A Complication makes your life harder.<BR>Next action or defense has -1 Effect, then remove",4
+"complication","Complication","/KAC/complication.png","A Complication makes your life harder.<BR>Next action or defense has -1 Effect, then remove",4
 "infection","Spore infection","/LP/icons/spore-infection.png","+1 Doom",0
-"doom","Doom","/LP/icons/doom.png","3x Doom: You transform into a Monster",12
-"salvation","Salvation","/LP/icons/salvation.png","3x Salvation: You transform back into a Hero",4
+"doom","Doom","/LP/icons/doom.png","You are loosing your humanity.<BR>──<BR>3x Doom: You transform into a Monster",12
+"salvation","Salvation","/LP/icons/salvation.png","You are regaining your humanity.<BR>──<BR>3x Salvation: You transform back into a Hero",4

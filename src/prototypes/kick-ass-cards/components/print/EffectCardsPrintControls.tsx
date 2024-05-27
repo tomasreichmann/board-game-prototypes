@@ -26,14 +26,20 @@ export default function EffectCardsPrintControls({
     gapMm,
     pageLabelPosition,
 }: EffectCardsPrintControlsProps) {
-    const [deckCount, setDeckCount] = useState(1);
+    const [playerCount, setPlayerCount] = useState(1);
     const printMarkerSizeMm = bleedMm > 0 ? 1.5 : 0;
-    const items = effects.map((item) => ({
-        ...item,
-        bleedMm,
-        size: cardSize,
-        className: "relative",
-    }));
+    const items = range(playerCount)
+        .map((playerIndex) =>
+            effects.map((item) => ({
+                ...item,
+                slug: `${playerIndex + 1}-${item.slug}`,
+                bleedMm,
+                size: cardSize,
+                className: "relative",
+            }))
+        )
+        .flat()
+        .sort((a, b) => a.title.localeCompare(b.title));
     const cardsPerPage = getPaperFitCountByFormat(
         paperSize,
         pageOrientation,
@@ -46,15 +52,15 @@ export default function EffectCardsPrintControls({
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
-            {/* <div className="print:hidden mt-4">
+            <div className="print:hidden mt-4">
                 <Input
-                    label="Deck count"
+                    label="Player count"
                     type="number"
-                    value={deckCount}
-                    onChange={(event) => setDeckCount(event.target.valueAsNumber || 1)}
+                    value={playerCount}
+                    onChange={(event) => setPlayerCount(event.target.valueAsNumber || 1)}
                     className="w-32"
                 />
-            </div> */}
+            </div>
             <ToggleData data={{ cardsPerPage, items }} initialCollapsed className="print:hidden mt-4" />
             <Print
                 className="flex flex-col-reverse gap-2"

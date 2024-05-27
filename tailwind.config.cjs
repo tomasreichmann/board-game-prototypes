@@ -143,7 +143,9 @@ module.exports = {
                 },
             },
             dropShadow: {
-                "md-heavy": ["0 1px 2px rgb(0 0 0 / 0.5)", "0 1px 1px rgb(0 0 0 / 0.25)"],
+                "md-heavy": ["0 1px 2px rgb(0 0 0 / 0.25)", "0 1px 1px rgb(0 0 0 / 0.12)"],
+                "lg-heavy": ["0 10px 8px rgb(0 0 0 / 0.25)", "0 4px 3px rgb(0 0 0 / 0.12)"],
+                "xl-heavy": ["0 20px 13px rgb(0 0 0 / 0.25)", "0 8px 5px rgb(0 0 0 / 0.12)"],
             },
         },
     },

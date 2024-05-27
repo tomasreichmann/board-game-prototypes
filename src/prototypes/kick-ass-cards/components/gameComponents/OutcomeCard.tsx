@@ -74,7 +74,7 @@ export default function OutcomeCard({
                             <IconOrImage
                                 icon={icon}
                                 className={twMerge(
-                                    "absolute w-full h-full object-contain drop-shadow",
+                                    "absolute w-full h-full object-contain drop-shadow-lg",
                                     colorClassName || "text-kac-iron-light"
                                 )}
                             />

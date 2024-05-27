@@ -24,8 +24,8 @@ const colorClassNameMap = {
     "/KAC/complication.png": "text-kac-fire-light",
     "/KAC/frozen.png": "text-kac-cloth-dark",
     "/KAC/distress.png": "text-kac-cloth",
-    "/LP/icons/doom.png": "text-kac-iron-dark",
-    "/LP/icons/salvation.png": "text-kac-gold-dark",
+    "/KAC/doom.png": "text-kac-iron-dark",
+    "/KAC/salvation.png": "text-kac-gold-dark",
     "/KAC/frost.png": "text-kac-cloth-dark",
     "/KAC/sun.png": "text-kac-fire",
 };
@@ -85,7 +85,7 @@ export default function EffectCard({
                             <IconOrImage
                                 icon={icon}
                                 className={twMerge(
-                                    "absolute w-full h-full object-contain drop-shadow",
+                                    "absolute w-full h-full object-contain drop-shadow-lg",
                                     colorClassName || "text-kac-iron-light"
                                 )}
                             />

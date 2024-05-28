@@ -43,7 +43,6 @@ export default function OutcomeCard({
     return (
         <PaperOrDiv
             size={size}
-            bleedMm={bleedMm}
             className={twMerge(
                 "OutcomeCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
                 className

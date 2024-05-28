@@ -18,6 +18,7 @@ export type MistralServiceOptionsType = {
 export enum MistralModelEnum {
     "open-mistral-7b" = "open-mistral-7b",
     "open-mixtral-8x7b" = "open-mixtral-8x7b",
+    "open-mixtral-8x22b" = "open-mixtral-8x22b",
     "mistral-small-latest" = "mistral-small-latest",
     "mistral-medium-latest" = "mistral-medium-latest",
     "mistral-large-latest" = "mistral-large-latest",
@@ -41,7 +42,7 @@ export type MistralChatToolType = {
     type: string;
     name?: string;
     description?: string;
-    function: { name: string; function: Function; parameters?: JSONSchemaType<any> };
+    function: { name?: string; description?: string; function: Function; parameters?: JSONSchemaType<any> };
 };
 
 export type MistralChatOptionsType = {
@@ -62,10 +63,11 @@ export type MistralChatOptionsType = {
 export type MistralHistoryItem = ChatCompletionResponseChoice["message"];
 
 const modelsWithToolCallSupport = [
-    MistralModelEnum["open-mistral-7b"],
+    // MistralModelEnum["open-mistral-7b"],
     MistralModelEnum["mistral-small-latest"],
-    MistralModelEnum["mistral-medium-latest"],
+    // MistralModelEnum["mistral-medium-latest"],
     MistralModelEnum["mistral-large-latest"],
+    MistralModelEnum["open-mixtral-8x22b"],
 ];
 
 // Service type

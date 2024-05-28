@@ -36,7 +36,15 @@ export default function DiceCounter({
     return (
         <PaperOrDiv size={size} className={twMerge("DiceCounter flex bg-white text-sm font-kacHeading", className)}>
             <div className="relative flex-1 flex flex-col gap-2 justify-center items-center">
-                <Icon icon={icon} className={iconClassName} />
+                <div className="flex-1 relative self-stretch m-2">
+                    <Icon
+                        icon={icon}
+                        className={twMerge(
+                            "absolute left-1/2 top-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2",
+                            iconClassName
+                        )}
+                    />
+                </div>
                 {icon === "dx" && (
                     <div
                         className={twMerge(

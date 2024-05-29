@@ -192,13 +192,11 @@ export default function ActorCard({
             )}
             {...restProps}
         >
-            <div
-                className="flex-1 relative flex flex-col justify-center items-stretch p-3"
-                style={{ margin: `${bleedMm}mm` }}
-            >
+            <div className="flex-1 relative flex flex-col justify-center items-stretch p-3">
                 <div
                     className={twMerge(
                         "flex-1 relative rounded flex flex-col border-2 border-kac-steel h-16 z-10",
+                        !imageUri && "border-0",
                         imageWrapperClassName
                     )}
                 >
@@ -209,9 +207,7 @@ export default function ActorCard({
                             objectFit="cover"
                             objectPosition={imagePosition}
                         />
-                    ) : (
-                        <CharacterOutlineImage style={{}} className="absolute h-full w-full text-kac-steel-light" />
-                    )}
+                    ) : null}
                     {toughness > 0 && !hideCounter && (
                         <DiceCounter
                             current={currentToughness}

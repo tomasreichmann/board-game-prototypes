@@ -14,7 +14,7 @@ export type ClockProps = React.PropsWithChildren<
         reward?: string | null;
         threat?: string | null;
         note?: string | null;
-        total: number;
+        total?: number;
         current?: number;
     } & Partial<PaperProps>
 >;
@@ -52,11 +52,25 @@ export default function Clock({
                     padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
                 }}
             >
-                <div className="flex-1 relative flex flex-col p-5 gap-2">
-                    <div className="relative">
-                        <Icon icon="sandsOfTime" className="absolute top-0 right-0 h-5 text-kac-bone-dark" />
+                <div className="flex-1 relative flex flex-col p-3 gap-2">
+                    <div className="relative flex flex-row items-center justify-end">
+                        <Icon icon="sandsOfTime" className="h-5 text-kac-bone-dark" />
                     </div>
-                    <DiceCounter current={current} total={total} className="flex-1 text-kac-steel self-stretch h-32" />
+                    {total !== undefined ? (
+                        <DiceCounter
+                            current={current}
+                            total={total}
+                            className="flex-1 text-kac-steel self-stretch h-32"
+                        />
+                    ) : (
+                        <div className="flex-1 flex flex-row flex-wrap gap-2 justify-center items-center">
+                            <Icon icon="d4" className={"w-10 h-10"} />
+                            <Icon icon="d6" className={"w-10 h-10"} />
+                            <Icon icon="d8" className={"w-10 h-10"} />
+                            <Icon icon="d10" className={"w-10 h-10"} />
+                            <Icon icon="d12" className={"w-10 h-10"} />
+                        </div>
+                    )}
                     {title !== null && (
                         <h2 className="text-sm font-kacHeading leading-tight text-balance mt-1 mb-1 text-center">
                             {title || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
@@ -69,8 +83,8 @@ export default function Clock({
                                 <p className="flex-grow text-sm font-kacBody leading-tight">{note}</p>
                             ) : (
                                 <div className="flex-1 flex-col">
-                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
-                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
+                                    <div className="border-b-2 border-dashed mt-[2em] relative -top-1"></div>
+                                    <div className="border-b-2 border-dashed mt-[2em] relative -top-1"></div>
                                 </div>
                             )}
                         </div>
@@ -81,7 +95,7 @@ export default function Clock({
                             {threat ? (
                                 <p className="flex-grow text-sm font-kacBody leading-tight">{threat}</p>
                             ) : (
-                                <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
+                                <div className="flex-1 border-b-2 border-dashed mt-[2em] relative -top-1" />
                             )}
                         </div>
                     )}
@@ -91,7 +105,7 @@ export default function Clock({
                             {reward ? (
                                 <p className="flex-grow text-sm font-kacBody leading-tight">{reward}</p>
                             ) : (
-                                <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
+                                <div className="flex-1 border-b-2 border-dashed mt-[2em] relative -top-1" />
                             )}
                         </div>
                     )}

@@ -12,4 +12,4 @@
 "complication","Complication","/KAC/complication.png","A Complication makes your life harder.<BR>──<BR>Next action or defense has -1 Effect, then discard.",1
 "infection","Spore infection","/LP/icons/spore-infection.png","+1 Doom",0
 "doom","Doom","/KAC/doom.png","You are loosing your humanity.<BR>──<BR>3x Doom: You transform into a monster.",3
-"salvation","Salvation","/KAC/salvation.png","You are regaining your humanity.<BR>──<BR>3x Salvation: You transform back into a hero.",3
+"salvation","Salvation","/KAC/salvation.png","You are regaining your humanity.<BR>──<BR>3x Salvation: You transform back into a hero.",2

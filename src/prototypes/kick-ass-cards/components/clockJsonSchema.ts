@@ -11,10 +11,9 @@ export const clockJsonSchema: JSONSchemaType<Omit<ClockProps, keyof PaperProps>>
         reward: { type: "string", nullable: true },
         threat: { type: "string", nullable: true },
         note: { type: "string", nullable: true },
-        total: { type: "number" },
+        total: { type: "number", nullable: true },
         current: { type: "number", nullable: true },
     },
-    required: ["total"],
 };
 
 export default clockJsonSchema;

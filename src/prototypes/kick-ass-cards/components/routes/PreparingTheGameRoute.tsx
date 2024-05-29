@@ -11,12 +11,14 @@ import TemplatePrintControls from "../print/TemplatePrintControls";
 import { ChunkedPagesProps } from "../print/ChunkedPages";
 import EffectCardsPrintControls from "../print/EffectCardsPrintControls";
 import ClocksCardsPrintControls from "../print/ClocksCardsPrintControls";
+import ActorCardsPrintControls from "../print/ActorCardsPrintControls";
 
 const componentControlsMap = {
     Template: TemplatePrintControls,
     "Outcome Cards": OutcomeCardsPrintControls,
     "Effect Cards": EffectCardsPrintControls,
-    "Clock Cards": ClocksCardsPrintControls,
+    "Blank Actor Cards": ActorCardsPrintControls,
+    "Blank Clock Cards": ClocksCardsPrintControls,
 };
 
 export default function PreparingTheGameRoute() {

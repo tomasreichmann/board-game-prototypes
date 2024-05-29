@@ -1,13 +1,10 @@
 import { twMerge } from "tailwind-merge";
-import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
-import outcomes from "../../data/outcomeDeck";
 import ChunkedPages from "./ChunkedPages";
-import OutcomeCard, { OutcomeCardBackFace } from "../gameComponents/OutcomeCard";
 import { getPaperFitCountByFormat } from "../../../../components/print/PrintPage/PrintPage";
 import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
 import Input from "../controls/Input";
-import { flatten, range } from "lodash";
+import { range } from "lodash";
 import { PrintControlProps } from "./printControlsTypes";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";

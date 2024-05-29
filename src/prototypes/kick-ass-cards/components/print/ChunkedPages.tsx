@@ -44,10 +44,12 @@ export default function ChunkedPages<T, B>({
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
     const labelClassName = twMerge(
         "text-xs font-kacHeading text-kac-iron w-full text-center z-10 absolute",
-        labelPosition === "bottom" && "bottom-[12mm]",
-        labelPosition === "top" && "top-[12mm]",
-        labelPosition === "left" && "left-[12mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
-        labelPosition === "right" && "right-[12mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
+        labelPosition === "bottom" && "bottom-[12mm] print:bottom-[2mm]",
+        labelPosition === "top" && "top-[12mm] print:top-[2mm]",
+        labelPosition === "left" &&
+            "left-[12mm] print:left-[2mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
+        labelPosition === "right" &&
+            "right-[12mm] print:right-[2mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
     );
     return (
         <>

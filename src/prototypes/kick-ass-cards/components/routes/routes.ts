@@ -16,6 +16,7 @@ import AdventuresRoute from "./AdventuresRoute";
 import AdventureRoute from "./AdventureRoute";
 import DocumentRoute from "./DocumentRoute";
 import PreparingTheGameRoute from "./PreparingTheGameRoute";
+import GenerateComponentRoute from "./GenerateComponentRoute";
 
 export const kickAssCardsPath = "/kick-ass-cards";
 export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
@@ -43,6 +44,11 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         Component: ComponentsRoute,
     },
     {
+        name: "Generate Component",
+        path: kickAssCardsPath + "/generate-component",
+        Component: GenerateComponentRoute,
+    },
+    {
         name: "Adventure",
         path: adventuresPath + "/:adventureId/docs/:documentId",
         hideFromNav: true,
@@ -59,7 +65,7 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         path: adventuresPath,
         Component: AdventuresRoute,
     },
-    {
+    /* {
         name: "Smart Doc",
         path: smartDocsPath + "/:path",
         hideFromNav: true,
@@ -69,7 +75,7 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
         name: "Smart Docs",
         path: smartDocsPath,
         Component: SmartDocsRoute,
-    },
+    }, */
     {
         name: "Screen",
         path: kickAssCardsPath + "/screen",

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
-import ChunkedPages, { ChunkedPagesProps } from "./ChunkedPages";
+import ChunkedPages, { ChunkedPagesProps } from "../print/ChunkedPages";
 import { getPaperFitCountByFormat } from "../../../../components/print/PrintPage/PrintPage";
 import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
@@ -8,28 +8,14 @@ import Input from "../controls/Input";
 import { range } from "lodash";
 import WgBusinessCard, { WgBusinessCardBackFace } from "../gameComponents/WgBusinessCard";
 import Print from "../../../../components/print/Print";
+import { usePrintControlsStore } from "./PaperAndCardControls";
+import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 
 export type WgBusinessCardsPrintControlsProps = {
     className?: string;
-    paperSize: keyof typeof paperSizes;
-    cardSize: keyof typeof cardSizes;
-    pageOrientation: "portrait" | "landscape";
-    pageMarginsMm: [number, number, number, number];
-    bleedMm: number;
-    gapMm: [number, number];
-    pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"];
 };
 
-export default function WgBusinessCardsPrintControls({
-    className,
-    paperSize,
-    cardSize,
-    pageOrientation,
-    pageMarginsMm,
-    bleedMm,
-    gapMm,
-    pageLabelPosition,
-}: WgBusinessCardsPrintControlsProps) {
+export default function WgBusinessCardsPrintControls({ className }: WgBusinessCardsPrintControlsProps) {
     const [itemCount, setItemCount] = useState(8);
     const [item, setItem] = useState({
         name: "Tomáš Reichmann",
@@ -40,22 +26,16 @@ export default function WgBusinessCardsPrintControls({
         phone: "+420 604 955 416",
         url: "worldoftanks.com",
     });
-    const printMarkerSizeMm = bleedMm > 0 ? 1.5 : 0;
-    const items = range(itemCount).map((itemIndex) => ({
-        ...item,
-        slug: itemIndex,
-        bleedMm,
-        size: cardSize,
-        className: "relative",
-    }));
-    const cardsPerPage = getPaperFitCountByFormat(
-        paperSize,
-        pageOrientation,
-        cardSize,
-        "portrait",
-        pageMarginsMm,
-        bleedMm,
-        printMarkerSizeMm
+
+    const chunkedPagesProps = useChunkedPagesProps();
+    console.log("chunkedPagesProps", chunkedPagesProps);
+
+    const items = useItemAdapter(
+        range(itemCount).map((itemIndex) => ({
+            ...item,
+            slug: itemIndex,
+            className: "relative",
+        }))
     );
 
     return (
@@ -118,28 +98,14 @@ export default function WgBusinessCardsPrintControls({
                     className="w-32"
                 />
             </div>
-            <ToggleData data={{ cardsPerPage, items }} initialCollapsed className="print:hidden mt-4" />
+            <ToggleData data={{ items, chunkedPagesProps }} initialCollapsed className="print:hidden mt-4" />
             <Print>
                 <ChunkedPages
                     Component={WgBusinessCard}
                     BackFaceComponent={WgBusinessCardBackFace}
                     items={items}
-                    itemsPerPage={cardsPerPage}
-                    pageContentProps={{ style: { gap: `${gapMm[1]}mm ${gapMm[0]}mm` } }}
-                    frontFacePrintPageProps={{
-                        size: paperSize,
-                        orientation: pageOrientation,
-                        bleedInMm: 0,
-                        marginsInMm: pageMarginsMm,
-                    }}
-                    backFacePrintPageProps={{
-                        size: paperSize,
-                        orientation: pageOrientation,
-                        bleedInMm: 0,
-                        marginsInMm: pageMarginsMm,
-                    }}
+                    {...chunkedPagesProps}
                     label="WG Business Card"
-                    labelPosition={pageLabelPosition}
                 />
             </Print>
         </div>

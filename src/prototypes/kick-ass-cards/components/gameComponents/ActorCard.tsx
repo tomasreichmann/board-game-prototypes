@@ -187,7 +187,7 @@ export default function ActorCard({
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
-                "ActorCard relative bg-white text-kac-steel-dark rounded-lg print:rounded-none flex flex-col items-stretch",
+                "ActorCard relative bg-white text-kac-steel-dark rounded-lg print:rounded-none flex flex-col items-stretch font-kacBody",
                 className
             )}
             {...restProps}
@@ -217,6 +217,7 @@ export default function ActorCard({
                             currentClassName="text-red-300"
                         />
                     )}
+                    <Icon icon="doubleFaceMask" className="absolute top-0 right-0 h-5 text-kac-blood" />
                 </div>
                 <div className={"text-sm flex flex-row gap-4 mt-1 mb-1"}>
                     <h2

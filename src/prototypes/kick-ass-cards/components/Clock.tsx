@@ -54,7 +54,7 @@ export default function Clock({
             >
                 <div className="flex-1 relative flex flex-col p-3 gap-2">
                     <div className="relative flex flex-row items-center justify-end">
-                        <Icon icon="sandsOfTime" className="h-5 text-kac-bone-dark" />
+                        <Icon icon="sandsOfTime" className="h-5 text-kac-iron-dark" />
                     </div>
                     {total !== undefined ? (
                         <DiceCounter
@@ -63,12 +63,12 @@ export default function Clock({
                             className="flex-1 text-kac-steel self-stretch h-32"
                         />
                     ) : (
-                        <div className="flex-1 flex flex-row flex-wrap gap-2 justify-center items-center">
-                            <Icon icon="d4" className={"w-10 h-10"} />
-                            <Icon icon="d6" className={"w-10 h-10"} />
-                            <Icon icon="d8" className={"w-10 h-10"} />
-                            <Icon icon="d10" className={"w-10 h-10"} />
-                            <Icon icon="d12" className={"w-10 h-10"} />
+                        <div className="flex-1 flex flex-row flex-wrap gap-2 justify-center items-center px-4">
+                            <Icon icon="d4" className={"w-8 h-8"} />
+                            <Icon icon="d6" className={"w-8 h-8"} />
+                            <Icon icon="d8" className={"w-8 h-8"} />
+                            <Icon icon="d10" className={"w-8 h-8"} />
+                            <Icon icon="d12" className={"w-8 h-8"} />
                         </div>
                     )}
                     {title !== null && (
@@ -89,21 +89,26 @@ export default function Clock({
                             )}
                         </div>
                     )}
-                    {threat !== null && (
-                        <div className="text-sm text-kac-blood font-kacBody flex flex-row gap-2">
-                            <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block" />
-                            {threat ? (
-                                <p className="flex-grow text-sm font-kacBody leading-tight">{threat}</p>
+                    {reward !== null && (
+                        <div className="text-sm text-kac-gold-dark font-kacBody flex flex-row gap-2">
+                            <div className="flex flex-col items-center justify-start">
+                                ▲
+                                <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
+                            </div>
+                            {reward ? (
+                                <p className="flex-grow text-sm font-kacBody leading-tight">{reward}</p>
                             ) : (
                                 <div className="flex-1 border-b-2 border-dashed mt-[2em] relative -top-1" />
                             )}
                         </div>
                     )}
-                    {reward !== null && (
-                        <div className="text-sm text-kac-gold-dark font-kacBody flex flex-row gap-2">
-                            <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
-                            {reward ? (
-                                <p className="flex-grow text-sm font-kacBody leading-tight">{reward}</p>
+                    {threat !== null && (
+                        <div className="text-sm text-kac-blood font-kacBody flex flex-row gap-2">
+                            <div className="flex flex-col items-center justify-start">
+                                <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block" />▼
+                            </div>
+                            {threat ? (
+                                <p className="flex-grow text-sm font-kacBody leading-tight">{threat}</p>
                             ) : (
                                 <div className="flex-1 border-b-2 border-dashed mt-[2em] relative -top-1" />
                             )}

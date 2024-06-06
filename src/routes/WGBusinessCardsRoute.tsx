@@ -4,7 +4,7 @@ import { useState } from "react";
 import Text from "../prototypes/kick-ass-cards/components/content/Text";
 import WgBusinessCardsPrintControls from "../prototypes/kick-ass-cards/components/print/WgBusinessCardsPrintControls";
 import { paperSizes, cardSizes } from "../components/print/paperSizes";
-import PaperAndCardControls from "../prototypes/kick-ass-cards/components/print/PaperAndCardControls";
+import PaperAndCardControls from "../prototypes/kick-ass-cards/components/preparingTheGame/PaperAndCardControls";
 import { ChunkedPagesProps } from "../prototypes/kick-ass-cards/components/print/ChunkedPages";
 
 export default function WgBusinessCardRoute() {

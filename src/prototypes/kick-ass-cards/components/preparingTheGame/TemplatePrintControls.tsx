@@ -1,9 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
-import outcomes from "../../data/outcomeDeck";
-import ChunkedPages, { ChunkedPagesProps } from "./ChunkedPages";
-import OutcomeCard, { OutcomeCardBackFace } from "../gameComponents/OutcomeCard";
-import { getPaperFitCountByFormat } from "../../../../components/print/PrintPage/PrintPage";
+import ChunkedPages from "../print/ChunkedPages";
 import ToggleData from "../../../../components/DataToggle";
 import { PropsWithChildren, useState } from "react";
 import Paper, { PaperProps } from "../../../../components/print/Paper/Paper";
@@ -12,10 +8,11 @@ import Input from "../controls/Input";
 import Text, { H2 } from "../content/Text";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import Print from "../../../../components/print/Print";
-import { PrintControlProps } from "./printControlsTypes";
 import Icon from "../Icon";
+import { usePrintControlsStore } from "./PaperAndCardControls";
+import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 
-export type TemplatePrintControlsProps = PrintControlProps;
+export type TemplatePrintControlsProps = { className?: string };
 
 type SampleCardProps = PropsWithChildren<PaperProps>;
 
@@ -33,32 +30,16 @@ const SampleCard = ({ children, slugClassName, bleedClassName, trimClassName, ..
     </Paper>
 );
 
-export default function TemplatePrintControls({
-    className,
-    paperSize,
-    cardSize,
-    pageOrientation,
-    pageMarginsMm,
-    bleedMm,
-    gapMm,
-    pageLabelPosition,
-}: TemplatePrintControlsProps) {
+export default function TemplatePrintControls({ className }: TemplatePrintControlsProps) {
+    const chunkedPagesProps = useChunkedPagesProps();
+
     const [itemCount, setItemCount] = useState(8);
     const [hasBackFace, setHasBackFace] = useState(true);
 
-    const items = range(itemCount).map((item) => ({
-        bleedMm,
-        size: cardSize,
-        children: "Front face #" + item,
-    }));
-    const cardsPerPage = getPaperFitCountByFormat(
-        paperSize,
-        pageOrientation,
-        cardSize,
-        "portrait",
-        pageMarginsMm,
-        bleedMm,
-        bleedMm / 2
+    const items = useItemAdapter(
+        range(itemCount).map((item) => ({
+            children: "Front face #" + item,
+        }))
     );
 
     return (
@@ -104,12 +85,7 @@ export default function TemplatePrintControls({
                     checked={hasBackFace}
                     onChange={(event) => setHasBackFace(event.target.checked)}
                 />
-                <ToggleData
-                    data={{ cardsPerPage, items }}
-                    initialCollapsed
-                    className="print:hidden mt-4 flex-1"
-                    previewClassName=""
-                />
+                <ToggleData data={items} initialCollapsed className="print:hidden mt-4 flex-1" previewClassName="" />
             </div>
             <Print
                 className="flex flex-col-reverse gap-2"
@@ -128,20 +104,7 @@ export default function TemplatePrintControls({
                         Component={SampleCard}
                         BackFaceComponent={hasBackFace ? SampleCard : undefined}
                         items={items}
-                        itemsPerPage={cardsPerPage}
-                        pageContentProps={{ style: { gap: `${gapMm[1]}mm ${gapMm[0]}mm` } }}
-                        frontFacePrintPageProps={{
-                            size: paperSize,
-                            orientation: pageOrientation,
-                            bleedInMm: 0,
-                            marginsInMm: pageMarginsMm,
-                        }}
-                        backFacePrintPageProps={{
-                            size: paperSize,
-                            orientation: pageOrientation,
-                            bleedInMm: 0,
-                            marginsInMm: pageMarginsMm,
-                        }}
+                        {...chunkedPagesProps}
                         getBackFaceProps={(props) => {
                             const {
                                 bleedMm = 0,
@@ -165,7 +128,6 @@ export default function TemplatePrintControls({
                             };
                         }}
                         label="Sample"
-                        labelPosition={pageLabelPosition}
                     />
                 </div>
             </Print>

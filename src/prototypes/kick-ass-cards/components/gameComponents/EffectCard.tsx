@@ -56,7 +56,7 @@ export default function EffectCard({
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
-                "EffectCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
+                "EffectCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
                 className
             )}
             {...restProps}

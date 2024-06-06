@@ -52,7 +52,8 @@
         "tslib": "^2.4.0",
         "tsparticles": "^2.10.1",
         "use-google-sheets": "^2.0.0",
-        "uuid": "^9.0.0"
+        "uuid": "^9.0.0",
+        "zustand": "^4.5.2"
     },
     "devDependencies": {
         "@rollup/plugin-dsv": "^3.0.0",

@@ -63,7 +63,7 @@ export default function StuntCard({
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
-                "StuntCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
+                "StuntCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
                 className
             )}
             {...restProps}

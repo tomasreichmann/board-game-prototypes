@@ -9,6 +9,18 @@ export type ToggleDataProps = {
     previewClassName?: string;
 } & Partial<ToggleProps>;
 
+const isReactComponent = (value: any) => typeof value === "function" && value.prototype?.render;
+const isJsxElement = (value: any) => typeof value === "object" && value?.$$typeof === Symbol.for("react.element");
+
+const stripComponentsAndElements = (data: any) => {
+    if (typeof data === "object") {
+        return Object.fromEntries(
+            Object.entries(data).filter(([_, value]) => !isReactComponent(value) && !isJsxElement(value))
+        );
+    }
+    return data;
+};
+
 export default function ToggleData({
     data,
     className,
@@ -23,7 +35,7 @@ export default function ToggleData({
             {...restProps}
         >
             <ErrorBoundary>
-                <DataPreview data={data} className={previewClassName} />
+                <DataPreview data={stripComponentsAndElements(data)} className={previewClassName} />
             </ErrorBoundary>
         </Toggle>
     );

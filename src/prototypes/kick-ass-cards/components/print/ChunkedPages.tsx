@@ -44,22 +44,24 @@ export default function ChunkedPages<T, B>({
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
     const labelClassName = twMerge(
         "text-xs font-kacHeading text-kac-iron w-full text-center z-10 absolute",
-        labelPosition === "bottom" && "bottom-[12mm] print:bottom-[2mm]",
-        labelPosition === "top" && "top-[12mm] print:top-[2mm]",
+        labelPosition === "bottom" && "bottom-[2mm] print:bottom-[2mm]",
+        labelPosition === "top" && "top-[2mm] print:top-[2mm]",
         labelPosition === "left" &&
-            "left-[12mm] print:left-[2mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
+            "left-[2mm] print:left-[2mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
         labelPosition === "right" &&
-            "right-[12mm] print:right-[2mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
+            "right-[2mm] print:right-[2mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
     );
+    const { children: frontChildren, ...frontFacePrintPagePropsRest } = frontFacePrintPageProps ?? {};
+    const { children: backChildren, ...backFacePrintPagePropsRest } = backFacePrintPageProps ?? {};
     return (
         <>
             {chunk(items, itemsPerPage).map((pageItems, pageIndex) => {
                 const backPage = BackFaceComponent ? (
-                    <PrintPage key={"chunked-back-page-" + pageIndex + "-back"} {...backFacePrintPageProps}>
+                    <PrintPage key={"chunked-back-page-" + pageIndex + "-back"} {...backFacePrintPagePropsRest}>
                         <div
                             {...backFacePageContentProps}
                             className={twMerge(
-                                "flex-1 flex flex-row-reverse flex-wrap content-start items-center justify-center",
+                                "relative flex-1 flex flex-row-reverse flex-wrap content-start items-center justify-center",
                                 backFacePageContentClassName
                             )}
                         >
@@ -76,16 +78,17 @@ export default function ChunkedPages<T, B>({
                             <div className={labelClassName}>
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
                             </div>
+                            {backChildren}
                         </div>
                     </PrintPage>
                 ) : undefined;
                 return (
                     <React.Fragment key={"chunked-page-" + pageIndex}>
-                        <PrintPage key={"chunked-front-page-" + pageIndex} {...frontFacePrintPageProps}>
+                        <PrintPage key={"chunked-front-page-" + pageIndex} {...frontFacePrintPagePropsRest}>
                             <div
                                 {...frontFacePageContentProps}
                                 className={twMerge(
-                                    "flex-1 flex flex-wrap content-start items-center justify-center",
+                                    "relative flex-1 flex flex-wrap content-start items-center justify-center",
                                     frontFacePageContentClassName
                                 )}
                             >
@@ -95,6 +98,7 @@ export default function ChunkedPages<T, B>({
                                 <div className={labelClassName}>
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}
                                 </div>
+                                {frontChildren}
                             </div>
                         </PrintPage>
                         {backPage}

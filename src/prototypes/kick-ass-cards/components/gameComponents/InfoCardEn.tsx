@@ -19,7 +19,7 @@ export default function InfoCard({
         <PaperOrDiv
             size={size}
             className={twMerge(
-                "InfoCard relative bg-white p-3 flex flex-column gap-5 text-kac-steel-dark rounded-lg",
+                "InfoCard relative bg-white p-3 flex flex-column gap-5 text-kac-steel-dark rounded-lg font-kacBody",
                 className
             )}
         >

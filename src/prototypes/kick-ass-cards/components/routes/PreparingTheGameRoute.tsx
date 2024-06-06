@@ -3,37 +3,14 @@ import MdxArticle from "../layout/MdxArticle";
 import preparingTheGameIntroMdx from "../../articles/preparingTheGame-intro.mdx";
 import { Navigation } from "../Navigation";
 import Text, { H2, H3 } from "../content/Text";
-import { paperSizes, cardSizes } from "../../../../components/print/paperSizes";
-import PaperAndCardControls from "../print/PaperAndCardControls";
-import OutcomeCardsPrintControls from "../print/OutcomeCardsPrintControls";
+import PaperAndCardControls, {
+    componentControlsMap,
+    usePrintControlsStore,
+} from "../preparingTheGame/PaperAndCardControls";
 import Button from "../controls/Button";
-import TemplatePrintControls from "../print/TemplatePrintControls";
-import { ChunkedPagesProps } from "../print/ChunkedPages";
-import EffectCardsPrintControls from "../print/EffectCardsPrintControls";
-import ClocksCardsPrintControls from "../print/ClocksCardsPrintControls";
-import ActorCardsPrintControls from "../print/ActorCardsPrintControls";
-
-const componentControlsMap = {
-    Template: TemplatePrintControls,
-    "Outcome Cards": OutcomeCardsPrintControls,
-    "Effect Cards": EffectCardsPrintControls,
-    "Blank Actor Cards": ActorCardsPrintControls,
-    "Blank Clock Cards": ClocksCardsPrintControls,
-};
 
 export default function PreparingTheGameRoute() {
-    const [defaultPaperSize, setDefaultPaperSize] = React.useState<keyof typeof paperSizes>("A4");
-    const [isDefaultPaperOrientationPortrait, setIsDefaultPaperOrientationPortrait] = React.useState(false);
-    const [defaultCardSize, setDefaultCardSize] = React.useState<keyof typeof cardSizes>("54x86");
-    const [defaultPageMarginsMm, setDefaultPageMarginsMm] = React.useState<[number, number, number, number]>([
-        9, 10, 9, 10,
-    ]);
-    const [defaultGapMm, setDefaultGapMm] = React.useState<[number, number]>([2, 2]);
-    const [defaultBleedMm, setDefaultBleedMm] = React.useState<number>(3);
-    const [pageLabelPosition, setPageLabelPosition] =
-        React.useState<ChunkedPagesProps<any, any>["labelPosition"]>("left");
-
-    const [componentControls, setComponentControls] = React.useState<keyof typeof componentControlsMap>("Template");
+    const { isDefaultPaperOrientationPortrait, componentControls, setComponentControls } = usePrintControlsStore();
 
     const PrintComponent = componentControlsMap[componentControls];
 
@@ -56,23 +33,7 @@ export default function PreparingTheGameRoute() {
                         </Text>
                         <Text variant="body">You can preselect card and paper sizes for all components.</Text>
 
-                        <PaperAndCardControls
-                            className="mt-4"
-                            paperSize={defaultPaperSize}
-                            cardSize={defaultCardSize}
-                            isPortrait={isDefaultPaperOrientationPortrait}
-                            pageMarginsMm={defaultPageMarginsMm}
-                            bleedMm={defaultBleedMm}
-                            gapMm={defaultGapMm}
-                            pageLabelPosition={pageLabelPosition}
-                            setPageLabelPosition={setPageLabelPosition}
-                            setPaperSize={setDefaultPaperSize}
-                            setCardSize={setDefaultCardSize}
-                            setPortrait={setIsDefaultPaperOrientationPortrait}
-                            setPageMarginsMm={setDefaultPageMarginsMm}
-                            setBleedMm={setDefaultBleedMm}
-                            setGapMm={setDefaultGapMm}
-                        />
+                        <PaperAndCardControls className="mt-4" />
 
                         {!isDefaultPaperOrientationPortrait && (
                             <Text color="warning" variant="body" className="self-center font-bold my-4">
@@ -94,15 +55,7 @@ export default function PreparingTheGameRoute() {
                             ))}
                         </div>
                         <div className="flex-1 w-full overflow-auto -mx-4 px-4">
-                            <PrintComponent
-                                paperSize={defaultPaperSize}
-                                cardSize={defaultCardSize}
-                                pageOrientation={isDefaultPaperOrientationPortrait ? "portrait" : "landscape"}
-                                pageMarginsMm={defaultPageMarginsMm}
-                                bleedMm={defaultBleedMm}
-                                gapMm={defaultGapMm}
-                                pageLabelPosition={pageLabelPosition}
-                            />
+                            <PrintComponent />
                         </div>
                     </div>
                 </section>

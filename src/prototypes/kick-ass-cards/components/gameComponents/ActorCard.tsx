@@ -195,7 +195,7 @@ export default function ActorCard({
             <div className="flex-1 relative flex flex-col justify-center items-stretch p-3">
                 <div
                     className={twMerge(
-                        "flex-1 relative rounded flex flex-col border-2 border-kac-steel h-16 z-10",
+                        "flex-1 relative rounded flex flex-col h-16 z-10",
                         !imageUri && "border-0",
                         imageWrapperClassName
                     )}
@@ -204,7 +204,7 @@ export default function ActorCard({
                         <ImageComponent
                             src={imageUri}
                             className={twMerge("absolute w-full h-full rounded-sm", imageClassName)}
-                            objectFit="cover"
+                            objectFit="contain"
                             objectPosition={imagePosition}
                         />
                     ) : null}
@@ -226,7 +226,7 @@ export default function ActorCard({
                             toughness > 0 ? "text-left" : "text-center"
                         )}
                     >
-                        {name || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
+                        {name || <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />}
                         {age !== undefined ? ` (${age})` : ""}
                     </h2>
                     {toughness > 0 && (
@@ -242,7 +242,7 @@ export default function ActorCard({
                         {occupation ? (
                             <p className="flex-grow mt-1">{occupation}</p>
                         ) : (
-                            <div className="flex-1 border-b-2 border-dashed mt-[2em] " />
+                            <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] " />
                         )}
                     </h3>
                 )}
@@ -252,7 +252,7 @@ export default function ActorCard({
                         {threat ? (
                             <p className="flex-grow text-xs font-kacBody mt-1">{threat}</p>
                         ) : (
-                            <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
+                            <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
                         )}
                     </div>
                 )}
@@ -262,21 +262,21 @@ export default function ActorCard({
                         {reward ? (
                             <p className="flex-grow text-xs font-kacBody mt-1">{reward}</p>
                         ) : (
-                            <div className="flex-1 border-b-2 border-dashed mt-[2em]" />
+                            <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
                         )}
                     </div>
                 )}
                 {notes !== null && (
-                    <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
+                    <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden mt-1">
                         <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
                             <Icon icon="scrollQuill" className="h-4 mr-3 inline-block" />
                             {notes.length > 0 ? (
                                 <div className={twMerge("inline", notesClassName)}>{notes}</div>
                             ) : (
                                 <>
-                                    <div className="border-b-2 border-dashed ml-7"></div>
-                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
-                                    <div className="border-b-2 border-dashed mt-[2em]"></div>
+                                    <div className="border-b-[0.2mm] border-kac-steel border-dashed ml-7"></div>
+                                    <div className="border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]"></div>
+                                    <div className="border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]"></div>
                                 </>
                             )}
                         </div>
@@ -302,7 +302,7 @@ export const ActorCardBackFace = ({ className, children, size = "Bridge", ...res
                 <div className="w-32 h-32 flex flex-col justify-center items-center relative">
                     <div
                         className={
-                            "w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-monster-dark absolute bg-kac-gold-light"
+                            "w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-steel border-kac-monster-dark absolute bg-kac-gold-light"
                         }
                     />
                     <Icon icon="doubleFaceMask" className={"text-kac-monster-dark h-10 relative z-1 mt-2"} />

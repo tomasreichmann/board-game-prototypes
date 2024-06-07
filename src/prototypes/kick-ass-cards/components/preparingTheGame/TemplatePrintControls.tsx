@@ -18,10 +18,10 @@ type SampleCardProps = PropsWithChildren<PaperProps>;
 
 const SampleCard = ({ children, slugClassName, bleedClassName, trimClassName, ...restProps }: SampleCardProps) => (
     <Paper
-        slugClassName={twMerge("outline outline-[0.1mm] outline-dashed outline-kac-cloth", slugClassName)}
-        bleedClassName={twMerge("outline outline-[0.1mm] outline-kac-blood", bleedClassName)}
+        slugClassName={twMerge("outline outline-[0.2mm] outline-dashed outline-kac-cloth", slugClassName)}
+        bleedClassName={twMerge("outline outline-[0.2mm] outline-kac-blood", bleedClassName)}
         trimClassName={twMerge(
-            "outline outline-[0.1mm] outline-kac-monster flex flex-col justify-center items-center text-md text-kac-body font-kacBody",
+            "outline outline-[0.2mm] outline-kac-monster flex flex-col justify-center items-center text-md text-kac-body font-kacBody",
             trimClassName
         )}
         {...restProps}

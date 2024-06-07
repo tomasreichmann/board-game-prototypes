@@ -73,7 +73,9 @@ export default function Clock({
                     )}
                     {title !== null && (
                         <h2 className="text-sm font-kacHeading leading-tight text-balance mt-1 mb-1 text-center">
-                            {title || <div className="flex-1 border-b-2 border-dashed mt-[2em]" />}
+                            {title || (
+                                <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
+                            )}
                         </h2>
                     )}
                     {note !== null && (
@@ -83,34 +85,34 @@ export default function Clock({
                                 <p className="flex-grow text-sm font-kacBody leading-tight">{note}</p>
                             ) : (
                                 <div className="flex-1 flex-col">
-                                    <div className="border-b-2 border-dashed mt-[2em] relative -top-1"></div>
-                                    <div className="border-b-2 border-dashed mt-[2em] relative -top-1"></div>
+                                    <div className="border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] relative -top-1"></div>
+                                    <div className="border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] relative -top-1"></div>
                                 </div>
                             )}
                         </div>
                     )}
                     {reward !== null && (
                         <div className="text-sm text-kac-gold-dark font-kacBody flex flex-row gap-2">
-                            <div className="flex flex-col items-center justify-start">
+                            <div className="flex flex-col items-center justify-start -mt-4">
                                 ▲
                                 <Icon icon="chest" className="h-5 flex-shrink-0 inline-block text-sm" />
                             </div>
                             {reward ? (
                                 <p className="flex-grow text-sm font-kacBody leading-tight">{reward}</p>
                             ) : (
-                                <div className="flex-1 border-b-2 border-dashed mt-[2em] relative -top-1" />
+                                <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] relative -top-1" />
                             )}
                         </div>
                     )}
                     {threat !== null && (
-                        <div className="text-sm text-kac-blood font-kacBody flex flex-row gap-2">
-                            <div className="flex flex-col items-center justify-start">
+                        <div className="text-sm text-kac-blood font-kacBody flex flex-row gap-2 pb-4">
+                            <div className="flex flex-col items-center justify-start -mb-4">
                                 <Icon icon="deathSkull" className="h-5 flex-shrink-0 inline-block" />▼
                             </div>
                             {threat ? (
                                 <p className="flex-grow text-sm font-kacBody leading-tight">{threat}</p>
                             ) : (
-                                <div className="flex-1 border-b-2 border-dashed mt-[2em] relative -top-1" />
+                                <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] relative -top-1" />
                             )}
                         </div>
                     )}

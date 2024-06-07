@@ -282,7 +282,7 @@ export default function LidBox({
                         }}
                     >
                         {showLabels && <Label className={classNameLabel}>contentBottom</Label>}
-                        <Content style={{ width: contentDepth + "mm", height: contentHeight + "mm" }}>
+                        <Content style={{ width: contentWidth + "mm", height: contentHeight + "mm" }}>
                             {contentBottom}
                         </Content>
                     </div>

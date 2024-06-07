@@ -15,13 +15,52 @@ export type ActorCardsPrintControlsProps = {
 
 export default function ActorCardsPrintControls({ className }: ActorCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
-    const [copyCount, setCopyCount] = useState(8);
+    const [copyCount, setCopyCount] = useState(1);
+    const actorImageUris = [
+        "/KAC/actors/anti-hero.png",
+        "/KAC/actors/anybody.png",
+        "/KAC/actors/aristocrat.png",
+        "/KAC/actors/artist.png",
+        "/KAC/actors/boy.png",
+        "/KAC/actors/commander.png",
+        "/KAC/actors/damsel.png",
+        "/KAC/actors/devil.png",
+        "/KAC/actors/femme-fatale.png",
+        "/KAC/actors/golem.png",
+        "/KAC/actors/golem-2.png",
+        "/KAC/actors/grandmother.png",
+        "/KAC/actors/guard.png",
+        "/KAC/actors/innocent-girl.png",
+        "/KAC/actors/jester.png",
+        "/KAC/actors/lion.png",
+        "/KAC/actors/lover.png",
+        "/KAC/actors/mother.png",
+        "/KAC/actors/nurse.png",
+        "/KAC/actors/outcast.png",
+        "/KAC/actors/priestess.png",
+        "/KAC/actors/princess.png",
+        "/KAC/actors/queen.png",
+        "/KAC/actors/rebel.png",
+        "/KAC/actors/ruler.png",
+        "/KAC/actors/shaman.png",
+        "/KAC/actors/skull.png",
+        "/KAC/actors/skull.png", // TODO: replace
+        "/KAC/actors/strong-man.png",
+        "/KAC/actors/trickster.png",
+        "/KAC/actors/wise-man.png",
+        "/KAC/actors/wolf.png",
+    ];
     const items = useItemAdapter(
-        range(copyCount).map((copyIndex) => ({
-            slug: String(copyIndex),
-            forPrint: true,
-            className: "relative",
-        }))
+        range(copyCount)
+            .map((copyIndex) =>
+                actorImageUris.map((imageUri, imageIndex) => ({
+                    slug: copyIndex + "-" + imageIndex,
+                    forPrint: true,
+                    className: "relative",
+                    imageUri,
+                }))
+            )
+            .flat()
     );
 
     return (

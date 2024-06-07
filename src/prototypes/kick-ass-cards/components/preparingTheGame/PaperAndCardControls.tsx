@@ -11,6 +11,7 @@ import ClocksCardsPrintControls from "./ClocksCardsPrintControls";
 import EffectCardsPrintControls from "./EffectCardsPrintControls";
 import OutcomeCardsPrintControls from "./OutcomeCardsPrintControls";
 import TemplatePrintControls from "./TemplatePrintControls";
+import BoxPrintControls from "./BoxPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -35,6 +36,7 @@ export const componentControlsMap = {
     "Effect Cards": EffectCardsPrintControls,
     "Blank Actor Cards": ActorCardsPrintControls,
     "Blank Clock Cards": ClocksCardsPrintControls,
+    Box: BoxPrintControls,
 };
 
 export type PrintControlsStoreType = {

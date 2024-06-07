@@ -48,7 +48,7 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             bleedInMm: 0,
             marginsInMm: defaultPageMarginsMm,
             children: showHorizontalBend ? (
-                <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.1mm] border-dashed" />
+                <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
             ) : undefined,
         },
         backFacePrintPageProps: {
@@ -57,7 +57,7 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             bleedInMm: 0,
             marginsInMm: defaultPageMarginsMm,
             children: showHorizontalBend ? (
-                <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.1mm] border-dashed" />
+                <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
             ) : undefined,
         },
         labelPosition: pageLabelPosition,

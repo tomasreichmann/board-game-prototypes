@@ -17,22 +17,22 @@ export type BoxPrintControlsProps = {
 
 export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
     const { defaultCardSize, defaultPaperSize, defaultPageMarginsMm } = usePrintControlsStore();
-    const [stackColumnCount, setStackColumnCount] = useState(1);
-    const [stackRowCount, setStackRowCount] = useState(1);
+    const [stackColumnCount, setStackColumnCount] = useState(2);
+    const [stackRowCount, setStackRowCount] = useState(2);
     const [stackSizeMm, setStackSizeMm] = useState(10);
-    const [contentDepthMm, setContentDepthMm] = useState(10);
+    const [contentDepthMm, setContentDepthMm] = useState(20);
 
     const [cardWidthMm, cardHeightMm] = cardSizes[defaultCardSize].mm;
 
     const cardMarginMm = 1;
     const paperThicknessMm = 40 / 125;
 
-    const cardSlantHeightMm = Math.sqrt(cardHeightMm ** 2 + contentDepthMm ** 2);
+    const cardSlantHeightMm = Math.sqrt(cardHeightMm * cardHeightMm - contentDepthMm * contentDepthMm);
     const blockHeight = cardSlantHeightMm + stackSizeMm + cardMarginMm * 2;
     const blockWidth = cardWidthMm + cardMarginMm * 2;
 
     const contentWidth = stackColumnCount * blockWidth + (stackColumnCount - 1) * paperThicknessMm;
-    const contentHeight = stackRowCount * blockHeight + (stackRowCount - 1) * paperThicknessMm;
+    const contentHeight = stackRowCount * blockHeight;
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
@@ -41,28 +41,28 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                     label="Stack columns"
                     type="number"
                     value={stackColumnCount}
-                    onChange={(event) => setStackColumnCount(event.target.valueAsNumber || 1)}
+                    onChange={(event) => setStackColumnCount(event.target.valueAsNumber ?? 1)}
                     className="w-32"
                 />
                 <Input
                     label="Stack rows"
                     type="number"
                     value={stackRowCount}
-                    onChange={(event) => setStackRowCount(event.target.valueAsNumber || 1)}
+                    onChange={(event) => setStackRowCount(event.target.valueAsNumber ?? 1)}
                     className="w-32"
                 />
                 <Input
                     label="Stack size (mm)"
                     type="number"
                     value={stackSizeMm}
-                    onChange={(event) => setStackSizeMm(event.target.valueAsNumber || 1)}
+                    onChange={(event) => setStackSizeMm(event.target.valueAsNumber ?? 1)}
                     className="w-32"
                 />
                 <Input
                     label="Box Depth (mm)"
                     type="number"
                     value={contentDepthMm}
-                    onChange={(event) => setContentDepthMm(event.target.valueAsNumber || 1)}
+                    onChange={(event) => setContentDepthMm(event.target.valueAsNumber ?? 1)}
                     className="w-32"
                 />
             </div>
@@ -89,40 +89,89 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                             contentDepth={contentDepthMm}
                             contentWidth={contentWidth}
                             contentHeight={contentHeight}
-                            contentBottom={
-                                <div className="w-full h-full relative">
-                                    {range(stackRowCount - 1).map((rowIndex) => (
-                                        <div
-                                            key={rowIndex}
-                                            className="absolute left-0 w-full border-b-[0.2mm] border-kac-steel border-dashed"
-                                            style={{
-                                                top:
-                                                    (rowIndex + 1) * blockHeight +
-                                                    (rowIndex + 1) * paperThicknessMm +
-                                                    "mm",
-                                            }}
-                                        />
-                                    ))}
-                                    {range(stackColumnCount - 1).map((columnIndex) => (
-                                        <div
-                                            key={columnIndex}
-                                            className="absolute top-0 h-full border-r-[0.2mm] border-kac-steel border-dashed"
-                                            style={{
-                                                left:
-                                                    (columnIndex + 1) * blockWidth +
-                                                    (columnIndex + 1) * paperThicknessMm +
-                                                    "mm",
-                                            }}
-                                        />
-                                    ))}
-                                </div>
-                            }
+                            sideLipSize={contentDepthMm}
                         />
                     </PrintPage>
                     <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
-                        <Rect widthMm={blockWidth} heightMm={stackSizeMm} cutTop cutRight cutLeft />
-                        <Rect widthMm={blockWidth} heightMm={cardHeightMm} cutRight cutLeft bendTop />
-                        <Rect widthMm={blockWidth} heightMm={contentDepthMm} cutRight cutLeft bendTop cutBottom />
+                        <div className="flex flex-row">
+                            {range(stackColumnCount).map((columnIndex) => {
+                                const isFirstColumn = columnIndex === 0;
+                                return (
+                                    <div key={columnIndex}>
+                                        {range(stackRowCount).map((rowIndex) => {
+                                            const isLastRow = rowIndex === stackRowCount - 1;
+                                            const isFirstRow = rowIndex === 0;
+                                            return (
+                                                <div key={rowIndex}>
+                                                    <Rect
+                                                        widthMm={blockWidth}
+                                                        heightMm={stackSizeMm}
+                                                        cutTop={isFirstRow}
+                                                        bendTop={!isFirstRow}
+                                                        cutRight
+                                                        cutLeft={isFirstColumn}
+                                                    />
+                                                    <Rect
+                                                        widthMm={blockWidth}
+                                                        heightMm={cardHeightMm}
+                                                        cutRight
+                                                        cutLeft={isFirstColumn}
+                                                        bendTop
+                                                    />
+                                                    <Rect
+                                                        widthMm={blockWidth}
+                                                        heightMm={contentDepthMm}
+                                                        cutRight
+                                                        cutLeft={isFirstColumn}
+                                                        bendTop
+                                                        cutBottom={isLastRow}
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </PrintPage>
+                    <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
+                        <div className="flex flex-row">
+                            {range(stackColumnCount).map((columnIndex) => {
+                                const isFirstColumn = columnIndex === 0;
+                                const isLastColumn = columnIndex === stackColumnCount - 1;
+                                return (
+                                    <div className="flex flex-row">
+                                        <Rect
+                                            widthMm={blockWidth}
+                                            heightMm={blockHeight * stackRowCount}
+                                            cutTop
+                                            cutBottom
+                                            bendRight={!isLastColumn}
+                                            cutRight={isLastColumn}
+                                            cutLeft={isFirstColumn}
+                                        />
+                                        {!isLastColumn && (
+                                            <>
+                                                <Rect
+                                                    widthMm={contentDepthMm}
+                                                    heightMm={blockHeight * stackRowCount}
+                                                    cutTop
+                                                    cutBottom
+                                                    bendRight
+                                                />
+                                                <Rect
+                                                    widthMm={contentDepthMm}
+                                                    heightMm={blockHeight * stackRowCount}
+                                                    cutTop
+                                                    cutBottom
+                                                    bendRight
+                                                />
+                                            </>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </PrintPage>
                 </div>
             </Print>

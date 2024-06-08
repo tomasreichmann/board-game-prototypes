@@ -99,43 +99,43 @@ export default function LidBox({
     children,
 }: LidBoxProps) {
     const cutTopStyle = {
-        borderTopWidth: "1px",
+        borderTopWidth: "0.2mm",
         borderTopStyle: "solid",
         borderTopColor: "rgba(0,0,0,0.25)",
         ...cutStyles.top,
     } as CSSProperties;
     const cutRightStyle = {
-        borderRightWidth: "1px",
+        borderRightWidth: "0.2mm",
         borderRightStyle: "solid",
         borderRightColor: "rgba(0,0,0,0.25)",
         ...cutStyles.right,
     } as CSSProperties;
     const cutBottomStyle = {
-        borderBottomWidth: "1px",
+        borderBottomWidth: "0.2mm",
         borderBottomStyle: "solid",
         borderBottomColor: "rgba(0,0,0,0.25)",
         ...cutStyles.bottom,
     } as CSSProperties;
     const cutLeftStyle = {
-        borderLeftWidth: "1px",
+        borderLeftWidth: "0.2mm",
         borderLeftStyle: "solid",
         borderLeftColor: "rgba(0,0,0,0.25)",
         ...cutStyles.left,
     } as CSSProperties;
     const bendRightStyle = {
-        borderRightWidth: "1px",
+        borderRightWidth: "0.2mm",
         borderRightStyle: "dotted",
         borderRightColor: "rgba(0,0,0,0.25)",
         ...bendStyles.right,
     } as CSSProperties;
     const bendBottomStyle = {
-        borderBottomWidth: "1px",
+        borderBottomWidth: "0.2mm",
         borderBottomStyle: "dotted",
         borderBottomColor: "rgba(0,0,0,0.25)",
         ...bendStyles.bottom,
     } as CSSProperties;
     const bendLeftStyle = {
-        borderLeftWidth: "1px",
+        borderLeftWidth: "0.2mm",
         borderLeftStyle: "dotted",
         borderLeftColor: "rgba(0,0,0,0.25)",
         ...bendStyles.left,
@@ -171,19 +171,10 @@ export default function LidBox({
                 />
                 <div className={twMerge("FrontSide relative flex flex-col justify-center", classNamePartVisible)}>
                     <div
-                        className={twMerge("FrontSideTop relative")}
+                        className={twMerge("FrontSideContent relative flex flex-row justify-center")}
                         style={{
                             width: contentWidth + "mm",
-                            height: contentDepth / 2 + "mm",
-                            ...cutLeftStyle,
-                            ...cutRightStyle,
-                        }}
-                    />
-                    <div
-                        className={twMerge("FrontSide relative flex flex-row justify-center")}
-                        style={{
-                            width: contentWidth + "mm",
-                            height: contentDepth / 2 + "mm",
+                            height: contentDepth + "mm",
                             ...bendBottomStyle,
                             ...bendLeftStyle,
                             ...bendRightStyle,
@@ -192,8 +183,8 @@ export default function LidBox({
                         <div
                             className="FrontSideLeftCorner flex flex-row justify-center absolute"
                             style={{
-                                width: contentDepth / 2 + "mm",
-                                height: contentDepth / 2 + "mm",
+                                width: contentDepth + "mm",
+                                height: contentDepth + "mm",
                                 top: 0,
                                 right: "100%",
                                 ...cutTopStyle,
@@ -206,8 +197,8 @@ export default function LidBox({
                         <div
                             className="FrontSideRightCorner flex flex-row justify-center absolute"
                             style={{
-                                width: contentDepth / 2 + "mm",
-                                height: contentDepth / 2 + "mm",
+                                width: contentDepth + "mm",
+                                height: contentDepth + "mm",
                                 top: 0,
                                 left: "100%",
                                 ...cutTopStyle,
@@ -219,7 +210,7 @@ export default function LidBox({
                         </div>
                     </div>
                     {showLabels && <Label className={classNameLabel}>contentFront</Label>}
-                    <Content style={{ width: contentHeight + "mm", height: contentDepth + "mm" }}>
+                    <Content style={{ width: contentWidth + "mm", height: contentDepth + "mm" }}>
                         {contentFront}
                     </Content>
                 </div>
@@ -244,23 +235,12 @@ export default function LidBox({
                         }}
                     >
                         <div
-                            className={twMerge("LeftTop absolute", classNamePartVisible)}
-                            style={{
-                                left: 0,
-                                top: 0,
-                                bottom: 0,
-                                width: contentDepth / 2 + "mm",
-                                ...cutTopStyle,
-                                ...cutBottomStyle,
-                            }}
-                        />
-                        <div
-                            className={twMerge("LeftBottom absolute", classNamePartVisible)}
+                            className={twMerge("LeftBase absolute", classNamePartVisible)}
                             style={{
                                 right: 0,
                                 top: 0,
                                 bottom: 0,
-                                width: contentDepth / 2 + "mm",
+                                width: contentDepth + "mm",
                                 ...bendBottomStyle,
                             }}
                         />
@@ -296,23 +276,12 @@ export default function LidBox({
                         }}
                     >
                         <div
-                            className={twMerge("RightTop absolute", classNamePartVisible)}
-                            style={{
-                                right: 0,
-                                top: 0,
-                                bottom: 0,
-                                width: contentDepth / 2 + "mm",
-                                ...cutTopStyle,
-                                ...cutBottomStyle,
-                            }}
-                        />
-                        <div
-                            className={twMerge("RightBottom absolute", classNamePartVisible)}
+                            className={twMerge("RightBase absolute", classNamePartVisible)}
                             style={{
                                 left: 0,
                                 top: 0,
                                 bottom: 0,
-                                width: contentDepth / 2 + "mm",
+                                width: contentDepth + "mm",
                                 ...bendBottomStyle,
                             }}
                         />
@@ -331,27 +300,28 @@ export default function LidBox({
                             width: sideLipSize + "mm",
                             height: contentHeight + "mm",
                             ...cutTopStyle,
-                            ...cutLeftStyle,
+                            ...bendLeftStyle,
                             ...cutBottomStyle,
-                            ...bendRightStyle,
+                            ...cutRightStyle,
                         }}
                     />
                 </div>
                 <div className={twMerge("BottomSide relative flex flex-col justify-center", classNamePartVisible)}>
                     <div
-                        className={twMerge("BottomSideBottom relative flex flex-row justify-center")}
+                        className={twMerge("BottomSideBase relative flex flex-row justify-center")}
                         style={{
                             width: contentWidth + "mm",
-                            height: contentDepth / 2 + "mm",
+                            height: contentDepth + "mm",
                             ...bendLeftStyle,
                             ...bendRightStyle,
+                            ...bendBottomStyle,
                         }}
                     >
                         <div
                             className="BottomSideLeftCorner flex flex-row justify-center absolute"
                             style={{
-                                width: contentDepth / 2 + "mm",
-                                height: contentDepth / 2 + "mm",
+                                width: contentDepth + "mm",
+                                height: contentDepth + "mm",
                                 top: 0,
                                 right: "100%",
                                 ...cutBottomStyle,
@@ -363,8 +333,8 @@ export default function LidBox({
                         <div
                             className="BottomSideRightCorner flex flex-row justify-center absolute"
                             style={{
-                                width: contentDepth / 2 + "mm",
-                                height: contentDepth / 2 + "mm",
+                                width: contentDepth + "mm",
+                                height: contentDepth + "mm",
                                 top: 0,
                                 left: "100%",
                                 ...cutRightStyle,
@@ -374,16 +344,7 @@ export default function LidBox({
                             {leftDiagonalBendElement}
                         </div>
                     </div>
-                    <div
-                        className={twMerge("BottomSideTop relative")}
-                        style={{
-                            width: contentWidth + "mm",
-                            height: contentDepth / 2 + "mm",
-                            ...cutLeftStyle,
-                            ...cutRightStyle,
-                            ...bendBottomStyle,
-                        }}
-                    />
+
                     {showLabels && (
                         <Label className={classNameLabel} rotate={-180}>
                             contentBack

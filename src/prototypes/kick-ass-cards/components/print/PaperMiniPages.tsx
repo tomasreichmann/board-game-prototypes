@@ -7,7 +7,7 @@ import PaperMini from "../gameComponents/PaperMini";
 export default function PaperMiniPages() {
     return (
         <>
-            <PrintPage>
+            <PrintPage showControls>
                 <div className="flex flex-wrap content-center items-top">
                     <PaperMini
                         imageUri="/LP/ScrattCZ_several_screaming_slender_6_feet_tall_feminine-looking_70707d8f-a4ff-474f-974a-608f4d82b3c9.png"
@@ -200,7 +200,7 @@ export default function PaperMiniPages() {
                     />
                 </div>
             </PrintPage>
-            <PrintPage>
+            <PrintPage showControls>
                 <div className="flex flex-wrap content-center items-top">
                     <PaperMini
                         imageUri="/LP/insectoid.jpg"
@@ -305,7 +305,7 @@ export default function PaperMiniPages() {
                     />
                 </div>
             </PrintPage>
-            <PrintPage>
+            <PrintPage showControls>
                 <div className="flex flex-wrap content-center items-top">
                     <PaperMini
                         imageUri="/LP/reptilian_male.jpg"
@@ -499,6 +499,908 @@ export default function PaperMiniPages() {
                         height="2in"
                         width="1.5in"
                     />
+                </div>
+            </PrintPage>
+            <PrintPage showControls>
+                <div className="flex flex-wrap content-center items-top">
+                    <PaperMini
+                        imageUri="/misc/alien/macwhirrova.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        baseContent="MacWhirrová"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        backBaseContent="MacWhirrová"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/hirsch.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        baseContent="Hirsch"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        backBaseContent="Hirsch"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/singletonova.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        baseContent="Singletonová"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        backBaseContent="Singletonová"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/sigg.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        baseContent="Sonny"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center 70%",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        backBaseContent="Sigg"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/fachman.png"
+                        baseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        baseContent="Holroyd"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-cloth text-white text-center text-sm"
+                        backBaseContent="Fachman"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    {/* <PaperMini
+                        imageUri="https://cdn.gamlery.cz/p/figurky-a-sosky/figurka-alien-lead-alien-warrior/figurka-alien-lead-alien-warrior-hiya-toys-900w.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 1"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center 70%",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 1"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    /> */}
+                    <PaperMini
+                        imageUri="https://comicvine.gamespot.com/a/uploads/original/12/122233/5555284-xenomorph_full_body_by_uncannyknack-d8cz4y1.jpg"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 11"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center 70%",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 11"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="https://static.wikia.nocookie.net/villains/images/5/53/Alien_xenomorph.jpg"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 12"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "90% 70%", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "90% 70%",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 12"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1.5in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno.jpg"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 13"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "20% 70%", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "20% 70%",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 13"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/queen.jpg"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno Queen"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center 70%",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno Queen"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1.5in"
+                    />
+                    <div className="flex flex-row flex-wrap w-[4in]">
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger.jpg"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 1"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 1"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger.jpg"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 2"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 2"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger.jpg"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 3"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 3"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger.jpg"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 4"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 4"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="https://cdnb.artstation.com/p/assets/images/images/003/799/951/large/jonathan-shaller-full-composit-1080-copy.jpg?1477557654"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 1"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "250%" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "250%",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 1"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="https://cdnb.artstation.com/p/assets/images/images/003/799/951/large/jonathan-shaller-full-composit-1080-copy.jpg?1477557654"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 2"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "250%" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "250%",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 2"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="https://cdnb.artstation.com/p/assets/images/images/003/799/951/large/jonathan-shaller-full-composit-1080-copy.jpg?1477557654"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 3"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "250%" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "250%",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 3"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="https://cdnb.artstation.com/p/assets/images/images/003/799/951/large/jonathan-shaller-full-composit-1080-copy.jpg?1477557654"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 4"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center 70%", backgroundSize: "250%" }}
+                            backImageStyle={{
+                                backgroundPosition: "center 70%",
+                                backgroundSize: "250%",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 4"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                    </div>
+                </div>
+            </PrintPage>
+            <PrintPage showControls>
+                <div className="flex flex-wrap content-center items-top">
+                    <PaperMini
+                        imageUri="/misc/alien/xeno1.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 1"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "30% center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "30% center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 1"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno2.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 2"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 2"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno3.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 3"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 3"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno4.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 4"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "60% center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "60% center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 4"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno5.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 5"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "60% center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "60% center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 5"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno6.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 6"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "60% center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "60% center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 6"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno7.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 7"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 7"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno8.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 8"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 8"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno9.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 9"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 9"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/xeno10.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Xeno 10"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Xeno 10"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <div className="flex flex-row flex-wrap w-[4in]">
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger1.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 1"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 1"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger2.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 2"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 2"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger3.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 3"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 3"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger4.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 4"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 4"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger5.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 5"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 5"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/face-hugger6.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Face Hugger 6"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Face Hugger 6"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                    </div>
+                </div>
+            </PrintPage>
+            <PrintPage showControls>
+                <div className="flex flex-wrap content-center items-top">
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier1.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 1"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 1"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier2.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 2"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 2"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier3.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 3"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 3"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier4.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 4"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "70% center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 4"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier5.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 5"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 5"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier6.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 6"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 6"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier7.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 7"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "60% center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 7"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier8.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 8"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 8"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier9.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 9"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 9"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <PaperMini
+                        imageUri="/misc/alien/face-hugged-soldier10.png"
+                        baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        baseContent="Hostitel 10"
+                        cutBorderStyle="none"
+                        imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                        backImageStyle={{
+                            backgroundPosition: "center center",
+                            backgroundSize: "cover",
+                            transform: "rotateX(180deg)",
+                        }}
+                        backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                        backBaseContent="Hostitel 10"
+                        baseWidth="0.5in"
+                        height="2in"
+                        width="1in"
+                    />
+                    <div className="flex flex-row flex-wrap w-[4in]">
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg1.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 1"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 1"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg2.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 2"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 2"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg3.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 3"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 3"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg4.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 4"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 4"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg1.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 5"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 5"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg2.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 6"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 6"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg3.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 7"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 7"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                        <PaperMini
+                            imageUri="/misc/alien/xeno-egg4.png"
+                            baseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            baseContent="Vejce 8"
+                            cutBorderStyle="none"
+                            imageStyle={{ backgroundPosition: "center center", backgroundSize: "cover" }}
+                            backImageStyle={{
+                                backgroundPosition: "center center",
+                                backgroundSize: "cover",
+                                transform: "rotateX(180deg)",
+                            }}
+                            backBaseClassName="pt-2 bg-kac-monster text-white text-center text-sm"
+                            backBaseContent="Vejce 8"
+                            baseWidth="0.5in"
+                            height="1in"
+                            width="1in"
+                        />
+                    </div>
                 </div>
             </PrintPage>
         </>

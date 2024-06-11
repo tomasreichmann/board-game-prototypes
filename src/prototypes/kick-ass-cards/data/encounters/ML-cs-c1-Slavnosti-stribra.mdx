@@ -1,0 +1,39 @@
+---
+campaign: Matečná žíla
+chapter: 0
+act: 0
+---
+
+import * as C from "./ML-cs-common";
+
+# Slavnosti Stříbra
+
+![](/ML/ilustrace/kutna-hora.jpg)
+
+- _Popisný text, který můžete přímo přečíst hráčům, když dorazí na místo._
+- 🔎 Informace, které nejsou hráčům okamžitě zřejmé, ale mohou je zjistit hledáním, zkoumáním nebo výslechem.
+- 🎭 Výzva k interakci hráčů.
+- 🏺 Loot, poklad nebo odměna, kterou hráči obdrží.
+- 💡 Tipy pro GM.
+- 🔒 Informace pro GM, které jsou aktuálně hráčům skryté.
+- 📅 Události, které mohou nastat.
+
+💡 Cíl kapitoly: Předat hráčům povědomí o situaci v Kutné hoře a představit hlavní aktéry a jejich frakce.
+
+_Dozvěděli jste se z drbů, že v Kutné Hoře horníci objevili novou stříbrnou žílu, o které se říká, že je prokletá nebo chráněná starověkou magií.
+O vliv a kontrolu nad žílou soupeří 3 hlavní frakce: Hornický cech, církev a královský dvůr Pražský.
+Doufáte, že se vám podaří ke stříbru nějak dostat a buď se jím obohatit, nebo se zmoznit jeho bájné magie._
+
+_Stojíte na tržišti v centru Kutné Hory. Je plné lidí, zrovn vrcholí každoroční několikadenní Slavnosti stříbra.
+Letos jsou oslavy trochu zvláštní. Na jednu stranu jsou lidé zvědaví, jak to dopade s onou novou stříbrnou žilou.
+Zdali tím město ještě více zbohatne, nebo jestli se náhodou z nové štoly nevyvalí něco děsivého. Horníci, kteří novou žílu objevili totiž nedávno bez vysvětlení zmizeli._
+
+🎭 Jakým způsobem chcete zjistit informace o nové žíle a frakcích, které bojují o její kontrolu?
+
+-   (hooks)
+
+<List>
+    <Actor {...C.postavy.jakubNovy} />
+    <Clock {...C.hrozby.zapadSlunce} />
+    <Asset {...C.predmety.mapaTunelu} />
+</List>

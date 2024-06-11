@@ -18,6 +18,7 @@ export type ActorCardProps = React.PropsWithChildren<
         slug?: string;
         className?: string;
         imagePosition?: CSSProperties["objectPosition"];
+        imageFit?: CSSProperties["objectFit"];
         imageClassName?: string;
         imageWrapperClassName?: string;
         notesClassName?: string;
@@ -67,6 +68,11 @@ export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof PaperPro
         },
         imagePosition: {
             title: "Image Position",
+            type: "string",
+            nullable: true,
+        },
+        imageFit: {
+            title: "Image Fit",
             type: "string",
             nullable: true,
         },
@@ -166,6 +172,7 @@ export default function ActorCard({
     imageUri,
     imageClassName,
     imagePosition,
+    imageFit = "contain",
     imageWrapperClassName,
     occupation = forPrint ? "" : null,
     toughness = 0,
@@ -204,7 +211,7 @@ export default function ActorCard({
                         <ImageComponent
                             src={imageUri}
                             className={twMerge("absolute w-full h-full rounded-sm", imageClassName)}
-                            objectFit="contain"
+                            objectFit={imageFit}
                             objectPosition={imagePosition}
                         />
                     ) : null}

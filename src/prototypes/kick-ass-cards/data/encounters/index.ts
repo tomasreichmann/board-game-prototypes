@@ -17,6 +17,7 @@ const ISV = "In Sanguine Veritas";
 const TOH = "Throne of Hawthorne";
 const B139 = "B-day #139 LARP";
 const TTT = "Trauma Team Troubles";
+const ML = "Matečná žíla";
 
 const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
     [key]: {
@@ -62,5 +63,8 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("B139-rules-cs", "Pravidla", B139),
 
     ...makeEncounterDefinition("TTT-info", "Info", TTT),
+
+    ...makeEncounterDefinition("ML-cs-c0-Info", "Info", ML),
+    ...makeEncounterDefinition("ML-cs-c1-Slavnosti-stribra", "Slavnosti stříbra", ML),
 };
 console.log("encountersMap", encountersMap);

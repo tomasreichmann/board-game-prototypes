@@ -37,6 +37,14 @@ export const postavy = {
         notes: "Mladý a ambiciózní",
         ...defaultActorProps,
     } as ActorCardProps,
+    pepinaNova: {
+        slug: "jakubNovy",
+        imageUri: "/ML/postavy/jakubNovy.jpg",
+        name: "Jakub Nový",
+        occupation: "Kutnohorský Kupec",
+        notes: "Mladý a ambiciózní",
+        ...defaultActorProps,
+    } as ActorCardProps,
 };
 
 export const hrozby = {

@@ -1,9 +1,9 @@
 "slug","title","icon","effect","count"
 "wound","Injury","/KAC/blood.png","4x Injury ➜ Unconscious.<BR>──<BR>Heal to discard.",4
-"distress","Distress","/KAC/distress.png","3x Distress ➜ Panic.<BR>4x Distress ➜ Hopeless.<BR>──<BR>Rest or indulge in your vice to discard.",4
+"distress","Distress","/KAC/distress2.png","3x Distress ➜ Panic.<BR>4x Distress ➜ Hopeless.<BR>──<BR>Rest or indulge in your vice to discard.",4
 "unconscious","Unconscious","/KAC/unconscious.png","4x Injury: You are helpless. You cannot take actions until someone revives you.<BR>──<BR>Get rid of your Injuries to discard.",1
-"panicked","Panicked","/KAC/panicked.png","3x Distress: You can only play the top card of your Outcome deck.<BR>──<BR>Get rid of your Distress to discard.",1
-"hopeless","Hopeless","/KAC/flee.png","4x Distress: You can only flee or give up.<BR>──<BR>Get rid of your Distress to discard.",1
+"panicked","Panicked","/KAC/panicked2.png","3x Distress: You can only play the top card of your Outcome deck.<BR>──<BR>Get rid of your Distress to discard.",1
+"hopeless","Hopeless","/KAC/hopeless.png","4x Distress: You can only flee or give up.<BR>──<BR>Get rid of your Distress to discard.",1
 "stuck","Stuck","/KAC/frozen.png","You cannot move.<BR>──<BR>Free yourself to discard.",1
 "hindered","Hindered","/KAC/hindered.png","You can only move or take actions, but not both, until you free yourself.",1
 "boost","Boost","/KAC/sprint.png","Your next action or defense has +1 Effect or +1 Move.",1

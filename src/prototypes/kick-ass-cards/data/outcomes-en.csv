@@ -1,6 +1,6 @@
 "slug","title","icon","description","instructions"
 "special","Special action","/KAC/super.png","Activate your special action.<BR>+3 Effect",""
 "success","Success","/KAC/bulls-eye.png","It worked!<BR>+2 Effect",""
-"partial","Partial success","/KAC/broken-coin.png","+1 Effect,<BR>or success with Complication",""
+"partial","Partial success","/KAC/half-star.png","+1 Effect,<BR>or success with Complication",""
 "fumble","Fumble","/KAC/skull-ink.png","You failed.<BR>──<BR>Immediately announce,<BR>if you have 3+ Fumbles or only Fumbles in your hand ➜ Catastrophe",""
 "chaos","Chaos","/KAC/whirlwind.png","Something unexpected happened.<BR>──<BR>Cannot be used for defense",""

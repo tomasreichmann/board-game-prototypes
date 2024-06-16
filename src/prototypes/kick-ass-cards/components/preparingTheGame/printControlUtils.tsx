@@ -65,12 +65,15 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
 };
 
 export const useItemAdapter = <T extends AnyRecord>(items: T[]) => {
-    const { defaultBleedMm, defaultCardSize } = usePrintControlsStore();
+    const { defaultBleedMm, defaultCardSize, flipSecondHalf } = usePrintControlsStore();
     const cardsPerPage = useCardsPerPage();
     return items.map((item, index) => ({
         ...item,
         bleedMm: defaultBleedMm,
         size: defaultCardSize,
-        style: { ...(item.style ?? {}), rotate: index % cardsPerPage >= cardsPerPage / 2 ? "180deg" : "0deg" },
+        style: {
+            ...(item.style ?? {}),
+            rotate: flipSecondHalf && index % cardsPerPage >= cardsPerPage / 2 ? "180deg" : "0deg",
+        },
     }));
 };

@@ -1,38 +1,38 @@
 "slug","title","icon","requirements","effect","deck","count"
-"seductive","Seductive","/LP/icons/lips.png",,"Receive a free Boost at the start of a social Encounter with a character that may find you attractive.",1
-"elusive","Elusive","/KAC/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.",1
-"evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",riding/driving/piloting,"+1 Effect on driving, riding, or piloting to avoid something.",1
-"charge","Charge","/KAC/charge.png",,"+1 Effect on melee attacking after moving to a zone.",1
-"ballistic","Ballistic","/KAC/ballistic.png",ranged or artillery weapon,"+1 Effect on shooting two or more zones away.",1
-"acrobatic","Acrobatic","/KAC/acrobat.png",,"You can play two Outcome cards to overcome a movement-based challenge.",1
-"calm","Calm Under Pressure","/KAC/calm.png",,"Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.",1
-"dontGiveUp","Don't Give Up","/KAC/dontGiveUp.png",,"You need +1 Distress to get Panicked or Hopeless.",1
-"bringThePain","Bring the Pain","/LP/icons/bringThePain.png",,"You need +1 Injury to get Unconscious.",1
-"rage","Rage","/KAC/rage.png",,"Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.",1
-"recklessAttack","Reckless Attack","/KAC/reckless-attack.png",,"Gain a Complication to add +1 Effect to your melee attack.",1
-"brushItOff","Brush It Off","/KAC/brush-it-off.png",,"Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.",1
-"joker","Joker","/KAC/joker.png",,"Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.",1
-"rallyingCry","Rallying Cry","/KAC/rallying-cry.png",,"Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.",1
-"ghost","Ghost","/KAC/ghost.png",,"You can choose to receive a Distress for a +2 Effect when trying to avoid detection.",1
-"allIn","All In","/KAC/all-in.png",,"You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.",1
-"kleptomaniac","Kleptomaniac","/KAC/pickpocket.png",,"When stealing or looting, you can play cards from your Outcome deck. Get an extra Asset for each Success, Distress for Fumble and Injury for Chaos.",1
-"foresight","Foresight","/KAC/crystal-ball.png",,"Receive a clue from the Storyteller in exchange for Distress.",1
-"burglar","Burglar","/KAC/burglar.png",,"You can choose to receive a Distress for a +2 Effect when trying to break into something.",1
-"tactical","Tactical","/KAC/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.",1
-"analytical","Analytical","/KAC/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.",1
-"sympathetic","Sympathetic","/KAC/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.",1
-"intuitive","Intuitive","/KAC/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.",1
-"fearless","Fearless","/KAC/fearless.png",,"You are always Panicked (you draw Outcome cards randomly), but you never turn Hopeless (You don't give up or flee), you get Hindered instead.",1
-"strategist","Strategist","/KAC/chess.png",,"Your Outcome card hand limit is increased by 1.",1
-"assassin","Assassin","/KAC/dagger.png",,"+2 Effect when you attack someone who is not aware of you.",1
-"ruthless","Ruthless","/KAC/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.",1
+"seductive","Seductive","/LP/icons/lips.png",,"Receive a free Boost at the start of a social Encounter with a character that may find you attractive.","universal",1
+"elusive","Elusive","/KAC/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.","universal",1
+"evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",riding/driving/piloting,"+1 Effect on driving, riding, or piloting to avoid something.","universal",1
+"charge","Charge","/KAC/charge.png",,"+1 Effect on melee attacking after moving to a zone.","universal",1
+"ballistic","Ballistic","/KAC/ballistic.png",ranged or artillery weapon,"+1 Effect on shooting two or more zones away.","universal",1
+"acrobatic","Acrobatic","/KAC/acrobat.png",,"You can play two Outcome cards to overcome a movement-based challenge.","universal",1
+"calm","Calm Under Pressure","/KAC/calm.png",,"Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.","universal",1
+"dontGiveUp","Don't Give Up","/KAC/dontGiveUp.png",,"You need +1 Distress to get Panicked or Hopeless.","universal",1
+"bringThePain","Bring the Pain","/LP/icons/bringThePain.png",,"You need +1 Injury to get Unconscious.","universal",1
+"rage","Rage","/KAC/rage.png",,"Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.","universal",1
+"recklessAttack","Reckless Attack","/KAC/reckless-attack.png",,"Gain a Complication to add +1 Effect to your melee attack.","universal",1
+"brushItOff","Brush It Off","/KAC/brush-it-off.png",,"Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.","universal",1
+"joker","Joker","/KAC/joker.png",,"Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.","universal",1
+"rallyingCry","Rallying Cry","/KAC/rallying-cry.png",,"Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.","universal",1
+"ghost","Ghost","/KAC/ghost.png",,"You can choose to receive a Distress for a +2 Effect when trying to avoid detection.","universal",1
+"allIn","All In","/KAC/all-in.png",,"You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.","universal",1
+"kleptomaniac","Kleptomaniac","/KAC/pickpocket.png",,"When stealing or looting, you can play cards from your Outcome deck. Get an extra Asset for each Success, Distress for Fumble and Injury for Chaos.","universal",1
+"foresight","Foresight","/KAC/crystal-ball.png",,"Receive a clue from the Storyteller in exchange for Distress.","universal",1
+"burglar","Burglar","/KAC/burglar.png",,"You can choose to receive a Distress for a +2 Effect when trying to break into something.","universal",1
+"tactical","Tactical","/KAC/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
+"analytical","Analytical","/KAC/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
+"sympathetic","Sympathetic","/KAC/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
+"intuitive","Intuitive","/KAC/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","universal",1
+"fearless","Fearless","/KAC/fearless.png",,"You are always Panicked (you draw Outcome cards randomly), but you never turn Hopeless (You don't give up or flee), you get Hindered instead.","universal",1
+"strategist","Strategist","/KAC/chess.png",,"Your Outcome card hand limit is increased by 1.","universal",1
+"assassin","Assassin","/KAC/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","universal",1
+"ruthless","Ruthless","/KAC/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.","universal",1
 "elemental","Elemental","/KAC/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","fantasy",1
 "timeStop","Time Stop","/KAC/time-stop.png",,"Receive a Distress to prevent a turn or round Clock from advancing.","fantasy",1
 "recklessPiloting","Reckless Driving","/KAC/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","modern",1
 "burst","Burst fire","/KAC/burst.png","repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","modern",1
-"whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.",,"modern",1
-"demoExpert","Demolitions Expert","/KAC/explosion.png",,"You never hit yourself with your own explosions.",,"modern",1
-"sharpshooter","Sharpshooter","/KAC/sharpshooter.png",ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.",,"modern",1
+"whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","modern",1
+"demoExpert","Demolitions Expert","/KAC/explosion.png",,"You never hit yourself with your own explosions.","modern",1
+"sharpshooter","Sharpshooter","/KAC/sharpshooter.png",ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","modern",1
 "overclock","Overclock","/KAC/overclock.png",,"Gain a Heat and draw an extra Outcome card to your hand.","modern",1
 "psychonaut","Psychonaut","/KAC/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","modern",1
 "chargedAttack","Charged attack","/KAC/charged.png",chargeable weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","sci-fi",1

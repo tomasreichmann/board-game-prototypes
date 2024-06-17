@@ -12,6 +12,7 @@ const outcomeColorClassNameMap: { [key: string]: string } = {
     "/KAC/bulls-eye.png": "text-kac-monster-dark",
     "/KAC/broken-coin.png": "text-kac-bone-dark",
     "/KAC/half-star.png": "text-kac-bone-dark",
+    "/KAC/silver-medal.png": "text-kac-steel-dark",
     "/KAC/half-clover.png": "text-kac-bone-dark",
     "/KAC/skull.png": "text-kac-iron-light",
     "/KAC/skull-ink.png": "text-kac-iron-light",

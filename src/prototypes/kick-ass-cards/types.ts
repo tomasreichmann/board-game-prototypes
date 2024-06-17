@@ -45,6 +45,7 @@ export type EffectType = {
 
 export type StuntType = {
     requirements?: string;
+    deck?: string;
 } & EffectType;
 
 export type ContentType<ComponentType = string> = {

@@ -50,6 +50,7 @@ export default function StuntCard({
     className,
     size = "Mini European",
     slug,
+    deck,
     title,
     icon,
     requirements,
@@ -90,8 +91,9 @@ export default function StuntCard({
                 <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
                     <div className="flex flex-row items-center gap-1">
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
-                        <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div>
-                        <IconOrImage icon="/KAC/fist.png" className={"text-kac-bone-dark text-opacity-50 h-4"} />
+                        {/* <div className="flex-1 text-kac-iron-light text-center text-xs invisible">{slug}</div> */}
+                        <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
+                        <IconOrImage icon="/KAC/fist.png" className="text-kac-bone-dark text-opacity-50 h-4" />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">

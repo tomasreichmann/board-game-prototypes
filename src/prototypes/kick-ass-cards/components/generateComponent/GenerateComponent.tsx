@@ -103,7 +103,7 @@ export default function GenerateComponent() {
                     error: null,
                 }));
                 console.log("useMistral success:", chatResponse);
-                const toolCall = chatResponse.choices[0].message?.tool_calls?.[0]?.function.arguments;
+                const toolCall = (chatResponse.choices[0].message as any).tool_calls?.[0]?.function.arguments;
                 if (toolCall) {
                     const props = JSON.parse(toolCall) as FilteredActorProps;
                     setActorProps((currentProps) => ({

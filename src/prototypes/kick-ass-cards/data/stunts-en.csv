@@ -1,7 +1,7 @@
 "slug","title","icon","requirements","effect","deck","count"
 "seductive","Seductive","/LP/icons/lips.png",,"Receive a free Boost at the start of a social Encounter with a character that may find you attractive.","universal",1
 "elusive","Elusive","/KAC/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.","universal",1
-"evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",riding/driving/piloting,"+1 Effect on driving, riding, or piloting to avoid something.","universal",1
+"evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",,"+1 Effect on driving, riding, or piloting to avoid something.","universal",1
 "charge","Charge","/KAC/charge.png",,"+1 Effect on melee attacking after moving to a zone.","universal",1
 "ballistic","Ballistic","/KAC/ballistic.png",ranged or artillery weapon,"+1 Effect on shooting two or more zones away.","universal",1
 "acrobatic","Acrobatic","/KAC/acrobat.png",,"You can play two Outcome cards to overcome a movement-based challenge.","universal",1

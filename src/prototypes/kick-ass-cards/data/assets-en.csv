@@ -18,3 +18,31 @@
 "holo-generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
 "barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage","","sci-fi",2
 "turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1
+"gambeson","Gambeson","/KAC/assets/gambeson.png","Light fabric armor. Negates 1 Injury from slashing damage.","","medieval",2
+"chainmail","Chainmail Armor","/KAC/assets/chainmail.png","Medium metal armor. Negates 1 Injury from slashing and piercing damage. -1 Effect when sneaking, running, climbing, swimming.","","medieval",2
+"plate-armor","Plate Armor","/KAC/assets/plate-armor.png","Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing, swimming.","","medieval",2
+"buckler","Buckler","/KAC/assets/buckler.png","Light metal shield. +1 Effect when defending from melee attack once per round.","","medieval",2
+"kite-shield","Kite Shield","/KAC/assets/kite-shield.png","Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing, swimming.","","medieval",2
+"dagger","Dagger","/KAC/assets/dagger.png","A light one-handed piercing melee weapon. Can be thrown 1 zone away.","","medieval",2
+"hand-axe","Hand Axe","/KAC/assets/hand-axe.png","A light one-handed slashing melee weapon. Can be thrown 1 zone away.","","medieval",2
+"longsword","Longsword","/KAC/assets/longsword.png","A medium one or two-handed piercing or slashing melee weapon. +1 Effect when slashing when wielded with both hands.","","medieval",2
+"zweihandler","Zweihänder","/KAC/assets/zweihandler.png","A heavy two-handed slashing melee weapon. +1 Effect when attacking.","","medieval",1
+"great-axe","Great Axe,"/KAC/assets/great-axe.png","A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.","","medieval",1
+"maul","Maul","/KAC/assets/maul.png","A heavy two-handed bludgeoning melee weapon. You can push an opponent to a neighbouring zone with a successful attack.","","medieval",1
+"mace","Mace","/KAC/assets/mace.png","A medium one-heanded bludgeoning melee weapon. 1 Injury negated by armor turns to Distress instead.","","medieval",2
+"flail","Flail",,"A medium one-handed bludgeoning melee weapon. Ignores shields.","","medieval",2
+"staff","Staff,,"A light two-handed bludgeoning melee polearm weapon. +1 Effect when tripping an enemy.","","medieval",2
+"spear","Spear,,"A medium two-handed piercing melee polearm weapon. Once per round outside your turn you can attack an enemy entering your zone.","","medieval",2
+"billhook","Billhook,,"A heavy two-handed piercing or slashing polearm weapon. +1 Effect against cavalry.","","medieval",2
+"hunting-bow","Hunting Bow",,"A light two-handed ranged weapon. Effective Range: 1-2 zones away. -1 Effect when shooting targets in the same zone.","","medieval",2
+"crossbow","Crossbow",,"A heavy two-handed ranged weapon. Effective Range: 1-2 zones. Ignores Plate Armor. -1 Effect while shooting targets in the same zone.","","medieval",2
+"hand-cannon","Hand Cannon",,"A heavy two-handed ranged weapon. Effective Range: 1-2 zones. Ignores Armor. Requires two Outcome cards over two turns to load and fire with the combined Effect of both cards.-1 Effect when shooting targets in the same zone.","","medieval",1
+"riding-horse","Riding Horse",,"Can move 2 zones per turn. Attacking infantry on horseback gives +1 Effect.","","medieval",4
+"wagon","Horse-drawn Wagon",,"Can move 2 zones per turn. Capacity 2 people in the front and up to 6 in the back. +1 Effect while defending from infantry.","","medieval",1
+"grappling-hook","Grappling Hook and rope",,"+1 Effect while climbing.","","medieval",1
+"lockpick-set","Lockpick Set",,"Allows picking locks.","","medieval",1
+"bandages","Bandages",,"Removes 2x Injury. Usable during battle.","","medieval",4
+"healing-salve","Healing Salve",,"+1 Effect when healing to remove Injuries. Not usable during battle.","","medieval",4
+"herbal-remedy","Herbal Remedy",,"Receive a Boost. Usable during battle.","","medieval",4
+"prayer-book","Prayer Book",,"+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",4
+"mead","Mead",,"Removes 2x Distress. Usable during battle.","","medieval",4

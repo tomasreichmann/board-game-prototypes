@@ -2,9 +2,9 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { EffectType } from "../../types";
-import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
+import { allSizes } from "../../../../components/print/paperSizes";
 
 type OptionalKeysType = "slug" | "count";
 
@@ -53,6 +53,8 @@ export default function EffectCard({
     const colorClassName =
         icon in colorClassNameMap ? colorClassNameMap[icon as keyof typeof colorClassNameMap] : "text-kac-steel-dark";
 
+    const isSmSize = allSizes[size].mm[1] < 70;
+
     return (
         <PaperOrDiv
             size={size}
@@ -95,13 +97,20 @@ export default function EffectCard({
                         <div
                             className={twMerge(
                                 "font-kacLogo text-kac-cloth text-lg leading-none text-center mb-1",
+                                isSmSize && "text-md",
                                 colorClassName
                             )}
                         >
                             {title}
                         </div>
                     </div>
-                    <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
+                    <div
+                        className={twMerge(
+                            "flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light text-balance",
+                            isSmSize && "text-[0.6rem]",
+                            "leading-tight"
+                        )}
+                    >
                         <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
                     </div>
                     {children}

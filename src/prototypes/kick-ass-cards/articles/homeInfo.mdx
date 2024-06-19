@@ -1,5 +1,10 @@
 ---
+defaultCardProps: {
+    className: "rounded-lg overflow-hidden not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none",
+    size: "Mini European"
+}
 ---
+
 
 ### Kick Ass Cards is a tabletop game system to run narrative games. It is setting independent, focused on roleplay and building drama.
 
@@ -31,13 +36,13 @@ The system supports all kinds of gameplay:
 import outcomes from "../data/outcomes-en.csv";
 
 <Hand
-    className="h-[300px] max-w-[800px]"
+    className="h-[95mm] max-w-[800px]"
     items={[
-        <Outcome key={outcomes[0].slug} {...outcomes[0]} className="not-prose" />,
-        <Outcome key={outcomes[1].slug} {...outcomes[1]} className="not-prose" />,
-        <Outcome key={outcomes[2].slug} {...outcomes[2]} className="not-prose" />,
-        <Outcome key={outcomes[3].slug} {...outcomes[3]} className="not-prose" />,
-        <Outcome key={outcomes[4].slug} {...outcomes[4]} className="not-prose" />,
+        <Outcome key={outcomes[0].slug} {...outcomes[0]} {...defaultCardProps} />,
+        <Outcome key={outcomes[1].slug} {...outcomes[1]} {...defaultCardProps} />,
+        <Outcome key={outcomes[2].slug} {...outcomes[2]} {...defaultCardProps} />,
+        <Outcome key={outcomes[3].slug} {...outcomes[3]} {...defaultCardProps} />,
+        <Outcome key={outcomes[4].slug} {...outcomes[4]} {...defaultCardProps} />,
     ]}
 />
 
@@ -55,11 +60,12 @@ The storyteller describes how the Tragedy severly hurt the player. E.g. Player g
     className="w-full max-w-[600px] h-[400px] mb-4"
     items={[
         <div>
-            <h3 className="font-kacHeading text-kac-blood text-md font-bold text-center" >Sample Actor Card</h3>
+            <h3 className="font-kacHeading text-kac-blood text-md font-bold text-center" >Sample Actor</h3>
             <Actor
-                size="US game"
+                {...defaultCardProps}
                 imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
                 imagePosition="center top"
+                imageFit="cover"
                 name="Unending Crowd of Zombies"
                 threat="Clawing attack: 1x Wound"
                 notes="Infection: on Fumble during defense -> gain Zombie infection"
@@ -67,14 +73,14 @@ The storyteller describes how the Tragedy severly hurt the player. E.g. Player g
 
         </div>,
         <div>
-            <h3 className="font-kacHeading text-kac-blood text-md font-bold text-center" >Sample Counter Card</h3>
+            <h3 className="font-kacHeading text-kac-blood text-md font-bold text-center" >Sample Counter</h3>
             <Clock
-                size="US game"
+                {...defaultCardProps}
                 title="Suspition of Zombies"
                 current={0}
                 total={4}
                 threat="They will attack"
-                reward="Zombies"
+                reward="Zombies ignore you"
             />
 
         </div>
@@ -88,9 +94,9 @@ The storyteller describes how the Tragedy severly hurt the player. E.g. Player g
 -   Injuries can be removed by specific cards or by a treatment action.
 
 <List>
-    <Effect {...effects[0]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[2]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[3]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[0]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[2]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[3]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
 </List>
 
 ### Distress
@@ -101,9 +107,9 @@ The storyteller describes how the Tragedy severly hurt the player. E.g. Player g
 -   Hope can be restored by resting, encouraging ally actions, or indulging in their Vice.
 
 <List>
-    <Effect {...effects[1]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[4]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
-    <Effect {...effects[5]} className="not-prose card-up card" broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[1]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[4]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
+    <Effect {...effects[5]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
 </List>
 
 ## Stunts

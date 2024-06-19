@@ -15,6 +15,20 @@ import Deck from "../layout/Deck";
 import { actors, clocks, defaultClockProps, assets } from "../../data/encounters/LP-common-en";
 import { outcomeMap } from "../../data/outcomeDeck";
 import { effectMap } from "../../data/effects-deck-en";
+import { cardSizes } from "../../../../components/print/paperSizes";
+
+const largeCardSize = "54x86" as const;
+const defaultCardSize = "Mini European" as const;
+const defaultClassName =
+    "rounded-lg overflow-hidden not-prose relative drop-shadow-md print:drop-shadow-none print:filter-none";
+const defaultCardProps = {
+    className: defaultClassName,
+    size: defaultCardSize,
+};
+const defaultActorCardProps = {
+    ...defaultCardProps,
+    size: largeCardSize,
+};
 
 export default function InfoRoute() {
     return (
@@ -38,41 +52,75 @@ export default function InfoRoute() {
                             <Spread
                                 className="w-full max-w-[700px] h-[350px]"
                                 items={[
-                                    <ActorCard {...actors.security_robots} />,
-                                    <ActorCard {...actors.endless_swarm_of_spore_drones} />,
-                                    <Clock {...defaultClockProps} {...clocks.suspicion_of_security_robots} />,
+                                    <ActorCard
+                                        {...actors.security_robots}
+                                        {...defaultActorCardProps}
+                                        imageFit="cover"
+                                    />,
+                                    <ActorCard
+                                        {...actors.endless_swarm_of_spore_drones}
+                                        {...defaultActorCardProps}
+                                        imageFit="cover"
+                                    />,
+                                    <Clock
+                                        {...defaultClockProps}
+                                        {...clocks.suspicion_of_security_robots}
+                                        {...defaultActorCardProps}
+                                    />,
                                 ]}
                             />
                             <div className="w-full flex flex-row items-center my-4 max-w-[700px] self-center">
                                 <Deck
-                                    className="w-[300px] h-[250px]"
+                                    style={{
+                                        height: cardSizes[defaultCardSize].mm[1] + "mm",
+                                        width: cardSizes[defaultCardSize].mm[0] + "mm",
+                                    }}
                                     items={[
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
-                                        <OutcomeCardBackFace className="drop-shadow-md" />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
+                                        <OutcomeCardBackFace {...defaultCardProps} />,
                                     ]}
                                 />
                                 <Hand
-                                    className="flex-1 max-w-[400px] h-[300px] z-10"
+                                    className="flex-1 z-40"
+                                    style={{
+                                        height: cardSizes[defaultCardSize].mm[1] * 1.25 + "mm",
+                                        width: cardSizes[defaultCardSize].mm[0] * 4 + "mm",
+                                        marginTop: "5mm",
+                                    }}
                                     items={[
-                                        <OutcomeCard key="0" {...outcomeMap.success} />,
-                                        <OutcomeCard key="1" {...outcomeMap.fumble} />,
-                                        <OutcomeCard key="2" {...outcomeMap.special} />,
+                                        <OutcomeCard key="0" {...outcomeMap.success} {...defaultCardProps} />,
+                                        <OutcomeCard key="1" {...outcomeMap.fumble} {...defaultCardProps} />,
+                                        <OutcomeCard key="2" {...outcomeMap.special} {...defaultCardProps} />,
                                     ]}
                                 />
                             </div>
                             <Spread
-                                className="w-full max-w-[1000px] h-[250px]"
+                                className="w-full max-w-[1000px] mb-[5mm]"
+                                style={{
+                                    height: cardSizes[defaultCardSize].mm[1] + "mm",
+                                    width: cardSizes[defaultCardSize].mm[0] * 3 + "mm",
+                                }}
                                 items={[
-                                    <EffectCard key="wound" {...effectMap.wound} />,
-                                    <EffectCard key="complication" {...effectMap.complication} />,
-                                    <AssetCard key="rapid_regen" {...assets.rapid_regen} />,
-                                    <AssetCard key="rage" {...assets.rage} />,
-                                    <AssetCard key="medi_gel" {...assets.medi_gel} />,
+                                    <EffectCard key="wound" {...effectMap.wound} {...defaultCardProps} />,
+                                    <EffectCard key="distress" {...effectMap.distress} {...defaultCardProps} />,
+                                    <EffectCard key="complication" {...effectMap.complication} {...defaultCardProps} />,
+                                ]}
+                            />
+                            <Spread
+                                className="w-full max-w-[1000px]"
+                                style={{
+                                    height: cardSizes[defaultCardSize].mm[1] + "mm",
+                                    width: cardSizes[defaultCardSize].mm[0] * 3 + "mm",
+                                }}
+                                items={[
+                                    <AssetCard key="rapid_regen" {...assets.rapid_regen} {...defaultCardProps} />,
+                                    <AssetCard key="rage" {...assets.rage} {...defaultCardProps} />,
+                                    <AssetCard key="medi_gel" {...assets.medi_gel} {...defaultCardProps} />,
                                 ]}
                             />
                         </div>

@@ -1,14 +1,14 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-interface DeckProps {
+export type DeckProps = {
     className?: string;
     items: JSX.Element[];
-}
+} & React.HTMLAttributes<HTMLDivElement>;
 
-const Deck: React.FC<DeckProps> = ({ className, items }) => {
+const Deck: React.FC<DeckProps> = ({ className, items, ...restProps }) => {
     return (
-        <div className={twMerge("Deck w-full flex flex-row justify-center", className)}>
+        <div className={twMerge("Deck w-full flex flex-row justify-center", className)} {...restProps}>
             <div className={twMerge("relative")}>
                 {items.map((item, index) => (
                     <div

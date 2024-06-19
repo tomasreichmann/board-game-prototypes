@@ -4,6 +4,7 @@ import { OutcomeType } from "../../types";
 import RichText from "../RichText";
 import { twMerge } from "tailwind-merge";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
+import { allSizes } from "../../../../components/print/paperSizes";
 
 export type OutcomeCardProps = React.PropsWithChildren<OutcomeType & Partial<PaperProps>>;
 
@@ -43,6 +44,9 @@ export default function OutcomeCard({
         bleedBottomMm = bleedMm,
         bleedLeftMm = bleedMm,
     } = restProps;
+
+    const isSmSize = allSizes[size].mm[1] < 70;
+
     return (
         <PaperOrDiv
             size={size}
@@ -83,7 +87,9 @@ export default function OutcomeCard({
                         </div>
                         <div
                             className={twMerge(
-                                "font-kacLogo text-kac-cloth text-lg leading-none text-center mb-1",
+                                "font-kacLogo text-kac-cloth text-lg text-center mb-1",
+                                isSmSize && "text-md",
+                                "leading-none",
                                 colorClassName
                             )}
                         >
@@ -91,7 +97,13 @@ export default function OutcomeCard({
                         </div>
                     </div>
 
-                    <div className="flex-1 basis-[40%] text-xs text-center text-kac-iron-light leading-tight text-balance ">
+                    <div
+                        className={twMerge(
+                            "flex-1 basis-[40%] text-xs text-center text-kac-iron-light text-balance",
+                            isSmSize && "text-[0.6rem]",
+                            "leading-tight"
+                        )}
+                    >
                         <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>
                             {description}
                         </RichText>

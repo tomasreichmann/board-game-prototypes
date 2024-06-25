@@ -4,6 +4,7 @@ import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMa
 import PrintPage, { PrintPageProps } from "../../../../components/print/PrintPage/PrintPage";
 import DataToggle from "../../../../components/DataToggle";
 import { twMerge } from "tailwind-merge";
+import ColorBars from "../../../../components/print/PrintMarker/ColorBars";
 
 export type ChunkedPagesProps<T, B> = {
     Component: React.ComponentType<T>;
@@ -21,6 +22,7 @@ export type ChunkedPagesProps<T, B> = {
     itemsPerPage: number;
     label?: string;
     labelPosition?: "top" | "bottom" | "left" | "right";
+    showColorBars?: boolean;
 };
 
 export default function ChunkedPages<T, B>({
@@ -39,6 +41,7 @@ export default function ChunkedPages<T, B>({
     pageContentProps,
     frontFacePageContentProps = pageContentProps,
     backFacePageContentProps = pageContentProps,
+    showColorBars = false,
 }: ChunkedPagesProps<T, B>) {
     const pagesPerCard = BackFaceComponent ? 2 : 1;
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
@@ -77,6 +80,7 @@ export default function ChunkedPages<T, B>({
                             })}
                             <div className={labelClassName}>
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
+                                {showColorBars ? <ColorBars /> : undefined}
                             </div>
                             {backChildren}
                         </div>
@@ -97,6 +101,7 @@ export default function ChunkedPages<T, B>({
                                 ))}
                                 <div className={labelClassName}>
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}
+                                    {showColorBars ? <ColorBars /> : undefined}
                                 </div>
                                 {frontChildren}
                             </div>

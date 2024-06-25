@@ -1,3 +1,5 @@
+import ColorBars from "../../../../components/print/PrintMarker/ColorBars";
+import RegistrationMark from "../../../../components/print/PrintMarker/RegistrationMark";
 import { getPaperFitCountByFormat } from "../../../../components/print/PrintPage/PrintPage";
 import { AnyRecord } from "../../../../utils/simpleTypes";
 import { ChunkedPagesProps } from "../print/ChunkedPages";
@@ -48,7 +50,13 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             bleedInMm: 0,
             marginsInMm: defaultPageMarginsMm,
             children: showHorizontalBend ? (
-                <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                <>
+                    <RegistrationMark className="absolute top-0 left-0" />
+                    <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                    <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
+                    <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
+                    <RegistrationMark className="absolute bottom-0 right-0" />
+                </>
             ) : undefined,
         },
         backFacePrintPageProps: {
@@ -57,7 +65,13 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             bleedInMm: 0,
             marginsInMm: defaultPageMarginsMm,
             children: showHorizontalBend ? (
-                <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                <>
+                    <RegistrationMark className="absolute top-0 left-0" />
+                    <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                    <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
+                    <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
+                    <RegistrationMark className="absolute bottom-0 right-0" />
+                </>
             ) : undefined,
         },
         labelPosition: pageLabelPosition,

@@ -13,6 +13,7 @@ import OutcomeCardsPrintControls from "./OutcomeCardsPrintControls";
 import TemplatePrintControls from "./TemplatePrintControls";
 import BoxPrintControls from "./BoxPrintControls";
 import StuntCardsPrintControls from "./StuntCardsPrintControls";
+import AssetCardsPrintControls from "./AssetCardsPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -38,6 +39,7 @@ export const componentControlsMap = {
     "Blank Actor Cards": ActorCardsPrintControls,
     "Blank Clock Cards": ClocksCardsPrintControls,
     "Stunt Cards": StuntCardsPrintControls,
+    "Asset Cards": AssetCardsPrintControls,
     Box: BoxPrintControls,
 };
 
@@ -226,7 +228,7 @@ export default function PaperAndCardControls({ className }: PaperAndCardControls
                 label="Bleed (mm)"
                 className="w-32"
                 value={defaultBleedMm}
-                onChange={(event) => setDefaultBleedMm(parseInt(event.target.value))}
+                onChange={(event) => setDefaultBleedMm(event.target.valueAsNumber)}
             />
             <div className="flex flex-col">
                 <Text Component="span" variant="body" className={twMerge("text-kac-steel")}>

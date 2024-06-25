@@ -2,49 +2,11 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { StuntType } from "../../types";
-import Icon, { IconType, iconMap } from "../Icon";
 import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 // import "./StuntCard.css";
 
 export type StuntCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<StuntType, "count">>;
-
-const effectSizeClassNameMap: { [key: string]: string } = {
-    //"/LP/icons/doom.png": "h-24",
-};
-
-const outcomeColorClassNameMap: { [key in IconType]?: string } = {
-    //drop: "text-kac-blood-dark",
-};
-
-const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;
-const getGraphics = (icon: StuntType["icon"]) => {
-    if (!icon) {
-        return null;
-    }
-    if (isIcon(icon)) {
-        return (
-            <Icon
-                icon={icon}
-                className={twMerge(
-                    "absolute left-0 top-1/2 -translate-y-1/2 h-full w-full object-contain max-h-16",
-                    outcomeColorClassNameMap[icon] || "text-kac-bone-dark",
-                    effectSizeClassNameMap[icon] || "h-16"
-                )}
-            />
-        );
-    }
-    return (
-        <img
-            className={twMerge(
-                "absolute left-0 top-1/2 -translate-y-1/2 h-full w-full object-contain max-h-16",
-                effectSizeClassNameMap[icon] || "max-h-16"
-            )}
-            src={icon}
-            alt=""
-        />
-    );
-};
 
 export default function StuntCard({
     className,
@@ -65,7 +27,6 @@ export default function StuntCard({
         bleedBottomMm = bleedMm,
         bleedLeftMm = bleedMm,
     } = restProps;
-    const graphics = getGraphics(icon);
     return (
         <PaperOrDiv
             size={size}
@@ -93,13 +54,13 @@ export default function StuntCard({
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
                         {/* <div className="flex-1 text-kac-iron-light text-center text-xs invisible">{slug}</div> */}
                         <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/KAC/fist.png" className="text-kac-bone-dark text-opacity-50 h-4" />
+                        <IconOrImage icon="/KAC/backpack.png" className="text-kac-bone-dark text-opacity-50 h-4" />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
                             <IconOrImage icon={icon} className="absolute w-full h-full object-contain drop-shadow-lg" />
                         </div>
-                        <div className="font-kacLogo text-kac-gold-darker text-lg leading-none text-center mb-1">
+                        <div className="font-kacLogo text-kac-iron-light text-lg leading-none text-center mb-1">
                             {title}
                         </div>
                     </div>
@@ -150,13 +111,13 @@ export const StuntCardBackFace = ({
                 }}
             >
                 <img
-                    src="/KAC/stunt-back-face.png"
+                    src="/KAC/asset-back-face.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
                 <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
                     <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
-                        Stunt
+                        Asset
                     </div>
                     {children}
                 </div>

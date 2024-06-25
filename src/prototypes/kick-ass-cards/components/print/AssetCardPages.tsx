@@ -3,11 +3,12 @@ import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiply
 import AssetCard, { AssetCardBackFace } from "../gameComponents/AssetCard";
 import ChunkedPages from "./ChunkedPages";
 
-const CARDS_PER_PAGE = 4 * 4;
+const CARDS_PER_PAGE = 3 * 3;
 const assetItems = multiplyByCount(assets, "count", defaultCountAdapter).map((item) => ({
     ...item,
     bleedMm: 3,
     className: "relative -m-[3mm]",
+    size: "54x86",
 }));
 export default function AssetCardPages() {
     return (

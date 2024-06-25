@@ -16,6 +16,7 @@ export const effectCardJsonSchema: JSONSchemaType<Omit<EffectCardProps, keyof Pa
         icon: { type: "string", enum: Object.keys(iconMap) },
         effect: { type: "string" },
         count: { type: "integer", minimum: 0, nullable: true },
+        deck: { type: "string", minimum: 0, nullable: true },
     },
     required: ["title", "effect", "icon"],
     additionalProperties: false,

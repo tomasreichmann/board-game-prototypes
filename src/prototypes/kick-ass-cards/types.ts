@@ -32,6 +32,7 @@ export type AssetType = {
     icon: IconType | string;
     effect: string;
     cost: number;
+    deck?: string;
     count: number;
 };
 
@@ -40,13 +41,18 @@ export type EffectType = {
     title: string;
     icon: IconType | string;
     effect: string;
+    deck?: string;
     count?: number;
 };
 
 export type StuntType = {
+    slug?: string;
+    title: string;
+    icon: IconType | string;
+    effect: string;
     requirements?: string;
     deck?: string;
-} & EffectType;
+};
 
 export type ContentType<ComponentType = string> = {
     children?: string | ContentType[];

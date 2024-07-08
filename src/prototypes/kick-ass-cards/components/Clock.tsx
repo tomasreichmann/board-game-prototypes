@@ -10,6 +10,7 @@ export type ClockProps = React.PropsWithChildren<
         className?: string;
         size?: PaperProps["size"];
         forPrint?: boolean;
+        icon?: string | null;
         title?: string | null;
         reward?: string | null;
         threat?: string | null;
@@ -22,6 +23,7 @@ export type ClockProps = React.PropsWithChildren<
 export default function Clock({
     className,
     forPrint,
+    icon,
     title = forPrint ? "" : null,
     reward = forPrint ? "" : null,
     threat = forPrint ? "" : null,

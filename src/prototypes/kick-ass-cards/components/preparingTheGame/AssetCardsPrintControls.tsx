@@ -16,18 +16,17 @@ export default function AssetCardsPrintControls({ className }: AssetCardsPrintCo
     const chunkedPagesProps = useChunkedPagesProps();
 
     const items = useItemAdapter(
-        multiplyByCount(assets, "count", defaultCountAdapter)
-            .map((item) => ({
-                ...item,
-                className: "relative",
-            }))
-            .sort((a, b) => {
+        multiplyByCount(assets, "count", defaultCountAdapter).map((item) => ({
+            ...item,
+            className: "relative",
+        }))
+        /* .sort((a, b) => {
                 const deckCompare = a.deck.localeCompare(b.deck);
                 if (deckCompare !== 0) {
                     return deckCompare;
                 }
                 return a.title.localeCompare(b.title);
-            })
+            }) */
     );
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>

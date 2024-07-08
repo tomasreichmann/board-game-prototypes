@@ -1,10 +1,9 @@
 import React from "react";
-import Ajv, { JSONSchemaType } from "ajv";
+import { JSONSchemaType } from "ajv";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { AssetType } from "../../types";
-import Icon, { IconType, iconMap } from "../Icon";
+import Icon, { IconType } from "../Icon";
 import RichText from "../RichText";
-import Image from "../Image";
 import { twMerge } from "tailwind-merge";
 import ComponentMetaType from "../generation/ComponentMetaType";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
@@ -111,45 +110,6 @@ export const assetCardMeta: ComponentMetaType<AssetCardProps> = {
     },
     schema: assetCardSchema as JSONSchemaType<AssetCardProps>,
 };
-
-const effectSizeClassNameMap: { [key in IconType]?: string } = {
-    //SPECIAL: "h-24",
-};
-
-const outcomeColorClassNameMap: { [key in IconType]?: string } = {
-    bandageRoll: "text-slate-400",
-    plainDagger: "text-kac-steel-dark",
-    grapple: "text-kac-cloth",
-    smokeBomb: "text-kac-iron",
-    lockpicks: "text-kac-iron-light",
-    humanEar: "text-kac-skin-dark",
-    paranoia: "text-kac-cloth",
-    dart: "text-kac-cloth-dark",
-    crossbow: "text-kac-steel-dark",
-    caltrops: "text-kac-steel-dark",
-    lanternFlame: "text-kac-gold",
-    barrel: "text-kac-bone-dark",
-    explosiveMaterials: "text-kac-fire",
-    heartBottle: "text-kac-blood-light",
-    pestleMortar: "text-kac-curse",
-    poisonBottle: "text-kac-monster",
-    bigDiamondRing: "text-kac-gold",
-    blackBook: "text-kac-bone-dark",
-    drinkMe: "text-kac-curse-light",
-    key: "text-kac-gold-dark",
-    prankGlasses: "text-kac-skin-dark",
-    ropeCoil: "text-kac-bone-dark",
-    rupee: "text-kac-fire-dark",
-    scrollQuill: "text-kac-bone",
-    swapBag: "text-kac-bone-dark",
-    tiedScroll: "text-kac-bone",
-    toolbox: "text-kac-bone-dark",
-    magicPotion: "text-kac-bone-dark",
-    woodenCrate: "text-kac-bone-dark",
-    slingshot: "text-kac-bone-dark",
-};
-
-const isIcon = (maybeIcon: string): maybeIcon is IconType => maybeIcon in iconMap;
 
 export default function AssetCard({
     className,

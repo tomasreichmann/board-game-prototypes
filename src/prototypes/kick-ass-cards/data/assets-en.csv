@@ -17,18 +17,18 @@
 "heat-blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Heat)","","sci-fi",2
 "holo-generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
 "barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage","","sci-fi",2
-"turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1
+"turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1
 "gambeson","Gambeson","/KAC/assets/gambeson.png","Light fabric armor. Negates 1 Injury from slashing damage.","","medieval",4
 "chainmail","Chainmail","/KAC/assets/chainmail.png","Medium metal armor. Negates 1 Injury from slashing and piercing damage. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
 "plate-armor","Plate Armor","/KAC/assets/plate-armor.png","Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing or swimming.","","medieval",2
-"buckler","Buckler","/KAC/assets/buckler.png","Light metal shield. +1 Effect when defending from melee attack once per round.","","medieval",2
-"kite-shield","Kite Shield","/KAC/assets/kite-shield.png","Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
+"buckler","Buckler","/KAC/assets/buckler.png","Light metal shield. +1 Effect when defending from melee attack once per round.","","medieval",2
+"kite-shield","Kite Shield","/KAC/assets/kite-shield.png","Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
 "dagger","Dagger","/KAC/assets/dagger.png","A light one-handed piercing melee weapon. Can be thrown 1 zone away.","","medieval",2
 "hand-axe","Hand Axe","/KAC/assets/hand-axe.png","A light one-handed slashing melee weapon. Can be thrown 1 zone away.","","medieval",2
 "longsword","Longsword","/KAC/assets/longsword.png","A medium one- or two-handed piercing or slashing melee weapon. +1 Effect when slashing when wielded with both hands.","","medieval",2
 "zweihandler","Zweihänder","/KAC/assets/zweihandler.png","A heavy two-handed slashing melee weapon. +1 Effect when attacking.","","medieval",2
 "great-axe","Greataxe","/KAC/assets/great-axe.png","A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.","","medieval",2
-"war-hammer","War Hammer","/KAC/assets/war-hammer.png","A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.","","medieval",2
+"war-hammer","War Hammer","/KAC/assets/war-hammer.png","A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.","","medieval",2
 "mace","Mace","/KAC/assets/mace.png","A medium one-handed bludgeoning melee weapon. 1 Injury negated by armor turns to Distress instead.","","medieval",2
 "morningstar ","Morningstar","/KAC/assets/morningstar.png","A medium one-handed bludgeoning melee weapon. Ignores shields.","","medieval",2
 "staff","Staff","/KAC/assets/staff.png","A light two-handed bludgeoning melee polearm weapon. +1 Effect when tripping an enemy.","","medieval",2
@@ -46,3 +46,7 @@
 "herbal-remedy","Herbal Remedy","/KAC/assets/herbal-remedy.png","Receive a Boost. Usable during battle. Consumed after use.","","medieval",4
 "prayer-book","Prayer Book","/KAC/assets/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
 "mead","Mead","/KAC/assets/mead.png","Removes 2x Distress. Usable during battle. Consumed after use.","","medieval",4
+"granade","Granade","/KAC/assets/granade.png","Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.","","medieval",2
+"lantern","Lantern","/KAC/assets/lantern.png","Provides light in the current zone. Can be used in the rain. Does not count as an open flame.","","medieval",4
+"torch","Torch","/KAC/assets/torch.png","Provides light in the current zone. Cannot be used in the rain. Counts as an open flame","","medieval",4
+"cannon","Cannon","/KAC/assets/cannon.png","A heavy explosive artillery weapon. Effective Range: 2+ zones away. -1 Effect when shooting targets 1 zone away. Cannot target the same zone. Ignores all shields and armor. Damages everything in the zone.","","medieval",4

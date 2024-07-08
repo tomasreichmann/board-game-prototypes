@@ -7,6 +7,7 @@ export const clockJsonSchema: JSONSchemaType<Omit<ClockProps, keyof PaperProps>>
     properties: {
         slug: { type: "string", nullable: true },
         forPrint: { type: "boolean", nullable: true },
+        icon: { type: "string", nullable: true },
         title: { type: "string", nullable: true },
         reward: { type: "string", nullable: true },
         threat: { type: "string", nullable: true },

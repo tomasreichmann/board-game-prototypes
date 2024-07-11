@@ -49,30 +49,34 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             orientation: pageOrientation,
             bleedInMm: 0,
             marginsInMm: defaultPageMarginsMm,
-            children: showHorizontalBend ? (
+            children: (
                 <>
                     <RegistrationMark className="absolute top-0 left-0" />
-                    <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                    {showHorizontalBend && (
+                        <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                    )}
                     <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
                     <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
                     <RegistrationMark className="absolute bottom-0 right-0" />
                 </>
-            ) : undefined,
+            ),
         },
         backFacePrintPageProps: {
             size: defaultPaperSize,
             orientation: pageOrientation,
             bleedInMm: 0,
             marginsInMm: defaultPageMarginsMm,
-            children: showHorizontalBend ? (
+            children: (
                 <>
                     <RegistrationMark className="absolute top-0 left-0" />
-                    <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                    {showHorizontalBend && (
+                        <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
+                    )}
                     <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
                     <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
                     <RegistrationMark className="absolute bottom-0 right-0" />
                 </>
-            ) : undefined,
+            ),
         },
         labelPosition: pageLabelPosition,
     };

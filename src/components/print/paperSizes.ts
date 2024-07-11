@@ -353,6 +353,11 @@ export const cardSizes = {
         points: [153, 244],
         inches: [2.13, 3.39],
     },
+    "54x96": {
+        mm: [54, 96],
+        points: [153, 272],
+        inches: [2.13, 3.78],
+    },
 };
 
 export const paperSizes = {

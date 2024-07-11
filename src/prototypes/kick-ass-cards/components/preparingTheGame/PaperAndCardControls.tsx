@@ -16,6 +16,7 @@ import StuntCardsPrintControls from "./StuntCardsPrintControls";
 import AssetCardsPrintControls from "./AssetCardsPrintControls";
 import MedievalActorCardsPrintControls from "./MedievalActorCardsPrintControls";
 import CounterCardsPrintControls from "./CounterCardsPrintControls";
+import DividersPrintControls from "./DividersPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -44,6 +45,7 @@ export const componentControlsMap = {
     "Stunt Cards": StuntCardsPrintControls,
     "Asset Cards": AssetCardsPrintControls,
     "Medieval Actors": MedievalActorCardsPrintControls,
+    Dividers: DividersPrintControls,
     Box: BoxPrintControls,
 };
 

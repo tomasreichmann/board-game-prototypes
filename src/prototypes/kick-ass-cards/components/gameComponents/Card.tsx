@@ -88,9 +88,16 @@ export const CardBody = ({ className, icon, iconClassName, title, titleClassName
 
 export type CardProps = {
     size?: PaperProps["size"];
+    backgroundImageUri?: string;
 } & Omit<PaperProps, "size">;
 
-export default function Card({ className, children, size = "54x86", ...restProps }: CardProps) {
+export default function Card({
+    className,
+    children,
+    backgroundImageUri = "/KAC/paper.png",
+    size = "54x86",
+    ...restProps
+}: CardProps) {
     const {
         bleedMm = 0,
         bleedTopMm = bleedMm,
@@ -116,7 +123,7 @@ export default function Card({ className, children, size = "54x86", ...restProps
                 }}
             >
                 <img
-                    src="/KAC/paper.png"
+                    src={backgroundImageUri}
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />

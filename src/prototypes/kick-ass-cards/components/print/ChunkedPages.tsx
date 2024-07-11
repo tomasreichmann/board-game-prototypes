@@ -47,12 +47,12 @@ export default function ChunkedPages<T, B>({
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
     const labelClassName = twMerge(
         "text-xs font-kacHeading text-kac-iron w-full text-center z-10 absolute",
-        labelPosition === "bottom" && "bottom-[2mm] print:bottom-[2mm]",
-        labelPosition === "top" && "top-[2mm] print:top-[2mm]",
+        labelPosition === "bottom" && "bottom-[3mm] print:bottom-[3mm]",
+        labelPosition === "top" && "top-[3mm] print:top-[3mm]",
         labelPosition === "left" &&
-            "left-[2mm] print:left-[2mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
+            "left-[3mm] print:left-[3mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
         labelPosition === "right" &&
-            "right-[2mm] print:right-[2mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
+            "right-[3mm] print:right-[3mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
     );
     const { children: frontChildren, ...frontFacePrintPagePropsRest } = frontFacePrintPageProps ?? {};
     const { children: backChildren, ...backFacePrintPagePropsRest } = backFacePrintPageProps ?? {};
@@ -65,6 +65,7 @@ export default function ChunkedPages<T, B>({
                             {...backFacePageContentProps}
                             className={twMerge(
                                 "relative flex-1 flex flex-row-reverse flex-wrap content-start items-center justify-center",
+                                backFacePageContentProps?.className,
                                 backFacePageContentClassName
                             )}
                         >
@@ -93,6 +94,7 @@ export default function ChunkedPages<T, B>({
                                 {...frontFacePageContentProps}
                                 className={twMerge(
                                     "relative flex-1 flex flex-wrap content-start items-center justify-center",
+                                    frontFacePageContentProps?.className,
                                     frontFacePageContentClassName
                                 )}
                             >

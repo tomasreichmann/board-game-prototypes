@@ -1,0 +1,88 @@
+const dividers = [
+    {
+        heading: "Stunts",
+        imageUri: "/KAC/fist.png",
+        iconUri: "/KAC/fist.png",
+        backfaceUri: "/KAC/stunt-back-face.png",
+        color: "bg-kac-gold-dark",
+    },
+    {
+        heading: "Injury, Unconscious",
+        imageUri: "/KAC/blood.png",
+        iconUri: "/KAC/heartbeat.png",
+        backfaceUri: "/KAC/effect-back-face.png",
+        color: "bg-kac-blood-light",
+    },
+    {
+        heading: "Distress, Panicked, Hopeless",
+        imageUri: "/KAC/distress2.png",
+        iconUri: "/KAC/heartbeat.png",
+        backfaceUri: "/KAC/effect-back-face.png",
+        color: "bg-kac-blood-light",
+    },
+    {
+        heading: "Heat, Frost",
+        imageUri: "/KAC/sun.png",
+        iconUri: "/KAC/heartbeat.png",
+        backfaceUri: "/KAC/effect-back-face.png",
+        color: "bg-kac-blood-light",
+    },
+    {
+        heading: "Boost, Complication, Hindered, Stuck",
+        imageUri: "/KAC/sprint.png",
+        iconUri: "/KAC/heartbeat.png",
+        backfaceUri: "/KAC/effect-back-face.png",
+        color: "bg-kac-blood-light",
+    },
+    {
+        heading: "Doom",
+        imageUri: "/KAC/doom.png",
+        iconUri: "/KAC/heartbeat.png",
+        backfaceUri: "/KAC/effect-back-face.png",
+        color: "bg-kac-blood-light",
+    },
+    {
+        heading: "Counters",
+        imageUri: "/KAC/counters/danger.png",
+        iconUri: "/KAC/counters/time.png",
+        backfaceUri: "/KAC/clock-back-face.png",
+        color: "bg-kac-curse-light",
+    },
+    {
+        heading: "Medieval – Actors",
+        imageUri: "/KAC/actors/medieval/knight.png",
+        iconUri: "/KAC/actor.png",
+        backfaceUri: "/KAC/actor-back-face.png",
+        color: "bg-kac-monster",
+    },
+    {
+        heading: "Medieval – Melee Weapons",
+        imageUri: "/KAC/assets/medieval/longsword.png",
+        iconUri: "/KAC/backpack.png",
+        backfaceUri: "/KAC/asset-back-face.png",
+        color: "bg-kac-steel-dark",
+    },
+    {
+        heading: "Medieval – Ranged Weapons",
+        imageUri: "/KAC/assets/medieval/crossbow.png",
+        iconUri: "/KAC/backpack.png",
+        backfaceUri: "/KAC/asset-back-face.png",
+        color: "bg-kac-steel-dark",
+    },
+    {
+        heading: "Medieval – Armor, Shields",
+        imageUri: "/KAC/assets/medieval/gambeson.png",
+        iconUri: "/KAC/backpack.png",
+        backfaceUri: "/KAC/asset-back-face.png",
+        color: "bg-kac-steel-dark",
+    },
+    {
+        heading: "Medieval – Utility",
+        imageUri: "/KAC/assets/medieval/torch.png",
+        iconUri: "/KAC/backpack.png",
+        backfaceUri: "/KAC/asset-back-face.png",
+        color: "bg-kac-steel-dark",
+    },
+];
+
+export default dividers;

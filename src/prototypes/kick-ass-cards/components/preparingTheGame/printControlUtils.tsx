@@ -52,12 +52,14 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             children: (
                 <>
                     <RegistrationMark className="absolute top-0 left-0" />
+                    <RegistrationMark className="absolute top-0 right-0" />
                     {showHorizontalBend && (
                         <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
                     )}
                     <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
                     <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
                     <RegistrationMark className="absolute bottom-0 right-0" />
+                    <RegistrationMark className="absolute bottom-0 left-0" />
                 </>
             ),
         },
@@ -69,12 +71,14 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
             children: (
                 <>
                     <RegistrationMark className="absolute top-0 left-0" />
+                    <RegistrationMark className="absolute top-0 right-0" />
                     {showHorizontalBend && (
                         <div className="HorizontalBend absolute top-1/2 left-0 w-full border-t-[0.2mm] border-dashed border-kac-steel" />
                     )}
                     <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
                     <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
                     <RegistrationMark className="absolute bottom-0 right-0" />
+                    <RegistrationMark className="absolute bottom-0 left-0" />
                 </>
             ),
         },

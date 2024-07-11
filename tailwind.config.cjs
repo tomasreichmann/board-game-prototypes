@@ -147,6 +147,11 @@ module.exports = {
                 "lg-heavy": ["0 10px 8px rgb(0 0 0 / 0.25)", "0 4px 3px rgb(0 0 0 / 0.12)"],
                 "xl-heavy": ["0 20px 13px rgb(0 0 0 / 0.25)", "0 8px 5px rgb(0 0 0 / 0.12)"],
             },
+            textShadow: {
+                sm: "0 1px 2px var(--tw-shadow-color)",
+                DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+                lg: "0 8px 16px var(--tw-shadow-color)",
+            },
         },
     },
     daisyui: {
@@ -189,6 +194,16 @@ module.exports = {
                     }), // this is actual CSS
                 },
                 { values: theme("translate"), supportsNegativeValues: true }
+            );
+        }),
+        plugin(function ({ matchUtilities, theme }) {
+            matchUtilities(
+                {
+                    "text-shadow": (value) => ({
+                        textShadow: value,
+                    }),
+                },
+                { values: theme("textShadow") }
             );
         }),
     ],

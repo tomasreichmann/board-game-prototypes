@@ -41,7 +41,7 @@ export default function CardDivider({
                 <div
                     className={twMerge("bg-opacity-25 bg-blend-multiply ", color)}
                     style={{
-                        minHeight: 10 + bleedTopMm + "mm",
+                        minHeight: 16 + bleedTopMm + "mm",
                         marginTop: -bleedTopMm + "mm",
                         marginBottom: -bleedBottomMm + "mm",
                         marginLeft: -bleedLeftMm + "mm",
@@ -53,9 +53,9 @@ export default function CardDivider({
                         maskImage: "linear-gradient(to bottom, black 80%, transparent)",
                     }}
                 >
-                    <div className="p-3 pb-6 flex flex-row items-top gap-1 ">
-                        <div className="flex-1 text-kac-iron-light text-sm font-kacHeading leading-none">{heading}</div>
-                        <IconOrImage icon={iconUri} className="text-kac-iron text-opacity-50 h-6" />
+                    <div className="p-3 pb-3 flex flex-row items-top gap-1 -mt-[0.5mm]">
+                        <div className="flex-1 text-kac-iron-light text-sm font-kacLogo leading-[0.85]">{heading}</div>
+                        <IconOrImage icon={iconUri} className="text-kac-iron text-opacity-50 h-6 -m-2" />
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@ export function CardDividerBackFace({
                 <div
                     className={twMerge("bg-opacity-25 bg-blend-multiply ", color)}
                     style={{
-                        minHeight: 10 + bleedTopMm + "mm",
+                        minHeight: 16 + bleedTopMm + "mm",
                         marginTop: -bleedTopMm + "mm",
                         marginBottom: -bleedBottomMm + "mm",
                         marginLeft: -bleedLeftMm + "mm",
@@ -110,11 +110,11 @@ export function CardDividerBackFace({
                         maskImage: "linear-gradient(to bottom, black 80%, transparent)",
                     }}
                 >
-                    <div className="p-3 pb-6 flex flex-row items-top gap-1 ">
-                        <div className="flex-1 text-white mix-blend-overlay text-sm font-kacHeading leading-none">
+                    <div className="p-3 pb-3 flex flex-row items-top gap-1 -mt-[0.5mm]">
+                        <div className="flex-1 text-white mix-blend-hard-light opacity-90 text-sm font-kacLogo leading-[0.85] text-shadow-sm shadow-black/50">
                             {heading}
                         </div>
-                        <IconOrImage icon={iconUri} className="text-kac-bone-light h-6" />
+                        <IconOrImage icon={iconUri} className="text-kac-bone-light h-6 -mt-2" />
                     </div>
                 </div>
             </div>

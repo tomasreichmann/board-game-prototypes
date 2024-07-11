@@ -47,9 +47,11 @@ export default function DividersPrintControls({ className }: DividersPrintContro
                             children: (
                                 <>
                                     <RegistrationMark className="absolute top-0 left-0" />
+                                    <RegistrationMark className="absolute top-0 right-0" />
                                     <ColorBars className="absolute bottom-0 right-6 origin-top-right" />
                                     <ColorBars className="absolute top-0 left-6 origin-bottom-left" />
                                     <RegistrationMark className="absolute bottom-0 right-0" />
+                                    <RegistrationMark className="absolute bottom-0 left-0" />
                                 </>
                             ),
                         }}
@@ -64,9 +66,11 @@ export default function DividersPrintControls({ className }: DividersPrintContro
                             children: (
                                 <>
                                     <RegistrationMark className="absolute top-0 left-0" />
+                                    <RegistrationMark className="absolute top-0 right-0" />
                                     <ColorBars className="absolute bottom-0 right-6 origin-top-right" />
                                     <ColorBars className="absolute top-0 left-6 origin-bottom-left" />
                                     <RegistrationMark className="absolute bottom-0 right-0" />
+                                    <RegistrationMark className="absolute bottom-0 left-0" />
                                 </>
                             ),
                         }}

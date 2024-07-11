@@ -46,7 +46,7 @@ const dividers = [
         imageUri: "/KAC/counters/danger.png",
         iconUri: "/KAC/counters/time.png",
         backfaceUri: "/KAC/clock-back-face.png",
-        color: "bg-kac-curse-light",
+        color: "bg-kac-curse",
     },
     {
         heading: "Medieval – Actors",

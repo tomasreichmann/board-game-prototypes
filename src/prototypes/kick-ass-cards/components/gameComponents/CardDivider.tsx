@@ -55,7 +55,7 @@ export default function CardDivider({
                 >
                     <div className="p-3 pb-3 flex flex-row items-top gap-1 -mt-[0.5mm]">
                         <div className="flex-1 text-kac-iron-light text-sm font-kacLogo leading-[0.85]">{heading}</div>
-                        <IconOrImage icon={iconUri} className="text-kac-iron text-opacity-50 h-6 -m-2" />
+                        <IconOrImage icon={iconUri} className="text-kac-iron text-opacity-50 h-6 -mt-2" />
                     </div>
                 </div>
             </div>

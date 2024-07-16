@@ -38,6 +38,18 @@ const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
     );
 };
 
+const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterType) => {
+    return (
+        <Card {...restProps} backgroundImageUri="/KAC/clock-back-face.png">
+            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
+                <div className="text-kac-cloth-lightest text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                    Counter
+                </div>
+            </div>
+        </Card>
+    );
+};
+
 export default function CounterCardsPrintControls({ className }: CounterCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     const [copyCount, setCopyCount] = useState(1);
@@ -80,7 +92,13 @@ export default function CounterCardsPrintControls({ className }: CounterCardsPri
                 }}
             >
                 <div className="flex flex-col items-center w-full">
-                    <ChunkedPages Component={CounterCard} items={items} {...chunkedPagesProps} label="Counter Cards" />
+                    <ChunkedPages
+                        Component={CounterCard}
+                        BackFaceComponent={CounterCardBackFace}
+                        items={items}
+                        {...chunkedPagesProps}
+                        label="Counter Cards"
+                    />
                 </div>
             </Print>
         </div>

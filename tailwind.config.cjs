@@ -73,6 +73,7 @@ module.exports = {
                 "kac-gold-darker": "#c37509",
                 "kac-cloth": "#5c77b2",
                 "kac-cloth-light": "#80a0bc",
+                "kac-cloth-lightest": "#d8e2ea",
                 "kac-cloth-dark": "#32497b",
                 "kac-curse": "#f20170",
                 "kac-curse-light": "#ff6883",

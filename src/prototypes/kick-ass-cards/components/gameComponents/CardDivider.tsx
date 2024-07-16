@@ -119,7 +119,7 @@ export function CardDividerBackFace({
                 </div>
             </div>
 
-            <div className="flex-1 relative self-stretch mt-[20%] mb-[40%] mx-[5%] drop-shadow-lg">
+            <div className="flex-1 relative self-stretch mt-[20%] mb-[40%] mx-[0%] drop-shadow-lg">
                 {imageUri && (
                     <IconOrImage icon={imageUri} className="absolute w-full h-full object-contain drop-shadow-lg" />
                 )}

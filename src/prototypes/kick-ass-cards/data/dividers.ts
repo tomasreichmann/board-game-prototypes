@@ -44,7 +44,7 @@ const dividers = [
     {
         heading: "Counters",
         imageUri: "/KAC/counters/danger.png",
-        iconUri: "/KAC/counters/time.png",
+        iconUri: "/KAC/counter.png",
         backfaceUri: "/KAC/clock-back-face.png",
         color: "bg-kac-curse",
     },

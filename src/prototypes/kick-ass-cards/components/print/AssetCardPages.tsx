@@ -3,13 +3,15 @@ import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiply
 import AssetCard, { AssetCardBackFace } from "../gameComponents/AssetCard";
 import ChunkedPages from "./ChunkedPages";
 
-const CARDS_PER_PAGE = 3 * 3;
-const assetItems = multiplyByCount(assets, "count", defaultCountAdapter).map((item) => ({
-    ...item,
-    bleedMm: 3,
-    className: "relative -m-[3mm]",
-    size: "54x86",
-}));
+const CARDS_PER_PAGE = 2 * 4;
+const assetItems = multiplyByCount(assets, "count", defaultCountAdapter)
+    .map((item) => ({
+        ...item,
+        bleedMm: 3,
+        className: "relative",
+        size: "54x86",
+    }))
+    .filter((item) => item.deck !== "sci-fi");
 export default function AssetCardPages() {
     return (
         <ChunkedPages
@@ -18,12 +20,14 @@ export default function AssetCardPages() {
             items={assetItems}
             itemsPerPage={CARDS_PER_PAGE}
             frontFacePrintPageProps={{
+                marginsInMm: [7, 10, 7, 10],
+                orientation: "landscape",
                 bleedInMm: 0,
-                contentClassName: "p-[3mm]",
             }}
             backFacePrintPageProps={{
+                marginsInMm: [7, 10, 7, 10],
+                orientation: "landscape",
                 bleedInMm: 0,
-                contentClassName: "p-[3mm]",
             }}
             label="Assets"
         />

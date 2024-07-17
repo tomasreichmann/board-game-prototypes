@@ -46,12 +46,23 @@ export type CardBodyProps = {
     className?: string;
     icon?: string;
     iconClassName?: string;
+    iconContent?: React.ReactNode;
     title?: string;
     titleClassName?: string;
     children?: React.ReactNode;
+    childrenClassName?: string;
 };
 
-export const CardBody = ({ className, icon, iconClassName, title, titleClassName, children }: CardBodyProps) => {
+export const CardBody = ({
+    className,
+    icon,
+    iconClassName,
+    iconContent,
+    title,
+    titleClassName,
+    children,
+    childrenClassName,
+}: CardBodyProps) => {
     return (
         <div
             className={twMerge(
@@ -67,6 +78,7 @@ export const CardBody = ({ className, icon, iconClassName, title, titleClassName
                             className={twMerge("absolute w-full h-full object-contain drop-shadow-lg", iconClassName)}
                         />
                     )}
+                    {iconContent}
                 </div>
                 {title && (
                     <div
@@ -79,7 +91,12 @@ export const CardBody = ({ className, icon, iconClassName, title, titleClassName
                     </div>
                 )}
             </div>
-            <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
+            <div
+                className={twMerge(
+                    "flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance",
+                    childrenClassName
+                )}
+            >
                 {children}
             </div>
         </div>

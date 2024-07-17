@@ -9,7 +9,6 @@ import Credits from "../Credits";
 import Paper from "../../../../components/print/Paper/Paper";
 import clsx from "clsx";
 import OutcomeCardPages from "../print/OutcomeCardPages";
-import ThreatCardPages from "../print/ThreatCardPages";
 import ColorList from "../ColorList";
 import PlayerCharacterCardPages from "../print/PlayerCharacterCardPages";
 import AssetCardPages from "../print/AssetCardPages";
@@ -22,8 +21,9 @@ import InfoCardPages from "../print/InfoCardPages";
 import StuntCardPages from "../print/StuntCardPages";
 import { Navigation } from "../Navigation";
 import LPCardPages from "../../data/encounters/LP-en-print";
-import BDay139CarPages from "../print/BDay139CarPages";
-import MachiKoroPages from "../print/MachiKoroPages";
+/* import BDay139CarPages from "../print/BDay139CarPages";
+import ThreatCardPages from "../print/ThreatCardPages";
+import MachiKoroPages from "../print/MachiKoroPages"; */
 
 const defaultSectionVisibility = true;
 
@@ -35,7 +35,8 @@ const sections = [
         isVisibleByDefault: defaultSectionVisibility,
     },
     { slug: "Outcomes", label: "Outcomes", Component: OutcomeCardPages, isVisibleByDefault: defaultSectionVisibility },
-    { slug: "Threats", label: "Threats", Component: ThreatCardPages, isVisibleByDefault: defaultSectionVisibility },
+    /* Deprecated */
+    /* { slug: "Threats", label: "Threats", Component: ThreatCardPages, isVisibleByDefault: defaultSectionVisibility }, */
     {
         slug: "StuntCards",
         label: "Stunt Cards",
@@ -60,7 +61,7 @@ const sections = [
         Component: LPCardPages,
         isVisibleByDefault: defaultSectionVisibility,
     },
-    {
+    /* {
         slug: "B-Day #139",
         label: "B-Day #139",
         Component: BDay139CarPages,
@@ -71,7 +72,7 @@ const sections = [
         label: "Oscaru no Machi",
         Component: MachiKoroPages,
         isVisibleByDefault: defaultSectionVisibility,
-    },
+    }, */
 ];
 
 export default function ComponentsRoute() {

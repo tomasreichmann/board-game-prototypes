@@ -27,6 +27,7 @@ import Aside from "./Aside";
 import Mdx from "./Mdx";
 import Text from "./Text";
 import Button from "../controls/Button";
+import BroadcastCounter from "../screenContent/BroadcastCounter";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -55,6 +56,7 @@ export const defaultMdxComponentMap = {
     Asset: BroadcastAsset,
     Effect: BroadcastEffect,
     Clock: BroadcastClock,
+    CounterCard: BroadcastCounter,
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,
     Mdx,

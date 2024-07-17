@@ -5,8 +5,8 @@ import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import assets from "../../data/assets-en-deck";
-import StuntCard, { StuntCardBackFace } from "../gameComponents/StuntCard";
 import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiplyByCount";
+import AssetCard, { AssetCardBackFace } from "../gameComponents/AssetCard";
 
 export type AssetCardsPrintControlsProps = {
     className?: string;
@@ -16,7 +16,11 @@ export default function AssetCardsPrintControls({ className }: AssetCardsPrintCo
     const chunkedPagesProps = useChunkedPagesProps();
 
     const items = useItemAdapter(
-        multiplyByCount(assets, "count", defaultCountAdapter).map((item) => ({
+        multiplyByCount(
+            assets.filter((item) => item.deck !== "sci-fi"),
+            "count",
+            defaultCountAdapter
+        ).map((item) => ({
             ...item,
             className: "relative",
         }))
@@ -45,8 +49,8 @@ export default function AssetCardsPrintControls({ className }: AssetCardsPrintCo
             >
                 <div className="flex flex-col items-center w-full">
                     <ChunkedPages
-                        Component={StuntCard}
-                        BackFaceComponent={StuntCardBackFace}
+                        Component={AssetCard}
+                        BackFaceComponent={AssetCardBackFace}
                         items={items}
                         {...chunkedPagesProps}
                         label="assets"

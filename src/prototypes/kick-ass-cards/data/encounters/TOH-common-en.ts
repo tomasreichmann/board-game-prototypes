@@ -27,3 +27,19 @@ export const defaultMiniProps = {
 };
 export const wealthData = wealthDataImport;
 export const wealthAssets = wealthAssetsImport;
+
+export const actors = {
+    milaSzeptava: {
+        deck: "Throne of Hawthorn",
+        name: "Mila Szeptava",
+        occupation: "Nimble and sneaky Bandit",
+        size: "Bridge",
+        reward: "Poisoned brandy",
+        threat: "Appears hidden. Attacks for 1 Effect, Defense requires +1 Effect",
+        toughness: 2,
+        currentToughness: 2,
+        imagePosition: "top",
+        className: "drop-shadow",
+        imageUri: "/TOH/characters/bandit-sabre.png",
+    },
+};

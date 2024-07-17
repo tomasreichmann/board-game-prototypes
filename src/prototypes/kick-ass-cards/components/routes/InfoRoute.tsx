@@ -12,10 +12,13 @@ import MdxArticle from "../layout/MdxArticle";
 import homeInfoMdx from "../../articles/homeInfo.mdx";
 import { Navigation } from "../Navigation";
 import Deck from "../layout/Deck";
-import { actors, clocks, defaultClockProps, assets } from "../../data/encounters/LP-common-en";
+import { actors, clocks, defaultClockProps } from "../../data/encounters/LP-common-en";
+import { actors as tohActors } from "../../data/encounters/TOH-common-en";
 import { outcomeMap } from "../../data/outcomeDeck";
 import { effectMap } from "../../data/effects-deck-en";
 import { cardSizes } from "../../../../components/print/paperSizes";
+import CounterCard from "../gameComponents/CounterCard";
+import { assetMap } from "../../data/assets-en-deck";
 
 const largeCardSize = "54x86" as const;
 const defaultCardSize = "Mini European" as const;
@@ -29,6 +32,8 @@ const defaultActorCardProps = {
     ...defaultCardProps,
     size: largeCardSize,
 };
+
+actors;
 
 export default function InfoRoute() {
     return (
@@ -52,19 +57,23 @@ export default function InfoRoute() {
                             <Spread
                                 className="w-full max-w-[700px] h-[350px]"
                                 items={[
+                                    <ActorCard {...tohActors.milaSzeptava} {...defaultActorCardProps} />,
                                     <ActorCard
-                                        {...actors.security_robots}
+                                        imageUri="/KAC/actors/medieval/bandit.png"
+                                        name="bandit"
+                                        threat="Attacks with a bow or dagger for 1 Effect"
+                                        reward="Lockpick set"
+                                        toughness={2}
+                                        deck="medieval"
                                         {...defaultActorCardProps}
-                                        imageFit="cover"
                                     />,
-                                    <ActorCard
-                                        {...actors.endless_swarm_of_spore_drones}
-                                        {...defaultActorCardProps}
-                                        imageFit="cover"
-                                    />,
-                                    <Clock
-                                        {...defaultClockProps}
-                                        {...clocks.suspicion_of_security_robots}
+                                    <CounterCard
+                                        icon="/KAC/counters/morale.png"
+                                        title="Bandits Defeated"
+                                        current={0}
+                                        total={4}
+                                        reward="Bandits run away"
+                                        note="Ticks up by 1 when a bandit is defeated"
                                         {...defaultActorCardProps}
                                     />,
                                 ]}
@@ -118,9 +127,9 @@ export default function InfoRoute() {
                                     width: cardSizes[defaultCardSize].mm[0] * 3 + "mm",
                                 }}
                                 items={[
-                                    <AssetCard key="rapid_regen" {...assets.rapid_regen} {...defaultCardProps} />,
-                                    <AssetCard key="rage" {...assets.rage} {...defaultCardProps} />,
-                                    <AssetCard key="medi_gel" {...assets.medi_gel} {...defaultCardProps} />,
+                                    <AssetCard {...assetMap.longsword} {...defaultCardProps} />,
+                                    <AssetCard {...assetMap.gambeson} {...defaultCardProps} />,
+                                    <AssetCard {...assetMap.grappling_hook} {...defaultCardProps} />,
                                 ]}
                             />
                         </div>

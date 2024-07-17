@@ -7,6 +7,7 @@ import EffectCard, { EffectCardProps } from "../components/gameComponents/Effect
 import PaperMini, { PaperMiniProps } from "../components/gameComponents/PaperMini";
 import Image, { ImageProps } from "../components/Image";
 import Heading, { HeadingProps } from "../components/Heading";
+import CounterCard from "../components/gameComponents/CounterCard";
 
 export enum AnimationEnum {
     FadeOut = "fadeOut",
@@ -19,6 +20,7 @@ export enum ScreenContentTypeEnum {
     Actor = "Actor",
     Asset = "Asset",
     Clock = "Clock",
+    Counter = "Counter",
     Effect = "Effect",
     PaperMini = "PaperMini",
     Paper = "Paper",
@@ -86,6 +88,7 @@ export const typeComponentMap = {
     [ScreenContentTypeEnum.Actor]: ActorCard,
     [ScreenContentTypeEnum.Asset]: AssetCard,
     [ScreenContentTypeEnum.Clock]: Clock,
+    [ScreenContentTypeEnum.Counter]: CounterCard,
     [ScreenContentTypeEnum.Effect]: EffectCard,
     [ScreenContentTypeEnum.PaperMini]: PaperMini,
     [ScreenContentTypeEnum.Paper]: Paper,

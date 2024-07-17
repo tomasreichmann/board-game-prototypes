@@ -1,50 +1,50 @@
 "slug","title","icon","effect","cost","deck","count"
-"medi-gel","Medi-gel","/LP/icons/injection.png","Repairs organic damage","","sci-fi",6
-"nano-gel","Nano-gel","/LP/icons/tube.png","Repairs mechanical damage","","sci-fi",6
+"medi_gel","Medi-gel","/LP/icons/injection.png","Repairs organic damage","","sci-fi",6
+"nano_gel","Nano-gel","/LP/icons/tube.png","Repairs mechanical damage","","sci-fi",6
 "instahack","Insta-hack","/LP/icons/gadget.png","Temporarily gains control over a device","","sci-fi",5
-"grapple-gun","Grapple gun","/LP/icons/rifle.png","Pulls an object to the gun or the gun to an object","","sci-fi",2
-"glue-nade","Glue grenade","/LP/icons/bag.png","Sticks everything in the zone for 1 round Hindered","","sci-fi",3
-"emp-nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead","","sci-fi",3
-"frag-grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone","","sci-fi",5
-"gravi-emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance","","sci-fi",1
-"freeze-grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Frost","","sci-fi",2
-"air-conditioning","Air conditioning","/LP/icons/device-2.png","+/- Frost/Heat in the zone","","sci-fi",1
+"grapple_gun","Grapple gun","/LP/icons/rifle.png","Pulls an object to the gun or the gun to an object","","sci-fi",2
+"glue_nade","Glue grenade","/LP/icons/bag.png","Sticks everything in the zone for 1 round Hindered","","sci-fi",3
+"emp_nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead","","sci-fi",3
+"frag_grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone","","sci-fi",5
+"gravi_emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance","","sci-fi",1
+"freeze_grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Frost","","sci-fi",2
+"air_conditioning","Air conditioning","/LP/icons/device-2.png","+/- Frost/Heat in the zone","","sci-fi",1
 "scanner","Scanner","/LP/icons/tablet.png","Multipurpose scanner","","sci-fi",3
-"magnetic-gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects","","sci-fi",1
-"multi-bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance","","sci-fi",2
+"magnetic_gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects","","sci-fi",1
+"multi_bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance","","sci-fi",2
 "heat-gun","Heat gun","/LP/icons/heat-gun.png","Emits immense heat up to line of sight distance","","sci-fi",1
 "bfg","BFG","/LP/icons/bfg.png","Huge weapon: absorbs all heat from the zone for 1 round, causes Doom in the next round","","sci-fi",1
-"heat-blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Heat)","","sci-fi",2
-"holo-generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
+"heat_blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Heat)","","sci-fi",2
+"holo_generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
 "barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage","","sci-fi",2
 "turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1
 "gambeson","Gambeson","/KAC/assets/medieval/gambeson.png","Light fabric armor. Negates 1 Injury from slashing damage.","","medieval",4
 "chainmail","Chainmail","/KAC/assets/medieval/chainmail.png","Medium metal armor. Negates 1 Injury from slashing and piercing damage. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
-"plate-armor","Plate Armor","/KAC/assets/medieval/plate-armor.png","Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing or swimming.","","medieval",2
+"plate_armor","Plate Armor","/KAC/assets/medieval/plate-armor.png","Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing or swimming.","","medieval",2
 "buckler","Buckler","/KAC/assets/medieval/buckler.png","Light metal shield. +1 Effect when defending from melee attack once per round.","","medieval",2
 "kite-shield","Kite Shield","/KAC/assets/medieval/kite-shield.png","Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
 "dagger","Dagger","/KAC/assets/medieval/dagger.png","A light one-handed piercing melee weapon. Can be thrown 1 zone away.","","medieval",2
-"hand-axe","Hand Axe","/KAC/assets/medieval/hand-axe.png","A light one-handed slashing melee weapon. Can be thrown 1 zone away.","","medieval",2
+"hand_axe","Hand Axe","/KAC/assets/medieval/hand-axe.png","A light one-handed slashing melee weapon. Can be thrown 1 zone away.","","medieval",2
 "longsword","Longsword","/KAC/assets/medieval/longsword.png","A medium one- or two-handed piercing or slashing melee weapon. +1 Effect when slashing when wielded with both hands.","","medieval",2
 "zweihandler","Zweihänder","/KAC/assets/medieval/zweihandler.png","A heavy two-handed slashing melee weapon. +1 Effect when attacking.","","medieval",2
-"great-axe","Greataxe","/KAC/assets/medieval/great-axe.png","A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.","","medieval",2
-"war-hammer","War Hammer","/KAC/assets/medieval/war-hammer.png","A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.","","medieval",2
+"great_axe","Greataxe","/KAC/assets/medieval/great-axe.png","A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.","","medieval",2
+"war_hammer","War Hammer","/KAC/assets/medieval/war-hammer.png","A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.","","medieval",2
 "mace","Mace","/KAC/assets/medieval/mace.png","A medium one-handed bludgeoning melee weapon. 1 Injury negated by armor turns to Distress instead.","","medieval",2
 "morningstar ","Morningstar","/KAC/assets/medieval/morningstar.png","A medium one-handed bludgeoning melee weapon. Ignores shields.","","medieval",2
 "staff","Staff","/KAC/assets/medieval/staff.png","A light two-handed bludgeoning melee polearm weapon. +1 Effect when tripping an enemy.","","medieval",2
 "spear","Spear","/KAC/assets/medieval/spear.png","A medium two-handed piercing melee polearm weapon. Once per round outside your turn you can attack an enemy entering your zone.","","medieval",2
 "billhook","Billhook","/KAC/assets/medieval/billhook.png","A heavy two-handed piercing or slashing polearm weapon. +1 Effect against cavalry.","","medieval",2
-"hunting-bow","Hunting Bow","/KAC/assets/medieval/hunting-bow.png","A light two-handed ranged weapon. Effective Range: 1-2 zones away. -1 Effect when shooting targets in the same zone.","","medieval",2
+"hunting_bow","Hunting Bow","/KAC/assets/medieval/hunting-bow.png","A light two-handed ranged weapon. Effective Range: 1-2 zones away. -1 Effect when shooting targets in the same zone.","","medieval",2
 "crossbow","Crossbow","/KAC/assets/medieval/crossbow.png","A heavy two-handed ranged weapon. Effective Range: 1-2 zones. Ignores Plate Armor. -1 Effect when shooting targets in the same zone.","","medieval",2
-"hand-cannon","Hand-Cannon","/KAC/assets/medieval/hand-cannon.png","A heavy two-handed ranged weapon. Effective Range: 1-2 zones away. Requires 2 Outcome cards over 2 turns to load and fire. Add Effect of both cards together. -1 Effect when shooting targets in the same zone.","","medieval",2
-"riding-horse","Riding Horse","/KAC/assets/medieval/riding-horse.png","Can move 2 zones per turn. +1 Effect when attacking infantry on horseback.","","medieval",4
+"hand_cannon","Hand-Cannon","/KAC/assets/medieval/hand-cannon.png","A heavy two-handed ranged weapon. Effective Range: 1-2 zones away. Requires 2 Outcome cards over 2 turns to load and fire. Add Effect of both cards together. -1 Effect when shooting targets in the same zone.","","medieval",2
+"riding_horse","Riding Horse","/KAC/assets/medieval/riding-horse.png","Can move 2 zones per turn. +1 Effect when attacking infantry on horseback.","","medieval",4
 "wagon","Horse-Drawn Wagon","/KAC/assets/medieval/wagon.png","Can move 2 zones per turn. Capacity: 2 people in the front and up to 6 in the back. +1 Effect when defending from infantry.","","medieval",1
-"grappling-hook","Grappling Hook and Rope","/KAC/assets/medieval/grappling-hook.png","+1 Effect while climbing.","","medieval",2
-"lockpick-set","Lockpick Set","/KAC/assets/medieval/lockpick-set.png","Allows picking locks.","","medieval",1
+"grappling_hook","Grappling Hook and Rope","/KAC/assets/medieval/grappling-hook.png","+1 Effect while climbing.","","medieval",2
+"lockpick_set","Lockpick Set","/KAC/assets/medieval/lockpick-set.png","Allows picking locks.","","medieval",1
 "bandages","Bandages","/KAC/assets/medieval/bandages.png","Removes 2x Injury. Usable during battle. Consumed after use.","","medieval",4
 "healing-salve","Healing Salve","/KAC/assets/medieval/healing-salve.png","+1 Effect when healing to remove Injuries. Not usable during battle.","","medieval",2
-"herbal-remedy","Herbal Remedy","/KAC/assets/medieval/herbal-remedy.png","Receive a Boost. Usable during battle. Consumed after use.","","medieval",4
-"prayer-book","Prayer Book","/KAC/assets/medieval/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
+"herbal_remedy","Herbal Remedy","/KAC/assets/medieval/herbal-remedy.png","Receive a Boost. Usable during battle. Consumed after use.","","medieval",4
+"prayer_book","Prayer Book","/KAC/assets/medieval/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
 "mead","Mead","/KAC/assets/medieval/mead.png","Removes 2x Distress. Usable during battle. Consumed after use.","","medieval",4
 "granade","Granade","/KAC/assets/medieval/granade.png","Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.","","medieval",2
 "lantern","Lantern","/KAC/assets/medieval/lantern.png","Provides light in the current zone. Can be used in the rain. Does not count as an open flame.","","medieval",4

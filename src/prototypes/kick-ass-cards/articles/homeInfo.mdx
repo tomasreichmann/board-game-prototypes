@@ -70,27 +70,29 @@ In this case it is especially important to clearly explain the mechanics to the 
         <div>
             <h3 className="font-kacHeading text-kac-blood text-md font-bold text-center" >Sample Actor</h3>
             <Actor
-                {...defaultCardProps}
-                imageUri="/LP/ScrattCZ_croud_of_sci-fi_floral_zombies_invading_a_futuristic_c_ec55d41e-04de-4a50-b3a5-7691310dda21.png"
-                imagePosition="center top"
-                imageFit="cover"
-                name="Unending Crowd of Zombies"
-                threat="Clawing attack: 1x Wound"
-                notes="Infection: on Fumble during defense -> gain Zombie infection"
+                name="Dragan the Butcher"
+                occupation="Huge, slow and scary bandit"
+                reward="Sack of plundered jewelry"
+                threat="Chops with an axe for 2 Effect or swings to attack all in his zone for 1 Effect"
+                toughness={4}
+                currentToughness={4}
+                imagePosition="top"
+                className="drop-shadow"
+                imageUri="/TOH/characters/axe-bandit.png"
             />
 
         </div>,
         <div>
             <h3 className="font-kacHeading text-kac-blood text-md font-bold text-center" >Sample Counter</h3>
-            <Clock
-                {...defaultCardProps}
-                title="Suspition of Zombies"
+            <CounterCard
+                icon="/KAC/counters/morale.png"
+                title="Bandits Defeated"
                 current={0}
                 total={4}
-                threat="They will attack"
-                reward="Zombies ignore you"
+                reward="Bandits run away"
+                className="drop-shadow"
+                note="Ticks up by 1 when a bandit is defeated"
             />
-
         </div>
     ]}
 />

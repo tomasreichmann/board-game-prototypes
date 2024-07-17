@@ -7,6 +7,8 @@ import RichText from "../RichText";
 import { twMerge } from "tailwind-merge";
 import ComponentMetaType from "../generation/ComponentMetaType";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
+import { allSizes } from "../../../../components/print/paperSizes";
+import Card from "./Card";
 
 type OptionalKeysType = "slug" | "cost" | "count";
 
@@ -133,6 +135,7 @@ export default function AssetCard({
         bleedBottomMm = bleedMm,
         bleedLeftMm = bleedMm,
     } = restProps;
+    const isSmSize = allSizes[size].mm[1] < 70;
     return (
         <PaperOrDiv
             size={size}
@@ -166,11 +169,23 @@ export default function AssetCard({
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
                             <IconOrImage icon={icon} className="absolute w-full h-full object-contain drop-shadow-lg" />
                         </div>
-                        <div className="font-kacLogo text-kac-gold-darker text-lg leading-none text-center mb-1">
+                        <div
+                            className={twMerge(
+                                "font-kacLogo text-kac-gold-darker text-lg text-center mb-1",
+                                isSmSize && "text-md",
+                                "leading-none"
+                            )}
+                        >
                             {title}
                         </div>
                     </div>
-                    <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
+                    <div
+                        className={twMerge(
+                            "flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light text-balance",
+                            isSmSize && "text-[0.6rem]",
+                            "leading-tight"
+                        )}
+                    >
                         <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
                     </div>
                     {children}
@@ -180,33 +195,14 @@ export default function AssetCard({
     );
 }
 
-export const AssetCardBackFace = ({
-    className,
-    children,
-    size = "Mini European",
-    ...restProps
-}: Partial<PaperProps>) => {
+export const AssetCardBackFace = ({ icon, deck, ...restProps }: AssetCardProps) => {
     return (
-        <PaperOrDiv
-            size={size}
-            className={twMerge(
-                "AssetCardBackFace gap-2 rounded-lg print:rounded-none bg-kac-gold-dark flex flex-col justify-stretch items-stretch",
-                className
-            )}
-            {...restProps}
-        >
-            <div className="m-[3mm] relative flex flex-col justify-center items-center flex-1 p-3">
-                <div className="w-32 h-32 flex flex-col justify-center items-center relative">
-                    <div
-                        className={
-                            "w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-gold-darker absolute bg-kac-gold-light"
-                        }
-                    />
-                    <Icon icon="chest" className={"text-kac-gold-darker h-10 relative z-1 mt-2"} />
-                    <div className="font-kacBody text-kac-gold-darker text-xs text-center relative z-1">Asset</div>
+        <Card {...restProps} backgroundImageUri="/KAC/asset-back-face.png">
+            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
+                <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                    Asset
                 </div>
-                {children}
             </div>
-        </PaperOrDiv>
+        </Card>
     );
 };

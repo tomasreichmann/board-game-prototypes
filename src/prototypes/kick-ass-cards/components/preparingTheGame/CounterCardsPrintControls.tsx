@@ -8,7 +8,7 @@ import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import counters, { CounterType } from "../../data/counters-deck";
-import Card, { CardHeader } from "../gameComponents/Card";
+import Card, { CardBody, CardHeader } from "../gameComponents/Card";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 
@@ -24,16 +24,15 @@ const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
     return (
         <Card {...restProps}>
             <CardHeader icon={icon} className="z-10" cornerIcon="/KAC/counter.png" deck={deck}></CardHeader>
-            <div className="flex-1 relative self-stretch my-[5%]">
-                {icon && <IconOrImage icon={icon} className={"absolute w-full h-full object-contain drop-shadow-lg"} />}
-            </div>
-            <div className="flex flex-row flex-wrap gap-2 justify-center items-center px-4 opacity-50">
-                <Icon icon="d4" className={"w-8 h-8"} />
-                <Icon icon="d6" className={"w-8 h-8"} />
-                <Icon icon="d8" className={"w-8 h-8"} />
-                <Icon icon="d10" className={"w-8 h-8"} />
-                <Icon icon="d12" className={"w-8 h-8"} />
-            </div>
+            <CardBody icon={icon}>
+                <div className="flex flex-row flex-wrap gap-2 justify-center items-center px-4 opacity-50">
+                    <Icon icon="d4" className={"w-8 h-8"} />
+                    <Icon icon="d6" className={"w-8 h-8"} />
+                    <Icon icon="d8" className={"w-8 h-8"} />
+                    <Icon icon="d10" className={"w-8 h-8"} />
+                    <Icon icon="d12" className={"w-8 h-8"} />
+                </div>
+            </CardBody>
         </Card>
     );
 };

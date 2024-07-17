@@ -4,6 +4,7 @@ import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper
 import { StuntType } from "../../types";
 import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
+import Card from "./Card";
 // import "./StuntCard.css";
 
 export type StuntCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<StuntType, "count">>;
@@ -81,47 +82,14 @@ export default function StuntCard({
         </PaperOrDiv>
     );
 }
-export const StuntCardBackFace = ({
-    className,
-    size = "Mini European",
-    children,
-    ...restProps
-}: Partial<PaperProps>) => {
-    const {
-        bleedMm = 0,
-        bleedTopMm = bleedMm,
-        bleedRightMm = bleedMm,
-        bleedBottomMm = bleedMm,
-        bleedLeftMm = bleedMm,
-    } = restProps;
+export const StuntCardBackFace = ({ icon, deck, ...restProps }: StuntCardProps) => {
     return (
-        <PaperOrDiv
-            size={size}
-            className={twMerge(
-                "StuntCardBackFace gap-2 print:rounded-none flex flex-col justify-stretch items-stretch",
-                className
-            )}
-            {...restProps}
-        >
-            <div
-                className="relative flex-1 flex flex-col justify-center items-stretch bg-kac-steel-dark rounded-lg print:rounded-none"
-                style={{
-                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
-                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
-                }}
-            >
-                <img
-                    src="/KAC/asset-back-face.png"
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
-                />
-                <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                    <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
-                        Asset
-                    </div>
-                    {children}
+        <Card {...restProps} backgroundImageUri="/KAC/stunt-back-face.png">
+            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
+                <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                    Stunt
                 </div>
             </div>
-        </PaperOrDiv>
+        </Card>
     );
 };

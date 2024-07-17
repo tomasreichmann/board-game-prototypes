@@ -34,9 +34,9 @@ export default function DiceCounter({
 }: DiceCounterProps) {
     const icon = (total in countIconMap && countIconMap[total as keyof typeof countIconMap]) || ("dx" as const);
     return (
-        <PaperOrDiv size={size} className={twMerge("DiceCounter flex bg-white text-sm font-kacHeading", className)}>
+        <PaperOrDiv size={size} className={twMerge("DiceCounter flex text-sm font-kacHeading", className)}>
             <div className="relative flex-1 flex flex-col gap-2 justify-center items-center">
-                <div className="flex-1 relative self-stretch m-2">
+                <div className="flex-1 relative self-stretch">
                     <Icon
                         icon={icon}
                         className={twMerge(

@@ -9,6 +9,7 @@ import Icon from "../Icon";
 import DiceCounter from "../DiceCounter";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import ComponentMetaType from "../generation/ComponentMetaType";
+import Card, { CardBody, CardHeader } from "./Card";
 // import "./ActorCard.css";
 
 const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
@@ -16,6 +17,7 @@ const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType
 export type ActorCardProps = React.PropsWithChildren<
     {
         slug?: string;
+        deck?: string;
         className?: string;
         imagePosition?: CSSProperties["objectPosition"];
         imageFit?: CSSProperties["objectFit"];
@@ -42,6 +44,11 @@ export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof PaperPro
 
         slug: {
             title: "Slug",
+            type: "string",
+            nullable: true,
+        },
+        deck: {
+            title: "Deck",
             type: "string",
             nullable: true,
         },
@@ -169,6 +176,7 @@ export default function ActorCard({
     className,
     forPrint,
     name = "",
+    deck,
     imageUri,
     imageClassName,
     imagePosition,
@@ -190,46 +198,22 @@ export default function ActorCard({
     ...restProps
 }: ActorCardProps) {
     return (
-        <PaperOrDiv
-            size={size}
-            bleedMm={bleedMm}
-            className={twMerge(
-                "ActorCard relative bg-white text-kac-steel-dark rounded-lg print:rounded-none flex flex-col items-stretch font-kacBody",
-                className
-            )}
-            {...restProps}
-        >
-            <div className="flex-1 relative flex flex-col justify-center items-stretch p-3">
-                <div
-                    className={twMerge(
-                        "flex-1 relative rounded flex flex-col h-16 z-10",
-                        !imageUri && "border-0",
-                        imageWrapperClassName
-                    )}
-                >
-                    {imageUri ? (
-                        <ImageComponent
-                            src={imageUri}
-                            className={twMerge("absolute w-full h-full rounded-sm", imageClassName)}
-                            objectFit={imageFit}
-                            objectPosition={imagePosition}
-                        />
-                    ) : null}
-                    {toughness > 0 && !hideCounter && (
-                        <DiceCounter
-                            current={currentToughness}
-                            total={toughness}
-                            className="absolute right-2 bottom-2 bg-transparent opacity-80 text-kac-steel-light drop-shadow-[0_0_1px_rgba(0,0,0,1)] h-20"
-                            iconClassName="h-3/4 max-h-20"
-                            currentClassName="text-red-300"
-                        />
-                    )}
-                    <Icon icon="doubleFaceMask" className="absolute top-0 right-0 h-5 text-kac-blood" />
-                </div>
+        <Card className={twMerge("ActorCard", className)} {...restProps}>
+            <CardHeader
+                icon={imageUri ?? undefined}
+                className="z-10"
+                cornerIcon="/KAC/actor.png"
+                deck={deck ?? undefined}
+            ></CardHeader>
+            <CardBody
+                className="min-h-[40%] basis-auto"
+                icon={imageUri ?? undefined}
+                childrenClassName="shrink-0 basis-auto flex flex-col align-stretch text-left"
+            >
                 <div className={"text-sm flex flex-row gap-4 mt-1 mb-1"}>
                     <h2
                         className={twMerge(
-                            "flex-1 text-md font-kacHeading leading-none mt-1",
+                            "flex-1 text-md font-kacLogo leading-none mt-1",
                             toughness > 0 ? "text-left" : "text-center"
                         )}
                     >
@@ -237,8 +221,8 @@ export default function ActorCard({
                         {age !== undefined ? ` (${age})` : ""}
                     </h2>
                     {toughness > 0 && (
-                        <div className="text-sm border-dashed justify-end text-kac-blood font-kacHeading flex flex-row">
-                            {toughness}&nbsp;
+                        <div className="text-sm border-dashed justify-end leading-none items-start text-kac-blood font-kacLogo flex flex-row">
+                            <span className="mt-1">{toughness}&nbsp;</span>
                             <Icon icon="drop" className="h-5" />
                         </div>
                     )}
@@ -247,7 +231,7 @@ export default function ActorCard({
                     <h3 className="text-xs leading-tight flex flex-row gap-2">
                         <Icon icon="toolbox" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
                         {occupation ? (
-                            <p className="flex-grow mt-1">{occupation}</p>
+                            <p className="flex-grow mt-1 text-left">{occupation}</p>
                         ) : (
                             <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] " />
                         )}
@@ -257,17 +241,17 @@ export default function ActorCard({
                     <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-3">
                         <Icon icon="deathSkull" className="h-4 mt-1 flex-shrink-0 inline-block" />
                         {threat ? (
-                            <p className="flex-grow text-xs font-kacBody mt-1">{threat}</p>
+                            <p className="flex-grow text-xs font-kacBody mt-1 text-left">{threat}</p>
                         ) : (
                             <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
                         )}
                     </div>
                 )}
                 {reward !== null && (
-                    <div className="text-xs text-kac-gold-dark font-kacBody leading-tight flex flex-row gap-3">
+                    <div className="text-xs text-kac-gold-darker font-kacBody leading-tight flex flex-row gap-3">
                         <Icon icon="chest" className="h-4 mt-1 flex-shrink-0 inline-block" />
                         {reward ? (
-                            <p className="flex-grow text-xs font-kacBody mt-1">{reward}</p>
+                            <p className="flex-grow text-xs font-kacBody mt-1 text-left">{reward}</p>
                         ) : (
                             <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
                         )}
@@ -289,34 +273,23 @@ export default function ActorCard({
                         </div>
                     </div>
                 )}
-                {children}
-            </div>
-        </PaperOrDiv>
+            </CardBody>
+        </Card>
     );
 }
 
 export const ActorCardBackFace = ({ className, children, size = "Bridge", ...restProps }: Partial<PaperProps>) => {
     return (
-        <PaperOrDiv
-            size={size}
-            className={twMerge(
-                "ActorCardBackFace gap-2 rounded-lg print:rounded-none bg-kac-monster flex flex-col justify-stretch items-stretch",
-                className
-            )}
+        <Card
+            className={twMerge("ActorCardBackFace", className)}
             {...restProps}
+            backgroundImageUri="/KAC/actor-back-face.png"
         >
-            <div className="m-[3mm] relative flex flex-col justify-center items-center flex-1 p-3">
-                <div className="w-32 h-32 flex flex-col justify-center items-center relative">
-                    <div
-                        className={
-                            "w-8/12 aspect-square rounded-full border-[0.2mm] border-kac-steel border-kac-monster-dark absolute bg-kac-gold-light"
-                        }
-                    />
-                    <Icon icon="doubleFaceMask" className={"text-kac-monster-dark h-10 relative z-1 mt-2"} />
-                    <div className="font-kacBody text-kac-monster-dark text-xs text-center relative z-1">Actor</div>
+            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
+                <div className="text-kac-cloth-lightest text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                    Actor
                 </div>
-                {children}
             </div>
-        </PaperOrDiv>
+        </Card>
     );
 };

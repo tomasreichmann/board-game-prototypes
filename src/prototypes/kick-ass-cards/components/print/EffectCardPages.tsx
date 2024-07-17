@@ -3,11 +3,12 @@ import multiplyByCount, { defaultCountAdapter } from "../../../../utils/multiply
 import EffectCard, { EffectCardBackFace } from "../gameComponents/EffectCard";
 import ChunkedPages from "./ChunkedPages";
 
-const CARDS_PER_PAGE = 4 * 4;
+const CARDS_PER_PAGE = 2 * 4;
 const allEffects = multiplyByCount(effects, "count", defaultCountAdapter).map((item) => ({
     ...item,
     bleedMm: 3,
-    className: "relative -m-[3mm]",
+    size: "54x86",
+    className: "relative",
 }));
 export default function EffectCardPages() {
     return (
@@ -17,12 +18,14 @@ export default function EffectCardPages() {
             items={allEffects}
             itemsPerPage={CARDS_PER_PAGE}
             frontFacePrintPageProps={{
+                marginsInMm: [7, 10, 7, 10],
+                orientation: "landscape",
                 bleedInMm: 0,
-                contentClassName: "p-[3mm]",
             }}
             backFacePrintPageProps={{
+                marginsInMm: [7, 10, 7, 10],
+                orientation: "landscape",
                 bleedInMm: 0,
-                contentClassName: "p-[3mm]",
             }}
             label="Effects"
         />

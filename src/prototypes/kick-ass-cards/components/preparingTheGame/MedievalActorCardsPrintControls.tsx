@@ -28,7 +28,6 @@ const ImageCard = ({ imageUri, ...restProps }: ImageCardProps) => {
                     <IconOrImage icon={imageUri} className={"absolute w-full h-full object-cover drop-shadow-lg"} />
                 )}
             </div>
-            {/* <CardBody icon={imageUri} className="z-10" title={title}></CardBody> */}
         </Card>
     );
 };

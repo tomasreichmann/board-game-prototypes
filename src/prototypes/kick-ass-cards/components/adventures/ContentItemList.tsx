@@ -40,7 +40,7 @@ const contentTypeDescriptionMap = {
     Image: "Shareable Image",
     Actor: "Card for an PCs and NPCs",
     Asset: "Card for an item like object",
-    Clock: "Card for tracking threats and goals",
+    CounterCard: "Card for tracking threats and goals",
     Effect: "Card for character effects like Wound or Boost",
     Outcome: "Card for outcomes like Success or Fumble",
     PaperMini: "Foldable paper-craft mini",
@@ -54,6 +54,7 @@ const contentTypeDescriptionMap = {
     Toggle: "layout for collapsible content",
     Button: "button style links",
 
+    Clock: "DEPRECATED in favor of Counter",
     Player: "DEPRECATED Player character card",
     p: "DEPRECATED layout for paragraph text",
     li: "DEPRECATED layout for list items",

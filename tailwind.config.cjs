@@ -120,7 +120,7 @@ module.exports = {
                 "jd-body": ["Teko", "sans-serif"],
                 dtHeading: ["Germania One", "sans-serif"],
                 kacBody: ["Rajdhani", "sans-serif"],
-                kacLogo: ["Trade Winds", "sans-serif"],
+                kacLogo: ["Trade Winds", "cursive"],
                 kacHeading: ["Oxanium", "sans-serif"],
                 mmHeading: ["Quantico", "sans-serif"],
                 mkHeading: ["Archivo Black", "sans-serif"],

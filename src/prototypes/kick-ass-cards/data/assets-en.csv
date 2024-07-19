@@ -42,7 +42,7 @@
 "grappling_hook","Grappling Hook and Rope","/KAC/assets/medieval/grappling-hook.png","+1 Effect while climbing.","","medieval",2
 "lockpick_set","Lockpick Set","/KAC/assets/medieval/lockpick-set.png","Allows picking locks.","","medieval",1
 "bandages","Bandages","/KAC/assets/medieval/bandages.png","Removes 2x Injury. Usable during battle. Consumed after use.","","medieval",4
-"healing-salve","Healing Salve","/KAC/assets/medieval/healing-salve.png","+1 Effect when healing to remove Injuries. Not usable during battle.","","medieval",2
+"healing_salve","Healing Salve","/KAC/assets/medieval/healing-salve.png","+1 Effect when healing to remove Injuries. Not usable during battle.","","medieval",2
 "herbal_remedy","Herbal Remedy","/KAC/assets/medieval/herbal-remedy.png","Receive a Boost. Usable during battle. Consumed after use.","","medieval",4
 "prayer_book","Prayer Book","/KAC/assets/medieval/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
 "mead","Mead","/KAC/assets/medieval/mead.png","Removes 2x Distress. Usable during battle. Consumed after use.","","medieval",4

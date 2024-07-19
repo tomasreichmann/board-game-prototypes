@@ -206,7 +206,7 @@ export default function ActorCard({
             <CardBody
                 className="min-h-[40%] basis-auto"
                 icon={imageUri ?? undefined}
-                childrenClassName="shrink-0 basis-auto flex flex-col align-stretch gap-1 text-left"
+                childrenClassName="shrink-0 basis-auto flex flex-col align-stretch gap-1 text-left min-h-[50%]"
             >
                 <div className={"text-sm flex flex-row gap-4"}>
                     <h2
@@ -237,7 +237,7 @@ export default function ActorCard({
                 )}
                 {threat !== null && (
                     <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-3">
-                        <Icon icon="deathSkull" className="h-4 mt-1 flex-shrink-0 inline-block" />
+                        <Icon icon="deathSkull" className="h-4 flex-shrink-0 inline-block" />
                         {threat ? (
                             <p className="flex-grow text-xs font-kacBody text-left">{threat}</p>
                         ) : (
@@ -247,7 +247,7 @@ export default function ActorCard({
                 )}
                 {reward !== null && (
                     <div className="text-xs text-kac-gold-darker font-kacBody leading-tight flex flex-row gap-3">
-                        <Icon icon="chest" className="h-4 mt-1 flex-shrink-0 inline-block" />
+                        <Icon icon="chest" className="h-4 flex-shrink-0 inline-block" />
                         {reward ? (
                             <p className="flex-grow text-xs font-kacBody text-left">{reward}</p>
                         ) : (
@@ -257,7 +257,7 @@ export default function ActorCard({
                 )}
                 {notes !== null && (
                     <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
-                        <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
+                        <div className="text-xs border-dashed text-kac-bone-darker leading-tight">
                             <Icon icon="scrollQuill" className="h-4 mr-3 inline-block" />
                             {notes.length > 0 ? (
                                 <div className={twMerge("inline", notesClassName)}>{notes}</div>

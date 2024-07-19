@@ -66,7 +66,7 @@ export const CardBody = ({
     return (
         <div
             className={twMerge(
-                "CardBody flex-1 relative flex flex-col justify-center items-stretch gap-2 z-10",
+                "CardBody flex-1 relative flex flex-col justify-center items-stretch gap-2 z-10 pb-3",
                 className
             )}
         >
@@ -122,12 +122,14 @@ export default function Card({
         bleedBottomMm = bleedMm,
         bleedLeftMm = bleedMm,
     } = restProps;
+    const hasBleed = bleedBottomMm > 0 || bleedTopMm > 0 || bleedLeftMm > 0 || bleedRightMm > 0;
     return (
         <PaperOrDiv
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
                 "Card bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
+                !hasBleed && "rounded-md overflow-hidden",
                 className
             )}
             {...restProps}

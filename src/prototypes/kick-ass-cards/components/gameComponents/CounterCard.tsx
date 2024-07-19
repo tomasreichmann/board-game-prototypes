@@ -50,7 +50,7 @@ export default function CounterCard({
             ></CardHeader>
             <CardBody
                 icon={icon ?? undefined}
-                childrenClassName="shrink-0 basis-auto flex flex-col gap-2 align-stretch text-left"
+                childrenClassName="shrink-0 basis-auto flex flex-col gap-2 align-stretch text-left min-h-[50%]"
             >
                 {title !== null && (
                     <h2 className="text-lg font-kacLogo text-balance mt-1 mb-1 text-center leading-none">
@@ -65,7 +65,7 @@ export default function CounterCard({
                 )}
 
                 {note !== null && (
-                    <div className="text-xs text-kac-bone-dark font-kacBody flex flex-row gap-2 leading-tight">
+                    <div className="text-xs text-kac-bone-darker font-kacBody flex flex-row gap-2 leading-tight">
                         <Icon icon="scrollQuill" className="h-4 flex-shrink-0 inline-block" />
                         {note ? (
                             <p
@@ -115,7 +115,7 @@ export default function CounterCard({
                 {threat !== null && (
                     <div
                         className={twMerge(
-                            "text-xs text-kac-blood font-kacBody flex flex-row gap-2",
+                            "text-xs text-kac-blood font-kacBody flex flex-row gap-2 pb-2",
                             isSmSize && "text-[0.6rem]",
                             "leading-tight"
                         )}

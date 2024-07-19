@@ -57,6 +57,7 @@ export default function ActorCardsPrintControls({ className }: ActorCardsPrintCo
                     slug: copyIndex + "-" + imageIndex,
                     forPrint: true,
                     className: "relative",
+                    size: "54x86",
                     imageUri,
                 }))
             )

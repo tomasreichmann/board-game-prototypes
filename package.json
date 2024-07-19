@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
+        "check": "tsc",
         "preview": "vite preview",
         "deploy": "npm run build && netlify deploy"
     },

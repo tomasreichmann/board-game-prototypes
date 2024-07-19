@@ -1,12 +1,12 @@
 import { twMerge } from "tailwind-merge";
-import ChunkedPages, { ChunkedPagesProps } from "../print/ChunkedPages";
+import ChunkedPages from "../print/ChunkedPages";
 import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
 import Input from "../controls/Input";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
-import Card, { CardBody, CardHeader } from "../gameComponents/Card";
+import Card, { CardHeader } from "../gameComponents/Card";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 
@@ -23,7 +23,7 @@ const ImageCard = ({ imageUri, ...restProps }: ImageCardProps) => {
     return (
         <Card {...restProps}>
             <CardHeader icon={imageUri} className="z-10" cornerIcon="/KAC/actor.png" deck="medieval"></CardHeader>
-            <div className="flex-1 relative self-stretch my-[5%]">
+            <div className="flex-1 relative self-stretch">
                 {imageUri && (
                     <IconOrImage icon={imageUri} className={"absolute w-full h-full object-cover drop-shadow-lg"} />
                 )}

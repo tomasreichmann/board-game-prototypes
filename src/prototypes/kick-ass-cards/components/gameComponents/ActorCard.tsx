@@ -193,8 +193,6 @@ export default function ActorCard({
     hideCounter = false,
     ImageComponent = Image,
     children,
-    bleedMm = 0,
-    size = "Bridge",
     ...restProps
 }: ActorCardProps) {
     return (
@@ -208,12 +206,12 @@ export default function ActorCard({
             <CardBody
                 className="min-h-[40%] basis-auto"
                 icon={imageUri ?? undefined}
-                childrenClassName="shrink-0 basis-auto flex flex-col align-stretch text-left"
+                childrenClassName="shrink-0 basis-auto flex flex-col align-stretch gap-1 text-left"
             >
-                <div className={"text-sm flex flex-row gap-4 mt-1 mb-1"}>
+                <div className={"text-sm flex flex-row gap-4"}>
                     <h2
                         className={twMerge(
-                            "flex-1 text-md font-kacLogo leading-none mt-1",
+                            "flex-1 text-md font-kacLogo leading-none",
                             toughness > 0 ? "text-left" : "text-center"
                         )}
                     >
@@ -231,7 +229,7 @@ export default function ActorCard({
                     <h3 className="text-xs leading-tight flex flex-row gap-2">
                         <Icon icon="toolbox" className="h-5 flex-shrink-0 inline-block text-kac-steel-dark" />
                         {occupation ? (
-                            <p className="flex-grow mt-1 text-left">{occupation}</p>
+                            <p className="flex-grow text-left">{occupation}</p>
                         ) : (
                             <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em] " />
                         )}
@@ -241,7 +239,7 @@ export default function ActorCard({
                     <div className="text-xs text-kac-blood font-kacBody leading-tight flex flex-row gap-3">
                         <Icon icon="deathSkull" className="h-4 mt-1 flex-shrink-0 inline-block" />
                         {threat ? (
-                            <p className="flex-grow text-xs font-kacBody mt-1 text-left">{threat}</p>
+                            <p className="flex-grow text-xs font-kacBody text-left">{threat}</p>
                         ) : (
                             <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
                         )}
@@ -251,14 +249,14 @@ export default function ActorCard({
                     <div className="text-xs text-kac-gold-darker font-kacBody leading-tight flex flex-row gap-3">
                         <Icon icon="chest" className="h-4 mt-1 flex-shrink-0 inline-block" />
                         {reward ? (
-                            <p className="flex-grow text-xs font-kacBody mt-1 text-left">{reward}</p>
+                            <p className="flex-grow text-xs font-kacBody text-left">{reward}</p>
                         ) : (
                             <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
                         )}
                     </div>
                 )}
                 {notes !== null && (
-                    <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden mt-1">
+                    <div className="border-kac-steel-light pt-1 relative flex flex-col overflow-hidden">
                         <div className="text-xs border-dashed text-kac-bone-dark leading-tight">
                             <Icon icon="scrollQuill" className="h-4 mr-3 inline-block" />
                             {notes.length > 0 ? (
@@ -266,7 +264,6 @@ export default function ActorCard({
                             ) : (
                                 <>
                                     <div className="border-b-[0.2mm] border-kac-steel border-dashed ml-7"></div>
-                                    <div className="border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]"></div>
                                     <div className="border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]"></div>
                                 </>
                             )}

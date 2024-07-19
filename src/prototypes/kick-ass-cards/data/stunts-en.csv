@@ -27,7 +27,7 @@
 "assassin","Assassin","/KAC/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","universal",1
 "ruthless","Ruthless","/KAC/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.","universal",1
 "elemental","Elemental","/KAC/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","fantasy",1
-"timeStop","Time Stop","/KAC/time-stop.png",,"Receive a Distress to prevent a turn or round Clock from advancing.","fantasy",1
+"timeStop","Time Stop","/KAC/time-stop.png",,"Receive a Distress to prevent a turn or round Counter from advancing.","fantasy",1
 "recklessPiloting","Reckless Driving","/KAC/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","modern",1
 "burst","Burst fire","/KAC/burst.png","repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","modern",1
 "whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","modern",1

@@ -66,12 +66,12 @@ export const CardBody = ({
     return (
         <div
             className={twMerge(
-                "CardBody flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10",
+                "CardBody flex-1 relative flex flex-col justify-center items-stretch gap-2 z-10",
                 className
             )}
         >
             <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
-                <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
+                <div className="flex-1 relative self-stretch ">
                     {icon && (
                         <IconOrImage
                             icon={icon}

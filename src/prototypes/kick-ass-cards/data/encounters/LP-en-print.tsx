@@ -52,12 +52,12 @@ const actorItems = Object.values(actors).map((item) => ({
     className: "relative -m-[3mm]",
 }));
 
-const sections = ["Actors", "Assets", "PCs", "Clocks", "Effects", "Boxes"] as const;
+const sections = ["Actors", "Assets", "PCs", "Counters", "Effects", "Boxes"] as const;
 const defaultSectionVisibility = {
     Actors: true,
     Assets: true,
     PCs: true,
-    Clocks: true,
+    Counters: true,
     Effects: true,
     Boxes: true,
 };
@@ -238,7 +238,7 @@ export default function LPCardPages() {
                     </div>
                 </PrintPage>
             )}
-            {displayedSections["Clocks"] && (
+            {displayedSections["Counters"] && (
                 <ChunkedPages
                     Component={Clock}
                     items={Object.values(clocks).map((item) => ({
@@ -255,7 +255,7 @@ export default function LPCardPages() {
                         bleedInMm: 0,
                         contentClassName: "p-[3mm]",
                     }}
-                    label="Clocks"
+                    label="Counters"
                 />
             )}
             {displayedSections["Effects"] && (

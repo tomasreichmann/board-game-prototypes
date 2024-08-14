@@ -128,7 +128,7 @@ export default function Card({
             size={size}
             bleedMm={bleedMm}
             className={twMerge(
-                "Card bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
+                "Card rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
                 !hasBleed && "rounded-md overflow-hidden",
                 className
             )}

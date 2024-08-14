@@ -42,7 +42,16 @@ export default function BroadcastComponent<ContentType extends ScreenContentType
             {
                 type,
                 id: uuidv4(),
-                props: { ...props, ...broadcastPropsOverride },
+                props: {
+                    ...props,
+                    bleedMm: 3,
+                    bleedBottomMm: 3,
+                    bleedTopMm: 3,
+                    bleedLeftMm: 3,
+                    bleedRightMm: 3,
+                    className: (props?.className || "").replace("overflow-hidden", "").replace("bg-white", ""),
+                    ...broadcastPropsOverride,
+                },
                 animation: AnimationEnum.FadeIn,
             } as ScreenContentType,
         ];

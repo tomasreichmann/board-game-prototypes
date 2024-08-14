@@ -50,3 +50,11 @@
 "lantern","Lantern","/KAC/assets/medieval/lantern.png","Provides light in the current zone. Can be used in the rain. Does not count as an open flame.","","medieval",4
 "torch","Torch","/KAC/assets/medieval/torch.png","Provides light in the current zone. Cannot be used in the rain. Counts as an open flame","","medieval",4
 "cannon","Cannon","/KAC/assets/medieval/cannon.png","A heavy explosive artillery weapon. Effective Range: 2+ zones away. -1 Effect when shooting targets 1 zone away. Cannot target the same zone. Ignores all shields and armor. Damages everything in the zone.","","medieval",4
+"rations","Rations","/KAC/assets/medieval/rations.png","Food and water to sustain a person for a day.","","medieval",8
+"pouch","Pouch","/KAC/assets/medieval/pouch.png","A pouch can store easily accessable small things. Can be attached to a belt.","","medieval",1
+"chest","Chest","/KAC/assets/medieval/chest.png","A chest can store heavier things for easier transportation. Can be locked.","","medieval",1
+"letter","Letter","/KAC/assets/medieval/letter.png","A letter is a convenient way of passing information.","","medieval",1
+"poison","Poison","/KAC/assets/medieval/poison.png","Causes 1x Injury at the end of every Round until healed. Can be applied to a weapon. Usable during battle. Consumed after use.","","medieval",2
+"key","Key","/KAC/assets/medieval/key.png","What does it open?","","medieval",1
+"trap","Trap","/KAC/assets/medieval/trap.png","Causes 2x Injury and Stuck when stepped on. Takes a Success to escape from it.","","medieval",3
+"tools","Tools","/KAC/assets/medieval/tools.png","Tools for crafting.","","medieval",1

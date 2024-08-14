@@ -30,6 +30,7 @@
         "file-saver": "^2.0.5",
         "firebase": "^10.11.1",
         "firebaseui": "^6.1.0",
+        "html2canvas": "^1.4.1",
         "immutable-assign": "^2.1.5",
         "lodash": "^4.17.21",
         "react": "^18.2.0",
@@ -53,6 +54,7 @@
         "tslib": "^2.4.0",
         "tsparticles": "^2.10.1",
         "use-google-sheets": "^2.0.0",
+        "use-react-screenshot": "^4.0.0",
         "uuid": "^9.0.0",
         "zustand": "^4.5.2"
     },

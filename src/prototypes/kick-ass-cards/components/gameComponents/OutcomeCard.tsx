@@ -5,6 +5,7 @@ import RichText from "../RichText";
 import { twMerge } from "tailwind-merge";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
+import { H2 } from "../content/Text";
 
 export type OutcomeCardProps = React.PropsWithChildren<OutcomeType & Partial<PaperProps>>;
 
@@ -85,16 +86,15 @@ export default function OutcomeCard({
                                 )}
                             />
                         </div>
-                        <div
+                        <H2
                             className={twMerge(
-                                "font-kacLogo text-kac-cloth text-lg text-center mb-1",
-                                isSmSize && "text-md",
-                                "leading-none",
+                                "font-kacLogo text-kac-cloth text-center mb-1 leading-none",
                                 colorClassName
                             )}
+                            size={isSmSize ? "xl" : "xxl"}
                         >
                             {title}
-                        </div>
+                        </H2>
                     </div>
 
                     <div
@@ -150,9 +150,9 @@ export const OutcomeCardBackFace = ({
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
                 <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                    <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                    <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">
                         Outcome
-                    </div>
+                    </H2>
                     {children}
                 </div>
             </div>

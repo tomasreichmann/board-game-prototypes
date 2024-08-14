@@ -10,6 +10,7 @@ import DiceCounter from "../DiceCounter";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import ComponentMetaType from "../generation/ComponentMetaType";
 import Card, { CardBody, CardHeader } from "./Card";
+import { H2 } from "../content/Text";
 // import "./ActorCard.css";
 
 const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
@@ -209,20 +210,20 @@ export default function ActorCard({
                 childrenClassName="shrink-0 basis-auto flex flex-col align-stretch gap-1 text-left min-h-[50%]"
             >
                 <div className={"text-sm flex flex-row gap-4"}>
-                    <h2
+                    <H2
                         className={twMerge(
-                            "flex-1 text-md font-kacLogo leading-none",
+                            "flex-1 leading-none text-kac-iron-light",
                             toughness > 0 ? "text-left" : "text-center"
                         )}
                     >
                         {name || <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />}
                         {age !== undefined ? ` (${age})` : ""}
-                    </h2>
+                    </H2>
                     {toughness > 0 && (
-                        <div className="text-sm border-dashed justify-end leading-none items-start text-kac-blood font-kacLogo flex flex-row">
-                            <span className="mt-1">{toughness}&nbsp;</span>
+                        <H2 className="border-dashed justify-end leading-none items-start text-kac-blood font-kacLogo flex flex-row">
+                            <span>{toughness}&nbsp;</span>
                             <Icon icon="drop" className="h-5" />
-                        </div>
+                        </H2>
                     )}
                 </div>
                 {occupation !== null && (
@@ -283,9 +284,9 @@ export const ActorCardBackFace = ({ className, children, size = "Bridge", ...res
             backgroundImageUri="/KAC/actor-back-face.png"
         >
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <div className="text-kac-cloth-lightest text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                <H2 className="text-kac-cloth-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">
                     Actor
-                </div>
+                </H2>
             </div>
         </Card>
     );

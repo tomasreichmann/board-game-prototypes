@@ -1,15 +1,15 @@
-"slug","title","icon","effect","count"
-"wound","Injury","/KAC/blood.png","4x Injury ➜ Unconscious.<BR>──<BR>Heal to discard.",4
-"distress","Distress","/KAC/distress2.png","3x Distress ➜ Panic.<BR>4x Distress ➜ Hopeless.<BR>──<BR>Rest or indulge in your vice to discard.",4
-"unconscious","Unconscious","/KAC/unconscious.png","4x Injury: You are helpless. You cannot take actions until someone revives you.<BR>──<BR>Get rid of your Injuries to discard.",1
-"panicked","Panicked","/KAC/panicked2.png","3x Distress: You can only play the top card of your Outcome deck.<BR>──<BR>Get rid of your Distress to discard.",1
-"hopeless","Hopeless","/KAC/hopeless.png","4x Distress: You can only flee or give up.<BR>──<BR>Get rid of your Distress to discard.",1
-"stuck","Stuck","/KAC/frozen.png","You cannot move.<BR>──<BR>Free yourself to discard.",1
-"hindered","Hindered","/KAC/hindered.png","You can only move or take actions, but not both, until you free yourself.",1
-"boost","Boost","/KAC/sprint.png","Your next action or defense has +1 Effect or +1 Move.",1
-"frost","Frost","/KAC/frost.png","Every turn you end with 2x Frost or more, you receive a Distress.",2
-"heat","Heat","/KAC/sun.png","Every turn you end with 2x Heat or more, you receive an Injury.",2
-"complication","Complication","/KAC/complication.png","A Complication makes your life harder.<BR>──<BR>Next action or defense has -1 Effect, then discard.",1
-"infection","Spore infection","/LP/icons/spore-infection.png","+1 Doom",0
-"doom","Doom","/KAC/doom.png","You are loosing your humanity.<BR>──<BR>3x Doom: You transform into a monster.",3
-"salvation","Salvation","/KAC/salvation.png","You are regaining your humanity.<BR>──<BR>3x Salvation: You transform back into a hero.",2
+"slug","title","icon","effect","count","deck"
+"wound","Injury","/KAC/blood.png","4x Injury ➜ Unconscious.<BR>──<BR>Heal to discard.",4,"universal"
+"distress","Distress","/KAC/distress2.png","3x Distress ➜ Panic.<BR>4x Distress ➜ Hopeless.<BR>──<BR>Rest or indulge in your vice to discard.",4,"universal"
+"unconscious","Unconscious","/KAC/unconscious.png","4x Injury: You are helpless. You cannot take actions until someone revives you.<BR>──<BR>Get rid of your Injuries to discard.",1,"universal"
+"panicked","Panicked","/KAC/panicked2.png","3x Distress: You can only play the top card of your Outcome deck.<BR>──<BR>Get rid of your Distress to discard.",1,"universal"
+"hopeless","Hopeless","/KAC/hopeless.png","4x Distress: You can only flee or give up.<BR>──<BR>Get rid of your Distress to discard.",1,"universal"
+"stuck","Stuck","/KAC/frozen.png","You cannot move.<BR>──<BR>Free yourself to discard.",1,"universal"
+"hindered","Hindered","/KAC/hindered.png","You can only move or take actions, but not both, until you free yourself.",1,"universal"
+"boost","Boost","/KAC/sprint.png","Your next action or defense has +1 Effect or +1 Move.",1,"universal"
+"frost","Frost","/KAC/frost.png","Every turn you end with 2x Frost or more, you receive a Distress.",2,"universal"
+"heat","Heat","/KAC/sun.png","Every turn you end with 2x Heat or more, you receive an Injury.",2,"universal"
+"complication","Complication","/KAC/complication.png","A Complication makes your life harder.<BR>──<BR>Next action or defense has -1 Effect, then discard.",1,"universal"
+"infection","Spore infection","/LP/icons/spore-infection.png","+1 Doom",0,"universal"
+"doom","Doom","/KAC/doom.png","You are loosing your humanity.<BR>──<BR>3x Doom: You transform into a monster.",3,"universal"
+"salvation","Salvation","/KAC/salvation.png","You are regaining your humanity.<BR>──<BR>3x Salvation: You transform back into a hero.",2,"universal"

@@ -5,6 +5,7 @@ import { twMerge } from "tailwind-merge";
 import Card, { CardBody, CardHeader } from "./Card";
 import DiceCounter from "../DiceCounter";
 import { allSizes } from "../../../../components/print/paperSizes";
+import { H2 } from "../content/Text";
 
 export type CounterCardProps = React.PropsWithChildren<
     {
@@ -53,7 +54,7 @@ export default function CounterCard({
                 childrenClassName="shrink-0 basis-auto flex flex-col gap-2 align-stretch text-left min-h-[50%]"
             >
                 {title !== null && (
-                    <h2 className="text-lg font-kacLogo text-balance mt-1 mb-1 text-center leading-none">
+                    <H2 className="text-lg text-balance mt-1 mb-1 text-center leading-none text-kac-iron-light">
                         {title || <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />}
                         {current !== undefined && total !== undefined && (
                             <>
@@ -61,7 +62,7 @@ export default function CounterCard({
                                 <span className="text-kac-blood">{current}</span>&nbsp;/&nbsp;{total}
                             </>
                         )}
-                    </h2>
+                    </H2>
                 )}
 
                 {note !== null && (
@@ -147,9 +148,9 @@ export const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterCardPro
     return (
         <Card {...restProps} backgroundImageUri="/KAC/clock-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <div className="text-kac-cloth-lightest text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
+                <H2 className="text-kac-cloth-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">
                     Counter
-                </div>
+                </H2>
             </div>
         </Card>
     );

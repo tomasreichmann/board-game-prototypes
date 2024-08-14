@@ -6,10 +6,10 @@ import MachimagikaRoute from "./PlayRoute";
 import PrintRoute from "./PrintRoute";
 import ScreenRoute from "./ScreenRoute";
 import PlaygroundRoute from "./PlaygroundRoute";
-import SmartDocsRoute from "./SmartDocsRoute";
+/* import SmartDocsRoute from "./SmartDocsRoute";
+import SmartDocRoute from "./SmartDocRoute"; */
 
 import { RouteDefinition } from "../../../../routeTypes";
-import SmartDocRoute from "./SmartDocRoute";
 import WorldBuilderRoute from "./WorldBuilderRoute";
 import SettingsRoute from "./SettingsRoute";
 import AdventuresRoute from "./AdventuresRoute";
@@ -28,7 +28,7 @@ export const sidebarPath = "__sidebar";
 
 export const kickAssCardsSubRoutes: RouteDefinition[] = [
     {
-        name: "Kick Ass Cards",
+        name: "Mighty Decks",
         path: kickAssCardsPath + "/",
         hideFromNav: true,
         Component: InfoRoute,

@@ -9,6 +9,7 @@ import ComponentMetaType from "../generation/ComponentMetaType";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
 import Card from "./Card";
+import { H2 } from "../content/Text";
 
 type OptionalKeysType = "slug" | "cost" | "count";
 
@@ -169,15 +170,12 @@ export default function AssetCard({
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
                             <IconOrImage icon={icon} className="absolute w-full h-full object-contain drop-shadow-lg" />
                         </div>
-                        <div
-                            className={twMerge(
-                                "font-kacLogo text-kac-gold-darker text-lg text-center mb-1",
-                                isSmSize && "text-md",
-                                "leading-none"
-                            )}
+                        <H2
+                            className={twMerge("text-kac-gold-darker text-center mb-1 leading-none")}
+                            size={isSmSize ? "xl" : "xxl"}
                         >
                             {title}
-                        </div>
+                        </H2>
                     </div>
                     <div
                         className={twMerge(
@@ -199,9 +197,7 @@ export const AssetCardBackFace = ({ icon, deck, ...restProps }: AssetCardProps) 
     return (
         <Card {...restProps} backgroundImageUri="/KAC/asset-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
-                    Asset
-                </div>
+                <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">Asset</H2>
             </div>
         </Card>
     );

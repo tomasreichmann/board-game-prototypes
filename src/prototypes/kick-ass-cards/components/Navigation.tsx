@@ -3,6 +3,7 @@ import { Button } from "react-daisyui";
 import { twMerge } from "tailwind-merge";
 import { kickAssCardsNavigationSubRoutes, kickAssCardsPath, kickAssCardsSubRoutes } from "./routes/routes";
 import Icon from "./Icon";
+import { H1 } from "./content/Text";
 
 export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HTMLDivElement>) => (
     <div
@@ -17,15 +18,14 @@ export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HT
         {...restProps}
     >
         <div className="top-0 flex flex-row flex-wrap gap-x-4 gap-y-2 text-kac-bone">
-            <h1 className="font-kacLogo text-3xl min-w-fit flex-1">
+            <H1 className="min-w-fit flex-1 text-kac-bone">
                 <a
                     href={kickAssCardsPath}
-                    className="text-inherit font-inherit inline-flex flex-row flex-wrap hover:text-kac-bone-light transition-colors"
+                    className="text-inherit font-inherit font-bold inline-flex flex-row flex-wrap hover:text-kac-bone-light transition-colors"
                 >
-                    <Icon icon="kickAssCards" className="h-10" />
-                    Kick Ass Cards
+                    Mighty Decks
                 </a>
-            </h1>
+            </H1>
             <div className="flex flex-row flex-wrap gap-4 items-center">
                 {kickAssCardsNavigationSubRoutes.map(({ name, path }) => (
                     <Button key={path} href={path} size="xs" color="secondary">

@@ -5,6 +5,7 @@ import { EffectType } from "../../types";
 import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
+import { H2 } from "../content/Text";
 
 type OptionalKeysType = "slug" | "count";
 
@@ -36,6 +37,7 @@ export default function EffectCard({
     className,
     size = "Mini European",
     slug,
+    deck,
     title,
     icon,
     effect,
@@ -81,7 +83,8 @@ export default function EffectCard({
                 <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
                     <div className="flex flex-row items-center gap-1">
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
-                        <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div>
+                        {/* <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div> */}
+                        <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
                         <IconOrImage icon="/KAC/heartbeat.png" className={"text-kac-skin-dark h-6"} />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
@@ -94,15 +97,15 @@ export default function EffectCard({
                                 )}
                             />
                         </div>
-                        <div
+                        <H2
                             className={twMerge(
-                                "font-kacLogo text-kac-cloth text-lg leading-none text-center mb-1",
-                                isSmSize && "text-md",
+                                "font-kacLogo text-kac-cloth leading-none text-center mb-1",
                                 colorClassName
                             )}
+                            size={isSmSize ? "xl" : "xxl"}
                         >
                             {title}
-                        </div>
+                        </H2>
                     </div>
                     <div
                         className={twMerge(
@@ -156,9 +159,7 @@ export const EffectCardBackFace = ({
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
                 <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                    <div className="text-white text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
-                        Effect
-                    </div>
+                    <H2 className="text-white text-2xl text-center relative z-1 drop-shadow-md-heavy">Effect</H2>
                     {children}
                 </div>
             </div>

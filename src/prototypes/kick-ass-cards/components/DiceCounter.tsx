@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "./Icon";
 import { PaperOrDiv, PaperProps } from "../../../components/print/Paper/Paper";
 import { twMerge } from "tailwind-merge";
+import { H3 } from "./content/Text";
 
 export type DiceCounterProps = React.PropsWithChildren<{
     className?: string;
@@ -34,7 +35,7 @@ export default function DiceCounter({
 }: DiceCounterProps) {
     const icon = (total in countIconMap && countIconMap[total as keyof typeof countIconMap]) || ("dx" as const);
     return (
-        <PaperOrDiv size={size} className={twMerge("DiceCounter flex text-sm font-kacHeading", className)}>
+        <PaperOrDiv size={size} className={twMerge("DiceCounter flex", className)}>
             <div className="relative flex-1 flex flex-col gap-2 justify-center items-center">
                 <div className="flex-1 relative self-stretch">
                     <Icon
@@ -46,19 +47,20 @@ export default function DiceCounter({
                     />
                 </div>
                 {icon === "dx" && (
-                    <div
+                    <H3
                         className={twMerge(
-                            "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg",
+                            "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
                             textClassName
                         )}
+                        color="body"
                     >
                         <span className={currentClassName}>{current}</span>&nbsp;/&nbsp;{total}
-                    </div>
+                    </H3>
                 )}
                 {icon !== "dx" && (
-                    <p className={textClassName}>
+                    <H3 className={textClassName} color="body">
                         <span className={currentClassName}>{current}</span>&nbsp;/&nbsp;{total}
-                    </p>
+                    </H3>
                 )}
             </div>
             {children}

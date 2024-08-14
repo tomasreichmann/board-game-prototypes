@@ -68,6 +68,7 @@ export type OutcomeSlug = "special" | "success" | "partial" | "fumble" | "chaos"
 
 export type OutcomeType = {
     slug: string;
+    deck?: string;
     title: string;
     icon: IconType;
     description: string;

@@ -19,12 +19,12 @@ const variants = cva(["Text"], {
     variants: {
         variant: {
             body: ["text-kac-iron"],
-            h1: ["font-kacHeading", "leading-tight", "tracking-tighter"],
-            h2: ["font-kacHeading", "leading-tight", "tracking-tighter"],
-            h3: ["font-kacHeading", "leading-tight", "tracking-tighter"],
-            h4: ["font-kacHeading", "leading-tight", "tracking-tighter"],
-            h5: ["font-kacHeading", "leading-tight", "tracking-tighter"],
-            h6: ["font-kacHeading", "leading-tight", "tracking-tighter"],
+            h1: ["font-kacHeading", "font-bold", "leading-tight", "tracking-tighter"],
+            h2: ["font-kacHeading", "font-bold", "leading-tight", "tracking-tighter"],
+            h3: ["font-kacHeading", "font-bold", "leading-tight", "tracking-tighter"],
+            h4: ["font-kacHeading", "font-bold", "leading-tight", "tracking-tighter"],
+            h5: ["font-kacHeading", "font-bold", "leading-tight", "tracking-tighter"],
+            h6: ["font-kacHeading", "font-bold", "leading-tight", "tracking-tighter"],
         },
         color: {
             inherit: ["text-inherit"],

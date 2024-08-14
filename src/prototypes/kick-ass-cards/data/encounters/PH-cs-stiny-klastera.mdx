@@ -8,7 +8,7 @@ import { assetMap as assets } from "../assets-en-deck";
 
 # Stíny Kláštera
 
-![](/ML/ilustrace/kutna-hora.jpg)
+![](/KAC/encounters/stiny_klastera/splash.png)
 
 - _Popisný text, který můžete přímo přečíst hráčům, když dorazí na místo._
 - 🔎 Informace, které nejsou hráčům okamžitě zřejmé, ale mohou je zjistit hledáním, zkoumáním nebo výslechem.
@@ -26,6 +26,8 @@ Během těchto služeb se ukazuje, že léčebné metody opata jsou brutální a
 Když se hrdinové konečně dostanou na řadu, musí pomáhat opatovi v léčbě, dokud není jasné, že pacient jeho léčbu nepřežije.
 Pokud hrdinové konfrontují opata, ten je nařkne z toho, že jsou to husité a tím pádem služebníci ďábla a poštve na ně ostatní pacienty.
 Hrdinové musí překonat děsivé nástrahy kláštera a jeho šílených pacientů a dostat pryč.
+
+![](/KAC/encounters/stiny_klastera/gate.png)
 
 ## Příchod ke klášteru
 
@@ -51,21 +53,25 @@ Vaším cílem je dostat tohoto nesmírně důležitého člověka k opatovi Rad
 💡 Když Bratr Pavel vidí, že se mu družina snaží pomoct, tak je provede skrz čekárnu, přes halu do kaple, kterou opat používá jako ordinaci.
 
 <List>
-    <Actor imageUri="/KAC/actors/strong-man.png" name="Bratr Pavel" notes="Chlap jak hora" toughness={6} threat="Útočí na blízko palicí za 2&nbsp;Zranění, nebo švihem na všechny v zóně za 1&nbsp;Zranění." reward="Klíče od kláštera" deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/encounters/stiny_klastera/brother_pavel_actor.png" name="Bratr Pavel" notes="Chlap jak hora" toughness={6} threat="Útočí na blízko palicí za 2&nbsp;Zranění, nebo švihem na všechny v zóně za 1&nbsp;Zranění." reward="Klíče od kláštera" deck="Příběhy Husitů" />
     <CounterCard icon="/KAC/heartbeat.png" title="Zdraví pacienta" note="Pacient pomalu umírá (-1&nbsp;za kolo)." threat="Pro pacienta může být už pozdě" total={12} current={12} deck="Příběhy Husitů" />
     <CounterCard icon="/KAC/counters/drop.png" title="Vynést splašky" threat="Splašky jsou nechutné a slabá vůle způsobí Utrpení (Distress)" total={4} current={4} deck="Příběhy Husitů" />
     <CounterCard icon="/KAC/blood.png" title="Vytřít čekárnu" threat="Těžko říct, co se tu stalo, ale krev je všude. Hrozí uklouznutí Zranění (Injury)" total={4} current={4} deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/counters/danger.png" title="Pohřbít mrtvoly" threat="Neohrabaná manipulace s mrtvolou způsobí praskání boláků, které mohou být infekční. Hrozí nakažení morem: Zkáza (Doom)" total={4} current={4} deck="Příběhy Husitů" />
+    <CounterCard icon="/KAC/counters/danger.png" title="Pohřbít mrtvoly" threat="Neohrabaná manipulace s mrtvolou způsobí praskání boláků. Hrozí nakažení morem: Zkáza (Doom)" total={4} current={4} deck="Příběhy Husitů" />
 </List>
+
+![](/KAC/encounters/stiny_klastera/waiting_room.jpg)
 
 ## Čekárna
 
 _Vstoupíte do stísněné, slabě osvětlené místnosti, kde na dřevěných lavicích sedí desítky pacientů. Každý z nich nese stopy těžkých nemocí a zranění. Atmosféra je těžká, plná úzkosti a bolesti. Na podlaze se rozprostírá velká louže zaschlé i čerstvé krve, která stéká z improvizovaných obvazů a otevřených ran. Někteří pacienti mají těla pokrytá krvácejícími boláky, jiní drží své končetiny zkroucené do nepřirozených úhlů.  
 Zdi jsou pokryté skvrnami a stíny, vrženými slabým světlem svíček. Místnost je plná kašlání, sténání a šeptaných modliteb. Vzduch je těžký pachem potu, hniloby a dezinfekčních bylin, které však nedokážou přehlušit smrad rozkládajícího se masa.  
-Napětí v místnosti je téměř hmatatelné, jak pacienti s hrůzou a nadějí čekají na svůj osud v rukou opata Radomíra.  
+Napětí v místnosti je téměř hmatatelné, jak pacienti s hrůzou a nadějí čekají na svůj osud v rukou opata Radomíra._  
 
 📅 **Průchod čekárnou s bratrem Pavlem**  
 _Nadějné pohledy s napětím sledují bratra Pavla doufajíc, že konečně přišla jejich řada na spásu. Jejich výraz se hned zkroutí v opovržení, když vidí, že vás bratr Pavel vede za opatem._
+
+![](/KAC/encounters/stiny_klastera/hall.png)
 
 ## Hala
 
@@ -74,8 +80,8 @@ V jednom rohu místnosti se nachází několik kotců s děsivě vypadajícími 
 Po stěnách haly jsou rozmístěny police plné sklenic, ve kterých jsou naložené orgány. Každá sklenice je označena pečlivě napsaným štítkem a obsahuje děsivé ukázky lidských částí těla – oči, ruce, mozky a srdce plavající v konzervační tekutině. Orgány jsou groteskně zkroucené a zdeformované, některé z nich zjevně pocházejí z obětí strašlivých nemocí nebo experimentů.  
 Vzduch v hale je těžký pachem chemikálií, bylin a hniloby. S každým krokem se ozývají zvuky kapající tekutiny a šustění neviditelných tvorů._
 
--   💡 V hale jsou k najdení různé léčivé předměty. Neopatrné hledání ovšem může způsobit převrhnutí jedovatých chemikálií Utrpení (Distress).
--   💡 V jednom z kotců je zavřený pes, který vypadá úplně zdravě. Z jeho výrazu je jasné, že se bojí, ale že chce pryč. Při neopatrném zacházení se zvířaty hrozí pokousání Zranění (Injury).
+-   🔎 V hale jsou k najdení různé léčivé předměty. Neopatrné hledání ovšem může způsobit převrhnutí jedovatých chemikálií Utrpení (Distress).
+-   🔎 V jednom z kotců je zavřený pes, který vypadá úplně zdravě. Z jeho výrazu je jasné, že se bojí, ale že chce pryč. Při neopatrném zacházení se zvířaty hrozí pokousání Zranění (Injury).
 
 -   📅 Když se přiblíží družina ke dveřím do kaple, vyrazí z nich pacient:  
     -   _Ze dveří se rázem vynoří muž, jehož tvář září vděčností a radostí. „Opravdu zázračné! Opat Radomír mě zachránil!“ volá radostně. „Byl jsem na pokraji smrti, ale on mě vyléčil! Je to svatý muž!“ Muž rychle kulhá směrem k východu a stále vyvolává slávu opatovi._
@@ -83,10 +89,12 @@ Vzduch v hale je těžký pachem chemikálií, bylin a hniloby. S každým kroke
         -   🔎 Je podezřelé, jak rychle pacient utíká pryč.
 
 <List>
-    <Actor imageUri="/KAC/actors/wolf.png" name="Huňatý pes" occupation="Loyální a dobře vycvyčený pes" toughness={2} threat="Útočí na blízko za 1&nbsp;Zranění." reward="Přidá se k družíně, když ho vysvobodí" deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/actors/medieval/dog.png" name="Huňatý pes" occupation="Loyální a dobře vycvyčený pes" toughness={2} threat="Útočí na blízko za 1&nbsp;Zranění." reward="Přidá se k družíně, když ho vysvobodí" deck="Příběhy Husitů" />
     <Asset size="54x86" {...assets.healing_salve} />
     <Asset size="54x86" {...assets.herbal_remedy} />
 </List>
+
+![](/KAC/encounters/stiny_klastera/chapel.png)
 
 ## Setkání s doktorem
 
@@ -95,6 +103,8 @@ _Otevřením těžkých okovaných dveří se vám ukáže interiér kaple. Pros
 _S rozbušenými srdci vstupujete do chladné a temné kaple. Míjíte dlouhé řady dřevěných lavic, na kterých sedí nadějní mladí doktoři a sestry. Hltají každé opatovo slovo a horečně si je zapisují do poznámkami přetékajících zápisníků. Ze dřeva vyřezávané sochy svatých s utrápenými výrazy mlčky sledují každý váš krok._
 
 -   Bratr Pavel za vámi zavřel dveře a zmizel v hale.
+-   Opatovi pomáhá také Sestra Terezie
+    -   🔎 Sestra Terezie je zkušená zdravotní sestra. Pomáhá opatovi na přání abatyše, která jí k opatovi poslala. Sama, ale pochybuje o opatových lékařských i náboženských praktikách. Opata bude poslouchat, ale nechá se zvyklat zejména náboženskými argumenty a může opata opustit a pomoct družině s léčením.
 -   Opat
     -   💡 Opat je námoženský fanatik a blázen. Občas se mu podaří někoho vyléčit, ale mnohem častěji se to nepovede. Opat to svaluje na boží vůli.
     -   📅 Pokud je Opat napaden:
@@ -109,16 +119,17 @@ _S rozbušenými srdci vstupujete do chladné a temné kaple. Míjíte dlouhé �
     _Pacient začíná blednout_
 -   Opatovi se zhoršující se stav pacienta nelíbí. Tvrdí, že se jedná o spirituální problém. Dá za úkol hráči během zákroku předčítat pasáže z bible v latině. Při každém přeřeku opat hráče čím dál více kárá. Cokoliv jiného než Úspěch způsobí hráči Utrpení.
 -   Pacientovi se neulevuje a začne se velmi zahřívat. Opat rozhodne, že je potřeba využít síly svatých. Přinese relikviář s vysušeným prstem údajně svatého Petra. Opat začně prstem kroužit nad tělem pacienta, pak po hrudi a kolem rány. Nakonec ho vezme a opakovaně ho zarazí přímo do rány, až z ní cáká krev. Všichni musí ustát pohled na tuto děsivou scénu. Neúspěch: Utrpení.
--   Pokud družina asistuje celou dobu opatovi, nebo pokud ho kdykoliv během péče o pacienta konfrontuje:
+
+📅 **Pokud družina asistuje celou dobu opatovi, nebo pokud ho kdykoliv během péče o pacienta konfrontuje**:
     -   Opat se zahledí do tváře pacienta a pozná v něm Jana Žižku. Slavného husitského vojevůdce. Ihned obviní družinu z toho, že jsou husité a tím pádem poskoci ďábla.
     -   Opat se rozohní o tom, že jsou to kacíři a že je potřeba vás všechny dostat před Boží soud, kde vás rozsoudí. Přikáže všem poskokům, aby na vás zaútočili.
 
 🎭 **Jediná možnost útěku je zpět do haly**
 
 <List>
-    <Actor imageUri="/KAC/actors/medieval/female/nun.png" name="Sestra Terezie" toughness={3} threat="Brání se házením jedovatých lektvarů za 1&nbsp;Utrpení všem v zóně" reward="2x Obvazy" deck="Příběhy Husitů" />
-    <Actor imageUri="/KAC/actors/medieval/priest.png" name="Opat Radomír" occupation="Zázračný léčitel" toughness={4} reward="Modlitební knížka" deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/counters/morale.png" title="Přisluhovači" note="Kolem opata Radomíra se vždy drží hlouček věrných, kteří mu jsou jakkoliv nápomocni" total={8} current={8} deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/encounters/stiny_klastera/sister_tereza_actor.png" name="Sestra Terezie" toughness={3} threat="Brání se házením jedovatých lektvarů za 1&nbsp;Utrpení všem v zóně" reward="2x Obvazy" deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/encounters/stiny_klastera/abbot_actor.png" name="Opat Radomír" occupation="Zázračný léčitel" toughness={4} reward="Skalpel, Modlitební knížka, Herbal Remedy" deck="Příběhy Husitů" />
+    <CounterCard icon="/KAC/counters/morale.png" title="Přisluhovači" threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý bod Odolnosti" total={8} current={8} deck="Příběhy Husitů" />
     <Asset size="54x86" {...assets.bandages} />
     <Asset size="54x86" {...assets.prayer_book} />
 </List>
@@ -126,13 +137,30 @@ _S rozbušenými srdci vstupujete do chladné a temné kaple. Míjíte dlouhé �
 ## Útěk skrz halu
 
 -   Zvířata řinčí klecemi jako smyslu zbavená.
--   Alchymistické soupravy padají a po hale se roztékají nebezpečné kapaliny.
+-   Alchymistické soupravy padají a po hale se roztékají nebezpečné kapaliny - při pohybu skrz halu je nutné zahrát alespoň Částečný úspěch, jinak hrozí Zranění, nebo Utrpení.
 
-## Útěk čekárnu
+<List>
+    <Actor imageUri="/KAC/actors/wolf.png" name="Děsivá zvířata" toughness={4} threat="Útočí na různé postavy za 1&nbsp;Zranění kousnutím za každý bod Odolnosti" reward="Jed" deck="Příběhy Husitů" />
+    <Asset size="54x86" {...assets.poison} />
+</List>
+
+## Útěk skrz čekárnu
 
 -   Rozzuření pacienti vám stojí v cestě, vyhecovaní opatovým voláním k násilí.
+-   Ve dveřích z čekárny stojí bratr Pavel, brání vám utéct a dožaduje se vysvětlení, co jste opatovi udělali.
+    -   🔎 Bratr Pavel už nějakou dobu podezířá opata, že je blázen a šarlatán. Chtěl k němu jít studovat lékařství, protože je sám zkušeným léčitelem. Pokud ho družina přesvědčí, tak je vezme do svého domků v lese a pomůže jim Žižku zachránit.
+
+<List>
+    <Actor imageUri="/KAC/actors/wolf.png" name="Děsivá zvířata" toughness={4} threat="Útočí na různé postavy za 1&nbsp;Zranění kousnutím za každý bod Odolnosti" reward="Jed" deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/encounters/stiny_klastera/brother_pavel_actor.png" name="Bratr Pavel" notes="Chlap jak hora" toughness={6} threat="Útočí na blízko palicí za 2&nbsp;Zranění, nebo švihem na všechny v zóně za 1&nbsp;Zranění." reward="Klíče od kláštera" deck="Příběhy Husitů" />
+    <CounterCard icon="/KAC/encounters/stiny_klastera/wounded.png" title="Nebozí pacienti" threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý DRUHÝ bod Odolnosti" reward="2x Obvazy, 2x Byliny" total={8} current={8} deck="Příběhy Husitů" />
+</List>
+
+![](/KAC/encounters/stiny_klastera/escape.png)
 
 ## Útěk z kláštera
 
--   Ve dveřích stojí bratr Pavel, brání vám utéct a dožaduje se vysvětlení, co jste opatovi udělali.
--   🔎 Bratr Pavel už nějakou dobu podezířá opata, že je šílenec. Chtěl k němu jít studovat, protože je sám zkušeným léčitelem. Pokud ho družina přesvědčí, tak je vezme k sobě domů a pomůže jim Žižku zachránit.
+-   Pokud se hrdinům podařilo utéct z kláštera, najdou v lese opuštěný domek, kde se mohou pokusit sami Žižku vyléčit. Pokud sebou mají Sestru Terezii, nebo bratra Pavla, ti se o Žižku postarají a vyléčí ho.
+-   Po několika dnech se Žižka probere a družině ze srdce děkuje, že se o něj postarali, když to nejvíce potřeboval. Družina se stane hrdiny husitského hnutí a zapíše se do dějin Českého národa.
+
+![](/KAC/encounters/stiny_klastera/zizka.jpg)

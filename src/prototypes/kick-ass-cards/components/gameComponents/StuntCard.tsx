@@ -5,6 +5,7 @@ import { StuntType } from "../../types";
 import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import Card from "./Card";
+import { H2 } from "../content/Text";
 // import "./StuntCard.css";
 
 export type StuntCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<StuntType, "count">>;
@@ -61,14 +62,14 @@ export default function StuntCard({
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
                             <IconOrImage icon={icon} className="absolute w-full h-full object-contain drop-shadow-lg" />
                         </div>
-                        <div className="font-kacLogo text-kac-iron-light text-lg leading-none text-center mb-1">
+                        <H2 className="font-kacLogo text-kac-iron-light text-2xl leading-none text-center mb-1">
                             {title}
-                        </div>
+                        </H2>
                     </div>
                     <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight text-balance">
                         {requirements && (
-                            <div className="text-xs text-center text-kac-blood mb-2">
-                                <strong>Requirements:</strong>{" "}
+                            <div className="text-xs text-center text-kac-blood mb-2 font-bold">
+                                Requires{" "}
                                 <RichText commonComponentProps={{ className: "h-5 inline-block text-kac-steel-dark" }}>
                                     {requirements}
                                 </RichText>
@@ -86,9 +87,7 @@ export const StuntCardBackFace = ({ icon, deck, ...restProps }: StuntCardProps) 
     return (
         <Card {...restProps} backgroundImageUri="/KAC/stunt-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <div className="text-kac-gold-light text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
-                    Stunt
-                </div>
+                <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">Stunt</H2>
             </div>
         </Card>
     );

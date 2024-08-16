@@ -101,7 +101,7 @@ export default function OutcomeCard({
                         className={twMerge(
                             "flex-1 basis-[40%] text-xs text-center text-kac-iron-light text-balance",
                             isSmSize && "text-[0.6rem]",
-                            "leading-tight"
+                            "leading-tight tracking-tight"
                         )}
                     >
                         <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>

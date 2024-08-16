@@ -11,6 +11,7 @@ import counters, { CounterType } from "../../data/counters-deck";
 import Card, { CardBody, CardHeader } from "../gameComponents/Card";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
+import { CounterCardBackFace } from "../gameComponents/CounterCard";
 
 export type CounterCardsPrintControlsProps = {
     className?: string;
@@ -33,18 +34,6 @@ const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
                     <Icon icon="d12" className={"w-8 h-8"} />
                 </div>
             </CardBody>
-        </Card>
-    );
-};
-
-const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterType) => {
-    return (
-        <Card {...restProps} backgroundImageUri="/KAC/clock-back-face.png">
-            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <div className="text-kac-cloth-lightest text-xs text-center relative z-1 font-kacLogo tracking-widest uppercase drop-shadow-md-heavy">
-                    Counter
-                </div>
-            </div>
         </Card>
     );
 };

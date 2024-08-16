@@ -54,7 +54,9 @@ export default function CardDivider({
                     }}
                 >
                     <div className="p-3 pb-3 flex flex-row items-top gap-1 -mt-[0.5mm]">
-                        <div className="flex-1 text-kac-iron-light text-sm font-kacLogo leading-[0.85]">{heading}</div>
+                        <div className="flex-1 text-kac-iron-light text-sm font-kacHeading font-bold tracking-wide leading-[0.85]">
+                            {heading}
+                        </div>
                         <IconOrImage icon={iconUri} className="text-kac-iron text-opacity-50 h-6 -mt-2" />
                     </div>
                 </div>
@@ -111,7 +113,7 @@ export function CardDividerBackFace({
                     }}
                 >
                     <div className="p-3 pb-3 flex flex-row items-top gap-1 -mt-[0.5mm]">
-                        <div className="flex-1 text-white mix-blend-hard-light opacity-90 text-sm font-kacLogo leading-[0.85] text-shadow-sm shadow-black/50">
+                        <div className="flex-1 text-white mix-blend-hard-light opacity-90 text-sm font-kacHeading font-bold tracking-wide leading-[0.85] text-shadow-sm shadow-black/50">
                             {heading}
                         </div>
                         <IconOrImage icon={iconUri} className="text-kac-bone-light h-6 -mt-2" />

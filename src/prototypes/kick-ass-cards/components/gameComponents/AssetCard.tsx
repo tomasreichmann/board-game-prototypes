@@ -164,7 +164,7 @@ export default function AssetCard({
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
                         {/* <div className="flex-1 text-kac-iron-light text-center text-xs invisible">{slug}</div> */}
                         <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/KAC/fist.png" className="text-kac-bone-dark text-opacity-50 h-4" />
+                        <IconOrImage icon="/KAC/backpack.png" className="text-kac-bone-dark text-opacity-50 h-4" />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
@@ -181,7 +181,7 @@ export default function AssetCard({
                         className={twMerge(
                             "flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light text-balance",
                             isSmSize && "text-[0.6rem]",
-                            "leading-tight"
+                            "leading-tight tracking-tight"
                         )}
                     >
                         <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
@@ -193,7 +193,7 @@ export default function AssetCard({
     );
 }
 
-export const AssetCardBackFace = ({ icon, deck, ...restProps }: AssetCardProps) => {
+export const AssetCardBackFace = ({ icon, deck, ...restProps }: Partial<AssetCardProps>) => {
     return (
         <Card {...restProps} backgroundImageUri="/KAC/asset-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">

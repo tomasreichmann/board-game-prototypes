@@ -91,7 +91,7 @@ export default function CounterCard({
                         className={twMerge(
                             "text-xs text-kac-gold-darker font-kacBody flex flex-row gap-2",
                             isSmSize && "text-[0.6rem]",
-                            "leading-tight"
+                            "leading-tight tracking-tight"
                         )}
                     >
                         <div className="flex flex-col items-center justify-start -mt-3 leading-none">
@@ -103,7 +103,7 @@ export default function CounterCard({
                                 className={twMerge(
                                     "flex-grow font-kacBody text-xs",
                                     isSmSize && "text-[0.6rem]",
-                                    "leading-tight"
+                                    "leading-tight tracking-tight"
                                 )}
                             >
                                 {reward}
@@ -118,7 +118,7 @@ export default function CounterCard({
                         className={twMerge(
                             "text-xs text-kac-blood font-kacBody flex flex-row gap-2 pb-2",
                             isSmSize && "text-[0.6rem]",
-                            "leading-tight"
+                            "leading-tight tracking-tight"
                         )}
                     >
                         <div className="flex flex-col items-center justify-start -mb-3 leading-none">
@@ -129,7 +129,7 @@ export default function CounterCard({
                                 className={twMerge(
                                     "flex-grow font-kacBody text-xs",
                                     isSmSize && "text-[0.6rem]",
-                                    "leading-tight"
+                                    "leading-tight tracking-tight"
                                 )}
                             >
                                 {threat}
@@ -148,7 +148,7 @@ export const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterCardPro
     return (
         <Card {...restProps} backgroundImageUri="/KAC/clock-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <H2 className="text-kac-cloth-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">
+                <H2 className="text-kac-fire-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">
                     Counter
                 </H2>
             </div>

@@ -55,9 +55,9 @@ Vaším cílem je dostat tohoto nesmírně důležitého člověka k opatovi Rad
 <List>
     <Actor imageUri="/KAC/encounters/stiny_klastera/brother_pavel_actor.png" name="Bratr Pavel" notes="Chlap jak hora" toughness={6} threat="Útočí na blízko palicí za 2&nbsp;Zranění, nebo švihem na všechny v zóně za 1&nbsp;Zranění." reward="Klíče od kláštera" deck="Příběhy Husitů" />
     <CounterCard icon="/KAC/heartbeat.png" title="Zdraví pacienta" note="Pacient pomalu umírá (-1&nbsp;za kolo)." threat="Pro pacienta může být už pozdě" total={12} current={12} deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/counters/drop.png" title="Vynést splašky" threat="Splašky jsou nechutné a slabá vůle způsobí Utrpení (Distress)" total={4} current={4} deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/blood.png" title="Vytřít čekárnu" threat="Těžko říct, co se tu stalo, ale krev je všude. Hrozí uklouznutí Zranění (Injury)" total={4} current={4} deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/counters/danger.png" title="Pohřbít mrtvoly" threat="Neohrabaná manipulace s mrtvolou způsobí praskání boláků. Hrozí nakažení morem: Zkáza (Doom)" total={4} current={4} deck="Příběhy Husitů" />
+    <CounterCard icon="/KAC/counters/drop.png" title="Vynést splašky" threat="Splašky jsou nechutné a slabá vůle způsobí Utrpení (Distress)" total={0} current={4} deck="Příběhy Husitů" />
+    <CounterCard icon="/KAC/blood.png" title="Vytřít čekárnu" threat="Těžko říct, co se tu stalo, ale krev je všude. Hrozí uklouznutí Zranění (Injury)" total={4} current={0} deck="Příběhy Husitů" />
+    <CounterCard icon="/KAC/counters/danger.png" title="Pohřbít mrtvoly" threat="Neohrabaná manipulace s mrtvolou způsobí praskání boláků. Hrozí nakažení morem: Zkáza (Doom)" total={4} current={0} deck="Příběhy Husitů" />
 </List>
 
 ![](/KAC/encounters/stiny_klastera/waiting_room.jpg)
@@ -129,7 +129,7 @@ _S rozbušenými srdci vstupujete do chladné a temné kaple. Míjíte dlouhé �
 <List>
     <Actor imageUri="/KAC/encounters/stiny_klastera/sister_tereza_actor.png" name="Sestra Terezie" toughness={3} threat="Brání se házením jedovatých lektvarů za 1&nbsp;Utrpení všem v zóně" reward="2x Obvazy" deck="Příběhy Husitů" />
     <Actor imageUri="/KAC/encounters/stiny_klastera/abbot_actor.png" name="Opat Radomír" occupation="Zázračný léčitel" toughness={4} reward="Skalpel, Modlitební knížka, Herbal Remedy" deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/counters/morale.png" title="Přisluhovači" threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý bod Odolnosti" total={8} current={8} deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/counters/morale.png" name="Přisluhovači" threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý bod Odolnosti" toughness={8} deck="Příběhy Husitů" />
     <Asset size="54x86" {...assets.bandages} />
     <Asset size="54x86" {...assets.prayer_book} />
 </List>
@@ -153,7 +153,7 @@ _S rozbušenými srdci vstupujete do chladné a temné kaple. Míjíte dlouhé �
 <List>
     <Actor imageUri="/KAC/actors/wolf.png" name="Děsivá zvířata" toughness={4} threat="Útočí na různé postavy za 1&nbsp;Zranění kousnutím za každý bod Odolnosti" reward="Jed" deck="Příběhy Husitů" />
     <Actor imageUri="/KAC/encounters/stiny_klastera/brother_pavel_actor.png" name="Bratr Pavel" notes="Chlap jak hora" toughness={6} threat="Útočí na blízko palicí za 2&nbsp;Zranění, nebo švihem na všechny v zóně za 1&nbsp;Zranění." reward="Klíče od kláštera" deck="Příběhy Husitů" />
-    <CounterCard icon="/KAC/encounters/stiny_klastera/wounded.png" title="Nebozí pacienti" threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý DRUHÝ bod Odolnosti" reward="2x Obvazy, 2x Byliny" total={8} current={8} deck="Příběhy Husitů" />
+    <Actor imageUri="/KAC/encounters/stiny_klastera/wounded.png" name="Pacienti" threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý DRUHÝ bod Odolnosti" reward="2x Obvazy, 2x Byliny" toughness={8} deck="Příběhy Husitů" />
 </List>
 
 ![](/KAC/encounters/stiny_klastera/escape.png)

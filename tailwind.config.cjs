@@ -59,6 +59,7 @@ module.exports = {
                 "kac-blood-dark": "#541423",
                 "kac-fire": "#f50000",
                 "kac-fire-light": "#f88b00",
+                "kac-fire-lightest": "#ffe79b",
                 "kac-fire-dark": "#950101",
                 "kac-bone": "#ecb87b",
                 "kac-bone-light": "#e4ceb3",

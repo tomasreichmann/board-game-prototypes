@@ -111,7 +111,7 @@ export default function EffectCard({
                         className={twMerge(
                             "flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light text-balance",
                             isSmSize && "text-[0.6rem]",
-                            "leading-tight"
+                            "leading-tight tracking-tight"
                         )}
                     >
                         <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>

@@ -13,7 +13,7 @@ import ColorBars from "../../../../components/print/PrintMarker/ColorBars";
 import CounterCard, { CounterCardBackFace } from "../gameComponents/CounterCard";
 import ActorCard, { ActorCardBackFace } from "../gameComponents/ActorCard";
 import { usePrintControlsStore } from "./PaperAndCardControls";
-import AssetCard from "../gameComponents/AssetCard";
+import AssetCard, { AssetCardBackFace } from "../gameComponents/AssetCard";
 
 import { assetMap as assets } from "../../data/assets-en-deck";
 
@@ -246,11 +246,46 @@ export default function StinyKlasteraPrintControls({ className }: StinyKlasteraP
                             <ActorCard
                                 {...cardProps}
                                 imageUri="/KAC/encounters/stiny_klastera/wounded.png"
-                                name="Nebozí pacienti"
+                                name="Pacienti"
                                 threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý DRUHÝ bod Odolnosti"
                                 reward="2x Obvazy, 2x Byliny"
                                 toughness={8}
                                 deck="Příběhy Husitů"
+                            />
+                            <AssetCard
+                                {...cardProps}
+                                icon="/KAC/assets/medieval/digging.png"
+                                title="Digging tools"
+                                effect="Usable for mining or breaking down obstacles."
+                                deck="medieval"
+                            />
+                            <AssetCard
+                                {...cardPropsSecondHalf}
+                                icon="/KAC/assets/medieval/ore.png"
+                                title="Ore"
+                                effect="Does it contain precious metals, gems or is it just a fancy stone?"
+                                deck="medieval"
+                            />
+                            <AssetCard
+                                {...cardPropsSecondHalf}
+                                icon="/KAC/assets/medieval/iron.png"
+                                title="Iron"
+                                effect="Can be used to craft something useful by a blacksmith."
+                                deck="medieval"
+                            />
+                            <AssetCard
+                                {...cardPropsSecondHalf}
+                                icon="/KAC/assets/medieval/silver.png"
+                                title="Iron"
+                                effect="Can be used to craft something pretty by a jewler."
+                                deck="medieval"
+                            />
+                            <AssetCard
+                                {...cardPropsSecondHalf}
+                                icon="/KAC/assets/medieval/gold.png"
+                                title="Iron"
+                                effect="Can be used to craft something precious by a jewler."
+                                deck="medieval"
                             />
                             <div className={labelClassName}>
                                 {label} 3/{totalPages}
@@ -271,6 +306,11 @@ export default function StinyKlasteraPrintControls({ className }: StinyKlasteraP
                             <ActorCardBackFace {...cardProps} />
                             <ActorCardBackFace {...cardProps} />
                             <ActorCardBackFace {...cardProps} />
+                            <AssetCardBackFace {...cardProps} />
+                            <AssetCardBackFace {...cardPropsSecondHalf} />
+                            <AssetCardBackFace {...cardPropsSecondHalf} />
+                            <AssetCardBackFace {...cardPropsSecondHalf} />
+                            <AssetCardBackFace {...cardPropsSecondHalf} />
                             <div className={labelClassName}>
                                 {label} Back Face 4/{totalPages}
                                 {showColorBars ? <ColorBars /> : undefined}

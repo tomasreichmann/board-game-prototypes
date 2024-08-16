@@ -1,5 +1,5 @@
 "slug","title","icon","requirements","effect","deck","count"
-"seductive","Seductive","/LP/icons/lips.png",,"Receive a free Boost at the start of a social Encounter with a character that may find you attractive.","universal",1
+"seductive","Seductive","/LP/icons/lips.png",,"Receive 2x free Boosts at the start of a social Encounter with a character that may find you attractive.","universal",1
 "elusive","Elusive","/KAC/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.","universal",1
 "evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",,"+1 Effect on driving, riding, or piloting to avoid something.","universal",1
 "charge","Charge","/KAC/charge.png",,"+1 Effect on melee attacking after moving to a zone.","universal",1
@@ -21,7 +21,7 @@
 "tactical","Tactical","/KAC/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
 "analytical","Analytical","/KAC/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
 "sympathetic","Sympathetic","/KAC/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
-"intuitive","Intuitive","/KAC/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","universal",1
+"intuitive","Intuitive","/KAC/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","universal",1
 "fearless","Fearless","/KAC/fearless.png",,"You are always Panicked (you draw Outcome cards randomly), but you never turn Hopeless (You don't give up or flee), you get Hindered instead.","universal",1
 "strategist","Strategist","/KAC/chess.png",,"Your Outcome card hand limit is increased by 1.","universal",1
 "assassin","Assassin","/KAC/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","universal",1
@@ -29,13 +29,13 @@
 "elemental","Elemental","/KAC/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","fantasy",1
 "timeStop","Time Stop","/KAC/time-stop.png",,"Receive a Distress to prevent a turn or round Counter from advancing.","fantasy",1
 "recklessPiloting","Reckless Driving","/KAC/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","modern",1
-"burst","Burst fire","/KAC/burst.png","repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","modern",1
+"burst","Burst fire","/KAC/burst.png","a repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","modern",1
 "whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","modern",1
 "demoExpert","Demolitions Expert","/KAC/explosion.png",,"You never hit yourself with your own explosions.","modern",1
-"sharpshooter","Sharpshooter","/KAC/sharpshooter.png",ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","modern",1
+"sharpshooter","Sharpshooter","/KAC/sharpshooter.png",a ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","modern",1
 "overclock","Overclock","/KAC/overclock.png",,"Gain a Heat and draw an extra Outcome card to your hand.","modern",1
 "psychonaut","Psychonaut","/KAC/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","modern",1
-"chargedAttack","Charged attack","/KAC/charged.png",chargeable weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","sci-fi",1
-"upload","Upload","/LP/icons/upload.png",synthetic,"You can upload your consciousness into a different powered down machine.","sci-fi",1
-"turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack with 1 Effect during your turn.","sci-fi",1
-"heatSink","Heat Sink","/LP/icons/cooler.png","synthetic","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Frost cards.","sci-fi",1
+"chargedAttack","Charged attack","/KAC/charged.png", a charge weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","sci-fi",1
+"upload","Upload","/LP/icons/upload.png",a synthetic body,"You can upload your consciousness into a different powered down machine.","sci-fi",1
+"turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.","sci-fi",1
+"heatSink","Heat Sink","/LP/icons/cooler.png","a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Frost cards.","sci-fi",1

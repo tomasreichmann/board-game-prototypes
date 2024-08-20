@@ -4,6 +4,7 @@ export type GetIconComponentPropsParamType = { icon: string; className?: string 
 export type IconOrImageProps<T> = {
     icon: string;
     className?: string;
+    style?: React.CSSProperties;
     IconComponent?: React.ComponentType<T>;
     getIconComponentProps?: (props: GetIconComponentPropsParamType) => T;
     getImgProps?: (props: GetIconComponentPropsParamType) => React.HTMLAttributes<HTMLImageElement>;
@@ -19,6 +20,7 @@ export const defaultGetImgProps = ({ icon, ...restProps }: GetIconComponentProps
 export function IconOrImage<T extends {} = IconProps<IconMap>>({
     icon,
     className,
+    style = {},
     IconComponent = Icon as unknown as React.ComponentType<T>,
     getIconComponentProps = defaultGetIconComponentProps as unknown as (props: GetIconComponentPropsParamType) => T,
     getImgProps = defaultGetImgProps as unknown as (props: GetIconComponentPropsParamType) => T,
@@ -28,7 +30,7 @@ export function IconOrImage<T extends {} = IconProps<IconMap>>({
         return null;
     }
     if (isIcon(icon)) {
-        return <IconComponent {...getIconComponentProps({ icon, className })} />;
+        return <IconComponent {...getIconComponentProps({ icon, className })} style={style} />;
     }
-    return <img alt="" {...getImgProps({ icon, className })} />;
+    return <img alt="" {...getImgProps({ icon, className })} style={style} />;
 }

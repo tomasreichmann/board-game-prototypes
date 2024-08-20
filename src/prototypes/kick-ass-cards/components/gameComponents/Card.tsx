@@ -105,12 +105,14 @@ export const CardBody = ({
 
 export type CardProps = {
     size?: PaperProps["size"];
+    childrenWrapperClassName?: string;
     backgroundImageUri?: string;
 } & Omit<PaperProps, "size">;
 
 export default function Card({
     className,
     children,
+    childrenWrapperClassName,
     backgroundImageUri = "/KAC/paper.png",
     size = "54x86",
     ...restProps
@@ -146,7 +148,12 @@ export default function Card({
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
-                <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
+                <div
+                    className={twMerge(
+                        "flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10",
+                        childrenWrapperClassName
+                    )}
+                >
                     {children}
                 </div>
             </div>

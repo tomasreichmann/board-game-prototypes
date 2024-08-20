@@ -276,14 +276,14 @@ export default function StinyKlasteraPrintControls({ className }: StinyKlasteraP
                             <AssetCard
                                 {...cardPropsSecondHalf}
                                 icon="/KAC/assets/medieval/silver.png"
-                                title="Iron"
+                                title="Silver"
                                 effect="Can be used to craft something pretty by a jewler."
                                 deck="medieval"
                             />
                             <AssetCard
                                 {...cardPropsSecondHalf}
                                 icon="/KAC/assets/medieval/gold.png"
-                                title="Iron"
+                                title="Gold"
                                 effect="Can be used to craft something precious by a jewler."
                                 deck="medieval"
                             />

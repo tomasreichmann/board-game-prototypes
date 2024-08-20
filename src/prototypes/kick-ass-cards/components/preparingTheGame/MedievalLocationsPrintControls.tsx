@@ -60,11 +60,12 @@ const ImageCard = ({ imageUri, name, ...restProps }: ImageCardProps) => {
                         cornerIcon="/KAC/map.png"
                         deck="medieval"
                         className="items-start"
+                        cornerIconClassName="-mt-[1px]"
                     >
                         <Text
-                            variant="body"
+                            variant="h6"
                             color="body"
-                            className="text-kac-bone-light text-xs leading-none order-first"
+                            className="text-kac-bone-light text-xs leading-none order-first tracking-wide mt-[1px]"
                         >
                             {name}
                         </Text>

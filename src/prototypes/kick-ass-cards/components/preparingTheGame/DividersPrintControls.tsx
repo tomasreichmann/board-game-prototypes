@@ -8,6 +8,8 @@ import dividers from "../../data/dividers";
 import CardDivider, { CardDividerBackFace } from "../gameComponents/CardDivider";
 import ColorBars from "../../../../components/print/PrintMarker/ColorBars";
 import RegistrationMark from "../../../../components/print/PrintMarker/RegistrationMark";
+import { usePrintControlsStore } from "./PaperAndCardControls";
+import { allPaperSizes } from "../../../../components/print/paperSizes";
 
 export type DividersPrintControlsProps = {
     className?: string;
@@ -15,6 +17,7 @@ export type DividersPrintControlsProps = {
 
 export default function DividersPrintControls({ className }: DividersPrintControlsProps) {
     const { ...chunkedPagesProps } = useChunkedPagesProps();
+    const { fitToPage } = usePrintControlsStore();
     const items = useItemAdapter(dividers).map((item) => ({
         ...item,
         orientation: "portrait" as const,
@@ -22,6 +25,7 @@ export default function DividersPrintControls({ className }: DividersPrintContro
         className: "relative",
         style: undefined,
     }));
+    const cardSizeMm = allPaperSizes["54x96"].mm;
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
             <ToggleData data={items} initialCollapsed className="print:hidden mt-4" />
@@ -43,45 +47,58 @@ export default function DividersPrintControls({ className }: DividersPrintContro
                         Component={CardDivider}
                         frontFacePrintPageProps={{
                             ...chunkedPagesProps.frontFacePrintPageProps,
-                            orientation: "portrait",
-                            children: (
-                                <>
-                                    <RegistrationMark className="absolute top-0 left-0" />
-                                    <RegistrationMark className="absolute top-0 right-0" />
-                                    <ColorBars className="absolute bottom-0 right-6 origin-top-right" />
-                                    <ColorBars className="absolute top-0 left-6 origin-bottom-left" />
-                                    <RegistrationMark className="absolute bottom-0 right-0" />
-                                    <RegistrationMark className="absolute bottom-0 left-0" />
-                                </>
-                            ),
+                            ...(fitToPage
+                                ? {
+                                      orientation: "portrait",
+                                      children: (
+                                          <>
+                                              <RegistrationMark className="absolute top-0 left-0" />
+                                              <RegistrationMark className="absolute top-0 right-0" />
+                                              <ColorBars className="absolute bottom-0 right-6 origin-top-right" />
+                                              <ColorBars className="absolute top-0 left-6 origin-bottom-left" />
+                                              <RegistrationMark className="absolute bottom-0 right-0" />
+                                              <RegistrationMark className="absolute bottom-0 left-0" />
+                                          </>
+                                      ),
+                                  }
+                                : {
+                                      size: undefined,
+                                      sizeInMm: fitToPage ? undefined : [cardSizeMm[0] + 9, cardSizeMm[1] + 9],
+                                  }),
                         }}
                         frontFacePageContentProps={{
                             ...chunkedPagesProps.frontFacePageContentProps,
                             style: undefined,
-                            className: "pt-8 pb-8",
+                            className: fitToPage ? "pt-8 pb-8" : undefined,
                         }}
                         backFacePrintPageProps={{
                             ...chunkedPagesProps.backFacePrintPageProps,
-                            orientation: "portrait",
-                            children: (
-                                <>
-                                    <RegistrationMark className="absolute top-0 left-0" />
-                                    <RegistrationMark className="absolute top-0 right-0" />
-                                    <ColorBars className="absolute bottom-0 right-6 origin-top-right" />
-                                    <ColorBars className="absolute top-0 left-6 origin-bottom-left" />
-                                    <RegistrationMark className="absolute bottom-0 right-0" />
-                                    <RegistrationMark className="absolute bottom-0 left-0" />
-                                </>
-                            ),
+                            ...(fitToPage
+                                ? {
+                                      orientation: "portrait",
+                                      children: (
+                                          <>
+                                              <RegistrationMark className="absolute top-0 left-0" />
+                                              <RegistrationMark className="absolute top-0 right-0" />
+                                              <ColorBars className="absolute bottom-0 right-6 origin-top-right" />
+                                              <ColorBars className="absolute top-0 left-6 origin-bottom-left" />
+                                              <RegistrationMark className="absolute bottom-0 right-0" />
+                                              <RegistrationMark className="absolute bottom-0 left-0" />
+                                          </>
+                                      ),
+                                  }
+                                : {
+                                      size: undefined,
+                                      sizeInMm: fitToPage ? undefined : [cardSizeMm[0] + 9, cardSizeMm[1] + 9],
+                                  }),
                         }}
                         backFacePageContentProps={{
                             ...chunkedPagesProps.backFacePageContentProps,
                             style: undefined,
-                            className: "pt-8 pb-8",
+                            className: fitToPage ? "pt-8 pb-8" : undefined,
                         }}
                         BackFaceComponent={CardDividerBackFace}
                         items={items}
-                        itemsPerPage={3 * 2}
                         label="dividers"
                         labelPosition="top"
                     />

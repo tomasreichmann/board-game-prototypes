@@ -21,6 +21,7 @@ export type ChunkedPagesProps<T, B> = {
     items: T[];
     itemsPerPage: number;
     label?: string;
+    labelClassName?: string;
     labelPosition?: "top" | "bottom" | "left" | "right";
     showColorBars?: boolean;
 };
@@ -32,6 +33,7 @@ export default function ChunkedPages<T, B>({
     items,
     itemsPerPage,
     label,
+    labelClassName,
     labelPosition = "bottom",
     frontFacePrintPageProps,
     backFacePrintPageProps,
@@ -45,14 +47,15 @@ export default function ChunkedPages<T, B>({
 }: ChunkedPagesProps<T, B>) {
     const pagesPerCard = BackFaceComponent ? 2 : 1;
     const totalPages = Math.ceil(items.length / itemsPerPage) * pagesPerCard;
-    const labelClassName = twMerge(
+    const resolvedLabelClassName = twMerge(
         "text-xs font-kacHeading text-kac-iron w-full text-center z-10 absolute",
         labelPosition === "bottom" && "bottom-[3mm] print:bottom-[3mm]",
         labelPosition === "top" && "top-[3mm] print:top-[3mm]",
         labelPosition === "left" &&
             "left-[3mm] print:left-[3mm] top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-90 w-auto",
         labelPosition === "right" &&
-            "right-[3mm] print:right-[3mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto"
+            "right-[3mm] print:right-[3mm] top-1/2 -translate-y-1/2 translate-x-1/2 rotate-90 w-auto",
+        labelClassName
     );
     const { children: frontChildren, ...frontFacePrintPagePropsRest } = frontFacePrintPageProps ?? {};
     const { children: backChildren, ...backFacePrintPagePropsRest } = backFacePrintPageProps ?? {};
@@ -79,7 +82,7 @@ export default function ChunkedPages<T, B>({
                                     />
                                 );
                             })}
-                            <div className={labelClassName}>
+                            <div className={resolvedLabelClassName}>
                                 {label} Back Face {pageIndex * pagesPerCard + 2}/{totalPages}
                                 {showColorBars ? <ColorBars /> : undefined}
                             </div>
@@ -101,7 +104,7 @@ export default function ChunkedPages<T, B>({
                                 {pageItems.map((item, itemIndex) => (
                                     <Component key={`chunked-page-item-${itemIndex}`} className="relative" {...item} />
                                 ))}
-                                <div className={labelClassName}>
+                                <div className={resolvedLabelClassName}>
                                     {label} {pageIndex * pagesPerCard + 1}/{totalPages}
                                     {showColorBars ? <ColorBars /> : undefined}
                                 </div>

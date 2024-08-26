@@ -1,3 +1,4 @@
+import { allPaperSizes } from "../../../../components/print/paperSizes";
 import ColorBars from "../../../../components/print/PrintMarker/ColorBars";
 import RegistrationMark from "../../../../components/print/PrintMarker/RegistrationMark";
 import { getPaperFitCountByFormat } from "../../../../components/print/PrintPage/PrintPage";
@@ -13,7 +14,13 @@ export const useCardsPerPage = () => {
         // defaultGapMm, TODO add to gap to getPaperFitCountByFormat?
         defaultBleedMm,
         isDefaultPaperOrientationPortrait,
+        fitToPage,
     } = usePrintControlsStore();
+
+    if (!fitToPage) {
+        return 1;
+    }
+
     const pageOrientation = isDefaultPaperOrientationPortrait ? ("portrait" as const) : ("landscape" as const);
 
     const cardsPerPage = getPaperFitCountByFormat(
@@ -36,20 +43,26 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
         defaultGapMm,
         pageLabelPosition,
         showHorizontalBend,
+        fitToPage,
+        defaultCardSize,
     } = usePrintControlsStore();
     const pageOrientation = isDefaultPaperOrientationPortrait ? ("portrait" as const) : ("landscape" as const);
 
     const cardsPerPage = useCardsPerPage();
 
+    const cardSizesMm = allPaperSizes[defaultCardSize].mm;
+
     return {
         itemsPerPage: cardsPerPage,
         pageContentProps: { style: { gap: `${defaultGapMm[1]}mm ${defaultGapMm[0]}mm` } },
         frontFacePrintPageProps: {
-            size: defaultPaperSize,
-            orientation: pageOrientation,
+            size: fitToPage ? defaultPaperSize : defaultCardSize,
+            sizeInMm: fitToPage ? undefined : [cardSizesMm[0] + 9, cardSizesMm[1] + 9],
+            orientation: fitToPage ? pageOrientation : "portrait",
             bleedInMm: 0,
-            marginsInMm: defaultPageMarginsMm,
-            children: (
+            marginsInMm: fitToPage ? defaultPageMarginsMm : [0, 0, 0, 0],
+
+            children: fitToPage ? (
                 <>
                     <RegistrationMark className="absolute top-0 left-0" />
                     <RegistrationMark className="absolute top-0 right-0" />
@@ -61,14 +74,15 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
                     <RegistrationMark className="absolute bottom-0 right-0" />
                     <RegistrationMark className="absolute bottom-0 left-0" />
                 </>
-            ),
+            ) : undefined,
         },
         backFacePrintPageProps: {
-            size: defaultPaperSize,
-            orientation: pageOrientation,
+            size: fitToPage ? defaultPaperSize : defaultCardSize,
+            sizeInMm: fitToPage ? undefined : [cardSizesMm[0] + 9, cardSizesMm[1] + 9],
+            orientation: fitToPage ? pageOrientation : "portrait",
             bleedInMm: 0,
-            marginsInMm: defaultPageMarginsMm,
-            children: (
+            marginsInMm: fitToPage ? defaultPageMarginsMm : [0, 0, 0, 0],
+            children: fitToPage ? (
                 <>
                     <RegistrationMark className="absolute top-0 left-0" />
                     <RegistrationMark className="absolute top-0 right-0" />
@@ -80,9 +94,10 @@ export const useChunkedPagesProps = (): Omit<ChunkedPagesProps<any, any>, "Compo
                     <RegistrationMark className="absolute bottom-0 right-0" />
                     <RegistrationMark className="absolute bottom-0 left-0" />
                 </>
-            ),
+            ) : undefined,
         },
         labelPosition: pageLabelPosition,
+        labelClassName: fitToPage ? undefined : "hidden",
     };
 };
 

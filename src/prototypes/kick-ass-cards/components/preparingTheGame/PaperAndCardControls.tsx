@@ -70,6 +70,8 @@ export type PrintControlsStoreType = {
     setFlipSecondHalf: (newValue: boolean) => void;
     showHorizontalBend: boolean;
     setShowHorizontalBend: (newValue: boolean) => void;
+    fitToPage: boolean;
+    setFitToPage: (newValue: boolean) => void;
     pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"];
     setPageLabelPosition: (newValue: ChunkedPagesProps<any, any>["labelPosition"]) => void;
     componentControls: keyof typeof componentControlsMap;
@@ -94,6 +96,8 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     setFlipSecondHalf: (flipSecondHalf: boolean) => set({ flipSecondHalf }),
     showHorizontalBend: true,
     setShowHorizontalBend: (showHorizontalBend: boolean) => set({ showHorizontalBend }),
+    fitToPage: true,
+    setFitToPage: (fitToPage: boolean) => set({ fitToPage }),
     pageLabelPosition: "left",
     setPageLabelPosition: (pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"]) =>
         set({ pageLabelPosition }),
@@ -125,6 +129,8 @@ export default function PaperAndCardControls({ className }: PaperAndCardControls
         setShowHorizontalBend,
         pageLabelPosition,
         setPageLabelPosition,
+        fitToPage,
+        setFitToPage,
     } = usePrintControlsStore();
 
     return (
@@ -260,6 +266,17 @@ export default function PaperAndCardControls({ className }: PaperAndCardControls
                     labelTrue="Show"
                     value={showHorizontalBend}
                     onChange={(event) => setShowHorizontalBend(event.target.checked)}
+                />
+            </div>
+            <div className="flex flex-col">
+                <Text Component="span" variant="body" className={twMerge("text-kac-steel")}>
+                    Fit cards to page
+                </Text>
+                <ToggleCheckbox
+                    labelFalse="Fit page to a single card"
+                    labelTrue="Fit multiple cards to page"
+                    value={fitToPage}
+                    onChange={(event) => setFitToPage(event.target.checked)}
                 />
             </div>
         </div>

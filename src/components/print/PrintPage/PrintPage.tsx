@@ -1,5 +1,5 @@
 import React from "react";
-import { paperSizes, allSizes } from "../paperSizes";
+import { paperSizes, allSizes, allPaperSizes } from "../paperSizes";
 
 import "./PrintPage.css";
 import { PaperProps } from "../Paper/Paper";
@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge";
 export type PrintPageProps = React.PropsWithChildren<{
     className?: string;
     contentClassName?: string;
-    size?: keyof typeof paperSizes;
+    size?: keyof typeof allPaperSizes;
     sizeInMm?: number[];
     marginsInMm?: number[];
     bleedInMm?: number;
@@ -75,7 +75,7 @@ export default function PrintPage({
     contentClassName,
     size = "A4",
     orientation = "portrait",
-    sizeInMm = paperSizes[size].mm,
+    sizeInMm = allPaperSizes[size].mm,
     marginsInMm = [10, 10, 10, 10],
     bleedInMm = 3,
     showControls,

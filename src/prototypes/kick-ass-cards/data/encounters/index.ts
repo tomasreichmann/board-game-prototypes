@@ -69,5 +69,6 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("ML-cs-c1-Slavnosti-stribra", "Slavnosti stříbra", ML),
 
     ...makeEncounterDefinition("PH-cs-stiny-klastera", "Stíny Kláštera", PH),
+    ...makeEncounterDefinition("PH-en-though-shalt-not-prank", "Though Shalt Not Prank", PH),
 };
 console.log("encountersMap", encountersMap);

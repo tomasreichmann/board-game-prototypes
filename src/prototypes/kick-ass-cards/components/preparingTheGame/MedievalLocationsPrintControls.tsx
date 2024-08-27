@@ -39,9 +39,9 @@ const ImageCard = ({ imageUri, name, ...restProps }: ImageCardProps) => {
     const bleedHeight = height + bleedTopMm + bleedBottomMm;
     console.log({ width, height, bleedWidth, bleedHeight });
     return (
-        <Card className="justify-start" childrenWrapperClassName="p-0" {...restProps}>
+        <Card className="justify-start overflow-hidden" childrenWrapperClassName="p-0" {...restProps}>
             <div
-                className="z-10 p-3 mb-auto"
+                className="z-10 p-3 mb-auto absolute left-0 top-0 right-0"
                 style={{
                     marginTop: -bleedTopMm + "mm",
                     marginLeft: -bleedLeftMm + "mm",
@@ -191,9 +191,15 @@ export default function MedievalLocationsPrintControls({ className }: MedievalLo
                     className="w-32"
                 />
             </div>
-            <ToggleData data={items} initialCollapsed className="print:hidden mt-4" />
+            <ToggleData
+                data={items}
+                buttonContent={"Items data (" + items.length + ")"}
+                initialCollapsed
+                className="print:hidden mt-4"
+            />
             <Print
                 className="flex flex-col-reverse gap-2"
+                documentTitle="Medieval Locations"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (

@@ -1,15 +1,19 @@
 import React, { HTMLAttributes, PropsWithChildren, useRef } from "react";
-import { useReactToPrint } from "react-to-print";
+import { IReactToPrintProps, useReactToPrint } from "react-to-print";
 
 import Button, { ButtonProps } from "../../prototypes/kick-ass-cards/components/controls/Button";
 import { twMerge } from "tailwind-merge";
 
-export type PrintProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>> & { buttonProps?: Partial<ButtonProps> };
+export type PrintProps = PropsWithChildren<IReactToPrintProps> & {
+    className?: string;
+    buttonProps?: Partial<ButtonProps>;
+};
 
-export default function Print({ className, buttonProps = {}, children }: PrintProps) {
+export default function Print({ className, buttonProps = {}, children, ...restProps }: PrintProps) {
     const componentRef = useRef<HTMLDivElement>(null);
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
+        ...restProps,
     });
 
     return (

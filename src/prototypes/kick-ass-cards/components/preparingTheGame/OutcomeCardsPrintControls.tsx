@@ -38,9 +38,15 @@ export default function OutcomeCardsPrintControls({ className }: OutcomeCardsPri
                     className="w-32"
                 />
             </div>
-            <ToggleData data={items} initialCollapsed className="print:hidden mt-4" />
+            <ToggleData
+                data={items}
+                buttonContent={"Items data (" + items.length + ")"}
+                initialCollapsed
+                className="print:hidden mt-4"
+            />
             <Print
                 className="flex flex-col-reverse gap-2"
+                documentTitle="Outcomes"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (

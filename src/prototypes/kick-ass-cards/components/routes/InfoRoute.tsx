@@ -60,7 +60,7 @@ export default function InfoRoute() {
                                     <ActorCard {...tohActors.milaSzeptava} {...defaultActorCardProps} />,
                                     <ActorCard
                                         imageUri="/KAC/actors/medieval/bandit.png"
-                                        name="bandit"
+                                        name="Bandit"
                                         threat="Attacks with a bow or dagger for 1 Effect"
                                         reward="Lockpick set"
                                         toughness={2}

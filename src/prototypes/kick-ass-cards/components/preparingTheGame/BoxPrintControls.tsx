@@ -10,6 +10,7 @@ import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import LidBox from "../../../../components/print/LidBox";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import Rect from "../../../../components/print/Rect";
+import SvgLidBox from "../../../../components/print/SvgLidBox";
 
 export type BoxPrintControlsProps = {
     className?: string;
@@ -33,6 +34,19 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
 
     const contentWidth = stackColumnCount * blockWidth + (stackColumnCount - 1) * paperThicknessMm;
     const contentHeight = stackRowCount * blockHeight;
+
+    const lidWidth = 267;
+    const lidDepth = 94.7;
+    const lidHeight = 82.1;
+    const boxWidth = 262;
+    const boxDepth = 89.9;
+    const boxHeight = 82.1;
+
+    const svgBoxWidth = 180;
+    const svgBoxHeight = 120;
+    const svgBoxDepth = 100;
+
+    const sizeMultiplier = 5;
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
@@ -84,6 +98,43 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                 }}
             >
                 <div className="flex flex-col items-center w-full">
+                    <PrintPage size="A4">
+                        <SvgLidBox
+                            contentWidth={svgBoxWidth}
+                            contentHeight={svgBoxHeight}
+                            contentDepth={svgBoxDepth}
+                            paperThickness={1}
+                            // className="rotate-90 scale-[1.35] relative top-[200px] left-[-25px]"
+                        />
+                    </PrintPage>
+                </div>
+            </Print>
+            <Print
+                className="flex flex-col-reverse gap-2"
+                buttonProps={{
+                    className: "self-center flex flex-row items-center",
+                    children: (
+                        <>
+                            <Icon icon="print" className="w-6 h-6" />
+                            &ensp;Print all pages
+                        </>
+                    ),
+                }}
+            >
+                <div className="flex flex-col items-center w-full">
+                    <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
+                        <div className="flex flex-wrap ">
+                            <Rect widthMm={lidWidth} heightMm={lidDepth} cutTop cutLeft cutRight cutBottom>
+                                Lid top
+                            </Rect>
+                            <Rect widthMm={lidWidth} heightMm={lidHeight} cutTop cutLeft cutRight cutBottom>
+                                Lid front, bottom
+                            </Rect>
+                            <Rect widthMm={lidDepth} heightMm={lidHeight} cutTop cutLeft cutRight cutBottom>
+                                Lid left, right
+                            </Rect>
+                        </div>
+                    </PrintPage>
                     <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
                         <LidBox
                             contentDepth={contentDepthMm}

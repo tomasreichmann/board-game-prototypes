@@ -286,6 +286,7 @@ export type ModelGenerationInputStableType = {
     tis?: ModelPayloadTextualInversionStable[];
     /** The special payload. */
     special?: AnyRecord;
+    transparent?: boolean;
 };
 
 export type ExtraSourceImageType = {

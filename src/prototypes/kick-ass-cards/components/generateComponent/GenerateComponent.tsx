@@ -124,6 +124,25 @@ export default function GenerateComponent() {
                                     width: 512,
                                     sampler_name: "k_dpmpp_2m",
                                 },
+                                /* models: ["Flux.1-Schnell fp8 (Compact)"],
+                                    params: {
+                                    n: 1,
+                                    steps: 8,
+                                    cfg_scale: 2.2,
+                                    height: 1024,
+                                    width: 1024,
+                                    sampler_name: "k_euler",
+                                },
+                                models: ["ICBINP XL"],
+                                params: {
+                                    n: 1,
+                                    steps: 20,
+                                    cfg_scale: 7,
+                                    height: 1024,
+                                    width: 1024,
+                                    sampler_name: "k_dpmpp_2m",
+                                    transparent: true,
+                                }, */
                             },
                             (result) => {
                                 console.log(result, result.lastCheck?.generations?.[0].img);

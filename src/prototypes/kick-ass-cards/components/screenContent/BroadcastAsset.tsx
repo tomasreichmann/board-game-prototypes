@@ -1,4 +1,4 @@
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
+import { mightyDecksPrintStorageKey, mightyDecksScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { AssetCardProps } from "../gameComponents/AssetCard";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
@@ -9,8 +9,8 @@ export type BroadcastActorProps = AssetCardProps & {
 
 export const BroadcastAsset = ({ broadcastProps, ...props }: BroadcastActorProps) => (
     <BroadcastComponent
-        screenStorageKey={kickAssCardsScreenStorageKey}
-        printStorageKey={kickAssCardsPrintStorageKey}
+        screenStorageKey={mightyDecksScreenStorageKey}
+        printStorageKey={mightyDecksPrintStorageKey}
         type={ScreenContentTypeEnum.Asset}
         props={props}
         {...broadcastProps}

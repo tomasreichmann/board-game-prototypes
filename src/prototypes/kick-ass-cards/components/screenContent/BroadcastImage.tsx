@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
+import { mightyDecksPrintStorageKey, mightyDecksScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { ImageProps } from "../Image";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
@@ -13,8 +13,8 @@ export const BroadcastImage = ({ broadcastProps = {}, ...props }: BroadcastImage
 
     return (
         <BroadcastComponent
-            screenStorageKey={kickAssCardsScreenStorageKey}
-            printStorageKey={kickAssCardsPrintStorageKey}
+            screenStorageKey={mightyDecksScreenStorageKey}
+            printStorageKey={mightyDecksPrintStorageKey}
             type={ScreenContentTypeEnum.Image}
             props={props}
             className={className}

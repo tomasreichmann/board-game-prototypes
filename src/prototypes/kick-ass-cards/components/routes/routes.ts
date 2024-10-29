@@ -18,34 +18,34 @@ import DocumentRoute from "./DocumentRoute";
 import PreparingTheGameRoute from "./PreparingTheGameRoute";
 import GenerateComponentRoute from "./GenerateComponentRoute";
 
-export const kickAssCardsPath = "/kick-ass-cards";
-export const kickAssCardsScreenStorageKey = "kick-ass-cards-screen";
-export const kickAssCardsPrintStorageKey = "kick-ass-cards-print";
-export const smartDocsPath = kickAssCardsPath + "/smart-docs";
-export const adventuresPath = kickAssCardsPath + "/adventures";
+export const mightyDecksPath = "/mighty-decks";
+export const mightyDecksScreenStorageKey = "mighty-decks-screen";
+export const mightyDecksPrintStorageKey = "mighty-decks-print";
+export const smartDocsPath = mightyDecksPath + "/smart-docs";
+export const adventuresPath = mightyDecksPath + "/adventures";
 
 export const sidebarPath = "__sidebar";
 
-export const kickAssCardsSubRoutes: RouteDefinition[] = [
+export const mightyDecksSubRoutes: RouteDefinition[] = [
     {
         name: "Mighty Decks",
-        path: kickAssCardsPath + "/",
+        path: mightyDecksPath + "/",
         hideFromNav: true,
         Component: InfoRoute,
     },
     {
         name: "Preparing the Game",
-        path: kickAssCardsPath + "/preparing-the-game",
+        path: mightyDecksPath + "/preparing-the-game",
         Component: PreparingTheGameRoute,
     },
     {
         name: "Components",
-        path: kickAssCardsPath + "/components",
+        path: mightyDecksPath + "/components",
         Component: ComponentsRoute,
     },
     {
         name: "Generate Component",
-        path: kickAssCardsPath + "/generate-component",
+        path: mightyDecksPath + "/generate-component",
         Component: GenerateComponentRoute,
     },
     {
@@ -78,46 +78,46 @@ export const kickAssCardsSubRoutes: RouteDefinition[] = [
     }, */
     {
         name: "Screen",
-        path: kickAssCardsPath + "/screen",
+        path: mightyDecksPath + "/screen",
         Component: ScreenRoute,
     },
     {
         name: "Print",
-        path: kickAssCardsPath + "/print",
+        path: mightyDecksPath + "/print",
         Component: PrintRoute,
     },
     {
         name: "Playground",
-        path: kickAssCardsPath + "/playground",
+        path: mightyDecksPath + "/playground",
         Component: PlaygroundRoute,
     },
     {
         name: "World Builder",
-        path: kickAssCardsPath + "/world-builder",
+        path: mightyDecksPath + "/world-builder",
         Component: WorldBuilderRoute,
     },
     {
         name: "Machimagika",
-        path: kickAssCardsPath + "/machimagika",
+        path: mightyDecksPath + "/machimagika",
         Component: MachimagikaRoute,
     },
     {
         name: "Encounters",
-        path: kickAssCardsPath + "/encounters",
+        path: mightyDecksPath + "/encounters",
         Component: EncountersRoute,
         children: [
             {
                 name: "Encounter",
-                path: kickAssCardsPath + "/encounters/:encounterSlug",
+                path: mightyDecksPath + "/encounters/:encounterSlug",
                 Component: EncounterRoute,
             },
         ],
     },
     {
         name: "Settings",
-        path: kickAssCardsPath + "/settings",
+        path: mightyDecksPath + "/settings",
         Component: SettingsRoute,
     },
 ];
 
-export const kickAssCardsNavigationSubRoutes = kickAssCardsSubRoutes.filter((route) => !route?.hideFromNav);
+export const mightyDecksNavigationSubRoutes = mightyDecksSubRoutes.filter((route) => !route?.hideFromNav);

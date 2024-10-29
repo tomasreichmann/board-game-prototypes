@@ -1,7 +1,7 @@
 import React from "react";
-import { kickAssCardsPrintStorageKey } from "./routes";
+import { mightyDecksPrintStorageKey } from "./routes";
 import BroadcastRoute from "./BroadcastRoute";
 
 export default function ScreenRoute() {
-    return <BroadcastRoute storageKey={kickAssCardsPrintStorageKey} withPrintMarkerCorners />;
+    return <BroadcastRoute storageKey={mightyDecksPrintStorageKey} withPrintMarkerCorners />;
 }

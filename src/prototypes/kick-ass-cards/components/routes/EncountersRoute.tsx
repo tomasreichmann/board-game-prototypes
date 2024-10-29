@@ -1,7 +1,7 @@
 import { encountersMap, EnounterDefinition } from "../../data/encounters";
 import { Outlet, useParams } from "react-router-dom";
 import getCompareFnByStringKey from "../../../../utils/getCompareFnByStringKey";
-import { kickAssCardsPath } from "./routes";
+import { mightyDecksPath } from "./routes";
 import { Navigation } from "../Navigation";
 
 const groupByCampaign = (encMap: typeof encountersMap) => {
@@ -67,7 +67,7 @@ export default function EncounterRoute() {
                         <h2 className="text-kac-bone-light font-kacHeading">{campaign.title}</h2>
                         <ul className="list-disc pl-5">
                             {campaign.encounters.map(({ title, slug }) => {
-                                const uri = kickAssCardsPath + "/encounters/" + slug;
+                                const uri = mightyDecksPath + "/encounters/" + slug;
                                 return (
                                     <li key={slug}>
                                         <a href={uri}>{title}</a>
@@ -83,14 +83,14 @@ export default function EncounterRoute() {
     const prevNext = (prevEncounter || nextEncounter) && (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto flex flex-row justify-between">
             {prevEncounter ? (
-                <a className="font-bold" href={kickAssCardsPath + "/encounters/" + prevEncounter.slug}>
+                <a className="font-bold" href={mightyDecksPath + "/encounters/" + prevEncounter.slug}>
                     {prevEncounter.title}
                 </a>
             ) : (
                 <div />
             )}
             {nextEncounter ? (
-                <a className="font-bold" href={kickAssCardsPath + "/encounters/" + nextEncounter.slug}>
+                <a className="font-bold" href={mightyDecksPath + "/encounters/" + nextEncounter.slug}>
                     {nextEncounter.title}
                 </a>
             ) : (

@@ -1,5 +1,5 @@
 import { PaperProps } from "../../../../components/print/Paper/Paper";
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
+import { mightyDecksPrintStorageKey, mightyDecksScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
 
@@ -9,8 +9,8 @@ export type BroadcastActorProps = PaperProps & {
 
 export const BroadcastPaper = ({ broadcastProps, children, ...props }: BroadcastActorProps) => (
     <BroadcastComponent
-        screenStorageKey={kickAssCardsScreenStorageKey}
-        printStorageKey={kickAssCardsPrintStorageKey}
+        screenStorageKey={mightyDecksScreenStorageKey}
+        printStorageKey={mightyDecksPrintStorageKey}
         type={ScreenContentTypeEnum.Paper}
         props={{
             ...props,

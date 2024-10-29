@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { kickAssCardsPrintStorageKey, kickAssCardsScreenStorageKey } from "../routes/routes";
+import { mightyDecksPrintStorageKey, mightyDecksScreenStorageKey } from "../routes/routes";
 import { ScreenContentTypeEnum } from "../../services/broadcastScreen";
 import { HeadingProps } from "../Heading";
 import BroadcastComponent, { BroadcastComponentProps } from "./BroadcastComponent";
@@ -13,8 +13,8 @@ export const BroadcastHeading = ({ broadcastProps = {}, ...props }: BroadcastHea
 
     return (
         <BroadcastComponent
-            screenStorageKey={kickAssCardsScreenStorageKey}
-            printStorageKey={kickAssCardsPrintStorageKey}
+            screenStorageKey={mightyDecksScreenStorageKey}
+            printStorageKey={mightyDecksPrintStorageKey}
             type={ScreenContentTypeEnum.Heading}
             props={props}
             className={className}

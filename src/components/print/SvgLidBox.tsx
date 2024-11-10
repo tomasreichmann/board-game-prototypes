@@ -57,10 +57,12 @@ export type LidBoxProps = React.PropsWithChildren<
     </div>
 ); */
 
-const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
+const getBoxWithoutLid = (
+    contentWidth: number, // width of 3 cards
     contentHeight: number, // height of stack of cards
     contentDepth: number, // height of divider
-    paperThickness = 1) => {
+    paperThickness = 1
+) => {
     const bends: string[] = [];
     const bendsWithoutLid: string[] = [];
     const cuts: string[] = [];
@@ -68,7 +70,7 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
     const lineWidth = 0.1;
     const cutColor = "#ff0000";
     const bendColor = "#ff00ff";
-    const debug = ` h 10 h -10 v 10 v -10`
+    const debug = ` h 10 h -10 v 10 v -10`;
 
     bends.push(`M ${-(contentWidth / 2 + paperThickness)},0 v ${contentDepth}`); // front left
     bends.push(`M ${contentWidth / 2 + paperThickness},0 v ${contentDepth}`); // front right
@@ -83,7 +85,8 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
     // left
     bends.push(`M ${-(contentWidth / 2 + contentDepth + paperThickness)},${bottomTop} v ${contentHeight}`);
     bends.push(
-        `M ${-(contentWidth / 2 + contentDepth + paperThickness * 3)},${bottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${-(contentWidth / 2 + contentDepth + paperThickness * 3)},${bottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // bottom right
@@ -93,7 +96,8 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
     // right
     bends.push(`M ${contentWidth / 2 + contentDepth + paperThickness},${bottomTop} v ${contentHeight}`);
     bends.push(
-        `M ${contentWidth / 2 + contentDepth + paperThickness * 3},${bottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${contentWidth / 2 + contentDepth + paperThickness * 3},${bottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // back
@@ -119,20 +123,24 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
     // holes
     // bottom left
     cuts.push(
-        `M ${-(bottomWidth / 2)},${bottomTop + contentHeight / 5} h ${paperThickness * 1.5} v ${contentHeight / 5} h ${-paperThickness * 1.5
+        `M ${-(bottomWidth / 2)},${bottomTop + contentHeight / 5} h ${paperThickness * 1.5} v ${contentHeight / 5} h ${
+            -paperThickness * 1.5
         } Z`
     );
     cuts.push(
-        `M ${-(bottomWidth / 2)},${bottomTop + (contentHeight / 5) * 3} h ${paperThickness * 1.5} v ${contentHeight / 5
+        `M ${-(bottomWidth / 2)},${bottomTop + (contentHeight / 5) * 3} h ${paperThickness * 1.5} v ${
+            contentHeight / 5
         } h ${-paperThickness * 1.5} Z`
     );
     // bottom right
     cuts.push(
-        `M ${bottomWidth / 2},${bottomTop + contentHeight / 5} h ${-paperThickness * 1.5} v ${contentHeight / 5} h ${paperThickness * 1.5
+        `M ${bottomWidth / 2},${bottomTop + contentHeight / 5} h ${-paperThickness * 1.5} v ${contentHeight / 5} h ${
+            paperThickness * 1.5
         } Z`
     );
     cuts.push(
-        `M ${bottomWidth / 2},${bottomTop + (contentHeight / 5) * 3} h ${-paperThickness * 1.5} v ${contentHeight / 5
+        `M ${bottomWidth / 2},${bottomTop + (contentHeight / 5) * 3} h ${-paperThickness * 1.5} v ${
+            contentHeight / 5
         } h ${paperThickness * 1.5} Z`
     );
 
@@ -144,8 +152,8 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
 
     // --- Box without lid
 
-    const lidDepthReduction = 20
-    const reducedContentDepth = contentDepth - lidDepthReduction
+    const lidDepthReduction = 20;
+    const reducedContentDepth = contentDepth - lidDepthReduction;
 
     // prettier-ignore
     cutsWithoutLid.push(
@@ -163,7 +171,7 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
         + ` v ${-contentHeight + paperThickness * 2}` // left left
         + ` h ${-reducedContentDepth} l ${-paperThickness * 2},${-paperThickness} h ${-reducedContentDepth}` // left top
         + ` l ${paperThickness},${-paperThickness} h ${sideFlapLength - paperThickness} v ${-(reducedContentDepth - paperThickness)} h ${-sideFlapLength}` // front flap
-        + `h ${-contentWidth}`
+        + ` h ${-contentWidth}`
         // top
     );
 
@@ -175,17 +183,23 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
     // bottom left
     bendsWithoutLid.push(`M ${-(bottomWidth / 2)},${reducedBottomTop} v ${contentHeight}`);
     // left
-    bendsWithoutLid.push(`M ${-(contentWidth / 2 + reducedContentDepth + paperThickness)},${reducedBottomTop} v ${contentHeight}`);
     bendsWithoutLid.push(
-        `M ${-(contentWidth / 2 + reducedContentDepth + paperThickness * 3)},${reducedBottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${-(contentWidth / 2 + reducedContentDepth + paperThickness)},${reducedBottomTop} v ${contentHeight}`
+    );
+    bendsWithoutLid.push(
+        `M ${-(contentWidth / 2 + reducedContentDepth + paperThickness * 3)},${reducedBottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // bottom right
     bendsWithoutLid.push(`M ${bottomWidth / 2},${reducedBottomTop} v ${contentHeight}`);
     // right
-    bendsWithoutLid.push(`M ${contentWidth / 2 + reducedContentDepth + paperThickness},${reducedBottomTop} v ${contentHeight}`);
     bendsWithoutLid.push(
-        `M ${contentWidth / 2 + reducedContentDepth + paperThickness * 3},${reducedBottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${contentWidth / 2 + reducedContentDepth + paperThickness},${reducedBottomTop} v ${contentHeight}`
+    );
+    bendsWithoutLid.push(
+        `M ${contentWidth / 2 + reducedContentDepth + paperThickness * 3},${reducedBottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // back
@@ -195,37 +209,37 @@ const getBoxWithoutLid = (contentWidth: number, // width of 3 cards
     bendsWithoutLid.push(`M ${-(backWidth / 2)},${reducedBackBottom} v ${reducedContentDepth}`); // back left
     bendsWithoutLid.push(`M ${backWidth / 2},${reducedBackBottom} v ${reducedContentDepth}`); // back right
 
-    return <svg
-        className={twMerge("SvgBoxWithoutLid")}
-        width={totalWidth}
-        height={totalHeight}
-        viewBox={`${-totalWidth / 2} 0 ${totalWidth} ${totalHeight}`}
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        {bendsWithoutLid.map((bend, index) => (
-            <path
-                key={"bend" + index}
-                className="bend"
-                fill="none"
-                stroke={bendColor}
-                strokeWidth={lineWidth}
-                d={bend}
-            />
-        ))}
-        {cutsWithoutLid.map((cut, index) => (
-            <path
-                key={"cut" + index}
-                className="cut"
-                fill="none"
-                stroke={cutColor}
-                strokeWidth={lineWidth}
-                d={cut}
-            />
-        ))}
-
-    </svg>
-
-}
+    return (
+        <svg
+            className={twMerge("SvgBoxWithoutLid")}
+            width={totalWidth}
+            height={totalHeight}
+            viewBox={`${-totalWidth / 2} 0 ${totalWidth} ${totalHeight}`}
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            {bendsWithoutLid.map((bend, index) => (
+                <path
+                    key={"bend" + index}
+                    className="bend"
+                    fill="none"
+                    stroke={bendColor}
+                    strokeWidth={lineWidth}
+                    d={bend}
+                />
+            ))}
+            {cutsWithoutLid.map((cut, index) => (
+                <path
+                    key={"cut" + index}
+                    className="cut"
+                    fill="none"
+                    stroke={cutColor}
+                    strokeWidth={lineWidth}
+                    d={cut}
+                />
+            ))}
+        </svg>
+    );
+};
 
 export default function SvgLidBox({
     contentWidth, // width of 3 cards
@@ -245,7 +259,7 @@ export default function SvgLidBox({
     const lineWidth = 0.1;
     const cutColor = "#ff0000";
     const bendColor = "#ff00ff";
-    const debug = ` h 10 h -10 v 10 v -10`
+    const debug = ` h 10 h -10 v 10 v -10`;
 
     bends.push(`M ${-(contentWidth / 2 + paperThickness)},0 v ${contentDepth}`); // front left
     bends.push(`M ${contentWidth / 2 + paperThickness},0 v ${contentDepth}`); // front right
@@ -260,7 +274,8 @@ export default function SvgLidBox({
     // left
     bends.push(`M ${-(contentWidth / 2 + contentDepth + paperThickness)},${bottomTop} v ${contentHeight}`);
     bends.push(
-        `M ${-(contentWidth / 2 + contentDepth + paperThickness * 3)},${bottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${-(contentWidth / 2 + contentDepth + paperThickness * 3)},${bottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // bottom right
@@ -270,7 +285,8 @@ export default function SvgLidBox({
     // right
     bends.push(`M ${contentWidth / 2 + contentDepth + paperThickness},${bottomTop} v ${contentHeight}`);
     bends.push(
-        `M ${contentWidth / 2 + contentDepth + paperThickness * 3},${bottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${contentWidth / 2 + contentDepth + paperThickness * 3},${bottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // back
@@ -296,20 +312,24 @@ export default function SvgLidBox({
     // holes
     // bottom left
     cuts.push(
-        `M ${-(bottomWidth / 2)},${bottomTop + contentHeight / 5} h ${paperThickness * 1.5} v ${contentHeight / 5} h ${-paperThickness * 1.5
+        `M ${-(bottomWidth / 2)},${bottomTop + contentHeight / 5} h ${paperThickness * 1.5} v ${contentHeight / 5} h ${
+            -paperThickness * 1.5
         } Z`
     );
     cuts.push(
-        `M ${-(bottomWidth / 2)},${bottomTop + (contentHeight / 5) * 3} h ${paperThickness * 1.5} v ${contentHeight / 5
+        `M ${-(bottomWidth / 2)},${bottomTop + (contentHeight / 5) * 3} h ${paperThickness * 1.5} v ${
+            contentHeight / 5
         } h ${-paperThickness * 1.5} Z`
     );
     // bottom right
     cuts.push(
-        `M ${bottomWidth / 2},${bottomTop + contentHeight / 5} h ${-paperThickness * 1.5} v ${contentHeight / 5} h ${paperThickness * 1.5
+        `M ${bottomWidth / 2},${bottomTop + contentHeight / 5} h ${-paperThickness * 1.5} v ${contentHeight / 5} h ${
+            paperThickness * 1.5
         } Z`
     );
     cuts.push(
-        `M ${bottomWidth / 2},${bottomTop + (contentHeight / 5) * 3} h ${-paperThickness * 1.5} v ${contentHeight / 5
+        `M ${bottomWidth / 2},${bottomTop + (contentHeight / 5) * 3} h ${-paperThickness * 1.5} v ${
+            contentHeight / 5
         } h ${paperThickness * 1.5} Z`
     );
 
@@ -354,8 +374,8 @@ export default function SvgLidBox({
 
     // --- Box without lid
 
-    const lidDepthReduction = 20
-    const reducedContentDepth = contentDepth - lidDepthReduction
+    const lidDepthReduction = 20;
+    const reducedContentDepth = contentDepth - lidDepthReduction;
 
     // prettier-ignore
     cutsWithoutLid.push(
@@ -385,17 +405,23 @@ export default function SvgLidBox({
     // bottom left
     bendsWithoutLid.push(`M ${-(bottomWidth / 2)},${reducedBottomTop} v ${contentHeight}`);
     // left
-    bendsWithoutLid.push(`M ${-(contentWidth / 2 + reducedContentDepth + paperThickness)},${reducedBottomTop} v ${contentHeight}`);
     bendsWithoutLid.push(
-        `M ${-(contentWidth / 2 + reducedContentDepth + paperThickness * 3)},${reducedBottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${-(contentWidth / 2 + reducedContentDepth + paperThickness)},${reducedBottomTop} v ${contentHeight}`
+    );
+    bendsWithoutLid.push(
+        `M ${-(contentWidth / 2 + reducedContentDepth + paperThickness * 3)},${reducedBottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // bottom right
     bendsWithoutLid.push(`M ${bottomWidth / 2},${reducedBottomTop} v ${contentHeight}`);
     // right
-    bendsWithoutLid.push(`M ${contentWidth / 2 + reducedContentDepth + paperThickness},${reducedBottomTop} v ${contentHeight}`);
     bendsWithoutLid.push(
-        `M ${contentWidth / 2 + reducedContentDepth + paperThickness * 3},${reducedBottomTop + paperThickness} v ${contentHeight - paperThickness * 2
+        `M ${contentWidth / 2 + reducedContentDepth + paperThickness},${reducedBottomTop} v ${contentHeight}`
+    );
+    bendsWithoutLid.push(
+        `M ${contentWidth / 2 + reducedContentDepth + paperThickness * 3},${reducedBottomTop + paperThickness} v ${
+            contentHeight - paperThickness * 2
         }`
     );
     // back
@@ -406,7 +432,7 @@ export default function SvgLidBox({
     bendsWithoutLid.push(`M ${backWidth / 2},${reducedBackBottom} v ${reducedContentDepth}`); // back right
 
     return (
-        <>
+        <div className={className}>
             {/* <svg
                 className={twMerge("SvgLidBox", className)}
                 width={totalWidth}
@@ -440,8 +466,12 @@ export default function SvgLidBox({
             <br />
             {getBoxWithoutLid(contentWidth, contentHeight, contentDepth, paperThickness)}
             <br />
-            {getBoxWithoutLid(contentWidth+paperThickness*4, contentHeight+paperThickness*2, contentDepth, paperThickness)}
-        </>
-
+            {getBoxWithoutLid(
+                contentWidth + paperThickness * 4,
+                contentHeight + paperThickness * 2,
+                contentDepth,
+                paperThickness
+            )}
+        </div>
     );
 }

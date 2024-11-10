@@ -19,12 +19,12 @@ export default function PreparingTheGameRoute() {
             <Navigation />
             <div className="flex-1 mt-4 print:m-0 w-full text-kac-iron p-2 md:px-10 bg-white">
                 <section className="flex flex-col gap-8 ">
-                    <div className="flex flex-col gap-4 pb-8">
+                    {/* <div className="flex flex-col gap-4 pb-8">
                         <MdxArticle
                             mdx={preparingTheGameIntroMdx}
                             className="mt-4 md:columns-2 lg:columns-3 xl:columns-4"
                         />
-                    </div>
+                    </div> */}
                     <div className="flex-1 flex flex-col relative">
                         <H2>Printable Components</H2>
                         <Text variant="body">
@@ -43,7 +43,7 @@ export default function PreparingTheGameRoute() {
                         )}
 
                         <H3 className="mt-4">Component types</H3>
-                        <div className="flex flex-row gap-2 mt-2">
+                        <div className="flex flex-row flex-wrap gap-2 mt-2">
                             {(Object.keys(componentControlsMap) as (keyof typeof componentControlsMap)[]).map((key) => (
                                 <Button
                                     color={componentControls === key ? "secondary" : "primary"}

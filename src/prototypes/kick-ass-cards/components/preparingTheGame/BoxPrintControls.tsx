@@ -8,9 +8,11 @@ import Icon from "../Icon";
 import { usePrintControlsStore } from "./PaperAndCardControls";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import LidBox from "../../../../components/print/LidBox";
-import { cardSizes } from "../../../../components/print/paperSizes";
+import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
 import Rect from "../../../../components/print/Rect";
 import SvgLidBox from "../../../../components/print/SvgLidBox";
+import SvgLidBox2 from "../../../../components/print/SvgLidBox2";
+import DataPreview from "../../../../components/DataPreview";
 
 export type BoxPrintControlsProps = {
     className?: string;
@@ -18,214 +20,53 @@ export type BoxPrintControlsProps = {
 
 export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
     const { defaultCardSize, defaultPaperSize, defaultPageMarginsMm } = usePrintControlsStore();
-    const [stackColumnCount, setStackColumnCount] = useState(2);
-    const [stackRowCount, setStackRowCount] = useState(2);
-    const [stackSizeMm, setStackSizeMm] = useState(10);
-    const [contentDepthMm, setContentDepthMm] = useState(20);
 
-    const [cardWidthMm, cardHeightMm] = cardSizes[defaultCardSize].mm;
+    const fittingMargin = 1; // mm; space between content and dividers
+    const dividerThickness = 1; // mm
+    const cardBoardThickness = 1; // mm
+    const brochureHeight = paperSizes.A4.mm[0]; // mm; brochure is as tall as the A4 is wide; 210mm
+    const brochureWidth = Math.ceil(paperSizes.A4.mm[1] / 3); // mm; brochure is 1/3 of the A4 height
 
-    const cardMarginMm = 1;
-    const paperThicknessMm = 40 / 125;
+    const contentWidth = brochureHeight + 2 * fittingMargin + 2 * dividerThickness; // mm; must fit a brochure 210x100mm on the back
 
-    const cardSlantHeightMm = Math.sqrt(cardHeightMm * cardHeightMm - contentDepthMm * contentDepthMm);
-    const blockHeight = cardSlantHeightMm + stackSizeMm + cardMarginMm * 2;
-    const blockWidth = cardWidthMm + cardMarginMm * 2;
-
-    const contentWidth = stackColumnCount * blockWidth + (stackColumnCount - 1) * paperThicknessMm;
-    const contentHeight = stackRowCount * blockHeight;
-
-    const lidWidth = 267;
-    const lidDepth = 94.7;
-    const lidHeight = 82.1;
-    const boxWidth = 262;
-    const boxDepth = 89.9;
-    const boxHeight = 82.1;
-
-    const svgBoxWidth = 180;
-    const svgBoxHeight = 120;
-    const svgBoxDepth = 100;
-
-    const sizeMultiplier = 5;
+    const brochuresTotalThickness = 20; // mm; total thickness of all brochures stacked at the back of the box
+    const cardStackSpace = 100; // mm; could be 100-120mm
+    const contentHeight =
+        brochuresTotalThickness + 2 * fittingMargin + 2 * dividerThickness + cardStackSpace + dividerThickness; // mm; must have a space for brochures 20mm, divider and space for stacks of cards cca 100mm
+    const contentDepth = 70; // mm; the cards should peek from the box so that you can read the name of the card
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
-            <div className="print:hidden mt-4">
-                <Input
-                    label="Stack columns"
-                    type="number"
-                    value={stackColumnCount}
-                    onChange={(event) => setStackColumnCount(event.target.valueAsNumber ?? 1)}
-                    className="w-32"
+            <div className="flex flex-col items-center w-full">
+                {/* TODO: Download button */}
+                <DataPreview
+                    data={{
+                        fittingMargin,
+                        dividerThickness,
+                        cardBoardThickness,
+                        brochureHeight,
+                        brochureWidth,
+                        contentWidth,
+                        contentHeight,
+                        contentDepth,
+                    }}
                 />
-                <Input
-                    label="Stack rows"
-                    type="number"
-                    value={stackRowCount}
-                    onChange={(event) => setStackRowCount(event.target.valueAsNumber ?? 1)}
-                    className="w-32"
+                <SvgLidBox2
+                    contentWidth={contentWidth}
+                    contentHeight={contentHeight}
+                    contentDepth={contentDepth}
+                    paperThickness={1}
+                    // className="rotate-90 scale-[1.35] relative top-[200px] left-[-25px]"
                 />
-                <Input
-                    label="Stack size (mm)"
-                    type="number"
-                    value={stackSizeMm}
-                    onChange={(event) => setStackSizeMm(event.target.valueAsNumber ?? 1)}
-                    className="w-32"
-                />
-                <Input
-                    label="Box Depth (mm)"
-                    type="number"
-                    value={contentDepthMm}
-                    onChange={(event) => setContentDepthMm(event.target.valueAsNumber ?? 1)}
-                    className="w-32"
+                <SvgLidBox
+                    contentWidth={contentWidth}
+                    contentHeight={contentHeight}
+                    contentDepth={contentDepth}
+                    paperThickness={1}
+                    className="relative scale-[1.5] translate-y-1/2"
+                    // className="rotate-90 scale-[1.35] relative top-[200px] left-[-25px]"
                 />
             </div>
-            <ToggleData
-                data={{ boxWidth: stackColumnCount, boxHeight: stackRowCount, contentDepth: contentDepthMm }}
-                initialCollapsed
-                className="print:hidden mt-4"
-            />
-            <Print
-                className="flex flex-col-reverse gap-2"
-                buttonProps={{
-                    className: "self-center flex flex-row items-center",
-                    children: (
-                        <>
-                            <Icon icon="print" className="w-6 h-6" />
-                            &ensp;Print all pages
-                        </>
-                    ),
-                }}
-            >
-                <div className="flex flex-col items-center w-full">
-                    <PrintPage size="A4">
-                        <SvgLidBox
-                            contentWidth={svgBoxWidth}
-                            contentHeight={svgBoxHeight}
-                            contentDepth={svgBoxDepth}
-                            paperThickness={1}
-                            // className="rotate-90 scale-[1.35] relative top-[200px] left-[-25px]"
-                        />
-                    </PrintPage>
-                </div>
-            </Print>
-            <Print
-                className="flex flex-col-reverse gap-2"
-                buttonProps={{
-                    className: "self-center flex flex-row items-center",
-                    children: (
-                        <>
-                            <Icon icon="print" className="w-6 h-6" />
-                            &ensp;Print all pages
-                        </>
-                    ),
-                }}
-            >
-                <div className="flex flex-col items-center w-full">
-                    <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
-                        <div className="flex flex-wrap ">
-                            <Rect widthMm={lidWidth} heightMm={lidDepth} cutTop cutLeft cutRight cutBottom>
-                                Lid top
-                            </Rect>
-                            <Rect widthMm={lidWidth} heightMm={lidHeight} cutTop cutLeft cutRight cutBottom>
-                                Lid front, bottom
-                            </Rect>
-                            <Rect widthMm={lidDepth} heightMm={lidHeight} cutTop cutLeft cutRight cutBottom>
-                                Lid left, right
-                            </Rect>
-                        </div>
-                    </PrintPage>
-                    <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
-                        <LidBox
-                            contentDepth={contentDepthMm}
-                            contentWidth={contentWidth}
-                            contentHeight={contentHeight}
-                            sideLipSize={contentDepthMm}
-                        />
-                    </PrintPage>
-                    <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
-                        <div className="flex flex-row">
-                            {range(stackColumnCount).map((columnIndex) => {
-                                const isFirstColumn = columnIndex === 0;
-                                return (
-                                    <div key={columnIndex}>
-                                        {range(stackRowCount).map((rowIndex) => {
-                                            const isLastRow = rowIndex === stackRowCount - 1;
-                                            const isFirstRow = rowIndex === 0;
-                                            return (
-                                                <div key={rowIndex}>
-                                                    <Rect
-                                                        widthMm={blockWidth}
-                                                        heightMm={stackSizeMm}
-                                                        cutTop={isFirstRow}
-                                                        bendTop={!isFirstRow}
-                                                        cutRight
-                                                        cutLeft={isFirstColumn}
-                                                    />
-                                                    <Rect
-                                                        widthMm={blockWidth}
-                                                        heightMm={cardHeightMm}
-                                                        cutRight
-                                                        cutLeft={isFirstColumn}
-                                                        bendTop
-                                                    />
-                                                    <Rect
-                                                        widthMm={blockWidth}
-                                                        heightMm={contentDepthMm}
-                                                        cutRight
-                                                        cutLeft={isFirstColumn}
-                                                        bendTop
-                                                        cutBottom={isLastRow}
-                                                    />
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </PrintPage>
-                    <PrintPage size={defaultPaperSize} marginsInMm={defaultPageMarginsMm}>
-                        <div className="flex flex-row">
-                            {range(stackColumnCount).map((columnIndex) => {
-                                const isFirstColumn = columnIndex === 0;
-                                const isLastColumn = columnIndex === stackColumnCount - 1;
-                                return (
-                                    <div className="flex flex-row">
-                                        <Rect
-                                            widthMm={blockWidth}
-                                            heightMm={blockHeight * stackRowCount}
-                                            cutTop
-                                            cutBottom
-                                            bendRight={!isLastColumn}
-                                            cutRight={isLastColumn}
-                                            cutLeft={isFirstColumn}
-                                        />
-                                        {!isLastColumn && (
-                                            <>
-                                                <Rect
-                                                    widthMm={contentDepthMm}
-                                                    heightMm={blockHeight * stackRowCount}
-                                                    cutTop
-                                                    cutBottom
-                                                    bendRight
-                                                />
-                                                <Rect
-                                                    widthMm={contentDepthMm}
-                                                    heightMm={blockHeight * stackRowCount}
-                                                    cutTop
-                                                    cutBottom
-                                                    bendRight
-                                                />
-                                            </>
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </PrintPage>
-                </div>
-            </Print>
         </div>
     );
 }

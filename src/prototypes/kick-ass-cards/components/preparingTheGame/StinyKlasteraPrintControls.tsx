@@ -252,41 +252,7 @@ export default function StinyKlasteraPrintControls({ className }: StinyKlasteraP
                                 toughness={8}
                                 deck="Příběhy Husitů"
                             />
-                            <AssetCard
-                                {...cardProps}
-                                icon="/KAC/assets/medieval/digging.png"
-                                title="Digging tools"
-                                effect="Usable for mining or breaking down obstacles."
-                                deck="medieval"
-                            />
-                            <AssetCard
-                                {...cardPropsSecondHalf}
-                                icon="/KAC/assets/medieval/ore.png"
-                                title="Ore"
-                                effect="Does it contain precious metals, gems or is it just a fancy stone?"
-                                deck="medieval"
-                            />
-                            <AssetCard
-                                {...cardPropsSecondHalf}
-                                icon="/KAC/assets/medieval/iron.png"
-                                title="Iron"
-                                effect="Can be used to craft something useful by a blacksmith."
-                                deck="medieval"
-                            />
-                            <AssetCard
-                                {...cardPropsSecondHalf}
-                                icon="/KAC/assets/medieval/silver.png"
-                                title="Silver"
-                                effect="Can be used to craft something pretty by a jewler."
-                                deck="medieval"
-                            />
-                            <AssetCard
-                                {...cardPropsSecondHalf}
-                                icon="/KAC/assets/medieval/gold.png"
-                                title="Gold"
-                                effect="Can be used to craft something precious by a jewler."
-                                deck="medieval"
-                            />
+
                             <div className={labelClassName}>
                                 {label} 3/{totalPages}
                                 {showColorBars ? <ColorBars /> : undefined}

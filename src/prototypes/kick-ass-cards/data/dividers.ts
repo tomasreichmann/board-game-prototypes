@@ -83,6 +83,13 @@ const dividers = [
         backfaceUri: "/KAC/asset-back-face.png",
         color: "bg-kac-steel-dark",
     },
+    {
+        heading: "Medieval – Locations",
+        imageUri: "/KAC/assets/medieval/key.png",
+        iconUri: "/KAC/map.png",
+        backfaceUri: "/KAC/asset-back-face.png",
+        color: "bg-kac-bone-dark",
+    },
 ];
 
 export default dividers;

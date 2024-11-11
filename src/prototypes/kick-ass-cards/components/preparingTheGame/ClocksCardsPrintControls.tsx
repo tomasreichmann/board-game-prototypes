@@ -31,7 +31,7 @@ export default function ClocksCardsPrintControls({ className }: ClocksCardsPrint
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
             <div className="print:hidden mt-4">
                 <Input
-                    label="Pages"
+                    label="Copies"
                     type="number"
                     value={copyCount}
                     onChange={(event) => setCopyCount(event.target.valueAsNumber || 1)}

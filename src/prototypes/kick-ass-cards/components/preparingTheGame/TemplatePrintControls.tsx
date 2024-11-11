@@ -9,7 +9,8 @@ import Text, { H2 } from "../content/Text";
 import PrintMarkerCorners from "../../../../components/print/PrintMarker/PrintMarkerCorners";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
-import { usePrintControlsStore } from "./PaperAndCardControls";
+import MdxArticle from "../layout/MdxArticle";
+import preparingTheGameIntroMdx from "../../articles/preparingTheGame-intro.mdx";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 
 export type TemplatePrintControlsProps = { className?: string };
@@ -44,7 +45,9 @@ export default function TemplatePrintControls({ className }: TemplatePrintContro
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
-            <div className="flex flex-col gap-2 items-stretch print:hidden mt-4 max-w-xl">
+            <div className="flex flex-col gap-2 items-stretch print:hidden mt-4 max-w-xl"></div>
+            <div className="flex flex-col gap-4 pb-8">
+                <MdxArticle mdx={preparingTheGameIntroMdx} className="mt-4 md:columns-2 lg:columns-3 xl:columns-4" />
                 <H2>Print template</H2>
                 <Text>Use this template to calibrate your printer.</Text>
                 <Text>
@@ -112,7 +115,7 @@ export default function TemplatePrintControls({ className }: TemplatePrintContro
                                 bleedRightMm = bleedMm,
                                 bleedBottomMm = bleedMm,
                                 bleedLeftMm = bleedMm,
-                            } = props;
+                            } = props as SampleCardProps;
                             return {
                                 ...props,
                                 children: (

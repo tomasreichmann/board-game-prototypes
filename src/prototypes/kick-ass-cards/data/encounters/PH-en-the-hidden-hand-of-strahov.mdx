@@ -3,7 +3,7 @@ campaign: Hussite chronicles
 
 ---
 
-import * as C from "./ML-cs-common";
+import * as C from "./PH-en-strahov";
 import { assetMap as assets } from "../assets-en-deck";
 
 # The Hidden Hand of Strahov
@@ -37,21 +37,24 @@ Throughout the adventure, the investigators must navigate the monastery's tense 
 
 ### Key NPCs
 
--   **Abbot Jan IV. Haukap**: The abbot of Strahov Monastery, determined to maintain control despite the theft.
--   **Brother Lukáš**: Ambitious and manipulative monk, secretly orchestrating the sale of the relic.
--   **Sister Anežka**: A nun with a secret tied to her brother, fearful of her loyalty being questioned.
--   **Brother Václav**: Elderly monk, dedicated to protecting the monastery's relics, hiding the real Hand of Saint Norbert.
--   **Sister Marie**: Strict and disciplined, protective of her son, Novice Tomáš, at all costs.
--   **Sister Tereza**: Resourceful nun, involved in a side business selling herbs, and unknowingly entangled in the relic scheme.
--   **Novice Tomáš**: Young monk caught between loyalty and love, hiding the relic to protect himself and Sister Tereza.
--   **Brother Karel**: The librarian with a drinking problem, unwittingly caught up in the intrigue.
+<List>
+<Actor {...C.defaultActorProps} {...C.characters.jan} imageFit="cover" />
+<Actor {...C.defaultActorProps} {...C.characters.lukas} />
+<Actor {...C.defaultActorProps} {...C.characters.anezka} />
+<Actor {...C.defaultActorProps} {...C.characters.vaclav} />
+<Actor {...C.defaultActorProps} {...C.characters.marie} />
+<Actor {...C.defaultActorProps} {...C.characters.tereza} />
+<Actor {...C.defaultActorProps} {...C.characters.tomas} />
+<Actor {...C.defaultActorProps} {...C.characters.karel} />
+</List>
 
 ### Playable Characters
 
--   **Hilarius of Litoměřice (Required character)**: The Catholic administrator of Prague who initiated the investigation.
--   **Johana z Rožmitálu**: The queen consort of Bohemia, sent to ensure loyalty to the crown.
--   **Kateřina z Vrby**: Battle-hardened investigator, fierce and willing to do whatever it takes to solve the case.
--   **Sister Magdalena of Blatná**: A nun and relic expert, whose knowledge is crucial to uncovering the truth.
--   **Václav of Komárov**: Veteran knight, assigned to protect the investigation team and ensure justice.
--   **Brother Jakub of Olomouc**: Young monk, eager to prove himself during the investigation.
-
+<List>
+<Actor {...C.defaultActorProps} {...C.characters.hilarius} />
+<Actor {...C.defaultActorProps} {...C.characters.johana} />
+<Actor {...C.defaultActorProps} {...C.characters.katerina} />
+<Actor {...C.defaultActorProps} {...C.characters.magdalena} />
+<Actor {...C.defaultActorProps} {...C.characters.vladimir} />
+<Actor {...C.defaultActorProps} {...C.characters.jakub} />
+</List>

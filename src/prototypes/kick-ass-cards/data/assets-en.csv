@@ -58,3 +58,10 @@
 "key","Key","/KAC/assets/medieval/key.png","What does it open?","","medieval",1
 "trap","Trap","/KAC/assets/medieval/trap.png","Causes 2x Injury and Stuck when stepped on. Takes a Success to escape from it.","","medieval",3
 "tools","Tools","/KAC/assets/medieval/tools.png","Tools for crafting.","","medieval",1
+"digging","Digging tools","/KAC/assets/medieval/digging.png","Usable for mining or breaking down obstacles.","","medieval",1
+"ore","Ore","/KAC/assets/medieval/ore.png","Does it contain precious metals, gems or is it just a fancy stone?","","medieval",1
+"stone","Stone","/KAC/assets/medieval/stone.png","An excellent building material.","","medieval",1
+"wood","Wood","/KAC/assets/medieval/wood.png","Good for building, but quite flamable.","","medieval",1
+"iron","Iron","/KAC/assets/medieval/iron.png","Can be used to craft something useful by a blacksmith.","","medieval",1
+"silver","Silver","/KAC/assets/medieval/silver.png","Can be used to craft something pretty by a jewler.","","medieval",1
+"gold","Gold","/KAC/assets/medieval/gold.png","Can be used to craft something precious by a jewler.","","medieval",1

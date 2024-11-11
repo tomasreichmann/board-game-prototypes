@@ -70,6 +70,6 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
 
     ...makeEncounterDefinition("PH-cs-stiny-klastera", "Stíny Kláštera", PH),
     ...makeEncounterDefinition("PH-en-though-shalt-not-prank", "Though Shalt Not Prank", PH),
-    ...makeEncounterDefinition("PH-en-the-mystery-of-the-hand-of-strahov", "The Mystery of the Hand of Strahov", PH),
+    ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov", "The Hidden Hand of Strahov", PH),
 };
 console.log("encountersMap", encountersMap);

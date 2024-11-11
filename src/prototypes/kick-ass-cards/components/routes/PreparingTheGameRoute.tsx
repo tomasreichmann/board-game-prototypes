@@ -1,8 +1,6 @@
 import React from "react";
-import MdxArticle from "../layout/MdxArticle";
-import preparingTheGameIntroMdx from "../../articles/preparingTheGame-intro.mdx";
 import { Navigation } from "../Navigation";
-import Text, { H2, H3 } from "../content/Text";
+import Text, { H1, H2, H3 } from "../content/Text";
 import PaperAndCardControls, {
     componentControlsMap,
     usePrintControlsStore,
@@ -19,14 +17,8 @@ export default function PreparingTheGameRoute() {
             <Navigation />
             <div className="flex-1 mt-4 print:m-0 w-full text-kac-iron p-2 md:px-10 bg-white">
                 <section className="flex flex-col gap-8 ">
-                    {/* <div className="flex flex-col gap-4 pb-8">
-                        <MdxArticle
-                            mdx={preparingTheGameIntroMdx}
-                            className="mt-4 md:columns-2 lg:columns-3 xl:columns-4"
-                        />
-                    </div> */}
                     <div className="flex-1 flex flex-col relative">
-                        <H2>Printable Components</H2>
+                        <H1 className="mt-8">Preparing the game</H1>
                         <Text variant="body">
                             These are all the printable components you will need. Setup the print page and click the
                             Print button to either print immediately or export to PDF to print later.

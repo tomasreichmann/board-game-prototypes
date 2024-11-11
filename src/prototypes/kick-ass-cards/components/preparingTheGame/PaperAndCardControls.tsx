@@ -45,7 +45,7 @@ export const componentControlsMap = {
     "Blank Actor Cards": ActorCardsPrintControls,
     "Blank Counter Cards": ClocksCardsPrintControls,
     "Stunt Cards": StuntCardsPrintControls,
-    "Asset Cards": AssetCardsPrintControls,
+    "Medieval Asset Cards": AssetCardsPrintControls,
     "Medieval Actors": MedievalActorCardsPrintControls,
     "Medieval Locations": MedievalLocationsPrintControls,
     "Stíny Kláštera": StinyKlasteraPrintControls,

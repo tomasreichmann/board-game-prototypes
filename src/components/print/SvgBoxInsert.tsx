@@ -109,7 +109,7 @@ export default forwardRef<SVGSVGElement, SvgBoxInsertProps>(function SvgBoxInser
     ].join(" ");
     bends.push(lidSpacerBends);
 
-    const brochureInsertY = lidSpacerSize + paperThickness;
+    const brochureInsertY = lidSpacerLeft.x + lidSpacerLeft.height + paperThickness;
     const brochureInsertLeft = {
         x: 0,
         y: brochureInsertY,

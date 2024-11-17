@@ -180,7 +180,10 @@ export default forwardRef<SVGSVGElement, SvgBoxInsertWoodProps>(function SvgBoxI
     createVerticalInsert(areaMap.vertical_3.x + areaMap.vertical_3.width + dividerThickness, areaMap.vertical_3.y, "4");
 
     const totalWidth =
-        areaMap.horizontal_bottom.x + areaMap.horizontal_bottom.width + dividerThickness - areaMap.horizontal_top.x;
+        Math.max(
+            areaMap.horizontal_bottom.x + areaMap.horizontal_bottom.width + dividerThickness,
+            areaMap.vertical_4.x + areaMap.vertical_4.width + dividerThickness
+        ) - areaMap.horizontal_top.x;
     const totalHeight = areaMap.vertical_2.y + areaMap.vertical_2.height + dividerThickness;
 
     return (

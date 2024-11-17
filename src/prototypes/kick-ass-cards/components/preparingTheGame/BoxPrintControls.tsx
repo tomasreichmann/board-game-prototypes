@@ -86,6 +86,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; space between content and dividers"
                         value={fittingMargin}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, fittingMargin: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -94,6 +95,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; height of the brochure"
                         value={brochureHeight}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, brochureHeight: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -102,6 +104,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; width of the brochure"
                         value={brochureWidth}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, brochureWidth: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -110,6 +113,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; total thickness of all brochures stacked at the back of the box"
                         value={brochuresTotalThickness}
+                        min={0}
                         onChange={(event) =>
                             setSettings({ ...settings, brochuresTotalThickness: Number(event.target.value) })
                         }
@@ -120,6 +124,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; thickness of the box cardboard"
                         value={cardBoardThickness}
+                        min={0}
                         onChange={(event) =>
                             setSettings({ ...settings, cardBoardThickness: Number(event.target.value) })
                         }
@@ -130,6 +135,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; space for stacked cards including slant and margin"
                         value={cardStackSpace}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, cardStackSpace: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -138,6 +144,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; width of the card"
                         value={cardWidth}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, cardWidth: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -146,6 +153,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; height of the card divider (cca 98mm) + 2 * fitting margin;"
                         value={verticalSpaceForCards}
+                        min={0}
                         onChange={(event) =>
                             setSettings({ ...settings, verticalSpaceForCards: Number(event.target.value) })
                         }
@@ -156,6 +164,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; thickness of the insert dividers"
                         value={dividerThickness}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, dividerThickness: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -164,6 +173,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; space between lid and box"
                         value={lidFittingMargin}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, lidFittingMargin: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -172,6 +182,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="mm; space between lid and box"
                         value={lidSpacerSize}
+                        min={0}
                         onChange={(event) => setSettings({ ...settings, lidSpacerSize: Number(event.target.value) })}
                         className="w-32"
                     />
@@ -180,6 +191,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         type="number"
                         description="number of alternating segments of vertical joints"
                         value={verticalJointSegments}
+                        min={0}
                         onChange={(event) =>
                             setSettings({ ...settings, verticalJointSegments: Number(event.target.value) })
                         }

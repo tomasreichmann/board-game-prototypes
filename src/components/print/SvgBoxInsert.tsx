@@ -198,7 +198,10 @@ export default forwardRef<SVGSVGElement, SvgBoxInsertProps>(function SvgBoxInser
     createCardInsert(0, brochureInsertLeft.y + brochureInsertLeft.height + paperThickness, 1);
     createCardInsert(cardInsertWidth, brochureInsertLeft.y + brochureInsertLeft.height + paperThickness, 2);
 
-    const totalWidth = lidSpacerBack.x + lidSpacerBack.width + paperThickness;
+    const totalWidth = Math.max(
+        lidSpacerBack.x + lidSpacerBack.width + paperThickness,
+        areaMap.cardInsertBack_2.x + areaMap.cardInsertBack_2.width + paperThickness
+    );
     const totalHeight = areaMap.cardInsertBack_2.y + areaMap.cardInsertBack_2.height + paperThickness;
 
     return (

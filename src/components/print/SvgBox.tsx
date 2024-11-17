@@ -10,6 +10,8 @@ export type SvgBoxProps = React.PropsWithChildren<
         contentDepth: number;
         paperThickness?: number;
         showLabels?: boolean;
+        showPrintCut?: boolean;
+        printOverhang?: number;
         title?: string;
     } & React.SVGProps<SVGSVGElement>
 >;
@@ -21,6 +23,8 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
         contentDepth, // how tall the box is from the bottom
         paperThickness = 1,
         showLabels = true,
+        showPrintCut = false,
+        printOverhang = 10, // mm; how much the print extends over the edge of the box cut
         className,
         children,
         title = "Box",
@@ -40,6 +44,7 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
 
     const bendStyle = { fill: "none", stroke: "#0000ff", strokeWidth: 0.5 };
     const cutStyle = { fill: "none", stroke: "#ff0000", strokeWidth: 0.5 };
+    const printCutStyle = { fill: "none", stroke: "#00ff00", strokeWidth: 0.5 };
 
     const backWidth = contentWidth;
     const backHeight = contentDepth;
@@ -125,8 +130,13 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
         height: rightInnerHeight,
     };
 
-    const totalWidth = rightInnerSide.x + rightInnerSide.width - leftInnerSide.x + paperThickness;
-    const totalHeight = frontSide.y + frontSide.height + paperThickness;
+    const totalWidth =
+        rightInnerSide.x +
+        rightInnerSide.width -
+        leftInnerSide.x +
+        paperThickness +
+        (showPrintCut ? printOverhang * 2 : 0);
+    const totalHeight = frontSide.y + frontSide.height + paperThickness + (showPrintCut ? printOverhang * 2 : 0);
 
     const bends: string[] = [];
     const cuts: string[] = [];
@@ -180,8 +190,6 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
     bends.push(`M ${backSide.x},${backSide.y} v${backSide.height}`);
     bends.push(`M ${backSide.x},${backSide.y + backSide.height} h${backSide.width}`);
     bends.push(`M ${backSide.x + backSide.width},${backSide.y} v${backSide.height}`);
-    //bends.push(`M ${backLeftLipSide.x + backLeftLipSide.width},${backLeftLipSide.y} v${backLeftLipSide.height}`);
-    //bends.push(`M ${backRightLipSide.x},${backRightLipSide.y} v${backRightLipSide.height}`);
     bends.push(`M ${bottomSide.x},${bottomSide.y} v${bottomSide.height}`);
     bends.push(`M ${bottomSide.x},${bottomSide.y + bottomSide.height} h${bottomSide.width}`);
     bends.push(`M ${bottomSide.x + bottomSide.width},${bottomSide.y} v${bottomSide.height}`);
@@ -191,10 +199,41 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
     bends.push(`M ${rightInnerSide.x},${rightInnerSide.y} v${rightInnerSide.height}`);
     bends.push(`M ${frontSide.x},${frontSide.y} v${frontSide.height}`);
     bends.push(`M ${frontSide.x + frontSide.width},${frontSide.y} v${frontSide.height}`);
-    //bends.push(`M ${frontLeftLipSide.x + frontLeftLipSide.width},${frontLeftLipSide.y} v${frontLeftLipSide.height}`);
-    //bends.push(`M ${frontRightLipSide.x},${frontRightLipSide.y} v${frontRightLipSide.height}`);
 
-    //cuts.push(getCrossPath(backSide.x, backSide.y, 10));
+    const printCut = [
+        `M ${backSide.x},${backSide.y - printOverhang}`,
+        `v${printOverhang}`,
+        `h${-printOverhang}`,
+        `v${backSide.height - printOverhang}`,
+        `l${printOverhang},${printOverhang}`,
+        `H${leftOuterSide.x - printOverhang - 2 * paperThickness}`,
+        `v${leftOuterSide.height}`,
+        `H${frontSide.x}`,
+        `l${-printOverhang},${printOverhang}`,
+        `v${frontSide.height - printOverhang}`,
+        `h${printOverhang}`,
+        `v${printOverhang}`,
+        `h${frontSide.width}`,
+        `v${-printOverhang}`,
+        `h${printOverhang}`,
+        `v${-frontSide.height + printOverhang}`,
+        `l${-printOverhang},${-printOverhang}`,
+        `H${rightOuterSide.x + rightOuterSide.width + printOverhang + 2 * paperThickness}`,
+        `v${-rightOuterSide.height}`,
+        `H${backSide.x + backSide.width}`,
+        `l${printOverhang},${-printOverhang}`,
+        `v${-backSide.height + printOverhang}`,
+        `h${-printOverhang}`,
+        `v${-printOverhang}`,
+        `Z`,
+    ].join(" ");
+
+    const viewBox = [
+        -totalWidth / 2 - (showPrintCut ? printOverhang : 0),
+        0 - (showPrintCut ? printOverhang : 0),
+        totalWidth,
+        totalHeight,
+    ].join(" ");
 
     return (
         <svg
@@ -203,7 +242,7 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
             className={twMerge("SvgBox", className)}
             width={totalWidth}
             height={totalHeight}
-            viewBox={`${-totalWidth / 2} 0 ${totalWidth} ${totalHeight}`}
+            viewBox={viewBox}
             xmlns="http://www.w3.org/2000/svg"
         >
             {showLabels && (
@@ -336,6 +375,23 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
                     >
                         frontRightLip
                     </text>
+                    {showPrintCut && (
+                        <text
+                            x={backSide.x + paperThickness * 2}
+                            y={backSide.y + paperThickness * 2}
+                            fontSize={labelTextStyle.fontSize}
+                            dominantBaseline="hanging"
+                            fill={printCutStyle.stroke}
+                        >
+                            printCut (
+                            {rightOuterSide.x +
+                                rightOuterSide.width +
+                                printOverhang +
+                                2 * paperThickness -
+                                (leftOuterSide.x - printOverhang - 2 * paperThickness)}
+                            x{frontSide.y + frontSide.height + printOverhang - (backSide.y - printOverhang)})
+                        </text>
+                    )}
                 </>
             )}
             {bends.map((d, bendIndex) => (
@@ -344,6 +400,7 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
             {cuts.map((d, cutIndex) => (
                 <path key={cutIndex} d={d} {...cutStyle} />
             ))}
+            {showPrintCut && <path d={printCut} {...printCutStyle} />}
             {children}
         </svg>
     );

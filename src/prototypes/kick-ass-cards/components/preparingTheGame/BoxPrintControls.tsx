@@ -18,6 +18,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
     const { defaultCardSize, defaultPaperSize, defaultPageMarginsMm } = usePrintControlsStore();
     const [settings, setSettings] = useState({
         showLabels: true,
+        showPrintCut: true,
         brochureHeight: 210, // mm; paperSizes.A4.mm[0]; // mm; brochure is as tall as the A4 is wide; 210mm
         brochuresTotalThickness: 20, // mm; total thickness of all brochures stacked at the back of the box
         brochureWidth: 100, // Math.ceil(paperSizes.A4.mm[1] / 3); // mm; brochure is 1/3 of the A4 height
@@ -34,6 +35,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
 
     const {
         showLabels,
+        showPrintCut,
         brochureHeight,
         brochuresTotalThickness,
         brochureWidth,
@@ -71,7 +73,14 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                         checked={showLabels}
                         onChange={(event) => setSettings({ ...settings, showLabels: event.target.checked })}
                         className="w-32"
-                    />{" "}
+                    />
+                    <Input
+                        label="Show print cut"
+                        type="checkbox"
+                        checked={showLabels}
+                        onChange={(event) => setSettings({ ...settings, showPrintCut: event.target.checked })}
+                        className="w-32"
+                    />
                     <Input
                         label="Fitting margin"
                         type="number"
@@ -194,6 +203,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                     title="Box"
                     ref={boxSvgRef}
                     showLabels={settings.showLabels}
+                    showPrintCut={showPrintCut}
                     contentWidth={contentWidth}
                     contentHeight={contentHeight}
                     contentDepth={contentDepth}
@@ -215,6 +225,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                 <SvgBox
                     title="Lid"
                     ref={lidSvgRef}
+                    showPrintCut={showPrintCut}
                     showLabels={settings.showLabels}
                     contentWidth={contentWidth + cardBoardThickness * 6 + lidFittingMargin}
                     contentHeight={contentHeight + cardBoardThickness * 2 + lidFittingMargin}

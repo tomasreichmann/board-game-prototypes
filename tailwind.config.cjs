@@ -130,10 +130,6 @@ module.exports = {
             backgroundPosition: {
                 "1/3": "center 33%",
             },
-            animation: {
-                fadeIn: "fadeIn 0.6s ease-in-out",
-                fadeOut: "fadeOut 0.6s ease-in-out",
-            },
             keyframes: {
                 fadeIn: {
                     "0%": { opacity: 0 },
@@ -143,6 +139,40 @@ module.exports = {
                     "0%": { opacity: 1 },
                     "100%": { opacity: 0 },
                 },
+                wave: {
+                    "0%": { transform: "rotate(0.0deg)" },
+                    "10%": { transform: "rotate(14deg)" },
+                    "20%": { transform: "rotate(-8deg)" },
+                    "30%": { transform: "rotate(14deg)" },
+                    "40%": { transform: "rotate(-4deg)" },
+                    "50%": { transform: "rotate(10.0deg)" },
+                    "60%": { transform: "rotate(0.0deg)" },
+                    "100%": { transform: "rotate(0.0deg)" },
+                },
+                breathe: {
+                    "0%": { transform: "scale(0.9)" },
+                    "25%": { transform: "scale(1)" },
+                    "60%": { transform: "scale(0.9)" },
+                    "100%": { transform: "scale(0.9)" },
+                },
+            },
+            animation: {
+                fadeIn: "fadeIn 0.6s ease-in-out",
+                fadeOut: "fadeOut 0.6s ease-in-out",
+                wave: "wave 0.6s linear infinite",
+                breathe: "breathe 1s ease-in-out infinite",
+            },
+            animationDelay: {
+                2000: "2000ms",
+                3000: "3000ms",
+                4000: "4000ms",
+                5000: "5000ms",
+            },
+            animationDuration: {
+                2000: "2000ms",
+                3000: "3000ms",
+                4000: "4000ms",
+                5000: "5000ms",
             },
             dropShadow: {
                 "md-heavy": ["0 1px 2px rgb(0 0 0 / 0.25)", "0 1px 1px rgb(0 0 0 / 0.12)"],

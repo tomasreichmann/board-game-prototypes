@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Adventure from "../adventures/Adventure";
 import ErrorBoundary from "../../../../components/ErrorBoundary";
 import { ErrorBoundaryErrorMessage } from "../adventures/ErrorMessage";
-import { deleteAdventure } from "../../services/firestoreController";
+import { deleteAdventure } from "../../services/firestoreAdventureController";
 import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
 
 export default function AdventureRoute() {

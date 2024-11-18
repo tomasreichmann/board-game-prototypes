@@ -1,19 +1,23 @@
-import Text, { H1, H5 } from "../content/Text";
+import Text, { H1 } from "../content/Text";
+import {
+    checkWriteAccess,
+    collectionWithDb,
+    deleteDocument,
+    updateDocumentFields,
+    useQuery,
+} from "../../services/firestoreController";
+
 import {
     AdventureDocumentDocType,
     ContentItemDnDResultType,
     ContentItemDragObjectType,
     ContentItemDropResultType,
     ContentItemType,
-    checkWriteAccess,
-    collectionWithDb,
     createAdventureDocumentContent,
-    deleteDocument,
-    updateDocumentFields,
     useAdventure,
     useAdventureDocument,
-    useQuery,
-} from "../../services/firestoreController";
+} from "../../services/firestoreAdventureController";
+
 import ToggleData from "../../../../components/DataToggle";
 import { twMerge } from "tailwind-merge";
 import ContentItem from "./ContentItem";
@@ -36,7 +40,7 @@ import { JSONSchemaType } from "ajv";
 import { documentFormJsonSchema } from "./documentFormSchema";
 import ContentItemList from "./ContentItemList";
 import EditableWrapper from "./EditableWrapper";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrag } from "react-dnd";
 
 export type AdventureDocumentFormType = Omit<AdventureDocumentDocType, "id" | "meta" | "contents">;
 
@@ -374,7 +378,7 @@ export default function Document({ className, documentId, adventureId }: Documen
                     });
                     return;
                 }
-                console.log("updateDocumentFields", { path, pathFragments, contentsCollectionPathFailsafe });
+                console.log("updateDocumentFields", { path, pathFragments, innerPath, contentsCollectionPathFailsafe });
                 updateDocumentFields(contentsCollectionPath, contentId, innerPath, newContentItem);
                 // TODO: Set array path
                 // TODO: Set deep editing path

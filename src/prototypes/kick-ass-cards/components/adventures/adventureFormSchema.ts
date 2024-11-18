@@ -1,5 +1,5 @@
 import { JSONSchemaType } from "ajv";
-import { AdventureDocType } from "../../services/firestoreController";
+import { AdventureDocType } from "../../services/firestoreAdventureController";
 
 export type AdventureFormType = Omit<AdventureDocType, "id" | "meta" | "contents">;
 

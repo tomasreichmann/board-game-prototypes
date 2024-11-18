@@ -1,6 +1,6 @@
 import { useDrop } from "react-dnd";
 import { twMerge } from "tailwind-merge";
-import { ContentItemDragObjectType, ContentItemDropResultType } from "../../services/firestoreController";
+import { ContentItemDragObjectType, ContentItemDropResultType } from "../../services/firestoreAdventureController";
 
 export type ContentDropProps = {
     className?: string;

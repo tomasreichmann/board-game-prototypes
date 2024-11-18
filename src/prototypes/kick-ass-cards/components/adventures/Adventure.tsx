@@ -1,13 +1,10 @@
-import Text, { H5 } from "../content/Text";
+import Text from "../content/Text";
+import { checkWriteAccess, collectionWithDb, useQuery } from "../../services/firestoreController";
 import {
-    AdventureDocType,
     AdventureDocumentDocType,
-    checkWriteAccess,
-    collectionWithDb,
     createAdventureDocument,
     useAdventure,
-    useQuery,
-} from "../../services/firestoreController";
+} from "../../services/firestoreAdventureController";
 import { JSONSchemaType } from "ajv";
 import ToggleData from "../../../../components/DataToggle";
 import Heading from "../Heading";

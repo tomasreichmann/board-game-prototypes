@@ -1,19 +1,14 @@
-import React, { CSSProperties, SVGProps } from "react";
+import React, { CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
 import { JSONSchemaType } from "ajv";
 import { ActorType } from "../../types";
-import CharacterOutline from "../../media/character-outline.svg";
-import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
+import { PaperProps } from "../../../../components/print/Paper/Paper";
 import Image, { ImageProps } from "../Image";
 import Icon from "../Icon";
-import DiceCounter from "../DiceCounter";
-import { cardSizes } from "../../../../components/print/paperSizes";
 import ComponentMetaType from "../generation/ComponentMetaType";
-import Card, { CardBody, CardHeader } from "./Card";
+import Card, { CardBody, CardHeader, CardProps } from "./Card";
 import { H2 } from "../content/Text";
 // import "./ActorCard.css";
-
-const CharacterOutlineImage = CharacterOutline as unknown as React.ComponentType<SVGProps<SVGElement>>;
 
 export type ActorCardProps = React.PropsWithChildren<
     {
@@ -29,10 +24,10 @@ export type ActorCardProps = React.PropsWithChildren<
         hideCounter?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
     } & Partial<ActorType> &
-        Partial<PaperProps>
+        Partial<CardProps>
 >;
 
-export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof PaperProps | "ImageComponent">> = {
+export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof CardProps | "ImageComponent">> = {
     title: "ActorCard",
     type: "object",
     properties: {

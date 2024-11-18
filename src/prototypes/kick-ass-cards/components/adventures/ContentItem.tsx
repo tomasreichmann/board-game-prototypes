@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { ContentItemType } from "../../services/firestoreController";
+import { ContentItemType } from "../../services/firestoreAdventureController";
 import { defaultMdxComponentMap } from "../content/MdxArticle";
 import ErrorMessage, { ErrorBoundaryErrorMessage } from "./ErrorMessage";
 import ErrorBoundary from "../../../../components/ErrorBoundary";

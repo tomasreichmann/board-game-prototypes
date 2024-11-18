@@ -1,13 +1,15 @@
-import ComponentsRoute from "./ComponentsRoute";
 import EncounterRoute from "./EncounterRoute";
 import EncountersRoute from "./EncountersRoute";
 import InfoRoute from "./InfoRoute";
-import MachimagikaRoute from "./PlayRoute";
+import MachimagikaRoute from "./MachimagikaRoute";
 import PrintRoute from "./PrintRoute";
 import ScreenRoute from "./ScreenRoute";
 import PlaygroundRoute from "./PlaygroundRoute";
-/* import SmartDocsRoute from "./SmartDocsRoute";
-import SmartDocRoute from "./SmartDocRoute"; */
+/* 
+import ComponentsRoute from "./ComponentsRoute";
+import SmartDocsRoute from "./SmartDocsRoute";
+import SmartDocRoute from "./SmartDocRoute";
+*/
 
 import { RouteDefinition } from "../../../../routeTypes";
 import WorldBuilderRoute from "./WorldBuilderRoute";
@@ -17,12 +19,15 @@ import AdventureRoute from "./AdventureRoute";
 import DocumentRoute from "./DocumentRoute";
 import PreparingTheGameRoute from "./PreparingTheGameRoute";
 import GenerateComponentRoute from "./GenerateComponentRoute";
+import PlayOnlineRoute from "./PlayOnlineRoute";
 
 export const mightyDecksPath = "/mighty-decks";
 export const mightyDecksScreenStorageKey = "mighty-decks-screen";
 export const mightyDecksPrintStorageKey = "mighty-decks-print";
 export const smartDocsPath = mightyDecksPath + "/smart-docs";
 export const adventuresPath = mightyDecksPath + "/adventures";
+export const playOnlinePath = mightyDecksPath + "/play-online";
+export const playOnlineGamePath = `${playOnlinePath}/game`;
 
 export const sidebarPath = "__sidebar";
 
@@ -38,11 +43,11 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
         path: mightyDecksPath + "/preparing-the-game",
         Component: PreparingTheGameRoute,
     },
-    {
+    /* {
         name: "Components",
         path: mightyDecksPath + "/components",
         Component: ComponentsRoute,
-    },
+    }, */
     {
         name: "Generate Component",
         path: mightyDecksPath + "/generate-component",
@@ -112,6 +117,17 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
                 Component: EncounterRoute,
             },
         ],
+    },
+    {
+        name: "Play Online",
+        path: mightyDecksPath + "/play-online/game/:gameId",
+        hideFromNav: true,
+        Component: PlayOnlineRoute,
+    },
+    {
+        name: "Play Online",
+        path: mightyDecksPath + "/play-online",
+        Component: PlayOnlineRoute,
     },
     {
         name: "Settings",

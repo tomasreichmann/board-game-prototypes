@@ -2,7 +2,7 @@ import React from "react";
 import { JSONSchemaType } from "ajv";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { AssetType } from "../../types";
-import Icon, { IconType } from "../Icon";
+import { IconType } from "../Icon";
 import RichText from "../RichText";
 import { twMerge } from "tailwind-merge";
 import ComponentMetaType from "../generation/ComponentMetaType";
@@ -17,7 +17,7 @@ export type AssetCardProps = React.PropsWithChildren<
     {
         className?: string;
         size?: PaperProps["size"];
-        cornerIcon?: IconType;
+        cornerIcon?: string;
         cornerIconClassName?: string;
         effectClassName?: string;
         iconClassName?: string;
@@ -32,7 +32,6 @@ export const assetCardSchema: JSONSchemaType<Omit<AssetCardProps, keyof PaperPro
         cornerIcon: {
             title: "Corner Icon",
             type: "string",
-            // enum: Object.keys(iconMap),
             nullable: true,
         },
         className: {
@@ -68,7 +67,6 @@ export const assetCardSchema: JSONSchemaType<Omit<AssetCardProps, keyof PaperPro
         icon: {
             title: "Icon",
             type: "string",
-            // enum: Object.keys(iconMap),
         },
         effect: {
             title: "Effect",
@@ -117,7 +115,7 @@ export const assetCardMeta: ComponentMetaType<AssetCardProps> = {
 export default function AssetCard({
     className,
     iconClassName,
-    cornerIcon = "chest",
+    cornerIcon = "/KAC/backpack.png",
     cornerIconClassName,
     effectClassName,
     slug,
@@ -164,7 +162,10 @@ export default function AssetCard({
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
                         {/* <div className="flex-1 text-kac-iron-light text-center text-xs invisible">{slug}</div> */}
                         <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/KAC/backpack.png" className="text-kac-bone-dark text-opacity-50 h-4" />
+                        <IconOrImage
+                            icon={cornerIcon}
+                            className={twMerge("text-kac-bone-dark text-opacity-50 h-4", cornerIconClassName)}
+                        />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">

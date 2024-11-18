@@ -2,7 +2,7 @@ import { Navigation } from "../Navigation";
 import Text, { H1, H5, H6 } from "../content/Text";
 import ToggleData from "../../../../components/DataToggle";
 import Button from "../controls/Button";
-import { createAdventure, useAdventures } from "../../services/firestoreController";
+import { createAdventure, useAdventures } from "../../services/firestoreAdventureController";
 import { adventuresPath } from "./routes";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";

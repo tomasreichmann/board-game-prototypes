@@ -4,7 +4,7 @@ import {
     ContentItemDragObjectType,
     ContentItemDropResultType,
     ContentItemType,
-} from "../../services/firestoreController";
+} from "../../services/firestoreAdventureController";
 import { defaultMdxComponentMap } from "../content/MdxArticle";
 import { useMemo } from "react";
 import Text, { H5, H6 } from "../content/Text";

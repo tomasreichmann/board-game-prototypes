@@ -1,5 +1,4 @@
 import { twMerge } from "tailwind-merge";
-import { UserMetaType } from "../../services/firestoreController";
 import Text, { H5 } from "../content/Text";
 import { ErrorComponentProps } from "../../../../components/ErrorBoundary";
 import ToggleData from "../../../../components/DataToggle";

@@ -11,6 +11,7 @@ import LlmJobRoute from "./routes/LlmJobRoute";
 import AiHordeRoute from "./routes/AiHordeRoute";
 import LlmJobRoute2 from "./routes/LlmJobRoute2";
 import WgBusinessCardsRoute from "./routes/WGBusinessCardsRoute";
+import Route404 from "./routes/Route404";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
@@ -70,6 +71,12 @@ export const routes: RouteDefinition[] = [
         name: "Settings",
         path: "/settings",
         Component: SettingsRoute,
+    },
+    {
+        name: "Page not found",
+        path: "*",
+        hideFromNav: true,
+        Component: Route404,
     },
 ];
 

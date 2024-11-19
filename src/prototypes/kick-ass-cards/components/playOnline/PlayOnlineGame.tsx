@@ -2,7 +2,6 @@ import { useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";
 import Text, { H1, H4 } from "../content/Text";
 import Button from "../controls/Button";
-import { useGame } from "./firestorePlayOnlineController";
 import { checkWriteAccess } from "../../services/firestoreController";
 import { useParams } from "react-router-dom";
 import ErrorMessage from "../adventures/ErrorMessage";
@@ -16,23 +15,16 @@ import CreateOrJoinGame from "./CreateOrJoinGame";
 import InputToggle from "../controls/InputToggle";
 import { useState } from "react";
 import MetaUser from "../adventures/MetaUser";
+import { ActionTypeEnum } from "./types";
+import useGame from "./useGame";
+import DataToggle from "../../../../components/DataToggle";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
     const { gameId } = useParams();
     const [isEditingMap, setIsEditingMap] = useState({} as { [key: string]: boolean | undefined });
 
-    const {
-        game,
-        gameError,
-        updateGame,
-        removeGame,
-        claimGame,
-        joinGameAsPlayer,
-        leaveGameAsPlayer,
-        joinGameAsStoryteller,
-        leaveGameAsStoryteller,
-    } = useGame(gameId);
+    const { game, error, clearError, dispatch } = useGame(gameId);
 
     if (!gameId) {
         return (
@@ -46,15 +38,21 @@ export default function PlayOnlineGame() {
         );
     }
 
-    if (gameError) {
+    if (error) {
         return (
             <ErrorMessage
                 className="flex-1 flex flex-col justify-center items-center"
                 heading={<>⚠ Error loading an game with ID "{gameId}"</>}
-                body={gameError.message}
+                body={error.message}
             >
                 <SignedOutWarning text="⚠ Some games might be unavailable until you sign in." />
-                <CreateOrJoinGame className="flex-grow-0 mt-8" />
+                <DataToggle data={error} buttonContent="Show error details" initialCollapsed />
+                {error.cause === "ignorable" && (
+                    <Button onClick={clearError} color="danger">
+                        Ignore
+                    </Button>
+                )}
+                {error?.code === "not-found" && <CreateOrJoinGame className="flex-grow-0 mt-8" />}
             </ErrorMessage>
         );
     }
@@ -72,6 +70,7 @@ export default function PlayOnlineGame() {
     const gameName = game?.name || `Game #${gameId}`;
     const isUserPlayer = game?.playerIds?.some((uid) => uid === user?.id);
     const isUserStoryteller = game?.storytellerIds?.some((uid) => uid === user?.id);
+    const hasJoined = isUserStoryteller || isUserPlayer;
 
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white">
@@ -97,7 +96,11 @@ export default function PlayOnlineGame() {
                                 inputProps={{
                                     value: gameName,
                                     type: "text",
-                                    onChange: (e) => updateGame({ name: e.target.value }),
+                                    onChange: (e) =>
+                                        dispatch({
+                                            type: ActionTypeEnum.UpdateGame,
+                                            updater: (game) => ({ ...game, name: e.target.value }),
+                                        }),
                                 }}
                                 toggleCheckboxProps={{
                                     labelFalse: "",
@@ -126,11 +129,26 @@ export default function PlayOnlineGame() {
                             <div className="flex flex-row gap-2">
                                 <ButtonWithConfirmation
                                     color="danger"
+                                    confirmText="Completely reset the game, no backsies?"
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => {
+                                        dispatch({ type: ActionTypeEnum.ResetGame });
+                                    }}
+                                >
+                                    Reset Game
+                                </ButtonWithConfirmation>
+                            </div>
+                        )}
+                        {hasWriteAccess && (
+                            <div className="flex flex-row gap-2">
+                                <ButtonWithConfirmation
+                                    color="danger"
                                     confirmText="Permanently end the game, no backsies?"
                                     variant="outline"
                                     size="sm"
                                     onClick={() => {
-                                        removeGame().then(() => {
+                                        dispatch({ type: ActionTypeEnum.RemoveGame }).then(() => {
                                             window.location.href = playOnlinePath;
                                         });
                                     }}
@@ -145,7 +163,7 @@ export default function PlayOnlineGame() {
                                     color="danger"
                                     size="sm"
                                     onClick={() => {
-                                        claimGame(user);
+                                        dispatch({ type: ActionTypeEnum.ClaimGame, user });
                                     }}
                                 >
                                     Claim
@@ -153,34 +171,87 @@ export default function PlayOnlineGame() {
                             </div>
                         )}
                     </div>
-                    <div className="flex flex-row flex-wrap gap-2">
+                    <div className="flex flex-row flex-wrap gap-2 items-baseline content-center min-h-[40px]">
                         {<H4>Storytellers</H4>}
-                        {game?.storytellers?.map((user) => (
-                            <MetaUser {...user} />
-                        ))}
-                        {!isUserStoryteller && (
-                            <Button variant="text" disabled={!user} onClick={() => user && joinGameAsStoryteller(user)}>
+                        {game?.storytellers?.map((userItem) => {
+                            const isCurrentUser = userItem.uid === user?.id;
+                            return (
+                                <MetaUser key={userItem.uid} {...userItem} className={isCurrentUser ? "font-bold" : ""}>
+                                    {isCurrentUser && (
+                                        <Button
+                                            variant="text"
+                                            onClick={() =>
+                                                user && dispatch({ type: ActionTypeEnum.LeaveGameAsStoryteller, user })
+                                            }
+                                        >
+                                            Resign
+                                        </Button>
+                                    )}
+                                </MetaUser>
+                            );
+                        })}
+                        {!game?.storytellers?.length && <Text className="text-kac-steel">No storyteller yet</Text>}
+                        {!hasJoined && (
+                            <Button
+                                variant="text"
+                                disabled={!user}
+                                onClick={() => user && dispatch({ type: ActionTypeEnum.JoinGameAsStoryteller, user })}
+                            >
                                 Join as a storyteller
                             </Button>
                         )}
+
+                        {<H4 className="ml-4">Players</H4>}
+                        {game?.players?.map((userItem) => {
+                            const isCurrentUser = userItem.uid === user?.id;
+                            return (
+                                <MetaUser key={userItem.uid} {...userItem} className={isCurrentUser ? "font-bold" : ""}>
+                                    {isCurrentUser && (
+                                        <Button
+                                            variant="text"
+                                            onClick={() => dispatch({ type: ActionTypeEnum.LeaveGameAsPlayer, user })}
+                                        >
+                                            Resign
+                                        </Button>
+                                    )}
+                                </MetaUser>
+                            );
+                        })}
+                        {!game?.players?.length && <Text className="text-kac-steel">No players yet</Text>}
+                        {!hasJoined && (
+                            <Button
+                                variant="text"
+                                disabled={!user}
+                                onClick={() => user && dispatch({ type: ActionTypeEnum.JoinGameAsPlayer, user })}
+                            >
+                                Join as a player
+                            </Button>
+                        )}
                     </div>
-                    <div className="flex flex-row flex-wrap gap-2">
-                        {<H4>Players</H4>}
-                        {game?.players?.map((user) => (
-                            <MetaUser {...user} />
-                        ))}
-                    </div>
                     <br />
-                    TODO: Sign up as a player
+                    TODO: Start game
                     <br />
-                    TODO: Sign out as a player
+                    TODO: Create Flippable Cards
                     <br />
-                    TODO: Sign up as a storyteller
+                    TODO: display hand and deck content
                     <br />
-                    TODO: Sign out as a storyteller
+                    TODO: calculate positions of layouts for each player
+                    <br />
+                    TODO: render layouts
                     <br />
                     CONTENT
-                    <DataPreview data={game} />
+                    <Button
+                        size="xl"
+                        className="self-center"
+                        color="success"
+                        onClick={() => dispatch({ type: ActionTypeEnum.StartGame })}
+                    >
+                        START GAME
+                    </Button>
+                    <DataToggle
+                        className="max-h-[400px]"
+                        data={{ game, hasWriteAccess, canClaim, gameName, isUserPlayer, isUserStoryteller }}
+                    />
                 </div>
             </div>
         </div>

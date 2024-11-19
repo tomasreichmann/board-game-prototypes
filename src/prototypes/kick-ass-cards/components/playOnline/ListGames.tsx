@@ -28,7 +28,7 @@ export const GameItem = ({
             <Button href={href} variant={"text"}>
                 <Image src={imageUri} className="w-full aspect-[16/9] rounded-sm bg-kac-steel" objectFit="cover" />
             </Button>
-            <div className="flex flex-row justify-between items-baseline gap-2">
+            <div className="flex flex-row justify-between items-baseline gap-2 items-baseline">
                 <H3 className="leading-tight font-bold">
                     <Button variant="text" href={href} className="font-bold">
                         {name}
@@ -38,19 +38,18 @@ export const GameItem = ({
                     {meta?.createdAt && new Date(meta?.createdAt).toDateString()}
                 </Text>
             </div>
-            {hasPlayers ||
-                (hasStorytellers && (
-                    <div className="flex flex-row flex-wrap gap-2">
-                        {hasStorytellers && <H4>Storytellers</H4>}
-                        {storytellers?.map((user) => (
-                            <MetaUser {...user} />
-                        ))}
-                        {hasPlayers && <H4>Players</H4>}
-                        {players?.map((user) => (
-                            <MetaUser {...user} />
-                        ))}
-                    </div>
-                ))}
+            {(hasPlayers || hasStorytellers) && (
+                <div className="flex flex-row flex-wrap gap-2 items-baseline">
+                    {hasStorytellers && <H4>Storytellers</H4>}
+                    {storytellers?.map((user) => (
+                        <MetaUser key={user.uid} {...user} />
+                    ))}
+                    {hasPlayers && <H4>Players</H4>}
+                    {players?.map((user) => (
+                        <MetaUser key={user.uid} {...user} />
+                    ))}
+                </div>
+            )}
         </article>
     );
 };

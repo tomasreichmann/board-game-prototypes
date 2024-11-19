@@ -28,6 +28,7 @@ export default function InputToggle({
     isEditing: isEditingProp,
     initialIsEditing,
     toggleCheckboxProps = noProps,
+    onIsEditingChange,
     ...restProps
 }: InputToggleProps) {
     const [isEditingState, setIsEditingState] = useState(isEditingProp ?? initialIsEditing ?? false);
@@ -42,8 +43,8 @@ export default function InputToggle({
                 setIsEditingState(!isEditingState);
             }
 
-            if (restProps.onIsEditingChange) {
-                restProps.onIsEditingChange(event.target.checked, event);
+            if (onIsEditingChange) {
+                onIsEditingChange(event.target.checked, event);
             }
         },
         [isControlled]

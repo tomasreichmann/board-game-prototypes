@@ -46,7 +46,7 @@ export const GameItem = ({
                             <MetaUser {...user} />
                         ))}
                         {hasPlayers && <H4>Players</H4>}
-                        {storytellers?.map((user) => (
+                        {players?.map((user) => (
                             <MetaUser {...user} />
                         ))}
                     </div>

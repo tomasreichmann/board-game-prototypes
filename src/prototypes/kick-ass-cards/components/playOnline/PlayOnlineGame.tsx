@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/clerk-react";
 import ClerkUser from "../../../../services/Clerk/ClerkUser";
-import Text, { H1 } from "../content/Text";
+import Text, { H1, H4 } from "../content/Text";
 import Button from "../controls/Button";
 import { useGame } from "./firestorePlayOnlineController";
 import { checkWriteAccess } from "../../services/firestoreController";
@@ -13,12 +13,26 @@ import copyToClipboard from "../../../../utils/copyToClipboard";
 import DataPreview from "../../../../components/DataPreview";
 import { playOnlinePath } from "../routes/routes";
 import CreateOrJoinGame from "./CreateOrJoinGame";
+import InputToggle from "../controls/InputToggle";
+import { useState } from "react";
+import MetaUser from "../adventures/MetaUser";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
     const { gameId } = useParams();
+    const [isEditingMap, setIsEditingMap] = useState({} as { [key: string]: boolean | undefined });
 
-    const { game, gameError, updateGame, removeGame, claimGame } = useGame(gameId);
+    const {
+        game,
+        gameError,
+        updateGame,
+        removeGame,
+        claimGame,
+        joinGameAsPlayer,
+        leaveGameAsPlayer,
+        joinGameAsStoryteller,
+        leaveGameAsStoryteller,
+    } = useGame(gameId);
 
     if (!gameId) {
         return (
@@ -56,6 +70,9 @@ export default function PlayOnlineGame() {
     const hasWriteAccess = checkWriteAccess(game?.meta);
     const canClaim = user?.id && !game?.meta?.author;
     const gameName = game?.name || `Game #${gameId}`;
+    const isUserPlayer = game?.playerIds?.some((uid) => uid === user?.id);
+    const isUserStoryteller = game?.storytellerIds?.some((uid) => uid === user?.id);
+
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white">
             <div className="flex flex-row gap-4 items-center mb-4">
@@ -73,7 +90,23 @@ export default function PlayOnlineGame() {
             <div className="flex-1 flex flex-col-reverse md:flex-row items-stretch gap-4">
                 <div className="flex-1 flex flex-col pb-8">
                     <div className="flex flex-row gap-4">
-                        <H1 className="flex-1">{gameName}</H1>
+                        <H1 className="flex-1">
+                            <InputToggle
+                                isEditing={(hasWriteAccess && isEditingMap["name"]) || false}
+                                onIsEditingChange={(isEditing) => setIsEditingMap({ ...isEditingMap, name: isEditing })}
+                                inputProps={{
+                                    value: gameName,
+                                    type: "text",
+                                    onChange: (e) => updateGame({ name: e.target.value }),
+                                }}
+                                toggleCheckboxProps={{
+                                    labelFalse: "",
+                                    labelTrue: "🖉",
+                                }}
+                            >
+                                {gameName}
+                            </InputToggle>
+                        </H1>
                         <Button
                             onClick={(e: any) =>
                                 copyToClipboard(gameId).then(() => {
@@ -81,7 +114,7 @@ export default function PlayOnlineGame() {
                                     e.target.classList.remove(cls);
                                     setTimeout(() => {
                                         e?.target?.classList.add(cls);
-                                    }, 2000);
+                                    }, 3000);
                                 })
                             }
                             color="secondary"
@@ -120,7 +153,23 @@ export default function PlayOnlineGame() {
                             </div>
                         )}
                     </div>
-                    TODO: Edit name
+                    <div className="flex flex-row flex-wrap gap-2">
+                        {<H4>Storytellers</H4>}
+                        {game?.storytellers?.map((user) => (
+                            <MetaUser {...user} />
+                        ))}
+                        {!isUserStoryteller && (
+                            <Button variant="text" disabled={!user} onClick={() => user && joinGameAsStoryteller(user)}>
+                                Join as a storyteller
+                            </Button>
+                        )}
+                    </div>
+                    <div className="flex flex-row flex-wrap gap-2">
+                        {<H4>Players</H4>}
+                        {game?.players?.map((user) => (
+                            <MetaUser {...user} />
+                        ))}
+                    </div>
                     <br />
                     TODO: Sign up as a player
                     <br />

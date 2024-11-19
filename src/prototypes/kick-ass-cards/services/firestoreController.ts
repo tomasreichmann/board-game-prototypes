@@ -40,7 +40,9 @@ export type DocMetaType = {
     isPublic?: boolean;
     status?: DocStatusEnum;
     usersWithReadAccess?: UserMetaType[];
+    usersWithReadAccessIds?: UserMetaType["uid"][];
     usersWithWriteAccess?: UserMetaType[];
+    usersWithWriteAccessIds?: UserMetaType["uid"][];
 };
 
 export const getDocMeta = (user: UserResource) => {
@@ -50,8 +52,10 @@ export const getDocMeta = (user: UserResource) => {
         author,
         isPublic: false,
         status: DocStatusEnum.Published, // TODO: change to Draft
+        usersWithReadAccessIds: [author.uid],
         usersWithReadAccess: [author],
         usersWithWriteAccess: [author],
+        usersWithWriteAccessIds: [author.uid],
     };
     return meta;
 };
@@ -67,7 +71,7 @@ export const checkReadAccess = (meta?: DocMetaType, user = auth.currentUser) => 
     if (!meta || !meta.usersWithReadAccess) {
         return false;
     }
-    return meta.usersWithReadAccess.some((u) => u.uid === user?.uid);
+    return meta.usersWithReadAccess.some((u) => u.uid === user?.uid) || meta.isPublic;
 };
 
 export const checkWriteAccess = (meta?: DocMetaType, user = auth.currentUser) => {

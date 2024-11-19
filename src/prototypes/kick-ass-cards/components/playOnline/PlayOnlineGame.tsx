@@ -120,6 +120,16 @@ export default function PlayOnlineGame() {
                             </div>
                         )}
                     </div>
+                    TODO: Edit name
+                    <br />
+                    TODO: Sign up as a player
+                    <br />
+                    TODO: Sign out as a player
+                    <br />
+                    TODO: Sign up as a storyteller
+                    <br />
+                    TODO: Sign out as a storyteller
+                    <br />
                     CONTENT
                     <DataPreview data={game} />
                 </div>

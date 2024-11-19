@@ -1,6 +1,7 @@
-import { GameStateEnum } from "./types";
+import { ContentItemType, GameStateEnum } from "./types";
 
 export const createNewGameData = () => ({
     state: GameStateEnum.Ready,
-    contents: [],
+    contents: [] as ContentItemType[],
+    players: [],
 });

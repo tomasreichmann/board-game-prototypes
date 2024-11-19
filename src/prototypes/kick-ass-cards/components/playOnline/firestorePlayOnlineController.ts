@@ -9,7 +9,19 @@ import {
 } from "../../services/firestoreController";
 import { GameDocType } from "./types";
 import { useCallback, useMemo } from "react";
-import { doc, DocumentData, UpdateData } from "firebase/firestore";
+import {
+    collection,
+    collectionGroup,
+    doc,
+    DocumentData,
+    FirestoreError,
+    or,
+    orderBy,
+    Query,
+    query,
+    UpdateData,
+    where,
+} from "firebase/firestore";
 import db from "../../../../services/Firebase/cloudFirestore";
 import { auth } from "../../../../services/Firebase/firebase";
 import { createNewGameData } from "./factories";
@@ -65,4 +77,30 @@ export const useGame = (gameId: string | undefined) => {
         removeGame: remove,
         claimGame: claim,
     };
+};
+
+export const gamesCollection = collection(db, firestoreRootPath);
+
+export const useYourGames = (uid?: string) => {
+    const queryRef = useMemo(() => {
+        if (!uid) {
+            return undefined;
+        }
+        return query(
+            collection(db, firestoreRootPath),
+            or(
+                where("meta.author.uid", "==", uid),
+                where("storytellers", "array-contains", uid),
+                where("players", "array-contains", uid),
+                where("usersWithWriteAccessIds", "array-contains", uid),
+                where("usersWithReadAccessIds", "array-contains", uid)
+            )
+            /* orderBy("meta.createdAt", "desc") */
+        ) as Query<DocumentData & GameDocType, DocumentData & GameDocType>;
+    }, [uid]);
+    const { data: yourGames, error: yourGamesError } = useQuery(queryRef, "You didn't join any games yet") as {
+        data: GameDocType[] | undefined;
+        error: FirestoreError | undefined;
+    };
+    return { yourGames, yourGamesError };
 };

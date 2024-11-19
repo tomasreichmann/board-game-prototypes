@@ -1,4 +1,4 @@
-import { DocMetaType } from "../../services/firestoreController";
+import { DocMetaType, UserMetaType } from "../../services/firestoreController";
 
 export enum ActionTypeEnum {
     Reset = "Reset",
@@ -11,12 +11,12 @@ export type ActionType = {
     type: ActionTypeEnum;
 };
 
-export enum ElementTypeEnum {
+export enum ContentItemTypeEnum {
     Text = "Text",
     ActorCard = "ActorCard",
 }
 
-export type ElementPropsType = {
+export type ContentItemPropsType = {
     x: number;
     y: number;
     z: number;
@@ -24,10 +24,10 @@ export type ElementPropsType = {
     height: number;
 };
 
-export type ElementType = {
-    type: ElementTypeEnum;
+export type ContentItemType = {
+    type: ContentItemTypeEnum;
     componentProps: any;
-    elementProps: ElementPropsType;
+    elementProps: ContentItemPropsType;
 };
 
 export enum GameStateEnum {
@@ -43,5 +43,9 @@ export type GameDocType = {
     imageUri?: string;
     meta?: DocMetaType;
     state: GameStateEnum;
-    contents?: ElementType[];
+    contents?: ContentItemType[];
+    playerIds?: string[];
+    players?: UserMetaType[];
+    storytellerIds?: string[];
+    storytellers?: UserMetaType[];
 };

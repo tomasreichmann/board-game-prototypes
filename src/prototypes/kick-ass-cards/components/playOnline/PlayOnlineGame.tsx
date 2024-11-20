@@ -18,6 +18,11 @@ import MetaUser from "../adventures/MetaUser";
 import { ActionTypeEnum } from "./types";
 import useGame from "./useGame";
 import DataToggle from "../../../../components/DataToggle";
+import { OutcomeCardFlippable } from "../gameComponents/OutcomeCard";
+import outcomes from "../../data/outcomeDeck";
+import { outcomeCardSize } from "./createInitialBoard";
+import ToggleCheckbox from "../controls/ToggleCheckbox";
+import ContentItem from "./ContentItem";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
@@ -65,6 +70,17 @@ export default function PlayOnlineGame() {
         );
     }
 
+    const Test = () => {
+        const [isFlipped, setIsFlipped] = useState(false);
+        return (
+            <div className="w-full [perspective:500px]">
+                <ToggleCheckbox checked={isFlipped} onChange={(e) => setIsFlipped(e.target.checked)} />
+                <OutcomeCardFlippable {...outcomes[1]} style={outcomeCardSize} isFaceDown={isFlipped} />
+                <OutcomeCardFlippable {...outcomes[5]} style={outcomeCardSize} isFaceDown={!isFlipped} />
+            </div>
+        );
+    };
+
     const hasWriteAccess = checkWriteAccess(game?.meta);
     const canClaim = user?.id && !game?.meta?.author;
     const gameName = game?.name || `Game #${gameId}`;
@@ -73,7 +89,7 @@ export default function PlayOnlineGame() {
     const hasJoined = isUserStoryteller || isUserPlayer;
 
     return (
-        <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white">
+        <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white *:[transform-style:preserve-3d] [perspective:500px]">
             <div className="flex flex-row gap-4 items-center mb-4">
                 <div className="flex flex-row flex-wrap gap-2 items-baseline text-kac-steel-dark">
                     <Button href={playOnlinePath} variant="text" color="secondary">
@@ -231,13 +247,19 @@ export default function PlayOnlineGame() {
                     <br />
                     TODO: Start game
                     <br />
-                    TODO: Create Flippable Cards
-                    <br />
                     TODO: display hand and deck content
+                    <div className="flex flex-row flex-wrap">
+                        {Object.values(game?.layout?.deckMap || {})
+                            .flatMap((layout) => layout.content)
+                            .map((content) => (
+                                <ContentItem key={content.id} {...content} />
+                            ))}
+                    </div>
                     <br />
                     TODO: calculate positions of layouts for each player
                     <br />
                     TODO: render layouts
+                    <Test />
                     <br />
                     CONTENT
                     <Button

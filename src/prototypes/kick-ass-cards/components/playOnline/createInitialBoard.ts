@@ -2,10 +2,15 @@ import { range } from "lodash";
 import outcomes from "../../data/outcomeDeck";
 import { ContentItemTypeEnum, GameDocType, GameLayoutType, HandLayoutType, LayoutTypeEnum } from "./types";
 import { cardSizes } from "../../../../components/print/paperSizes";
+import mmToPx from "../../../../utils/mmToPx";
 
 export const createOutcomeDeck = () => {};
 
-const outcomeCardSize = cardSizes["54x86"].points;
+const [outcomeCardSizeWidthMm, outcomeCardSizeHeightMm] = cardSizes["Mini European"].mm;
+export const outcomeCardSize = {
+    width: mmToPx(outcomeCardSizeWidthMm, 96),
+    height: mmToPx(outcomeCardSizeHeightMm, 96),
+};
 
 export default function createInitialBoard(game: GameDocType): Partial<GameDocType> {
     // Generate stacks of Outcome cards for each player
@@ -18,12 +23,10 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     const playerCount = game.playerIds?.length ?? 0;
     const playerOutcomes = range(0, playerCount).map((playerIndex) =>
         outcomes.map((outcome) => ({
+            id: `player-${playerIndex}-${outcome.slug}`,
             type: ContentItemTypeEnum.OutcomeCard,
             componentProps: { ...outcome, slug: `player-${playerIndex}-${outcome.slug}` },
-            elementProps: {
-                width: outcomeCardSize[0],
-                height: outcomeCardSize[1],
-            },
+            elementProps: outcomeCardSize,
         }))
     );
     const initialCardsInHand = 3;

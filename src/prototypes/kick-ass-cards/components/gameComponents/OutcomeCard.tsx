@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
+import Flippable, { FlippableProps } from "./Flippable";
 
 export type OutcomeCardProps = React.PropsWithChildren<OutcomeType & Partial<PaperProps>>;
 
@@ -157,5 +158,31 @@ export const OutcomeCardBackFace = ({
                 </div>
             </div>
         </PaperOrDiv>
+    );
+};
+
+export type OutcomeCardFlippableProps = React.PropsWithChildren<
+    OutcomeCardProps & Pick<FlippableProps, "isFaceDown">
+> & {
+    style?: React.CSSProperties;
+    outcomeClassName?: string;
+};
+
+export const OutcomeCardFlippable = ({
+    className,
+    isFaceDown = false,
+    style,
+    outcomeClassName,
+    ...restProps
+}: OutcomeCardFlippableProps) => {
+    return (
+        <Flippable
+            className={twMerge("OutcomeCardFlippable", className)}
+            isFaceDown={isFaceDown}
+            backFace={<OutcomeCardBackFace />}
+            style={style}
+        >
+            <OutcomeCard {...restProps} className={outcomeClassName} />
+        </Flippable>
     );
 };

@@ -6,6 +6,16 @@ import { twMerge } from "tailwind-merge";
 
 export type OutcomeBackFaceProps = React.PropsWithChildren<{ className?: string } & HTMLAttributes<HTMLDivElement>>;
 
+/**
+ * A Paper component that displays the back face of an outcome card.
+ *
+ * This component is suitable for use as the `BackFaceComponent` prop of the
+ * `ChunkedPages` component.
+ *
+ * @deprecated Use OutcomeCardBackFace in OutcomeCard.tsx
+ * @param {OutcomeBackFaceProps} props Props for the component.
+ * @returns {JSX.Element} The outcome back face component.
+ */
 export default function OutcomeBackFace({ className, children }: OutcomeBackFaceProps) {
     return (
         <Paper

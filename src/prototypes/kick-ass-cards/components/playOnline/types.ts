@@ -39,6 +39,7 @@ export type ContentItemPropsType = {
 };
 
 export type ContentItemType = {
+    id: string;
     type: ContentItemTypeEnum;
     componentProps: any;
     elementProps: ContentItemPropsType;

@@ -134,8 +134,7 @@ export default forwardRef<SVGSVGElement, SvgBoxProps>(function SvgBox(
         rightInnerSide.x +
         rightInnerSide.width -
         leftInnerSide.x +
-        paperThickness +
-        (showPrintCut ? printOverhang * 2 : 0);
+        paperThickness
     const totalHeight = frontSide.y + frontSide.height + paperThickness + (showPrintCut ? printOverhang * 2 : 0);
 
     const bends: string[] = [];

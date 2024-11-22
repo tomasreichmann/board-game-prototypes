@@ -77,7 +77,7 @@ export default function BoxPrintControls({ className }: BoxPrintControlsProps) {
                     <Input
                         label="Show print cut"
                         type="checkbox"
-                        checked={showLabels}
+                        checked={showPrintCut}
                         onChange={(event) => setSettings({ ...settings, showPrintCut: event.target.checked })}
                         className="w-32"
                     />

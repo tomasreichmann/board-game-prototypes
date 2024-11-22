@@ -32,7 +32,6 @@ export default function useGame(gameId: string | undefined) {
             return new Error("Game not loaded");
         }
         return gameDispatcher(firestoreRootPath, game, action)?.catch((error) => {
-            console.log("catch");
             setError(error as FirestoreError);
         });
     }, []);

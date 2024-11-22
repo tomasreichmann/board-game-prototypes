@@ -1,5 +1,4 @@
 import ToggleData from "../../../../components/DataToggle";
-import mmToPx from "../../../../utils/mmToPx";
 import { OutcomeCardFlippable } from "../gameComponents/OutcomeCard";
 import { ContentItemType } from "./types";
 

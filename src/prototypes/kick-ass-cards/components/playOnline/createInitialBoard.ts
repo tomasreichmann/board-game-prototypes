@@ -8,8 +8,8 @@ export const createOutcomeDeck = () => {};
 
 const [outcomeCardSizeWidthMm, outcomeCardSizeHeightMm] = cardSizes["Mini European"].mm;
 export const outcomeCardSize = {
-    width: mmToPx(outcomeCardSizeWidthMm, 96),
-    height: mmToPx(outcomeCardSizeHeightMm, 96),
+    width: mmToPx(outcomeCardSizeWidthMm),
+    height: mmToPx(outcomeCardSizeHeightMm),
 };
 
 export default function createInitialBoard(game: GameDocType): Partial<GameDocType> {

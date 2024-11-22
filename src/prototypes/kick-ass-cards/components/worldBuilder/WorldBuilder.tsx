@@ -24,10 +24,6 @@ import { ActorCardEditableProps } from "./content/ActorCard";
 
 // import "./KickAssCardsPrototype.css";
 const gapSize = 10;
-const positionCount = 0;
-const imgSize = 200;
-
-const DPI = 96;
 
 export type WorldSceneProps = PropsWithChildren<{
     width?: number;
@@ -40,8 +36,8 @@ const getTraits = (count: DeepRandomType<number>) => {
     return randomUniqueItems(traitsData, countResolved);
 };
 
-const tarotCardSize = getCardSize("Tarot", "px", DPI);
-const miniCardSize = getCardSize("Mini US game", "px", DPI);
+const tarotCardSize = getCardSize("Tarot", "px");
+const miniCardSize = getCardSize("Mini US game", "px");
 const sizeMap = {
     Tarot: tarotCardSize,
     Mini: miniCardSize,

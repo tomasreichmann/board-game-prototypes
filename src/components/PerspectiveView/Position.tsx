@@ -14,6 +14,7 @@ export type PositionType = {
     rotateY?: number;
     rotateZ?: number;
     scale?: number;
+    transformOrigin?: CSSProperties["transformOrigin"];
 };
 
 export type DragDeltaType = {
@@ -27,7 +28,7 @@ export type PositionProps = PropsWithChildren<PositionType> & HTMLAttributes<HTM
 
 const getStyle = (
     state: PerspectiveViewStateType,
-    { width, height, x, y, z, rotateX = 0, rotateY = 0, rotateZ = 0, scale = 1, style }: PositionProps
+    { width, height, x, y, z, rotateX = 0, rotateY = 0, rotateZ = 0, scale = 1, transformOrigin, style }: PositionProps
 ): CSSProperties => {
     const zDelta = state.stage.z + z;
     const distanceToFocalPoint = Math.abs(zDelta);
@@ -56,6 +57,7 @@ const getStyle = (
         top: y,
         translate: `0 0 ${z}px`,
         transform: `translate3d(0, 0, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
+        transformOrigin,
         filter: `blur(${blur}px)`,
         opacity,
         display,

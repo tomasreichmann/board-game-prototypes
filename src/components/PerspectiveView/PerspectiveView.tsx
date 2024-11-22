@@ -215,10 +215,10 @@ export default function PerspectiveView({ children, showControls, showDebug }: P
                 {children}
             </div>
             {(showControls || showDebug) && (
-                <div className="absolute right-2 bottom-2 w-[400px] p-4 bg-[rgba(255,255,255,0.25)] flex flex-col gap-2">
+                <div className="absolute right-2 bottom-2 w-[400px] p-4 bg-[rgba(255,255,255,0.25)] flex flex-col gap-2 max-h-full z-[999]">
                     {showControls && controlItems.map((control) => <ControlItem key={control.id} {...control} />)}
 
-                    {showDebug && <DataPreview data={state} />}
+                    {showDebug && <DataPreview data={state} className="flex-1 flex-shrink overflow-auto" />}
                 </div>
             )}
         </div>

@@ -9,7 +9,6 @@ import SignedOutWarning from "../adventures/SignedOutWarning";
 import PendingTimer from "../../../../components/PendingTimer";
 import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
 import copyToClipboard from "../../../../utils/copyToClipboard";
-import DataPreview from "../../../../components/DataPreview";
 import { playOnlinePath } from "../routes/routes";
 import CreateOrJoinGame from "./CreateOrJoinGame";
 import InputToggle from "../controls/InputToggle";
@@ -23,6 +22,7 @@ import outcomes from "../../data/outcomeDeck";
 import { outcomeCardSize } from "./createInitialBoard";
 import ToggleCheckbox from "../controls/ToggleCheckbox";
 import ContentItem from "./ContentItem";
+import GameBoard from "./GameBoard";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
@@ -89,7 +89,7 @@ export default function PlayOnlineGame() {
     const hasJoined = isUserStoryteller || isUserPlayer;
 
     return (
-        <div className="flex-1 flex flex-col print:m-0 w-full text-kac-iron px-2 py-5 md:px-10 bg-white *:[transform-style:preserve-3d] [perspective:500px]">
+        <div className="flex-1 flex flex-col print:m-0 w-full h-svh text-kac-iron px-2 py-5 md:px-10 bg-white *:[transform-style:preserve-3d] [perspective:500px]">
             <div className="flex flex-row gap-4 items-center mb-4">
                 <div className="flex flex-row flex-wrap gap-2 items-baseline text-kac-steel-dark">
                     <Button href={playOnlinePath} variant="text" color="secondary">
@@ -104,8 +104,8 @@ export default function PlayOnlineGame() {
             <SignedOutWarning text="⚠ Some features might be hidden until you sign in." />
             <div className="flex-1 flex flex-col-reverse md:flex-row items-stretch gap-4">
                 <div className="flex-1 flex flex-col pb-8">
-                    <div className="flex flex-row gap-4">
-                        <H1 className="flex-1">
+                    <div className="flex flex-row flex-wrap items-start justify-between gap-4">
+                        <H1>
                             <InputToggle
                                 isEditing={(hasWriteAccess && isEditingMap["name"]) || false}
                                 onIsEditingChange={(isEditing) => setIsEditingMap({ ...isEditingMap, name: isEditing })}
@@ -126,68 +126,70 @@ export default function PlayOnlineGame() {
                                 {gameName}
                             </InputToggle>
                         </H1>
-                        <Button
-                            onClick={(e: any) =>
-                                copyToClipboard(gameId).then(() => {
-                                    const cls = "after:hidden";
-                                    e.target.classList.remove(cls);
-                                    setTimeout(() => {
-                                        e?.target?.classList.add(cls);
-                                    }, 3000);
-                                })
-                            }
-                            color="secondary"
-                            className="after:hidden after:content-['_✅']"
-                        >
-                            Copy Game Code
-                        </Button>
-                        {hasWriteAccess && (
-                            <div className="flex flex-row gap-2">
-                                <ButtonWithConfirmation
-                                    color="danger"
-                                    confirmText="Completely reset the game, no backsies?"
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={() => {
-                                        dispatch({ type: ActionTypeEnum.ResetGame });
-                                    }}
-                                >
-                                    Reset Game
-                                </ButtonWithConfirmation>
-                            </div>
-                        )}
-                        {hasWriteAccess && (
-                            <div className="flex flex-row gap-2">
-                                <ButtonWithConfirmation
-                                    color="danger"
-                                    confirmText="Permanently end the game, no backsies?"
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={() => {
-                                        dispatch({ type: ActionTypeEnum.RemoveGame }).then(() => {
-                                            window.location.href = playOnlinePath;
-                                        });
-                                    }}
-                                >
-                                    End Game
-                                </ButtonWithConfirmation>
-                            </div>
-                        )}
-                        {canClaim && (
-                            <div className="flex flex-row gap-2">
-                                <ButtonWithConfirmation
-                                    color="danger"
-                                    size="sm"
-                                    onClick={() => {
-                                        dispatch({ type: ActionTypeEnum.ClaimGame, user });
-                                    }}
-                                >
-                                    Claim
-                                </ButtonWithConfirmation>
-                            </div>
-                        )}
+                        <div className="flex-1 flex flex-row flex-wrap justify-end gap-2 ">
+                            <Button
+                                onClick={(e: any) =>
+                                    copyToClipboard(gameId).then(() => {
+                                        const cls = "after:hidden";
+                                        e.target.classList.remove(cls);
+                                        setTimeout(() => {
+                                            e?.target?.classList.add(cls);
+                                        }, 3000);
+                                    })
+                                }
+                                color="secondary"
+                                className="after:hidden after:content-['_✅']"
+                            >
+                                Copy Game Code
+                            </Button>
+                            {hasWriteAccess && (
+                                <div className="flex flex-row gap-2">
+                                    <ButtonWithConfirmation
+                                        color="danger"
+                                        confirmText="Completely reset the game, no backsies?"
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => {
+                                            dispatch({ type: ActionTypeEnum.ResetGame });
+                                        }}
+                                    >
+                                        Reset Game
+                                    </ButtonWithConfirmation>
+                                </div>
+                            )}
+                            {hasWriteAccess && (
+                                <div className="flex flex-row gap-2">
+                                    <ButtonWithConfirmation
+                                        color="danger"
+                                        confirmText="Permanently end the game, no backsies?"
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => {
+                                            dispatch({ type: ActionTypeEnum.RemoveGame }).then(() => {
+                                                window.location.href = playOnlinePath;
+                                            });
+                                        }}
+                                    >
+                                        End Game
+                                    </ButtonWithConfirmation>
+                                </div>
+                            )}
+                            {canClaim && (
+                                <div className="flex flex-row gap-2">
+                                    <ButtonWithConfirmation
+                                        color="danger"
+                                        size="sm"
+                                        onClick={() => {
+                                            dispatch({ type: ActionTypeEnum.ClaimGame, user });
+                                        }}
+                                    >
+                                        Claim
+                                    </ButtonWithConfirmation>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                    <div className="flex flex-row flex-wrap gap-2 items-baseline content-center min-h-[40px]">
+                    <div className="flex flex-row flex-wrap gap-2 items-baseline content-center min-h-[40px] py-4">
                         {<H4>Storytellers</H4>}
                         {game?.storytellers?.map((userItem) => {
                             const isCurrentUser = userItem.uid === user?.id;
@@ -244,36 +246,33 @@ export default function PlayOnlineGame() {
                             </Button>
                         )}
                     </div>
-                    <br />
-                    TODO: Start game
-                    <br />
-                    TODO: display hand and deck content
-                    <div className="flex flex-row flex-wrap">
-                        {Object.values(game?.layout?.deckMap || {})
-                            .flatMap((layout) => layout.content)
-                            .map((content) => (
-                                <ContentItem key={content.id} {...content} />
-                            ))}
-                    </div>
-                    <br />
-                    TODO: calculate positions of layouts for each player
-                    <br />
-                    TODO: render layouts
-                    <Test />
-                    <br />
-                    CONTENT
-                    <Button
-                        size="xl"
-                        className="self-center"
-                        color="success"
-                        onClick={() => dispatch({ type: ActionTypeEnum.StartGame })}
-                    >
-                        START GAME
-                    </Button>
-                    <DataToggle
-                        className="max-h-[400px]"
-                        data={{ game, hasWriteAccess, canClaim, gameName, isUserPlayer, isUserStoryteller }}
-                    />
+                    <main className="relative flex-1">
+                        <div className="absolute left-0 top-0 w-full h-full overflow-auto">
+                            <GameBoard gameId={gameId} />
+                            <br />
+                            TODO: Start game
+                            <br />
+                            TODO: display hand and deck content
+                            <div className="flex flex-row flex-wrap">
+                                {Object.values(game?.layout?.deckMap || {})
+                                    .flatMap((layout) => layout.content)
+                                    .map((content) => (
+                                        <ContentItem key={content.id} {...content} />
+                                    ))}
+                            </div>
+                            <br />
+                            TODO: calculate positions of layouts for each player
+                            <br />
+                            TODO: render layouts
+                            <Test />
+                            <br />
+                            CONTENT
+                            <DataToggle
+                                className="max-h-[400px]"
+                                data={{ game, hasWriteAccess, canClaim, gameName, isUserPlayer, isUserStoryteller }}
+                            />
+                        </div>
+                    </main>
                 </div>
             </div>
         </div>

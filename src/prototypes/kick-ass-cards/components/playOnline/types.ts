@@ -1,3 +1,4 @@
+import { PerspectiveViewStateType } from "../../../../components/PerspectiveView/perspectiveViewModel";
 import { DocMetaType, UserMetaType } from "../../services/firestoreController";
 import { UserResource } from "@clerk/types";
 
@@ -90,6 +91,7 @@ export type GameDocType = {
     description?: string;
     imageUri?: string;
     meta?: DocMetaType;
+    perspectiveBoard?: Partial<PerspectiveViewStateType>;
     state: GameStateEnum;
     layout: GameLayoutType;
     playerIds?: string[];

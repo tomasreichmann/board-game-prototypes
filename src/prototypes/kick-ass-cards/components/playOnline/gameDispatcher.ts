@@ -44,7 +44,7 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
     // Game must be in Ready state
     if (game.state !== GameStateEnum.Ready) {
         console.error("Game must be in Ready state");
-        throw new Error("Game must be in Ready state");
+        throw new Error("Game must be in Ready state", { cause: "ignorable" });
     }
     if (action.type === ActionTypeEnum.JoinGameAsPlayer) {
         return updateDocument(firestoreRootPath, game.id, {

@@ -28,7 +28,7 @@ export const GameItem = ({
             <Button href={href} variant={"text"}>
                 <Image src={imageUri} className="w-full aspect-[16/9] rounded-sm bg-kac-steel" objectFit="cover" />
             </Button>
-            <div className="flex flex-row justify-between items-baseline gap-2 items-baseline">
+            <div className="flex flex-row justify-between items-baseline gap-2">
                 <H3 className="leading-tight font-bold">
                     <Button variant="text" href={href} className="font-bold">
                         {name}

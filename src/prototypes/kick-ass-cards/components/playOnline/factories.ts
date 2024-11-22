@@ -1,10 +1,15 @@
-import { ContentItemType, GameStateEnum } from "./types";
+import { GameDocType, GameStateEnum } from "./types";
 
-export const createNewGameData = () => ({
+export const createNewGameData = (): Omit<GameDocType, "id"> => ({
+    layout: {
+        handMap: {},
+        deckMap: {},
+        spreadMap: {},
+    },
     state: GameStateEnum.Ready,
-    contents: [] as ContentItemType[],
     players: [],
     playerIds: [],
     storytellers: [],
     storytellerIds: [],
+    perspectiveBoard: {},
 });

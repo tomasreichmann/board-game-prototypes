@@ -63,7 +63,7 @@ export default function ContentItem({ componentName, id, props, draggable, ...po
     } as any;
 
     return (
-        <Position key={id} {...positionProps} {...events}>
+        <Position id={id} key={id} {...positionProps} {...events}>
             <Component {...componentProps} />
         </Position>
     );

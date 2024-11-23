@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { PerspectiveViewStateType, initialPerspectiveViewState } from "./perspectiveViewModel";
 import { PerspectiveViewActionTypeEnum } from "./perspectiveViewReducer";
 import DataPreview from "../DataPreview";
@@ -7,6 +7,10 @@ import { usePerspectiveView } from "./PerspectiveViewProvider";
 
 import "./PerspectiveView.css";
 import resolveValueOrGetter from "../../utils/resolveValueOrGetter";
+import ToggleData from "../DataToggle";
+import Toggle from "../Toggle";
+import ToggleCheckbox from "../../prototypes/kick-ass-cards/components/controls/ToggleCheckbox";
+import { twMerge } from "tailwind-merge";
 
 export type ControlItemProps = {
     id: string;
@@ -197,6 +201,7 @@ export type PerspectiveViewProps = PropsWithChildren<{
 export default function PerspectiveView({ children, showControls, showDebug }: PerspectiveViewProps) {
     const { state, dispatch } = usePerspectiveView();
     const [frameRef, frameRect] = useMeasure({ debounce: 100 });
+    const [showSideBar, setShowSideBar] = useState(showControls || showDebug);
 
     useEffect(() => {
         dispatch({
@@ -215,10 +220,26 @@ export default function PerspectiveView({ children, showControls, showDebug }: P
                 {children}
             </div>
             {(showControls || showDebug) && (
-                <div className="absolute right-2 bottom-2 w-[400px] p-4 bg-[rgba(255,255,255,0.25)] flex flex-col gap-2 max-h-full z-[999]">
-                    {showControls && controlItems.map((control) => <ControlItem key={control.id} {...control} />)}
+                <div
+                    className={twMerge(
+                        "absolute right-2 top-2 p-4 bg-[rgba(255,255,255,0.25)] flex flex-col gap-2 max-h-full z-[999999]",
+                        showSideBar && "w-[400px]"
+                    )}
+                >
+                    <ToggleCheckbox
+                        className="self-end"
+                        labelTrue="Show"
+                        labelFalse="Hide"
+                        checked={showSideBar}
+                        onChange={(e) => setShowSideBar(e.target.checked)}
+                    />
+                    {showSideBar &&
+                        showControls &&
+                        controlItems.map((control) => <ControlItem key={control.id} {...control} />)}
 
-                    {showDebug && <DataPreview data={state} className="flex-1 flex-shrink overflow-auto" />}
+                    {showSideBar && showDebug && (
+                        <ToggleData data={state} className="flex-1 flex-shrink overflow-auto" />
+                    )}
                 </div>
             )}
         </div>

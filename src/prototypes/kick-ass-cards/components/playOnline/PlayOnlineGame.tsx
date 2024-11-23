@@ -249,9 +249,6 @@ export default function PlayOnlineGame() {
                     <main className="relative flex-1">
                         <div className="absolute left-0 top-0 w-full h-full overflow-auto">
                             <GameBoard gameId={gameId} />
-                            <br />
-                            TODO: Start game
-                            <br />
                             TODO: display hand and deck content
                             <div className="flex flex-row flex-wrap">
                                 {Object.values(game?.layout?.deckMap || {})

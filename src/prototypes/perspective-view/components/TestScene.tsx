@@ -12,7 +12,8 @@ const positionCount = 100;
 const positions = Array(positionCount)
     .fill(0)
     .map(
-        (): PositionProps => ({
+        (_, index): PositionProps => ({
+            id: index.toString(),
             x: Math.floor(Math.random() * 1920),
             y: Math.floor(Math.random() * 1080),
             z: Math.floor(Math.random() * 2000 - 1000),
@@ -37,23 +38,23 @@ export default function TestScene({ children }: PropsWithChildren) {
 
     return (
         <div className="TestScene w-[1920px] h-[1080px] border-2 border-kac-fire-light" style={state.stageStyle}>
-            <Position x={0} y={0} z={0}>
+            <Position id="test-1" x={0} y={0} z={0}>
                 <img src="https://i.imgur.com/SX614q8.png" width={imgSize} />
             </Position>
-            <Position x={200} y={300} z={0}>
+            <Position id="test-2" x={200} y={300} z={0}>
                 <img src="https://i.imgur.com/SX614q8.png" width={imgSize} />
             </Position>
-            <Position x={400} y={100} z={10}>
+            <Position id="test-3" x={400} y={100} z={10}>
                 <img src="https://i.imgur.com/SX614q8.png" width={imgSize} />
             </Position>
-            <Position x={100} y={500} z={100}>
+            <Position id="test-4" x={100} y={500} z={100}>
                 <img src="https://i.imgur.com/SX614q8.png" width={imgSize} />
             </Position>
-            <Position x={700} y={100} z={300}>
+            <Position id="test-5" x={700} y={100} z={300}>
                 <img src="https://i.imgur.com/SX614q8.png" width={imgSize} />
             </Position>
             {positions.map(({ x, y, z }, index) => (
-                <Position key={index} x={x} y={y} z={z}>
+                <Position id="test-6" key={index} x={x} y={y} z={z}>
                     <img src="https://i.imgur.com/SX614q8.png" width={imgSize} />
                 </Position>
             ))}

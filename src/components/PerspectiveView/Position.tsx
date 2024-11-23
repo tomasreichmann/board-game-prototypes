@@ -24,7 +24,10 @@ export type DragDeltaType = {
     scaledDeltaY: number;
 };
 
-export type PositionProps = PropsWithChildren<PositionType> & HTMLAttributes<HTMLDivElement>;
+export type PositionProps = PropsWithChildren<PositionType> &
+    Omit<HTMLAttributes<HTMLDivElement>, "id"> & {
+        id: string;
+    };
 
 const getStyle = (
     state: PerspectiveViewStateType,

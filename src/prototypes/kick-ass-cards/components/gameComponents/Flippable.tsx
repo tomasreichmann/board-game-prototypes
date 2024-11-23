@@ -26,7 +26,6 @@ export default function Flippable({
         transformOrigin: "left center",
         transform: isFaceDown ? "translateX(100%) rotateY(-180deg) " : undefined,
     };
-    console.log({ isFaceDown });
     return (
         <div
             className={twMerge(

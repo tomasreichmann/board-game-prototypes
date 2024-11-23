@@ -16,7 +16,8 @@ const positionCount = 100;
 const positions = Array(positionCount)
     .fill(0)
     .map(
-        (): PositionProps => ({
+        (_, index): PositionProps => ({
+            id: index.toString(),
             x: Math.floor(Math.random() * 1920),
             y: Math.floor(Math.random() * 1080),
             z: Math.floor(Math.random() * 2000 - 1000),
@@ -141,6 +142,7 @@ export default function FireworksScene({ children, fps = 30, durationMs = 4000 }
             <br />
             state.stage.width: {state.stage.width}
             <Position
+                id={"launch_" + passCount.current}
                 key={"launch_" + passCount.current}
                 x={0}
                 y={0}
@@ -164,6 +166,7 @@ export default function FireworksScene({ children, fps = 30, durationMs = 4000 }
             </Position>
             {initialConstants.current.explosionVectors.map((explosionVector, index) => (
                 <Position
+                    id={"explosion_" + passCount.current + "_" + index}
                     key={"explosion_" + passCount.current + "_" + index}
                     x={explosionVector.x}
                     y={explosionVector.y}

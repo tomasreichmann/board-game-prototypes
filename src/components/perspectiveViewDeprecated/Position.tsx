@@ -1,11 +1,16 @@
 import react, { CSSProperties, HTMLAttributes, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 
+/**
+ * @deprecated This component is deprecated and will be removed in future releases.
+ */
 export type PositionProps = React.PropsWithChildren<
     {
         x?: number;
         y?: number;
         z?: number;
+        width?: number;
+        height?: number;
         rotateX?: number;
         rotateY?: number;
         rotateZ?: number;
@@ -30,6 +35,9 @@ function getUnit(size: string): string {
 const normalizeAlignment = (alignment: number | string) =>
     typeof alignment === "number" ? `${alignment}px` : parseFloat(alignment) * -1 + getUnit(alignment);
 
+/**
+ * @deprecated This component is deprecated and will be removed in future releases.
+ */
 export const Position = ({ children, ...propsWithoutChildren }: PositionProps) => {
     const {
         className,

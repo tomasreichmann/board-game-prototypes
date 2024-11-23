@@ -1,4 +1,5 @@
 import { PerspectiveViewStateType } from "../../../../components/PerspectiveView/perspectiveViewModel";
+import { PositionProps } from "../../../../components/PerspectiveView/Position";
 import { DocMetaType, UserMetaType } from "../../services/firestoreController";
 import { UserResource } from "@clerk/types";
 
@@ -43,7 +44,7 @@ export type ContentItemType = {
     id: string;
     type: ContentItemTypeEnum;
     componentProps: any;
-    elementProps: ContentItemPropsType;
+    positionProps: PositionProps;
 };
 
 export enum GameStateEnum {
@@ -83,6 +84,7 @@ export type GameLayoutType = {
     handMap: { [key: string]: HandLayoutType };
     deckMap: { [key: string]: DeckLayoutType };
     spreadMap: { [key: string]: SpreadLayoutType };
+    debug: ContentItemType[];
 };
 
 export type GameDocType = {
@@ -91,7 +93,7 @@ export type GameDocType = {
     description?: string;
     imageUri?: string;
     meta?: DocMetaType;
-    perspectiveBoard?: Partial<PerspectiveViewStateType>;
+    viewState?: Partial<PerspectiveViewStateType>;
     state: GameStateEnum;
     layout: GameLayoutType;
     playerIds?: string[];

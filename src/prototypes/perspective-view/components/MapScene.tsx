@@ -13,7 +13,8 @@ const positionCount = 0;
 const positions = Array(positionCount)
     .fill(0)
     .map(
-        (): PositionProps => ({
+        (_, index): PositionProps => ({
+            id: index.toString(),
             x: Math.floor(Math.random() * 1920),
             y: Math.floor(Math.random() * 1080),
             z: Math.floor(Math.random() * 2000 - 1000),
@@ -156,6 +157,7 @@ export default function MapScene({
     return (
         <div className="MapScene" style={state.stageStyle} onWheel={onWheel}>
             <Position
+                id="background"
                 x={0}
                 y={0}
                 z={0}
@@ -167,7 +169,14 @@ export default function MapScene({
             />
 
             {markers.map(({ x, y, z, label, linkUrl, id }) => (
-                <Position key={id} x={x} y={y} z={z} scale={getScaleFromZ(state.stage.z, state.lens.perspective)}>
+                <Position
+                    id={id}
+                    key={id}
+                    x={x}
+                    y={y}
+                    z={z}
+                    scale={getScaleFromZ(state.stage.z, state.lens.perspective)}
+                >
                     <div className="absolute left-0 -top-[10px] -translate-x-1/2 text-center bg-transparent flex flex-col gap-1 items-center group drop-shadow-[0_0_4px_#000]">
                         <div className="w-[20px] h-[20px] border-2 border-kac-bone rounded-full"></div>
                         {linkUrl ? (
@@ -191,6 +200,7 @@ export default function MapScene({
             ))}
             {newMarker && (
                 <Position
+                    id={newMarker.id}
                     key={newMarker.id}
                     x={newMarker.x}
                     y={newMarker.y}

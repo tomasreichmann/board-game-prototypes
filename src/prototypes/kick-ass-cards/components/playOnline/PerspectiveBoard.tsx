@@ -31,7 +31,7 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
         }
     }, [game?.viewState]);
 
-    const onWheel: React.WheelEventHandler<HTMLDivElement> = (event) => {
+    /*     const onWheel: React.WheelEventHandler<HTMLDivElement> = (event) => {
         viewDispatch({
             type: PerspectiveViewActionTypeEnum.Updater,
             payload: (state) => ({
@@ -39,7 +39,7 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
                 stage: { ...state.stage, z: clamp(state.stage.z - event.deltaY, -999, 999) },
             }),
         });
-    };
+    }; */
 
     if (!game) {
         return null;
@@ -49,15 +49,13 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
 
     return (
         <div
-            className={twMerge("PerspectiveBoard w-[1920px] h-[1080px]", !isVisible && "hidden", className)}
+            className={twMerge("PerspectiveBoard", !isVisible && "hidden", className)}
             style={viewState.stageStyle}
-            onWheel={onWheel}
+            /* onWheel={onWheel} */
         >
             {contentItems.map((contentProps) => (
                 <ContentItem key={contentProps.id} {...contentProps} />
             ))}
-            {game?.layout?.debug?.length &&
-                game.layout.debug.map((content) => <ContentItem key={content.id} {...content} />)}
         </div>
     );
 }

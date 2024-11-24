@@ -28,10 +28,7 @@ export default function Flippable({
     };
     return (
         <div
-            className={twMerge(
-                "Flippable relative [&_*]:[transform-style:preserve-3d] [&_*]:[backface-visibility:hidden]",
-                className
-            )}
+            className={twMerge("Flippable relative [&_*]:[backface-visibility:hidden]", className)}
             style={combinedStyle}
             {...restProps}
         >

@@ -16,6 +16,7 @@ export const outcomeCardSize = {
 };
 
 const cardHeight = outcomeCardSize.height;
+const cardMargin = 20;
 
 export default function createInitialBoard(game: GameDocType): Partial<GameDocType> {
     // Generate stacks of Outcome cards for each player
@@ -33,32 +34,31 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     const viewState: Partial<PerspectiveViewStateType> = {
         stage: {
             x: -centerPan.x,
-            y: -stageHeight * 0.25,
-            z: -1000,
+            y: -stageHeight * 0.13,
+            z: 100, // Some items may not be intractable with negative Z
             rotateX: 40,
             rotateY: 0,
             rotateZ: 0,
             width: stageWidth,
             height: stageHeight,
-            scale: 1,
+            scale: 0.5, // TODO calculate to fit screen
         },
         lens: { perspective: 1000, depthOfField: 1000 },
     };
-    console.log("viewState", viewState);
 
     const debugPositions = [] as PositionProps[];
 
+    const horizontalSpaceForOutcomeDeckAndDiscard = (outcomeCardSize.width + cardMargin) * 2 + cardMargin;
     const currentUserHandSize = {
-        width: stageWidth,
+        width: stageWidth - horizontalSpaceForOutcomeDeckAndDiscard,
         height: cardHeight,
     };
     const currentUserHandProps = {
         id: "currentUserHand",
-        className: "border-2 border-kac-gold-dark",
-        x: 0,
-        y: stageHeight,
-        z: 0,
-        transformOrigin: "top center",
+        className: "border-2 border-kac-gold-dark pointer-events-none",
+        x: horizontalSpaceForOutcomeDeckAndDiscard,
+        y: stageHeight - cardHeight / 2,
+        z: cardHeight / 6,
         rotateX: -(viewState?.stage?.rotateX || 0),
         ...currentUserHandSize,
     };
@@ -70,9 +70,9 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     };
     const currentUserTableProps = {
         id: "currentUserTable",
-        className: "border-2 border-kac-gold-dark",
+        className: "border-2 border-kac-gold-dark pointer-events-none",
         x: 0,
-        y: stageHeight - currentUserTableSize.height + 10, // To prevent collision with the deck
+        y: stageHeight - currentUserTableSize.height,
         z: 0,
         ...currentUserTableSize,
     };
@@ -84,11 +84,10 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     };
     const otherPlayerHandsProps = {
         id: "otherPlayerHands",
-        className: "border-2 border-kac-cloth-dark",
+        className: "border-2 border-kac-cloth-dark pointer-events-none",
         x: 0,
         y: -otherPlayerHandsSize.height,
-        z: 0,
-        transformOrigin: "bottom center",
+        z: 40,
         rotateX: -(viewState?.stage?.rotateX || 0),
         ...otherPlayerHandsSize,
     };
@@ -100,7 +99,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     };
     const otherPlayerTablesProps = {
         id: "otherPlayerTables",
-        className: "border-2 border-kac-cloth-dark",
+        className: "border-2 border-kac-cloth-dark pointer-events-none",
         x: 0,
         y: 0,
         z: 0,
@@ -116,7 +115,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     };
     const centerTableProps = {
         id: "centerTable",
-        className: "border-2 border-kac-monster-dark",
+        className: "border-2 border-kac-monster-dark pointer-events-none",
         x: 0,
         y: otherPlayerTablesSize.height,
         z: 0,
@@ -132,7 +131,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     };
     const defaultViewProps = {
         id: "defaultView",
-        className: "bg-kac-steel/25 border-2 border-kac-steel-dark pointer-events-none",
+        className: "border-2 border-kac-steel-dark pointer-events-none pointer-events-none",
         x: stageWidth / 2 - defaultViewSize.width / 2,
         y: 0,
         z: 0,
@@ -140,17 +139,6 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         ...defaultViewSize,
     };
     debugPositions.push(defaultViewProps);
-
-    const backgroundProps = {
-        id: "background",
-        x: 0,
-        y: 0,
-        z: -1,
-        width: stageWidth,
-        height: stageHeight,
-        className: "bg-kac-bone-dark",
-    };
-    debugPositions.push(backgroundProps);
 
     layout.debug = debugPositions.map(
         (props) =>
@@ -163,6 +151,57 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
                 positionProps: props,
             } as ContentItemType)
     );
+
+    const tableTopProps = {
+        id: "tableTop",
+        x: -cardMargin,
+        y: -cardMargin,
+        z: -1,
+        width: stageWidth + cardMargin * 2,
+        height: stageHeight + cardMargin * 2,
+        className: "bg-kac-bone-light pointer-events-none",
+    };
+    layout.debug.push({
+        id: tableTopProps.id,
+        type: ContentItemTypeEnum.Div,
+        componentProps: {
+            className: "h-full w-full",
+            style: {
+                backgroundImage: "url('/KAC/mighty_decks_logo.png'), url('/wood3.jpg')",
+                backgroundSize: "25%, 50%",
+                backgroundRepeat: "no-repeat, repeat",
+                backgroundPosition: "center center, center center",
+                filter: "brightness(130%) saturate(50%)",
+            },
+        },
+        positionProps: tableTopProps,
+    });
+    const tableEdgeProps = {
+        id: "tableEdge",
+        x: -cardMargin,
+        y: stageHeight + cardMargin,
+        z: -1,
+        transformOrigin: "top center",
+        rotateX: -90,
+        width: stageWidth + cardMargin * 2,
+        height: cardMargin * 2,
+        className: "bg-kac-bone-dark pointer-events-none",
+    };
+    layout.debug.push({
+        id: tableEdgeProps.id,
+        type: ContentItemTypeEnum.Div,
+        componentProps: {
+            className: "h-full w-full",
+            style: {
+                backgroundImage: "url('/wood3.jpg')",
+                backgroundSize: "50%",
+                backgroundRepeat: "repeat",
+                backgroundPosition: "center center",
+                filter: "brightness(80%) saturate(50%)",
+            },
+        },
+        positionProps: tableEdgeProps,
+    });
 
     const playerOutcomes = range(0, playerCount).map((playerIndex) =>
         shuffle(
@@ -215,6 +254,14 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         return playerDeckMap;
     }, {} as GameLayoutType["deckMap"]);
     layout.deckMap = { ...layout.deckMap, ...playerDeckMap };
+
+    layout.debug.push({
+        id: "flippable-test",
+        type: ContentItemTypeEnum.FlippableTest,
+        componentProps: {},
+        positionProps: { id: "flippable-test", x: 0, y: stageHeight / 3, z: 0 },
+    });
+    console.log("debug", layout.debug);
 
     return { ...game, layout, viewState };
 }

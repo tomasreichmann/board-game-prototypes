@@ -68,8 +68,22 @@ const getStyle = (
 };
 
 export default function Position(props: PositionProps) {
-    const { x, y, z, width, height, rotateX, rotateY, rotateZ, scale, className, children, draggable, ...restProps } =
-        props;
+    const {
+        x,
+        y,
+        z,
+        width,
+        height,
+        rotateX,
+        rotateY,
+        rotateZ,
+        scale,
+        className,
+        children,
+        draggable,
+        transformOrigin,
+        ...restProps
+    } = props;
     const { state } = usePerspectiveView();
 
     const computedStyle = getStyle(state, props);

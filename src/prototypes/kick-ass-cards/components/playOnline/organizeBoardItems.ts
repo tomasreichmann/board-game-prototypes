@@ -1,4 +1,4 @@
-import { PositionType } from "../../../../components/PerspectiveView/Position";
+import { PositionProps, PositionType } from "../../../../components/PerspectiveView/Position";
 import { ContentItemProps } from "./ContentItem";
 
 export type OrganizeDeckOptionsType = {
@@ -9,14 +9,14 @@ const defaultDeckStackShift = 2;
 
 export const organizeDeck = (
     content: ContentItemProps[],
-    basePosition: Required<Pick<PositionType, "x" | "y" | "z">> & Partial<PositionType>,
+    basePosition: Required<Pick<PositionType, "x" | "y" | "z">> & Partial<PositionProps>,
     options?: OrganizeDeckOptionsType
 ): ContentItemProps[] => {
     const { stackShift = defaultDeckStackShift } = options || {};
-    const { x, y, z } = basePosition;
+    const { x, y, z, className, ...restBaseProps } = basePosition;
     return content.map((content, index) => ({
         ...content,
-        positionProps: { ...content.positionProps, x, y, z: z + index * stackShift },
+        positionProps: { ...restBaseProps, ...content.positionProps, x, y, z: z + index * stackShift },
     }));
 };
 

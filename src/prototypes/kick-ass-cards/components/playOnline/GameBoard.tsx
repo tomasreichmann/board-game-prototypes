@@ -8,6 +8,7 @@ import PerspectiveView from "../../../../components/PerspectiveView/PerspectiveV
 import PerspectiveViewProvider from "../../../../components/PerspectiveView/PerspectiveViewProvider";
 import PerspectiveBoard from "./PerspectiveBoard";
 import Text from "../content/Text";
+import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
 
 export type GameBoardProps = {
     className?: string;
@@ -53,6 +54,16 @@ function GameBoard({ className, gameId }: GameBoardProps) {
                     </div>
                 )}
             </Button>
+            <ButtonWithConfirmation
+                className={twMerge(
+                    "absolute left-4 top-4 z-50",
+                    game.state === GameStateEnum.Ready && "opacity-0 pointer-events-none duration-600"
+                )}
+                color="warning"
+                onClick={() => dispatch({ type: ActionTypeEnum.StartGame })}
+            >
+                RESTART GAME
+            </ButtonWithConfirmation>
             <PerspectiveViewProvider>
                 <PerspectiveView showControls={true} showDebug={true}>
                     <PerspectiveBoard gameId={gameId} />

@@ -17,12 +17,8 @@ import MetaUser from "../adventures/MetaUser";
 import { ActionTypeEnum } from "./types";
 import useGame from "./useGame";
 import DataToggle from "../../../../components/DataToggle";
-import { OutcomeCardFlippable } from "../gameComponents/OutcomeCard";
-import outcomes from "../../data/outcomeDeck";
-import { outcomeCardSize } from "./createInitialBoard";
-import ToggleCheckbox from "../controls/ToggleCheckbox";
-import ContentItem from "./ContentItem";
 import GameBoard from "./GameBoard";
+import { createFakeUser } from "./factories";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
@@ -70,23 +66,13 @@ export default function PlayOnlineGame() {
         );
     }
 
-    const Test = () => {
-        const [isFlipped, setIsFlipped] = useState(false);
-        return (
-            <div className="w-full [perspective:500px]">
-                <ToggleCheckbox checked={isFlipped} onChange={(e) => setIsFlipped(e.target.checked)} />
-                <OutcomeCardFlippable {...outcomes[1]} style={outcomeCardSize} isFaceDown={isFlipped} />
-                <OutcomeCardFlippable {...outcomes[5]} style={outcomeCardSize} isFaceDown={!isFlipped} />
-            </div>
-        );
-    };
-
     const hasWriteAccess = checkWriteAccess(game?.meta);
     const canClaim = user?.id && !game?.meta?.author;
     const gameName = game?.name || `Game #${gameId}`;
     const isUserPlayer = game?.playerIds?.some((uid) => uid === user?.id);
     const isUserStoryteller = game?.storytellerIds?.some((uid) => uid === user?.id);
     const hasJoined = isUserStoryteller || isUserPlayer;
+    const isDebugging = true; // TODO move somewhere to the model
 
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full h-svh text-kac-iron px-2 py-5 md:px-10 bg-white *:[transform-style:preserve-3d] [perspective:500px]">
@@ -193,13 +179,18 @@ export default function PlayOnlineGame() {
                         {<H4>Storytellers</H4>}
                         {game?.storytellers?.map((userItem) => {
                             const isCurrentUser = userItem.uid === user?.id;
+                            const isFakeUser = (userItem.uid ?? "").startsWith("fake-");
                             return (
                                 <MetaUser key={userItem.uid} {...userItem} className={isCurrentUser ? "font-bold" : ""}>
-                                    {isCurrentUser && (
+                                    {user && (isCurrentUser || isFakeUser) && (
                                         <Button
                                             variant="text"
                                             onClick={() =>
-                                                user && dispatch({ type: ActionTypeEnum.LeaveGameAsStoryteller, user })
+                                                user &&
+                                                dispatch({
+                                                    type: ActionTypeEnum.LeaveGameAsStoryteller,
+                                                    user: { ...user, id: userItem.uid ?? "" }, // handles fake users
+                                                })
                                             }
                                         >
                                             Resign
@@ -218,16 +209,37 @@ export default function PlayOnlineGame() {
                                 Join as a storyteller
                             </Button>
                         )}
+                        {isDebugging && (
+                            <Button
+                                variant="text"
+                                disabled={!user}
+                                onClick={() =>
+                                    user &&
+                                    dispatch({
+                                        type: ActionTypeEnum.JoinGameAsStoryteller,
+                                        user: createFakeUser(user),
+                                    })
+                                }
+                            >
+                                Add fake storyteller
+                            </Button>
+                        )}
 
                         {<H4 className="ml-4">Players</H4>}
                         {game?.players?.map((userItem) => {
                             const isCurrentUser = userItem.uid === user?.id;
+                            const isFakeUser = (userItem.uid ?? "").startsWith("fake-");
                             return (
                                 <MetaUser key={userItem.uid} {...userItem} className={isCurrentUser ? "font-bold" : ""}>
-                                    {isCurrentUser && (
+                                    {user && (isCurrentUser || isFakeUser) && (
                                         <Button
                                             variant="text"
-                                            onClick={() => dispatch({ type: ActionTypeEnum.LeaveGameAsPlayer, user })}
+                                            onClick={() =>
+                                                dispatch({
+                                                    type: ActionTypeEnum.LeaveGameAsPlayer,
+                                                    user: { ...user, id: userItem.uid ?? "" }, // handles fake users
+                                                })
+                                            }
                                         >
                                             Resign
                                         </Button>
@@ -245,23 +257,25 @@ export default function PlayOnlineGame() {
                                 Join as a player
                             </Button>
                         )}
+                        {isDebugging && (
+                            <Button
+                                variant="text"
+                                disabled={!user}
+                                onClick={() =>
+                                    user &&
+                                    dispatch({
+                                        type: ActionTypeEnum.JoinGameAsPlayer,
+                                        user: createFakeUser(user),
+                                    })
+                                }
+                            >
+                                Add fake player
+                            </Button>
+                        )}
                     </div>
                     <main className="relative flex-1">
                         <div className="absolute left-0 top-0 w-full h-full overflow-auto">
                             <GameBoard gameId={gameId} />
-                            TODO: display hand and deck content
-                            <div className="flex flex-row flex-wrap">
-                                {Object.values(game?.layout?.deckMap || {})
-                                    .flatMap((layout) => layout.content)
-                                    .map((content) => (
-                                        <ContentItem key={content.id} {...content} />
-                                    ))}
-                            </div>
-                            <br />
-                            TODO: calculate positions of layouts for each player
-                            <br />
-                            TODO: render layouts
-                            <Test />
                             <br />
                             CONTENT
                             <DataToggle

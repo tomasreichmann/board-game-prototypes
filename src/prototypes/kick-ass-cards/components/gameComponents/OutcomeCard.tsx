@@ -179,10 +179,10 @@ export const OutcomeCardFlippable = ({
         <Flippable
             className={twMerge("OutcomeCardFlippable", className)}
             isFaceDown={isFaceDown}
-            backFace={<OutcomeCardBackFace />}
+            backFace={<OutcomeCardBackFace className="relative overflow-hidden rounded-lg" />}
             style={style}
         >
-            <OutcomeCard {...restProps} className={outcomeClassName} />
+            <OutcomeCard {...restProps} className={twMerge("overflow-hidden", outcomeClassName)} />
         </Flippable>
     );
 };

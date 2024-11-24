@@ -213,7 +213,7 @@ export default function PerspectiveView({ children, showControls, showDebug }: P
     return (
         <div className="PerspectiveView w-full h-full print:h-auto relative overflow-hidden">
             <div
-                className="Frame absolute w-full h-full left-0 top-0 [transform-style:preserve-3d]"
+                className="Frame absolute w-full h-full left-0 top-0 [transform-style:preserve-3d] z-0"
                 ref={frameRef}
                 style={state.frameStyle}
             >

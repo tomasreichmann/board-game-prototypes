@@ -30,9 +30,13 @@ export type ActionType =
     | { type: ActionTypeEnum.LeaveGameAsStoryteller; user: UserResource };
 
 export enum ContentItemTypeEnum {
+    Pre = "Pre",
     Text = "Text",
-    ActorCard = "ActorCard",
+    //ActorCard = "ActorCard",
     OutcomeCard = "OutcomeCard",
+    Div = "Div",
+    ToggleCheckbox = "ToggleCheckbox",
+    FlippableTest = "FlippableTest",
 }
 
 export type ContentItemPropsType = {

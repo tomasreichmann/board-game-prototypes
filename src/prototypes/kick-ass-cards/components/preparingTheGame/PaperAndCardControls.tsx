@@ -101,7 +101,7 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     pageLabelPosition: "left",
     setPageLabelPosition: (pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"]) =>
         set({ pageLabelPosition }),
-    componentControls: "Box" as const,
+    componentControls: "Template" as const,
     setComponentControls: (componentControls: keyof typeof componentControlsMap) => set({ componentControls }),
 }));
 

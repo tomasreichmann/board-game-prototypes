@@ -1,6 +1,6 @@
 import { range, shuffle } from "lodash";
 import outcomes from "../../data/outcomeDeck";
-import { ContentItemType, ContentItemTypeEnum, GameDocType, GameLayoutType, LayoutTypeEnum } from "./types";
+import { ContentItemType, ContentItemTypeEnum, GameDocType, GameLayoutType, LayoutType, LayoutTypeEnum } from "./types";
 import { cardSizes } from "../../../../components/print/paperSizes";
 import mmToPx from "../../../../utils/mmToPx";
 import { PerspectiveViewStateType } from "../../../../components/PerspectiveView/perspectiveViewModel";
@@ -20,13 +20,7 @@ const cardMargin = 20;
 
 export default function createInitialBoard(game: GameDocType): Partial<GameDocType> {
     // Generate stacks of Outcome cards for each player
-    const layout: GameDocType["layout"] = {
-        handMap: {},
-        deckMap: {},
-        spreadMap: {},
-        debug: [],
-        misc: [],
-    };
+    const layouts: GameDocType["layouts"] = [];
 
     const stageWidth = 1920;
     const stageHeight = 1080;
@@ -141,7 +135,13 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     };
     debugPositions.push(defaultViewProps);
 
-    layout.debug = debugPositions.map(
+    const debugLayout: LayoutType = {
+        id: "debug",
+        type: LayoutTypeEnum.Debug,
+        content: [],
+    };
+
+    debugLayout.content = debugPositions.map(
         (props) =>
             ({
                 id: props.id,
@@ -153,6 +153,14 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
             } as ContentItemType)
     );
 
+    layouts.push(debugLayout);
+
+    const miscLayout: LayoutType = {
+        id: "misc",
+        type: LayoutTypeEnum.Misc,
+        content: [],
+    };
+
     const tableTopProps = {
         id: "tableTop",
         x: -cardMargin,
@@ -162,7 +170,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         height: stageHeight + cardMargin * 2,
         className: "bg-kac-bone-light pointer-events-none",
     };
-    layout.misc.push({
+    miscLayout.content.push({
         id: tableTopProps.id,
         type: ContentItemTypeEnum.Div,
         componentProps: {
@@ -188,7 +196,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         height: cardMargin * 2,
         className: "bg-kac-bone-dark pointer-events-none",
     };
-    layout.misc.push({
+    miscLayout.content.push({
         id: tableEdgeProps.id,
         type: ContentItemTypeEnum.Div,
         componentProps: {
@@ -203,6 +211,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         },
         positionProps: tableEdgeProps,
     });
+    layouts.push(miscLayout);
 
     const playerOutcomes = range(0, playerCount).map((playerIndex) =>
         shuffle(
@@ -221,12 +230,12 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     // Hands
     const initialCardsInHand = 3;
 
-    const playerHandMap = range(0, playerCount).reduce((playerHandMap, playerIndex) => {
+    range(0, playerCount).forEach((playerIndex) => {
         const playerUid = game.playerIds?.[playerIndex];
         if (!playerUid) {
             throw new Error("Player UID not found");
         }
-        playerHandMap[playerUid] = {
+        layouts.push({
             id: playerUid,
             ownerId: playerUid,
             type: LayoutTypeEnum.Hand,
@@ -235,18 +244,15 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
                 isClickableForOwner: true,
                 ownerUid: playerUid,
             })),
-        };
+        });
+    });
 
-        return playerHandMap;
-    }, {} as GameLayoutType["handMap"]);
-    layout.handMap = { ...layout.handMap, ...playerHandMap };
-
-    const playerDeckMap = range(0, playerCount).reduce((playerDeckMap, playerIndex) => {
+    range(0, playerCount).forEach((playerIndex) => {
         const playerUid = game.playerIds?.[playerIndex];
         if (!playerUid) {
             throw new Error("Player UID not found");
         }
-        playerDeckMap[playerUid] = {
+        layouts.push({
             id: playerUid,
             ownerId: playerUid,
             type: LayoutTypeEnum.Deck,
@@ -261,19 +267,15 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
                         ownerUid: playerUid,
                     };
                 }),
-        };
+        });
+    });
 
-        return playerDeckMap;
-    }, {} as GameLayoutType["deckMap"]);
-    layout.deckMap = { ...layout.deckMap, ...playerDeckMap };
-
-    layout.debug.push({
+    debugLayout.content.push({
         id: "flippable-test",
         type: ContentItemTypeEnum.FlippableTest,
         componentProps: {},
         positionProps: { id: "flippable-test", x: 0, y: stageHeight / 3, z: 0 },
     });
-    console.log("debug", layout.debug);
 
-    return { ...game, layout, viewState };
+    return { ...game, layouts: layouts, viewState };
 }

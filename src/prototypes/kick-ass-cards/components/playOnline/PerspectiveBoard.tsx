@@ -6,7 +6,7 @@ import { usePerspectiveView } from "../../../../components/PerspectiveView/Persp
 import { PerspectiveViewActionTypeEnum } from "../../../../components/PerspectiveView/perspectiveViewReducer";
 import { clamp } from "lodash";
 import ContentItem from "./ContentItem";
-import useContentItems, { stripMetaPropsFromContent, stripMetaPropsFromContentItem } from "./useContentItems";
+import useContentItems, { stripMetaPropsFromContentItem } from "./useContentItems";
 import { useUser } from "@clerk/clerk-react";
 
 export type PerspectiveBoardProps = {
@@ -21,13 +21,12 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
     const { user } = useUser();
 
     useEffect(() => {
-        if (game?.viewState) {
+        const viewState = game && game.viewState;
+        if (viewState) {
             console.log("viewState changed", game.viewState);
             viewDispatch({
                 type: PerspectiveViewActionTypeEnum.Updater,
-                payload: () => ({
-                    ...game.viewState,
-                }),
+                payload: () => viewState,
             });
         }
     }, [game?.viewState]);
@@ -56,19 +55,23 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
         >
             {contentItems.map((contentProps) => {
                 const props = stripMetaPropsFromContentItem(contentProps);
+                contentProps.isClickable && console.log("contentProps.isClickable", contentProps.isClickable);
                 return (
                     <ContentItem
                         key={contentProps.id}
                         {...props}
                         onClick={
                             contentProps.isClickable
-                                ? () =>
-                                      user &&
-                                      dispatch({
-                                          type: ActionTypeEnum.ContentItemClick,
-                                          user,
-                                          itemId: contentProps.id,
-                                      })
+                                ? () => {
+                                      console.log("click", contentProps, user);
+                                      if (user) {
+                                          dispatch({
+                                              type: ActionTypeEnum.ContentItemClick,
+                                              user,
+                                              itemId: contentProps.id,
+                                          });
+                                      }
+                                  }
                                 : undefined
                         }
                     />

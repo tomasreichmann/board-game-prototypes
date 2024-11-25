@@ -1,15 +1,13 @@
 import { twMerge } from "tailwind-merge";
-import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
-import { IconOrImage } from "../../../../components/Icon/IconOrImage";
-import { PropsWithChildren } from "react";
-import { transform } from "lodash";
+import { HTMLAttributes } from "react";
 
 export type FlippableProps = React.PropsWithChildren<{
     className?: string;
     isFaceDown?: boolean;
     backFace: React.ReactNode;
     style?: React.CSSProperties;
-}>;
+}> &
+    HTMLAttributes<HTMLDivElement>;
 
 export default function Flippable({
     className,

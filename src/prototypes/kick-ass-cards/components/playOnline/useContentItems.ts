@@ -1,15 +1,17 @@
-import { Children, useMemo, useRef } from "react";
-import { ContentItemType, ContentItemTypeEnum, GameDocType } from "./types";
+import { useMemo } from "react";
+import { ContentItemType, ContentItemTypeEnum, GameDocType, GameStateEnum, LayoutType, LayoutTypeEnum } from "./types";
 import { ContentItemProps } from "./ContentItem";
 import { useAuth } from "@clerk/clerk-react";
 import { organizeDeck, organizeHand } from "./organizeBoardItems";
 import { outcomeCardSize } from "./createInitialBoard";
 
-const emptyGame: GameDocType = {
-    layout: { debug: [] as ContentItemProps[], handMap: {}, deckMap: {}, spreadMap: {} },
-} as GameDocType;
-
 const handStackingVisibilityMultiplier = 0.9;
+
+const emptyGame: GameDocType = {
+    id: "emptyGame",
+    layouts: [],
+    state: GameStateEnum.Ready,
+};
 
 export const stripMetaPropsFromContentItem = ({
     ownerUid,
@@ -28,22 +30,33 @@ export const stripMetaPropsFromContentItem = ({
 export const stripMetaPropsFromContent = (contentItems: ContentItemProps[]) =>
     contentItems.map(stripMetaPropsFromContentItem);
 
+export const groupLayoutByType = (layout: GameDocType["layouts"]) => {
+    const groups: Partial<{ [key in LayoutTypeEnum]: LayoutType[] }> = {};
+    layout.forEach((layout) => {
+        const key = layout.type;
+        groups[key] = groups[key] || [];
+        (groups[key] as LayoutType[]).push(layout);
+    });
+    return groups;
+};
+
 export default function useContentItems(game: GameDocType | undefined): ContentItemProps[] {
     const { userId: uid } = useAuth();
     /* For transitions, lastGame might be useful
     const lastGameRef = useRef(game);
     const lastGame = lastGameRef.current; */
-    const {
-        layout: { misc, debug, handMap, deckMap, spreadMap },
-        isDebugging,
-        players,
-        playerIds,
-        state,
-    } = game || emptyGame;
+    const { layouts, isDebugging, players, playerIds, state } = game || emptyGame;
     const contentItemProps = useMemo<ContentItemProps[]>(() => {
-        if (!debug || !handMap || !deckMap || !spreadMap || !players || !playerIds || !state || !uid) {
+        const layoutGroups = groupLayoutByType(layouts);
+        const debug = layoutGroups[LayoutTypeEnum.Debug]?.[0]?.content || [];
+        const misc = layoutGroups[LayoutTypeEnum.Misc]?.[0]?.content || [];
+
+        if (!debug || !players || !playerIds || !state || !uid) {
             return [];
         }
+        const deckLayouts = layoutGroups[LayoutTypeEnum.Deck] || [];
+        const handLayouts = layoutGroups[LayoutTypeEnum.Hand] || [];
+
         const combinedDebug: ContentItemType[] = [...debug];
         const contentItemProps: ContentItemProps[] = [];
         const isPlayer = (playerIds ?? []).includes(uid);
@@ -52,7 +65,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
             const currentPlayerDeckArea =
                 isPlayer && debug ? debug.find((item) => item.id === "currentUserTable") : undefined;
             if (currentPlayerDeckArea) {
-                const currentPlayerDeck = deckMap[uid];
+                const currentPlayerDeck = deckLayouts.find((item) => item.id === uid);
                 if (currentPlayerDeck) {
                     contentItemProps.push(
                         ...organizeDeck(
@@ -63,12 +76,14 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                             currentPlayerDeckArea.positionProps
                         )
                     );
+                } else {
+                    console.error("Could not find deck for player", uid, "in", deckLayouts);
                 }
             }
             const currentPlayerHandArea =
                 isPlayer && debug ? debug.find((item) => item.id === "currentUserHand") : undefined;
             if (currentPlayerHandArea) {
-                const currentPlayerHand = handMap[uid];
+                const currentPlayerHand = handLayouts.find((item) => item.id === uid);
 
                 if (currentPlayerHand) {
                     contentItemProps.push(
@@ -88,6 +103,8 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                         )
                     );
                 }
+            } else {
+                console.error("Could not find hand for player", uid, "in", handLayouts);
             }
         }
         const otherPlayerUids = isPlayer ? (playerIds ?? []).filter((id) => id !== uid) : playerIds ?? [];
@@ -110,7 +127,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                         rotateZ: 180,
                     },
                 };
-                const playerDeck = deckMap[uid];
+                const playerDeck = deckLayouts.find((item) => item.id === uid);
                 if (playerDeck) {
                     const id = `otherPlayerTable-${uid}`;
                     const playerDebugArea = {
@@ -125,7 +142,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                     combinedDebug.push(playerDebugArea);
                     contentItemProps.push(...organizeDeck(playerDeck.content, playerDeckArea.positionProps));
                 } else {
-                    console.warn("No deck for", uid, "in", deckMap);
+                    console.warn("Could not find deck for player", uid, "in", deckLayouts);
                 }
             } else {
                 console.warn("No otherPlayerTables in", debug);
@@ -140,7 +157,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                         height: otherPlayerHandsArea.positionProps.height ?? 0,
                     },
                 };
-                const playerHand = handMap[uid];
+                const playerHand = handLayouts.find((item) => item.id === uid);
 
                 if (playerHand) {
                     const id = `otherPlayerHand-${uid}`;
@@ -168,14 +185,13 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                         )
                     );
                 } else {
-                    console.warn("No hand for", uid, "in", handMap);
+                    console.warn("Could not find hand for player", uid, "in", handLayouts);
                 }
             } else {
                 console.warn("No otherPlayersHands in", debug);
             }
         });
-        // Generate other player decks content items
-        // Generate debug content items
+
         if (misc?.length) {
             contentItemProps.push(...misc);
         }
@@ -184,7 +200,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
         }
 
         return contentItemProps;
-    }, [debug, handMap, deckMap, spreadMap, players, playerIds, state, uid]);
+    }, [layouts, players, playerIds, state, uid]);
 
     /*     console.log(
         "useContentItems ids",

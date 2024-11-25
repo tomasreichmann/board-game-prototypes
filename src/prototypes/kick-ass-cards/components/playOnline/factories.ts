@@ -6,13 +6,7 @@ import { UserResource } from "@clerk/types";
 export const createNewGameData = (): Omit<GameDocType, "id"> => {
     return {
         isDebugging: true, // TODO: make false when ready
-        layout: {
-            handMap: {},
-            deckMap: {},
-            spreadMap: {},
-            debug: [],
-            misc: [],
-        },
+        layouts: [],
         state: GameStateEnum.Ready,
         players: [],
         playerIds: [],

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, HTMLAttributes } from "react";
 import { allSizes } from "../paperSizes";
 import { twMerge } from "tailwind-merge";
 import PrintMarkerCorners from "../PrintMarker/PrintMarkerCorners";
@@ -24,7 +24,11 @@ export const PaperOrDiv = ({ size, ...restProps }: Omit<PaperProps, "size"> & { 
     if (size) {
         return <Paper size={size} {...restProps} />;
     }
-    return <div className={restProps.className}>{restProps.children}</div>;
+    return (
+        <div {...restProps} className={restProps.className}>
+            {restProps.children}
+        </div>
+    );
 };
 
 export default function Paper({

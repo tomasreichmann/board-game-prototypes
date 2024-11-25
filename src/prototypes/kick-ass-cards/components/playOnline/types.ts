@@ -72,6 +72,8 @@ export enum LayoutTypeEnum {
     Deck = "Deck",
     Spread = "Spread",
     Center = "Center",
+    Debug = "Debug",
+    Misc = "Misc",
 }
 
 export type HandLayoutType = {
@@ -94,16 +96,17 @@ export type SpreadLayoutType = {
     content: ContentItemType[];
 };
 
-export type LayoutType = HandLayoutType | DeckLayoutType | SpreadLayoutType;
+export type LayoutType = {
+    id: string;
+    type: LayoutTypeEnum;
+    ownerId?: string;
+    content: ContentItemType[];
+};
+
+// export type LayoutType = HandLayoutType | DeckLayoutType | SpreadLayoutType;
 
 // TODO: refactor to use homogenous types
-export type GameLayoutType = {
-    handMap: { [key: string]: HandLayoutType };
-    deckMap: { [key: string]: DeckLayoutType };
-    spreadMap: { [key: string]: SpreadLayoutType };
-    debug: ContentItemType[];
-    misc: ContentItemType[];
-};
+export type GameLayoutType = Partial<{ [key in LayoutTypeEnum]: LayoutType[] }>;
 
 export type GameDocType = {
     id: string;
@@ -114,7 +117,7 @@ export type GameDocType = {
     meta?: DocMetaType;
     viewState?: Partial<PerspectiveViewStateType>;
     state: GameStateEnum;
-    layout: GameLayoutType;
+    layouts: LayoutType[];
     playerIds?: string[];
     players?: UserMetaType[];
     storytellerIds?: string[];

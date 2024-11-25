@@ -6,45 +6,83 @@ import createInitialBoard from "./createInitialBoard";
 
 export type StoreRequestType = {};
 
-const getContentItemLayoutPath = (game: GameDocType, contentItemId: string) => {
-    const layoutKeys = Object.keys(game.layout);
-    for (let layoutKeyIndex = 0; layoutKeyIndex < layoutKeys.length; layoutKeyIndex++) {
-        const layoutGroupKey = layoutKeys[layoutKeyIndex];
-        const layoutGroup = game.layout[layoutGroupKey as keyof GameDocType["layout"]];
-        // check if layout[layoutKey] is array or object
-        if (Array.isArray(layoutGroup)) {
-            const match = layoutGroup.find((item) => item.id === contentItemId);
-            return match ? `${layoutGroupKey}.${layoutGroup.indexOf(match)}` : null;
-        } else {
-            const layoutGroupKeys = Object.keys(layoutGroup);
-            for (let layoutGroupKeyIndex = 0; layoutGroupKeyIndex < layoutGroupKeys.length; layoutGroupKeyIndex++) {
-                const layoutKey = layoutGroupKeys[layoutGroupKeyIndex];
-                const layout = layoutGroup[layoutKey];
-                const match = (layout as LayoutType).content.find((item) => item.id === contentItemId);
-                return match ? `${layoutGroupKey}.${layoutKey}.${layout.content.indexOf(match)}` : null;
-            }
+const findContentItemPathById = (game: GameDocType, contentItemId: string) => {
+    for (let layoutIndex = 0; layoutIndex < game.layouts.length; layoutIndex++) {
+        const layout = game.layouts[layoutIndex];
+        const contentIndex = layout.content.findIndex((contentItem) => contentItem.id === contentItemId);
+        if (contentIndex >= 0) {
+            return `${layoutIndex}.${contentIndex}`;
         }
     }
     return null;
 };
 
-const updateContentItemByLayoutPath = (
+const findContentItemPathByMatcher = (
     game: GameDocType,
-    layoutPath: string,
-    updater: (contentItem: ContentItemType) => ContentItemType
+    matcher: (contentItem: ContentItemType, index: number, allItems: ContentItemType[]) => boolean
 ) => {
-    /* const layoutKeys = layoutPath.split(".");
-    let layout = game.layout;
-    for (let layoutKeyIndex = 0; layoutKeyIndex < layoutKeys.length; layoutKeyIndex++) {
-        const layoutKey = layoutKeys[layoutKeyIndex];
-        const layoutGroup = layout[layoutKey as keyof GameDocType["layout"]];
-        // check if layout[layoutKey] is array or object
-        if (Array.isArray(layoutGroup)) {
-            layout = layoutGroup;
-        } else {
-            layout = layoutGroup[layoutKeys[layoutKeyIndex + 1]];
+    for (let layoutIndex = 0; layoutIndex < game.layouts.length; layoutIndex++) {
+        const layout = game.layouts[layoutIndex];
+        const contentIndex = layout.content.findIndex(matcher);
+        if (contentIndex >= 0) {
+            return `${layoutIndex}.${contentIndex}`;
         }
-    } */
+    }
+    return null;
+};
+
+const findContentItemByPath = (game: GameDocType, path: string | null) => {
+    if (!path) {
+        console.warn("findContentItemByPath: no path");
+        return null;
+    }
+    const [layoutIndex, contentIndex] = path.split(".").map(Number);
+    if (!layoutIndex || !contentIndex) {
+        console.warn("findContentItemByPath: no layoutIndex or contentIndex", { layoutIndex, contentIndex });
+        return null;
+    }
+    return game.layouts[layoutIndex]?.content[contentIndex];
+};
+
+const findContentItemById = (game: GameDocType, contentItemId: string) =>
+    findContentItemByPath(game, findContentItemPathById(game, contentItemId));
+
+const isUserStoryteller = (game: GameDocType, uid: string) => game?.storytellerIds?.includes(uid) || false;
+
+const resolveIsSelected = (game: GameDocType, contentItem: ContentItemType, uid: string) =>
+    contentItem.isSelected ||
+    (contentItem.ownerUid === uid && contentItem.isSelectedForOwner) ||
+    (contentItem.isSelectedForStoryteller && isUserStoryteller(game, uid)) ||
+    false;
+
+const updateContentItem = (
+    game: GameDocType,
+    contentItemPath: string,
+    updater: (contentItem: ContentItemType) => ContentItemType
+): GameDocType => {
+    const [targetLayoutIndex, targetContentIndex] = contentItemPath.split(".").map(Number);
+    if (!targetLayoutIndex || targetLayoutIndex < 0 || !targetContentIndex || targetContentIndex < 0) {
+        console.warn("Invalid contentItemPath", {
+            layoutIndex: targetLayoutIndex,
+            contentIndex: targetContentIndex,
+            contentItemPath,
+        });
+        return game;
+    }
+    console.log({ targetLayoutIndex, targetContentIndex });
+    return {
+        ...game,
+        layouts: game.layouts.map((layout, layoutIndex) =>
+            layoutIndex === targetLayoutIndex
+                ? {
+                      ...layout,
+                      content: layout.content.map((item, index) =>
+                          index === targetContentIndex ? updater(item) : item
+                      ),
+                  }
+                : layout
+        ),
+    };
 };
 
 export default async function gameDispatcher(firestoreRootPath: string, game: GameDocType, action: ActionType) {
@@ -83,12 +121,34 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
     }
 
     if (action.type === ActionTypeEnum.ContentItemClick) {
-        console.warn("not implemented", action.type);
-        // Find content item
-        const path = getContentItemLayoutPath(game, action.itemId);
-        if (!path) {
-            console.error("Content item not found", action.itemId);
+        const contentItemPath = findContentItemPathById(game, action.itemId);
+        const contentItem = findContentItemByPath(game, contentItemPath);
+        if (!contentItemPath || !contentItem) {
+            console.error("Content item not found", action.itemId, game.layouts);
+            return game;
         }
+        const isSelected = resolveIsSelected(game, contentItem, action.user.id);
+        console.log("isSelected", isSelected);
+
+        // Deselect
+        if (isSelected) {
+            return updateDocument(
+                firestoreRootPath,
+                game.id,
+                updateContentItem(game, contentItemPath, (contentItem) => ({ ...contentItem, isSelected: false }))
+            );
+        }
+
+        // Select
+        if (!isSelected) {
+            return updateDocument(
+                firestoreRootPath,
+                game.id,
+                updateContentItem(game, contentItemPath, (contentItem) => ({ ...contentItem, isSelected: true }))
+            );
+        }
+
+        console.warn("not implemented", action.type);
 
         return game;
     }

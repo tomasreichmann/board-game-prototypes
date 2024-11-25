@@ -167,6 +167,7 @@ export type OutcomeCardFlippableProps = React.PropsWithChildren<
     OutcomeCardProps & Pick<FlippableProps, "isFaceDown">
 > & {
     style?: React.CSSProperties;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
     outcomeClassName?: string;
 } & ContentItemPassedProps;
 
@@ -178,11 +179,13 @@ export const OutcomeCardFlippable = ({
     isClickable,
     isHighlighted,
     isSelected,
+    onClick,
     ...restProps
 }: OutcomeCardFlippableProps) => {
     return (
         <Flippable
             className={twMerge("OutcomeCardFlippable rounded-lg", className)}
+            onClick={onClick}
             isFaceDown={isFaceDown}
             backFace={
                 <OutcomeCardBackFace

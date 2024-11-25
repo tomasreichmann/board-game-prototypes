@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import useGame from "./useGame";
-import { GameStateEnum } from "./types";
+import { ActionTypeEnum, GameStateEnum } from "./types";
 import { usePerspectiveView } from "../../../../components/PerspectiveView/PerspectiveViewProvider";
 import { PerspectiveViewActionTypeEnum } from "../../../../components/PerspectiveView/perspectiveViewReducer";
 import { clamp } from "lodash";
-import { useAuth } from "@clerk/clerk-react";
 import ContentItem from "./ContentItem";
-import useContentItems from "./useContentItems";
+import useContentItems, { stripMetaPropsFromContent, stripMetaPropsFromContentItem } from "./useContentItems";
+import { useUser } from "@clerk/clerk-react";
 
 export type PerspectiveBoardProps = {
     className?: string;
@@ -18,6 +18,7 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
     const { game, error, clearError, dispatch } = useGame(gameId);
     const { dispatch: viewDispatch, state: viewState } = usePerspectiveView();
     const contentItems = useContentItems(game);
+    const { user } = useUser();
 
     useEffect(() => {
         if (game?.viewState) {
@@ -53,9 +54,26 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
             style={viewState.stageStyle}
             /* onWheel={onWheel} */
         >
-            {contentItems.map((contentProps) => (
-                <ContentItem key={contentProps.id} {...contentProps} />
-            ))}
+            {contentItems.map((contentProps) => {
+                const props = stripMetaPropsFromContentItem(contentProps);
+                return (
+                    <ContentItem
+                        key={contentProps.id}
+                        {...props}
+                        onClick={
+                            contentProps.isClickable
+                                ? () =>
+                                      user &&
+                                      dispatch({
+                                          type: ActionTypeEnum.ContentItemClick,
+                                          user,
+                                          itemId: contentProps.id,
+                                      })
+                                : undefined
+                        }
+                    />
+                );
+            })}
         </div>
     );
 }

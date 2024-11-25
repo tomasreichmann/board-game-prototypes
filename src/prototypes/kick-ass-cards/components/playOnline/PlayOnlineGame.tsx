@@ -19,6 +19,7 @@ import useGame from "./useGame";
 import DataToggle from "../../../../components/DataToggle";
 import GameBoard from "./GameBoard";
 import { createFakeUser } from "./factories";
+import ToggleCheckbox from "../controls/ToggleCheckbox";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
@@ -128,6 +129,16 @@ export default function PlayOnlineGame() {
                             >
                                 Copy Game Code
                             </Button>
+                            <ToggleCheckbox
+                                labelTrue="Debug"
+                                labelFalse={null}
+                                onChange={(e) =>
+                                    dispatch({
+                                        type: ActionTypeEnum.UpdateGame,
+                                        updater: (game) => ({ ...game, isDebugging: e.target.checked }),
+                                    })
+                                }
+                            />
                             {hasWriteAccess && (
                                 <div className="flex flex-row gap-2">
                                     <ButtonWithConfirmation

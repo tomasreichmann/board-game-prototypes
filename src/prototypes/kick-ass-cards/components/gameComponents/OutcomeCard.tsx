@@ -7,6 +7,8 @@ import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
 import Flippable, { FlippableProps } from "./Flippable";
+import { ContentItemPassedProps } from "../playOnline/types";
+import { isClickableClassName, isHighlightedClassName, isSelectedClassName } from "../playOnline/constants";
 
 export type OutcomeCardProps = React.PropsWithChildren<OutcomeType & Partial<PaperProps>>;
 
@@ -166,23 +168,44 @@ export type OutcomeCardFlippableProps = React.PropsWithChildren<
 > & {
     style?: React.CSSProperties;
     outcomeClassName?: string;
-};
+} & ContentItemPassedProps;
 
 export const OutcomeCardFlippable = ({
     className,
     isFaceDown = false,
     style,
     outcomeClassName,
+    isClickable,
+    isHighlighted,
+    isSelected,
     ...restProps
 }: OutcomeCardFlippableProps) => {
     return (
         <Flippable
-            className={twMerge("OutcomeCardFlippable", className)}
+            className={twMerge("OutcomeCardFlippable rounded-lg", className)}
             isFaceDown={isFaceDown}
-            backFace={<OutcomeCardBackFace className="relative overflow-hidden rounded-lg" />}
+            backFace={
+                <OutcomeCardBackFace
+                    className={twMerge(
+                        "relative overflow-hidden rounded-lg",
+                        isClickable && isClickableClassName,
+                        isHighlighted && isHighlightedClassName,
+                        isSelected && isSelectedClassName
+                    )}
+                />
+            }
             style={style}
         >
-            <OutcomeCard {...restProps} className={twMerge("overflow-hidden", outcomeClassName)} />
+            <OutcomeCard
+                {...restProps}
+                className={twMerge(
+                    "overflow-hidden",
+                    isClickable && isClickableClassName,
+                    isHighlighted && isHighlightedClassName,
+                    isSelected && isSelectedClassName,
+                    outcomeClassName
+                )}
+            />
         </Flippable>
     );
 };

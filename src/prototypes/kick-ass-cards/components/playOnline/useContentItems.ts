@@ -1,5 +1,5 @@
 import { Children, useMemo, useRef } from "react";
-import { ContentItemTypeEnum, GameDocType } from "./types";
+import { ContentItemType, ContentItemTypeEnum, GameDocType } from "./types";
 import { ContentItemProps } from "./ContentItem";
 import { useAuth } from "@clerk/clerk-react";
 import { organizeDeck, organizeHand } from "./organizeBoardItems";
@@ -11,13 +11,31 @@ const emptyGame: GameDocType = {
 
 const handStackingVisibilityMultiplier = 0.9;
 
+export const stripMetaPropsFromContentItem = ({
+    ownerUid,
+    isHighlightedForOwner,
+    isHighlightedForStoryteller,
+    isClickableForOwner,
+    isClickableForStoryteller,
+    isSelectedForOwner,
+    isSelectedForStoryteller,
+    /* isHighlighted,
+    isClickable,
+    isSelected, */
+    ...restProps
+}: ContentItemProps) => restProps;
+
+export const stripMetaPropsFromContent = (contentItems: ContentItemProps[]) =>
+    contentItems.map(stripMetaPropsFromContentItem);
+
 export default function useContentItems(game: GameDocType | undefined): ContentItemProps[] {
     const { userId: uid } = useAuth();
     /* For transitions, lastGame might be useful
     const lastGameRef = useRef(game);
     const lastGame = lastGameRef.current; */
     const {
-        layout: { debug, handMap, deckMap, spreadMap },
+        layout: { misc, debug, handMap, deckMap, spreadMap },
+        isDebugging,
         players,
         playerIds,
         state,
@@ -26,6 +44,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
         if (!debug || !handMap || !deckMap || !spreadMap || !players || !playerIds || !state || !uid) {
             return [];
         }
+        const combinedDebug: ContentItemType[] = [...debug];
         const contentItemProps: ContentItemProps[] = [];
         const isPlayer = (playerIds ?? []).includes(uid);
         // Generate curent player deck content items
@@ -36,7 +55,13 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                 const currentPlayerDeck = deckMap[uid];
                 if (currentPlayerDeck) {
                     contentItemProps.push(
-                        ...organizeDeck(currentPlayerDeck.content, currentPlayerDeckArea.positionProps)
+                        ...organizeDeck(
+                            currentPlayerDeck.content.map((content) => ({
+                                ...content,
+                                isClickable: content.isClickableForOwner,
+                            })),
+                            currentPlayerDeckArea.positionProps
+                        )
                     );
                 }
             }
@@ -47,14 +72,20 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
 
                 if (currentPlayerHand) {
                     contentItemProps.push(
-                        ...organizeHand(currentPlayerHand.content, {
-                            ...currentPlayerHandArea.positionProps,
-                            width:
-                                outcomeCardSize.width *
-                                currentPlayerHand.content.length *
-                                handStackingVisibilityMultiplier,
-                            height: outcomeCardSize.height,
-                        })
+                        ...organizeHand(
+                            currentPlayerHand.content.map((content) => ({
+                                ...content,
+                                isClickable: content.isClickableForOwner,
+                            })),
+                            {
+                                ...currentPlayerHandArea.positionProps,
+                                width:
+                                    outcomeCardSize.width *
+                                    currentPlayerHand.content.length *
+                                    handStackingVisibilityMultiplier,
+                                height: outcomeCardSize.height,
+                            }
+                        )
                     );
                 }
             }
@@ -91,7 +122,7 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                             children: id,
                         },
                     };
-                    contentItemProps.push(playerDebugArea);
+                    combinedDebug.push(playerDebugArea);
                     contentItemProps.push(...organizeDeck(playerDeck.content, playerDeckArea.positionProps));
                 } else {
                     console.warn("No deck for", uid, "in", deckMap);
@@ -122,12 +153,11 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
                             children: id,
                         },
                     };
-                    console.log("playerDebugArea", playerDebugArea);
                     const handWidth = Math.min(
                         otherPlayerHandAreaWidth,
                         outcomeCardSize.width * playerHand.content.length * handStackingVisibilityMultiplier
                     );
-                    contentItemProps.push(playerDebugArea);
+                    combinedDebug.push(playerDebugArea);
                     contentItemProps.push(
                         ...organizeHand(
                             playerHand.content.map((contentItem) => ({
@@ -146,7 +176,10 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
         });
         // Generate other player decks content items
         // Generate debug content items
-        if (debug.length) {
+        if (misc?.length) {
+            contentItemProps.push(...misc);
+        }
+        if (isDebugging && debug?.length) {
             contentItemProps.push(...debug);
         }
 

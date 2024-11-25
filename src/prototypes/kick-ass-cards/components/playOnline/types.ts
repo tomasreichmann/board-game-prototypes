@@ -16,6 +16,7 @@ export enum ActionTypeEnum {
     AddElement = "AddElement",
     UpdateElement = "UpdateElement",
     RemoveElement = "RemoveElement",
+    ContentItemClick = "ContentItemClick",
 }
 
 export type ActionType =
@@ -27,7 +28,8 @@ export type ActionType =
     | { type: ActionTypeEnum.JoinGameAsPlayer; user: UserResource }
     | { type: ActionTypeEnum.LeaveGameAsPlayer; user: UserResource }
     | { type: ActionTypeEnum.JoinGameAsStoryteller; user: UserResource }
-    | { type: ActionTypeEnum.LeaveGameAsStoryteller; user: UserResource };
+    | { type: ActionTypeEnum.LeaveGameAsStoryteller; user: UserResource }
+    | { type: ActionTypeEnum.ContentItemClick; user: UserResource; itemId: string };
 
 export enum ContentItemTypeEnum {
     Pre = "Pre",
@@ -39,9 +41,10 @@ export enum ContentItemTypeEnum {
     FlippableTest = "FlippableTest",
 }
 
-export type ContentItemPropsType = {
-    width: number;
-    height: number;
+export type ContentItemPassedProps = {
+    isHighlighted?: boolean;
+    isClickable?: boolean;
+    isSelected?: boolean;
 };
 
 export type ContentItemType = {
@@ -49,7 +52,14 @@ export type ContentItemType = {
     type: ContentItemTypeEnum;
     componentProps: any;
     positionProps: PositionProps;
-};
+    ownerUid?: string;
+    isHighlightedForOwner?: boolean;
+    isHighlightedForStoryteller?: boolean;
+    isClickableForOwner?: boolean;
+    isClickableForStoryteller?: boolean;
+    isSelectedForOwner?: boolean;
+    isSelectedForStoryteller?: boolean;
+} & ContentItemPassedProps;
 
 export enum GameStateEnum {
     Ready = "Ready",
@@ -84,17 +94,22 @@ export type SpreadLayoutType = {
     content: ContentItemType[];
 };
 
+export type LayoutType = HandLayoutType | DeckLayoutType | SpreadLayoutType;
+
+// TODO: refactor to use homogenous types
 export type GameLayoutType = {
     handMap: { [key: string]: HandLayoutType };
     deckMap: { [key: string]: DeckLayoutType };
     spreadMap: { [key: string]: SpreadLayoutType };
     debug: ContentItemType[];
+    misc: ContentItemType[];
 };
 
 export type GameDocType = {
     id: string;
     name?: string;
     description?: string;
+    isDebugging?: boolean;
     imageUri?: string;
     meta?: DocMetaType;
     viewState?: Partial<PerspectiveViewStateType>;

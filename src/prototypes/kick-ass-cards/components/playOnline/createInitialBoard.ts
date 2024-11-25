@@ -25,6 +25,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         deckMap: {},
         spreadMap: {},
         debug: [],
+        misc: [],
     };
 
     const stageWidth = 1920;
@@ -161,7 +162,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         height: stageHeight + cardMargin * 2,
         className: "bg-kac-bone-light pointer-events-none",
     };
-    layout.debug.push({
+    layout.misc.push({
         id: tableTopProps.id,
         type: ContentItemTypeEnum.Div,
         componentProps: {
@@ -187,7 +188,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         height: cardMargin * 2,
         className: "bg-kac-bone-dark pointer-events-none",
     };
-    layout.debug.push({
+    layout.misc.push({
         id: tableEdgeProps.id,
         type: ContentItemTypeEnum.Div,
         componentProps: {
@@ -229,7 +230,11 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
             id: playerUid,
             ownerId: playerUid,
             type: LayoutTypeEnum.Hand,
-            content: playerOutcomes[playerIndex].slice(0, initialCardsInHand),
+            content: playerOutcomes[playerIndex].slice(0, initialCardsInHand).map((content) => ({
+                ...content,
+                isClickableForOwner: true,
+                ownerUid: playerUid,
+            })),
         };
 
         return playerHandMap;
@@ -245,10 +250,17 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
             id: playerUid,
             ownerId: playerUid,
             type: LayoutTypeEnum.Deck,
-            content: playerOutcomes[playerIndex].slice(initialCardsInHand).map((content) => ({
-                ...content,
-                componentProps: { ...content.componentProps, isFaceDown: true },
-            })),
+            content: playerOutcomes[playerIndex]
+                .slice(initialCardsInHand)
+                .map((content, contentIndex, playerOutcomes) => {
+                    const isLast = contentIndex === playerOutcomes.length - 1;
+                    return {
+                        ...content,
+                        componentProps: { ...content.componentProps, isFaceDown: true },
+                        isClickableForOwner: isLast,
+                        ownerUid: playerUid,
+                    };
+                }),
         };
 
         return playerDeckMap;

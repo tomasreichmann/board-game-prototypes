@@ -1,10 +1,51 @@
-import { ActionType, ActionTypeEnum, GameDocType, GameStateEnum } from "./types";
+import { ActionType, ActionTypeEnum, ContentItemType, GameDocType, GameStateEnum, LayoutType } from "./types";
 import { claimDocument, getUserMeta, updateDocument } from "../../services/firestoreController";
 import { deleteGame } from "./firestorePlayOnlineController";
 import { createNewGameData } from "./factories";
 import createInitialBoard from "./createInitialBoard";
 
 export type StoreRequestType = {};
+
+const getContentItemLayoutPath = (game: GameDocType, contentItemId: string) => {
+    const layoutKeys = Object.keys(game.layout);
+    for (let layoutKeyIndex = 0; layoutKeyIndex < layoutKeys.length; layoutKeyIndex++) {
+        const layoutGroupKey = layoutKeys[layoutKeyIndex];
+        const layoutGroup = game.layout[layoutGroupKey as keyof GameDocType["layout"]];
+        // check if layout[layoutKey] is array or object
+        if (Array.isArray(layoutGroup)) {
+            const match = layoutGroup.find((item) => item.id === contentItemId);
+            return match ? `${layoutGroupKey}.${layoutGroup.indexOf(match)}` : null;
+        } else {
+            const layoutGroupKeys = Object.keys(layoutGroup);
+            for (let layoutGroupKeyIndex = 0; layoutGroupKeyIndex < layoutGroupKeys.length; layoutGroupKeyIndex++) {
+                const layoutKey = layoutGroupKeys[layoutGroupKeyIndex];
+                const layout = layoutGroup[layoutKey];
+                const match = (layout as LayoutType).content.find((item) => item.id === contentItemId);
+                return match ? `${layoutGroupKey}.${layoutKey}.${layout.content.indexOf(match)}` : null;
+            }
+        }
+    }
+    return null;
+};
+
+const updateContentItemByLayoutPath = (
+    game: GameDocType,
+    layoutPath: string,
+    updater: (contentItem: ContentItemType) => ContentItemType
+) => {
+    /* const layoutKeys = layoutPath.split(".");
+    let layout = game.layout;
+    for (let layoutKeyIndex = 0; layoutKeyIndex < layoutKeys.length; layoutKeyIndex++) {
+        const layoutKey = layoutKeys[layoutKeyIndex];
+        const layoutGroup = layout[layoutKey as keyof GameDocType["layout"]];
+        // check if layout[layoutKey] is array or object
+        if (Array.isArray(layoutGroup)) {
+            layout = layoutGroup;
+        } else {
+            layout = layoutGroup[layoutKeys[layoutKeyIndex + 1]];
+        }
+    } */
+};
 
 export default async function gameDispatcher(firestoreRootPath: string, game: GameDocType, action: ActionType) {
     console.log("dispatcher", { action, game });
@@ -39,6 +80,17 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
     }
     if (action.type === ActionTypeEnum.ClaimGame) {
         return claimDocument(firestoreRootPath, game.id, action.user);
+    }
+
+    if (action.type === ActionTypeEnum.ContentItemClick) {
+        console.warn("not implemented", action.type);
+        // Find content item
+        const path = getContentItemLayoutPath(game, action.itemId);
+        if (!path) {
+            console.error("Content item not found", action.itemId);
+        }
+
+        return game;
     }
 
     // Game must be in Ready state

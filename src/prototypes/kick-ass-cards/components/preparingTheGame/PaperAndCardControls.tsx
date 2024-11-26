@@ -17,7 +17,7 @@ import AssetCardsPrintControls from "./AssetCardsPrintControls";
 import MedievalActorCardsPrintControls from "./MedievalActorCardsPrintControls";
 import CounterCardsPrintControls from "./CounterCardsPrintControls";
 import DividersPrintControls from "./DividersPrintControls";
-import StinyKlasteraPrintControls from "./StinyKlasteraPrintControls";
+import PenanceInBloodPrintControls from "./PenanceInBloodPrintControls";
 import MedievalLocationsPrintControls from "./MedievalLocationsPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
@@ -48,7 +48,7 @@ export const componentControlsMap = {
     "Medieval Asset Cards": AssetCardsPrintControls,
     "Medieval Actors": MedievalActorCardsPrintControls,
     "Medieval Locations": MedievalLocationsPrintControls,
-    "Stíny Kláštera": StinyKlasteraPrintControls,
+    "Penance In Blood": PenanceInBloodPrintControls,
     Dividers: DividersPrintControls,
     Box: BoxPrintControls,
 };

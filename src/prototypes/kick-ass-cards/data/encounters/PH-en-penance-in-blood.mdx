@@ -1,0 +1,290 @@
+---
+campaign: Příběhy Husitů
+
+---
+
+import * as C from "./ML-cs-common";
+import { assetMap as assets } from "../assets-en-deck";
+
+# Penance in Blood
+
+Something’s not right in the monastery of Abbot Radomír. Desperate to save a dying Hussite commander, you and your companions arrive seeking the abbot’s renowned healing skills. But this place isn’t just packed with patients—it’s dripping with secrets. The monks whisper of miracles, but the screams from behind closed doors tell another story. You’ll have to earn your spot in line by lending a hand, but beware: in a place where faith clashes with flesh, the cost of salvation may be more than you bargained for. Will you make it out before the cure becomes worse than the sickness?
+
+![](/KAC/encounters/penance_in_blood/splash.jpg)
+
+
+
+<Player url="https://youtu.be/qEzWqUhnbVA?t=119" controls height={100} />
+
+<Columns>
+<div>
+## 💡 Summary for the Storyteller
+
+A horror adventure where players take on the roles of Hussite heroes seeking the help of the renowned physician Abbot Radomír to save a gravely ill Hussite commander. The monastery where the physician operates is crowded with patients waiting for Abbot Radomír’s care, and the heroes must find ways to ensure they are seen quickly by performing various services for the monastery.
+
+As they undertake these tasks, it becomes evident that the abbot's medical methods are brutal and often based more on faith than actual medical expertise. When the heroes finally receive their turn, they are forced to assist the abbot in his treatment, only to realize that the patient will not survive his care. If the heroes confront the abbot, he accuses them of being Hussites and, therefore, servants of the devil, inciting the other patients against them.
+
+The heroes must navigate the terrifying dangers of the monastery, its deranged patients, and escape to safety.
+
+</div>
+<Aside>
+<div>
+**Legend**
+-   _Descriptive text you can directly read to the players when they arrive at a location._
+-   🔎 Information not immediately apparent to the players, but they can it out by searching, examining, or interrogating.
+-   🎭 Prompt for interaction of players.
+-   🏺 Loot, treasure, or reward that players receive.
+-   💡 Tips for the GM.
+-   🔒 Information for the GM that is currently hidden from the players.
+-   📅 Events that may occur.
+</div>
+</Aside>
+</Columns>
+
+
+![](/KAC/encounters/penance_in_blood/gate.png)
+
+## Arrival at the Monastery
+
+_The year is 1420, and you find yourself in a small town in Bohemia, gripped tightly by the turmoil of the Hussite Wars. Your mission is urgent and dangerous. You’ve received a critical order: transport a gravely ill Hussite leader to a nearby monastery, home to the renowned physician, Abbot Radomír, famous for his miraculous healing methods.  
+Your journey is long and arduous, but at last, you arrive at the towering stone walls of the monastery. As you approach the massive wooden gates, you catch sight of the monastery church's spires rising into the overcast sky. The air is heavy with the scent of incense and the muffled cries from the hospital courtyard.  
+Standing before the gates is a huge, stern-looking man in a monk’s robe. Brother Pavel, the monastery's chief doorkeeper, a man as solid as a mountain, scrutinizes you carefully from beneath his thick brows. His gaze is filled with suspicion and caution.  
+“What is your business here?” he asks, emphasizing each word.  
+Your patient lies on a makeshift stretcher. He is a middle-aged man, his face pale and slick with sweat. His breathing is shallow and irregular, and a bandaged arm sticks out from beneath his clothes, afflicted with a severe infection. Pus and blood seep through the fabric, and it’s clear that without immediate intervention, his condition will quickly deteriorate.  
+Your goal is to get this critically important individual to Abbot Radomír so he can perform the necessary operation and save his life. Time is running out, and it’s up to you to convince Brother Pavel to let you inside and grant you an audience with the physician, who may be your only hope._  
+
+<Player url="https://www.youtube.com/watch?v=EApZmmYg_oQ" controls height={100} />
+
+
+<Columns>
+<div>
+🎭 **How will you try to convince Brother Pavel to let you into the monastery?**
+
+-   🔎 Brother Pavel is not easily intimidated; he is tall, with solid muscles hidden under his robe and an iron-reinforced mace at his belt.
+-   🔎 Brother Pavel is willing to let the party in if they help him with his work:
+    -   Dispose of the patients' waste. Requires 4 effort.
+        -   💡 The waste is disgusting, and weak willpower causes Distress.
+    -   Clean the blood from the waiting room. Requires 4 effort.
+        -   💡 Hard to tell what happened here, but there's blood everywhere. Risk of slipping and Injury.
+        -   🔎 Brother Pavel will explain that some patients fought and he had to step in and one of the patients sadly didn't survive.
+    -   Dig a grave and carry the corpses from the morgue. Requires 4 effort.
+        -   🔎 Most of the corpses clearly died from the same disease—all are covered in bleeding boils and scratches.
+        -   🔎 There is one corpse that looks like it bled out from a bite wound in the neck.
+        -   💡 Clumsy handling of the corpses causes the boils to burst, which may be infectious. Risk of plague infection: Doom.
+
+💡 When Brother Pavel sees that the party is genuinely trying to help, he leads them through the waiting room, across the hall, and into the chapel that the abbot uses as his surgery.
+</div>
+<Aside>
+<div>
+<List>
+    <Actor 
+        imageUri="/KAC/encounters/penance_in_blood/brother_pavel_actor.png" 
+        name="Brother Pavel" 
+        notes="A man as strong as an ox" 
+        toughness={6} 
+        threat="Attacks in melee with a mace for 2&nbsp;Injuries, or a sweep hitting everyone in the zone for 1&nbsp;Injury." 
+        reward="Keys to the monastery" 
+        deck="Hussite Stories" 
+    />
+    <CounterCard 
+        icon="/KAC/heartbeat.png" 
+        title="Patient's Health" 
+        note="The patient is slowly dying (-1&nbsp;per round)." 
+        threat="It may already be too late for the patient" 
+        total={12} 
+        current={12} 
+        deck="Hussite Stories" 
+    />
+    <CounterCard 
+        icon="/KAC/counters/drop.png" 
+        title="Dispose of Waste" 
+        threat="The waste is disgusting, and weak willpower causes Distress" 
+        total={0} 
+        current={4} 
+        deck="Hussite Stories" 
+    />
+    <CounterCard 
+        icon="/KAC/blood.png" 
+        title="Clean the Waiting Room" 
+        threat="Hard to tell what happened here, but there's blood everywhere. Risk of slipping and Injury" 
+        total={4} 
+        current={0} 
+        deck="Hussite Stories" 
+    />
+    <CounterCard 
+        icon="/KAC/counters/danger.png" 
+        title="Bury the Corpses" 
+        threat="Clumsy handling of the corpses causes the boils to burst. Risk of plague infection: Doom" 
+        total={4} 
+        current={0} 
+        deck="Hussite Stories" 
+    />
+</List>
+</div>
+</Aside>
+</Columns>
+![](/KAC/encounters/penance_in_blood/waiting_room.jpg)
+
+## Waiting room
+
+<Player url="https://www.youtube.com/watch?v=HVxBMYZAgQg" controls height={100} />
+
+_You step into a cramped, dimly lit room where dozens of patients sit on wooden benches. Each one bears the marks of illnesses, broken bones, wrapped arms. The atmosphere is heavy, laden with anxiety and pain. A large puddle of both dried and fresh blood spreads across the floor, dripping from makeshift bandages and open wounds. Some patients have bodies covered in bleeding boils, while others clutch their limbs twisted into unnatural angles.  
+The walls are stained and shadowed by the flickering light of candles. The room is filled with coughing, groaning, and whispered prayers. The air is thick with the stench of sweat, decay, and medicinal herbs, which fail to mask the smell of rotting flesh.  
+The tension in the room is palpable as patients wait with a mix of terror and hope for their fate in the hands of Abbot Radomír._  
+
+📅 **Passing Through the Waiting Room with Brother Pavel**  
+_Hopeful eyes follow Brother Pavel, anxiously believing their turn for salvation has finally come. Their expressions twist into scorn as they see Brother Pavel leading you to the abbot instead._
+
+🔎 Patients can share when asked about the fight between some patients. One of the patients was very aggressive. He attacked brother Pavel, but didn't survive the encounter.
+
+![](/KAC/encounters/penance_in_blood/hall.png)
+
+## The Hall  
+
+_As you step into the hall leading to the chapel, chaos and confusion immediately hit you. The room is crammed with alchemical equipment—glass tubes and flasks bubbling and hissing with potions that change colors and emit ominous-looking fumes. Every corner of the hall is filled with dangerous-looking containers marked with warning symbols etched onto their surfaces.  
+In one corner, several cages house terrifying creatures. Some of the animals have irregular, deformed bodies, their eyes glowing in the darkness and drool dripping from their jaws. Their quiet growls and hisses add to the room’s unnerving atmosphere. These creatures appear to be the results of Abbot Radomír’s experiments, a grim testament to his pursuit of medical and alchemical breakthroughs.  
+Lining the walls of the hall are shelves filled with jars containing preserved organs. Each jar is carefully labeled and holds grotesque specimens of human anatomy—eyes, hands, brains, and hearts floating in preservative fluid. The organs are grotesquely twisted and deformed, some clearly originating from victims of horrific diseases or experiments.  
+The air in the hall is thick with the scent of chemicals, herbs, and decay. Each step is accompanied by the sound of dripping liquids and the rustling of unseen creatures._
+
+<Columns>
+<div>
+-   🔎 The hall contains various medicinal items that can be found. However, careless searching may result in spilling toxic chemicals, causing Distress.
+-   🔎 There are some notes about various illnesses observed on animals. Some of the notes seem to have been damaged by spilled liquid.
+-   🔎 One of the cages holds a dog that appears completely healthy. Its expression clearly shows fear, but also a desire to escape. Mishandling the animal risks a bite, causing Injury.
+
+-   📅 When the party approaches the chapel doors, a patient bursts out:  
+    -   _A man suddenly emerges from the doors, his face beaming with gratitude and joy. "Truly miraculous! Abbot Radomír has saved me!" he exclaims joyfully. "I was on the brink of death, but he cured me! He is a holy man!" The man quickly limps toward the exit, still praising the abbot._  
+    -   The patient ignores all attempts at communication and hurries to leave the monastery as fast as possible.
+        -   🔎 It’s suspicious how quickly the patient is running away.
+</div>
+
+<Aside>
+<List>
+    <Actor imageUri="/KAC/actors/medieval/dog.png" name="Fluffy Dog" occupation="Loyal and well-trained dog" toughness={2} threat="Attacks in melee for 1&nbsp;Injury." reward="Joins the party if freed" deck="Hussite Stories" />
+    <Asset size="54x86" {...assets.healing_salve} />
+    <Asset size="54x86" {...assets.herbal_remedy} />
+</List>
+</Aside>
+</Columns>
+
+![](/KAC/encounters/penance_in_blood/chapel.png)
+
+## Meeting the doctor
+
+<Player url="https://www.youtube.com/watch?v=gBZi2w11XxU" controls height={100} />
+
+_Opening the heavy iron-bound doors reveals the interior of the chapel. A spacious room with a high ceiling is dimly lit by candles, their flames casting long, dancing shadows across the walls adorned with religious paintings and relics. The space is cluttered with various containers, medical tools, and books. The air is thick with the scent of herbs and mildew, mingling with the sharp smell of fresh blood._  
+
+_With pounding hearts, you step into the cold and dark chapel. You pass rows of wooden benches occupied by eager young doctors and nurses. They hang on Abbot Radomír’s every word, feverishly jotting down notes in journals overflowing with annotations. Carved wooden statues of saints with anguished expressions silently watch your every move._  
+
+**💡 This is a good moment to offer players a new Stunt card that reflects the sense of accomplishment in finally reaching the doctor.**
+
+-   Brother Pavel closes the doors behind you and disappears into the hall.  
+-   Sister Tereza assists the abbot:  
+    -   🔎 Sister Tereza is an experienced nurse. She helps the abbot at the request of the abbess who sent her to him. However, she has doubts about the abbot’s medical and religious practices. While she will obey the abbot, she can be swayed, especially with religious arguments, and may abandon him to assist the party with treatment.  
+-   The Abbot:  
+    -   💡 The abbot is a religious fanatic and a madman. Occasionally, he manages to cure someone, but far more often, he fails. He attributes his failures to divine will.  
+    -   📅 If the abbot is attacked:  
+        -   The abbot defends himself with his minions, who are more than willing to take any blow aimed at him.  
+        -   The abbot can command his minions to attack his enemies. Minions use improvised weapons (e.g., scalpels or chairs; 1&nbsp;Injury) as many times as there are minions remaining, but no more than 4 times per round.  
+
+### Healing  
+
+<Columns>
+<div>
+-   The abbot first examines the wound and needs help keeping the patient still while tearing off the adhered bandages. Anything less than Success reduces the patient’s Health by 1.  
+    _Abbot Radomír leans over the patient’s open wound, from which pus is dripping. With a serious expression, he begins explaining that the problem lies in a humoral imbalance—an excess of bile that must be balanced._  
+
+-   The abbot then explains that poisoned blood is accumulating in the patient’s body. He needs the adventurers’ help to apply leeches to the patient’s swollen leg. Anything less than Success causes Distress to the player.  
+    _The patient begins to pale._  
+
+-   The abbot grows concerned with the patient’s worsening condition. You can see the abbot sweating. He insists it is a spiritual problem. He tasks a player with reading passages from the Bible in Latin during the procedure. With every mispronunciation, the abbot grows increasingly critical. Anything less than Success causes Distress to the player.  
+
+-   The patient shows no improvement and begins to burn with fever. The abbot declares it is time to call upon the saints. He brings forth a reliquary containing the dried finger of Saint Peter. The abbot circles the finger over the patient’s body, then along the chest and around the wound. Finally, he takes the finger and repeatedly plunges it into the wound, causing blood to spurt out. Everyone must withstand witnessing this horrifying scene. Failure: Distress.  
+-   Sister Tereza brings Radomír
+
+📅 **If the party assists the abbot throughout the procedure, or confronts him at any point during the care**:  
+-   The abbot stares into the patient’s face and recognizes him as Jan Žižka, the famous Hussite leader. He immediately accuses the party of being Hussites, and therefore servants of the devil.  
+-   The abbot grows enraged, declaring the group heretics who must be brought before God’s judgment. He orders all his minions to attack the party.  
+-   The abbot tries to shield himself by hiding behind his minions and patients.
+-   📅 If the abbot is attacked, he will throw his robe away to reveal an infected bite on his arm. He will grow crazy and tries to bite his attackers on each attack.
+    -   The players realise that the abbot is infected by rabies. The disease is fatal, highly contagious by contact with infected bodily liquids, and causes people in later stages to become crazy and aggressive.
+    -   **Partial success or Fumble: The abbot bites the attacker -> Doom**
+
+🎭 **The only escape route is back through the hall.**  
+
+<Player url="https://www.youtube.com/watch?v=dFcpLPBGHqg" controls height={100} />
+</div>
+<Aside>
+<List>
+    <Actor imageUri="/KAC/encounters/penance_in_blood/sister_tereza_actor.png" name="Sister Tereza" toughness={3} threat="Defends herself by throwing poisonous potions, causing 1&nbsp;Distress to everyone in the zone." reward="2x Bandages" deck="Hussite Stories" />
+    <Actor imageUri="/KAC/encounters/penance_in_blood/abbot_actor.png" name="Abbot Radomír" occupation="Miraculous healer" toughness={4} reward="Scalpel, Prayer Book, Herbal Remedy" deck="Hussite Stories" />
+    <Actor imageUri="/KAC/counters/morale.png" name="Minions" threat="Attack various characters for 1&nbsp;Injury with anything they can get their hands on per point of Toughness." toughness={8} deck="Hussite Stories" />
+    <Asset size="54x86" {...assets.bandages} />
+    <Asset size="54x86" {...assets.prayer_book} />
+</List>
+</Aside>
+</Columns>
+
+## Escape Through the hall
+
+<Columns>
+<div>
+-   The animals are rattling their cages as if possessed.  
+-   Alchemical setups topple over, spilling dangerous liquids across the hall. Moving through the hall requires at least a Partial Success, or the party risks Injury or Distress.  
+</div>
+<Aside>
+<List>
+    <Actor
+        imageUri="/KAC/actors/wolf.png"
+        name="Terrifying Animals"
+        toughness={4}
+        threat="Attack various characters for 1&nbsp;Injury by biting per point of Toughness."
+        reward="Poison"
+        deck="Hussite Stories"
+    />
+    <Asset size="54x86" {...assets.poison} />
+</List>
+</Aside>
+</Columns>
+
+## Escape Through the Waiting Room  
+
+<Columns>
+<div>
+-   Enraged patients stand in your way, spurred on by the abbot's cries for violence. Several of them are foaming at the mouth.
+-   At the door leading out of the waiting room, Brother Pavel blocks your path, demanding an explanation for what you’ve done to the abbot.  
+    -   🔎 Brother Pavel has long suspected that the abbot is a madman and a charlatan. He originally came to study medicine under him, as Pavel himself is an experienced healer. If the party can convince him, he will take them to his cabin in the woods and help them save Žižka.  
+</div>
+<Aside>
+<List>
+    <Actor imageUri="/KAC/encounters/penance_in_blood/brother_pavel_actor.png" name="Brother Pavel" notes="A man as strong as an ox" toughness={6} threat="Attacks in melee with a mace for 2&nbsp;Injuries, or a sweep hitting everyone in the zone for 1&nbsp;Injury." reward="Keys to the monastery" deck="Hussite Stories" />
+    <Actor imageUri="/KAC/encounters/penance_in_blood/wounded.png" name="Patients" threat="Attack various characters for 1&nbsp;Injury with anything they can get their hands on per every SECOND point of Toughness." reward="2x Bandages, 2x Herbs" toughness={8} deck="Hussite Stories" />
+</List>
+</Aside>
+</Columns>
+
+![](/KAC/encounters/penance_in_blood/escape.png)
+
+## Escape from the Monastery
+
+<Player url="https://www.youtube.com/watch?v=ubZhS-0l4wk" controls height={100} />
+
+-   If the heroes manage to escape the monastery, they find an abandoned cabin in the forest where they can attempt to treat Žižka themselves. If they have Sister Tereza or Brother Pavel with them, they will take care of Žižka and heal him.  
+
+🎭 **You’ve done your best to treat Žižka. It will take a few days to see if he recovers. What will you do in the meantime?**  
+
+## 📅 Those who had 3 or more Doom cards:
+
+_As the dust settles and the weight of your trials eases, it becomes clear that not all wounds can heal. You feel the telltale signs: a growing unease in the mind, a tremor in the body, and the sharp pang of dread.  
+The rabies has taken root, and no herb, no prayer, no effort can turn back its advance. You know the sickness will claim you soon. Your body will follow your mind into the abyss, and the fight will no longer be yours to wage. 
+But for all the horrors you’ve faced, for all the lives you’ve saved, there remains one choice still in your hands:_
+
+🎭 **How do you want to end this on your final day?**
+
+## 📅 If the patient survived:
+
+_After a few days, Žižka awakens and thanks the group wholeheartedly for caring for him when he needed it most. The party becomes heroes of the Hussite movement and secures their place in the history of the Czech nation._
+
+![](/KAC/encounters/penance_in_blood/zizka.jpg)

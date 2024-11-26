@@ -1,32 +1,21 @@
 import { twMerge } from "tailwind-merge";
-import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
 import Input from "../controls/Input";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
-import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
-import Card, { CardHeader } from "../gameComponents/Card";
-import { PaperProps } from "../../../../components/print/Paper/Paper";
-import { IconOrImage } from "../../../../components/Icon/IconOrImage";
+import { useChunkedPagesProps } from "./printControlUtils";
 import PrintPage from "../../../../components/print/PrintPage/PrintPage";
 import ColorBars from "../../../../components/print/PrintMarker/ColorBars";
 import CounterCard, { CounterCardBackFace } from "../gameComponents/CounterCard";
 import ActorCard, { ActorCardBackFace } from "../gameComponents/ActorCard";
 import { usePrintControlsStore } from "./PaperAndCardControls";
-import AssetCard, { AssetCardBackFace } from "../gameComponents/AssetCard";
+import { AssetCardBackFace } from "../gameComponents/AssetCard";
 
-import { assetMap as assets } from "../../data/assets-en-deck";
-
-export type StinyKlasteraPrintControlsProps = {
+export type PenanceInBloodPrintControlsProps = {
     className?: string;
 };
 
-type ImageCardProps = {
-    imageUri: string;
-    size?: PaperProps["size"];
-} & Omit<PaperProps, "size">;
-
-export default function StinyKlasteraPrintControls({ className }: StinyKlasteraPrintControlsProps) {
+export default function PenanceInBloodPrintControls({ className }: PenanceInBloodPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     const { defaultBleedMm, defaultCardSize, flipSecondHalf } = usePrintControlsStore();
     const cardProps = {
@@ -112,79 +101,80 @@ export default function StinyKlasteraPrintControls({ className }: StinyKlasteraP
                         >
                             <ActorCard
                                 {...cardProps}
-                                imageUri="/KAC/encounters/stiny_klastera/brother_pavel_actor.png"
-                                name="Bratr Pavel"
-                                notes="Chlap jak hora"
+                                imageUri="/KAC/encounters/penance_in_blood/brother_pavel_actor.png"
+                                name="Brother Pavel"
+                                notes="A man as strong as an ox"
                                 toughness={6}
-                                threat="Útočí na blízko palicí za 2&nbsp;Zranění, nebo švihem na všechny v zóně za 1&nbsp;Zranění."
-                                reward="Klíče od kláštera"
-                                deck="Příběhy Husitů"
+                                threat="Attacks in melee with a mace for 2&nbsp;Injuries, or a sweep hitting everyone in the zone for 1&nbsp;Injury."
+                                reward="Keys to the monastery"
+                                deck="Hussite Stories"
                             />
                             <CounterCard
                                 {...cardProps}
                                 icon="/KAC/heartbeat.png"
-                                title="Zdraví pacienta"
-                                note="Pacient pomalu umírá (-1&nbsp;za kolo)."
-                                threat="Pro pacienta může být už pozdě"
+                                title="Patient's Health"
+                                note="The patient is slowly dying (-1&nbsp;per round)."
+                                threat="It may already be too late for the patient"
                                 total={12}
                                 current={12}
-                                deck="Příběhy Husitů"
+                                deck="Hussite Stories"
                             />
                             <CounterCard
                                 {...cardProps}
                                 icon="/KAC/counters/drop.png"
-                                title="Vynést splašky"
-                                threat="Splašky jsou nechutné a slabá vůle způsobí Utrpení (Distress)"
+                                title="Dispose of Waste"
+                                threat="The waste is disgusting, and weak willpower causes Distress."
                                 total={4}
                                 current={4}
-                                deck="Příběhy Husitů"
+                                deck="Hussite Stories"
                             />
                             <CounterCard
                                 {...cardProps}
                                 icon="/KAC/blood.png"
-                                title="Vytřít čekárnu"
-                                threat="Těžko říct, co se tu stalo, ale krev je všude. Hrozí uklouznutí Zranění (Injury)"
+                                title="Clean the Waiting Room"
+                                threat="Hard to tell what happened here, but there’s blood everywhere. Risk of slipping and Injury."
                                 total={4}
                                 current={4}
-                                deck="Příběhy Husitů"
+                                deck="Hussite Stories"
                             />
                             <CounterCard
                                 {...cardPropsSecondHalf}
                                 icon="/KAC/counters/danger.png"
-                                title="Pohřbít mrtvoly"
-                                threat="Neohrabaná manipulace s mrtvolou způsobí praskání boláků. Hrozí nakažení morem: Zkáza (Doom)"
+                                title="Bury the Corpses"
+                                threat="Clumsy handling of the corpse causes boils to burst. Risk of plague infection: Doom."
                                 total={4}
                                 current={4}
-                                deck="Příběhy Husitů"
+                                deck="Hussite Stories"
                             />
                             <ActorCard
                                 {...cardPropsSecondHalf}
                                 imageUri="/KAC/actors/medieval/dog.png"
-                                name="Huňatý pes"
-                                occupation="Loyální a dobře vycvyčený pes"
+                                name="Fluffy Dog"
+                                occupation="Loyal and well-trained dog"
                                 toughness={2}
-                                threat="Útočí na blízko za 1&nbsp;Zranění."
-                                reward="Přidá se k družíně, když ho vysvobodí"
-                                deck="Příběhy Husitů"
+                                threat="Attacks in melee for 1&nbsp;Injury."
+                                reward="Joins the party if freed"
+                                deck="Hussite Stories"
                             />
                             <ActorCard
                                 {...cardPropsSecondHalf}
-                                imageUri="/KAC/encounters/stiny_klastera/sister_tereza_actor.png"
-                                name="Sestra Terezie"
+                                imageUri="/KAC/encounters/penance_in_blood/sister_tereza_actor.png"
+                                name="Sister Tereza"
                                 toughness={3}
-                                threat="Brání se házením jedovatých lektvarů za 1&nbsp;Utrpení všem v zóně"
-                                reward="2x Obvazy"
-                                deck="Příběhy Husitů"
+                                threat="Defends herself by throwing poisonous potions, causing 1&nbsp;Distress to everyone in the zone."
+                                reward="2x Bandages"
+                                deck="Hussite Stories"
                             />
                             <ActorCard
                                 {...cardPropsSecondHalf}
-                                imageUri="/KAC/encounters/stiny_klastera/abbot_actor.png"
-                                name="Opat Radomír"
-                                occupation="Zázračný léčitel"
+                                imageUri="/KAC/encounters/penance_in_blood/abbot_actor.png"
+                                name="Abbot Radomír"
+                                occupation="Miraculous healer"
                                 toughness={4}
-                                reward="Skalpel, Modlitební knížka, Herbal Remedy"
-                                deck="Příběhy Husitů"
+                                reward="Scalpel, Prayer Book, Herbal Remedy"
+                                deck="Hussite Stories"
                             />
+
                             <div className={labelClassName}>
                                 {label} 1/{totalPages}
                                 {showColorBars ? <ColorBars /> : undefined}
@@ -229,28 +219,28 @@ export default function StinyKlasteraPrintControls({ className }: StinyKlasteraP
                             <ActorCard
                                 {...cardProps}
                                 imageUri="/KAC/counters/morale.png"
-                                name="Přisluhovači"
-                                threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý bod Odolnosti"
+                                name="Minions"
+                                threat="Attack various characters for 1&nbsp;Injury with anything they can get their hands on per point of Toughness."
                                 toughness={8}
-                                deck="Příběhy Husitů"
+                                deck="Hussite Stories"
                             />
                             <ActorCard
                                 {...cardProps}
                                 imageUri="/KAC/actors/wolf.png"
-                                name="Děsivá zvířata"
+                                name="Terrifying Animals"
                                 toughness={4}
-                                threat="Útočí na různé postavy za 1&nbsp;Zranění kousnutím za každý bod Odolnosti"
-                                reward="Jed"
-                                deck="Příběhy Husitů"
+                                threat="Attack various characters for 1&nbsp;Injury by biting per point of Toughness."
+                                reward="Poison"
+                                deck="Hussite Stories"
                             />
                             <ActorCard
                                 {...cardProps}
-                                imageUri="/KAC/encounters/stiny_klastera/wounded.png"
-                                name="Pacienti"
-                                threat="Útočí na různé postavy za 1&nbsp;Zranění čímkoliv, co jim padne do ruky za každý DRUHÝ bod Odolnosti"
-                                reward="2x Obvazy, 2x Byliny"
+                                imageUri="/KAC/encounters/penance_in_blood/wounded.png"
+                                name="Patients"
+                                threat="Attack various characters for 1&nbsp;Injury with anything they can get their hands on per every SECOND point of Toughness."
+                                reward="2x Bandages, 2x Herbs"
                                 toughness={8}
-                                deck="Příběhy Husitů"
+                                deck="Hussite Stories"
                             />
 
                             <div className={labelClassName}>

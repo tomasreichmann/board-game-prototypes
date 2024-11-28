@@ -32,7 +32,7 @@ export const stripMetaPropsFromContent = (contentItems: ContentItemProps[]) =>
 
 export const groupLayoutByType = (layout: GameDocType["layouts"]) => {
     const groups: Partial<{ [key in LayoutTypeEnum]: LayoutType[] }> = {};
-    layout.forEach((layout) => {
+    layout?.forEach((layout) => {
         const key = layout.type;
         groups[key] = groups[key] || [];
         (groups[key] as LayoutType[]).push(layout);

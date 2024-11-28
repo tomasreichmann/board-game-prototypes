@@ -6,6 +6,8 @@ import createInitialBoard from "./createInitialBoard";
 
 export type StoreRequestType = {};
 
+const areValidIndexes = (...indexes: number[]) => indexes.every((index) => index >= 0);
+
 const findContentItemPathById = (game: GameDocType, contentItemId: string) => {
     for (let layoutIndex = 0; layoutIndex < game.layouts.length; layoutIndex++) {
         const layout = game.layouts[layoutIndex];
@@ -37,7 +39,7 @@ const findContentItemByPath = (game: GameDocType, path: string | null) => {
         return null;
     }
     const [layoutIndex, contentIndex] = path.split(".").map(Number);
-    if (!layoutIndex || !contentIndex) {
+    if (!areValidIndexes(layoutIndex, contentIndex)) {
         console.warn("findContentItemByPath: no layoutIndex or contentIndex", { layoutIndex, contentIndex });
         return null;
     }
@@ -61,7 +63,7 @@ const updateContentItem = (
     updater: (contentItem: ContentItemType) => ContentItemType
 ): GameDocType => {
     const [targetLayoutIndex, targetContentIndex] = contentItemPath.split(".").map(Number);
-    if (!targetLayoutIndex || targetLayoutIndex < 0 || !targetContentIndex || targetContentIndex < 0) {
+    if (!areValidIndexes(targetLayoutIndex, targetContentIndex)) {
         console.warn("Invalid contentItemPath", {
             layoutIndex: targetLayoutIndex,
             contentIndex: targetContentIndex,
@@ -127,8 +129,11 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
             console.error("Content item not found", action.itemId, game.layouts);
             return game;
         }
+
         const isSelected = resolveIsSelected(game, contentItem, action.user.id);
         console.log("isSelected", isSelected);
+
+        // Play from hand to the discard pile
 
         // Deselect
         if (isSelected) {

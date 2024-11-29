@@ -8,6 +8,8 @@ defaultCardProps: {
 
 ### Mighty Decks is a tabletop game system to run narrative games. It is setting independent, focused on roleplay and building drama.
 
+> TL;DR: Mighty Decks is a setting-independent tabletop narrative game system focused on roleplay and drama. It uses a fast-paced, no-dice mechanic where players draw and play Outcome cards to determine success or failure in actions, supporting diverse gameplay like combat, social encounters, crafting, stealth, and more. Characters face threats through Injuries, Distress, and Counters representing progress or risks. Players can influence outcomes with their unique abilities and strategic card use, while the Storyteller guides the story with non-player characters, goals, and encounters. Designed for 3-5 players and a Storyteller, it emphasizes collaborative storytelling and creative problem-solving.
+
 It is fast-paced without any complicated arithmetic (all values are whole numbers from 1 to 12, but usually 1-3).  
 There is no dice rolling and minimal output randomness. Players draw Outcome cards and get to decide when they succeed and when they fumble. You can still use your pretty dice to mark progress.
 
@@ -16,7 +18,7 @@ The system supports all kinds of gameplay:
 -   **Combat!** - e.g. melee, ranged, magic, ship to ship, space-ship, large-scale battles,
 -   **Social encounters** - e.g. persuading someone to give you information or lying your way out of a fine,
 -   **Drama** - e.g. dealing with stress, panic and moral questions,
--   **Stealth** - e.g. sneaking past guards and overcomming a locked door, hacking,
+-   **Stealth** - e.g. sneaking past guards and overcoming a locked door, hacking,
 -   **Crafting** - e.g. smithing, alchemy, engineering, architecture,
 -   **Piloting** - e.g. evading pursuit on a horse, flying through an asteroid field,
 -   **Survival** - e.g. wading through a storm, tracking an animal, tending wounds
@@ -27,11 +29,11 @@ The system supports all kinds of gameplay:
 -   If a player attempts something that could reasonably fail, the storyteller may tell them to play an Outcome card.
 -   Each player has their own deck of Outcome cards. At the beginning of the session, the deck is shuffled, and each player draws **three** cards from the top of the deck.
 -   The Outcome deck consists of:
-    -   **Success** (3x): The action succeeded (Effect +2).
-    -   **Partial success** (3x): The action succeeded partially (Effect +1, or success with some complication).
-    -   **Fumble** (4x): The action failed (Effect 0).
+    -   **Success** (3x): The action succeeded (Effect +2).
+    -   **Partial success** (3x): The action succeeded partially (Effect +1, or success with some complication).
+    -   **Fumble** (4x): The action failed (Effect -1).
     -   **Chaos** (1x): Something else happened instead of the intended action.
-    -   **Super** (1x): Activates a special action specific for each hero (Effect +3).
+    -   **Super** (1x): Activates a special action specific for each hero (Effect +3).
 
 import outcomes from "../data/outcomes-en.csv";
 
@@ -49,7 +51,7 @@ import outcomes from "../data/outcomes-en.csv";
 import effects from "../data/effects-en.csv";
 
 -   If a player has only Fumble cards or at least 3 Fumble cards in their hand, they immediately announce it to the storyteller. This triggers a **Tragedy**.
-The storyteller describes how the Tragedy severly hurt the player. E.g. Player gets unconscious, looses an eye, looses a precious object. 
+The storyteller describes how the Tragedy severely hurt the player. E.g. Player gets unconscious, looses an eye, looses a precious object. 
 -   If a player doesn't have any Outcome cards in their hand, they are defenseless, but can rest during their turn and draw cards until they have 3 cards in hand.
 -   Non-player characters are represented by **Actor cards**, which the storyteller places in front of the players. These characters will take their action after the player's turn.
 
@@ -100,8 +102,15 @@ In this case it is especially important to clearly explain the mechanics to the 
 ### Injuries
 
 -   Injuries threaten to render the player character unconscious until someone resurrects them.
--   If a player gains a fourth Injury card, their character is unconscious and cannot perform further actions until someone resurrects them. The character also receives a Chaos card.
--   Injuries can be removed by specific cards or by a treatment action.
+-   Injuries can be removed by spending a some consumable Asset cards or by an action meant to treat the injury.
+-   Players can only take so many Injury cards (usually 4) before going Unconscious. 
+-   An Unconscious character can only draw a card from their Outcome deck:
+    -   On Success or Special they discard one Injury card and are no longer Unconscious.
+    -   On Fumble they get a Doom card. If an Unconscious character has 3 or more Doom cards, they are dead.
+    -   Otherwise nothing happens.
+    -   Unconscious characters cannot get more Injury cards.
+    -   Discarding an Injury card by other means also causes the character to no longer be Unconscious.
+
 
 <List>
     <Effect {...effects[0]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
@@ -111,10 +120,13 @@ In this case it is especially important to clearly explain the mechanics to the 
 
 ### Distress
 
--   Distress threatens to break the character's current will to continue fighting until they recover.
--   If a player has at least 3 Distress cards, they are Gripped by panic. Instead of playing cards from their hand, they play cards from the top of the deck.
--   If a player gains a fourth Distress card, their character is Overwhelmed by hopelessness, and they can decide in their turn whether to surrender or run to safety.
--   Hope can be restored by resting, encouraging ally actions, or indulging in their Vice.
+-   Distress threatens to break the character's current will to continue fighting.
+-   If a player has 3 or more Distress cards, they are in Panic:
+    -   They shuffle their Outcome cards from their hand to their Outcome deck.
+    -   On their turn, instead of playing cards from their hand, they play cards from the top of their Outcome deck.
+    -   Discarding a 3rd Distress card causes the character to no longer be in Panic.
+-   If a player gains the 4th Distress card, their character is Hopeless: On their turn, they can only decide to run away or surrender.
+    -   Discarding the 4th Distress card causes the character to no longer be Hopeless.
 
 <List>
     <Effect {...effects[1]} {...defaultCardProps} broadcastProps={{ hideControls: true }} />
@@ -131,12 +143,17 @@ Stunts are exceptions from rules that players can pick during character creation
 An Encounter is a scene where players need overcome an obstacle or reach a specific goal.  
 It can include:
 
--   **Actors** - non-player characters
--   **Clocks** - a progress tracker of effort required to fulfill a specific goal or tracks time in turns or rounds before something happens.
+-   **Actors** - Non-player characters
+-   **Counters** - Progress trackers that…
+    -   show the effort required to fulfill a specific goal,
+    -   tick down to some threat on some condition,
+    -   track time in turns or rounds before something happens.
+-   **Locations** - Places that players can move to.
+-   **Assets** - Equipment, vehicles, consumables, quest items for players to use or associated with Actors. They can have some mechanical function.
 
 ## Getting a group together
 
-Mighty Decks is best played with **one Game Master and 3-5 players**. Reach out to your friends or look for a group at a gaming convention or your local board game store.
+Mighty Decks is best played with **one Storyteller and 1-5 players**. Reach out to your friends or look for a group at a gaming convention or your local board game store.
 
 ### Playing online
 

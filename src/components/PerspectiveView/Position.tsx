@@ -62,6 +62,7 @@ const getStyle = (
         transform: `translate3d(0, 0, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
         transformOrigin,
         filter: `blur(${blur}px)`,
+        transition: "all 500ms ease-in-out",
         opacity,
         display,
     };

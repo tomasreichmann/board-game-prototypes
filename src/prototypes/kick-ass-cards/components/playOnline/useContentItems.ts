@@ -196,7 +196,35 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
             contentItemProps.push(...misc);
         }
         if (isDebugging && debug?.length) {
-            contentItemProps.push(...debug);
+            contentItemProps.push(...debug, {
+                type: ContentItemTypeEnum.OutcomeCard,
+                id: "TEST",
+                // isClickable: true,
+
+                castShadow: true,
+                componentProps: {
+                    description: "It worked!<BR>+2 Effect",
+                    title: "Success",
+                    icon: "/KAC/bulls-eye.png",
+                    deck: "universal",
+                    slug: "TEST",
+                    instructions: "",
+                },
+                isSelected: false,
+                ownerUid: "user_2fp2BZFGJLo2W5FleZ8OCik9qoj",
+                positionProps: {
+                    id: "TEST",
+                    x: 200,
+                    y: 200,
+                    z: Math.random() * 250,
+                    width: 166.298,
+                    height: 253.22,
+                    className: "transition-all duration-500 ease",
+                    /* rotateX: Math.random() * 360 - 180,
+                    rotateY: Math.random() * 360 - 180,
+                    rotateZ: Math.random() * 360 - 180, */
+                },
+            });
         }
 
         return contentItemProps;

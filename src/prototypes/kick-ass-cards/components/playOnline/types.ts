@@ -52,6 +52,7 @@ export type ContentItemType = {
     type: ContentItemTypeEnum;
     componentProps: any;
     positionProps: PositionProps;
+    castShadow?: boolean;
     ownerUid?: string;
     isHighlightedForOwner?: boolean;
     isHighlightedForStoryteller?: boolean;

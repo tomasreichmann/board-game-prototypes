@@ -119,7 +119,7 @@ export const organizeHand = (
     const rotationCoefficientY = Math.cos(degreesToRadians(rotateX));
     const rotationCoefficientZ = Math.sin(degreesToRadians(rotateX));
 
-    return content.map((contentItem, index) => {
+    return content.toReversed().map((contentItem, index) => {
         const isSelectedOffset = contentItem.isSelected ? 0.5 : 0;
         const rotateZ = startRotateZ + (contentCount > 1 ? index * rotateZStep : 0); // remove 0
         const x = baseX + (contentCount > 1 ? index * xStep : 0);

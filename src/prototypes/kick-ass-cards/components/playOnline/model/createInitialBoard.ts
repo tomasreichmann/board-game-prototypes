@@ -72,7 +72,7 @@ export default function createInitialBoard(
         className: "border-2 border-kac-cloth-dark pointer-events-none",
         x: 0,
         y: -otherPlayerHandsSize.height,
-        z: 80,
+        z: 100,
         rotateX: -(viewRotateX || 0),
         ...otherPlayerHandsSize,
     };

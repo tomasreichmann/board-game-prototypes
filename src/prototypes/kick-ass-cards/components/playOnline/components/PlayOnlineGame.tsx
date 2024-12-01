@@ -20,6 +20,7 @@ import DataToggle from "../../../../../components/DataToggle";
 import GameBoard from "./GameBoard";
 import { createFakeUser } from "../model/factories";
 import ToggleCheckbox from "../../controls/ToggleCheckbox";
+import BigSignInButton from "./BigSignInButton";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
@@ -56,6 +57,14 @@ export default function PlayOnlineGame() {
                 )}
                 {error?.code === "not-found" && <CreateOrJoinGame className="flex-grow-0 mt-8" />}
             </ErrorMessage>
+        );
+    }
+
+    if (!user) {
+        return (
+            <div className="flex-1 flex flex-col">
+                <BigSignInButton />
+            </div>
         );
     }
 
@@ -187,7 +196,7 @@ export default function PlayOnlineGame() {
                         </div>
                     </div>
                     <div className="flex flex-row flex-wrap gap-2 items-baseline content-center min-h-[40px] py-4">
-                        {<H4>Storytellers</H4>}
+                        {<H4>Storytellers:</H4>}
                         {game?.storytellers?.map((userItem) => {
                             const isCurrentUser = userItem.uid === user?.id;
                             const isFakeUser = (userItem.uid ?? "").startsWith("fake-");
@@ -236,7 +245,7 @@ export default function PlayOnlineGame() {
                             </Button>
                         )}
 
-                        {<H4 className="ml-4">Players</H4>}
+                        {<H4 className="ml-4">Players:</H4>}
                         {game?.players?.map((userItem) => {
                             const isCurrentUser = userItem.uid === user?.id;
                             const isFakeUser = (userItem.uid ?? "").startsWith("fake-");
@@ -245,6 +254,7 @@ export default function PlayOnlineGame() {
                                     {user && (isCurrentUser || isFakeUser) && (
                                         <Button
                                             variant="text"
+                                            className="mr-4"
                                             onClick={() =>
                                                 dispatch({
                                                     type: ActionTypeEnum.LeaveGameAsPlayer,

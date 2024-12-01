@@ -238,7 +238,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                             ...organizeDiscard(currentPlayerDiscardContent, currentPlayerDiscardPosition)
                         );
                     } else {
-                        console.error("Could not find deck for player", uid, "in", deckLayouts);
+                        console.error("Could not find discard for player", uid, "in", deckLayouts);
                     }
                 } else {
                     console.error("Could not find deck for player", uid, "in", deckLayouts);
@@ -352,6 +352,27 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                     };
                     combinedDebug.push(playerDebugArea);
                     contentItemProps.push(...organizeDeck(playerDeck.content, playerDeckArea.positionProps));
+
+                    const playerDiscard = discardLayouts.find((item) => item.id === uid);
+                    const playerDiscardPosition = {
+                        ...playerDeckArea.positionProps,
+                        x: playerDeckArea.positionProps.x + outcomeCardSize.width + cardMargin,
+                    };
+                    if (playerDiscard) {
+                        const playerDiscardContent = playerDiscard.content.map((content, contentIndex, allItems) => {
+                            const isClickable = false;
+                            const isSelected = isSelectedItem(content, game, uid);
+                            return {
+                                ...content,
+                                isClickable,
+                                isSelected,
+                            };
+                        });
+
+                        contentItemProps.push(...organizeDiscard(playerDiscardContent, playerDiscardPosition));
+                    } else {
+                        console.error("Could not find discard for player", uid, "in", deckLayouts);
+                    }
                 } else {
                     console.warn("Could not find deck for player", uid, "in", deckLayouts);
                 }

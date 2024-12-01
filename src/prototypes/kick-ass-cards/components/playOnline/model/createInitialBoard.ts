@@ -1,11 +1,10 @@
 import { range, shuffle } from "lodash";
-import outcomes from "../../data/outcomeDeck";
-import { ContentItemType, ContentItemTypeEnum, GameDocType, GameLayoutType, LayoutType, LayoutTypeEnum } from "./types";
-import { cardSizes } from "../../../../components/print/paperSizes";
-import mmToPx from "../../../../utils/mmToPx";
-import { PerspectiveViewStateType } from "../../../../components/PerspectiveView/perspectiveViewModel";
-import { getCenterPan } from "../../../../components/PerspectiveView/utils";
-import { PositionProps } from "../../../../components/PerspectiveView/Position";
+import outcomes from "../../../data/outcomeDeck";
+import { ContentItemType, ContentItemTypeEnum, FocusModeEnum, GameDocType, LayoutType, LayoutTypeEnum } from "./types";
+import { cardSizes } from "../../../../../components/print/paperSizes";
+import mmToPx from "../../../../../utils/mmToPx";
+import { getCenterPan } from "../../../../../components/PerspectiveView/utils";
+import { PositionProps } from "../../../../../components/PerspectiveView/Position";
 
 export const createOutcomeDeck = () => {};
 
@@ -15,30 +14,21 @@ export const outcomeCardSize = {
     height: mmToPx(outcomeCardSizeHeightMm),
 };
 
-const cardHeight = outcomeCardSize.height;
 const cardMargin = 20;
 
-export default function createInitialBoard(game: GameDocType): Partial<GameDocType> {
+export default function createInitialBoard(
+    game: GameDocType,
+    stageWidth = 1920,
+    stageHeight = 1080
+): Partial<GameDocType> {
     // Generate stacks of Outcome cards for each player
     const layouts: GameDocType["layouts"] = [];
 
-    const stageWidth = 1920;
-    const stageHeight = 1080;
-    const centerPan = getCenterPan(stageWidth, stageHeight, window.innerWidth, window.innerHeight);
+    const viewRotateX = 40;
 
-    const viewState: Partial<PerspectiveViewStateType> = {
-        stage: {
-            x: -centerPan.x,
-            y: -stageHeight * 0.13,
-            z: 100, // Some items may not be intractable with negative Z
-            rotateX: 40,
-            rotateY: 0,
-            rotateZ: 0,
-            width: stageWidth,
-            height: stageHeight,
-            scale: 0.5, // TODO calculate to fit screen
-        },
-        lens: { perspective: 1000, depthOfField: 1000 },
+    const focus: GameDocType["focus"] = {
+        at: "defaultView",
+        mode: FocusModeEnum.Contain,
     };
 
     const debugPositions = [] as PositionProps[];
@@ -46,22 +36,22 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
     const horizontalSpaceForOutcomeDeckAndDiscard = (outcomeCardSize.width + cardMargin) * 2 + cardMargin;
     const currentUserHandSize = {
         width: stageWidth - horizontalSpaceForOutcomeDeckAndDiscard,
-        height: cardHeight,
+        height: outcomeCardSize.height,
     };
     const currentUserHandProps = {
         id: "currentUserHand",
         className: "border-2 border-kac-gold-dark pointer-events-none",
         x: horizontalSpaceForOutcomeDeckAndDiscard,
-        y: stageHeight - cardHeight / 2,
-        z: cardHeight / 6,
-        rotateX: -(viewState?.stage?.rotateX || 0),
+        y: stageHeight - outcomeCardSize.height / 2,
+        z: outcomeCardSize.height / 6,
+        rotateX: -(viewRotateX || 0),
         ...currentUserHandSize,
     };
     debugPositions.push(currentUserHandProps);
 
     const currentUserTableSize = {
         width: stageWidth,
-        height: cardHeight,
+        height: outcomeCardSize.height,
     };
     const currentUserTableProps = {
         id: "currentUserTable",
@@ -75,7 +65,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
 
     const otherPlayerHandsSize = {
         width: stageWidth,
-        height: cardHeight,
+        height: outcomeCardSize.height,
     };
     const otherPlayerHandsProps = {
         id: "otherPlayerHands",
@@ -83,14 +73,14 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         x: 0,
         y: -otherPlayerHandsSize.height,
         z: 40,
-        rotateX: -(viewState?.stage?.rotateX || 0),
+        rotateX: -(viewRotateX || 0),
         ...otherPlayerHandsSize,
     };
     debugPositions.push(otherPlayerHandsProps);
 
     const otherPlayerTablesSize = {
         width: stageWidth,
-        height: cardHeight,
+        height: outcomeCardSize.height,
     };
     const otherPlayerTablesProps = {
         id: "otherPlayerTables",
@@ -129,7 +119,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         className: "border-2 border-kac-steel-dark pointer-events-none pointer-events-none",
         x: stageWidth / 2 - defaultViewSize.width / 2,
         y: 0,
-        z: 0,
+        z: 100,
         rotateX: -40,
         ...defaultViewSize,
     };
@@ -227,9 +217,9 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         )
     );
 
-    // Hands
     const initialCardsInHand = 3;
 
+    // Hands
     range(0, playerCount).forEach((playerIndex) => {
         const playerUid = game.playerIds?.[playerIndex];
         if (!playerUid) {
@@ -247,6 +237,7 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         });
     });
 
+    // Decks
     range(0, playerCount).forEach((playerIndex) => {
         const playerUid = game.playerIds?.[playerIndex];
         if (!playerUid) {
@@ -270,6 +261,20 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         });
     });
 
+    // Discards
+    range(0, playerCount).forEach((playerIndex) => {
+        const playerUid = game.playerIds?.[playerIndex];
+        if (!playerUid) {
+            throw new Error("Player UID not found");
+        }
+        layouts.push({
+            id: playerUid,
+            ownerId: playerUid,
+            type: LayoutTypeEnum.Discard,
+            content: [],
+        });
+    });
+
     debugLayout.content.push({
         id: "flippable-test",
         type: ContentItemTypeEnum.FlippableTest,
@@ -277,5 +282,5 @@ export default function createInitialBoard(game: GameDocType): Partial<GameDocTy
         positionProps: { id: "flippable-test", x: 0, y: stageHeight / 3, z: 0 },
     });
 
-    return { ...game, layouts: layouts, viewState };
+    return { ...game, layouts: layouts, focus, stageWidth, stageHeight };
 }

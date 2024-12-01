@@ -1,14 +1,14 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import useGame from "./useGame";
-import Button from "../controls/Button";
-import { ActionTypeEnum, GameStateEnum } from "./types";
+import useGame from "../hooks/useGame";
+import Button from "../../controls/Button";
+import { ActionTypeEnum, GameStateEnum } from "../model/types";
 import useMeasure from "react-use-measure";
-import PerspectiveView from "../../../../components/PerspectiveView/PerspectiveView";
-import PerspectiveViewProvider from "../../../../components/PerspectiveView/PerspectiveViewProvider";
+import PerspectiveView from "../../../../../components/PerspectiveView/PerspectiveView";
+import PerspectiveViewProvider from "../../../../../components/PerspectiveView/PerspectiveViewProvider";
 import PerspectiveBoard from "./PerspectiveBoard";
-import Text from "../content/Text";
-import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
+import Text from "../../content/Text";
+import ButtonWithConfirmation from "../../controls/ButtonWithConfirmation";
 
 export type GameBoardProps = {
     className?: string;

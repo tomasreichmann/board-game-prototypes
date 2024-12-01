@@ -1,9 +1,20 @@
-import { useMemo } from "react";
-import { ContentItemType, ContentItemTypeEnum, GameDocType, GameStateEnum, LayoutType, LayoutTypeEnum } from "./types";
-import { ContentItemProps } from "./ContentItem";
-import { useAuth } from "@clerk/clerk-react";
-import { organizeDeck, organizeHand } from "./organizeBoardItems";
-import { outcomeCardSize } from "./createInitialBoard";
+import { CSSProperties, useMemo } from "react";
+import {
+    ActionTypeEnum,
+    ContentItemType,
+    ContentItemTypeEnum,
+    GameDocType,
+    GameStateEnum,
+    LayoutType,
+    LayoutTypeEnum,
+} from "../model/types";
+import { ContentItemProps } from "../components/ContentItem";
+import { useAuth, useUser } from "@clerk/clerk-react";
+import { organizeDeck, organizeHand } from "../model/organizeBoardItems";
+import { outcomeCardSize } from "../model/createInitialBoard";
+import { DispatchType } from "./useGame";
+import { makePath } from "../model/gameDispatcher";
+import { isClickableClassName } from "../constants";
 
 const handStackingVisibilityMultiplier = 0.9;
 
@@ -40,8 +51,9 @@ export const groupLayoutByType = (layout: GameDocType["layouts"]) => {
     return groups;
 };
 
-export default function useContentItems(game: GameDocType | undefined): ContentItemProps[] {
-    const { userId: uid } = useAuth();
+export default function useContentItems(game: GameDocType | undefined, dispatch: DispatchType): ContentItemProps[] {
+    const { user } = useUser();
+    const uid = user?.id;
     /* For transitions, lastGame might be useful
     const lastGameRef = useRef(game);
     const lastGame = lastGameRef.current; */
@@ -56,51 +68,118 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
         }
         const deckLayouts = layoutGroups[LayoutTypeEnum.Deck] || [];
         const handLayouts = layoutGroups[LayoutTypeEnum.Hand] || [];
+        const discardLayouts = layoutGroups[LayoutTypeEnum.Discard] || [];
 
         const combinedDebug: ContentItemType[] = [...debug];
         const contentItemProps: ContentItemProps[] = [];
         const isPlayer = (playerIds ?? []).includes(uid);
         // Generate curent player deck content items
         if (isPlayer) {
-            const currentPlayerDeckArea =
-                isPlayer && debug ? debug.find((item) => item.id === "currentUserTable") : undefined;
+            const currentPlayerDeckArea = debug ? debug.find((item) => item.id === "currentUserTable") : undefined;
+            const currentPlayerDeck = deckLayouts.find((item) => item.id === uid);
+            const currentPlayerDeckPath = makePath(LayoutTypeEnum.Deck, uid);
             if (currentPlayerDeckArea) {
-                const currentPlayerDeck = deckLayouts.find((item) => item.id === uid);
                 if (currentPlayerDeck) {
                     contentItemProps.push(
                         ...organizeDeck(
-                            currentPlayerDeck.content.map((content) => ({
-                                ...content,
-                                isClickable: content.isClickableForOwner,
-                            })),
+                            currentPlayerDeck.content.map((content) => {
+                                const isClickable = content.isClickable || content.isClickableForOwner; // TODO resolve against current user
+                                const isSelected = content.isSelected || content.isSelectedForOwner; // TODO resolve against current user
+                                return {
+                                    ...content,
+                                    isClickable,
+                                    isSelected,
+                                    onClick: isClickable
+                                        ? () => {
+                                              if (user) {
+                                                  dispatch({
+                                                      type: ActionTypeEnum.ContentItemClick,
+                                                      user,
+                                                      itemId: content.id,
+                                                  });
+                                              }
+                                          }
+                                        : undefined,
+                                };
+                            }),
                             currentPlayerDeckArea.positionProps
                         )
                     );
+                    // if deck is empty, show a placeholder to shuffle discard pile
                 } else {
                     console.error("Could not find deck for player", uid, "in", deckLayouts);
                 }
             }
-            const currentPlayerHandArea =
-                isPlayer && debug ? debug.find((item) => item.id === "currentUserHand") : undefined;
+            const currentPlayerHandArea = debug ? debug.find((item) => item.id === "currentUserHand") : undefined;
             if (currentPlayerHandArea) {
                 const currentPlayerHand = handLayouts.find((item) => item.id === uid);
+                const currentPlayerHandPath = makePath(LayoutTypeEnum.Hand, uid);
 
                 if (currentPlayerHand) {
+                    const handContent: ContentItemProps[] = currentPlayerHand.content.map((content) => {
+                        const isClickable = content.isClickable || content.isClickableForOwner;
+                        const isSelected = content.isSelected || content.isSelectedForOwner;
+                        return {
+                            ...content,
+                            isClickable,
+                            isSelected,
+                            onClick: isClickable
+                                ? () => {
+                                      if (user) {
+                                          dispatch({
+                                              type: ActionTypeEnum.ContentItemClick,
+                                              user,
+                                              itemId: content.id,
+                                          });
+                                      }
+                                  }
+                                : undefined,
+                        };
+                    });
+                    // if deck card is selected, show placeholder in hand
+                    const lastDeckCard = currentPlayerDeck?.content?.at(-1);
+                    if (lastDeckCard?.isSelected || lastDeckCard?.isSelectedForOwner) {
+                        const placeholderId = `placeholder-hand-${uid}`;
+                        handContent.push({
+                            id: placeholderId,
+                            ownerUid: uid,
+                            type: ContentItemTypeEnum.PlaceholderCard,
+                            isClickable: true,
+                            isClickableForOwner: true,
+                            isClickableForStoryteller: false,
+                            isSelected: false,
+                            isSelectedForOwner: false,
+                            isSelectedForStoryteller: false,
+                            isHighlighted: false,
+                            isHighlightedForOwner: false,
+                            isHighlightedForStoryteller: false,
+                            positionProps: { id: placeholderId, x: 0, y: 0, z: 0, ...outcomeCardSize },
+                            componentProps: {
+                                className: isClickableClassName,
+                                text: "Draw",
+                                textProps: { variant: "h1", color: "primary", className: "text-center" },
+                                cardProps: { size: "Mini European" },
+                            },
+                            onClick: () => {
+                                console.log("Draw card");
+                                dispatch({
+                                    type: ActionTypeEnum.MoveItem,
+                                    pathFrom: makePath(currentPlayerDeckPath, lastDeckCard.id),
+                                    pathTo: currentPlayerHandPath,
+                                    deselectPaths: [currentPlayerDeckPath],
+                                });
+                            },
+                        });
+                    }
                     contentItemProps.push(
-                        ...organizeHand(
-                            currentPlayerHand.content.map((content) => ({
-                                ...content,
-                                isClickable: content.isClickableForOwner,
-                            })),
-                            {
-                                ...currentPlayerHandArea.positionProps,
-                                width:
-                                    outcomeCardSize.width *
-                                    currentPlayerHand.content.length *
-                                    handStackingVisibilityMultiplier,
-                                height: outcomeCardSize.height,
-                            }
-                        )
+                        ...organizeHand(handContent, {
+                            ...currentPlayerHandArea.positionProps,
+                            width:
+                                outcomeCardSize.width *
+                                currentPlayerHand.content.length *
+                                handStackingVisibilityMultiplier,
+                            height: outcomeCardSize.height,
+                        })
                     );
                 }
             } else {
@@ -195,37 +274,13 @@ export default function useContentItems(game: GameDocType | undefined): ContentI
         if (misc?.length) {
             contentItemProps.push(...misc);
         }
-        if (isDebugging && debug?.length) {
-            contentItemProps.push(...debug, {
-                type: ContentItemTypeEnum.OutcomeCard,
-                id: "TEST",
-                // isClickable: true,
-
-                castShadow: true,
-                componentProps: {
-                    description: "It worked!<BR>+2 Effect",
-                    title: "Success",
-                    icon: "/KAC/bulls-eye.png",
-                    deck: "universal",
-                    slug: "TEST",
-                    instructions: "",
-                },
-                isSelected: false,
-                ownerUid: "user_2fp2BZFGJLo2W5FleZ8OCik9qoj",
-                positionProps: {
-                    id: "TEST",
-                    x: 200,
-                    y: 200,
-                    z: Math.random() * 250,
-                    width: 166.298,
-                    height: 253.22,
-                    className: "transition-all duration-500 ease",
-                    /* rotateX: Math.random() * 360 - 180,
-                    rotateY: Math.random() * 360 - 180,
-                    rotateZ: Math.random() * 360 - 180, */
-                },
-            });
-        }
+        console.log("isDebugging", isDebugging);
+        contentItemProps.push(
+            ...debug.map((item) => ({
+                ...item,
+                isHidden: !isDebugging,
+            }))
+        );
 
         return contentItemProps;
     }, [layouts, players, playerIds, state, uid]);

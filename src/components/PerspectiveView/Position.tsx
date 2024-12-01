@@ -53,18 +53,15 @@ const getStyle = (
     const display = opacity === 0 ? "none" : "block";
 
     return {
-        ...style,
         width,
         height,
-        left: x,
-        top: y,
-        translate: `0 0 ${z}px`,
-        transform: `translate3d(0, 0, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
+        transform: `translate3d(${x}px, ${y}px, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
         transformOrigin,
         filter: `blur(${blur}px)`,
         transition: "all 500ms ease-in-out",
         opacity,
         display,
+        ...style,
     };
 };
 

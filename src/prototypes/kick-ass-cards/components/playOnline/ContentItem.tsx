@@ -5,7 +5,7 @@ import Text from "../content/Text";
 import { OutcomeCardFlippable } from "../gameComponents/OutcomeCard";
 import { ContentItemType, ContentItemTypeEnum } from "./types";
 import ToggleCheckbox from "../controls/ToggleCheckbox";
-import FlippableTest from "./FlippableTest";
+import FlippableTest from "./components/FlippableTest";
 import { HTMLAttributes, memo } from "react";
 import interpolate from "../../../../utils/interpolate";
 import { clamp } from "lodash";

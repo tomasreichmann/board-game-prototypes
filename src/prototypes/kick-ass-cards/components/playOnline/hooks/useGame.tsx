@@ -1,10 +1,12 @@
 import { doc, FirestoreError } from "firebase/firestore";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import db from "../../../../services/Firebase/cloudFirestore";
-import { firestoreRootPath } from "./firestorePlayOnlineController";
-import { useQuery } from "../../services/firestoreController";
-import { ActionType, GameDocType } from "./types";
-import gameDispatcher from "./gameDispatcher";
+import db from "../../../../../services/Firebase/cloudFirestore";
+import { firestoreRootPath } from "../model/firestorePlayOnlineController";
+import { useQuery } from "../../../services/firestoreController";
+import { ActionType, GameDocType } from "../model/types";
+import gameDispatcher from "../model/gameDispatcher";
+
+export type DispatchType = (action: ActionType) => Promise<void | GameDocType | Error>;
 
 export default function useGame(gameId: string | undefined) {
     const [error, setError] = useState<FirestoreError | undefined>(undefined);

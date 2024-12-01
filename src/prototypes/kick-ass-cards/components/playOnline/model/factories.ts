@@ -1,5 +1,4 @@
 import { uniqueId } from "lodash";
-import uuid from "../../../../utils/uuid";
 import { GameDocType, GameStateEnum } from "./types";
 import { UserResource } from "@clerk/types";
 

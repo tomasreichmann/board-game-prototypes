@@ -1,25 +1,25 @@
 import { useUser } from "@clerk/clerk-react";
-import ClerkUser from "../../../../services/Clerk/ClerkUser";
-import Text, { H1, H4 } from "../content/Text";
-import Button from "../controls/Button";
-import { checkWriteAccess } from "../../services/firestoreController";
+import ClerkUser from "../../../../../services/Clerk/ClerkUser";
+import Text, { H1, H4 } from "../../content/Text";
+import Button from "../../controls/Button";
+import { checkWriteAccess } from "../../../services/firestoreController";
 import { useParams } from "react-router-dom";
-import ErrorMessage from "../adventures/ErrorMessage";
-import SignedOutWarning from "../adventures/SignedOutWarning";
-import PendingTimer from "../../../../components/PendingTimer";
-import ButtonWithConfirmation from "../controls/ButtonWithConfirmation";
-import copyToClipboard from "../../../../utils/copyToClipboard";
-import { playOnlinePath } from "../routes/routes";
+import ErrorMessage from "../../adventures/ErrorMessage";
+import SignedOutWarning from "../../adventures/SignedOutWarning";
+import PendingTimer from "../../../../../components/PendingTimer";
+import ButtonWithConfirmation from "../../controls/ButtonWithConfirmation";
+import copyToClipboard from "../../../../../utils/copyToClipboard";
+import { playOnlinePath } from "../../routes/routes";
 import CreateOrJoinGame from "./CreateOrJoinGame";
-import InputToggle from "../controls/InputToggle";
+import InputToggle from "../../controls/InputToggle";
 import { useState } from "react";
-import MetaUser from "../adventures/MetaUser";
-import { ActionTypeEnum } from "./types";
-import useGame from "./useGame";
-import DataToggle from "../../../../components/DataToggle";
+import MetaUser from "../../adventures/MetaUser";
+import { ActionTypeEnum } from "../model/types";
+import useGame from "../hooks/useGame";
+import DataToggle from "../../../../../components/DataToggle";
 import GameBoard from "./GameBoard";
-import { createFakeUser } from "./factories";
-import ToggleCheckbox from "../controls/ToggleCheckbox";
+import { createFakeUser } from "../model/factories";
+import ToggleCheckbox from "../../controls/ToggleCheckbox";
 
 export default function PlayOnlineGame() {
     const { user } = useUser();
@@ -73,7 +73,6 @@ export default function PlayOnlineGame() {
     const isUserPlayer = game?.playerIds?.some((uid) => uid === user?.id);
     const isUserStoryteller = game?.storytellerIds?.some((uid) => uid === user?.id);
     const hasJoined = isUserStoryteller || isUserPlayer;
-    const isDebugging = true; // TODO move somewhere to the model
 
     return (
         <div className="flex-1 flex flex-col print:m-0 w-full h-svh text-kac-iron px-2 py-5 md:px-10 bg-white *:[transform-style:preserve-3d] [perspective:500px]">
@@ -132,6 +131,7 @@ export default function PlayOnlineGame() {
                             <ToggleCheckbox
                                 labelTrue="Debug"
                                 labelFalse={null}
+                                checked={game.isDebugging}
                                 onChange={(e) =>
                                     dispatch({
                                         type: ActionTypeEnum.UpdateGame,
@@ -220,7 +220,7 @@ export default function PlayOnlineGame() {
                                 Join as a storyteller
                             </Button>
                         )}
-                        {isDebugging && (
+                        {game.isDebugging && (
                             <Button
                                 variant="text"
                                 disabled={!user}
@@ -268,7 +268,7 @@ export default function PlayOnlineGame() {
                                 Join as a player
                             </Button>
                         )}
-                        {isDebugging && (
+                        {game.isDebugging && (
                             <Button
                                 variant="text"
                                 disabled={!user}

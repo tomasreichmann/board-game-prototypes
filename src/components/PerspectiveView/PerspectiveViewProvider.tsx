@@ -20,10 +20,29 @@ export const usePerspectiveView = () => {
 
 export type PerspectiveViewProviderProps = PropsWithChildren<{}>;
 
+const calculateStyle = (state: PerspectiveViewStateType): PerspectiveViewStateType => {
+    return {
+        ...state,
+        stageStyle: {
+            ...state.stageStyle,
+            width: state.stage.width,
+            height: state.stage.height,
+            transform: `translate3d(${state.stage.x}px, ${state.stage.y}px, ${state.stage.z}px) rotateX(${state.stage.rotateX}deg) rotateY(${state.stage.rotateY}deg) rotateZ(${state.stage.rotateZ}deg) scale3d(${state.stage.scale}, ${state.stage.scale}, ${state.stage.scale})`,
+        },
+        frameStyle: {
+            perspective: state.lens.perspective,
+        },
+    };
+};
+
 const PerspectiveViewProvider = ({ children }: PerspectiveViewProviderProps) => {
     const [state, dispatch] = useReducer(perspectiveViewReducer, initialPerspectiveViewState);
 
-    return <PerspectiveViewContext.Provider value={{ state, dispatch }}>{children}</PerspectiveViewContext.Provider>;
+    return (
+        <PerspectiveViewContext.Provider value={{ state: calculateStyle(state), dispatch }}>
+            {children}
+        </PerspectiveViewContext.Provider>
+    );
 };
 
 export default PerspectiveViewProvider;

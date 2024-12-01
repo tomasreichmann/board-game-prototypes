@@ -1,15 +1,15 @@
 import { SignedIn, SignedOut, SignInButton, useUser } from "@clerk/clerk-react";
-import Text, { H2, H3, H4 } from "../content/Text";
-import Button from "../controls/Button";
-import { useYourGames } from "./firestorePlayOnlineController";
-import { playOnlineGamePath } from "../routes/routes";
+import Text, { H2, H3, H4 } from "../../content/Text";
+import Button from "../../controls/Button";
+import { useYourGames } from "../model/firestorePlayOnlineController";
+import { playOnlineGamePath } from "../../routes/routes";
 import { twMerge } from "tailwind-merge";
-import ErrorMessage from "../adventures/ErrorMessage";
-import MetaUser from "../adventures/MetaUser";
-import { GameDocType } from "./types";
-import Image from "../Image";
-import mergePath from "../../../../utils/mergePath";
-import PendingTimer from "../../../../components/PendingTimer";
+import ErrorMessage from "../../adventures/ErrorMessage";
+import MetaUser from "../../adventures/MetaUser";
+import { GameDocType } from "../model/types";
+import Image from "../../Image";
+import mergePath from "../../../../../utils/mergePath";
+import PendingTimer from "../../../../../components/PendingTimer";
 
 export const GameItem = ({
     className,

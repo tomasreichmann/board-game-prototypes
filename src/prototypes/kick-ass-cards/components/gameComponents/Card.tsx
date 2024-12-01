@@ -106,7 +106,7 @@ export const CardBody = ({
 export type CardProps = {
     size?: PaperProps["size"];
     childrenWrapperClassName?: string;
-    backgroundImageUri?: string;
+    backgroundImageUri?: string | null;
 } & Omit<PaperProps, "size">;
 
 export default function Card({
@@ -143,11 +143,13 @@ export default function Card({
                     padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
                 }}
             >
-                <img
-                    src={backgroundImageUri}
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
-                />
+                {backgroundImageUri && (
+                    <img
+                        src={backgroundImageUri}
+                        alt=""
+                        className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
+                    />
+                )}
                 <div
                     className={twMerge(
                         "flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10",

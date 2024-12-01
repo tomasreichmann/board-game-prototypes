@@ -30,6 +30,7 @@ const variants = cva(["Text"], {
             inherit: ["text-inherit"],
             body: ["text-kac-iron"],
             heading: ["text-kac-cloth-dark"],
+            primary: ["text-kac-gold-dark"],
             warning: ["text-kac-curse"],
             danger: ["text-kac-blood"],
             success: ["text-kac-monster-dark"],

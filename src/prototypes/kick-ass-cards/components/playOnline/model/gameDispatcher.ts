@@ -1,12 +1,20 @@
 import { ActionType, ActionTypeEnum, ContentItemType, GameDocType, GameStateEnum, LayoutType } from "./types";
-import { claimDocument, getUserMeta, updateDocument } from "../../services/firestoreController";
+import { claimDocument, getUserMeta, updateDocument } from "../../../services/firestoreController";
 import { deleteGame } from "./firestorePlayOnlineController";
 import { createNewGameData } from "./factories";
 import createInitialBoard from "./createInitialBoard";
+import { get, isNumber } from "lodash";
 
 export type StoreRequestType = {};
 
-const areValidIndexes = (...indexes: number[]) => indexes.every((index) => index >= 0);
+const areValidIndexes = (...indexes: (string | number)[]) => indexes.every((index) => Number(index) >= 0);
+
+const pathDelimiter = ".";
+
+export const makePath = (...fragments: (string | number)[]) => fragments.join(pathDelimiter);
+
+export const parsePath = (path: string) =>
+    path.split(pathDelimiter).map((fragment) => (isNumber(fragment) ? Number(fragment) : fragment));
 
 const findContentItemPathById = (game: GameDocType, contentItemId: string) => {
     for (let layoutIndex = 0; layoutIndex < game.layouts.length; layoutIndex++) {
@@ -38,7 +46,7 @@ const findContentItemByPath = (game: GameDocType, path: string | null) => {
         console.warn("findContentItemByPath: no path");
         return null;
     }
-    const [layoutIndex, contentIndex] = path.split(".").map(Number);
+    const [layoutIndex, contentIndex] = path.split(pathDelimiter).map(Number);
     if (!areValidIndexes(layoutIndex, contentIndex)) {
         console.warn("findContentItemByPath: no layoutIndex or contentIndex", { layoutIndex, contentIndex });
         return null;
@@ -57,12 +65,14 @@ const resolveIsSelected = (game: GameDocType, contentItem: ContentItemType, uid:
     (contentItem.isSelectedForStoryteller && isUserStoryteller(game, uid)) ||
     false;
 
+const getLayoutPath = (layout: LayoutType) => makePath(layout.type, layout.id);
+
 const updateContentItem = (
     game: GameDocType,
     contentItemPath: string,
     updater: (contentItem: ContentItemType) => ContentItemType
 ): GameDocType => {
-    const [targetLayoutIndex, targetContentIndex] = contentItemPath.split(".").map(Number);
+    const [targetLayoutIndex, targetContentIndex] = contentItemPath.split(pathDelimiter).map(Number);
     if (!areValidIndexes(targetLayoutIndex, targetContentIndex)) {
         console.warn("Invalid contentItemPath", {
             layoutIndex: targetLayoutIndex,
@@ -84,6 +94,32 @@ const updateContentItem = (
                   }
                 : layout
         ),
+    };
+};
+
+const deselectItem = (contentItem: ContentItemType): ContentItemType => ({
+    ...contentItem,
+    isSelected: false,
+    isSelectedForOwner: false,
+    isSelectedForStoryteller: false,
+});
+
+const makeClickable = (
+    contentItem: ContentItemType,
+    inGeneral: boolean = false,
+    forOwner: boolean = true,
+    forStoryteller: boolean = true
+): ContentItemType => ({
+    ...contentItem,
+    isClickable: inGeneral,
+    isClickableForOwner: forOwner,
+    isClickableForStoryteller: forStoryteller,
+});
+
+const removeContentItemFromLayout = (layout: LayoutType, contentId: string): LayoutType => {
+    return {
+        ...layout,
+        content: layout.content.filter((item) => item.id !== contentId),
     };
 };
 
@@ -113,6 +149,76 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
     if (action.type === ActionTypeEnum.RemoveGame) {
         return deleteGame(game.id);
     }
+    if (action.type === ActionTypeEnum.MoveItem) {
+        const [fromDeckType, fromDeckId, contentId] = parsePath(action.pathFrom);
+        const fromLayoutMatch = game.layouts.find((layout) => layout.type === fromDeckType && layout.id === fromDeckId);
+        if (!fromLayoutMatch) {
+            console.warn("Source layout not found", { pathFrom: action.pathFrom, fromDeckType, fromDeckId });
+            return game;
+        }
+        const itemToMove = fromLayoutMatch.content.find((item) => item.id === contentId);
+        if (!itemToMove) {
+            console.warn("Item to move not found", { pathFrom: action.pathFrom, contentId });
+            return game;
+        }
+        const [toDeckType, toDeckId] = parsePath(action.pathTo);
+        const toLayoutMatch = game.layouts.find((layout) => layout.type === toDeckType && layout.id === toDeckId);
+        if (!toLayoutMatch) {
+            console.warn("Destination layout not found", { pathTo: action.pathTo, toDeckType, toDeckId });
+            return game;
+        }
+
+        console.log("action", action);
+
+        /* if (fromLayoutMatch === toLayoutMatch) {
+            console.warn("Moving to the same layout not supported", { pathFrom: action.pathFrom, pathTo: action.pathTo });
+        } */
+
+        const newLayouts = game.layouts.map((layout) => {
+            const layoutPath = getLayoutPath(layout);
+            console.log("layout", { layout, layoutPath });
+            // find layout from, remove item and save it temporarily
+            let currentLayout = layout;
+            if ((action.deselectPaths ?? []).includes(layoutPath)) {
+                currentLayout = {
+                    ...currentLayout,
+                    content: currentLayout.content.map((item) => deselectItem(item)),
+                };
+            }
+            if (layoutPath === action.pathFrom) {
+                console.log("action.pathFrom match", { layout, layoutPath });
+                currentLayout = {
+                    ...currentLayout,
+                    content: currentLayout.content.filter((item) => item.id !== contentId),
+                };
+            }
+            if (layoutPath === action.pathTo) {
+                console.log("action.pathTo match", { layout, layoutPath });
+                const newItem: ContentItemType = makeClickable(
+                    deselectItem({
+                        ...itemToMove,
+                        componentProps: { ...itemToMove.componentProps, isFaceDown: false },
+                    })
+                );
+                currentLayout = {
+                    ...currentLayout,
+                    content: [...currentLayout.content, newItem],
+                };
+            }
+
+            // if layout to
+            return currentLayout;
+        });
+        return updateDocument(firestoreRootPath, game.id, {
+            ...game,
+            layouts: newLayouts,
+        });
+    }
+    if (action.type === ActionTypeEnum.CloneItem || action.type === ActionTypeEnum.RemoveItem) {
+        console.warn("Not implemented");
+        return game;
+    }
+
     // Requires user
     if (!action.user) {
         console.error("User must be logged in");

@@ -17,7 +17,6 @@ export type PaperProps = React.PropsWithChildren<{
     bleedLeftMm?: number;
     cropMarkSizeMm?: number;
     style?: CSSProperties;
-    cropSize?: number;
 }>;
 
 export const PaperOrDiv = ({ size, ...restProps }: Omit<PaperProps, "size"> & { size?: PaperProps["size"] }) => {

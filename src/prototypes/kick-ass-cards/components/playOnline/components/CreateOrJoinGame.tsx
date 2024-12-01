@@ -1,10 +1,10 @@
 import { SignedIn, SignedOut, SignInButton, useUser } from "@clerk/clerk-react";
-import { H2 } from "../content/Text";
-import Button from "../controls/Button";
-import Input from "../controls/Input";
-import { createGame } from "./firestorePlayOnlineController";
+import { H2 } from "../../content/Text";
+import Button from "../../controls/Button";
+import Input from "../../controls/Input";
+import { createGame } from "../model/firestorePlayOnlineController";
 import { useState } from "react";
-import { playOnlineGamePath } from "../routes/routes";
+import { playOnlineGamePath } from "../../routes/routes";
 import { twMerge } from "tailwind-merge";
 import ListGames from "./ListGames";
 

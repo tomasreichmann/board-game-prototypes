@@ -7,7 +7,7 @@ import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
 import Flippable, { FlippableProps } from "./Flippable";
-import { ContentItemPassedProps } from "../playOnline/types";
+import { ContentItemPassedProps } from "../playOnline/model/types";
 import { isClickableClassName, isHighlightedClassName, isSelectedClassName } from "../playOnline/constants";
 
 export type OutcomeCardProps = React.PropsWithChildren<OutcomeType & Partial<PaperProps>>;

@@ -1,5 +1,5 @@
 import { useUser } from "@clerk/clerk-react";
-import { H1 } from "../content/Text";
+import { H1 } from "../../content/Text";
 import { useParams } from "react-router-dom";
 import PlayOnlineGame from "./PlayOnlineGame";
 import CreateOrJoinGame from "./CreateOrJoinGame";

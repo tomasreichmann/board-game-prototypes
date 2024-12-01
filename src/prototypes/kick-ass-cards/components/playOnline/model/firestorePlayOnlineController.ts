@@ -1,9 +1,9 @@
 import { UserResource } from "@clerk/types";
-import { createDocument, deleteDocument, getDocMeta, useQuery } from "../../services/firestoreController";
+import { createDocument, deleteDocument, getDocMeta, useQuery } from "../../../services/firestoreController";
 import { GameDocType } from "./types";
 import { useMemo } from "react";
 import { collection, DocumentData, FirestoreError, or, Query, query, where } from "firebase/firestore";
-import db from "../../../../services/Firebase/cloudFirestore";
+import db from "../../../../../services/Firebase/cloudFirestore";
 import { createNewGameData } from "./factories";
 
 export const firestoreRootPath = "playOnlineGames";

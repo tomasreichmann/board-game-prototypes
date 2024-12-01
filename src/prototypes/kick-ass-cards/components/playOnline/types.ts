@@ -32,6 +32,7 @@ export type ActionType =
     | { type: ActionTypeEnum.ContentItemClick; user: UserResource; itemId: string };
 
 export enum ContentItemTypeEnum {
+    PlaceholderCard = "PlaceholderCard",
     Pre = "Pre",
     Text = "Text",
     //ActorCard = "ActorCard",

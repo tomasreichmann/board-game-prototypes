@@ -4,13 +4,14 @@ import { UserResource } from "@clerk/types";
 
 export const createNewGameData = (): Omit<GameDocType, "id"> => {
     return {
-        isDebugging: true, // TODO: make false when ready
+        isDebugging: false,
         layouts: [],
         state: GameStateEnum.Ready,
         players: [],
         playerIds: [],
         storytellers: [],
         storytellerIds: [],
+        focus: undefined,
     };
 };
 

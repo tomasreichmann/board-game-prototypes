@@ -22,6 +22,7 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
 
     const contentItemsRef = React.useRef(contentItems);
     contentItemsRef.current = contentItems;
+    const isContentItemsReady = contentItemsRef.current?.length > 0;
 
     const focusAt = game?.focus?.at;
     const focusMode = game?.focus?.mode;
@@ -31,7 +32,7 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
     const defaultDepthOfField = 1000;
 
     useEffect(() => {
-        if (focusAt && focusMode) {
+        if (focusAt && focusMode && isContentItemsReady) {
             console.log("focus changed", focusAt, focusMode);
             const position = contentItemsRef.current?.find((c) => c.id === focusAt);
             if (!position) {
@@ -68,7 +69,15 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
                 },
             });
         }
-    }, [focusAt, focusMode, stageWidth, stageHeight, viewState.frame.height, viewState.frame.width]);
+    }, [
+        focusAt,
+        focusMode,
+        stageWidth,
+        stageHeight,
+        viewState.frame.height,
+        viewState.frame.width,
+        isContentItemsReady,
+    ]);
 
     /*     const onWheel: React.WheelEventHandler<HTMLDivElement> = (event) => {
         viewDispatch({
@@ -94,7 +103,7 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
         >
             {contentItems.map((contentProps) => {
                 const props = stripMetaPropsFromContentItem(contentProps);
-                return <ContentItem key={contentProps.id} {...props} />;
+                return <ContentItem key={contentProps.id} {...props} isDebugging={game.isDebugging} />;
             })}
         </div>
     );

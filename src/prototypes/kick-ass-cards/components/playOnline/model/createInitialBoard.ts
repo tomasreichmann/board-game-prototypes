@@ -14,7 +14,7 @@ export const outcomeCardSize = {
     height: mmToPx(outcomeCardSizeHeightMm),
 };
 
-const cardMargin = 20;
+export const cardMargin = 40;
 
 export default function createInitialBoard(
     game: GameDocType,
@@ -43,7 +43,7 @@ export default function createInitialBoard(
         className: "border-2 border-kac-gold-dark pointer-events-none",
         x: horizontalSpaceForOutcomeDeckAndDiscard,
         y: stageHeight - outcomeCardSize.height / 2,
-        z: outcomeCardSize.height / 6,
+        z: outcomeCardSize.height / 3,
         rotateX: -(viewRotateX || 0),
         ...currentUserHandSize,
     };
@@ -72,7 +72,7 @@ export default function createInitialBoard(
         className: "border-2 border-kac-cloth-dark pointer-events-none",
         x: 0,
         y: -otherPlayerHandsSize.height,
-        z: 40,
+        z: 80,
         rotateX: -(viewRotateX || 0),
         ...otherPlayerHandsSize,
     };

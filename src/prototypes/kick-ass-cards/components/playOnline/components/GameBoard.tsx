@@ -65,7 +65,7 @@ function GameBoard({ className, gameId }: GameBoardProps) {
                 RESTART GAME
             </ButtonWithConfirmation>
             <PerspectiveViewProvider>
-                <PerspectiveView showControls={true} showDebug={true}>
+                <PerspectiveView showControls={game.isDebugging} showDebug={game.isDebugging}>
                     <PerspectiveBoard gameId={gameId} />
                 </PerspectiveView>
             </PerspectiveViewProvider>

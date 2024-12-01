@@ -9,12 +9,13 @@ import {
     LayoutTypeEnum,
 } from "../model/types";
 import { ContentItemProps } from "../components/ContentItem";
-import { useAuth, useUser } from "@clerk/clerk-react";
-import { organizeDeck, organizeHand } from "../model/organizeBoardItems";
-import { outcomeCardSize } from "../model/createInitialBoard";
+import { useUser } from "@clerk/clerk-react";
+import { organizeDeck, organizeDiscard, organizeHand } from "../model/organizeBoardItems";
+import { cardMargin, outcomeCardSize } from "../model/createInitialBoard";
 import { DispatchType } from "./useGame";
 import { makePath } from "../model/gameDispatcher";
 import { isClickableClassName } from "../constants";
+import { PositionType } from "../../../../../components/PerspectiveView/Position";
 
 const handStackingVisibilityMultiplier = 0.9;
 
@@ -23,6 +24,8 @@ const emptyGame: GameDocType = {
     layouts: [],
     state: GameStateEnum.Ready,
 };
+
+const originPosition: PositionType = { x: 0, y: 0, z: 0, rotateX: 0, rotateY: 0, rotateZ: 0 };
 
 export const stripMetaPropsFromContentItem = ({
     ownerUid,
@@ -36,7 +39,22 @@ export const stripMetaPropsFromContentItem = ({
     isClickable,
     isSelected, */
     ...restProps
-}: ContentItemProps) => restProps;
+}: ContentItemType): ContentItemProps => restProps;
+
+const isUserStoryteller = (game: GameDocType, uid?: string) => (uid && game?.storytellerIds?.includes(uid)) || false;
+const isUserOwner = (item: ContentItemType, uid: string) => item.ownerUid === uid;
+const isSelectedItem = (item: ContentItemType, game: GameDocType, uid: string) =>
+    item.isSelected ||
+    (isUserOwner(item, uid) && item.isSelectedForOwner) ||
+    (isUserStoryteller(game, uid) && item.isSelectedForStoryteller);
+const isClickableItem = (item: ContentItemType, game: GameDocType, uid: string) =>
+    item.isClickable ||
+    (isUserOwner(item, uid) && item.isClickableForOwner) ||
+    (isUserStoryteller(game, uid) && item.isClickableForStoryteller);
+const isHighlightedItem = (item: ContentItemType, game: GameDocType, uid: string) =>
+    item.isHighlighted ||
+    (isUserOwner(item, uid) && item.isHighlightedForOwner) ||
+    (isUserStoryteller(game, uid) && item.isHighlightedForStoryteller);
 
 export const stripMetaPropsFromContent = (contentItems: ContentItemProps[]) =>
     contentItems.map(stripMetaPropsFromContentItem);
@@ -57,13 +75,13 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
     /* For transitions, lastGame might be useful
     const lastGameRef = useRef(game);
     const lastGame = lastGameRef.current; */
-    const { layouts, isDebugging, players, playerIds, state } = game || emptyGame;
+    const { layouts, isDebugging, players, playerIds, storytellerIds, state } = game || emptyGame;
     const contentItemProps = useMemo<ContentItemProps[]>(() => {
         const layoutGroups = groupLayoutByType(layouts);
         const debug = layoutGroups[LayoutTypeEnum.Debug]?.[0]?.content || [];
         const misc = layoutGroups[LayoutTypeEnum.Misc]?.[0]?.content || [];
 
-        if (!debug || !players || !playerIds || !state || !uid) {
+        if (!game || !debug || !players || !playerIds || !state || !uid || state === GameStateEnum.Ready) {
             return [];
         }
         const deckLayouts = layoutGroups[LayoutTypeEnum.Deck] || [];
@@ -73,18 +91,86 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
         const combinedDebug: ContentItemType[] = [...debug];
         const contentItemProps: ContentItemProps[] = [];
         const isPlayer = (playerIds ?? []).includes(uid);
+        const isStoryteller = (storytellerIds ?? []).includes(uid);
         // Generate curent player deck content items
         if (isPlayer) {
+            const currentPlayerHand = handLayouts.find((item) => item.id === uid);
+            const currentPlayerHandPath = makePath(LayoutTypeEnum.Hand, uid);
+
             const currentPlayerDeckArea = debug ? debug.find((item) => item.id === "currentUserTable") : undefined;
             const currentPlayerDeck = deckLayouts.find((item) => item.id === uid);
             const currentPlayerDeckPath = makePath(LayoutTypeEnum.Deck, uid);
             if (currentPlayerDeckArea) {
                 if (currentPlayerDeck) {
+                    const currentPlayerDeckContent = currentPlayerDeck.content.map(
+                        (content, contentIndex, allItems) => {
+                            const isLastCard = contentIndex === allItems.length - 1;
+                            const isClickable = isLastCard;
+                            const isSelected = isSelectedItem(content, game, uid);
+                            return {
+                                ...content,
+                                isClickable,
+                                isSelected,
+                                onClick: isClickable
+                                    ? () => {
+                                          if (user) {
+                                              dispatch({
+                                                  type: ActionTypeEnum.ContentItemClick,
+                                                  user,
+                                                  itemId: content.id,
+                                              });
+                                          }
+                                      }
+                                    : undefined,
+                            };
+                        }
+                    );
+                    // if deck is empty, show a placeholder to shuffle discard pile
+                    if (currentPlayerDeckContent.length === 0) {
+                        const placeholderId = `placeholder-deck-${uid}`;
+                        currentPlayerDeckContent.push({
+                            id: placeholderId,
+                            ownerUid: uid,
+                            type: ContentItemTypeEnum.PlaceholderCard,
+                            isClickable: true,
+                            isSelected: false,
+                            isHighlighted: false,
+                            positionProps: {
+                                ...originPosition,
+                                id: placeholderId,
+                                ...outcomeCardSize,
+                            },
+                            componentProps: {
+                                className: isClickableClassName,
+                                text: "Shuffle",
+                                textProps: { variant: "h1", color: "primary", className: "text-center" },
+                                cardProps: { size: "Mini European" },
+                            },
+                            onClick: () => {
+                                console.log("Play card");
+                                dispatch({
+                                    type: ActionTypeEnum.ShuffleDiscardPile,
+                                    pathFrom: currentPlayerDiscardPath,
+                                    pathTo: currentPlayerDeckPath,
+                                });
+                            },
+                        });
+                    }
                     contentItemProps.push(
-                        ...organizeDeck(
-                            currentPlayerDeck.content.map((content) => {
-                                const isClickable = content.isClickable || content.isClickableForOwner; // TODO resolve against current user
-                                const isSelected = content.isSelected || content.isSelectedForOwner; // TODO resolve against current user
+                        ...organizeDeck(currentPlayerDeckContent, currentPlayerDeckArea.positionProps)
+                    );
+                    const currentPlayerDiscard = discardLayouts.find((item) => item.id === uid);
+                    const currentPlayerDiscardPath = makePath(LayoutTypeEnum.Discard, uid);
+                    const currentPlayerDiscardPosition = {
+                        ...currentPlayerDeckArea.positionProps,
+                        x: currentPlayerDeckArea.positionProps.x + outcomeCardSize.width + cardMargin,
+                    };
+                    if (currentPlayerDiscard) {
+                        const currentPlayerDiscardContent = currentPlayerDiscard.content.map(
+                            (content, contentIndex, allItems) => {
+                                const isLastCard = contentIndex === allItems.length - 1;
+                                const isClickable = false; // TODO: Maybe do something with the last card
+                                const isSelected = isSelectedItem(content, game, uid);
                                 return {
                                     ...content,
                                     isClickable,
@@ -101,20 +187,66 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                                           }
                                         : undefined,
                                 };
-                            }),
-                            currentPlayerDeckArea.positionProps
-                        )
-                    );
-                    // if deck is empty, show a placeholder to shuffle discard pile
+                            }
+                        );
+                        // Discard placeholder is displayed when:
+                        // Outcome Card in hand is selected
+                        const selectedHandItem = currentPlayerHand?.content.find((item) =>
+                            isSelectedItem(item, game, uid)
+                        );
+                        const selectedHandItemPath = selectedHandItem
+                            ? makePath(LayoutTypeEnum.Hand, uid, selectedHandItem.id)
+                            : "";
+                        // Outcome Card in deck is selected
+                        const selectedDeckItem = currentPlayerDeck?.content.find((item) =>
+                            isSelectedItem(item, game, uid)
+                        );
+                        const selectedDeckItemPath = selectedDeckItem
+                            ? makePath(LayoutTypeEnum.Deck, uid, selectedDeckItem.id)
+                            : "";
+
+                        // TODO: Optimize to only look for one path or the other
+                        const pathDiscardFrom = selectedHandItemPath || selectedDeckItemPath;
+                        if (pathDiscardFrom) {
+                            const placeholderId = `placeholder-discard-${uid}`;
+                            currentPlayerDiscardContent.push({
+                                id: placeholderId,
+                                ownerUid: uid,
+                                type: ContentItemTypeEnum.PlaceholderCard,
+                                isClickable: true,
+                                isSelected: false,
+                                isHighlighted: false,
+                                positionProps: { ...originPosition, id: placeholderId, ...outcomeCardSize },
+                                componentProps: {
+                                    className: isClickableClassName,
+                                    text: "Play",
+                                    textProps: { variant: "h1", color: "primary", className: "text-center" },
+                                    cardProps: { size: "Mini European" },
+                                },
+                                onClick: () => {
+                                    console.log("Play card");
+                                    dispatch({
+                                        type: ActionTypeEnum.MoveItem,
+                                        pathFrom: pathDiscardFrom,
+                                        pathTo: currentPlayerDiscardPath,
+                                        deselectPaths: [currentPlayerDeckPath, currentPlayerHandPath],
+                                    });
+                                },
+                            });
+                        }
+                        contentItemProps.push(
+                            ...organizeDiscard(currentPlayerDiscardContent, currentPlayerDiscardPosition)
+                        );
+                    } else {
+                        console.error("Could not find deck for player", uid, "in", deckLayouts);
+                    }
                 } else {
                     console.error("Could not find deck for player", uid, "in", deckLayouts);
                 }
             }
+
             const currentPlayerHandArea = debug ? debug.find((item) => item.id === "currentUserHand") : undefined;
             if (currentPlayerHandArea) {
-                const currentPlayerHand = handLayouts.find((item) => item.id === uid);
-                const currentPlayerHandPath = makePath(LayoutTypeEnum.Hand, uid);
-
                 if (currentPlayerHand) {
                     const handContent: ContentItemProps[] = currentPlayerHand.content.map((content) => {
                         const isClickable = content.isClickable || content.isClickableForOwner;
@@ -138,22 +270,17 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                     });
                     // if deck card is selected, show placeholder in hand
                     const lastDeckCard = currentPlayerDeck?.content?.at(-1);
-                    if (lastDeckCard?.isSelected || lastDeckCard?.isSelectedForOwner) {
+                    const lastDeckCardIsSelected = lastDeckCard && isSelectedItem(lastDeckCard, game, uid);
+                    if (lastDeckCardIsSelected) {
                         const placeholderId = `placeholder-hand-${uid}`;
                         handContent.push({
                             id: placeholderId,
                             ownerUid: uid,
                             type: ContentItemTypeEnum.PlaceholderCard,
                             isClickable: true,
-                            isClickableForOwner: true,
-                            isClickableForStoryteller: false,
                             isSelected: false,
-                            isSelectedForOwner: false,
-                            isSelectedForStoryteller: false,
                             isHighlighted: false,
-                            isHighlightedForOwner: false,
-                            isHighlightedForStoryteller: false,
-                            positionProps: { id: placeholderId, x: 0, y: 0, z: 0, ...outcomeCardSize },
+                            positionProps: { ...originPosition, id: placeholderId, ...outcomeCardSize },
                             componentProps: {
                                 className: isClickableClassName,
                                 text: "Draw",
@@ -171,13 +298,18 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                             },
                         });
                     }
+                    const handSize = currentPlayerHand.content.length + (lastDeckCardIsSelected ? 1 : 0);
+                    const handWidth = Math.max(
+                        Math.min(
+                            outcomeCardSize.width * handSize * handStackingVisibilityMultiplier,
+                            currentPlayerHandArea.positionProps.width ?? 0
+                        ),
+                        outcomeCardSize.width
+                    );
                     contentItemProps.push(
                         ...organizeHand(handContent, {
                             ...currentPlayerHandArea.positionProps,
-                            width:
-                                outcomeCardSize.width *
-                                currentPlayerHand.content.length *
-                                handStackingVisibilityMultiplier,
+                            width: handWidth,
                             height: outcomeCardSize.height,
                         })
                     );
@@ -274,7 +406,6 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
         if (misc?.length) {
             contentItemProps.push(...misc);
         }
-        console.log("isDebugging", isDebugging);
         contentItemProps.push(
             ...debug.map((item) => ({
                 ...item,

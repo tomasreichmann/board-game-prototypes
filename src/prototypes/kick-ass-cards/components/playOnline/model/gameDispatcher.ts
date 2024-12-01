@@ -1,9 +1,18 @@
-import { ActionType, ActionTypeEnum, ContentItemType, GameDocType, GameStateEnum, LayoutType } from "./types";
+import {
+    ActionType,
+    ActionTypeEnum,
+    ContentItemType,
+    GameDocType,
+    GameStateEnum,
+    LayoutType,
+    LayoutTypeEnum,
+} from "./types";
 import { claimDocument, getUserMeta, updateDocument } from "../../../services/firestoreController";
 import { deleteGame } from "./firestorePlayOnlineController";
 import { createNewGameData } from "./factories";
 import createInitialBoard from "./createInitialBoard";
 import { get, isNumber } from "lodash";
+import shuffle from "../../../../../utils/shuffle";
 
 export type StoreRequestType = {};
 
@@ -116,6 +125,9 @@ const makeClickable = (
     isClickableForStoryteller: forStoryteller,
 });
 
+const findLayout = (game: GameDocType, layoutType: LayoutTypeEnum, layoutId: string) =>
+    game.layouts.find((layout) => layout.type === layoutType && layout.id === layoutId);
+
 const removeContentItemFromLayout = (layout: LayoutType, contentId: string): LayoutType => {
     return {
         ...layout,
@@ -150,50 +162,53 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
         return deleteGame(game.id);
     }
     if (action.type === ActionTypeEnum.MoveItem) {
-        const [fromDeckType, fromDeckId, contentId] = parsePath(action.pathFrom);
-        const fromLayoutMatch = game.layouts.find((layout) => layout.type === fromDeckType && layout.id === fromDeckId);
+        const { pathFrom, pathTo, deselectPaths } = action;
+        const [fromDeckType, fromDeckId, contentId] = parsePath(pathFrom);
+        const pathFromLayout = makePath(fromDeckType, fromDeckId);
+        const fromLayoutMatch = findLayout(game, fromDeckType as LayoutTypeEnum, fromDeckId as string);
         if (!fromLayoutMatch) {
-            console.warn("Source layout not found", { pathFrom: action.pathFrom, fromDeckType, fromDeckId });
+            console.warn("Source layout not found", { pathFrom: pathFrom, fromDeckType, fromDeckId });
             return game;
         }
         const itemToMove = fromLayoutMatch.content.find((item) => item.id === contentId);
         if (!itemToMove) {
-            console.warn("Item to move not found", { pathFrom: action.pathFrom, contentId });
+            console.warn("Item to move not found", { pathFrom: pathFrom, contentId });
             return game;
         }
-        const [toDeckType, toDeckId] = parsePath(action.pathTo);
-        const toLayoutMatch = game.layouts.find((layout) => layout.type === toDeckType && layout.id === toDeckId);
+        const [toDeckType, toDeckId] = parsePath(pathTo);
+        const toLayoutMatch = findLayout(game, toDeckType as LayoutTypeEnum, toDeckId as string);
         if (!toLayoutMatch) {
-            console.warn("Destination layout not found", { pathTo: action.pathTo, toDeckType, toDeckId });
+            console.warn("Destination layout not found", { pathTo: pathTo, toDeckType, toDeckId });
             return game;
         }
-
-        console.log("action", action);
 
         /* if (fromLayoutMatch === toLayoutMatch) {
-            console.warn("Moving to the same layout not supported", { pathFrom: action.pathFrom, pathTo: action.pathTo });
+            console.warn("Moving to the same layout not supported", { pathFrom: pathFrom, pathTo: pathTo });
         } */
+
+        let isPathFromFound = false;
+        let isPathToFound = false;
 
         const newLayouts = game.layouts.map((layout) => {
             const layoutPath = getLayoutPath(layout);
-            console.log("layout", { layout, layoutPath });
             // find layout from, remove item and save it temporarily
             let currentLayout = layout;
-            if ((action.deselectPaths ?? []).includes(layoutPath)) {
+            if ((deselectPaths ?? []).includes(layoutPath)) {
                 currentLayout = {
                     ...currentLayout,
                     content: currentLayout.content.map((item) => deselectItem(item)),
                 };
             }
-            if (layoutPath === action.pathFrom) {
-                console.log("action.pathFrom match", { layout, layoutPath });
+            if (layoutPath === pathFromLayout) {
+                isPathFromFound = true;
                 currentLayout = {
                     ...currentLayout,
                     content: currentLayout.content.filter((item) => item.id !== contentId),
                 };
             }
-            if (layoutPath === action.pathTo) {
-                console.log("action.pathTo match", { layout, layoutPath });
+            if (layoutPath === pathTo) {
+                isPathToFound = true;
+                console.log("pathTo match", { layout, layoutPath });
                 const newItem: ContentItemType = makeClickable(
                     deselectItem({
                         ...itemToMove,
@@ -209,6 +224,96 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
             // if layout to
             return currentLayout;
         });
+        if (!isPathFromFound) {
+            console.warn(
+                "Source path not found",
+                { pathFrom: pathFrom, fromDeckType, fromDeckId },
+                game.layouts.map((layout) => getLayoutPath(layout))
+            );
+            return game;
+        }
+        if (!isPathToFound) {
+            console.warn(
+                "Destination path not found",
+                { pathTo: pathTo, toDeckType, toDeckId },
+                game.layouts.map((layout) => getLayoutPath(layout))
+            );
+            return game;
+        }
+        return updateDocument(firestoreRootPath, game.id, {
+            ...game,
+            layouts: newLayouts,
+        });
+    }
+    if (action.type === ActionTypeEnum.ShuffleDiscardPile) {
+        const { pathFrom, pathTo } = action;
+        const [fromDeckType, fromDeckId] = parsePath(pathFrom);
+        const fromLayoutMatch = findLayout(game, fromDeckType as LayoutTypeEnum, fromDeckId as string);
+        if (!fromLayoutMatch) {
+            console.warn("Source layout not found", { pathFrom: pathFrom, fromDeckType, fromDeckId });
+            return game;
+        }
+
+        const [toDeckType, toDeckId] = parsePath(pathTo);
+        const toLayoutMatch = findLayout(game, toDeckType as LayoutTypeEnum, toDeckId as string);
+        if (!toLayoutMatch) {
+            console.warn("Destination layout not found", { pathTo: pathTo, toDeckType, toDeckId });
+            return game;
+        }
+
+        if (fromLayoutMatch === toLayoutMatch) {
+            console.warn("Moving to the same layout not supported", { pathFrom: pathFrom, pathTo: pathTo });
+        }
+
+        let isPathFromFound = false;
+        let isPathToFound = false;
+
+        const shuffledItems = shuffle(
+            fromLayoutMatch.content.map((item) => ({
+                ...item,
+                componentProps: { ...item.componentProps, isFaceDown: true },
+            }))
+        );
+
+        const newLayouts = game.layouts.map((layout) => {
+            const layoutPath = getLayoutPath(layout);
+            // find layout from, remove item and save it temporarily
+            let currentLayout = layout;
+
+            if (layoutPath === pathFrom) {
+                isPathFromFound = true;
+                currentLayout = {
+                    ...currentLayout,
+                    content: [],
+                };
+            }
+            if (layoutPath === pathTo) {
+                isPathToFound = true;
+                currentLayout = {
+                    ...currentLayout,
+                    content: [...currentLayout.content, ...shuffledItems],
+                };
+            }
+
+            // if layout to
+            return currentLayout;
+        });
+        if (!isPathFromFound) {
+            console.warn(
+                "Source path not found",
+                { pathFrom: pathFrom, fromDeckType, fromDeckId },
+                game.layouts.map((layout) => getLayoutPath(layout))
+            );
+            return game;
+        }
+        if (!isPathToFound) {
+            console.warn(
+                "Destination path not found",
+                { pathTo: pathTo, toDeckType, toDeckId },
+                game.layouts.map((layout) => getLayoutPath(layout))
+            );
+            return game;
+        }
         return updateDocument(firestoreRootPath, game.id, {
             ...game,
             layouts: newLayouts,
@@ -237,9 +342,6 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
         }
 
         const isSelected = resolveIsSelected(game, contentItem, action.user.id);
-        console.log("isSelected", isSelected);
-
-        // Play from hand to the discard pile
 
         // Deselect
         if (isSelected) {
@@ -252,6 +354,7 @@ export default async function gameDispatcher(firestoreRootPath: string, game: Ga
 
         // Select
         if (!isSelected) {
+            // TODO: Deselect other layouts
             return updateDocument(
                 firestoreRootPath,
                 game.id,

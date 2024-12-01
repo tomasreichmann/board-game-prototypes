@@ -1,14 +1,15 @@
 import { twMerge } from "tailwind-merge";
-import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import Card, { CardProps } from "./Card";
 import Text, { TextProps } from "../content/Text";
 import { HTMLAttributes } from "react";
+import { ContentItemComponentProps } from "../playOnline/components/ContentItem";
 
 export type PlaceholderCardProps = {
     text: string;
     textProps?: TextProps;
     cardProps?: CardProps;
-} & HTMLAttributes<HTMLDivElement>;
+} & ContentItemComponentProps &
+    HTMLAttributes<HTMLDivElement>;
 
 export default function PlaceholderCard({
     className,
@@ -16,6 +17,9 @@ export default function PlaceholderCard({
     children,
     text,
     textProps,
+    isClickable,
+    isSelected,
+    isHighlighted,
     ...restProps
 }: PlaceholderCardProps) {
     return (

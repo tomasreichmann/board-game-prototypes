@@ -20,6 +20,7 @@ export enum ActionTypeEnum {
     MoveItem = "MoveItem",
     CloneItem = "CloneItem",
     RemoveItem = "RemoveItem",
+    ShuffleDiscardPile = "ShuffleDiscardPile",
 }
 
 export type ActionType =
@@ -35,6 +36,7 @@ export type ActionType =
     | { type: ActionTypeEnum.ContentItemClick; user: UserResource; itemId: string }
     | { type: ActionTypeEnum.MoveItem; pathFrom: string; pathTo: string; deselectPaths?: string[] }
     | { type: ActionTypeEnum.CloneItem; pathFrom: string; pathTo: string; deselectPaths?: string[] }
+    | { type: ActionTypeEnum.ShuffleDiscardPile; pathFrom: string; pathTo: string }
     | { type: ActionTypeEnum.RemoveItem; pathFrom: string; deselectPaths?: string[] };
 
 export enum ContentItemTypeEnum {

@@ -83,7 +83,7 @@ export const checkWriteAccess = (meta?: DocMetaType, user = auth.currentUser) =>
 
 export const createDocument = async (path: string, data: DocumentData = {}) => {
     try {
-        const docRef = await addDoc(collection(db, path), data);
+        const docRef = await addDoc(collection(db, path), replaceUndefinedProperties(data));
         return docRef;
     } catch (e) {
         console.error("Error adding document: ", e);
@@ -119,7 +119,7 @@ export const deleteDocument = async (path: string, docId: string) => {
     }
 };
 
-const replaceUndefinedProperties = <T>(data: T): T => {
+export const replaceUndefinedProperties = <T>(data: T): T => {
     if (typeof data === "object") {
         const containsUndefinedValues = Object.values(data as Object).some((value) => value === undefined);
         return (

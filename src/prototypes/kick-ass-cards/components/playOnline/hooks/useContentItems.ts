@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo } from "react";
+import { useMemo, useRef } from "react";
 import {
     ActionTypeEnum,
     ContentItemType,
@@ -71,12 +71,20 @@ export const groupLayoutByType = (layout: GameDocType["layouts"]) => {
 
 export default function useContentItems(game: GameDocType | undefined, dispatch: DispatchType): ContentItemProps[] {
     const { user } = useUser();
+    const itemsCache = useRef<Map<string, ContentItemProps>>(new Map());
     const uid = user?.id;
     /* For transitions, lastGame might be useful
     const lastGameRef = useRef(game);
     const lastGame = lastGameRef.current; */
     const { layouts, isDebugging, players, playerIds, storytellerIds, state } = game || emptyGame;
     const contentItemProps = useMemo<ContentItemProps[]>(() => {
+        const usedItemIds = new Set<string>();
+        const registerItems = (...items: ContentItemProps[]) => {
+            items.forEach((item) => {
+                usedItemIds.add(item.id);
+                itemsCache.current.set(item.id, item);
+            });
+        };
         const layoutGroups = groupLayoutByType(layouts);
         const debug = layoutGroups[LayoutTypeEnum.Debug]?.[0]?.content || [];
         const misc = layoutGroups[LayoutTypeEnum.Misc]?.[0]?.content || [];
@@ -89,10 +97,8 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
         const discardLayouts = layoutGroups[LayoutTypeEnum.Discard] || [];
 
         const combinedDebug: ContentItemType[] = [...debug];
-        const contentItemProps: ContentItemProps[] = [];
         const isPlayer = (playerIds ?? []).includes(uid);
-        const isStoryteller = (storytellerIds ?? []).includes(uid);
-        // Generate curent player deck content items
+        // Generate current player deck content items
         if (isPlayer) {
             const currentPlayerHand = handLayouts.find((item) => item.id === uid);
             const currentPlayerHandPath = makePath(LayoutTypeEnum.Hand, uid);
@@ -156,9 +162,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                             },
                         });
                     }
-                    contentItemProps.push(
-                        ...organizeDeck(currentPlayerDeckContent, currentPlayerDeckArea.positionProps)
-                    );
+                    registerItems(...organizeDeck(currentPlayerDeckContent, currentPlayerDeckArea.positionProps));
                     const currentPlayerDiscard = discardLayouts.find((item) => item.id === uid);
                     const currentPlayerDiscardPath = makePath(LayoutTypeEnum.Discard, uid);
                     const currentPlayerDiscardPosition = {
@@ -166,29 +170,26 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                         x: currentPlayerDeckArea.positionProps.x + outcomeCardSize.width + cardMargin,
                     };
                     if (currentPlayerDiscard) {
-                        const currentPlayerDiscardContent = currentPlayerDiscard.content.map(
-                            (content, contentIndex, allItems) => {
-                                const isLastCard = contentIndex === allItems.length - 1;
-                                const isClickable = false; // TODO: Maybe do something with the last card
-                                const isSelected = isSelectedItem(content, game, uid);
-                                return {
-                                    ...content,
-                                    isClickable,
-                                    isSelected,
-                                    onClick: isClickable
-                                        ? () => {
-                                              if (user) {
-                                                  dispatch({
-                                                      type: ActionTypeEnum.ContentItemClick,
-                                                      user,
-                                                      itemId: content.id,
-                                                  });
-                                              }
+                        const currentPlayerDiscardContent = currentPlayerDiscard.content.map((content) => {
+                            const isClickable = false;
+                            const isSelected = isSelectedItem(content, game, uid);
+                            return {
+                                ...content,
+                                isClickable,
+                                isSelected,
+                                onClick: isClickable
+                                    ? () => {
+                                          if (user) {
+                                              dispatch({
+                                                  type: ActionTypeEnum.ContentItemClick,
+                                                  user,
+                                                  itemId: content.id,
+                                              });
                                           }
-                                        : undefined,
-                                };
-                            }
-                        );
+                                      }
+                                    : undefined,
+                            };
+                        });
                         // Discard placeholder is displayed when:
                         // Outcome Card in hand is selected
                         const selectedHandItem = currentPlayerHand?.content.find((item) =>
@@ -234,9 +235,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                                 },
                             });
                         }
-                        contentItemProps.push(
-                            ...organizeDiscard(currentPlayerDiscardContent, currentPlayerDiscardPosition)
-                        );
+                        registerItems(...organizeDiscard(currentPlayerDiscardContent, currentPlayerDiscardPosition));
                     } else {
                         console.error("Could not find discard for player", uid, "in", deckLayouts);
                     }
@@ -273,6 +272,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                     const lastDeckCardIsSelected = lastDeckCard && isSelectedItem(lastDeckCard, game, uid);
                     if (lastDeckCardIsSelected) {
                         const placeholderId = `placeholder-hand-${uid}`;
+                        console.log("lastDeckCardIsSelected placeholderId", placeholderId);
                         handContent.push({
                             id: placeholderId,
                             ownerUid: uid,
@@ -306,7 +306,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                         ),
                         outcomeCardSize.width
                     );
-                    contentItemProps.push(
+                    registerItems(
                         ...organizeHand(handContent, {
                             ...currentPlayerHandArea.positionProps,
                             width: handWidth,
@@ -351,7 +351,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                         },
                     };
                     combinedDebug.push(playerDebugArea);
-                    contentItemProps.push(...organizeDeck(playerDeck.content, playerDeckArea.positionProps));
+                    registerItems(...organizeDeck(playerDeck.content, playerDeckArea.positionProps));
 
                     const playerDiscard = discardLayouts.find((item) => item.id === uid);
                     const playerDiscardPosition = {
@@ -369,7 +369,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                             };
                         });
 
-                        contentItemProps.push(...organizeDiscard(playerDiscardContent, playerDiscardPosition));
+                        registerItems(...organizeDiscard(playerDiscardContent, playerDiscardPosition));
                     } else {
                         console.error("Could not find discard for player", uid, "in", deckLayouts);
                     }
@@ -407,7 +407,7 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
                         outcomeCardSize.width * playerHand.content.length * handStackingVisibilityMultiplier
                     );
                     combinedDebug.push(playerDebugArea);
-                    contentItemProps.push(
+                    registerItems(
                         ...organizeHand(
                             playerHand.content.map((contentItem) => ({
                                 ...contentItem,
@@ -425,23 +425,16 @@ export default function useContentItems(game: GameDocType | undefined, dispatch:
         });
 
         if (misc?.length) {
-            contentItemProps.push(...misc);
+            registerItems(...misc);
         }
-        contentItemProps.push(
+        registerItems(
             ...debug.map((item) => ({
                 ...item,
                 isHidden: !isDebugging,
             }))
         );
-
-        return contentItemProps;
+        return [...itemsCache.current.values()].filter((item) => usedItemIds.has(item.id));
     }, [layouts, players, playerIds, state, uid]);
-
-    /*     console.log(
-        "useContentItems ids",
-        contentItemProps.map(({ id }) => id)
-    );
-    console.log("useContentItems", { contentItemProps, newGame: game, lastGame }); */
 
     // lastGameRef.current = game;
     return contentItemProps;

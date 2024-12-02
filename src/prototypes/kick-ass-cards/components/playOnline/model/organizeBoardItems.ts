@@ -1,4 +1,3 @@
-import { twMerge } from "tailwind-merge";
 import { PositionProps, PositionType } from "../../../../../components/PerspectiveView/Position";
 import { ContentItemProps } from "../components/ContentItem";
 import degreesToRadians from "../../../../../utils/degreesToRadians";
@@ -92,7 +91,7 @@ export const organizeHand = (
         x: baseX = 0,
         y: baseY = 0,
         z: baseZ = 0,
-        height = content[0]?.positionProps?.height ?? 0,
+        // height = content[0]?.positionProps?.height ?? 0,
         rotateX = 0,
         rotateY = 0,
         rotateZ = 0,
@@ -119,12 +118,14 @@ export const organizeHand = (
     const rotationCoefficientY = Math.cos(degreesToRadians(rotateX));
     const rotationCoefficientZ = Math.sin(degreesToRadians(rotateX));
 
+    // reversed so that the placeholder is closer to the draw deck - TODO: Maybe find a better way to position the placeholder first
     return content.toReversed().map((contentItem, index) => {
         const isSelectedOffset = contentItem.isSelected ? 0.5 : 0;
         const rotateZ = startRotateZ + (contentCount > 1 ? index * rotateZStep : 0); // remove 0
         const x = baseX + (contentCount > 1 ? index * xStep : 0);
-        const currentCenterOffset =
+        const currentCenterMultiplier =
             (contentCount > 1 ? Math.sin((Math.PI / (contentCount - 1)) * index) : 0) + isSelectedOffset;
+        const currentCenterOffset = centerOffset * currentCenterMultiplier;
         const currentStackOffset = index * stackOffset;
 
         const y = baseY - currentCenterOffset * rotationCoefficientY;

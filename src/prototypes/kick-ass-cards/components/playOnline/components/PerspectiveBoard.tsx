@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import useGame from "../hooks/useGame";
-import { ActionTypeEnum, GameStateEnum } from "../model/types";
+import { GameStateEnum } from "../model/types";
 import { usePerspectiveView } from "../../../../../components/PerspectiveView/PerspectiveViewProvider";
 import { PerspectiveViewActionTypeEnum } from "../../../../../components/PerspectiveView/perspectiveViewReducer";
-import { clamp } from "lodash";
 import ContentItem from "./ContentItem";
 import useContentItems, { stripMetaPropsFromContentItem } from "../hooks/useContentItems";
-import { useUser } from "@clerk/clerk-react";
 
 export type PerspectiveBoardProps = {
     className?: string;
@@ -18,7 +16,6 @@ function PerspectiveBoard({ className, gameId }: PerspectiveBoardProps) {
     const { game, error, clearError, dispatch } = useGame(gameId);
     const { dispatch: viewDispatch, state: viewState } = usePerspectiveView();
     const contentItems = useContentItems(game, dispatch);
-    const { user } = useUser();
 
     const contentItemsRef = React.useRef(contentItems);
     contentItemsRef.current = contentItems;

@@ -20,6 +20,9 @@ import DocumentRoute from "./DocumentRoute";
 import PreparingTheGameRoute from "./PreparingTheGameRoute";
 import GenerateComponentRoute from "./GenerateComponentRoute";
 import PlayOnlineRoute from "./PlayOnlineRoute";
+import ComponentsRoute from "./ComponentsRoute";
+import ProductsRoute from "./ProductsRoute";
+import RelicsOfValorRoute from "./products/RelicsOfValorRoute";
 
 export const mightyDecksPath = "/mighty-decks";
 export const mightyDecksScreenStorageKey = "mighty-decks-screen";
@@ -28,6 +31,8 @@ export const smartDocsPath = mightyDecksPath + "/smart-docs";
 export const adventuresPath = mightyDecksPath + "/adventures";
 export const playOnlinePath = mightyDecksPath + "/play-online";
 export const playOnlineGamePath = `${playOnlinePath}/game`;
+export const productsPath = mightyDecksPath + "/products";
+export const relicsOfValorPath = productsPath + "/relics-of-valor";
 
 export const sidebarPath = "__sidebar";
 
@@ -43,11 +48,23 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
         path: mightyDecksPath + "/preparing-the-game",
         Component: PreparingTheGameRoute,
     },
-    /* {
+    {
+        name: "Products",
+        path: mightyDecksPath + "/products",
+        Component: ProductsRoute,
+    },
+    {
+        name: "Mighty Decks: Relics of Valor",
+        path: relicsOfValorPath,
+        Component: RelicsOfValorRoute,
+        hideFromNav: true,
+    },
+    {
         name: "Components",
         path: mightyDecksPath + "/components",
+        hideFromNav: true,
         Component: ComponentsRoute,
-    }, */
+    },
     {
         name: "Generate Component",
         path: mightyDecksPath + "/generate-component",

@@ -114,6 +114,10 @@ module.exports = {
                 "jd-golden-paper": "#fef1ca",
                 "mk-tender": "#5a3b00",
             },
+            fontSize: {
+                "2xs": ["0.6rem", "0.75rem"],
+                "3xs": ["0.5rem", "6rem"],
+            },
             fontFamily: {
                 "jd-logo": ["New Rocker", "sans-serif"],
                 "jd-prequel-body": ["Barlow Condensed", "sans-serif"],

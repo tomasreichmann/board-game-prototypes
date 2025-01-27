@@ -19,6 +19,7 @@ const B139 = "B-day #139 LARP";
 const TTT = "Trauma Team Troubles";
 const ML = "Matečná žíla";
 const PH = "Příběhy Husitů";
+const OS = "One-shots";
 
 const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
     [key]: {
@@ -73,5 +74,8 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("PH-en-though-shalt-not-prank", "Though Shalt Not Prank", PH),
     ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov-info", "The Hidden Hand of Strahov - Info", PH),
     ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov-scenes", "The Hidden Hand of Strahov - Scenes", PH),
+
+    ...makeEncounterDefinition("QL-en-drink-till-your-luck-runs-out", "Drink Till Your Luck Runs Out", OS),
+    ...makeEncounterDefinition("QL-cs-pij-nez-se-karta-obrati", "Pij, než se karta obrátí", OS),
 };
 console.log("encountersMap", encountersMap);

@@ -3,7 +3,6 @@ import Icon from "../Icon";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { twMerge } from "tailwind-merge";
 import Card, { CardBody, CardHeader } from "./Card";
-import DiceCounter from "../DiceCounter";
 import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
 
@@ -95,7 +94,7 @@ export default function CounterCard({
                         )}
                     >
                         <div className="flex flex-col items-center justify-start -mt-3 leading-none">
-                            ▲
+                            <span className="mt-1 -mb-1 scale-75">▲</span>
                             <Icon icon="chest" className="h-4 flex-shrink-0 inline-block" />
                         </div>
                         {reward ? (
@@ -122,7 +121,8 @@ export default function CounterCard({
                         )}
                     >
                         <div className="flex flex-col items-center justify-start -mb-3 leading-none">
-                            <Icon icon="deathSkull" className="h-4 flex-shrink-0 inline-block" />▼
+                            <Icon icon="deathSkull" className="h-4 flex-shrink-0 inline-block" />
+                            <span className="translate-y-[-0.1em] scale-75">▼</span>
                         </div>
                         {threat ? (
                             <p

@@ -173,7 +173,7 @@ export default function AssetCard({
                         </div>
                         <H2
                             className={twMerge("text-kac-gold-darker text-center mb-1 leading-none")}
-                            size={isSmSize ? "xl" : "xxl"}
+                            size={isSmSize ? "xl" : "2xl"}
                         >
                             {title}
                         </H2>

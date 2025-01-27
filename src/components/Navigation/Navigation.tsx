@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import { routes } from "../../routes";
+import { navRoutes } from "../../routes";
 import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 
 export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HTMLDivElement>) => {
@@ -18,7 +18,7 @@ export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HT
         >
             <div className="top-0 flex flex-row flex-wrap">
                 <div className="flex flex-row flex-wrap items-baseline -mx-1 pb-4 gap-2">
-                    {routes.map(({ name, path }) => {
+                    {navRoutes.map(({ name, path }) => {
                         const isCurrentRoute = path === window.location.pathname;
                         const isHome = path === "/";
                         return (

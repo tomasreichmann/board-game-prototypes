@@ -94,7 +94,7 @@ export default function OutcomeCard({
                                 "font-kacLogo text-kac-cloth text-center mb-1 leading-none",
                                 colorClassName
                             )}
-                            size={isSmSize ? "xl" : "xxl"}
+                            size={isSmSize ? "xl" : "2xl"}
                         >
                             {title}
                         </H2>

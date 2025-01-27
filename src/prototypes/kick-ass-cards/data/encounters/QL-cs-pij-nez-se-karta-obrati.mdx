@@ -1,0 +1,294 @@
+---
+campaign: Quest Lines
+
+defaultActorProps: {
+    size: "54x86",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+    imagePosition: "center top",
+}
+defaultAssetProps: {
+    size: "54x86",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+}
+defaultCounterProps: {
+    size: "54x86",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+}
+defaultMiniProps: {
+    baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+    backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+    baseWidth: "0.5in",
+    height: "2in",
+    width: "1in",
+}
+---
+
+import { countersMap } from "../counters-deck";
+import { assetMap } from "../assets-en-deck";
+import def from "ajv/dist/vocabularies/discriminator";
+
+![](/KAC/encounters/drink/title-cs.jpg)
+
+# Pij, než se karta obrátí
+
+_Šušká se, že se ve městě objevil karbaník s velkým dědictvím a ještě větší slinou. Okázalé večírky, riskantní sázky a šeptanda o skandálech se táhnou v jeho stopách a slibují příležitosti pro ty, kteří se nebojí zapojit. Jak dlouho se povezeš na vlně štěstí, než se vše kolem zhroutí? Každý tvůj krok může zvrátit osud celého města. Na to si můžeš vsadit..._
+
+**⚠ Obsahuje témata pro dospělé**
+
+
+- _Popisný text, který můžete přímo přečíst hráčům, když dorazí na místo._
+- 🔎 Informace, které nejsou hráčům okamžitě zřejmé, ale mohou je zjistit hledáním, zkoumáním nebo výslechem.
+- 🎭 Výzva k interakci hráčů.
+- 🏺 Loot, poklad nebo odměna, kterou hráči obdrží.
+- 💡 Tipy pro GM.
+- 🔒 Informace pro GM, které jsou aktuálně hráčům skryté.
+- 📅 Události, které mohou nastat.
+
+## 💡 Přehled pro Vypravěče
+
+Dobrodružství se točí kolem „Karbaníka“, charismatického, ale sebedestruktivního obyčejného člověka, který zdědí obrovské jmění. Místo aby ho využil rozumně, topí svůj žal v bezhlavém utrácení a hazardu. Jeho činy rozkládají morálku města a vtahují ho do víru zločinu. Hráči se musí vypořádat s rostoucím napětím a rozhodnout, zda Karbaníka podpoří, postaví se mu, nebo se pokusí ho vykoupit – přitom ovlivní osud města a jeho obyvatel.
+
+### Klíčové prvky:
+- **Rozhodnutí s velkými důsledky:** Každá větev příběhu má výrazný dopad na osud Karbaníka i budoucnost města.  
+- **Stupňující se napětí:** Příběh přechází od bujarých večírků k městu pohlcenému neřestí nebo bídou, přičemž klíčovou roli hrají hráčská rozhodnutí.  
+- **Volnost hráčů:** Hráči mohou ovlivnit důležité výsledky prostřednictvím morálních dilemat, tvořivého řešení problémů a rozhodných akcí.  
+- **Progres pomocí ukazatelů:** Sledujte Karbaníkovo štěstí, vztek a stav zločinu ve městě a dynamicky upravujte příběh.
+
+### Možné závěry:
+- **Pán neřesti:** Hráči mohou zdědit Karbaníkův majetek nebo sledovat, jak se zcela zhroutí.  
+- **Město v bídě:** Hráči rozloží zločinecké impérium a získají Karbaníkův ukrytý poklad – nebo nechají město upadnout do chaosu, zatímco Karbaník tragicky umře.
+
+Rozvětvený příběh zajišťuje, že na každém rozhodnutí záleží, a umožňuje hráčům prožít promyšlený a působivý závěr utvářený jejich činy.
+
+**Tipy:**
+-   💡 Vyberte snadno zapamatovatelná jména pro klíčové postavy, jako je Karbaník nebo Biskup.  
+-   💡 Nechte hráče, aby sami rozhodli, jak chtějí řešit jednotlivá setkání.  
+-   💡 Odměňujte zapojení a iniciativu hráčů cennými poklady ideálně přizpůsobenými jejich postavám.
+
+![](/KAC/encounters/drink/toast.jpg)
+
+## 📅 Setkání s Karbaníkem
+
+_Hospoda je plná hudby, smíchu a cinkání sklenic. Uprostřed toho všeho sedí Karbaník, jeho stůl je plný lahví drahého vína a rozházených mincí. Když vstoupíte, pozvedne sklenici, věnuje vám okouzlující úsměv a zamává na vás.  
+"Pojďte, přátelé! Dnes večer slavíme přízeň štěstěny! Pití je na mě, a třeba si zahrajeme přátelskou hru na zpestření večera?"_
+
+-   💡 Udržujte atmosféru veselou, ale přidejte nenápadné náznaky Karbaníkovy hlubší bolesti.
+-   Karbaník působí navenek vesele, ale občas se zamyslí s melancholickým pohledem, než zase nasadí úsměv.
+-   Karbaník okázale rozhazuje své nové bohatství, bezstarostně zve cizince na drinky a bezhlavě sází.
+-   🎭 Karbaník zve hráče na drink a hru náhody. Co uděláte?  
+    -   💡 Zvažte zahrání několika kol Blackjacku, kostek nebo jiné krátké hry.
+-   🏺 Pokud hráči uspějí, Karbaník je odmění koženým váčkem obsahujícím sadu mistrně vyrobených slonovinových kostek, zjevně používaných, ale ve výborném stavu. Jedna z teček má tvar srdce. _"Je čas pořídit si novou sadu, tuhle už nechci," řekne Karbaník s hořkosladkým úsměvem, "Najděte mě, jestli chcete ještě někdy pořádně slavit."_
+-   📅 Pokud hráči příliš tlačí na odhalení Karbaníkovy minulosti, může Karbaník rychle změnit téma nebo zaplatit rundu pro celou hospodu, čímž naznačí nevyřešené trauma.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.agreement} title="Spřátelení s Karbaníkem" current={0} total={12} reward="Karbaník je nadšený z oslavy a odmění hráče" />
+    <Asset {...defaultAssetProps} {...assetMap.pouch} />
+</List>
+
+![](/KAC/encounters/drink/noble-establishment.jpg)
+
+## 📅 Exkluzivní večírek
+
+_Náměstí je plné ruchu, zatímco Karbaník stojí před prestižním podnikem a dohaduje se se sluhou. „Tohle je místo pro šlechtu,“ trvá na svém sluha. Karbaník se na vás otočí s lišáckým úsměvem: „Vypadá to, že budeme muset být kreativní. Pomůžete mi vloudit se na jejich večírek, nebo uspořádáme vlastní?“_
+
+-   💡 Zvýrazněte rostoucí napětí mezi Karbaníkovým šarmem a exkluzivitou šlechty, balancujte mezi lehkovážným vzdorem a frustrací z vyloučení.
+-   Karbaník je očividně sebevědomý a nezastaví se před ničím, aby se dobře bavil.
+-   Místní obyvatelé zvědavě přihlížejí; někteří fandí Karbaníkovi, nadšení z možnosti bavit se jako králové, zatímco jiní si brumlají, že by bylo lepší nechat šlechtu na pokoji.
+-   🎭 Karbaník vás požádá o pomoc s uspořádáním večírku, na který se nezapomene. Ideálně v tomto šlechtickém podniku, nebo v jiném honosném místě. Jak to zvládnete?
+-   🏺 Pokud hráči uspějí, Karbaník pokryje všechny náklady a odmění je vozem taženým dvěma koňmi. Zřejmě sloužil k převážení rudy, ale je dobře udržovaný. „Já se k těžbě nevrátím, ale vy určitě můj vůz ještě k něčemu využijete.“ Našli jste v něm pár nástrojů, zakrytých tmavou skvrnou.
+    -   🔎 Skvrna je stará zaschlá krev. Vypadá to, že se ji někdo pokoušel vyčistit, ale nakonec to vzdal.
+    -   💡 Karbaník udělá cokoliv, jen aby nemusel odpovídat na otázky ohledně vozu.
+    -   _Vzduch se naplní smíchem a hudbou, když velkolepý večírek ovládne podnik. Stoly se prohýbají pod tíhou lahodného jídla a pití—pečeného masa, bohatých zákusků a vína, které teče proudem. Místní se radují, jedí a pijí, jejich tváře zrůžovělé radostí a přemírou, zatímco Karbaník baví společnost, připíjí na štěstí s úsměvem. Několik nespokojených šlechticů, kteří se rozhodli nepřipojit, postává opodál a sotva skrývá závist. Dnes večer si prostý lid jednou žije jako králové._
+-   🎭 Jak si večírek užíváte?
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.reputation} title="Příprava velkolepého večírku" current={0} total={12} reward="Karbaník je nadšený z oslavy a odmění hráče" />
+    <Asset {...defaultAssetProps} {...assetMap.wagon} />
+    <Asset {...defaultAssetProps} {...assetMap.tools} />
+</List>
+
+![](/KAC/encounters/drink/aftermath.jpg)
+
+## 📅 Následky večírku
+
+_Ráno po velkolepém večírku je místo zcela zpustošené—převrácené stoly, rozlité víno a zbytky jídla všude kolem. Rozzuřený majitel se žene k vám a ukazuje na ten nepořádek.  
+"Pomohli jste tohle zorganizovat! Ukliďte to, nebo mi zaplaťte za škody!"_
+
+- 💡 Zaměřte se na rostoucí následky Karbaníkových bezohledných večírků, zatímco klíčové postavy žádají odpovědnost.  
+- Karbaník není nikde k nalezení.
+- 🎭 **Majitel podniku** vyžaduje, abyste uklidili místo, nebo zaplatili za škody. Jak to chcete řešit?  
+    - 🏺 **Odměna od majitele:** Láhev starobylé medoviny, bylinky na bolest hlavy a nabídka zásobení pro vaši další akci.  
+- 🎭 **Biskup** přichází a s odporem si prohlíží ten chaos. „Jeden ministrant se nedostavil na mši a slyšel jsem, že byl včera tady. Vedete lidi na cestu do pekla—najděte ho a napravte to! Nepokoušejte mě, chlapče!“  
+    - 💡 Poptávání a hledání stop odhalí, že chlapec je v příkopu, zmožený alkoholem, a drží téměř prázdnou láhev vína. Je tak kocovinou zničený, že nemůže ani chodit.
+    - 🏺 **Odměna za pomoc ministrantovi:** Chlapec vám slíbí, že vám jednoho dne oplatí laskavost.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.reputation} title="Úklid podniku" current={0} total={12} reward="Majitel odmění hráče starobylou medovinou a bylinkami" threat="Majitel si na vás bude pamatovat" />
+    <Asset {...defaultAssetProps} {...assetMap.mead} />
+    <Asset {...defaultAssetProps} {...assetMap.herbal_remedy} />
+</List>
+
+![](/KAC/encounters/drink/playing-cards.jpg)
+
+## 📅 Vysoké sázky
+
+_Karbaník se zářivě usmívá, když vás vede do přepychového sídla, kde kolem velkého stolu čeká skupina šlechticů. „Tady začíná ta pravá zábava,“ říká Karbaník. „Pomozte mi vyhrát tuhle hru, a bohatě se vám odměním. Stačí je rozptýlit, špehovat jejich karty, cokoliv—všechno vám vynahradím, a ještě něco navíc!“  
+Když míjíte biskupa, který odchází s ponurým výrazem, otočí se k vám a tiše pronese: „Tohle musí přestat. Sabotujte Karbaníka, nebo se připravte čelit Božímu hněvu, až jejich hřích pohltí celé město.“_
+
+-   💡 Zvýrazněte napětí mezi Karbaníkem a biskupem, kteří táhnou hráče opačnými směry a nabízejí protichůdné motivace i následky.  
+-   💡 Ukazatel *Karbaníkovo štěstí* reprezentuje Karbaníkovy úspěchy při obírání šlechticů o majetek. Hráčské akce tento ukazatel ovlivňují pozitivně či negativně.  
+-   🎭 Karbaník vás žádá o pomoc s výhrou, zatímco biskup vás nabádá, abyste Karbaníka sabotovali. Jaký máte plán?  
+-   🎭 Všimnete si podezřelé osoby, která opouští sídlo. Otočí se k vám, změří si vás pohledem a nabídne vám *„něco, co vám uleví od stresu“.*  
+-   🏺 Pokud hráči pomohou Karbaníkovi vyhrát:  
+    -   Karbaník vás štědře odmění truhlou plnou mincí. Pod hromadou mincí najdete zdobenou dýku s Karbaníkovými iniciálami vyrytými na jílci.  
+    -   Jeden šlechtic přijde o všechno. Má podezření, že šlo o podvod, prokleje Karbaníka i jeho spojence a odejde rozhořčený.  
+    -   Doslechnete se, že biskup ve svých kázáních varuje lidi před vámi. V následujících dnech s vámi začnou zbožní obyvatelé města jednat s opovržením. Někteří vás ignorují, jiní na vás plivou, další s vámi odmítají obchodovat.  
+    -   📅 **Pán neřesti**  
+-   🏺 Pokud hráči způsobí Karbaníkovu prohru:  
+    -   Biskup vás pochválí, nabídne vám požehnání a malou truhličku s léky.  
+    -   Karbaník se vás zcela zřekne, odejde rozzlobený a obrátí se na zločince pro podporu.  
+    -   📅 **Město v bídě**  
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.wealth} title="Sázky" current={1} total={6} note="Reprezentuje změnu Karbaníkových výher, když vyhraje nebo prohraje kolo. Zvyšuje se o 1 každá dvě kola." />
+    <CounterCard {...defaultCounterProps} {...countersMap.reputation} title="Karbaníkovy výhry" current={5} total={20} note="Celkové výhry Karbaníka" reward="Karbaník vyhrává" threat="Karbaník prohrává" />
+    <Asset {...defaultAssetProps} {...assetMap.dagger} />
+    <Asset {...defaultAssetProps} {...assetMap.chest} />
+</List>
+
+![](/KAC/encounters/drink/maid.jpg)
+
+### 📅 Pán neřesti
+
+_Vstoupíte do Karbaníkova sídla a ocitnete se uprostřed chaotické přehlídky okázalého přepychu. Služebníci a obchodníci přinášejí bedny s drahými víny, pozlaceným nábytkem a vynikajícími uměleckými díly, zatímco jejich boty zanechávají blátivé stopy na dovezených kobercích. Masivní lustr se nebezpečně houpe, když ho zrovna upevňují na místo. Uprostřed všeho stojí Karbaník, mává zdobeným pohárem a vydává manické rozkazy. „Více! Řekl jsem víc! Je mi jedno, kolik to stojí!“ křičí, zatímco nalévá drahé červené víno přímo do úst služky, přičemž přebytek stéká na přepychovou sametovou pohovku, nyní potřísněnou tmavě rudou skvrnou.  
+Otočí se k vám s divokým úsměvem a roztaženýma rukama. „Dnes večer uspořádáme mejdan, o kterém se bude v tomhle městě mluvit roky! Tak dělejte—pozvěte všechny coury! Každou poslední z nich! Ať je to pořádná párty!“_
+
+-   💡 Když lidé začnou přicházet na večírek, jsou zpočátku zdrženliví. Nechte hráče, aby je zabavili a zvýšili „Zábavu lidí“ během několika kol. Pak vystupňujte Karbaníkovu manickou a povrchní posedlost luxusem a ukažte více známek deprese, když si uvědomuje, že žal nejde skrýt neustálým mejdanem.
+-   🎭 Karbaník vás požádá, abyste pozvali všechny prostitutky, které najdete. Jak to chcete zařídit?
+    -   💡 Některé prostitutky chtějí peníze, jiné se nechají přesvědčit, někteří muži nabídnou, že přivedou své „přátele“, pokud je také pozvete.
+-   Na večírku Karbaník necitlivě tlačí na všechny, aby se bavili, užívali si drahého pití a sexu.
+-   🎭 Karbaník je viditelně frustrovaný ze své aktuální společnosti a požádá vás, abyste mu našli „víc vzrušující dívku“.
+    -   Více a více lidí si začíná všímat zvláštní atmosféry a postupně odcházejí.
+        💡 Snižte *Zábavu lidí* o hodnotu *Karbaníkovy frustrace* a pak ji zvyšte o 1. Opakujte, dokud není *Zábava lidí* na 0, nebo dokud *Karbaníkova frustrace* nedosáhne maxima. Poté přejděte na 📅 **Všichni jsou pryč**.
+    -   🏺 Pokud hráči dokáží zvýšit *Zábavu lidí* na maximum dříve, než *Karbaníkova frustrace* dosáhne maxima, šlechtický host je odmění oblečením šitým na míru od svého krejčího.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.euphoria} title="Zábava lidí" note="Reprezentuje počet lidí, kteří se na večírku baví" reward="Oblečení šité na míru" current="10" total="20" />
+    <CounterCard {...defaultCounterProps} {...countersMap.morale} title="Karbaníkova frustrace" note="Zvyšuje se každé kolo. Jeho výbuchy odradí stejný počet 'Zábavy lidí'" threat="Večírek je zničen" current="1" total="10" />
+    <Asset {...defaultAssetProps} {...assetMap.gambeson} />
+</List>
+
+### 📅 Všichni jsou pryč
+
+-   💡 Nechte hráče rozhodnout, jak chtějí reagovat na Karbaníka, který ztrácí rozum. Pokud nic neudělají, nechte všechno shořet.  
+-   Jste poslední, kdo v sídle zůstal.  
+-   Karbaník propadá záchvatu vzteku, rozhazuje lahve alkoholu, máchá kolem sebe dekorativní halapartnou, ničí nábytek a křičí, že podpálí celé město.  
+-   🎭 Vidíte, jak Karbaník přichází o rozum a sídlo se ničí. Co uděláte?  
+-   💡 Akce hráčů mohou snížit *Karbaníkův vztek*. Mezitím se *Ničení sídla* každé kolo zvyšuje, pokud *Karbaníkův vztek* nedosáhne hodnoty 0.  
+-   💡 Pokud *Karbaníkův vztek* dosáhne hodnoty 0, uklidní se a řekne hráčům celý svůj příběh: 📅 **Karbaníkovo štěstí**. Pokud hráči selžou, pokračujte na 📅 **Pokud hráči nepomohou Karbaníkovi**.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.morale} title="Karbaníkův vztek" note="Reprezentuje, jak moc je Karbaník naštvaný" reward="Karbaník se uklidní" current={6} total={6} />
+    <CounterCard {...defaultCounterProps} {...countersMap.destruction} title="Ničení sídla" note="Reprezentuje, jak moc je sídlo zničené" current={1} total={6} />
+</List>
+
+📅 **Karbaníkovo štěstí**
+
+No, víte, že jsem neměl vždycky takové štěstí? Býval jsem prospe—ehm, kopáčem kovů, hledal jsem stříbro v kopcích. Já a moje žena—ta byla pěkně tvrdohlavá, ať jí Bůh požehná—jsme našli tuhle žílu, zářila jako sen. Říkala, že bychom to měli oznámit ostatním, udělat to všechno pořádně, ale já jí povídám: ‚Ne, miláčku, tohle je jenom naše. Jenom naše.‘ Nechtěl jsem, aby nám to někdo vzal. Nelíbilo se jí to, ale šla do toho se mnou, jako vždycky._
+
+_„Tak jsme na tom dřeli sami. Dnem i nocí. Ruce plné puchýřů, záda zlámaná, ale vytáhli jsme dost stříbra, abychom si žili dobře. Jenže… pak došlo k tomu závalu. Říkala mi, že to není bezpečné. Říkala to pořád, ale já neposlouchal. Jen jsem chtěl víc. Myslel jsem, že všechno spravím, když prostě budeme mít víc. Ale když jsem ji vykopal, nebylo co spravovat.“_
+
+_„Na to prokletý místo jsem se už nemohl ani podívat. Prodal jsem ho za hromadu peněz a zmizel z města. Myslel jsem, že se uchlastám k smrti a prohraju všechny prachy, dokud si pro mě nepřijde konec. Jenže… karty mi začaly hrát do ruky. Kostky přestaly padat proti mně. Pokaždé, když jsem chtěl prohrát, jsem vyhrál. A teď se na mě podívejte—říkají mi ‚Pán neřesti.‘ To je něco, co? Ale nic z tohohle—“ (ukáže rukou po místnosti, jeho hlas se láme a opilý blábolí) „Nic z toho nemá cenu. Ne bez ní.“_
+
+🎭 Jak chcete s Karbaníkem naložit?
+
+![](/KAC/encounters/drink/mansion.jpg)
+
+📅 Pokud hráči pomohou Karbaníkovi truchlit a podpoří ho:
+
+-   Karbaník přepíše sídlo na hráče se slovy: „Tohle místo pro mě není nic jiného než sbírka duchů. Možná z toho vy uděláte něco lepšího.“ Odchází, aby procestoval svět a hledal nový smysl života.
+
+🎭 Karbaník odchází. Možná je to naposledy, co ho vidíte. Co uděláte? Jak přemýšlíte o své roli v jeho příběhu a jeho roli ve vašem?
+
+-   Další den, dlouho po Karbaníkově odchodu, dorazí věřitelé, aby vyrovnali dluhy a zabavili majetek. Po vyřešení zůstane sídlo téměř prázdné, ale v dobrém stavu, připravené pro hráče, aby ho převzali.
+
+🏺 Každý hráč si může vybrat jednu věc z Karbaníkova majetku, než věřitelé odnesou zbytek.
+
+🎭 Co budete dělat se svým novým sídlem?
+
+📅 KONEC
+
+![](/KAC/encounters/drink/mansion-on-fire.jpg)
+
+📅 Pokud hráči selžou v pomoci Karbaníkovi:
+
+-   Karbaník je nalezen mrtvý a sídlo v plamenech.  
+-   Šlechtici, vidící příležitost, rychle přijdou, aby si nárokovali pozemky, a hráčům zůstane jen pár drobností.
+
+🏺 Každý hráč si může vybrat malý předmět z Karbaníkova majetku, než opustíte zničené sídlo.
+
+🎭 S Karbaníkem pryč, jak přemýšlíte o své roli v jeho příběhu a o jeho roli ve vašem?
+
+📅 KONEC
+
+![](/KAC/encounters/drink/rainy-street.jpg)
+
+### 📅 Město v bídě
+
+_Už nějakou dobu jste Karbaníka neviděli a soustředili jste se na vlastní záležitosti. Jenže po několika dnech si všímáte, že se vaše město začíná nenápadně měnit. Ulice, které dříve zněly smíchem, nyní rezonují zoufalými výkřiky. Obyčejní lidé se potácí uličkami, jejich oči prázdné a ruce se třesou touhou po něčem, co nemohou získat. Děti pláčou pro rodiče, kteří je opustili ve snaze najít prchavé opojení. Domy chátrají, jak dluhy rostou, střechy prosakují a krby zůstávají chladné. Tržiště jsou tišší, protože poctivé zboží nahrazují ukradené věci. Zločin se stává měnou zoufalých, a stíny se s každým dnem prodlužují. Karbaníkovo dědictví se šíří jako kouř, dusící vše, čeho se dotkne._
+
+-   💡 Nechte hráče pocítit zločinnost a bídu města spojenou s Karbaníkem. Stupňujte tyto události, dokud je nebudou moci ignorovat. Například:
+    -   Někdo hráčům něco ukradl a prodal to Karbaníkovi.  
+    -   Hráči na svém pozemku najdou člověka, který se předávkoval. Drogy koupil od Karbaníka.  
+    -   Na jejich majetku přespává bezdomovec. Přišel o všechno kvůli Karbaníkovi.  
+
+-   Narazíte na Karbaníka. Zdá se, že se snaží přesvědčit pár pochybných lidí, aby investovali do jednoho z jeho šílených plánů.  
+    -   Zahlédnete strach v Karbaníkových očích. Všimne si vás a zamračí se, než nasadí falešný úsměv a vrátí pozornost ke společnosti.  
+    -   🔎 Karbaník dluží hodně peněz zločincům.  
+    -   🔎 Karbaník pořádá hazardní hry pro zločince.  
+    -   🔎 Karbaník vyměňuje podezřelé balíčky (drogy) a peníze se zločinci.  
+    -   🔎 Karbaník není rád, že s ním mluvíte, ale zoufale potřebuje peníze a bojí se zločinců.  
+    -   🔎 Zločinci Karbaníka zabijí, pokud se pokusí utéct nebo přestane být užitečný.  
+
+-   🎭 Máte možnost Karbaníka dostihnout nebo ho prozkoumat. Co uděláte?
+    -   💡 Pokud se hráčům podaří Karbaníka přesvědčit, aby přijal jejich pomoc, dozví se místo úkrytu zločinců a podrobnosti o jejich aktivitách. Použijte ukazatel *Karbaníkův vztek* ke sledování, jak hráči přesvědčují Karbaníka, aby se jim otevřel.  
+    -   💡 Pokud *Karbaníkův vztek* dosáhne hodnoty 0, Karbaník jim vypráví svůj příběh: 
+
+📅 **Karbaníkovo neštěstí**
+
+_"No, víte, štěstí mi vždycky nepřálo. Býval jsem prospe—ehm, kopáčem, no, hledal jsem stříbro někde v kopcích. Já a moje žena—ta byla pěkně tvrdohlavá, ať jí pánbůh žehná—jsme našli tuhle žílu, blyštěla se jak sen. Pořád říkala, že bychom to měli nahlásit lidem, udělat to správně, ale já jí povídám: ‚Ne, zlato, tohle je naše. Jenom naše.‘ Nechtěl jsem, aby nám to někdo vzal. Nelíbilo se jí to, ale jak vždycky, šla do toho se mnou._
+
+_Dřeli jsme na tom sami. Dnem i nocí. Ruce samý puchýř, záda zlámaný, ale vytáhli jsme dost stříbra, abychom si mohli žít dobře. No a pak… pak to spadlo. Pořád mi říkala, že to není bezpečný. Říkala to pořád dokola, ale já neposlouchal. Pořád jsem chtěl víc. Myslel jsem, že všechno spravím, když prostě budeme mít víc. Ale když jsem ji vykopal, už nešlo nic spravit.“_
+
+_„Na to prokletý místo jsem se už nemohl ani podívat. Prodal jsem ho za hromadu peněz a zmizel z města. Říkal jsem si, že se uchlastám a prohraju všechno, než si pro mě přijde konec. Jenže… ty karty mi začaly hrát do ruky. Kostky pořád padaly v můj prospěch. Pokaždý, když jsem chtěl prohrát, jsem vyhrál. A teď se na mě podívej—říkaj mi ‚Pán neřesti.‘ To je něco, co? Ale nic z tohohle—“ (mávl rukou po místnosti, hlas se mu láme, slova jsou opilecká) „Nic z toho nemá smysl. Ne bez ní.“
+ Teď dlužím nebezpečným lidem víc, než kdy budu mít. A abych je splatil, dělal jsem… děsivé věci. Šířil jed mezi lidi, připravil je o domovy. Zničil životy, tak jako byl zničen můj. Myslel jsem, že se budu cítit líp, když tu bolest rozdám kolem sebe. Ale není tomu tak.“_
+
+(Sklopí zrak, svírá prázdnou sklenici tak pevně, že se třese.)
+
+_„A teď jsem tady, s ničím jiným než dluhy a duchy, působíc víc bolesti, než jsem kdy musel snést. Řekněte mi, příteli—jak s tím má člověk žít? Nebo možná ani nemá.“_
+
+-   🎭 Uvědomujete si, že zločin brzy pohltí celé město. Co s tím uděláte?
+    -   💡 Použijte ukazatel „Zločin“ ke sledování postupu při likvidaci zločinecké organizace. Pokud dosáhne hodnoty 0, 📅 **Město se pomalu zotavuje**.  
+    -   💡 Pokud ukazatel „Zločinci vás podezírají“ dosáhne maxima, zločinci se pokusí Karbaníka zabít a hráče napadnou otevřeně.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.incognito} title="Zločinci vás podezírají" note="Reprezentuje, jak moc vás zločinci podezřívají" threat="Zločinci se pokusí zabít Karbaníka" current={0} total={6} />
+    <CounterCard {...defaultCounterProps} {...countersMap.stealth} title="Zločin" note="Reprezentuje sílu zločinecké přítomnosti ve městě" reward="Město se pomalu zotavuje" current={20} total={20} />
+</List>
+
+
+### 📅 Město se pomalu zotavuje
+
+_Jak týdny plynou, město začíná znovu dýchat, jako člověk, který se probírá z dlouhé horečky. Ulice jsou tišší, stíny méně hrozivé. Obchodníci znovu otevírají své stánky a jejich opatrné pohledy se pomalu mění. Děti se vrací ke hrám v uličkách, jejich smích se znovu ozývá od kamenných zdí. Rozpadlé rodiny se snaží dát znovu dohromady a domy, ponechané napospas zkáze, se pomalu opravují. Přesto přetrvávají šeptané příběhy—o dluzích splacených krví, rozbitých spojenectvích a spravedlnosti vykonané ve stínech. Jizvy po tom, co bylo uděláno, aby se město očistilo, zůstávají, ale lidé se teď posouvají vpřed, nejistí, ale s nadějí.  
+Jednoho večera se potkáte s Karbaníkem. Zdá se, že je připraven odejít, jen s ošoupaným batohem přes rameno. Vytáhne klíč zabalený v mapě. „Víš, měl jsem něco málo schovanýho už nějakou dobu,“ řekne tišším hlasem, než u něj bývá zvykem. „Vzal jsem to od pár nebezpečnejch týpků, co mi dlužili… nebo možná já jim. Teď už je to fuk. Myslel jsem, že by mi to mohlo pomoct utýct, začít znova.“ Na chvíli se zastaví a zadívá se na klíč, než pokračuje: „Jenže jsem si uvědomil, že mi stříbro nikdy nepřineslo štěstí. A teď asi taky nepřinese. Tak si to vezmi! Udělej s tím něco lepšího, než bych s tím dokázal já…“_
+
+🎭 Karbaník odchází. Možná je to naposledy, co ho vidíte. Co uděláte? Jak přemýšlíte o své roli v jeho příběhu a o jeho roli ve vašem?
+
+🏺 Nakonec najdete Karbaníkův úkryt. Klíč pasuje do zámku a vy otevřete dveře, za kterými odhalíte malé jmění věcí, které Karbaník ukradl zločincům. Co si chcete vzít?
+
+![](/KAC/encounters/drink/hideout.jpg)
+
+🎭 Co s tímhle pokladem uděláte?
+
+📅 KONEC
+

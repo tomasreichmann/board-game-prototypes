@@ -8,6 +8,7 @@ import PaperMini, { PaperMiniProps } from "../components/gameComponents/PaperMin
 import Image, { ImageProps } from "../components/Image";
 import Heading, { HeadingProps } from "../components/Heading";
 import CounterCard from "../components/gameComponents/CounterCard";
+import GenericCounterCard, { GenericCounterCardProps } from "../components/gameComponents/GenericCounterCard";
 
 export enum AnimationEnum {
     FadeOut = "fadeOut",
@@ -21,6 +22,7 @@ export enum ScreenContentTypeEnum {
     Asset = "Asset",
     Clock = "Clock",
     Counter = "Counter",
+    GenericCounterCard = "GenericCounterCard",
     Effect = "Effect",
     PaperMini = "PaperMini",
     Paper = "Paper",
@@ -72,6 +74,11 @@ export type PaperContentType = {
     props: PaperProps;
 } & SharedContentType;
 
+export type GenericCounterCardContentType = {
+    type: ScreenContentTypeEnum.GenericCounterCard;
+    props: GenericCounterCardProps;
+} & SharedContentType;
+
 export type ScreenContentType =
     | ScreenImageContentType
     | HeadingContentType
@@ -80,6 +87,7 @@ export type ScreenContentType =
     | ClockContentType
     | EffectContentType
     | PaperMiniContentType
+    | GenericCounterCardContentType
     | PaperContentType;
 
 export const typeComponentMap = {
@@ -89,6 +97,7 @@ export const typeComponentMap = {
     [ScreenContentTypeEnum.Asset]: AssetCard,
     [ScreenContentTypeEnum.Clock]: Clock,
     [ScreenContentTypeEnum.Counter]: CounterCard,
+    [ScreenContentTypeEnum.GenericCounterCard]: GenericCounterCard,
     [ScreenContentTypeEnum.Effect]: EffectCard,
     [ScreenContentTypeEnum.PaperMini]: PaperMini,
     [ScreenContentTypeEnum.Paper]: Paper,

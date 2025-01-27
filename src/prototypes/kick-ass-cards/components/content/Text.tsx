@@ -1,9 +1,9 @@
-import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
 import { HTMLAttributes, Ref } from "react";
 import { JSONSchemaType } from "ajv";
 import ComponentMetaType from "../generation/ComponentMetaType";
 import textJsonSchema from "./textJsonSchema";
+import twm from "src/utils/twm";
 
 export const variantComponentMap = {
     body: "p" as const,
@@ -37,14 +37,16 @@ const variants = cva(["Text"], {
             white: ["text-white"],
         },
         size: {
+            "3xs": ["text-3xs"],
+            "2xs": ["text-2xs"],
             xs: ["text-xs"],
             sm: ["text-sm"],
             md: ["text-md"],
             lg: ["text-lg"],
             xl: ["text-xl"],
-            xxl: ["text-2xl"],
-            xxxl: ["text-3xl"],
-            xxxxl: ["text-4xl"],
+            "2xl": ["text-2xl"],
+            "3xl": ["text-3xl"],
+            "4xl": ["text-4xl"],
         },
     },
     defaultVariants: {
@@ -65,8 +67,8 @@ const defaultVariantColorMap = {
 
 const defaultVariantSizeMap = {
     body: "md",
-    h1: "xxxl",
-    h2: "xxl",
+    h1: "3xl",
+    h2: "2xl",
     h3: "xl",
     h4: "lg",
     h5: "md",
@@ -126,7 +128,7 @@ export default function Text({
 }: TextProps) {
     const ResolvedComponent = Component || variantComponentMap[variant || "body"];
     return (
-        <ResolvedComponent ref={ref} className={twMerge(variants({ variant, color, size }), className)} {...restProps}>
+        <ResolvedComponent ref={ref} className={twm(variants({ variant, color, size }), className)} {...restProps}>
             {children}
         </ResolvedComponent>
     );

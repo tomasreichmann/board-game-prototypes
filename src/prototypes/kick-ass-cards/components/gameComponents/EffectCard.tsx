@@ -102,7 +102,7 @@ export default function EffectCard({
                                 "font-kacLogo text-kac-cloth leading-none text-center mb-1",
                                 colorClassName
                             )}
-                            size={isSmSize ? "xl" : "xxl"}
+                            size={isSmSize ? "xl" : "2xl"}
                         >
                             {title}
                         </H2>

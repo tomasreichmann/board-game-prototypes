@@ -1,0 +1,289 @@
+---
+campaign: Quest Lines
+
+defaultActorProps: {
+    size: "54x86",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+    imagePosition: "center top",
+}
+defaultAssetProps: {
+    size: "54x86",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+}
+defaultCounterProps: {
+    size: "54x86",
+    className: "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+}
+defaultMiniProps: {
+    baseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+    backBaseClassName: "pt-2 bg-kac-blood-dark text-white text-center",
+    baseWidth: "0.5in",
+    height: "2in",
+    width: "1in",
+}
+---
+
+import { countersMap } from "../counters-deck";
+import { assetMap } from "../assets-en-deck";
+import def from "ajv/dist/vocabularies/discriminator";
+
+![](/KAC/encounters/drink/title.jpg)
+
+# Drink Till Your Luck Runs Out
+
+_The town buzzes with excitement as "the Gambler" sweeps in with an inheritance big enough to change everything. Lavish parties, risky wagers, and whispers of scandal follow in their wake, promising opportunities for those bold enough to get involved. How far will you ride the wave of fortune before it all crumbles around you? The stakes are high, and every choice could tip the balance._
+
+**⚠ Features adult themes**
+
+**Legend**
+-   _Descriptive text you can directly read to the players when they arrive at a location._
+-   🔎 Information not immediately apparent to the players, but it can be revealed by searching, examining, or interrogating.
+-   🎭 Prompt for the players to act.
+-   🏺 Loot, treasure, or reward that the players receive.
+-   💡 Tips for the Storyteller.
+-   📅 Events that may occur.
+
+## 💡 Summary for the Storyteller
+
+The adventure revolves around "the Gambler," a charismatic but self-destructive commoner who sells a silver mine where his wife died and uses the money to drown their grief in reckless indulgence. Their actions unravel the town, dragging it into moral decay and criminal activity. Players must navigate escalating tension, deciding whether to support, oppose, or attempt to redeem the Gambler, shaping the fate of the town and its people.
+
+### Key Features:
+- **High-Stakes Choices:** Each branching path has significant consequences, determining the Gambler’s fate and the town’s future.
+- **Escalating Tension:** The story evolves from indulgent parties to a town consumed by vice or squalor, with players’ decisions at the core.
+- **Player Agency:** Players can influence key outcomes through moral dilemmas, creative problem-solving, and decisive action.
+- **Counter-Based Progression:** Track the Gambler’s Luck, Anger, and the state of the town’s crime to dynamically adjust the narrative.
+
+### Resolutions:
+- **Lord of Vice:** Players inherit the Gambler’s estate or watch it fall to ruin.  
+- **Town in Squalor:** Players dismantle a criminal empire and claim the Gambler’s hidden stash—or let the town descend into chaos as the Gambler meets a tragic end.
+
+The branching narrative ensures that every choice matters, allowing for a reflective and impactful conclusion shaped by the players’ actions.
+
+**Tips:**
+-   💡 Pick easily memorable names for the key characters like the Gambler or the Bishop.
+-   💡 Let players decide how they want to handle each Encounter.
+-   💡 Reward players' engagement and initiative with valuable loot ideally tailored to their character.
+
+![](/KAC/encounters/drink/toast.jpg)
+
+## 📅 Meeting the Gambler
+
+_The tavern is alive with music, laughter, and the clinking of glasses. At the center of the commotion sits the Gambler, their table piled with bottles of fine wine and a few scattered coins. They raise a glass as you enter, flashing a charming grin and waving you over.  
+"Come, friends! Tonight, we celebrate fortune’s favor! Drinks are on me, and perhaps a friendly game to sweeten the evening?"_
+
+-   💡 Keep the atmosphere lighthearted but sprinkle in subtle clues about the Gambler’s deeper grief.
+-   the Gambler seems outwardly cheerful but has moments of distant, wistful silence before flashing a smile.
+-   the Gambler is flaunting their new wealth without much thought, inviting strangers for drinks and betting recklessly.
+-   🎭 the Gambler invites players for a drink and a game of chance. What do you do?
+    -   💡 Consider playing a few actual rounds of Blackjack, dice, or other short game.
+-   🏺 If the players succeed, the Gambler rewards them with a leather pouch with a set of masterfully crafted ivory dice, clearly used but kept in pristine condition. It seems that one of the pips is in a shape of a heart. _"It's time to get a new set, I don't want this one any more", the Gambler says with a bittersweet smile, "Seek me out, if you want to party some more."_
+-   📅 If the players push too hard for details about the Gambler’s past, the Gambler may abruptly change the topic or pay for shots for the whole tavern, hinting at unresolved trauma.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.agreement} title="Befrending the Gambler" current={0} total={12} reward="The Gambler is excited about the party and rewards the players" />
+    <Asset {...defaultAssetProps} {...assetMap.pouch} />
+</List>
+
+![](/KAC/encounters/drink/noble-establishment.jpg)
+
+## 📅 Exclusive Party
+
+_The town square is abuzz with activity as the Gambler stands outside a prestigious establishment, arguing with a servant. "This is a place for nobles," the servant insists. the Gambler turns to you with a sly grin, "Looks like we’ll need to get creative. Care to help me crash their party or throw one of our own?"_
+
+-   💡 Highlight the growing tension between the Gambler’s charm and the exclusivity of the nobility, balancing lighthearted defiance with their frustration at being excluded.
+-   the Gambler is visibly confident and stops at nothing to have a good time.
+-   Nearby townsfolk watch curiously; some cheer for the Gambler excited about a chance to party like kings, while others mutter that it’s best to leave the nobles alone.
+-   🎭 The Gambler asks you to help him throw a party everyone will remember. Ideally in this noble establishment, or some other fancy place. How will you go about it?
+-   🏺 If the players succeed, the Gambler covers all their costs and rewards them with a wagon pulled by two horses. It was apparently used for hauling ore, but well maintained. "I am not going back to mining, but I bet you can still use my wagon for whatever". You found some tools in the back covering a dark stain.
+    -   🔎 The stain is a old dried up blood. It looks like someone tried to clean it, but gave up.
+    -   💡 The Gambler will do anything to not answer questions about the wagon.
+    -   _The air buzzes with laughter and music as the grand party takes over the establishment. Tables groan under the weight of fine food and drink—roasted meats, rich pastries, and wine flowing endlessly. Townsfolk enjoy themselves, eating and drinking, their cheeks flushed with joy and excess, while the Gambler holds court, toasting to fortune with a grin. Several unhappy nobles, who decided not to join in, linger nearby, their scornful murmurs barely hiding their envy. Tonight, for once, the common folk live like kings._
+-   🎭 How do you enjoy the party?
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.reputation} title="Preparing an epic party" current={0} total={12} reward="The Gambler is excited about the party and rewards the players" />
+    <Asset {...defaultAssetProps} {...assetMap.wagon} />
+    <Asset {...defaultAssetProps} {...assetMap.tools} />
+</List>
+
+![](/KAC/encounters/drink/aftermath.jpg)
+
+## 📅 Aftermath of Excess
+
+_The morning after the grand party, the venue is in shambles—overturned tables, spilled wine, and food scraps everywhere. The furious owner storms toward you, pointing at the mess.  
+"You helped throw this! Clean it up or compensate me for the damages!"_
+
+- 💡 Focus on the mounting consequences of Gambler's reckless partying as key figures demand accountability.  
+- the Gambler is nowhere to be found.
+- 🎭 **The Establishment Owner** demands you clean up the venue or compensate for damages. How do you want to deal with this?  
+    - 🏺 **Reward from the owner:** A vintage bottle of mead, herbs for the headache and offers to supply your next event.  
+- 🎭 **The Bishop** arrives, scanning the chaos with disgust. "An altar boy didn’t show up for mass, and I hear he was here last night. You are setting people on the path to hell—find the boy and set this right! Don't test me, boy!"  
+    - 💡 Asking around and looking for clues reveals the boy passed out in a ditch, clutching a mostly empty bottle of wine. He is so hung over he cannot walk. 
+    - 🏺 **Reward for helping the altar boy:** The boy promises to repay you with a favor someday.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.reputation} title="Venue cleaned up" current={0} total={12} reward="The owner rewards players with a vintage bottle of mead and some herbs" threat="The owner will hold a grudge" />
+    <Asset {...defaultAssetProps} {...assetMap.mead} />
+    <Asset {...defaultAssetProps} {...assetMap.herbal_remedy} />
+</List>
+
+![](/KAC/encounters/drink/playing-cards.jpg)
+
+## 📅 High Stakes
+
+_The Gambler grins as they lead you to a lavish mansion where a group of nobles awaits around a grand table. "This is where the stakes get interesting," the Gambler says. "Help me win this game, and I’ll make it worth your while. Just distract them, spy on their hands, whatever it takes, I'll make it up to you and then some!"  
+You pass the bishop as he is leaving, his expression grim. He turns to you in passing and says, "This must stop. Sabotage the Gambler or suffer the wrath of God when their sin consumes this town."_
+
+-   💡 Highlight the tension as the Gambler and the bishop pull the players in opposite directions, offering conflicting motivations and consequences.
+-   💡 The Counter *Gambler’s Luck* represents the Gambler’s progress in stripping the nobles of their wealth. Players’ actions influence this counter positively or negatively.
+-   🎭 the Gambler asks for your help to win the game and the Bishop urges you to sabotage the Gambler. What is your plan?
+-   🎭 You notice a shady looking person leaving the mansion. They turn to you, look you up and down and offer to sell you *"stuff to take the edge off"*.
+-   🏺 If the players help the Gambler win:
+    -   the Gambler rewards you generously with coin in a robust chest. Under the pile of coins, you find an ornate dagger with gambler's initials engraved on the hilt.
+    -   One noble loses everything. They suspect foul-play and curse the Gambler and their allies, and storm out.
+    -   You hear about the bishop warning people against you in their sermons. In the following days, the pious people of the city start treating you with disdain. Some ignore you, some spit on you, some refuse doing business with you.
+    -   📅 **Lord of Vice**
+-   🏺 If the players the Gambler looses:
+    -   The bishop commends you, offering a blessing and a small chest of medicine.
+    -   the Gambler forsakes you entirely, leaving in anger and turning to criminals for support.
+    -   📅 **Town in Squalor**
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.wealth} title="Stakes" current={1} total={6} note="Represents change in Gambler's Winnings when he win's or looses a round. Rises by 1 every two rounds." />
+    <CounterCard {...defaultCounterProps} {...countersMap.reputation} title="Gambler's Winnings" current={5} total={20} note="Gambler's total winnings" reward="Gambler wins" threat="Gambler looses" />
+    <Asset {...defaultAssetProps} {...assetMap.dagger} />
+    <Asset {...defaultAssetProps} {...assetMap.chest} />
+</List>
+
+![](/KAC/encounters/drink/maid.jpg)
+
+### 📅 Lord of Vice
+
+_You step into the Gambler’s estate, finding a chaotic display of opulence. Servants and merchants haul in crates of fine wines, gilded furniture, exquisite art while their boots leave muddy trails across imported rugs. A massive chandelier swings precariously as it’s hoisted into place. In the center of it all stands the gambler, waving a jeweled goblet, barking manic orders. "More! I said more! I don’t care what it costs!" he shouts, pouring expensive red wine straight into a maid’s mouth, the excess spilling onto a lavish velvet sofa now stained with deep crimson.  
+He turns to you with a wild grin, arms spread wide. "Tonight, we’re throwin’ a bash this town’ll talk about for years! Go on—invite all the whores! Every last one of 'em! Let’s make this a proper party!"_
+
+-   💡 As people are coming to a party, they are reserved. Let players entertain them to rise "People having fun" for a couple rounds. Then escalate the Gambler's manic and superficial obsession with luxury and show more signs of depression as they realize they cannot mask grief with relentless partying.
+-   🎭 The Gambler asks you to invite all the prostitutes you can. How do you want to go about it?
+    -   💡 Some prostitutes want money, some just want to be persuaded, some men offer to bring their "friends", if they are also invited.
+-   At the party, the Gambler insensitively pushes everyone to have fun, to indulge in fine drinks and sex.
+-   🎭 The gambler is visibly frustrated with his current company and asks you to find him a more arousing girl.
+    -   More and more people seem to notice the strange vibe and begin to leave.
+        💡 Reduce *People Having Fun* by the amount of *The Gambler's Frustration* then increase it by 1. Repeat this until *People Having Fun* is at 0 or *The Gambler's Frustration* is at maximum. Then go to 📅 **Everyone is gone**.
+    -   🏺 If players manage to get *People having fun* to maximum before *the Gambler's Frustration* reaches maximum a noble guest rewards the players with tailor made clothing from their tailor.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.euphoria} title="People having fun" note="Represents amount of people who are having fun at the party" reward="Tailor made clothing" current="10" total="20" />
+    <CounterCard {...defaultCounterProps} {...countersMap.morale} title="The Gambler's Frustration" note="Rises every round. His outbursts turn the same amount of 'People having fun' away" threat="Party is ruined" current="1" total="10" />
+    <Asset {...defaultAssetProps} {...assetMap.gambeson} />
+</List>
+
+### 📅 Everyone is gone
+
+-   💡 Let players decide how they want to deal with the Gambler loosing their mind. If they don't act, let everything burn down.
+-   You are the last people left in the estate.
+-   The Gambler descends into an angry fit, throwing around bottles of spirits, swinging a decorative halberd around, breaking furniture, screaming that he is going to set the whole town on fire.
+-   🎭 You see the Gambler lose their mind and the estate is getting ruined. What do you do?
+-   💡 Players’ actions can reduce *The Gambler's Anger*. Meanwhile, *The Estate Getting Ruined* increases each turn unless *The Gambler's Anger* reaches 0.
+-   💡 If *The Gambler's Anger* reaches 0 they calm down and tell players their whole story: 📅 **The Gambler's Fortune** otherwise 📅 If the players fail to help the Gambler
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.morale} title="The Gambler's Anger" note="Represents how angry the Gambler is" reward="Gambler calms down" current={6} total={6} />
+    <CounterCard {...defaultCounterProps} {...countersMap.destruction} title="The Estate Getting Ruined" note="Represents how much of the estate has been destroyed" current={1} total={6} />
+</List>
+
+📅 **The Gambler's Fortune**
+
+"Heh, y’know, I weren’t always this lucky. Used to be a prospe—uh, a… metal digger, lookin’ for silver out in the hills. Me an’ my wife—she was a stubborn one, God bless her—we found this vein, shiny as a dream. She said we oughta tell folks, make it all proper-like, but I told her, 'Nah, sweetheart, this is ours. Just ours.' Didn’t want no one takin’ it away. She didn’t like it, but she went along with me, like she always did.
+
+"So we worked it ourselves. Day an’ night. Hands blistered, backs breakin’, but we pulled enough silver out to set us up right. Then… then there was the cave-in. She told me it wasn’t safe. Told me over an’ over, but I didn’t listen. I just wanted more. Thought I could fix everythin’ if we just had more. But when I dug her out, it weren’t no fixin’ her."
+
+"Couldn’t even look at that damn place after that. Sold it off for a pile o’ coin and skipped town. Figured I’d drink myself stupid and gamble myself broke till the end came knockin’. Only… the cards started fallin’ my way. The dice wouldn’t stop rollin’ my numbers. Every time I tried to lose, I’d win. An’ now look at me—'Lord of Vice,' they call me. Fancy that, eh? But none o’ this—" (he gestures around the room, his voice slurring) "None o’ this means a thing. Not without her."
+
+🎭 How do you want to deal with the Gambler?
+
+![](/KAC/encounters/drink/mansion.jpg)
+
+📅 If the players help the Gambler grieve and support them:
+
+-   The gambler signs over the estate, saying, "This place has nothing but ghosts for me. Maybe you can make something of it." They leave to travel the world and search for purpose.
+
+🎭 The gambler is leaving. It might be the last time you see them. What do you do? What do you think about your part in his story and his part in yours?
+
+-   The next day, long after the Gambler is gone, creditors arrive to reclaim debts and goods. Once settled, the estate is left almost empty but in good condition, ready for the players to claim it.
+
+🏺 Each player may choose any one item from the Gambler's belongings before the creditors reclaim the rest.
+
+🎭 What are you going to do with your new estate?
+
+📅 THE END
+
+![](/KAC/encounters/drink/mansion-on-fire.jpg)
+
+📅 If the players fail to help the Gambler:
+
+-   The Gambler is found dead and the mansion on fire.
+-   Nobles, seeing an opportunity, quickly move to reclaim the land, leaving the players with scraps.
+
+🏺 Each player may choose to snatch a small item from the Gambler's belongings before you leave the ruined estate.
+
+🎭 With the gambler gone, what do you think about your part in his story and his part in yours?
+
+📅 THE END
+
+![](/KAC/encounters/drink/rainy-street.jpg)
+
+### 📅 Town in Squalor
+
+_You haven't seen the Gambler for some time and focused on your own business. But a couple days went by and you noticed your town to subtly change. Streets once filled with laughter now echo with desperate cries. Commoners stumble through alleys, their eyes hollow and their hands trembling from cravings they cannot sate. Children cry for parents who abandoned them to chase fleeting highs. Homes fall into disrepair as debts mount, roofs leak, and fires burn cold in the hearths. Markets are quieter, as stolen goods replace honest wares. Crime becomes the currency of the desperate, and shadows lengthen with every passing day. The Gambler’s legacy spreads like smoke, choking the life from all it touches._
+
+-   💡 Let players feel the crime and squalor of the town that is linked to the Gambler. Escalate these events until they cannot ignore it anymore. For example:
+    -   Someone stole from the players and sold the stolen items to the Gambler.
+    -   The players find an overdosed person on their property. They bought drugs from the Gambler.
+    -   A homeless person is squatting on their property. They lost everything to the Gambler.
+-   You run into the Gambler. They seem to be trying to convince some shady people to buy into another one if their crazy plans.
+    -   You catch a glimpse of fear in the Gambler's eyes. They notice you and frown before putting on a fake smile and focusing back at the company.
+    -   🔎 The Gambler ows a lot of money to the criminals.
+    -   🔎 The Gambler seems to be running gambling events for the criminals.
+    -   🔎 The Gambler seems to be exchanging suspicious looking packages (drugs) and money with the criminals.
+    -   🔎 The Gambler is not happy talking to the players, but he is also desperate for money and afraid of the criminals.
+    -   🔎 The criminals will kill the Gambler if the Gambler tries to run or if they are not useful to the criminals any more.
+
+-   🎭 You have a chance to catch up to or investigate the Gambler. What do you do?
+    -   💡 If the players manage to persuade the Gambler to accept their help, they learn the location of the criminal's lair and details about their activities. Use the Counter *The Gambler's Anger* to track how players manage to persuade the Gambler to open up to them.  
+    -   💡 If *the Gambler's Anger* reaches 0, the Gambler will tell them his story: 
+
+📅 **The Gambler's Misfortune**
+
+"Heh, y’know, I weren’t always like this. Used to be a prospe—uh, a… metal digger, lookin’ for silver out in the hills. Me an’ my wife—she was a stubborn one, God bless her—we found this vein, shiny as a dream. She said we oughta tell folks, make it proper-like, but I told her, 'Nah, sweetheart, this is ours. Just ours.' Didn’t want no one takin’ it away. She didn’t like it, but she went along with me, like she always did.
+
+"So we worked it ourselves. Day an’ night. Hands blistered, backs breakin’, but we pulled enough silver out to set us for life. Then… then there was the cave-in. She told me it wasn’t safe. Told me over an’ over, but I didn’t listen. I just wanted more. Thought I could fix everythin’ if we just had more. But when I dug her out, it weren’t no fixin’ her."
+
+"I sold the place after that. Got a fat pile o’ coin, but it felt like blood money. Figured I’d drink myself stupid and gamble it all away till the end came knockin’. Only, at first, I couldn’t lose. The cards, the dice—they loved me. Money kept rollin’ in, and I thought maybe I could drown all that guilt in wine and silver."
+
+"But luck, she don’t stay forever. One day, the cards turned cold, and the dice stopped favorin’ me. Lost everythin’. All that silver, all the winnings—it’s gone. Now I owe dangerous folk more than I’ll ever have. An’ to pay 'em off, I… I’ve done things. Bad things. Got people hooked on poison, drove 'em outta their homes. Ruined lives, just like mine was. Thought maybe it’d make me feel better, spreadin’ the hurt around. But it don’t."
+
+(He looks down, gripping his empty glass so tightly it shakes.)
+"Now here I am, with nothin’ left but debts and ghosts, causin’ more pain than I ever had to bear. Tell me, friend—how’s a man live with that? Or maybe he don’t."
+
+-   🎭 You realize that the crime will soon consume this city, what do you do about it?
+    -   💡 Use the Counter "The Crime" to track the progress of dismantling the criminal organization. If it reaches 0, 📅 **The Town Slowly Recovers**
+    -   💡 If the Counter "The Criminals Suspect You" reaches its maximum, the criminals try to kill the Gambler and attack the players openly.
+
+<List>
+    <CounterCard {...defaultCounterProps} {...countersMap.incognito} title="The Criminals Suspect You" note="Represents how much are the Criminals suspecting you" threat="Criminals will move to kill the Gambler" current={0} total={6} />
+    <CounterCard {...defaultCounterProps} {...countersMap.stealth} title="The Crime" note="Represents how strong is criminal presence in the town" reward="The Town Slowly Recovers" current={20} total={20} />
+</List>
+
+### 📅 The Town Slowly Recovers
+
+_As the weeks pass, the town begins to breathe again, like a man shaking off a long fever. The streets grow quieter, the shadows less menacing. Merchants reopen their stalls, their wary eyes starting to soften. Children return to playing in the alleys, their laughter echoing off the stone walls once more. Broken families try to piece themselves back together, and homes left to decay are slowly repaired. Yet whispers linger—of debts repaid in blood, alliances shattered, and justice dealt in the dark. The scars of what was done to cleanse the town remain, but for now, the people move forward, uncertain but hopeful.  
+One evening, you meet the Gambler, they seem to be packed to leave with just a worn backpack on their shoulder. They pull out a key wrapped in a map. "Y’know, I’ve had a little something something squirreled away for a while," they say, their voice quieter than usual. "Took it off some dangerous folk who owed me… or maybe I owed them. Doesn’t matter now. Thought maybe it’d be my way out, a fresh start." They pause and look at the key then continue: "I figured out silver didn’t bring me happiness before, and prob'ly won’t now. You take it! Do somethin’ better with it than I would do..."_
+
+🎭 The gambler is leaving. It might be the last time you see them. What do you do? What do you think about your part in his story and his part in yours?
+
+🏺 Eventually, you managed to find the Gambler's hideout. The key fits to the lock and you open the door to reveal a small fortune of things the Gambler stole from the criminals? What do you want to take? 
+
+![](/KAC/encounters/drink/hideout.jpg)
+
+🎭 What are you going to do with this treasure?
+
+📅 THE END

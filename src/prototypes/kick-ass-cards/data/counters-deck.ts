@@ -13,4 +13,9 @@ const counters: CounterType[] = counterData.map(({ count, ...item }) => ({
     count: Number(count),
 }));
 
+export const countersMap = counters.reduce((map, item) => {
+    map[item.slug] = item;
+    return map;
+}, {} as { [key: string]: CounterType });
+
 export default counters;

@@ -21,6 +21,7 @@ import InfoCardPages from "../print/InfoCardPages";
 import StuntCardPages from "../print/StuntCardPages";
 import { Navigation } from "../Navigation";
 import LPCardPages from "../../data/encounters/LP-en-print";
+import Text, { variantComponentMap } from "../content/Text";
 /* import BDay139CarPages from "../print/BDay139CarPages";
 import ThreatCardPages from "../print/ThreatCardPages";
 import MachiKoroPages from "../print/MachiKoroPages"; */
@@ -137,6 +138,24 @@ export default function ComponentsRoute() {
                                     <div className="text-sm">{iconKey}</div>
                                 </div>
                             ))}
+                        </div>
+                    </Toggle>
+                    <Toggle buttonContent="Show Typography" initialCollapsed>
+                        <div className="flex flex-row flex-wrap gap-2 p-8 bg-white text-kac-iron rounded-md shadow-lg mb-2">
+                            {Object.keys(variantComponentMap).map((variant) => (
+                                <Text key={variant} variant={variant as any}>
+                                    {variant}
+                                </Text>
+                            ))}
+                            <Text variant="body" className="font-kacBody text-2xl">
+                                kacBody: ["Shantell Sans", "cursive"]
+                            </Text>
+                            <Text variant="body" className="font-kacLogo text-2xl">
+                                kacLogo: ["Kalam", "cursive"]
+                            </Text>
+                            <Text variant="body" className="font-kacHeading text-2xl">
+                                kacHeading: ["Kalam", "cursive"]
+                            </Text>
                         </div>
                     </Toggle>
                     <Toggle buttonContent="Show Card Sizes" initialCollapsed>

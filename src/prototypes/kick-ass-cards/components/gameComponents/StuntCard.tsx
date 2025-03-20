@@ -69,7 +69,6 @@ export default function StuntCard({
                     <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight tracking-tight text-balance">
                         {requirements && (
                             <div className="text-xs text-center text-kac-blood mb-2 font-bold">
-                                Requires{" "}
                                 <RichText commonComponentProps={{ className: "h-5 inline-block text-kac-steel-dark" }}>
                                     {requirements}
                                 </RichText>

@@ -2,5 +2,5 @@
 "special","Special action","/KAC/super.png","Activate your special action.<BR>+3 Effect","","universal"
 "success","Success","/KAC/bulls-eye.png","It worked!<BR>+2 Effect","","universal"
 "partial","Partial success","/KAC/silver-medal.png","It mostly worked…<BR>+1 Effect,<BR>or success with a Complication","","universal"
-"fumble","Fumble","/KAC/skull-ink.png","It failed!<BR>──<BR>Immediately announce,<BR>if you have 3+ Fumbles or only Fumbles in your hand ➜ Catastrophe","","universal"
+"fumble","Fumble","/KAC/skull-ink.png","It failed!<BR>Bonuses to Effect does not apply.<BR>──<BR>Immediately announce,<BR>if you have 3+ Fumbles or only Fumbles in your hand ➜ Catastrophe","","universal"
 "chaos","Chaos","/KAC/whirlwind.png","Something unexpected happened.<BR>──<BR>Cannot be used for defense","","universal"

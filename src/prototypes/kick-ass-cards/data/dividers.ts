@@ -85,7 +85,14 @@ const dividers = [
     },
     {
         heading: "Medieval – Locations",
-        imageUri: "/KAC/assets/medieval/key.png",
+        imageUri: "/KAC/illustrations/road_sign.png",
+        iconUri: "/KAC/map.png",
+        backfaceUri: "/KAC/asset-back-face.png",
+        color: "bg-kac-bone-dark",
+    },
+    {
+        heading: "Medieval – Rooms",
+        imageUri: "/KAC/illustrations/door.png",
         iconUri: "/KAC/map.png",
         backfaceUri: "/KAC/asset-back-face.png",
         color: "bg-kac-bone-dark",

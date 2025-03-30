@@ -19,6 +19,7 @@ export default function StuntCardsPrintControls({ className }: StuntCardsPrintCo
             ...item,
             className: "relative",
         }))
+        .filter((item) => item.count !== 0)
         //.sort((a, b) => a.title.localeCompare(b.title))
     );
     return (

@@ -63,7 +63,7 @@
 "tracker","Tracker","/KAC/stunts/tracker.png","Track an enemy to their lair.","You can never lose a track of an unsuspecting prey.","Ranger",1
 "camouflage","Camouflage","/KAC/stunts/camouflage.png","Fool an enemy by camouflaging yourself without being discovered.","Your camouflage always holds up unless inspected.","Ranger",1
 "hunter","Hunter","/KAC/stunts/hunter.png","Knock-out or kill an enemy with one shot.","Shooting an enemy with full health inflicts +1 Injury.","Ranger",1
-"animalTrainer","Animal Trainer","/KAC/stunts/animal-trainer.png","Tame an animal.","Play a Special Action to teach your pet a new trick.","Ranger",1
+"animalTrainer","Animal Trainer","/KAC/stunts/animal-trainer.png","Make an animal follow your command.","Play a Special Action to teach your pet a new trick.","Ranger",1
 "trapper","Trapper","/KAC/stunts/trapper.png","Make a trap and capture an enemy or an animal in it.","Your traps don't hurt you or your allies.","Ranger",1
 "marksman","Marksman","/KAC/stunts/marksman.png","Hit a target 3 zones away.","You can shoot ranged weapons 1 zone further.","Ranger",1
 "rangedWeaponMaintenance","Ranged Weapon Maintenance","/KAC/stunts/ranged-weapon-maintenance.png","Repair a broken or jammed ranged weapon.","Ranged weapons never jam when you use them.","Ranger",1
@@ -74,7 +74,7 @@
 "botanist","Botanist","/KAC/stunts/botanist.png","Identify a rare or useful plant in the wild.","You automatically recognize common plants. You receive +1 Effect when using plants for medicine, poison, or alchemy.",Scholar,1
 "chemist","Chemist","/KAC/stunts/chemist.png","Create an effective potion, poison, or explosive compound.","Chemicals you craft have +1 Effect or +1 round duration.",Scholar,1
 "tinkerer","Tinkerer","/KAC/stunts/tinkerer.png","Repair or modify a device to serve an unintended purpose.","You don't need specialized tools when repairing or crafting.",Scholar,1
-"medic","Medic","/KAC/stunts/medic.png","Save someone from critical injury or illness.","Play a Success to remove up to 2x Injury from an ally outside of combat.",Scholar,1
+"physician","Physician","/KAC/stunts/physician.png","Heal 3 Injuries in action.","Play a Success to remove up to 2x Injury from an ally outside of combat.",Scholar,1
 "inventor","Inventor","/KAC/stunts/inventor.png","Design and build a completely new tool or device.","Play a Special Action to invent a gadget tailored to the current situation. Destroy a non-single-use item for a +1 Effect.",Scholar,1
 "academic","Academic","/KAC/stunts/academic.png","Teach an ally a new skill.","Play Partial Success to give an ally a Boost and discard a Complication.",Scholar,1
 "powerfulRhetoric","Powerful Rhetoric","/KAC/stunts/powerful-rhetoric.png","Win a public debate or convince a group to change their stance.","Playing a Partial Success when debating or persuading counts as Success.",Scholar,1
@@ -89,3 +89,11 @@
 "enterTrance","Enter Trance","/KAC/stunts/enter-trance.png","Experience a trance like state.","Play a Success to fall into a trance and ignore a mental or environmental hazard or charm someone to stun them for a round.","Mystic",1
 "bless","Bless","/KAC/stunts/bless.png","Make someone believe you blessed them.","Once per scene, play a Success to remove a status card from an ally.","Mystic",1
 "circleOfProtection","Circle of Protection","/KAC/stunts/circle-of-protection.png","Create a protective boundary.","Once per session, play a Success to shield yourself and allies in your zone from the next hostile action.","Mystic",1
+"lastStand","Last Stand","/KAC/stunts/last-stand.png","Defeat an enemy while Panicked and Injured.","When defending while you have 5 or more negative Effect cards, take one less (min 1) negative Effect card.","Brawler",1
+"hiddenArsenal","Hidden Arsenal","/KAC/stunts/hidden-arsenal.png","Smuggle a weapon into a restricted area.","Once per scene, reveal a hidden weapon to attack with +2 Effect.","Spy",1
+"calmAnimal","Calm Animal","/KAC/stunts/calm-animal.png","Calm down an aggressive animal.","Animals are not aggressive to you without provocation.","Ranger",1
+"medic","Medic","/KAC/stunts/medic.png","Revive a fallen ally.","+1 Effect when treating Injuries in battle.","Scholar",1
+"hex","Hex","/KAC/stunts/hex.png","Make someone believe you cursed them.","Once per scene, play Success to make a person believe you cursed them. They receive 2x Distress. Usable once per scene.","Scholar",1
+"protector","Protector","/KAC/stunts/protector.png","Take a hit for someone else.","Play an Outcome card to defend someone in your zone. You receive any unblocked Injuries.","Universal",1
+"forwardAssault","Forward Assault","/KAC/stunts/forward-assault.png","Make all your allies assault a zone in one turn.","Designate a zone. +1 Effect to everyone who moves into that zone and attacks during the next turn.","Universal",0
+"coverFire","Cover Fire","/KAC/stunts/cover-fire.png","Intimidate a group of enemies with your firepower.","Once per scene, play a Success to inflict -1 Effect on all enemies' attacks in the zone until your next turn.","Universal",0

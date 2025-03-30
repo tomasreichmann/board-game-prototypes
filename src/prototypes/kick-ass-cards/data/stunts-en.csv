@@ -1,90 +1,91 @@
 "slug","title","icon","requirements","effect","deck","count"
-"seductive","Seductive","/LP/icons/lips.png",,"Receive 2x free Boosts at the start of a social Encounter with a character that may find you attractive.","universal",1
-"elusive","Elusive","/KAC/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.","universal",1
-"evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",,"+1 Effect on driving, riding, or piloting to avoid something.","universal",1
-"charge","Charge","/KAC/charge.png",,"+1 Effect on melee attacking after moving to a zone.","universal",1
-"ballistic","Ballistic","/KAC/ballistic.png",Requires a ranged or artillery weapon,"+1 Effect on shooting two or more zones away.","universal",1
-"acrobatic","Acrobatic","/KAC/acrobat.png",,"You can play two Outcome cards to overcome a movement-based challenge.","universal",1
-"calm","Calm Under Pressure","/KAC/calm.png",,"Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.","universal",1
-"dontGiveUp","Don't Give Up","/KAC/dontGiveUp.png",,"You need +1 Distress to get Panicked or Hopeless.","universal",1
-"bringThePain","Bring the Pain","/LP/icons/bringThePain.png",,"You need +1 Injury to get Unconscious.","universal",1
-"rage","Rage","/KAC/rage.png",,"Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.","universal",1
-"recklessAttack","Reckless Attack","/KAC/reckless-attack.png",,"Gain a Complication to add +1 Effect to your melee attack.","universal",1
-"brushItOff","Brush It Off","/KAC/brush-it-off.png",,"Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.","universal",1
-"joker","Joker","/KAC/joker.png",,"Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.","universal",1
-"rallyingCry","Rallying Cry","/KAC/rallying-cry.png",,"Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.","universal",1
-"ghost","Ghost","/KAC/ghost.png",,"You can choose to receive a Distress for a +2 Effect when trying to avoid detection.","universal",1
-"allIn","All In","/KAC/all-in.png",,"You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.","universal",1
-"kleptomaniac","Kleptomaniac","/KAC/pickpocket.png",,"When stealing or looting, you can play cards from your Outcome deck. Get an extra Asset for each Success, Distress for Fumble and Injury for Chaos.","universal",1
-"foresight","Foresight","/KAC/crystal-ball.png",,"Receive a clue from the Storyteller in exchange for Distress.","universal",1
-"burglar","Burglar","/KAC/burglar.png",,"You can choose to receive a Distress for a +2 Effect when trying to break into something.","universal",1
-"tactical","Tactical","/KAC/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
-"analytical","Analytical","/KAC/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
-"sympathetic","Sympathetic","/KAC/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","universal",1
-"intuitive","Intuitive","/KAC/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","universal",1
-"fearless","Fearless","/KAC/fearless.png",,"You are always Panicked (you draw Outcome cards randomly), but you never turn Hopeless (You don't give up or flee), you get Hindered instead.","universal",1
-"strategist","Strategist","/KAC/chess.png",,"Your Outcome card hand limit is increased by 1.","universal",1
-"assassin","Assassin","/KAC/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","universal",1
-"ruthless","Ruthless","/KAC/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.","universal",1
-"elemental","Elemental","/KAC/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","fantasy",1
-"timeStop","Time Stop","/KAC/time-stop.png",,"Receive a Distress to prevent a turn or round Counter from advancing.","fantasy",1
-"recklessPiloting","Reckless Driving","/KAC/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","modern",1
-"burst","Burst fire","/KAC/burst.png","Requires a repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","modern",1
-"whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","modern",1
-"demoExpert","Demolitions Expert","/KAC/explosion.png",,"You never hit yourself with your own explosions.","modern",1
-"sharpshooter","Sharpshooter","/KAC/sharpshooter.png",Requires a ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","modern",1
-"overclock","Overclock","/KAC/overclock.png",,"Gain a Heat and draw an extra Outcome card to your hand.","modern",1
-"psychonaut","Psychonaut","/KAC/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","modern",1
-"chargedAttack","Charged attack","/KAC/charged.png",Requires a charge weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","sci-fi",1"upload","Upload","/LP/icons/upload.png",a synthetic body,"You can upload your consciousness into a different powered down machine.","sci-fi",1
-"turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.","sci-fi",1
-"heatSink","Heat Sink","/LP/icons/cooler.png","Requires a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Frost cards.","sci-fi",1
-"pummel","Pummel","/LP/icons/pummel.png","Win an unarmed duel.","Playing a Partial Success to attack an opponent while unarmed inflicts +1 Injury.","universal_brawler",1
-"flex","Flex","/LP/icons/flex.png","Impress or intimidate someone with your raw strength.","+1 Effect when using your body to impress or intimidate.","universal_brawler",1
-"oversizedWeaponry","Oversized Weaponry","/LP/icons/oversized-weaponry.png","Hit something with a weapon too large to wield easily.","You can use oversized weapons. You can wield two-handed weapons in one hand.","universal_brawler",1
-"offensiveThrow","Offensive Throw","/LP/icons/offensive-throw.png","Throw something most people cannot throw.","You can throw characters of your size or smaller up to 1 zone away.","universal_brawler",1
-"powerAttack","Power Attack","/LP/icons/power-attack.png","Strike an enemy so hard they stagger or fall.","Your melee attacks leave enemies open—they receive a Complication.","universal_brawler",1
-"warCry","War Cry","/LP/icons/war-cry.png","Intimidate multiple opponents at once.","Play Success to intimidate all enemies in your zone, giving them 1 Distress.","universal_brawler",1
-"hardenedSkin","Hardened Skin","/LP/icons/hardened-skin.png","Receive 3 Injury from one attack and remain standing.","Unarmed attacks against you deal -1 Injury.","universal_brawler",1
-"grapple","Grapple","/LP/icons/grapple.png","Successfully restrain an enemy in close combat.","When you successfully block a melee attack, you automatically grapple the attacker.","universal_brawler",1
-"chokeOut","Choke Out","/LP/icons/choke-out.png","Hold an opponent down until they submit or pass out.","If you grapple an enemy for 2 consecutive turns, they lose consciousness.","universal_brawler",1
-"smash","Smash","/LP/icons/smash.png","Knock down 3 or more opponents with a single melee attack.","Your melee attacks damage up to 3 enemies in the same zone.","universal_brawler",1
-"ghostStep","Ghost Step","/LP/icons/ghost-step.png","Sneak past a group of at least 3 enemies without being detected.","+1 Effect trying to stay undetected.","universal_spy",1
-"masterOfDisguise","Master of Disguise","/LP/icons/master-of-disguise.png","Assume a false identity and successfully deceive someone.","+1 Effect when you pretend to be someone else, fooling most who don’t scrutinize you closely.","universal_spy",1
-"venomous","Venomous","/LP/icons/venomous.png","Successfully poison a target without them noticing.","You cannot fail when applying poison. You can apply poison to a weapon and attack with it in 1 action.","universal_spy",1
-"forger","Forger","/LP/icons/forger.png","Forge a document or alter evidence to deceive someone.","+1 Effect when creating, planting or acquiring false documents. The documents hold up under casual inspection.","universal_spy",1
-"stalker","Stalker","/LP/icons/stalker.png","Knock-out or assassinate an unaware target in 1 action.","Your attacks deal +1 Injury or Distress to unaware enemies.","universal_spy",1
-"escapist","Escapist","/LP/icons/escapist.png","Lose enemies chasing you.","+1 Effect when escaping enemies without leaving a trace.","universal_spy",1
-"safecracker","Safecracker","/LP/icons/safecracker.png","Break into a safe or other high-security place or container.","+1 Effect when braking into or out of locked places or containers.","universal_spy",1
-"sweetLies","Sweet Lies","/LP/icons/sweet-lies.png","Successfully manipulate someone into trusting you with false information.","Partial Success does not raise suspicion when deceiving someone.","universal_spy",1
-"pickpocket","Pickpocket","/LP/icons/pickpocket.png","Steal two items from a person without them noticing.","When you pickpocket someone, you always get an extra item.","universal_spy",1
-"stagedAccident","Staged Accident","/LP/icons/staged-accident.png","Convince someone that a person you killed died as an accident.","Killing or knocking-out an enemy for the first time in a scene looks like an accident.","universal_spy",1
-"forager","Forager","/LP/icons/forager.png","Find food for your whole group.","You get 2x the food when foraging.","universal_ranger",1
-"tracker","Tracker","/LP/icons/tracker.png","Track an enemy to their lair.","You can never lose a track of an unsuspecting prey.","universal_ranger",1
-"camouflage","Camouflage","/LP/icons/camouflage.png","Fool an enemy by camouflaging yourself without being discovered.","Your camouflage always holds up unless inspected.","universal_ranger",1
-"hunter","Hunter","/LP/icons/hunter.png","Knock-out or kill an enemy with one shot.","Shooting an enemy with full health inflicts +1 Injury.","universal_ranger",1
-"animalTrainer","Animal Trainer","/LP/icons/animal-trainer.png","Tame an animal.","Play a Success to teach your pet a new trick.","universal_ranger",1
-"trapper","Trapper","/LP/icons/trapper.png","Make a trap and capture an enemy or an animal in it.","Your traps don't hurt you or your allies.","universal_ranger",1
-"marksman","Marksman","/LP/icons/marksman.png","Hit a target 3 zones away.","You can shoot ranged weapons 1 zone further.","universal_ranger",1
-"rangedWeaponMaintenance","Ranged Weapon Maintenance","/LP/icons/ranged-weapon-maintenance.png","Repair a broken or jammed ranged weapon.","Ranged weapons never jam when you use them.","universal_ranger",1
-"penetration","Penetration","/LP/icons/penetration.png","Hurt two enemies with one shot.","You can apply extra damage left after defeating an enemy with a ranged attack to another enemy in the same zone.","universal_ranger",1
-"survivor","Survivor","/LP/icons/survivor.png","Survive dangerous weather or natural environment without any negative consequences","You and your allies get +1 Effect when dealing with dangerous weather or natural environment.","universal_ranger",1
-"linguist","Linguist","/LP/icons/linguist.png","Decipher a coded message or translate an ancient text.","You can always recognize a language by text or speech. You receive +1 Effect when decoding or translating.",universal_scholar,1
-"historian","Historian","/LP/icons/historian.png","Correctly recall or uncover a crucial historical event that changes the current situation.","You always know 1 useful fact about any historical site, artifact, or tradition relevant to your setting.",universal_scholar,1
-"botanist","Botanist","/LP/icons/botanist.png","Identify a rare or useful plant in the wild.","You automatically recognize common plants. You receive +1 Effect when using plants for medicine, poison, or alchemy.",universal_scholar,1
-"chemist","Chemist","/LP/icons/chemist.png","Create an effective potion, poison, or explosive compound.","Chemicals you craft have +1 Effect or +1 round duration.",universal_scholar,1
-"tinkerer","Tinkerer","/LP/icons/tinkerer.png","Repair or modify a device to serve an unintended purpose.","You don't need specialized tools when repairing or crafting.",universal_scholar,1
-"medic","Medic","/LP/icons/medic.png","Save someone from critical injury or illness.","Play a Success to remove up to 2x Injury from an ally outside of combat.",universal_scholar,1
-"inventor","Inventor","/LP/icons/inventor.png","Design and build a completely new tool or device.","Play a Special Action to invent a gadget tailored to the current situation. Destroy a non-single-use item for a +1 Effect.",universal_scholar,1
-"academic","Academic","/LP/icons/academic.png","Teach an ally a new skill.","Play Partial Success to give an ally a Boost and discard a Complication.",universal_scholar,1
-"powerfulRhetoric","Powerful Rhetoric","/LP/icons/powerful-rhetoric.png","Win a public debate or convince a group to change their stance.","Playing a Partial Success when debating or persuading counts as Success.",universal_scholar,1
-"mastermind","Mastermind","/LP/icons/mastermind.png","Defeat enemies by using a formation or a specific strategy.","Once per scene, play a Success to prevent your ally in the same zone from receiving cards of a certain type (e.g. Injury) until your next turn.",universal_scholar,1
-"senseDanger","Sense Danger","/LP/icons/sense-danger.png","Detect an unseen threat before it strikes.","You receive +1 Effect when trying to notice ambushes, traps, or hidden dangers.","universal_mystic",1
-"readEmotions","Read Emotions","/LP/icons/read-emotions.png","Correctly call out a liar.","Play a Success to detect underlying emotions of a character.","universal_mystic",1
-"markAnOmen","Mark an Omen","/LP/icons/mark-an-omen.png","Interpret or create an omen that influences others.","Play a Success to make all enemies in the same zone believe an omen is real and gain 1 Distress.","universal_mystic",1
-"genusLoci","Genus Loci","/LP/icons/genus-loci.png","Connect with a place or object's lingering essence.","Play a Success to glimpse into an object or location’s past and learn a hidden truth.","universal_mystic",1
-"vibe","Vibe","/LP/icons/vibe.png","Make a friend.","You receive +1 Effect when making a first impression or making someone like you.","universal_mystic",1
-"guideEmotions","Guide Emotions","/LP/icons/guide-emotions.png","Talk someone down from attacking you.","+1 Effect when trying to calm someone down.","universal_mystic",1
-"crowdControl","Crowd Control","/LP/icons/crowd-control.png","Sway a crowd to obey you.","Play a Special Action to control command a crowd, calming, riling up, or directing them.","universal_mystic",1
-"enterTrance","Enter Trance","/LP/icons/enter-trance.png","Experience a trance like state.","Play a Success to fall into a trance to resist a mental or environmental hazard or charm someone to stun them for a round.","universal_mystic",1
-"bless","Bless","/LP/icons/bless.png","Make someone believe you blessed them.","Once per scene, play a Success to remove a status card from an ally.","universal_mystic",1
-"circleOfProtection","Circle of Protection","/LP/icons/circle-of-protection.png","Create a protective boundary.","Once per session, play a Success to shield yourself and allies in your zone from the next hostile action.","universal_mystic",1
+"seductive","Seductive","/LP/icons/lips.png",,"Receive 2x free Boosts at the start of a social Encounter with a character that may find you attractive.","Universal",1
+"elusive","Elusive","/KAC/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.","Universal",1
+"evasive","Evasive Maneuver","/KAC/evasive-maneuver.png",,"+1 Effect on driving, riding, or piloting to avoid something.","Universal",1
+"charge","Charge","/KAC/charge.png",,"+1 Effect on melee attacking after moving to a zone.","Universal",1
+"ballistic","Ballistic","/KAC/ballistic.png",Requires a ranged or artillery weapon,"+1 Effect on shooting two or more zones away.","Universal",1
+"acrobatic","Acrobatic","/KAC/acrobat.png",,"You can play two Outcome cards to overcome a movement-based challenge.","Universal",1
+"calm","Calm Under Pressure","/KAC/calm.png",,"Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.","Universal",1
+"dontGiveUp","Don't Give Up","/KAC/dontGiveUp.png",,"You need +1 Distress to get Panicked or Hopeless.","Universal",1
+"bringThePain","Bring the Pain","/LP/icons/bringThePain.png",,"You need +1 Injury to get Unconscious.","Universal",1
+"rage","Rage","/KAC/rage.png",,"Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.","Universal",1
+"recklessAttack","Reckless Attack","/KAC/reckless-attack.png",,"Gain a Complication to add +1 Effect to your melee attack.","Universal",1
+"brushItOff","Brush It Off","/KAC/brush-it-off.png",,"Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.","Universal",1
+"joker","Joker","/KAC/joker.png",,"Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.","Universal",1
+"rallyingCry","Rallying Cry","/KAC/rallying-cry.png",,"Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.","Universal",1
+"ghost","Ghost","/KAC/ghost.png",,"You can choose to receive a Distress for a +2 Effect when trying to avoid detection.","Universal",1
+"allIn","All In","/KAC/all-in.png",,"You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.","Universal",1
+"kleptomaniac","Kleptomaniac","/KAC/pickpocket.png",,"When stealing or looting, you can play cards from your Outcome deck. Get an extra Asset for each Success, Distress for Fumble and Injury for Chaos.","Universal",1
+"foresight","Foresight","/KAC/crystal-ball.png",,"Receive a clue from the Storyteller in exchange for Distress.","Universal",1
+"burglar","Burglar","/KAC/burglar.png",,"You can choose to receive a Distress for a +2 Effect when trying to break into something.","Universal",1
+"tactical","Tactical","/KAC/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",1
+"analytical","Analytical","/KAC/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",1
+"sympathetic","Sympathetic","/KAC/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",1
+"intuitive","Intuitive","/KAC/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","Universal",1
+"fearless","Fearless","/KAC/fearless.png",,"You are always Panicked (you draw Outcome cards randomly), but you never turn Hopeless (You don't give up or flee), you get Hindered instead.","Universal",1
+"strategist","Strategist","/KAC/chess.png",,"Your Outcome card hand limit is increased by 1.","Universal",1
+"assassin","Assassin","/KAC/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","Universal",1
+"ruthless","Ruthless","/KAC/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.","Universal",1
+"elemental","Elemental","/KAC/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","Fantasy",1
+"timeStop","Time Stop","/KAC/time-stop.png",,"Receive a Distress to prevent a turn or round Counter from advancing.","Fantasy",1
+"recklessPiloting","Reckless Driving","/KAC/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","Modern",1
+"burst","Burst fire","/KAC/burst.png","Requires a repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","Modern",1
+"whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","Modern",1
+"demoExpert","Demolitions Expert","/KAC/explosion.png",,"You never hit yourself with your own explosions.","Modern",1
+"sharpshooter","Sharpshooter","/KAC/sharpshooter.png",Requires a ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","Modern",1
+"overclock","Overclock","/KAC/overclock.png",,"Gain a Heat and draw an extra Outcome card to your hand.","Modern",1
+"psychonaut","Psychonaut","/KAC/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","Modern",1
+"chargedAttack","Charged attack","/KAC/charged.png",Requires a charge weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","Sci-Fi",1
+"upload","Upload","/LP/icons/upload.png",Requires a synthetic body,"You can upload your consciousness into a different powered down machine.","Sci-Fi",1
+"turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.","sci-Fi",1
+"heatSink","Heat Sink","/LP/icons/cooler.png","Requires a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Frost cards.","Sci-Fi",1
+"pummel","Pummel","/KAC/stunts/pummel.png","Win an unarmed duel.","Playing a Partial Success to attack an opponent while unarmed inflicts +1 Injury.","Brawler",1
+"flex","Flex","/KAC/stunts/flex.png","Impress or intimidate someone with your raw strength.","+1 Effect when using your body to impress or intimidate.","Brawler",1
+"oversizedWeaponry","Oversized Weaponry","/KAC/stunts/oversized-weaponry.png","Hit something with a weapon too large to wield easily.","You can use oversized weapons. You can wield two-handed weapons in one hand.","Brawler",1
+"offensiveThrow","Offensive Throw","/KAC/stunts/offensive-throw.png","Throw something most people cannot throw.","You can throw characters of your size or smaller up to 1 zone away.","Brawler",1
+"powerAttack","Power Attack","/KAC/stunts/power-attack.png","Strike an enemy so hard they stagger or fall.","Your melee attacks leave enemies open—they receive a Complication.","Brawler",1
+"warCry","War Cry","/KAC/stunts/war-cry.png","Intimidate multiple opponents at once.","Play Success to intimidate all enemies in your zone, giving them 1 Distress.","Brawler",1
+"hardenedSkin","Hardened Skin","/KAC/stunts/hardened-skin.png","Receive 3 Injury from one attack and remain standing.","Unarmed attacks against you deal -1 Injury.","Brawler",1
+"grapple","Grapple","/KAC/stunts/grapple.png","Successfully restrain an enemy in close combat.","When you successfully block a melee attack, you automatically grapple the attacker.","Brawler",1
+"chokeOut","Choke Out","/KAC/stunts/choke-out.png","Hold an opponent down until they submit or pass out.","If you grapple an enemy for 2 consecutive turns, they lose consciousness.","Brawler",1
+"smash","Smash","/KAC/stunts/smash.png","Knock down 3 or more opponents with a single melee attack.","Your melee attacks damage up to 3 enemies in the same zone.","Brawler",1
+"ghostStep","Ghost Step","/KAC/stunts/ghost-step.png","Sneak past a group of at least 3 enemies without being detected.","+1 Effect while sneaking or hiding.","Spy",1
+"masterOfDisguise","Master of Disguise","/KAC/stunts/master-of-disguise.png","Deceive someone by assuming a false identity.","+1 Effect when you assume a false identity, fooling most who don’t scrutinize you closely.","Spy",1
+"venomous","Venomous","/KAC/stunts/venomous.png","Successfully poison a target without them noticing.","You cannot fail when applying poison. You can apply poison to a weapon and attack with it in 1 action.","Spy",1
+"forger","Forger","/KAC/stunts/forger.png","Deceive someone with a document or evidence you forged.","+1 Effect when manipulating with forged documents. The documents always hold up under casual inspection.","Spy",1
+"stalker","Stalker","/KAC/stunts/stalker.png","Knock-out or assassinate an unaware target in 1 action.","Your attacks deal +1 Injury or Distress to unaware enemies.","Spy",1
+"escapist","Escapist","/KAC/stunts/escapist.png","Lose enemies chasing you.","+1 Effect when escaping enemies without leaving a trace.","Spy",1
+"safecracker","Safecracker","/KAC/stunts/safecracker.png","Break into a safe or other high-security place or container.","+1 Effect when braking into or out of locked places or containers.","Spy",1
+"sweetLies","Sweet Lies","/KAC/stunts/sweet-lies.png","Successfully manipulate someone into trusting you with false information.","Partial Success does not raise suspicion when deceiving someone.","Spy",1
+"pickpocket","Pickpocket","/KAC/stunts/pickpocket.png","Steal two items from a person without them noticing.","When you pickpocket someone, you always get an extra item.","Spy",1
+"stagedAccident","Staged Accident","/KAC/stunts/staged-accident.png","Convince someone that a person you killed died as an accident.","Killing or knocking-out an enemy for the first time in a scene looks like an accident.","Spy",1
+"forager","Forager","/KAC/stunts/forager.png","Find food for your whole group.","You get 2x the food when foraging.","Ranger",1
+"tracker","Tracker","/KAC/stunts/tracker.png","Track an enemy to their lair.","You can never lose a track of an unsuspecting prey.","Ranger",1
+"camouflage","Camouflage","/KAC/stunts/camouflage.png","Fool an enemy by camouflaging yourself without being discovered.","Your camouflage always holds up unless inspected.","Ranger",1
+"hunter","Hunter","/KAC/stunts/hunter.png","Knock-out or kill an enemy with one shot.","Shooting an enemy with full health inflicts +1 Injury.","Ranger",1
+"animalTrainer","Animal Trainer","/KAC/stunts/animal-trainer.png","Tame an animal.","Play a Special Action to teach your pet a new trick.","Ranger",1
+"trapper","Trapper","/KAC/stunts/trapper.png","Make a trap and capture an enemy or an animal in it.","Your traps don't hurt you or your allies.","Ranger",1
+"marksman","Marksman","/KAC/stunts/marksman.png","Hit a target 3 zones away.","You can shoot ranged weapons 1 zone further.","Ranger",1
+"rangedWeaponMaintenance","Ranged Weapon Maintenance","/KAC/stunts/ranged-weapon-maintenance.png","Repair a broken or jammed ranged weapon.","Ranged weapons never jam when you use them.","Ranger",1
+"penetration","Penetration","/KAC/stunts/penetration.png","Hurt two enemies with one shot.","You can apply extra ranged Injury left after defeating an enemy to another enemy in the same zone.","Ranger",1
+"survivor","Survivor","/KAC/stunts/survivor.png","Survive a natural hazard without consequences","You get +1 Effect when dealing with natural hazards.","Ranger",1
+"linguist","Linguist","/KAC/stunts/linguist.png","Decipher a coded message or translate an ancient text.","You can always recognize a language by text or speech. You receive +1 Effect when decoding or translating.",Scholar,1
+"historian","Historian","/KAC/stunts/historian.png","Recall or uncover a crucial historical event.","You always know 1 useful fact about any historical site, artifact, or tradition relevant to your setting.",Scholar,1
+"botanist","Botanist","/KAC/stunts/botanist.png","Identify a rare or useful plant in the wild.","You automatically recognize common plants. You receive +1 Effect when using plants for medicine, poison, or alchemy.",Scholar,1
+"chemist","Chemist","/KAC/stunts/chemist.png","Create an effective potion, poison, or explosive compound.","Chemicals you craft have +1 Effect or +1 round duration.",Scholar,1
+"tinkerer","Tinkerer","/KAC/stunts/tinkerer.png","Repair or modify a device to serve an unintended purpose.","You don't need specialized tools when repairing or crafting.",Scholar,1
+"medic","Medic","/KAC/stunts/medic.png","Save someone from critical injury or illness.","Play a Success to remove up to 2x Injury from an ally outside of combat.",Scholar,1
+"inventor","Inventor","/KAC/stunts/inventor.png","Design and build a completely new tool or device.","Play a Special Action to invent a gadget tailored to the current situation. Destroy a non-single-use item for a +1 Effect.",Scholar,1
+"academic","Academic","/KAC/stunts/academic.png","Teach an ally a new skill.","Play Partial Success to give an ally a Boost and discard a Complication.",Scholar,1
+"powerfulRhetoric","Powerful Rhetoric","/KAC/stunts/powerful-rhetoric.png","Win a public debate or convince a group to change their stance.","Playing a Partial Success when debating or persuading counts as Success.",Scholar,1
+"mastermind","Mastermind","/KAC/stunts/mastermind.png","Defeat enemies using a formation or tactic.","Once per scene, play a Success to prevent your ally in the same zone from receiving any cards until your next turn.",Scholar,1
+"senseDanger","Sense Danger","/KAC/stunts/sense-danger.png","Detect an unseen threat before it strikes.","You receive +1 Effect when trying to notice ambushes, traps, or hidden dangers.","Mystic",1
+"readEmotions","Read Emotions","/KAC/stunts/read-emotions.png","Correctly call out a liar.","Play a Success to detect underlying emotions of a character.","Mystic",1
+"markAnOmen","Mark an Omen","/KAC/stunts/mark-an-omen.png","Interpret or create an omen that influences others.","Play a Success to make all enemies in the same zone believe an omen is real and gain 1 Distress.","Mystic",1
+"genusLoci","Genus Loci","/KAC/stunts/genus-loci.png","Connect with a place or object's lingering essence.","Play a Success to glimpse into an object or location’s past and learn a hidden truth.","Mystic",1
+"vibe","Vibe","/KAC/stunts/vibe.png","Make a friend.","You receive +1 Effect when making a first impression or making someone like you.","Mystic",1
+"guideEmotions","Guide Emotions","/KAC/stunts/guide-emotions.png","Talk someone down from attacking you.","+1 Effect when trying to calm someone down.","Mystic",1
+"crowdControl","Crowd Control","/KAC/stunts/crowd-control.png","Sway a crowd to obey you.","Play a Special Action to control command a crowd, calming, riling up, or directing them.","Mystic",1
+"enterTrance","Enter Trance","/KAC/stunts/enter-trance.png","Experience a trance like state.","Play a Success to fall into a trance and ignore a mental or environmental hazard or charm someone to stun them for a round.","Mystic",1
+"bless","Bless","/KAC/stunts/bless.png","Make someone believe you blessed them.","Once per scene, play a Success to remove a status card from an ally.","Mystic",1
+"circleOfProtection","Circle of Protection","/KAC/stunts/circle-of-protection.png","Create a protective boundary.","Once per session, play a Success to shield yourself and allies in your zone from the next hostile action.","Mystic",1

@@ -72,6 +72,7 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("PH-cs-stiny-klastera", "Stíny Kláštera", PH),
     ...makeEncounterDefinition("PH-en-penance-in-blood", "Penance in Blood", PH),
     ...makeEncounterDefinition("PH-en-though-shalt-not-prank", "Though Shalt Not Prank", PH),
+    ...makeEncounterDefinition("PH-cs-nenapalis-blizniho-sveho", "Nenapálíš bližního svého", PH),
     ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov-info", "The Hidden Hand of Strahov - Info", PH),
     ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov-scenes", "The Hidden Hand of Strahov - Scenes", PH),
 

@@ -8,7 +8,8 @@ export type PaperProps = React.PropsWithChildren<{
     slugClassName?: string;
     bleedClassName?: string;
     trimClassName?: string;
-    size: keyof typeof allSizes;
+    size: keyof typeof allSizes | "custom";
+    sizeInMm?: [number, number];
     orientation?: "portrait" | "landscape";
     bleedMm?: number;
     bleedTopMm?: number;
@@ -44,12 +45,13 @@ export default function Paper({
     bleedLeftMm = bleedMm,
     cropMarkSizeMm = Math.max(bleedTopMm, bleedRightMm, bleedBottomMm, bleedLeftMm) / 2,
     style,
+    sizeInMm: sizeInMmProp,
     children,
 }: PaperProps) {
-    if (!allSizes[size]) {
+    if ((size === "custom" ? !sizeInMmProp : !allSizes[size])) {
         throw new Error(`Unknown paper size: ${size}`);
     }
-    const sizeInMm = allSizes[size].mm;
+    const sizeInMm = size === "custom" ? sizeInMmProp! : allSizes[size].mm;
     const [width, height] = orientation === "landscape" ? [...sizeInMm].reverse() : sizeInMm;
 
     const trimWidth = width;

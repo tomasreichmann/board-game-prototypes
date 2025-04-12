@@ -7,12 +7,10 @@ import Spread from "../layout/Spread";
 import EffectCard from "../gameComponents/EffectCard";
 import OutcomeCard, { OutcomeCardBackFace } from "../gameComponents/OutcomeCard";
 import ActorCard from "../gameComponents/ActorCard";
-import Clock from "../Clock";
 import MdxArticle from "../layout/MdxArticle";
 import homeInfoMdx from "../../articles/homeInfo.mdx";
 import { Navigation } from "../Navigation";
 import Deck from "../layout/Deck";
-import { actors, clocks, defaultClockProps } from "../../data/encounters/LP-common-en";
 import { actors as tohActors } from "../../data/encounters/TOH-common-en";
 import { outcomeMap } from "../../data/outcomeDeck";
 import { effectMap } from "../../data/effects-deck-en";
@@ -32,8 +30,6 @@ const defaultActorCardProps = {
     ...defaultCardProps,
     size: largeCardSize,
 };
-
-actors;
 
 export default function InfoRoute() {
     return (

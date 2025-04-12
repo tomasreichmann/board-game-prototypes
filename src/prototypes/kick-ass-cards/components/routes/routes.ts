@@ -23,6 +23,7 @@ import PlayOnlineRoute from "./PlayOnlineRoute";
 import ComponentsRoute from "./ComponentsRoute";
 import ProductsRoute from "./ProductsRoute";
 import RelicsOfValorRoute from "./products/RelicsOfValorRoute";
+import RulesRoute from "./RulesRoute";
 
 export const mightyDecksPath = "/mighty-decks";
 export const mightyDecksScreenStorageKey = "mighty-decks-screen";
@@ -42,6 +43,11 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
         path: mightyDecksPath + "/",
         hideFromNav: true,
         Component: InfoRoute,
+    },
+    {
+        name: "Rules",
+        path: mightyDecksPath + "/rules",
+        Component: RulesRoute,
     },
     {
         name: "Preparing the Game",

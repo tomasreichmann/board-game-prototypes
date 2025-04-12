@@ -116,7 +116,7 @@ module.exports = {
             },
             fontSize: {
                 "2xs": ["0.6rem", "0.75rem"],
-                "3xs": ["0.5rem", "6rem"],
+                "3xs": ["0.5rem", "0.6rem"],
             },
             fontFamily: {
                 "jd-logo": ["New Rocker", "sans-serif"],
@@ -126,6 +126,7 @@ module.exports = {
                 dtHeading: ["Germania One", "sans-serif"],
                 kacBody: ["Shantell Sans", "cursive"],
                 kacLogo: ["Kalam", "cursive"],
+                kacTitle: ["Passion One", "sans-serif"],
                 kacHeading: ["Kalam", "cursive"],
                 mmHeading: ["Quantico", "sans-serif"],
                 mkHeading: ["Archivo Black", "sans-serif"],
@@ -182,6 +183,7 @@ module.exports = {
                 "md-heavy": ["0 1px 2px rgb(0 0 0 / 0.25)", "0 1px 1px rgb(0 0 0 / 0.12)"],
                 "lg-heavy": ["0 10px 8px rgb(0 0 0 / 0.25)", "0 4px 3px rgb(0 0 0 / 0.12)"],
                 "xl-heavy": ["0 20px 13px rgb(0 0 0 / 0.25)", "0 8px 5px rgb(0 0 0 / 0.12)"],
+                "title": ["0px 1px 0px #1f081d", "0px 3px 0px #6d2648", "0px 3px 0px #1f081d"],
             },
             textShadow: {
                 sm: "0 1px 2px var(--tw-shadow-color)",

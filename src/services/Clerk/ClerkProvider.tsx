@@ -14,10 +14,11 @@ export const ClerkFirebaseIntegration = ({ children }: { children: React.ReactNo
             try {
                 const token = await getToken({ template: "integration_firebase" });
                 if (token) {
+                    // Does this need to be called?
                     const userCredentials = await signInWithCustomToken(auth, token || "");
                     // The userCredentials.user object can call the methods of
                     // the Firebase platform as an authenticated user.
-                    console.log("User:", userCredentials.user);
+                    // console.log("User:", userCredentials.user);
                 }
             } catch (error) {
                 console.error(error);

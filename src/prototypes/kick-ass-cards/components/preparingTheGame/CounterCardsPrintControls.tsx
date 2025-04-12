@@ -24,7 +24,7 @@ export type CounterCardProps = React.PropsWithChildren<
 const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
     return (
         <Card {...restProps}>
-            <CardHeader icon={icon} className="z-10" cornerIcon="/KAC/counter.png" deck={deck}></CardHeader>
+            <CardHeader icon={icon} className="z-10" cornerIcon="/mighty-decks/counter.png" deck={deck}></CardHeader>
             <CardBody icon={icon}>
                 <div className="flex flex-row flex-wrap gap-2 justify-center items-center px-4 opacity-50">
                     <Icon icon="d4" className={"w-8 h-8"} />

@@ -101,7 +101,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                         >
                             <ActorCard
                                 {...cardProps}
-                                imageUri="/KAC/encounters/penance_in_blood/brother_pavel_actor.png"
+                                imageUri="/mighty-decks/encounters/penance_in_blood/brother_pavel_actor.png"
                                 name="Brother Pavel"
                                 notes="A man as strong as an ox"
                                 toughness={6}
@@ -111,7 +111,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <CounterCard
                                 {...cardProps}
-                                icon="/KAC/heartbeat.png"
+                                icon="/mighty-decks/heartbeat.png"
                                 title="Patient's Health"
                                 note="The patient is slowly dying (-1&nbsp;per round)."
                                 threat="It may already be too late for the patient"
@@ -121,7 +121,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <CounterCard
                                 {...cardProps}
-                                icon="/KAC/counters/drop.png"
+                                icon="/mighty-decks/counters/drop.png"
                                 title="Dispose of Waste"
                                 threat="The waste is disgusting, and weak willpower causes Distress."
                                 total={4}
@@ -130,7 +130,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <CounterCard
                                 {...cardProps}
-                                icon="/KAC/blood.png"
+                                icon="/mighty-decks/blood.png"
                                 title="Clean the Waiting Room"
                                 threat="Hard to tell what happened here, but there’s blood everywhere. Risk of slipping and Injury."
                                 total={4}
@@ -139,7 +139,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <CounterCard
                                 {...cardPropsSecondHalf}
-                                icon="/KAC/counters/danger.png"
+                                icon="/mighty-decks/counters/danger.png"
                                 title="Bury the Corpses"
                                 threat="Clumsy handling of the corpse causes boils to burst. Risk of plague infection: Doom."
                                 total={4}
@@ -148,7 +148,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <ActorCard
                                 {...cardPropsSecondHalf}
-                                imageUri="/KAC/actors/medieval/dog.png"
+                                imageUri="/mighty-decks/actors/medieval/dog.png"
                                 name="Fluffy Dog"
                                 occupation="Loyal and well-trained dog"
                                 toughness={2}
@@ -158,7 +158,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <ActorCard
                                 {...cardPropsSecondHalf}
-                                imageUri="/KAC/encounters/penance_in_blood/sister_tereza_actor.png"
+                                imageUri="/mighty-decks/encounters/penance_in_blood/sister_tereza_actor.png"
                                 name="Sister Tereza"
                                 toughness={3}
                                 threat="Defends herself by throwing poisonous potions, causing 1&nbsp;Distress to everyone in the zone."
@@ -167,7 +167,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <ActorCard
                                 {...cardPropsSecondHalf}
-                                imageUri="/KAC/encounters/penance_in_blood/abbot_actor.png"
+                                imageUri="/mighty-decks/encounters/penance_in_blood/abbot_actor.png"
                                 name="Abbot Radomír"
                                 occupation="Miraculous healer"
                                 toughness={4}
@@ -218,7 +218,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                         >
                             <ActorCard
                                 {...cardProps}
-                                imageUri="/KAC/counters/morale.png"
+                                imageUri="/mighty-decks/counters/morale.png"
                                 name="Minions"
                                 threat="Attack various characters for 1&nbsp;Injury with anything they can get their hands on per point of Toughness."
                                 toughness={8}
@@ -226,7 +226,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <ActorCard
                                 {...cardProps}
-                                imageUri="/KAC/actors/wolf.png"
+                                imageUri="/mighty-decks/actors/wolf.png"
                                 name="Terrifying Animals"
                                 toughness={4}
                                 threat="Attack various characters for 1&nbsp;Injury by biting per point of Toughness."
@@ -235,7 +235,7 @@ export default function PenanceInBloodPrintControls({ className }: PenanceInBloo
                             />
                             <ActorCard
                                 {...cardProps}
-                                imageUri="/KAC/encounters/penance_in_blood/wounded.png"
+                                imageUri="/mighty-decks/encounters/penance_in_blood/wounded.png"
                                 name="Patients"
                                 threat="Attack various characters for 1&nbsp;Injury with anything they can get their hands on per every SECOND point of Toughness."
                                 reward="2x Bandages, 2x Herbs"

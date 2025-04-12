@@ -115,7 +115,7 @@ export const assetCardMeta: ComponentMetaType<AssetCardProps> = {
 export default function AssetCard({
     className,
     iconClassName,
-    cornerIcon = "/KAC/backpack.png",
+    cornerIcon = "/mighty-decks/backpack.png",
     cornerIconClassName,
     effectClassName,
     slug,
@@ -153,7 +153,7 @@ export default function AssetCard({
                 }}
             >
                 <img
-                    src="/KAC/paper.png"
+                    src="/mighty-decks/paper.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
@@ -196,7 +196,7 @@ export default function AssetCard({
 
 export const AssetCardBackFace = ({ icon, deck, ...restProps }: Partial<AssetCardProps>) => {
     return (
-        <Card {...restProps} backgroundImageUri="/KAC/asset-back-face.png">
+        <Card {...restProps} backgroundImageUri="/mighty-decks/asset-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
                 <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">Asset</H2>
             </div>

@@ -23,7 +23,7 @@ export const Navigation = ({ className, style, ...restProps }: HTMLAttributes<HT
                     href={mightyDecksPath}
                     className="text-inherit font-inherit font-bold hover:text-kac-bone-light transition-colors"
                 >
-                    <img src="/KAC/mighty_decks_logo.png" alt="Mighty Decks" className="h-16 -my-5" />
+                    <img src="/mighty-decks/mighty_decks_logo.png" alt="Mighty Decks" className="h-16 -my-5" />
                 </a>
             </H1>
             {mightyDecksNavigationSubRoutes.map(({ name, path }) => (

@@ -14,7 +14,7 @@ import PendingTimer from "../../../../../components/PendingTimer";
 export const GameItem = ({
     className,
     name,
-    imageUri = "/KAC/d20.png",
+    imageUri = "/mighty-decks/d20.png",
     storytellers,
     players,
     meta,

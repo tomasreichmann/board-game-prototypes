@@ -5,7 +5,7 @@ import { Navigation } from "../Navigation";
 import { relicsOfValorPath } from "./routes";
 
 const ProductCard = ({
-    imageUri = "/KAC/renders/box-opened.jpg",
+    imageUri = "/mighty-decks/renders/box-opened.jpg",
     title,
     description,
     href,
@@ -18,7 +18,7 @@ const ProductCard = ({
     const titleContent = <H2 className="">{title}</H2>;
     const imageContent = <img src={imageUri} alt="" className="w-full h-64 object-cover mb-2 rounded" />;
     return (
-        <Card className="shadow" size="Large" backgroundImageUri="/KAC/paper.png">
+        <Card className="shadow" size="Large" backgroundImageUri="/mighty-decks/paper.png">
             <div className="flex-1">
                 {href ? <a href={href}>{imageContent}</a> : imageContent}
                 {href ? <a href={href}>{titleContent}</a> : titleContent}
@@ -42,7 +42,7 @@ export default function ProductsRoute() {
                     />
                     <ProductCard
                         href={relicsOfValorPath}
-                        imageUri="/KAC/medieval-example.jpg"
+                        imageUri="/mighty-decks/medieval-example.jpg"
                         title="Mighty Decks: Relics of Valor"
                         description="A medieval expansion for the Mighty Decks base game modelled by 15th-century Bohemia. It adds medieval assets like weapons, armor, resources, and characters as well as 3 one-shot adventures and components for players to run their own medieval tavern."
                     />

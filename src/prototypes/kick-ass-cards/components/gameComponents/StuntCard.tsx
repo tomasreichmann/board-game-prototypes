@@ -47,7 +47,7 @@ export default function StuntCard({
                 }}
             >
                 <img
-                    src="/KAC/paper.png"
+                    src="/mighty-decks/paper.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
@@ -56,7 +56,7 @@ export default function StuntCard({
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
                         {/* <div className="flex-1 text-kac-iron-light text-center text-xs invisible">{slug}</div> */}
                         <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/KAC/backpack.png" className="text-kac-bone-dark text-opacity-50 h-4" />
+                        <IconOrImage icon="/mighty-decks/backpack.png" className="text-kac-bone-dark text-opacity-50 h-4" />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
@@ -84,7 +84,7 @@ export default function StuntCard({
 }
 export const StuntCardBackFace = ({ icon, deck, ...restProps }: StuntCardProps) => {
     return (
-        <Card {...restProps} backgroundImageUri="/KAC/stunt-back-face.png">
+        <Card {...restProps} backgroundImageUri="/mighty-decks/stunt-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
                 <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">Stunt</H2>
             </div>

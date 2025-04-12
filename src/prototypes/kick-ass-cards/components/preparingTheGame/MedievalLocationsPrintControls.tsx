@@ -57,7 +57,7 @@ const ImageCard = ({ imageUri, name, ...restProps }: ImageCardProps) => {
                 >
                     <CardHeader
                         deckClassName="text-kac-bone-light"
-                        cornerIcon="/KAC/map.png"
+                        cornerIcon="/mighty-decks/map.png"
                         deck="medieval"
                         className="items-start"
                         cornerIconClassName="-mt-[1px]"
@@ -98,7 +98,7 @@ const ImageCard = ({ imageUri, name, ...restProps }: ImageCardProps) => {
 
 export const LocationCardBackFace = ({ imageUri, name, ...restProps }: Partial<ImageCardProps>) => {
     return (
-        <Card {...restProps} backgroundImageUri="/KAC/location-back-face.png">
+        <Card {...restProps} backgroundImageUri="/mighty-decks/location-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
                 <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">Location</H2>
             </div>
@@ -120,55 +120,55 @@ export default function MedievalLocationsPrintControls({ className }: MedievalLo
     };
     const [copyCount, setCopyCount] = useState(1);
     const locations = [
-        { name: "Dungeon", imageUri: "/KAC/locations/medieval/dungeon.jpg" },
-        { name: "Forrest", imageUri: "/KAC/locations/medieval/forrest.jpg" },
-        { name: "Garden", imageUri: "/KAC/locations/medieval/garden.jpg" },
-        { name: "Graveyard", imageUri: "/KAC/locations/medieval/graveyard.jpg" },
-        { name: "Harbor", imageUri: "/KAC/locations/medieval/harbor.jpg" },
-        { name: "Lake", imageUri: "/KAC/locations/medieval/lake.jpg" },
-        { name: "Market", imageUri: "/KAC/locations/medieval/market.jpg" },
-        { name: "Mine Shaft", imageUri: "/KAC/locations/medieval/mine_shaft.jpg" },
-        { name: "Pantry", imageUri: "/KAC/locations/medieval/pantry.jpg" },
-        { name: "Pasture", imageUri: "/KAC/locations/medieval/pasture.jpg" },
-        { name: "Quarry", imageUri: "/KAC/locations/medieval/quarry.jpg" },
-        { name: "Road", imageUri: "/KAC/locations/medieval/road.jpg" },
-        { name: "Servants Room", imageUri: "/KAC/locations/medieval/servants_quarters.jpg" },
-        { name: "Sewer", imageUri: "/KAC/locations/medieval/sewer.jpg" },
-        { name: "Swamp", imageUri: "/KAC/locations/medieval/swamp.jpg" },
-        { name: "Tavern", imageUri: "/KAC/locations/medieval/tavern.jpg" },
-        // { name: "Town Hall", imageUri: "/KAC/locations/medieval/town_hall.jpg" },
-        { name: "Town Square", imageUri: "/KAC/locations/medieval/town_square.jpg" },
-        { name: "Townhouse Bath Room", imageUri: "/KAC/locations/medieval/townhouse_bath_room.jpg" },
-        { name: "Townhouse Bedchamber", imageUri: "/KAC/locations/medieval/townhouse_bedchamber.jpg" },
-        { name: "Townhouse Corridor", imageUri: "/KAC/locations/medieval/townhouse_corridor.jpg" },
-        { name: "Townhouse Dining Room", imageUri: "/KAC/locations/medieval/townhouse_dining_room.jpg" },
-        { name: "Townhouse Nursery", imageUri: "/KAC/locations/medieval/townhouse_nursery.jpg" },
-        { name: "Townhouse Study", imageUri: "/KAC/locations/medieval/townhouse_study.jpg" },
-        { name: "Village", imageUri: "/KAC/locations/medieval/village.jpg" },
-        { name: "Vine Cellar", imageUri: "/KAC/locations/medieval/vine_cellar.jpg" },
-        { name: "Warehouse", imageUri: "/KAC/locations/medieval/warehouse.jpg" },
-        { name: "Weapons Shop", imageUri: "/KAC/locations/medieval/weapons_shop.jpg" },
-        { name: "Workshop", imageUri: "/KAC/locations/medieval/workshop.jpg" },
-        { name: "Armory", imageUri: "/KAC/locations/medieval/armory.jpg" },
-        { name: "Bakery", imageUri: "/KAC/locations/medieval/bakery.jpg" },
-        { name: "Barracks", imageUri: "/KAC/locations/medieval/barracks.jpg" },
-        { name: "Bathhouse", imageUri: "/KAC/locations/medieval/bathhouse.jpg" },
-        { name: "Butchery", imageUri: "/KAC/locations/medieval/butchery.jpg" },
-        { name: "Camp", imageUri: "/KAC/locations/medieval/camp.jpg" },
-        { name: "Castle Bastion", imageUri: "/KAC/locations/medieval/castle_bastion.jpg" },
-        { name: "Castle Bailey", imageUri: "/KAC/locations/medieval/castle_bailey.jpg" },
-        { name: "Castle Corridor", imageUri: "/KAC/locations/medieval/castle_corridor.jpg" },
-        { name: "Castle Dining Room", imageUri: "/KAC/locations/medieval/castle_dining_room.jpg" },
-        { name: "Castle Gate", imageUri: "/KAC/locations/medieval/castle_gate.jpg" },
-        { name: "Cave", imageUri: "/KAC/locations/medieval/cave.jpg" },
-        { name: "Church", imageUri: "/KAC/locations/medieval/church.jpg" },
-        { name: "Clearing", imageUri: "/KAC/locations/medieval/clearing.jpg" },
-        { name: "Mountain Trail", imageUri: "/KAC/locations/medieval/mountain_trail.jpg" },
-        { name: "Prison Cell", imageUri: "/KAC/locations/medieval/prison_cell.jpg" },
-        { name: "Dark Alley", imageUri: "/KAC/locations/medieval/dark_alley.jpg" },
-        { name: "Library", imageUri: "/KAC/locations/medieval/library.jpg" },
-        { name: "Apothecary", imageUri: "/KAC/locations/medieval/apothecary.jpg" },
-        { name: "Winery", imageUri: "/KAC/locations/medieval/winery.jpg" },
+        { name: "Dungeon", imageUri: "/mighty-decks/locations/medieval/dungeon.jpg" },
+        { name: "Forrest", imageUri: "/mighty-decks/locations/medieval/forrest.jpg" },
+        { name: "Garden", imageUri: "/mighty-decks/locations/medieval/garden.jpg" },
+        { name: "Graveyard", imageUri: "/mighty-decks/locations/medieval/graveyard.jpg" },
+        { name: "Harbor", imageUri: "/mighty-decks/locations/medieval/harbor.jpg" },
+        { name: "Lake", imageUri: "/mighty-decks/locations/medieval/lake.jpg" },
+        { name: "Market", imageUri: "/mighty-decks/locations/medieval/market.jpg" },
+        { name: "Mine Shaft", imageUri: "/mighty-decks/locations/medieval/mine_shaft.jpg" },
+        { name: "Pantry", imageUri: "/mighty-decks/locations/medieval/pantry.jpg" },
+        { name: "Pasture", imageUri: "/mighty-decks/locations/medieval/pasture.jpg" },
+        { name: "Quarry", imageUri: "/mighty-decks/locations/medieval/quarry.jpg" },
+        { name: "Road", imageUri: "/mighty-decks/locations/medieval/road.jpg" },
+        { name: "Servants Room", imageUri: "/mighty-decks/locations/medieval/servants_quarters.jpg" },
+        { name: "Sewer", imageUri: "/mighty-decks/locations/medieval/sewer.jpg" },
+        { name: "Swamp", imageUri: "/mighty-decks/locations/medieval/swamp.jpg" },
+        { name: "Tavern", imageUri: "/mighty-decks/locations/medieval/tavern.jpg" },
+        // { name: "Town Hall", imageUri: "/mighty-decks/locations/medieval/town_hall.jpg" },
+        { name: "Town Square", imageUri: "/mighty-decks/locations/medieval/town_square.jpg" },
+        { name: "Townhouse Bath Room", imageUri: "/mighty-decks/locations/medieval/townhouse_bath_room.jpg" },
+        { name: "Townhouse Bedchamber", imageUri: "/mighty-decks/locations/medieval/townhouse_bedchamber.jpg" },
+        { name: "Townhouse Corridor", imageUri: "/mighty-decks/locations/medieval/townhouse_corridor.jpg" },
+        { name: "Townhouse Dining Room", imageUri: "/mighty-decks/locations/medieval/townhouse_dining_room.jpg" },
+        { name: "Townhouse Nursery", imageUri: "/mighty-decks/locations/medieval/townhouse_nursery.jpg" },
+        { name: "Townhouse Study", imageUri: "/mighty-decks/locations/medieval/townhouse_study.jpg" },
+        { name: "Village", imageUri: "/mighty-decks/locations/medieval/village.jpg" },
+        { name: "Vine Cellar", imageUri: "/mighty-decks/locations/medieval/vine_cellar.jpg" },
+        { name: "Warehouse", imageUri: "/mighty-decks/locations/medieval/warehouse.jpg" },
+        { name: "Weapons Shop", imageUri: "/mighty-decks/locations/medieval/weapons_shop.jpg" },
+        { name: "Workshop", imageUri: "/mighty-decks/locations/medieval/workshop.jpg" },
+        { name: "Armory", imageUri: "/mighty-decks/locations/medieval/armory.jpg" },
+        { name: "Bakery", imageUri: "/mighty-decks/locations/medieval/bakery.jpg" },
+        { name: "Barracks", imageUri: "/mighty-decks/locations/medieval/barracks.jpg" },
+        { name: "Bathhouse", imageUri: "/mighty-decks/locations/medieval/bathhouse.jpg" },
+        { name: "Butchery", imageUri: "/mighty-decks/locations/medieval/butchery.jpg" },
+        { name: "Camp", imageUri: "/mighty-decks/locations/medieval/camp.jpg" },
+        { name: "Castle Bastion", imageUri: "/mighty-decks/locations/medieval/castle_bastion.jpg" },
+        { name: "Castle Bailey", imageUri: "/mighty-decks/locations/medieval/castle_bailey.jpg" },
+        { name: "Castle Corridor", imageUri: "/mighty-decks/locations/medieval/castle_corridor.jpg" },
+        { name: "Castle Dining Room", imageUri: "/mighty-decks/locations/medieval/castle_dining_room.jpg" },
+        { name: "Castle Gate", imageUri: "/mighty-decks/locations/medieval/castle_gate.jpg" },
+        { name: "Cave", imageUri: "/mighty-decks/locations/medieval/cave.jpg" },
+        { name: "Church", imageUri: "/mighty-decks/locations/medieval/church.jpg" },
+        { name: "Clearing", imageUri: "/mighty-decks/locations/medieval/clearing.jpg" },
+        { name: "Mountain Trail", imageUri: "/mighty-decks/locations/medieval/mountain_trail.jpg" },
+        { name: "Prison Cell", imageUri: "/mighty-decks/locations/medieval/prison_cell.jpg" },
+        { name: "Dark Alley", imageUri: "/mighty-decks/locations/medieval/dark_alley.jpg" },
+        { name: "Library", imageUri: "/mighty-decks/locations/medieval/library.jpg" },
+        { name: "Apothecary", imageUri: "/mighty-decks/locations/medieval/apothecary.jpg" },
+        { name: "Winery", imageUri: "/mighty-decks/locations/medieval/winery.jpg" },
     ];
     const items = useItemAdapter(
         locations.map(({ name, imageUri }, imageIndex) => ({

@@ -25,43 +25,43 @@ export const Room = ({ name, quality, effectContent, otherContent }: RoomProps) 
     return (
         <div className="flex-1 flex flex-col items-stretch">
             <div className="flex flex-row items-stretch gap-1">
-                <IconOrImage className="h-8" icon="/KAC/icons/door.png" />
+                <IconOrImage className="h-8" icon="/mighty-decks/icons/door.png" />
 
                 <div className="flex-1 border-b-2 border-b-kac-steel-dark">
                     <H2>{name}</H2>
                 </div>
             </div>
             <div className="flex flex-row items-stretch mt-1">
-                <IconOrImage className="h-10 -mx-1" icon="/KAC/icons/star-outline.png" />
+                <IconOrImage className="h-10 -mx-1" icon="/mighty-decks/icons/star-outline.png" />
                 <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
-                        <IconOrImage className="h-5" icon="/KAC/icons/build.png" />
+                        <IconOrImage className="h-5" icon="/mighty-decks/icons/build.png" />
                         <Text className="text-xs">10</Text>
                     </div>
                     <div className="flex flex-row items-center">
-                        <IconOrImage className="h-5" icon="/KAC/icons/income.png" />
+                        <IconOrImage className="h-5" icon="/mighty-decks/icons/income.png" />
                         <Text className="text-xs">+1</Text>
                     </div>
                 </div>
-                <IconOrImage className="h-10 -mx-1" icon="/KAC/icons/star-outline.png" />
+                <IconOrImage className="h-10 -mx-1" icon="/mighty-decks/icons/star-outline.png" />
                 <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
-                        <IconOrImage className="h-5" icon="/KAC/icons/build.png" />
+                        <IconOrImage className="h-5" icon="/mighty-decks/icons/build.png" />
                         <Text className="text-xs">100</Text>
                     </div>
                     <div className="flex flex-row items-center">
-                        <IconOrImage className="h-5" icon="/KAC/icons/income.png" />
+                        <IconOrImage className="h-5" icon="/mighty-decks/icons/income.png" />
                         <Text className="text-xs">+10</Text>
                     </div>
                 </div>
-                <IconOrImage className="h-10 -mx-1" icon="/KAC/icons/star-outline.png" />
+                <IconOrImage className="h-10 -mx-1" icon="/mighty-decks/icons/star-outline.png" />
                 <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
-                        <IconOrImage className="h-5" icon="/KAC/icons/build.png" />
+                        <IconOrImage className="h-5" icon="/mighty-decks/icons/build.png" />
                         <Text className="text-xs">1000</Text>
                     </div>
                     <div className="flex flex-row items-center">
-                        <IconOrImage className="h-5" icon="/KAC/icons/income.png" />
+                        <IconOrImage className="h-5" icon="/mighty-decks/icons/income.png" />
                         <Text className="text-xs">+100</Text>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ export const Room = ({ name, quality, effectContent, otherContent }: RoomProps) 
                 <Paper size="54x86" className="mx-auto border-2 border-kac-cloth-dark/50 bg-white/50 rounded-lg">
                     <IconOrImage
                         className="mt-2 h-10 mx-auto saturate-0 opacity-50"
-                        icon="/KAC/heartbeat.png"
+                        icon="/mighty-decks/heartbeat.png"
                         style={{ filter: "saturate(0) drop-shadow(0 0 4px white)" }}
                     />
                 </Paper>
@@ -81,12 +81,12 @@ export const Room = ({ name, quality, effectContent, otherContent }: RoomProps) 
                 <div className="w-[54mm] h-full mx-auto border-2 border-kac-cloth-dark/50 border-b-0 bg-white/50 rounded-t-lg flex flex-row justify-center gap-2 pt-2 backdrop-blur-[1px]">
                     <IconOrImage
                         className="mt-2 h-10 saturate-0 opacity-50"
-                        icon="/KAC/icons/person.png"
+                        icon="/mighty-decks/icons/person.png"
                         style={{ filter: "saturate(0) drop-shadow(0 0 4px white)" }}
                     />
                     <IconOrImage
                         className="mt-2 h-10 saturate-0 opacity-50"
-                        icon="/KAC/icons/barrel.png"
+                        icon="/mighty-decks/icons/barrel.png"
                         style={{ filter: "saturate(0) drop-shadow(0 0 4px white)" }}
                     />
                 </div>
@@ -112,7 +112,7 @@ const emptyRooms = [{ quality: QualityEnum.None }, { quality: QualityEnum.None }
 
 export default function BaseSheet({
     className,
-    backgroundUri = "/KAC/base/house.png",
+    backgroundUri = "/mighty-decks/base/house.png",
     name,
     owner,
     location,
@@ -148,7 +148,7 @@ export default function BaseSheet({
                 }}
             >
                 <div
-                    style={{ background: "url('/KAC/base/a5-paper.png') center center / cover" }}
+                    style={{ background: "url('/mighty-decks/base/a5-paper.png') center center / cover" }}
                     className="absolute left-0 top-0 w-full h-full max-w-none opacity-50"
                 />
                 <div
@@ -165,15 +165,15 @@ export default function BaseSheet({
             >
                 <div className="relative flex flex-row items-stretch gap-2">
                     <div className="flex-1 flex flex-row gap-1">
-                        <IconOrImage className="h-8" icon="/KAC/icons/house.png" />
+                        <IconOrImage className="h-8" icon="/mighty-decks/icons/house.png" />
                         <div className="flex-1 border-b-2 border-b-kac-steel-dark" />
                     </div>
                     <div className="flex-1 flex flex-row gap-1">
-                        <IconOrImage className="h-8" icon="/KAC/icons/owner.png" />
+                        <IconOrImage className="h-8" icon="/mighty-decks/icons/owner.png" />
                         <div className="flex-1 border-b-2 border-b-kac-steel-dark" />
                     </div>
                     <div className="flex-1 flex flex-row gap-1">
-                        <IconOrImage className="h-8" icon="/KAC/icons/location.png" />
+                        <IconOrImage className="h-8" icon="/mighty-decks/icons/location.png" />
                         <div className="flex-1 border-b-2 border-b-kac-steel-dark" />
                     </div>
                 </div>

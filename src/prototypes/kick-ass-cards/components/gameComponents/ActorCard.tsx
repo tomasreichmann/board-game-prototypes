@@ -196,7 +196,7 @@ export default function ActorCard({
             <CardHeader
                 icon={imageUri ?? undefined}
                 className="z-10"
-                cornerIcon="/KAC/actor.png"
+                cornerIcon="/mighty-decks/actor.png"
                 deck={deck ?? undefined}
             ></CardHeader>
             <CardBody
@@ -276,7 +276,7 @@ export const ActorCardBackFace = ({ className, children, size = "Bridge", ...res
         <Card
             className={twMerge("ActorCardBackFace", className)}
             {...restProps}
-            backgroundImageUri="/KAC/actor-back-face.png"
+            backgroundImageUri="/mighty-decks/actor-back-face.png"
         >
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
                 <H2 className="text-kac-cloth-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">

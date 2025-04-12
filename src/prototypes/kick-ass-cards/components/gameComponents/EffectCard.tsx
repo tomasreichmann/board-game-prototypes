@@ -14,23 +14,23 @@ export type EffectCardProps = React.PropsWithChildren<
 >;
 
 const colorClassNameMap = {
-    "/KAC/blood.png": "text-kac-blood",
+    "/mighty-decks/blood.png": "text-kac-blood",
     weight: "text-kac-steel-dark",
-    "/KAC/unconscious.png": "text-kac-steel-dark",
-    "/KAC/flee.png": "text-kac-iron-dark",
-    "/KAC/hopeless.png": "text-kac-iron-dark",
-    "/KAC/panicked.png": "text-kac-curse",
-    "/KAC/panicked2.png": "text-kac-curse",
+    "/mighty-decks/unconscious.png": "text-kac-steel-dark",
+    "/mighty-decks/flee.png": "text-kac-iron-dark",
+    "/mighty-decks/hopeless.png": "text-kac-iron-dark",
+    "/mighty-decks/panicked.png": "text-kac-curse",
+    "/mighty-decks/panicked2.png": "text-kac-curse",
     sleepy: "text-kac-cloth-dark",
-    "/KAC/sprint.png": "text-kac-monster-dark",
+    "/mighty-decks/sprint.png": "text-kac-monster-dark",
     quicksand: "text-kac-bone-dark",
-    "/KAC/complication.png": "text-kac-fire-light",
-    "/KAC/frozen.png": "text-kac-cloth-dark",
-    "/KAC/distress.png": "text-kac-cloth",
-    "/KAC/doom.png": "text-kac-iron-dark",
-    "/KAC/salvation.png": "text-kac-gold-dark",
-    "/KAC/frost.png": "text-kac-cloth-dark",
-    "/KAC/sun.png": "text-kac-fire",
+    "/mighty-decks/complication.png": "text-kac-fire-light",
+    "/mighty-decks/frozen.png": "text-kac-cloth-dark",
+    "/mighty-decks/distress.png": "text-kac-cloth",
+    "/mighty-decks/doom.png": "text-kac-iron-dark",
+    "/mighty-decks/salvation.png": "text-kac-gold-dark",
+    "/mighty-decks/frost.png": "text-kac-cloth-dark",
+    "/mighty-decks/sun.png": "text-kac-fire",
 };
 
 export default function EffectCard({
@@ -75,7 +75,7 @@ export default function EffectCard({
                 }}
             >
                 <img
-                    src="/KAC/paper.png"
+                    src="/mighty-decks/paper.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
@@ -85,7 +85,7 @@ export default function EffectCard({
                         <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
                         {/* <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div> */}
                         <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/KAC/heartbeat.png" className={"text-kac-skin-dark h-6"} />
+                        <IconOrImage icon="/mighty-decks/heartbeat.png" className={"text-kac-skin-dark h-6"} />
                     </div>
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
                         <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
@@ -154,7 +154,7 @@ export const EffectCardBackFace = ({
                 }}
             >
                 <img
-                    src="/KAC/effect-back-face.png"
+                    src="/mighty-decks/effect-back-face.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />

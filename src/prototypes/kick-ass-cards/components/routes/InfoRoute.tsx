@@ -59,7 +59,7 @@ export default function InfoRoute() {
                                 items={[
                                     <ActorCard {...tohActors.milaSzeptava} {...defaultActorCardProps} />,
                                     <ActorCard
-                                        imageUri="/KAC/actors/medieval/bandit.png"
+                                        imageUri="/mighty-decks/actors/medieval/bandit.png"
                                         name="Bandit"
                                         threat="Attacks with a bow or dagger for 1 Effect"
                                         reward="Lockpick set"
@@ -68,7 +68,7 @@ export default function InfoRoute() {
                                         {...defaultActorCardProps}
                                     />,
                                     <CounterCard
-                                        icon="/KAC/counters/morale.png"
+                                        icon="/mighty-decks/counters/morale.png"
                                         title="Bandits Defeated"
                                         current={0}
                                         total={4}

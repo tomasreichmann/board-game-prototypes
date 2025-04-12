@@ -113,7 +113,7 @@ export default function Card({
     className,
     children,
     childrenWrapperClassName,
-    backgroundImageUri = "/KAC/paper.png",
+    backgroundImageUri = "/mighty-decks/paper.png",
     size = "54x86",
     ...restProps
 }: CardProps) {

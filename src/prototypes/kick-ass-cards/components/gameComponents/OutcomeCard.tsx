@@ -13,16 +13,16 @@ import { isClickableClassName, isHighlightedClassName, isSelectedClassName } fro
 export type OutcomeCardProps = React.PropsWithChildren<OutcomeType & Partial<PaperProps>>;
 
 const outcomeColorClassNameMap: { [key: string]: string } = {
-    "/KAC/super.png": "text-kac-fire",
-    "/KAC/bulls-eye.png": "text-kac-monster-dark",
-    "/KAC/broken-coin.png": "text-kac-bone-dark",
-    "/KAC/half-star.png": "text-kac-bone-dark",
-    "/KAC/silver-medal.png": "text-kac-steel-dark",
-    "/KAC/half-clover.png": "text-kac-bone-dark",
-    "/KAC/skull.png": "text-kac-iron-light",
-    "/KAC/skull-ink.png": "text-kac-iron-light",
+    "/mighty-decks/super.png": "text-kac-fire",
+    "/mighty-decks/bulls-eye.png": "text-kac-monster-dark",
+    "/mighty-decks/broken-coin.png": "text-kac-bone-dark",
+    "/mighty-decks/half-star.png": "text-kac-bone-dark",
+    "/mighty-decks/silver-medal.png": "text-kac-steel-dark",
+    "/mighty-decks/half-clover.png": "text-kac-bone-dark",
+    "/mighty-decks/skull.png": "text-kac-iron-light",
+    "/mighty-decks/skull-ink.png": "text-kac-iron-light",
     thrustBend: "text-kac-cloth",
-    "/KAC/whirlwind.png": "text-kac-cloth-dark",
+    "/mighty-decks/whirlwind.png": "text-kac-cloth-dark",
     drop: "text-kac-blood",
     stickyBoot: "text-kac-curse-light",
     sunbeams: "text-kac-gold",
@@ -68,7 +68,7 @@ export default function OutcomeCard({
                 }}
             >
                 <img
-                    src="/KAC/paper.png"
+                    src="/mighty-decks/paper.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />
@@ -76,7 +76,7 @@ export default function OutcomeCard({
                     <div className="flex flex-row items-center gap-1">
                         <IconOrImage icon={icon} className={twMerge("h-6", colorClassName || "text-kac-steel")} />
                         <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div>
-                        <IconOrImage icon="/KAC/d20-gold.png" className={"text-kac-steel-dark h-6"} />
+                        <IconOrImage icon="/mighty-decks/d20-gold.png" className={"text-kac-steel-dark h-6"} />
                     </div>
 
                     <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
@@ -148,7 +148,7 @@ export const OutcomeCardBackFace = ({
                 }}
             >
                 <img
-                    src="/KAC/outcome-back-face.png"
+                    src="/mighty-decks/outcome-back-face.png"
                     alt=""
                     className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
                 />

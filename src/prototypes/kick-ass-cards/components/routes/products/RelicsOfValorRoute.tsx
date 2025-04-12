@@ -30,7 +30,7 @@ export default function RelicsOfValorRoute() {
                         </li>
 
                         <img
-                            src="/KAC/medieval-assets.jpg"
+                            src="/mighty-decks/medieval-assets.jpg"
                             alt="Mighty Decks: Relics of Valor - Assets"
                             className="inline-block max-w-[500px] max-h-[50vh] object-contain m-4 rounded"
                         />
@@ -40,7 +40,7 @@ export default function RelicsOfValorRoute() {
                             world.
                         </li>
                         <img
-                            src="/KAC/medieval-actors.jpg"
+                            src="/mighty-decks/medieval-actors.jpg"
                             alt="Mighty Decks: Relics of Valor - Actors"
                             className="inline-block max-w-[500px] max-h-[50vh] object-contain m-4 rounded"
                         />
@@ -74,7 +74,7 @@ export default function RelicsOfValorRoute() {
                             adventure.
                             <br />
                             <img
-                                src="/KAC/tavern-example.jpg"
+                                src="/mighty-decks/tavern-example.jpg"
                                 alt="Mighty Decks: Relics of Valor - Example Tavern"
                                 className="inline-block max-w-[500px] max-h-[50vh] object-contain m-4 rounded"
                             />
@@ -86,7 +86,7 @@ export default function RelicsOfValorRoute() {
                             the king?
                             <br />
                             {/*                             <img
-                                src="/KAC/tavern-example.jpg"
+                                src="/mighty-decks/tavern-example.jpg"
                                 alt="Mighty Decks: Relics of Valor - Example Tavern"
                                 className="inline-block max-w-[500px] max-h-[50vh] object-contain m-4 rounded"
                             /> */}
@@ -118,7 +118,7 @@ export default function RelicsOfValorRoute() {
                     </ul>
 
                     <img
-                        src="/KAC/base/tavern-example.jpg"
+                        src="/mighty-decks/base/tavern-example.jpg"
                         alt="Mighty Decks: Relics of Valor - Example Tavern"
                         className="inline-block max-w-[500px] max-h-[50vh] object-contain m-4 rounded"
                     />
@@ -270,11 +270,11 @@ export default function RelicsOfValorRoute() {
                 </Print>
                 <Print>
                     <BaseSheet bleedMm={1} />
-                    <BaseSheet bleedMm={1} backgroundUri="/KAC/base/cellar.png" />
+                    <BaseSheet bleedMm={1} backgroundUri="/mighty-decks/base/cellar.png" />
                 </Print>
                 <Print>
-                    <BaseSheet bleedMm={1} backgroundUri="/KAC/base/castle.png" />
-                    <BaseSheet bleedMm={1} backgroundUri="/KAC/base/caves.png" />
+                    <BaseSheet bleedMm={1} backgroundUri="/mighty-decks/base/castle.png" />
+                    <BaseSheet bleedMm={1} backgroundUri="/mighty-decks/base/caves.png" />
                 </Print>
             </div>
         </>

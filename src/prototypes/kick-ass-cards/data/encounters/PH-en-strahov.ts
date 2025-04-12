@@ -31,7 +31,7 @@ export const defaultMiniProps = {
 export const characters = {
     jan: {
         slug: "jan",
-        imageUri: "/KAC/encounters/hand_of_strahov/jan.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/jan.png",
         name: "Abbot Jan IV. Haukap",
         occupation: "Abbot of Strahov Monastery",
         notes: "Determined to maintain control despite the theft",
@@ -40,7 +40,7 @@ export const characters = {
 
     lukas: {
         slug: "lukas",
-        imageUri: "/KAC/encounters/hand_of_strahov/lukas.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/lukas.png",
         name: "Brother Lukáš",
         occupation: "Premonstrate Monk",
         notes: "Ambitious and manipulative, secretly orchestrating the sale of the relic",
@@ -49,7 +49,7 @@ export const characters = {
 
     anezka: {
         slug: "anezka",
-        imageUri: "/KAC/encounters/hand_of_strahov/anezka.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/anezka.png",
         name: "Sister Anežka",
         occupation: "Benedictine Nun",
         notes: "Fearful of her loyalty being questioned",
@@ -58,7 +58,7 @@ export const characters = {
 
     vaclav: {
         slug: "vaclav",
-        imageUri: "/KAC/encounters/hand_of_strahov/vaclav.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/vaclav.png",
         name: "Brother Václav",
         occupation: "Elderly Premonstrate Monk",
         notes: "Dedicated to protecting the monastery's relics, hiding the real Hand of Saint Norbert",
@@ -67,7 +67,7 @@ export const characters = {
 
     janek: {
         slug: "janek",
-        imageUri: "/KAC/encounters/hand_of_strahov/janek.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/janek.png",
         name: "Brother Janek",
         occupation: "Premonstrate Monk, Builder",
         notes: "Oversees the physical upkeep and construction projects within the monastery",
@@ -76,7 +76,7 @@ export const characters = {
 
     marie: {
         slug: "marie",
-        imageUri: "/KAC/encounters/hand_of_strahov/marie.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/marie.png",
         name: "Sister Marie",
         occupation: "Premonstrate Nun",
         notes: "Strict and disciplined, protective of her son, Novice Tomáš, at all costs",
@@ -85,7 +85,7 @@ export const characters = {
 
     tereza: {
         slug: "tereza",
-        imageUri: "/KAC/encounters/hand_of_strahov/tereza.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/tereza.png",
         name: "Sister Tereza",
         occupation: "Premonstrate Nun",
         notes: "Resourceful, involved in a side business selling herbs, and unknowingly entangled in the relic scheme",
@@ -94,7 +94,7 @@ export const characters = {
 
     tomas: {
         slug: "tomas",
-        imageUri: "/KAC/encounters/hand_of_strahov/tomas.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/tomas.png",
         name: "Novice Tomáš",
         occupation: "Young Premonstrate Monk",
         notes: "Caught between loyalty and love, hiding the relic to protect himself and Sister Tereza",
@@ -103,7 +103,7 @@ export const characters = {
 
     karel: {
         slug: "karel",
-        imageUri: "/KAC/encounters/hand_of_strahov/karel.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/karel.png",
         name: "Brother Karel",
         occupation: "Premonstrate Monk, Librarian",
         notes: "Unwittingly caught up in the intrigue, has a drinking problem",
@@ -112,7 +112,7 @@ export const characters = {
 
     hilarius: {
         slug: "hilarius",
-        imageUri: "/KAC/encounters/hand_of_strahov/hilarius.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/hilarius.png",
         name: "Hilarius of Litoměřice",
         occupation: "Catholic Administrator of Prague",
         notes: "Initiated the investigation",
@@ -121,7 +121,7 @@ export const characters = {
 
     johana: {
         slug: "johana",
-        imageUri: "/KAC/encounters/hand_of_strahov/johana.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/johana.png",
         name: "Johana z Rožmitálu",
         occupation: "Queen Consort of Bohemia",
         notes: "Sent to ensure loyalty to the crown",
@@ -130,7 +130,7 @@ export const characters = {
 
     katerina: {
         slug: "katerina",
-        imageUri: "/KAC/encounters/hand_of_strahov/katerina.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/katerina.png",
         name: "Kateřina z Vrby",
         occupation: "Noblewoman",
         notes: "Battle-hardened, fierce and willing to do whatever it takes to solve the case",
@@ -139,7 +139,7 @@ export const characters = {
 
     magdalena: {
         slug: "magdalena",
-        imageUri: "/KAC/encounters/hand_of_strahov/magdalena.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/magdalena.png",
         name: "Sister Magdalena of Blatná",
         occupation: "Nun and Relic Expert",
         notes: "Knowledge is crucial to uncovering the truth",
@@ -148,7 +148,7 @@ export const characters = {
 
     vladimir: {
         slug: "vladimir",
-        imageUri: "/KAC/encounters/hand_of_strahov/vladimir.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/vladimir.png",
         name: "Vladimír of Komárov",
         occupation: "Veteran Knight",
         notes: "Assigned to protect the investigation team and ensure justice",
@@ -157,7 +157,7 @@ export const characters = {
 
     jakub: {
         slug: "jakub",
-        imageUri: "/KAC/encounters/hand_of_strahov/jakub.png",
+        imageUri: "/mighty-decks/encounters/hand_of_strahov/jakub.png",
         name: "Brother Jakub of Olomouc",
         occupation: "Young Monk",
         notes: "Eager to prove himself during the investigation",

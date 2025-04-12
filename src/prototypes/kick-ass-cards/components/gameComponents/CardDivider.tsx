@@ -93,7 +93,7 @@ export function CardDividerBackFace({
         <Card
             {...restProps}
             size={size}
-            backgroundImageUri="/KAC/paper-dark.png"
+            backgroundImageUri="/mighty-decks/paper-dark.png"
             className={twMerge("CardDivider", className)}
         >
             <div className="-m-3 mb-0">

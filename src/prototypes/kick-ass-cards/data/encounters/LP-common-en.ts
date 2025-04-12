@@ -122,7 +122,7 @@ export const actors = {
         imageUri:
             "/LP/several_small_bulky_sci-fi_firefighting_drones_spraying_water_on_a_burning_cyberpunk_street_stall.jpg",
         name: "Firefighting Drones",
-        notes: "Action: -1 Heat to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
+        notes: "Action: -1 Burning to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
     } as ActorType,
     infected_robotic_arm: {
         slug: "infected_robotic_arm",
@@ -163,7 +163,7 @@ export const actors = {
         toughness: 8,
         reward: "1x Overclocking Battery, 1x Flamethrower Arm",
         threat: "SavingNew Vega -1",
-        notes: "Action: -1 Heat to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
+        notes: "Action: -1 Burning to everyone in the zone where the fire is burning; Destruction: -1 Saving New Vega",
     } as ActorType,
     security_robots: {
         slug: "security_robots",
@@ -173,7 +173,7 @@ export const actors = {
         imagePosition: "center 30%",
         toughness: 8,
         notes: "Action: Scanning - +1 Effect against anything in the zone until the end of the conflict.",
-        threat: "Flamethrower - 1x Injury, +1 Heat, Disintegrator 2x/1x Injury. Resistant to shooting and melee attacks.",
+        threat: "Flamethrower - 1x Injury, +1 Burning, Disintegrator 2x/1x Injury. Resistant to shooting and melee attacks.",
         reward: "1x Disintegrator, 1x Flamethrower Arm, Saving New Vega -1",
     } as ActorType,
     tentacle_on_the_spore_ship: {
@@ -240,7 +240,7 @@ export const actors = {
         name: "Vulcan Dragon",
         imageUri: "/LP/scifi_dragon.jpg",
         toughness: 6,
-        notes: "Action: Fire Breath - +1 Injury and 2x Heat; Bite: 2x Injury. Scaly skin - immune to fire damage, Max. 1 Injury per 1 attack.",
+        notes: "Action: Fire Breath - +1 Injury and 2x Burning; Bite: 2x Injury. Scaly skin - immune to fire damage, Max. 1 Injury per 1 attack.",
     } as ActorType,
     freezing_vine: {
         slug: "freezing_vine",
@@ -349,7 +349,7 @@ export const actors = {
         name: "Buxus Monstrum",
         imageUri: "/LP/buxus_monster.jpg",
         toughness: 8,
-        threat: "Releases a cloud of ice spores every round: +1 Distress, +1 Frost in the zone. Throws bridge equipment +2 Injury.",
+        threat: "Releases a cloud of ice spores every round: +1 Distress, +1 Freezing in the zone. Throws bridge equipment +2 Injury.",
         note: "Receives +1 Injury from heat-based attacks.",
         reward: "+1 Salvation",
     } as ActorType,
@@ -439,14 +439,14 @@ export const assets = {
         slug: "flameth_arm",
         icon: "/LP/icons/flamethrower-arm.jpg",
         title: "Flamethrower Arm",
-        effect: "1x Injury, +1 Heat to all in the zone. +1 Doom when installed (+1 Heat when used, +2 Injury when uninstalled)",
+        effect: "1x Injury, +1 Burning to all in the zone. +1 Doom when installed (+1 Burning when used, +2 Injury when uninstalled)",
         count: 2,
     } as AssetType,
     bfg: {
         slug: "bfg",
         icon: "/LP/icons/bfg.png",
         title: "BFG",
-        effect: "Huge weapon: 1 round absorbs 1 heat from anyone in the zone, in the next damages all in all zones in a straight line for the amount of heat absorbed.",
+        effect: "Huge weapon: 1 round absorbs 1 burning from anyone in the zone, in the next damages all in all zones in a straight line for the amount of heat absorbed.",
         count: 1,
     } as AssetType,
     disintegrator: {
@@ -467,7 +467,7 @@ export const assets = {
         slug: "frost_grenade",
         icon: "/LP/icons/liquid-grenade.png",
         title: "Frost grenade",
-        effect: "Everyone in the zone is frozen. +2 Frost",
+        effect: "Everyone in the zone is frozen. +2 Freezing",
         count: 4,
     } as AssetType,
     medical_station: {
@@ -641,7 +641,7 @@ export const effects = {
         slug: "spore_fever",
         icon: "thermometerHot",
         title: "Spore Fever",
-        effect: "+1 Heat each round until cured",
+        effect: "+1 Burning each round until cured",
         count: 2,
     } as EffectType,
     spore_infection: {
@@ -716,7 +716,7 @@ export const effects = {
     hateful_doom_ii: {
         icon: "/LP/icons/hate-doom.png",
         title: "Hateful Doom II",
-        effect: "At Distress 0, you attack allies, +1 Effect on ranged attacks, +1 Heat when injuring enemies.",
+        effect: "At Distress 0, you attack allies, +1 Effect on ranged attacks, +1 Burning when injuring enemies.",
     } as EffectType,
     hateful_doom_iii: {
         icon: "/LP/icons/hate-doom.png",
@@ -731,7 +731,7 @@ export const effects = {
     destructive_doom_ii: {
         icon: "/LP/icons/destroy-doom.png",
         title: "Destructive Doom II",
-        effect: "+1 Effect on attacks, -1 Effect on defense, -1 Heat every time you destroy something.",
+        effect: "+1 Effect on attacks, -1 Effect on defense, -1 Burning every time you destroy something.",
     } as EffectType,
     destructive_doom_iii: {
         icon: "/LP/icons/destroy-doom.png",

@@ -7,14 +7,14 @@
 "emp_nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead","","sci-fi",3
 "frag_grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone","","sci-fi",5
 "gravi_emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance","","sci-fi",1
-"freeze_grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Frost","","sci-fi",2
-"air_conditioning","Air conditioning","/LP/icons/device-2.png","+/- Frost/Heat in the zone","","sci-fi",1
+"freeze_grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Freezing","","sci-fi",2
+"air_conditioning","Air conditioning","/LP/icons/device-2.png","+/- Freezing/Burning in the zone","","sci-fi",1
 "scanner","Scanner","/LP/icons/tablet.png","Multipurpose scanner","","sci-fi",3
 "magnetic_gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects","","sci-fi",1
 "multi_bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance","","sci-fi",2
 "heat-gun","Heat gun","/LP/icons/heat-gun.png","Emits immense heat up to line of sight distance","","sci-fi",1
 "bfg","BFG","/LP/icons/bfg.png","Huge weapon: absorbs all heat from the zone for 1 round, causes Doom in the next round","","sci-fi",1
-"heat_blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Heat)","","sci-fi",2
+"heat_blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Burning)","","sci-fi",2
 "holo_generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
 "barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage","","sci-fi",2
 "turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1

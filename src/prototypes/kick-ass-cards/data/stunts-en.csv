@@ -33,12 +33,12 @@
 "whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","Modern",1
 "demoExpert","Demolitions Expert","/mighty-decks/explosion.png",,"You never hit yourself with your own explosions.","Modern",1
 "sharpshooter","Sharpshooter","/mighty-decks/sharpshooter.png",Requires a ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","Modern",1
-"overclock","Overclock","/mighty-decks/overclock.png",,"Gain a Heat and draw an extra Outcome card to your hand.","Modern",1
+"overclock","Overclock","/mighty-decks/overclock.png",,"Gain a Burning and draw an extra Outcome card to your hand.","Modern",1
 "psychonaut","Psychonaut","/mighty-decks/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","Modern",1
 "chargedAttack","Charged attack","/mighty-decks/charged.png",Requires a charge weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","Sci-Fi",1
 "upload","Upload","/LP/icons/upload.png",Requires a synthetic body,"You can upload your consciousness into a different powered down machine.","Sci-Fi",1
 "turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.","sci-Fi",1
-"heatSink","Heat Sink","/LP/icons/cooler.png","Requires a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Frost cards.","Sci-Fi",1
+"heatSink","Heat Sink","/LP/icons/cooler.png","Requires a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Freezing cards.","Sci-Fi",1
 "pummel","Pummel","/mighty-decks/stunts/pummel.png","Win an unarmed duel.","Playing a Partial Success to attack an opponent while unarmed inflicts +1 Injury.","Brawler",1
 "flex","Flex","/mighty-decks/stunts/flex.png","Impress or intimidate someone with your raw strength.","+1 Effect when using your body to impress or intimidate.","Brawler",1
 "oversizedWeaponry","Oversized Weaponry","/mighty-decks/stunts/oversized-weaponry.png","Hit something with a weapon too large to wield easily.","You can use oversized weapons. You can wield two-handed weapons in one hand.","Brawler",1

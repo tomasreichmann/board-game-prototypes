@@ -21,7 +21,7 @@ const dividers = [
         color: "bg-kac-blood-light",
     },
     {
-        heading: "Heat, Frost",
+        heading: "Burning, Freezing",
         imageUri: "/mighty-decks/sun.png",
         iconUri: "/mighty-decks/heartbeat.png",
         backfaceUri: "/mighty-decks/effect-back-face.png",

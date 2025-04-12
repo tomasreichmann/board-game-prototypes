@@ -68,14 +68,14 @@ export default function InfoCard({
                 <div>
                     <span className="font-bold text-kac-iron">
                         2x
-                        <Icon icon="thermometerHot" className={"text-kac-fire h-5 inline-block"} /> Heat:
+                        <Icon icon="thermometerHot" className={"text-kac-fire h-5 inline-block"} /> Burning:
                     </span>{" "}
                     At the end of your turn, you gain <span className="font-bold text-kac-blood">Injury</span>.
                 </div>
                 <div>
                     <span className="font-bold text-kac-iron">
                         2x
-                        <Icon icon="thermometerHot" className={"text-kac-cloth h-5 inline-block"} /> Frost:
+                        <Icon icon="thermometerHot" className={"text-kac-cloth h-5 inline-block"} /> Freezing:
                     </span>{" "}
                     At the end of your turn, you gain <span className="font-bold text-iron-dark">Distress</span>.
                 </div>

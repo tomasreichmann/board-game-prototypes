@@ -8,7 +8,7 @@ export type PaperProps = React.PropsWithChildren<{
     slugClassName?: string;
     bleedClassName?: string;
     trimClassName?: string;
-    size: keyof typeof allSizes | "custom";
+    size?: keyof typeof allSizes;
     sizeInMm?: [number, number];
     orientation?: "portrait" | "landscape";
     bleedMm?: number;
@@ -48,10 +48,10 @@ export default function Paper({
     sizeInMm: sizeInMmProp,
     children,
 }: PaperProps) {
-    if ((size === "custom" ? !sizeInMmProp : !allSizes[size])) {
+    if (!sizeInMmProp && (!size || !allSizes[size!])) {
         throw new Error(`Unknown paper size: ${size}`);
     }
-    const sizeInMm = size === "custom" ? sizeInMmProp! : allSizes[size].mm;
+    const sizeInMm = sizeInMmProp ?? allSizes[size!].mm;
     const [width, height] = orientation === "landscape" ? [...sizeInMm].reverse() : sizeInMm;
 
     const trimWidth = width;

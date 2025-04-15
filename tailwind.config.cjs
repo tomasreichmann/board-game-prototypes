@@ -184,6 +184,7 @@ module.exports = {
                 "lg-heavy": ["0 10px 8px rgb(0 0 0 / 0.25)", "0 4px 3px rgb(0 0 0 / 0.12)"],
                 "xl-heavy": ["0 20px 13px rgb(0 0 0 / 0.25)", "0 8px 5px rgb(0 0 0 / 0.12)"],
                 "title": ["0px 1px 0px #1f081d", "0px 3px 0px #6d2648", "0px 3px 0px #1f081d"],
+                "emboss": ["0px 2px 0px #1f081d"],
             },
             textShadow: {
                 sm: "0 1px 2px var(--tw-shadow-color)",

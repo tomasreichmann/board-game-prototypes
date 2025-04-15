@@ -4,11 +4,11 @@ import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper
 import { StuntType } from "../../types";
 import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
-import Card from "./Card";
+import Card, { CardProps } from "./Card";
 import { H2 } from "../content/Text";
 // import "./StuntCard.css";
 
-export type StuntCardProps = React.PropsWithChildren<Partial<PaperProps> & Omit<StuntType, "count">>;
+export type StuntCardProps = React.PropsWithChildren<Partial<CardProps> & Omit<StuntType, "count">>;
 
 export default function StuntCard({
     className,
@@ -82,7 +82,7 @@ export default function StuntCard({
         </PaperOrDiv>
     );
 }
-export const StuntCardBackFace = ({ icon, deck, ...restProps }: StuntCardProps) => {
+export const StuntCardBackFace = ({ ...restProps }: Partial<CardProps>) => {
     return (
         <Card {...restProps} backgroundImageUri="/mighty-decks/stunt-back-face.png">
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">

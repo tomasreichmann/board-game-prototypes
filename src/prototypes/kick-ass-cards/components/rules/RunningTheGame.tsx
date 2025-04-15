@@ -1,17 +1,19 @@
 import { Body, H1, H2 } from "./Text";
 
-export default function Introduction() {
+export default function RunningTheGame() {
     return (
         <>
-            <H1>Introduction</H1>
+            <H1>Running the Game</H1>
+            + Interactive storytelling is at the heart of Mighty Decks. The Storyteller creates the world, while the players bring it to life through their characters and choices. Together, you’ll weave a tale of adventure, intrigue, and excitement.
+            
             <Body mt>
-                Welcome to Mighty Decks, a fast-paced tabletop roleplaying system for <strong>1–4 players and a Storyteller</strong>.
+                In Mighty Decks, the Storyteller doesn’t just control the world — they bring it to life. As the guide and narrator, you create a shared story where the players shape what happens through their choices, their actions… and their cards.
             </Body>
             <Body mt>
-                In Mighty Decks, The Storyteller narrates a story, while the players step into the roles of its main characters. The Storyteller presents challenges that test the players’ creativity and courage. Players respond through roleplay and clever problem-solving, describing what their characters attempt to do. To resolve key actions, they play Outcome cards that determine how well their efforts succeed… or how dramatically they fail.
-            </Body>
-            <Body mt>
-                Together they roleplay a story, make bold choices, and face consequences shaped by clever card play, not chance, making it perfect for both new players and seasoned RPG groups.
+                Mighty Decks is designed for <strong>1–4 players and a Storyteller</strong>. Together, you’ll create
+                gripping scenes, make bold choices, and face consequences shaped by clever card play, not chance. The
+                game emphasizes storytelling, roleplay, and creative problem-solving, making it perfect for both new
+                players and seasoned RPG groups.
             </Body>
             {/* TODO: Zespoda na krabici <H2 mt>What Makes Mighty Decks Unique?</H2>
             <Body mt>

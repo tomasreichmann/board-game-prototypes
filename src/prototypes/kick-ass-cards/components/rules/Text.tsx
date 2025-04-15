@@ -55,19 +55,19 @@ const variantClassNameMap = {
     body: bodyClassName,
 } as const;
 
-const varinatMtClassNameMap = {
+const variantMtClassNameMap = {
     title: "mt-10",
-    h1: "mt-8",
-    h2: "mt-6",
-    h3: "mt-4",
+    h1: "mt-6",
+    h2: "mt-4",
+    h3: "mt-2",
     body: "mt-2",
 } as const;
 
-const varinatMbClassNameMap = {
-    title: "mb-8",
-    h1: "mb-6",
-    h2: "mb-4",
-    h3: "mb-2",
+const variantMbClassNameMap = {
+    title: "mb-6",
+    h1: "mb-4",
+    h2: "mb-2",
+    h3: "mb-0",
     body: "mb-0",
 } as const;
 
@@ -96,7 +96,6 @@ export default function Text({
     children,
     ...restProps
 }: TextProps) {
-    console.log("Text", restProps);
     return (
         <Component
             {...restProps}
@@ -104,8 +103,8 @@ export default function Text({
                 sizeClassNameMap[size],
                 variantClassNameMap[variant],
                 colorClassNameMap[color],
-                mt && varinatMtClassNameMap[variant],
-                mb && varinatMbClassNameMap[variant],
+                mt && variantMtClassNameMap[variant],
+                mb && variantMbClassNameMap[variant],
                 center ? "text-center" : "",
                 className
             )}

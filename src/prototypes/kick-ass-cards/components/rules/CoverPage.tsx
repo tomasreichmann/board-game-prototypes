@@ -18,7 +18,7 @@ export default function CoverPage() {
                     Rulebook
                 </Title>
                 <div className="flex-1"></div>
-                <Text className="text-2xl font-bold text-kac-iron-light tracking-tighter" center>
+                <Text className="text-xl font-bold text-kac-gold-darker tracking-tight drop-shadow-emboss" center>
                     One Card System,
                     <br />
                     Countless Adventures

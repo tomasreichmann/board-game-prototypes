@@ -1,0 +1,3 @@
+- Player expansion
+    - Additional Outcome cards and effects
+    - Luxury variants

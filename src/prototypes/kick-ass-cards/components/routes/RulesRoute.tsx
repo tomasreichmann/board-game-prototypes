@@ -8,6 +8,7 @@ import Introduction from "../rules/Introduction";
 import PageCounter from "../rules/PageCounter";
 import Components from "../rules/Components";
 import Setup from "../rules/Setup";
+import RunningTheGame from "../rules/RunningTheGame";
 
 const CustomPrintPage = ({pageNumber, ...props}: PrintPageProps & { pageNumber: number}) => {
     return (
@@ -54,6 +55,12 @@ export default function RulesRoute() {
                             <Page>
                                 <Setup />
                                 <PageCounter current={3} />
+                            </Page>
+                        </CustomPrintPage>
+                        <CustomPrintPage pageNumber={4} >
+                            <Page>
+                                <RunningTheGame />
+                                <PageCounter current={4} />
                             </Page>
                         </CustomPrintPage>
                     </div>

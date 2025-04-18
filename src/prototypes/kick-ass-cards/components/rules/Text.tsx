@@ -18,6 +18,7 @@ const variantComponentMap = {
     h2: "h2",
     h3: "h3",
     body: "p",
+    quote: "blockquote",
 } as const;
 
 const variantSizeMap = {
@@ -26,6 +27,7 @@ const variantSizeMap = {
     h2: "xl",
     h3: "lg",
     body: "md",
+    quote: "md",
 } as const;
 
 const variantColorMap = {
@@ -34,6 +36,7 @@ const variantColorMap = {
     h2: "heading",
     h3: "heading",
     body: "body",
+    quote: "quote",
 } as const;
 
 const headingColorClassName = "text-kac-cloth-dark";
@@ -45,6 +48,7 @@ const colorClassNameMap = {
     h2: headingColorClassName,
     h3: headingColorClassName,
     body: bodyColorClassName,
+    quote: 'text-kac-cloth-dark',
 } as const;
 
 const variantClassNameMap = {
@@ -53,6 +57,7 @@ const variantClassNameMap = {
     h2: headingClassName,
     h3: headingClassName,
     body: bodyClassName,
+    quote: 'italic'
 } as const;
 
 const variantMtClassNameMap = {
@@ -61,21 +66,23 @@ const variantMtClassNameMap = {
     h2: "mt-4",
     h3: "mt-2",
     body: "mt-2",
+    quote: "mt-2",
 } as const;
 
 const variantMbClassNameMap = {
     title: "mb-6",
     h1: "mb-4",
     h2: "mb-2",
-    h3: "mb-0",
-    body: "mb-0",
+    h3: "mb-1",
+    body: "mb-1",
+    quote: "mb-1",
 } as const;
 
 
 export type TextProps = React.PropsWithChildren<{
     className?: string;
     Component?: React.ElementType;
-    variant?: "title" | "h1" | "h2" | "h3" | "body";
+    variant?: "title" | "h1" | "h2" | "h3" | "body" | "quote";
     size?: keyof typeof sizeClassNameMap;
     color?: keyof typeof colorClassNameMap;
     center?: boolean;
@@ -128,4 +135,8 @@ export const H3 = (props: TextProps) => (
 );
 export const Body = (props: TextProps) => (
     <Text variant="body" Component={variantComponentMap.body} size={variantSizeMap.body} color={variantColorMap.body} {...props} />
+);
+
+export const Quote = (props: TextProps) => (
+    <Text variant="quote" Component={variantComponentMap.quote} size={variantSizeMap.quote} color={variantColorMap.quote} {...props} />
 );

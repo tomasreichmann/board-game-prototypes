@@ -1,5 +1,5 @@
 "slug","title","icon","effect","count","deck"
-"wound","Injury","/mighty-decks/blood.png","4x Injury ➜ Unconscious.<BR>──<BR>Heal to discard.",4,"universal"
+"injury","Injury","/mighty-decks/blood.png","4x Injury ➜ Unconscious.<BR>──<BR>Heal to discard.",4,"universal"
 "distress","Distress","/mighty-decks/distress2.png","3x Distress ➜ Panic.<BR>4x Distress ➜ Hopeless.<BR>──<BR>Rest or indulge in your vice to discard.",4,"universal"
 "unconscious","Unconscious","/mighty-decks/unconscious.png","4x Injury: You are helpless. You cannot take actions until someone revives you.<BR>──<BR>Get rid of your Injuries to discard.",1,"universal"
 "panicked","Panicked","/mighty-decks/panicked2.png","3x Distress: You can only play the top card of your Outcome deck.<BR>──<BR>Get rid of your Distress to discard.",1,"universal"

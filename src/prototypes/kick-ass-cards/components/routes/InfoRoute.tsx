@@ -111,7 +111,7 @@ export default function InfoRoute() {
                                     width: cardSizes[defaultCardSize].mm[0] * 3 + "mm",
                                 }}
                                 items={[
-                                    <EffectCard key="wound" {...effectMap.wound} {...defaultCardProps} />,
+                                    <EffectCard key="injury" {...effectMap.injury} {...defaultCardProps} />,
                                     <EffectCard key="distress" {...effectMap.distress} {...defaultCardProps} />,
                                     <EffectCard key="complication" {...effectMap.complication} {...defaultCardProps} />,
                                 ]}

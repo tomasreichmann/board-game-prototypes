@@ -64,6 +64,14 @@ export default function CounterCard({
                     </H2>
                 )}
 
+                {total === undefined && (
+                    <div className="flex-1 flex flex-row flex-wrap gap-2 justify-center items-center px-4 opacity-50">
+                        <Icon icon="d4" className={"w-8 h-8"} />
+                        <Icon icon="d6" className={"w-8 h-8"} />
+                        <Icon icon="d10" className={"w-8 h-8"} />
+                    </div>
+                )}
+
                 {note !== null && (
                     <div className="text-xs text-kac-bone-darker font-kacBody flex flex-row gap-2 leading-tight">
                         <Icon icon="scrollQuill" className="h-4 flex-shrink-0 inline-block" />

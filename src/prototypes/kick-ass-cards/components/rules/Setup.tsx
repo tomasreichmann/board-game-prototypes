@@ -30,7 +30,7 @@ export default function Setup() {
             <Body mt>Storyteller, prepare a deck of Stunt cards relevant to the adventure you are about to play.</Body>
             <Body mt>Players, each pick 2&nbsp;Stunt cards from the deck and place them face up in front of you.</Body>
 
-            <H3 mt>Prepare your Effect cards</H3>
+            <H3 mt>Prepare the Effect cards</H3>
             <Body>Storyteller, place the box with Effect cards in front of you for easy access.</Body>
             
             <Body mt className="bg-kac-iron/10 p-2 rounded-md flex flex-col items-center justify-center text-center aspect-[5/2]">

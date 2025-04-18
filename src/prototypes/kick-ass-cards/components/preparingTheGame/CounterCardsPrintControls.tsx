@@ -9,7 +9,6 @@ import Icon from "../Icon";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import counters, { CounterType } from "../../data/counters-deck";
 import Card, { CardBody, CardHeader } from "../gameComponents/Card";
-import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { CounterCardBackFace } from "../gameComponents/CounterCard";
 

@@ -1,5 +1,5 @@
 slug,title,icon,effect,count
-wound,Zranění,drop,"2x+ Zranění: Zmámení, 4x Zranění: Bezvědomí. Vyleč se k odstranění.",16
+injury,Zranění,drop,"2x+ Zranění: Zmámení, 4x Zranění: Bezvědomí. Vyleč se k odstranění.",16
 distress,Tíseň,tearTracks,"3x+ Tíseň: Panika. 4x Tíseň: Beznaděj. Odpočiň si nebo využij svojí Neřest k zotavení.",16
 dazed,Zmámený,sleepy,"2x+ Zranění: tvůj Úspěch se počítá jako Částečný úspěch. Zbav se Zranění k zotavení.",0
 unconscious,Bezvědomí,knockout,"4x Zranění: postava je bezmocná. Nemůžeš provádět akce dokud tě někdo nevzkřísí. Zbav se Zranění k zotavení",4

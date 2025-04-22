@@ -19,6 +19,7 @@ import CounterCardsPrintControls from "./CounterCardsPrintControls";
 import DividersPrintControls from "./DividersPrintControls";
 import PenanceInBloodPrintControls from "./PenanceInBloodPrintControls";
 import MedievalLocationsPrintControls from "./MedievalLocationsPrintControls";
+import BaseActorCardsPrintControls from "./BaseActorCardsPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -41,7 +42,8 @@ export const componentControlsMap = {
     Template: TemplatePrintControls,
     "Outcome Cards": OutcomeCardsPrintControls,
     "Effect Cards": EffectCardsPrintControls,
-    "Universal Counter Cards": CounterCardsPrintControls,
+    "Base Counter Cards": CounterCardsPrintControls,
+    "Base Actor Cards": BaseActorCardsPrintControls,
     "Blank Actor Cards": ActorCardsPrintControls,
     "Blank Counter Cards": ClocksCardsPrintControls,
     "Stunt Cards": StuntCardsPrintControls,

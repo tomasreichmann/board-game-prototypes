@@ -589,6 +589,7 @@ export default function RunningTheGame() {
                 <>
                     <pre className="white-space-pre-wrap text-xs max-w-full">{`
 
+TODO: Generic Actor cards
 TODO: FAQ
 TODO: Storyteller guide
 TODO: Writing your own adventure

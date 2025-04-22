@@ -205,15 +205,19 @@ export default function ActorCard({
                 childrenClassName="shrink-0 basis-auto flex flex-col align-stretch gap-1 text-left min-h-[50%]"
             >
                 <div className={"text-sm flex flex-row gap-4"}>
-                    <H2
-                        className={twMerge(
-                            "flex-1 leading-none text-kac-iron-light",
-                            toughness > 0 ? "text-left" : "text-center"
-                        )}
-                    >
-                        {name || <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />}
-                        {age !== undefined ? ` (${age})` : ""}
-                    </H2>
+                    {occupation !== null && (
+                        <H2
+                            className={twMerge(
+                                "flex-1 leading-none text-kac-iron-light",
+                                toughness > 0 ? "text-left" : "text-center"
+                            )}
+                        >
+                            {name || (
+                                <div className="flex-1 border-b-[0.2mm] border-kac-steel border-dashed mt-[2em]" />
+                            )}
+                            {age !== undefined ? ` (${age})` : ""}
+                        </H2>
+                    )}
                     {toughness > 0 && (
                         <H2 className="border-dashed justify-end leading-none items-start text-kac-blood font-kacLogo flex flex-row">
                             <span>{toughness}&nbsp;</span>

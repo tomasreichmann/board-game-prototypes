@@ -520,7 +520,7 @@ export default function RunningTheGame() {
                     <Body mt>
                         When the situation is resolved or deescalates, the Storyteller can end the turn-based play.
                     </Body>
-                    <Body mt className="bg-kac-iron/10 p-2 rounded-md flex flex-col items-center justify-center text-center aspect-[1/2]">
+                    <Body mt className="flex-1 bg-kac-iron/10 p-2 rounded-md flex flex-col items-center justify-center text-center">
                         📷 Example of a game table with Counter, Actor and players and a sequence of play
                     </Body>
                 </>,

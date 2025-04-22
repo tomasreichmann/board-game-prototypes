@@ -24,13 +24,13 @@ const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
     return (
         <Card {...restProps}>
             <CardHeader icon={icon} className="z-10" cornerIcon="/mighty-decks/counter.png" deck={deck}></CardHeader>
-            <CardBody icon={icon}>
+            <CardBody icon={icon} childrenClassName="flex flex-col justify-center">
                 <div className="flex flex-row flex-wrap gap-2 justify-center items-center px-4 opacity-50">
                     <Icon icon="d4" className={"w-8 h-8"} />
                     <Icon icon="d6" className={"w-8 h-8"} />
-                    <Icon icon="d8" className={"w-8 h-8"} />
+                    {/* <Icon icon="d8" className={"w-8 h-8"} /> */}
                     <Icon icon="d10" className={"w-8 h-8"} />
-                    <Icon icon="d12" className={"w-8 h-8"} />
+                    {/* <Icon icon="d12" className={"w-8 h-8"} /> */}
                 </div>
             </CardBody>
         </Card>
@@ -51,7 +51,6 @@ export default function CounterCardsPrintControls({ className }: CounterCardsPri
             )
             .flat()
     );
-    console.log("items", items);
     // .sort((a, b) => a.total - b.total);
 
     return (

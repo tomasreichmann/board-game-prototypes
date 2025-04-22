@@ -99,7 +99,7 @@ export default function ActorCardsPrintControls({ className }: ActorCardsPrintCo
                         Component={ActorCard}
                         items={items}
                         {...chunkedPagesProps}
-                        label="Blank Actor Cards"
+                        label="Base Actor Cards"
                     />
                 </div>
             </Print>

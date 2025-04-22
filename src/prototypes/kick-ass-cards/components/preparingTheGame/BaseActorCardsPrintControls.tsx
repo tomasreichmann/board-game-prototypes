@@ -6,7 +6,7 @@ import Input from "../controls/Input";
 import { range } from "lodash";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
-import ActorCard from "../gameComponents/ActorCard";
+import ActorCard, { ActorCardBackFace } from "../gameComponents/ActorCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 
 export type BaseActorCardsPrintControlsProps = {
@@ -18,27 +18,35 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
     const [copyCount, setCopyCount] = useState(1);
     const actorImageUris = [
         '/mighty-decks/actors/base/animal.png',
+        '/mighty-decks/actors/base/animal.png',
+        '/mighty-decks/actors/base/animal.png',
         '/mighty-decks/actors/base/aristocrat.png',
         '/mighty-decks/actors/base/artillery.png',
         '/mighty-decks/actors/base/assassin.png',
         '/mighty-decks/actors/base/beast.png',
         '/mighty-decks/actors/base/bruiser.png',
+        '/mighty-decks/actors/base/bruiser.png',
+        '/mighty-decks/actors/base/bruiser.png',
         '/mighty-decks/actors/base/civilian.png',
         '/mighty-decks/actors/base/commander.png',
         '/mighty-decks/actors/base/construct.png',
         '/mighty-decks/actors/base/guard.png',
+        '/mighty-decks/actors/base/guard.png',
+        '/mighty-decks/actors/base/guard.png',
         '/mighty-decks/actors/base/healer.png',
         '/mighty-decks/actors/base/horror.png',
         '/mighty-decks/actors/base/manipulator.png',
+        '/mighty-decks/actors/base/marksman.png',
+        '/mighty-decks/actors/base/marksman.png',
         '/mighty-decks/actors/base/marksman.png',
         '/mighty-decks/actors/base/merchant.png',
         '/mighty-decks/actors/base/minion.png',
         '/mighty-decks/actors/base/minion.png',
         '/mighty-decks/actors/base/minion.png',
         '/mighty-decks/actors/base/minion.png',
-        '/mighty-decks/actors/base/minion.png',
         '/mighty-decks/actors/base/sentry.png',
         '/mighty-decks/actors/base/specialist.png',
+        '/mighty-decks/actors/base/swarm.png',
         '/mighty-decks/actors/base/swarm.png',
         '/mighty-decks/actors/base/zealot.png',
     ];
@@ -94,6 +102,7 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
                 <div className="flex flex-col items-center w-full">
                     <ChunkedPages
                         Component={ActorCard}
+                        BackFaceComponent={ActorCardBackFace}
                         items={items}
                         {...chunkedPagesProps}
                         label="Blank Actor Cards"

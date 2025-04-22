@@ -14,7 +14,7 @@ export type PlayerCharacterType = {
 };
 
 export type ActorType = {
-    name: string;
+    name: string | null;
     imageUri?: string;
     occupation?: string | null;
     gender?: string | null;

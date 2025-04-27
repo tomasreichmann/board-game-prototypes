@@ -20,6 +20,7 @@ import DividersPrintControls from "./DividersPrintControls";
 import PenanceInBloodPrintControls from "./PenanceInBloodPrintControls";
 import MedievalLocationsPrintControls from "./MedievalLocationsPrintControls";
 import BaseActorCardsPrintControls from "./BaseActorCardsPrintControls";
+import BaseTacticalRolesPrintControls from "./BaseTacticalRolesPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -44,6 +45,7 @@ export const componentControlsMap = {
     "Effect Cards": EffectCardsPrintControls,
     "Base Counter Cards": CounterCardsPrintControls,
     "Base Actor Cards": BaseActorCardsPrintControls,
+    "Base Tactical Roles": BaseTacticalRolesPrintControls,
     "Blank Actor Cards": ActorCardsPrintControls,
     "Blank Counter Cards": ClocksCardsPrintControls,
     "Stunt Cards": StuntCardsPrintControls,
@@ -94,7 +96,8 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     setDefaultGapMm: (gapMm: [number, number]) => set({ defaultGapMm: gapMm }),
     defaultBleedMm: 3,
     setDefaultBleedMm: (bleedMm: number) => set({ defaultBleedMm: bleedMm }),
-    flipSecondHalf: true,
+    // flipSecondHalf: true,
+    flipSecondHalf: false,
     setFlipSecondHalf: (flipSecondHalf: boolean) => set({ flipSecondHalf }),
     showHorizontalBend: true,
     setShowHorizontalBend: (showHorizontalBend: boolean) => set({ showHorizontalBend }),
@@ -103,7 +106,8 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     pageLabelPosition: "left",
     setPageLabelPosition: (pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"]) =>
         set({ pageLabelPosition }),
-    componentControls: "Template" as const,
+    componentControls: "Base Tactical Roles" as const,
+    // componentControls: "Template" as const,
     setComponentControls: (componentControls: keyof typeof componentControlsMap) => set({ componentControls }),
 }));
 

@@ -43,9 +43,6 @@ export default function TacticalRoleOverlay({
                 icon={undefined}
                 childrenClassName="shrink-0 basis-auto flex flex-col align-stretch text-left h-[40%]"
             >
-                <div className={"text-sm flex flex-row gap-4"}>
-                    <div className="flex-1 border-b-2 border-kac-iron" />
-                </div>
                 <h3
                     className={twm(
                         "text-xs font-bold leading-tighter mb-1",

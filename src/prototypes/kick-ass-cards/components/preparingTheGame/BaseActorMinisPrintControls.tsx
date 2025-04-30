@@ -6,15 +6,21 @@ import Input from "../controls/Input";
 import { range } from "lodash";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
-import ActorCard, { ActorCardBackFace } from "../gameComponents/ActorCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
+import PaperMini, { PaperMiniProps } from "../gameComponents/PaperMini";
+import PrintMarkerCorners from "@/components/print/PrintMarker/PrintMarkerCorners";
+import RegistrationMark from "@/components/print/PrintMarker/RegistrationMark";
+import ColorBars from "@/components/print/PrintMarker/ColorBars";
+import ToggleCheckbox from "../controls/ToggleCheckbox";
+import Text from "../content/Text";
 
-export type BaseActorCardsPrintControlsProps = {
+export type BaseActorMinisPrintControlsProps = {
     className?: string;
 };
 
-export default function BaseActorCardsPrintControls({ className }: BaseActorCardsPrintControlsProps) {
+export default function BaseActorMinisPrintControls({ className }: BaseActorMinisPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
+    const [isTransparent, setIsTransparent] = useState(false);
     const [copyCount, setCopyCount] = useState(1);
     const actorImageUris = [
         "/mighty-decks/actors/base/claw-yellow.png",
@@ -61,25 +67,39 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
     const items = useItemAdapter(
         range(copyCount)
             .map((copyIndex) =>
-                actorImageUris.map((imageUri, imageIndex) => ({
-                    slug: copyIndex + "-" + imageIndex,
-                    forPrint: true,
-                    name: null,
-                    occupation: null,
-                    threat: null,
-                    reward: null,
-                    notes: null,
-                    className: "relative",
-                    size: "54x86",
-                    imageUri,
-                }))
+                actorImageUris.map(
+                    (imageUri, imageIndex) =>
+                        ({
+                            slug: copyIndex + "-" + imageIndex,
+                            imageStyle: { backgroundSize: "contain" },
+                            width: "1in",
+                            height: "1in",
+                            children: <PrintMarkerCorners />,
+                            cutBorderStyle: "",
+                            className: isTransparent
+                                ? "relative"
+                                : "relative bg-[url('/mighty-decks/paper.png')] bg-cover",
+                            imageUri,
+                        } as PaperMiniProps)
+                )
             )
             .flat()
     );
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
-            <div className="print:hidden mt-4">
+            <div className="print:hidden mt-4 flex flex-row gap-4">
+                <div className="flex flex-col">
+                    <Text Component="span" variant="body" className={twMerge("text-kac-steel")}>
+                        Transparent
+                    </Text>
+                    <ToggleCheckbox
+                        labelFalse="Opaque"
+                        labelTrue="Transparent"
+                        value={isTransparent}
+                        onChange={(event) => setIsTransparent(event.target.checked)}
+                    />
+                </div>
                 <Input
                     label="Copies"
                     type="number"
@@ -109,10 +129,28 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
             >
                 <div className="flex flex-col items-center w-full">
                     <ChunkedPages
-                        Component={ActorCard}
-                        BackFaceComponent={ActorCardBackFace}
+                        Component={PaperMini}
                         items={items}
                         {...chunkedPagesProps}
+                        itemsPerPage={20}
+                        frontFacePageContentProps={{
+                            ...chunkedPagesProps.frontFacePageContentProps,
+                            style: { gap: 0 },
+                            className: "pt-5",
+                        }}
+                        frontFacePrintPageProps={{
+                            ...chunkedPagesProps.frontFacePrintPageProps,
+                            children: (
+                                <>
+                                    <RegistrationMark className="absolute top-0 left-0" />
+                                    <RegistrationMark className="absolute top-0 right-0" />
+                                    <ColorBars className="absolute bottom-0 right-4 origin-top-right rotate-90" />
+                                    <ColorBars className="absolute top-0 left-4 origin-bottom-left rotate-90" />
+                                    <RegistrationMark className="absolute bottom-0 right-0" />
+                                    <RegistrationMark className="absolute bottom-0 left-0" />
+                                </>
+                            ),
+                        }}
                         label="Blank Actor Cards"
                     />
                 </div>

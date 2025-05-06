@@ -110,7 +110,7 @@ export const tacticalSpecialsMap: Record<string, TacticalRoleType> = {
         name: "Fast",
         deck: "universal",
         count: 2,
-        speed: 2,
+        // speed: 2,
         special: "+1[speed]",
     },
     harassing: {

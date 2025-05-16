@@ -15,37 +15,6 @@ export type BaseTacticalRolesPrintControlsProps = {
     className?: string;
 };
 
-const OverlayOverActorCard = ({
-    className,
-    actorCardProps,
-    tacticalRoleOverlayProps,
-    tacticalSpecialOverlayProps,
-    ...restProps
-}: {
-    actorCardProps: ActorCardProps;
-    tacticalRoleOverlayProps: TacticalRoleOverlayProps;
-    tacticalSpecialOverlayProps?: TacticalRoleOverlayProps;
-    className?: string;
-} & HTMLAttributes<HTMLDivElement>) => {
-    return (
-        <div className={twm("relative", className)}>
-            <ActorCard {...actorCardProps} {...restProps} />
-            <TacticalRoleOverlay
-                {...tacticalRoleOverlayProps}
-                {...restProps}
-                className={twm("absolute top-0 left-0", tacticalRoleOverlayProps.className)}
-            />
-            {tacticalSpecialOverlayProps && (
-                <TacticalRoleOverlay
-                    {...tacticalSpecialOverlayProps}
-                    {...restProps}
-                    className={twm("absolute top-0 left-0", tacticalSpecialOverlayProps.className)}
-                />
-            )}
-        </div>
-    );
-};
-
 export default function BaseTacticalRolesPrintControls({ className }: BaseTacticalRolesPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     /* const actorImageUris = [

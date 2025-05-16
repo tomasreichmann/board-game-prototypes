@@ -37,7 +37,6 @@ export const actorCardSchema: JSONSchemaType<Omit<ActorCardProps, keyof CardProp
             nullable: true,
             default: false,
         },
-
         slug: {
             title: "Slug",
             type: "string",
@@ -191,6 +190,7 @@ export default function ActorCard({
     children,
     ...restProps
 }: ActorCardProps) {
+    console.log({ name });
     return (
         <Card className={twMerge("ActorCard", className)} {...restProps}>
             <CardHeader
@@ -205,7 +205,7 @@ export default function ActorCard({
                 childrenClassName="shrink-0 basis-auto flex flex-col align-stretch gap-1 text-left min-h-[50%]"
             >
                 <div className={"text-sm flex flex-row gap-4"}>
-                    {occupation !== null && (
+                    {name !== null && (
                         <H2
                             className={twMerge(
                                 "flex-1 leading-none text-kac-iron-light",

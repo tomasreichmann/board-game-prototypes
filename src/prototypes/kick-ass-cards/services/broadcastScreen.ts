@@ -9,6 +9,8 @@ import Image, { ImageProps } from "../components/Image";
 import Heading, { HeadingProps } from "../components/Heading";
 import CounterCard from "../components/gameComponents/CounterCard";
 import GenericCounterCard, { GenericCounterCardProps } from "../components/gameComponents/GenericCounterCard";
+import StuntCard from "../components/gameComponents/StuntCard";
+import ActorCardWithTacticalOverlay from "../components/gameComponents/ActorCardWithTacticalOverlay";
 
 export enum AnimationEnum {
     FadeOut = "fadeOut",
@@ -19,9 +21,11 @@ export enum ScreenContentTypeEnum {
     Image = "Image",
     Heading = "Heading",
     Actor = "Actor",
+    ActorCardWithTacticalOverlay = "ActorCardWithTacticalOverlay",
     Asset = "Asset",
     Clock = "Clock",
     Counter = "Counter",
+    StuntCard = "StuntCard",
     GenericCounterCard = "GenericCounterCard",
     Effect = "Effect",
     PaperMini = "PaperMini",
@@ -101,6 +105,8 @@ export const typeComponentMap = {
     [ScreenContentTypeEnum.Effect]: EffectCard,
     [ScreenContentTypeEnum.PaperMini]: PaperMini,
     [ScreenContentTypeEnum.Paper]: Paper,
+    [ScreenContentTypeEnum.ActorCardWithTacticalOverlay]: ActorCardWithTacticalOverlay,
+    [ScreenContentTypeEnum.StuntCard]: StuntCard,
 };
 
 export type ScreenStoreType = {

@@ -76,7 +76,9 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
     ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov-info", "The Hidden Hand of Strahov - Info", PH),
     ...makeEncounterDefinition("PH-en-the-hidden-hand-of-strahov-scenes", "The Hidden Hand of Strahov - Scenes", PH),
 
-    ...makeEncounterDefinition("QL-en-drink-till-your-luck-runs-out", "Drink Till Your Luck Runs Out", OS),
-    ...makeEncounterDefinition("QL-cs-pij-nez-se-karta-obrati", "Pij, než se karta obrátí", OS),
+    ...makeEncounterDefinition("OS-en-drink-till-your-luck-runs-out", "Drink Till Your Luck Runs Out", OS),
+    ...makeEncounterDefinition("OS-cs-pij-nez-se-karta-obrati", "Pij, než se karta obrátí", OS),
+
+    ...makeEncounterDefinition("OS-en-low-key-heroes", "Low-key Heroes", OS),
 };
 console.log("encountersMap", encountersMap);

@@ -22,6 +22,7 @@ import MedievalLocationsPrintControls from "./MedievalLocationsPrintControls";
 import BaseActorCardsPrintControls from "./BaseActorCardsPrintControls";
 import BaseTacticalRolesPrintControls from "./BaseTacticalRolesPrintControls";
 import BaseActorMinisPrintControls from "./BaseActorMinisPrintControls";
+import AttractiveCardPrintControls from "./AttractiveCardPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -55,6 +56,7 @@ export const componentControlsMap = {
     "Medieval Actors": MedievalActorCardsPrintControls,
     "Medieval Locations": MedievalLocationsPrintControls,
     "Penance In Blood": PenanceInBloodPrintControls,
+    AttractiveCardPrintControls: AttractiveCardPrintControls,
     Dividers: DividersPrintControls,
     Box: BoxPrintControls,
 };

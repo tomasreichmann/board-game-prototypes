@@ -1,9 +1,6 @@
-/*export const encounterMap = (import.meta as any).glob("../../data/encounters/kjb/*.md", { eager: true }) as Record<
-    string,
-    { default: React.ComponentType<{}> }
->;*/
-// export const encounterModules = Object.values(encounterMap);
-export type EnounterDefinition = {
+import groupByCampaign from "../../components/encounters/groupByCampaing";
+
+export type EncounterDefinition = {
     path: string;
     slug: string;
     campaign?: string;
@@ -21,37 +18,40 @@ const ML = "Matečná žíla";
 const PH = "Příběhy Husitů";
 const OS = "One-shots";
 
-const makeEncounterDefinition = (key: string, title: string, campaign: string) => ({
+const makeEncounterDefinition = (key: string, title: string, campaign: string, imageUri?: string) => ({
     [key]: {
         slug: key,
         path: key,
         campaign,
         title,
+        imageUri,
     },
 });
 
-export const encountersMap: { [key: string]: EnounterDefinition } = {
+export const encountersMap: { [key: string]: EncounterDefinition } = {
+    ...makeEncounterDefinition("index", "Featured Encounters", ""),
+    ...makeEncounterDefinition("index-cs", "Vybraná Dobrodružství", ""),
     ...makeEncounterDefinition("KJB-act1-01-Intro", "Akt 1 - Úvod", KJB),
 
     ...makeEncounterDefinition("PZZ-akt1-Intro", "PZZ-akt1-Intro", "Pomsta ze záhrobí"),
 
-    ...makeEncounterDefinition("LP-c0-a0-Info", "LP-c0-a0-Info", LP),
-    ...makeEncounterDefinition("LP-c1-a1-Navrat", "LP-c1-a1-Navrat", LP),
-    ...makeEncounterDefinition("LP-c1-a2-Oslava", "LP-c1-a2-Oslava", LP),
-    ...makeEncounterDefinition("LP-c1-a3-Partys-over", "LP-c1-a3-Partys-over", LP),
-    ...makeEncounterDefinition("LP-c1-a4-Na-ulici", "LP-c1-a4-Na-ulici", LP),
-    ...makeEncounterDefinition("LP-c1-a5-Odlet", "LP-c1-a5-Odlet", LP),
-    ...makeEncounterDefinition("LP-c2-a1-Vysadek", "LP-c2-a1-Vysadek", LP),
-    ...makeEncounterDefinition("LP-c2-a2-Sporova-lod", "LP-c2-a2-Sporova-lod", LP),
+    ...makeEncounterDefinition("LP-c0-a0-Info", "Info", LP),
+    ...makeEncounterDefinition("LP-c1-a1-Navrat", "Návrat", LP),
+    ...makeEncounterDefinition("LP-c1-a2-Oslava", "Oslava", LP),
+    ...makeEncounterDefinition("LP-c1-a3-Partys-over", "Party-over", LP),
+    ...makeEncounterDefinition("LP-c1-a4-Na-ulici", "Na ulici", LP),
+    ...makeEncounterDefinition("LP-c1-a5-Odlet", "Odlet", LP),
+    ...makeEncounterDefinition("LP-c2-a1-Vysadek", "Výsadek", LP),
+    ...makeEncounterDefinition("LP-c2-a2-Sporova-lod", "Spórová loď", LP),
 
-    ...makeEncounterDefinition("LP-en-c0-a0-Info", "LP-en-c0-a0-Info", LP_EN),
-    ...makeEncounterDefinition("LP-en-c1-a1-Return", "LP-en-c1-a1-Return", LP_EN),
-    ...makeEncounterDefinition("LP-en-c1-a2-Celebration", "LP-en-c1-a2-Celebration", LP_EN),
-    ...makeEncounterDefinition("LP-en-c1-a3-Partys-over", "LP-en-c1-a3-Partys-over", LP_EN),
-    ...makeEncounterDefinition("LP-en-c1-a4-On-the-street", "LP-en-c1-a4-On-the-street", LP_EN),
-    ...makeEncounterDefinition("LP-en-c1-a5-Boarding", "LP-en-c1-a5-Boarding", LP_EN),
-    ...makeEncounterDefinition("LP-en-c2-a1-Departure", "LP-en-c2-a1-Departure", LP_EN),
-    ...makeEncounterDefinition("LP-en-c2-a2-Spore-ship", "LP-en-c2-a2-Spore-ship", LP_EN),
+    ...makeEncounterDefinition("LP-en-c0-a0-Info", "Info", LP_EN),
+    ...makeEncounterDefinition("LP-en-c1-a1-Return", "Return", LP_EN),
+    ...makeEncounterDefinition("LP-en-c1-a2-Celebration", "Celebration", LP_EN),
+    ...makeEncounterDefinition("LP-en-c1-a3-Partys-over", "Party's Over", LP_EN),
+    ...makeEncounterDefinition("LP-en-c1-a4-On-the-street", "On The Street", LP_EN),
+    ...makeEncounterDefinition("LP-en-c1-a5-Boarding", "Boarding", LP_EN),
+    ...makeEncounterDefinition("LP-en-c2-a1-Departure", "Departure", LP_EN),
+    ...makeEncounterDefinition("LP-en-c2-a2-Spore-ship", "Spore Ship", LP_EN),
 
     ...makeEncounterDefinition("ISV-c0-a0-Prequel-GM-Info", "Prequel - Informace pro vypravěče", ISV),
     ...makeEncounterDefinition("ISV-c0-a1-Prequel", "Prequel", ISV),
@@ -81,4 +81,5 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
 
     ...makeEncounterDefinition("OS-en-low-key-heroes", "Low-key Heroes", OS),
 };
-console.log("encountersMap", encountersMap);
+
+export const encountersByCampaign = groupByCampaign(encountersMap);

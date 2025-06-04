@@ -54,6 +54,8 @@ const contentTypeDescriptionMap = {
     Paper: "layout in a standard paper or card size",
     Toggle: "layout for collapsible content",
     Button: "button style links",
+    ActorCardWithTacticalOverlay: "Actor card with tactical overlay",
+    StuntCard: "Stunt card",
 
     Clock: "DEPRECATED in favor of Counter",
     Player: "DEPRECATED Player character card",

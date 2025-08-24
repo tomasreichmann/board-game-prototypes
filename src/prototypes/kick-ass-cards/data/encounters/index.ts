@@ -78,5 +78,6 @@ export const encountersMap: { [key: string]: EnounterDefinition } = {
 
     ...makeEncounterDefinition("QL-en-drink-till-your-luck-runs-out", "Drink Till Your Luck Runs Out", OS),
     ...makeEncounterDefinition("QL-cs-pij-nez-se-karta-obrati", "Pij, než se karta obrátí", OS),
+    ...makeEncounterDefinition("OS-en-radicare-rapid-rescue", "RadiCare Rapid Rescue", OS),
 };
 console.log("encountersMap", encountersMap);

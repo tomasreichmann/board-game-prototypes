@@ -190,7 +190,6 @@ export default function ActorCard({
     children,
     ...restProps
 }: ActorCardProps) {
-    console.log({ name });
     return (
         <Card className={twMerge("ActorCard", className)} {...restProps}>
             <CardHeader

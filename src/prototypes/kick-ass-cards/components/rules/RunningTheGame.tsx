@@ -76,6 +76,15 @@ export default function RunningTheGame() {
                         act it out and speak from the first person perspective. This is not required, but may greatly
                         enhance their immersion and experience.
                     </Body>
+                    <Body mt>
+                        Storyteller balances the <em>"spotlight"</em> between the players. When a more active player
+                        talks for too long, move the spotlight to a player that didn't talk for a while. For example by
+                        saying:{" "}
+                        <Quote Component="span">
+                            "And what do <strong>you</strong> do in the meantime?"
+                        </Quote>
+                        .
+                    </Body>
 
                     <H2 mt>Playing Outcome Cards</H2>
                     <Body>
@@ -113,15 +122,6 @@ export default function RunningTheGame() {
                         one of your Stunts.
                     </Body>
 
-                    <Body mt>
-                        The Player then draws cards from their Outcome deck up to their hand limit (usually 3 cards
-                        total).
-                    </Body>
-                    <Body mt>
-                        If there are no more cards in player's Outcome deck, the player makes a new Outcome Deck by
-                        shuffling their Outcome discard pile face down.
-                    </Body>
-
                     <Hand
                         className="mt-4 h-32"
                         offsetXmodifier={0.5}
@@ -142,7 +142,16 @@ export default function RunningTheGame() {
                     {/* <div className="mt-4 h-32 flex flex-row" >{Object.values(outcomeMap).map(outcome => <Scaled  scale={0.25} key={outcome.slug}><OutcomeCard {...outcome} /></Scaled>)} </div> */}
                 </>,
                 <>
-                    <H3>Example playing an Outcome card</H3>
+                    <Body mt>
+                        The Player then draws cards from their Outcome deck up to their hand limit (usually 3 cards
+                        total).
+                    </Body>
+                    <Body mt>
+                        If there are no more cards in player's Outcome deck, the player makes a new Outcome Deck by
+                        shuffling their Outcome discard pile face down.
+                    </Body>
+
+                    <H3 mt>Example playing an Outcome card</H3>
                     <Quote>
                         <strong>Player:</strong> I want to swing on a chandelier, do a back flip, and kick the zombie in
                         the face.
@@ -159,7 +168,7 @@ export default function RunningTheGame() {
                         to the ground.
                     </Quote>
 
-                    <H3 mt>Catastrophe (Tragedy?)</H3>
+                    <H3 mt>Catastrophe</H3>
                     <Body>
                         If a player draws an Outcome card and has in their hand <strong>3 or more Fumble cards</strong>{" "}
                         (or only Fumble cards in case they have less than 3 cards), the player immediately announces a
@@ -438,7 +447,12 @@ export default function RunningTheGame() {
                     </div>
                 </>,
                 <>
-                    <div className="flex flex-row gap-2">
+                    <div>
+                        <div className="float-right ml-2 mb-2">
+                            <Scaled key={stuntMap.stalker.slug} scale={0.5}>
+                                <EffectCard {...stuntMap.stalker} className={cardClassName} size="54x86" />
+                            </Scaled>
+                        </div>
                         <div>
                             <H2>Stunts</H2>
                             <Body>
@@ -452,11 +466,6 @@ export default function RunningTheGame() {
                                 prerequisites on the cards to immediately receive them and gain their benefits.
                             </Body>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <Scaled key={stuntMap.stalker.slug} scale={0.5}>
-                                <EffectCard {...stuntMap.stalker} className={cardClassName} size="54x86" />
-                            </Scaled>
-                        </div>
                     </div>
 
                     <Body mt>
@@ -465,23 +474,30 @@ export default function RunningTheGame() {
                     </Body>
                     <Body mt>Players can also use their stunts as a basis for the Special Action.</Body>
 
-                    <div className="flex flex-row gap-2">
+                    <div className="mt-4">
+                        <div className="float-right ml-2 mb-2">
+                            <Scaled key={countersMap.danger.slug} scale={0.5}>
+                                <CounterCard
+                                    {...countersMap.danger}
+                                    title="Poison in the air"
+                                    className={cardClassName}
+                                    size="54x86"
+                                />
+                            </Scaled>
+                        </div>
                         <div>
-                            <H2 mt>Using Counters</H2>
+                            <H2>Using Counters</H2>
                             <Body>
                                 For complex scenes, the Storyteller may introduce a Counter. A counter represents
                                 progress towards a goal, a countdown towards a threat, or tracks resources.
                             </Body>
                             <Body mt>
-                                The Storyteller places a Counter card on the table and adds one or more dice on it. The
+                                The Storyteller places a Counter card with a graphic that resembles what they want to
+                                track, puts it in a sleave and writes a title on the sleave with a dry-erase marker. He
+                                than places one or more dice on it representing the range of it's possible values. The
                                 total of the face values shows the Counter's current value. The dice used may indicate
                                 the maximum possible value of the Counter (e.g. D4: 1 to 4, 2x D6: 2 to 12).
                             </Body>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <Scaled key={countersMap.danger.slug} scale={0.5}>
-                                <CounterCard {...countersMap.danger} className={cardClassName} size="54x86" />
-                            </Scaled>
                         </div>
                     </div>
 
@@ -520,7 +536,10 @@ export default function RunningTheGame() {
                     <Body mt>
                         When the situation is resolved or deescalates, the Storyteller can end the turn-based play.
                     </Body>
-                    <Body mt className="flex-1 bg-kac-iron/10 p-2 rounded-md flex flex-col items-center justify-center text-center">
+                    <Body
+                        mt
+                        className="flex-1 bg-kac-iron/10 p-2 rounded-md flex flex-col items-center justify-center text-center"
+                    >
                         📷 Example of a game table with Counter, Actor and players and a sequence of play
                     </Body>
                 </>,

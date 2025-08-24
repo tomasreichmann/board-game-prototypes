@@ -68,7 +68,7 @@ export const tacticalSpecialsMap: Record<string, TacticalRoleType> = {
         name: "Burning",
         deck: "universal",
         count: 1,
-        special: "[melee]|[ranged] deal +1[burning]",
+        special: "[melee]|[ranged] deal +[burning]",
     },
     fiery: {
         slug: "fiery",
@@ -82,7 +82,7 @@ export const tacticalSpecialsMap: Record<string, TacticalRoleType> = {
         name: "Freezing",
         deck: "universal",
         count: 1,
-        special: "[melee]|[ranged] deal +1[freezing]",
+        special: "[melee]|[ranged] deal +[freezing]",
     },
     icy: {
         slug: "icy",
@@ -153,7 +153,7 @@ export const tacticalSpecialsMap: Record<string, TacticalRoleType> = {
         name: "Grabbing",
         deck: "universal",
         count: 2,
-        special: "[melee] also deals +1[stuck]",
+        special: "[melee] also deals +[stuck]",
     },
     webbing: {
         slug: "webbing",
@@ -174,14 +174,14 @@ export const tacticalSpecialsMap: Record<string, TacticalRoleType> = {
         name: "Restoring",
         deck: "universal",
         count: 1,
-        special: "[heal] 1[injury] from all allies in the zone",
+        special: "[heal] an [injury] from all allies in the zone",
     },
     regenerating: {
         slug: "regenerating",
         name: "Regenerating",
         deck: "universal",
         count: 4,
-        special: "[heal] 1[injury] at the end of it's turn",
+        special: "[heal] an [injury] at the end of it's turn",
     },
 };
 

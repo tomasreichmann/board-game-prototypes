@@ -17,16 +17,15 @@ const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
     return routeDefinitions.map(({ path, Component, children }) => (
         <Route
             key={path}
-            {...{
-                path,
-                element: (
-                    <ErrorBoundary>
-                        <Component />
-                    </ErrorBoundary>
-                ),
-                children: children?.length ? createRouteElementsFromObject(children) : [],
-            }}
-        />
+            path={path}
+            element={
+                <ErrorBoundary>
+                    <Component />
+                </ErrorBoundary>
+            }
+        >
+            {children?.length ? createRouteElementsFromObject(children) : null}
+        </Route>
     ));
 };
 

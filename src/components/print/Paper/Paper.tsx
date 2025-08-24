@@ -1,4 +1,4 @@
-import React, { CSSProperties, HTMLAttributes } from "react";
+import React, { CSSProperties } from "react";
 import { allSizes } from "../paperSizes";
 import { twMerge } from "tailwind-merge";
 import PrintMarkerCorners from "../PrintMarker/PrintMarkerCorners";

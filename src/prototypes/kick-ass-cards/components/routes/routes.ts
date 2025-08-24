@@ -132,6 +132,7 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
     {
         name: "Encounters",
         path: mightyDecksPath + "/encounters",
+        index: true,
         Component: EncountersRoute,
         children: [
             {

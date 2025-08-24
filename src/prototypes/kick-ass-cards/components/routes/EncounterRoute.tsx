@@ -1,10 +1,11 @@
 import { encountersMap } from "../../data/encounters";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Pending from "../../../../components/Pending";
 import ArticleWithTitle from "../layout/ArticleWithTitle";
 import { MDXProvider } from "@mdx-js/react";
 import { defaultMdxComponentMap } from "../content/MdxArticle";
+import ErrorMessage from "../adventures/ErrorMessage";
+import Pending from "@/components/form/Pending";
 
 export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
@@ -50,6 +51,7 @@ export default function EncounterRoute() {
     return (
         <div className="w-full text-kac-iron p-4 bg-white container mx-auto">
             {isPending && <Pending />}
+            {!isPending && !Encounter && <ErrorMessage heading="⚠ Error loading encounter" />}
             <ArticleWithTitle>
                 <MDXProvider components={defaultMdxComponentMap}>
                     {Encounter !== null && <Encounter key={path} />}

@@ -1,5 +1,3 @@
-import prototypes from "../prototypes/prototypes";
-import { Button } from "react-daisyui";
 import Page from "../components/Page/Page";
 
 // import "./Component.css";

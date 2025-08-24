@@ -29,6 +29,8 @@ import Text from "./Text";
 import Button from "../controls/Button";
 import BroadcastCounter from "../screenContent/BroadcastCounter";
 import BroadcastGenericCounterCard from "../screenContent/BroadcastGenericCounterCard";
+import BroadcastStuntCard from "../screenContent/BroadcastStuntCard";
+import BroadcastActorCardWithTacticalOverlay from "../screenContent/BroadcastActorCardWithTacticalOverlay";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -54,10 +56,12 @@ export const defaultMdxComponentMap = {
     Player: ReactPlayer,
     Spread,
     Actor: BroadcastActor,
+    ActorCardWithTacticalOverlay: BroadcastActorCardWithTacticalOverlay,
     Asset: BroadcastAsset,
     Effect: BroadcastEffect,
     Clock: BroadcastClock,
     CounterCard: BroadcastCounter,
+    StuntCard: BroadcastStuntCard,
     GenericCounterCard: BroadcastGenericCounterCard,
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,

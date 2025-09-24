@@ -11,6 +11,7 @@ import LlmJobRoute from "./routes/LlmJobRoute";
 import AiHordeRoute from "./routes/AiHordeRoute";
 import LlmJobRoute2 from "./routes/LlmJobRoute2";
 import WgBusinessCardsRoute from "./routes/WGBusinessCardsRoute";
+import ReflectionRoute from "./routes/ReflectionRoute";
 import Route404 from "./routes/Route404";
 
 const createRouteElementsFromObject = (routeDefinitions: RouteDefinition[]) => {
@@ -65,6 +66,11 @@ export const routes: RouteDefinition[] = [
         name: "WG Business Cards",
         path: "/wg-business-cards",
         Component: WgBusinessCardsRoute,
+    },
+    {
+        name: "Reflection",
+        path: "/reflection",
+        Component: ReflectionRoute,
     },
     {
         name: "Settings",

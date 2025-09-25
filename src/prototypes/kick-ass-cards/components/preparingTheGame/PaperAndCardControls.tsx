@@ -20,6 +20,7 @@ import DividersPrintControls from "./DividersPrintControls";
 import PenanceInBloodPrintControls from "./PenanceInBloodPrintControls";
 import MedievalLocationsPrintControls from "./MedievalLocationsPrintControls";
 import BaseActorCardsPrintControls from "./BaseActorCardsPrintControls";
+import BaseAssetCardsPrintControls from "./BaseAssetCardsPrintControls";
 import BaseTacticalRolesPrintControls from "./BaseTacticalRolesPrintControls";
 import BaseActorMinisPrintControls from "./BaseActorMinisPrintControls";
 import AttractiveCardPrintControls from "./AttractiveCardPrintControls";
@@ -47,6 +48,7 @@ export const componentControlsMap = {
     "Effect Cards": EffectCardsPrintControls,
     "Base Counter Cards": CounterCardsPrintControls,
     "Base Actor Cards": BaseActorCardsPrintControls,
+    "Base Asset Cards": BaseAssetCardsPrintControls,
     "Base Actor Minis": BaseActorMinisPrintControls,
     "Base Tactical Roles": BaseTacticalRolesPrintControls,
     "Blank Actor Cards": ActorCardsPrintControls,

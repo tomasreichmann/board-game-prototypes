@@ -1,48 +1,51 @@
 import React, { CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
-import { ActorType } from "../../types";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import Image, { ImageProps } from "../Image";
-import Icon from "../Icon";
 import Card, { CardBody, CardHeader, CardProps } from "./Card";
-import { H2 } from "../content/Text";
+import { H2, H3 } from "../content/Text";
+
+export type LayeredCardDataType = {
+    noun?: React.ReactNode;
+    nounEffect?: React.ReactNode;
+    nounDeck?: string;
+    nounCornerIcon?: string;
+    adjective?: React.ReactNode;
+    adjectiveEffect?: React.ReactNode;
+    adjectiveDeck?: string;
+    adjectiveCornerIcon?: string;
+    imageUri?: CSSProperties["backgroundImage"];
+    backFaceProps?: LayeredCardBackFaceProps;
+};
 
 export type LayeredCardProps = React.PropsWithChildren<
     {
         slug?: string;
-        deck?: string;
         className?: string;
         imagePosition?: CSSProperties["objectPosition"];
         imageFit?: CSSProperties["objectFit"];
         imageClassName?: string;
         imageWrapperClassName?: string;
-        notesClassName?: string;
-        forPrint?: boolean;
-        hideCounter?: boolean;
         ImageComponent?: React.ComponentType<ImageProps>;
-    } & Partial<ActorType> &
+    } & LayeredCardDataType &
         Partial<CardProps>
 >;
 
 export default function LayeredCard({
     className,
-    forPrint,
-    name = "",
-    deck,
+    noun = " ",
+    nounEffect = " ",
+    nounDeck = " ",
+    nounCornerIcon,
+    adjective = " ",
+    adjectiveEffect = " ",
+    adjectiveDeck,
+    adjectiveCornerIcon,
     imageUri,
     imageClassName,
     imagePosition,
     imageFit = "contain",
     imageWrapperClassName,
-    occupation = forPrint ? "" : null,
-    toughness = 0,
-    currentToughness = toughness,
-    age,
-    threat = forPrint ? "" : null,
-    reward = forPrint ? "" : null,
-    notes = forPrint ? "" : null,
-    notesClassName,
-    hideCounter = false,
     ImageComponent = Image,
     children,
     ...restProps
@@ -51,25 +54,64 @@ export default function LayeredCard({
         <Card className={twMerge("LayeredCard", className)} {...restProps}>
             <CardHeader
                 icon={imageUri ?? undefined}
-                className="z-10"
-                cornerIcon="/mighty-decks/actor.png"
-                deck={deck ?? undefined}
-            ></CardHeader>
-            Adjective Noun Noun effect Adjective effect
+                className="z-10 relative"
+                cornerIcon={nounCornerIcon ?? undefined}
+                deck={nounDeck ?? undefined}
+            >
+                <CardHeader
+                    icon={undefined}
+                    className="z-10 absolute top-full left-0 right-0"
+                    cornerIcon={adjectiveCornerIcon ?? undefined}
+                    deck={adjectiveDeck ?? undefined}
+                ></CardHeader>
+            </CardHeader>
+            <CardBody
+                childrenClassName="h-64 gap-2 flex flex-col shrink-0 min-h-min"
+                icon={imageUri ?? undefined}
+                iconClassName="h-28"
+            >
+                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{adjective}</H3>
+                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{noun}</H3>
+                <div
+                    className={twMerge(
+                        "text-xs text-center text-kac-iron-light text-balance h-[5em] leading-tight tracking-tight flex flex-col justify-end items-center"
+                    )}
+                >
+                    {nounEffect}
+                </div>
+                <div
+                    className={twMerge(
+                        "text-xs text-center text-kac-iron-light text-balance h-[2.5em] leading-tight tracking-tight"
+                    )}
+                >
+                    {adjectiveEffect}
+                </div>
+            </CardBody>
         </Card>
     );
 }
 
-export const LayeredCardBackFace = ({ className, children, size = "Bridge", ...restProps }: Partial<PaperProps>) => {
+export type LayeredCardBackFaceProps = {
+    backgroundImageUri?: string;
+    label?: React.ReactNode;
+} & Partial<PaperProps>;
+
+export const LayeredCardBackFace = ({
+    className,
+    label,
+    size = "Bridge",
+    backgroundImageUri,
+    ...restProps
+}: LayeredCardBackFaceProps) => {
     return (
         <Card
             className={twMerge("LayeredCardBackFace", className)}
             {...restProps}
-            backgroundImageUri="/mighty-decks/actor-back-face.png"
+            backgroundImageUri={backgroundImageUri}
         >
             <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
                 <H2 className="text-kac-cloth-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">
-                    Actor
+                    {label}
                 </H2>
             </div>
         </Card>

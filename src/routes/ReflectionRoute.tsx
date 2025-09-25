@@ -60,27 +60,15 @@ const parseDateInput = (value: string | undefined): Date | undefined => {
     return Number.isNaN(parsed.valueOf()) ? undefined : parsed;
 };
 
-type ReflectionTab = "details" | "mood" | "consumption";
-
-const tabDefinitions: Array<{ key: ReflectionTab; label: string }> = [
+const tabDefinitions = [
     { key: "details", label: "Details" },
     { key: "mood", label: "Mood" },
     { key: "consumption", label: "Consumption" },
-];
+] as const;
 
-type RangeAction =
-    | "allTime"
-    | "last7Days"
-    | "last30Days"
-    | "lastWeek"
-    | "lastMonth"
-    | "lastYear"
-    | "weekEarlier"
-    | "weekLater"
-    | "monthEarlier"
-    | "monthLater";
+type ReflectionTab = (typeof tabDefinitions)[number]["key"];
 
-const rangeActions: Array<{ action: RangeAction; label: string }> = [
+const rangeActions = [
     { action: "allTime", label: "All time" },
     { action: "last7Days", label: "Last 7 days" },
     { action: "last30Days", label: "Last 30 days" },
@@ -91,7 +79,9 @@ const rangeActions: Array<{ action: RangeAction; label: string }> = [
     { action: "weekLater", label: "Week later" },
     { action: "monthEarlier", label: "Month earlier" },
     { action: "monthLater", label: "Month later" },
-];
+] as const;
+
+type RangeAction = (typeof rangeActions)[number]["action"];
 
 export default function ReflectionRoute() {
     const [startDateFilter, setStartDateFilter] = useState<string>("");

@@ -3,7 +3,7 @@ import ToggleData from "../../../../../components/DataToggle";
 import Position from "../../../../../components/PerspectiveView/Position";
 import Text from "../../content/Text";
 import { OutcomeCardFlippable } from "../../gameComponents/OutcomeCard";
-import { ContentItemType, ContentItemTypeEnum } from "../types";
+import { ContentItemType, ContentItemTypeEnum } from "../model/types";
 import ToggleCheckbox from "../../controls/ToggleCheckbox";
 import FlippableTest from "./FlippableTest";
 import { Fragment, HTMLAttributes, memo } from "react";
@@ -11,10 +11,12 @@ import { Fragment, HTMLAttributes, memo } from "react";
 import { clamp } from "lodash";
 import interpolate from "../../../../../utils/interpolate";
 import PlaceholderCard from "../../gameComponents/PlaceholderCard";
+import { stripMetaPropsFromContentItem } from "../hooks/useContentItems";
 
 export type ContentItemProps = {
     className?: string;
     isHidden?: boolean;
+    castShadow?: boolean;
     isDebugging?: boolean;
 } & Omit<
     ContentItemType,
@@ -101,9 +103,8 @@ export default memo(function ContentItem({
             >
                 {isDebugging && <div className="absolute top-0 left-0 z-10 pointer-events-none">ID: {id}</div>}
                 <Component
-                    {...(restProps as any)}
                     key={id + "-component"}
-                    {...componentProps}
+                    {...stripMetaPropsFromContentItem({ ...restProps, ...componentProps })}
                     className={twMerge(componentProps.className)}
                 />
             </Position>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToggleCheckbox from "../../controls/ToggleCheckbox";
 import { OutcomeCardFlippable } from "../../gameComponents/OutcomeCard";
 import outcomes from "../../../data/outcomeDeck";
-import { outcomeCardSize } from "../model/createInitialBoard";
+import { outcomeCardSize } from "../constants";
 
 export default function FlippableTest() {
     const [isFlipped, setIsFlipped] = useState(false);

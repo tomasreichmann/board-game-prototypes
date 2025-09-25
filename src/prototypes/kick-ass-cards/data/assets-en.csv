@@ -65,14 +65,14 @@
 "iron","Iron","/mighty-decks/assets/medieval/iron.png","Can be used to craft something useful by a blacksmith.","","medieval",1
 "silver","Silver","/mighty-decks/assets/medieval/silver.png","Can be used to craft something pretty by a jewler.","","medieval",1
 "gold","Gold","/mighty-decks/assets/medieval/gold.png","Can be used to craft something precious by a jewler.","","medieval",1
-"light_weapon","Light Weapon","/mighty-decks/assets/base/melee.png","On Success, may also play a Partial Success to attack again in the same round.","","universal","2"
-"heavy_weapon","Heavy Weapon","/mighty-decks/assets/base/melee_heavy.png","Attacks only on Success or better, but with +1 Effect.","","universal","2"
-"reach_weapon","Reach Weapon","","Attacks in same or adjacent zone. On Success, prevent target’s movement next round.","","universal","2"
-"spread_weapon","Spread Weapon","","Attack all enemies in your zone or an adjacent one.","","universal","2"
-"throwable_weapon","Throwable Weapon","","Attack up to 2 zones away. On Fumble, weapon is lost until retrieved.","","universal","2"
-"precision_weapon","Precision Weapon","/mighty-decks/assets/base/ranged.png","Attack up to 3 zones away.","","universal","2"
-"repeating_weapon","Repeating Weapon","","Attack up to 2 zones away. May attack multiple enemies if multiple Outcome cards are played.","","universal","2"
-"artillery_weapon","Artillery Weapon","/mighty-decks/assets/base/explosive.png","Play an Outcome card. At the beginning of your next turn, deal +1 Injury to all enemies in the targeted zone.","","universal","1"
+"light_weapon","Light Weapon","/mighty-decks/assets/base/light_weapon.png","When attacking with Success or better, you may also play a Partial Success to attack again.","","universal","2"
+"heavy_weapon","Heavy Weapon","/mighty-decks/assets/base/heavy_weapon.png","+1 Effect when attacking with Success or better.","","universal","2"
+"reach_weapon","Reach Weapon","/mighty-decks/assets/base/reach_weapon.png","Attacks in same or adjacent zone. On Success, prevent target’s movement next round.","","universal","2"
+"spread_weapon","Spread Weapon","/mighty-decks/assets/base/spread_weapon.png","Attack all enemies in your zone or an adjacent one.","","universal","2"
+"throwable_weapon","Throwable Weapon","/mighty-decks/assets/base/throwable_weapon.png","Throw to attack up to 2 zones away.","","universal","2"
+"precision_weapon","Precision Weapon","/mighty-decks/assets/base/precision_weapon.png","Shoot to attack up to 3 zones away.","","universal","2"
+"repeating_weapon","Repeating Weapon","/mighty-decks/assets/base/repeating_weapon.png","Attack up to 2 zones away. You may attack multiple targets by playing up to 3 Outcome cards.","","universal","2"
+"artillery_weapon","Artillery Weapon","/mighty-decks/assets/base/artillery_weapon.png","Play an Outcome card. At the beginning of your next turn, attack all enemies in the targeted zone with the result.","","universal","1"
 "light_armor","Light Armor","","Reduce Injury by 1.","","universal","2"
 "heavy_armor","Heavy Armor","","Reduce Injury by 1 and convert 1 Injury into 1 Distress.","","universal","2"
 "shield","Shield","","Once per round, convert a Partial Success into a Success when defending.","","universal","2"

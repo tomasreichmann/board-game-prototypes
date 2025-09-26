@@ -61,6 +61,12 @@ const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
     nounEffect: asset.effect,
     nounDeck: asset.deck,
     nounCornerIcon: "/mighty-decks/backpack.png",
+
+    adjective: "Flaming",
+    adjectiveEffect: "Inflicts Burning effect on hit.",
+    adjectiveDeck: "universal",
+    adjectiveCornerIcon: "/mighty-decks/backpack.png",
+
     imageUri: asset.icon || "/mighty-decks/assets/base/explosive.png",
     backFaceProps: sampleLayeredAssetBackFaceProps,
 });
@@ -69,10 +75,11 @@ export default function BaseAssetCardsPrintControls({ className }: BaseAssetCard
     const chunkedPagesProps = useChunkedPagesProps();
     const [copyCount, setCopyCount] = useState(1);
 
-    const universalAssets = assets.filter((asset) => asset.deck === "universal");
+    const baseAssets = assets.filter((asset) => asset.deck === "base");
 
     const items = useItemAdapter<BaseLayeredAssetCard>(
-        multiplyByCount(universalAssets, "count", defaultCountAdapter).map(adaptAsset)
+        //multiplyByCount(baseAssets, "count", defaultCountAdapter).map(adaptAsset)
+        baseAssets.map(adaptAsset)
     );
 
     return (

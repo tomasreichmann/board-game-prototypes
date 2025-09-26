@@ -68,7 +68,7 @@ export default function LayeredCard({
             <CardBody
                 childrenClassName="h-64 gap-2 flex flex-col shrink-0 min-h-min"
                 icon={imageUri ?? undefined}
-                iconClassName="h-28"
+                iconClassName="h-24"
             >
                 <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{adjective}</H3>
                 <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{noun}</H3>

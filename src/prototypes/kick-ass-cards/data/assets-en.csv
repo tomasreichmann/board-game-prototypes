@@ -1,91 +1,91 @@
 "slug","title","icon","effect","cost","deck","count"
-"medi_gel","Medi-gel","/LP/icons/injection.png","Repairs organic damage","","sci-fi",6
-"nano_gel","Nano-gel","/LP/icons/tube.png","Repairs mechanical damage","","sci-fi",6
-"instahack","Insta-hack","/LP/icons/gadget.png","Temporarily gains control over a device","","sci-fi",5
-"grapple_gun","Grapple gun","/LP/icons/rifle.png","Pulls an object to the gun or the gun to an object","","sci-fi",2
-"glue_nade","Glue grenade","/LP/icons/bag.png","Sticks everything in the zone for 1 round Hindered","","sci-fi",3
-"emp_nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead","","sci-fi",3
-"frag_grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone","","sci-fi",5
-"gravi_emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance","","sci-fi",1
-"freeze_grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Freezing","","sci-fi",2
-"air_conditioning","Air conditioning","/LP/icons/device-2.png","+/- Freezing/Burning in the zone","","sci-fi",1
-"scanner","Scanner","/LP/icons/tablet.png","Multipurpose scanner","","sci-fi",3
-"magnetic_gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects","","sci-fi",1
-"multi_bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance","","sci-fi",2
-"heat-gun","Heat gun","/LP/icons/heat-gun.png","Emits immense heat up to line of sight distance","","sci-fi",1
-"bfg","BFG","/LP/icons/bfg.png","Huge weapon: absorbs all heat from the zone for 1 round, causes Doom in the next round","","sci-fi",1
-"heat_blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Burning)","","sci-fi",2
-"holo_generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
-"barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage","","sci-fi",2
-"turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1
-"gambeson","Gambeson","/mighty-decks/assets/medieval/gambeson.png","Light fabric armor. Negates 1 Injury from slashing damage.","","medieval",4
-"chainmail","Chainmail","/mighty-decks/assets/medieval/chainmail.png","Medium metal armor. Negates 1 Injury from slashing and piercing damage. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
-"plate_armor","Plate Armor","/mighty-decks/assets/medieval/plate-armor.png","Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing or swimming.","","medieval",2
-"buckler","Buckler","/mighty-decks/assets/medieval/buckler.png","Light metal shield. +1 Effect when defending from melee attack once per round.","","medieval",2
-"kite-shield","Kite Shield","/mighty-decks/assets/medieval/kite-shield.png","Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
-"dagger","Dagger","/mighty-decks/assets/medieval/dagger.png","A light one-handed piercing melee weapon. Can be thrown 1 zone away.","","medieval",2
-"hand_axe","Hand Axe","/mighty-decks/assets/medieval/hand-axe.png","A light one-handed slashing melee weapon. Can be thrown 1 zone away.","","medieval",2
-"longsword","Longsword","/mighty-decks/assets/medieval/longsword.png","A medium one- or two-handed piercing or slashing melee weapon. +1 Effect when attacking while wielded with both hands.","","medieval",2
-"zweihandler","Zweihänder","/mighty-decks/assets/medieval/zweihandler.png","A heavy two-handed slashing melee weapon. +1 Effect when attacking.","","medieval",2
-"great_axe","Greataxe","/mighty-decks/assets/medieval/great-axe.png","A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.","","medieval",2
-"war_hammer","War Hammer","/mighty-decks/assets/medieval/war-hammer.png","A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.","","medieval",2
-"mace","Mace","/mighty-decks/assets/medieval/mace.png","A medium one-handed bludgeoning melee weapon. 1 Injury negated by armor turns to Distress instead.","","medieval",2
-"morningstar ","Morningstar","/mighty-decks/assets/medieval/morningstar.png","A medium one-handed bludgeoning melee weapon. Ignores shields.","","medieval",2
-"staff","Staff","/mighty-decks/assets/medieval/staff.png","A light two-handed bludgeoning melee polearm weapon. +1 Effect when tripping an enemy.","","medieval",2
-"spear","Spear","/mighty-decks/assets/medieval/spear.png","A medium two-handed piercing melee polearm weapon. Once per round outside your turn you can attack an enemy entering your zone.","","medieval",2
-"billhook","Billhook","/mighty-decks/assets/medieval/billhook.png","A heavy two-handed piercing or slashing polearm weapon. +1 Effect against cavalry.","","medieval",2
-"hunting_bow","Hunting Bow","/mighty-decks/assets/medieval/hunting-bow.png","A light two-handed ranged weapon. Range: 1-2 zones away. -1 Effect when shooting targets in the same zone.","","medieval",2
-"crossbow","Crossbow","/mighty-decks/assets/medieval/crossbow.png","A heavy two-handed ranged weapon. Range: 1-2 zones. Ignores Plate Armor. -1 Effect when shooting targets in the same zone.","","medieval",2
-"hand_cannon","Hand-Cannon","/mighty-decks/assets/medieval/hand-cannon.png","A heavy two-handed ranged weapon. Range: 1-2 zones away. Play 2 Outcome cards over 2 turns to load and fire. Add the Effect together. -1 Effect when shooting targets in the same zone.","","medieval",2
-"riding_horse","Riding Horse","/mighty-decks/assets/medieval/riding-horse.png","Can move 2 zones per turn. +1 Effect when attacking infantry on horseback.","","medieval",4
-"wagon","Horse-Drawn Wagon","/mighty-decks/assets/medieval/wagon.png","Can move 2 zones per turn. Capacity: 2 people in the front and up to 6 in the back. +1 Effect when defending from infantry.","","medieval",1
-"grappling_hook","Grappling Hook and Rope","/mighty-decks/assets/medieval/grappling-hook.png","+1 Effect while climbing.","","medieval",2
-"lockpick_set","Lockpick Set","/mighty-decks/assets/medieval/lockpick-set.png","Allows picking locks.","","medieval",1
-"bandages","Bandages","/mighty-decks/assets/medieval/bandages.png","Removes 2x Injury. Usable during battle. Consumed after use.","","medieval",4
-"healing_salve","Healing Salve","/mighty-decks/assets/medieval/healing-salve.png","+1 Effect when healing to remove Injuries. Not usable during battle.","","medieval",2
-"herbal_remedy","Herbal Remedy","/mighty-decks/assets/medieval/herbal-remedy.png","Receive a Boost or negate Poison. Usable during battle. Consumed after use.","","medieval",4
-"prayer_book","Prayer Book","/mighty-decks/assets/medieval/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
-"mead","Mead","/mighty-decks/assets/medieval/mead.png","Removes 2x Distress. Usable during battle. Consumed after use.","","medieval",4
-"grenade","Grenade","/mighty-decks/assets/medieval/grenade.png","Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.","","medieval",2
-"lantern","Lantern","/mighty-decks/assets/medieval/lantern.png","Provides light in the current zone. Can be used in the rain. Does not count as an open flame.","","medieval",4
-"torch","Torch","/mighty-decks/assets/medieval/torch.png","Provides light in the current zone. Cannot be used in the rain. Counts as an open flame.","","medieval",4
-"cannon","Cannon","/mighty-decks/assets/medieval/cannon.png","A heavy explosive artillery weapon. Range: 2+ zones away. -1 Effect when shooting targets 1 zone away. Cannot target the same zone. Ignores all shields and armor. Damages everything in the zone.","","medieval",4
-"rations","Rations","/mighty-decks/assets/medieval/rations.png","Food and water to sustain a person for a day.","","medieval",8
-"pouch","Pouch","/mighty-decks/assets/medieval/pouch.png","A pouch can store easily accessable small things. Can be attached to a belt.","","medieval",1
-"chest","Chest","/mighty-decks/assets/medieval/chest.png","A chest can store heavier things for easier transportation. Can be locked.","","medieval",1
-"letter","Letter","/mighty-decks/assets/medieval/letter.png","A letter is a convenient way of passing information.","","medieval",1
-"poison","Poison","/mighty-decks/assets/medieval/poison.png","Causes 1x Injury at the end of every Round until healed. Can be applied to a weapon. Usable during battle. Consumed after use.","","medieval",2
-"key","Key","/mighty-decks/assets/medieval/key.png","What does it open?","","medieval",1
-"trap","Trap","/mighty-decks/assets/medieval/trap.png","Causes 2x Injury and Stuck when stepped on. Takes a Success to escape from it.","","medieval",3
-"tools","Tools","/mighty-decks/assets/medieval/tools.png","Tools for crafting.","","medieval",1
-"digging","Digging tools","/mighty-decks/assets/medieval/digging.png","Usable for mining or breaking down obstacles.","","medieval",1
-"ore","Ore","/mighty-decks/assets/medieval/ore.png","Does it contain precious metals, gems or is it just a fancy stone?","","medieval",1
-"stone","Stone","/mighty-decks/assets/medieval/stone.png","An excellent building material.","","medieval",1
-"wood","Wood","/mighty-decks/assets/medieval/wood.png","Good for building, but quite flamable.","","medieval",1
-"iron","Iron","/mighty-decks/assets/medieval/iron.png","Can be used to craft something useful by a blacksmith.","","medieval",1
-"silver","Silver","/mighty-decks/assets/medieval/silver.png","Can be used to craft something pretty by a jewler.","","medieval",1
-"gold","Gold","/mighty-decks/assets/medieval/gold.png","Can be used to craft something precious by a jewler.","","medieval",1
-"light_weapon","Light Weapon","/mighty-decks/assets/base/light_weapon.png","When attacking with Success or better, you may also play a Partial Success to attack again.","","universal","2"
-"heavy_weapon","Heavy Weapon","/mighty-decks/assets/base/heavy_weapon.png","+1 Effect when attacking with Success or better.","","universal","2"
-"reach_weapon","Reach Weapon","/mighty-decks/assets/base/reach_weapon.png","Attacks in same or adjacent zone. On Success, prevent target’s movement next round.","","universal","2"
-"spread_weapon","Spread Weapon","/mighty-decks/assets/base/spread_weapon.png","Attack all enemies in your zone or an adjacent one.","","universal","2"
-"throwable_weapon","Throwable Weapon","/mighty-decks/assets/base/throwable_weapon.png","Throw to attack up to 2 zones away.","","universal","2"
-"precision_weapon","Precision Weapon","/mighty-decks/assets/base/precision_weapon.png","Shoot to attack up to 3 zones away.","","universal","2"
-"repeating_weapon","Repeating Weapon","/mighty-decks/assets/base/repeating_weapon.png","Attack up to 2 zones away. You may attack multiple targets by playing up to 3 Outcome cards.","","universal","2"
-"artillery_weapon","Artillery Weapon","/mighty-decks/assets/base/artillery_weapon.png","Play an Outcome card. At the beginning of your next turn, attack all enemies in the targeted zone with the result.","","universal","1"
-"light_armor","Light Armor","","Reduce Injury by 1.","","universal","2"
-"heavy_armor","Heavy Armor","","Reduce Injury by 1 and convert 1 Injury into 1 Distress.","","universal","2"
-"shield","Shield","","Once per round, convert a Partial Success into a Success when defending.","","universal","2"
-"healing","Healing","","Remove 1 Injury.","","universal","2"
-"medicine","Medicine","","Convert 1 Injury into 1 Distress.","","universal","2"
-"comfort","Comfort","","Remove 1 Distress.","","universal","2"
-"restoration","Restoration","","Remove 1 Injury or 1 Distress (choose one).","","universal","2"
-"tool","Tool","","+1 Effect on an action involving objects, barriers, or devices.","","universal","2"
-"light","Light","","Reveal hidden threats; ignore 1 Ambush or similar Complication.","","universal","2"
-"support","Support","","Give another character +1 Effect on their next action.","","universal","2"
-"focus","Focus","","Gain +1 Effect on your next action.","","universal","2"
-"vehicle","Vehicle","","Move 2 zones instead of 1 when you use a Move.","","universal","2"
-"mount","Mount","","Move with an ally into the same zone when you use a Move.","","universal","2"
-"flight","Flight","","Move into a zone above or below, even if normally blocked.","","universal","2"
-"cover","Cover","","Reduce Injury from the next attack this round by 1.","","universal","2"
-"barrier","Barrier","","Place a Counter in your zone; next attack there suffers -1 Effect.","","universal","2"
+"scifi_medi_gel","Medi-gel","/LP/icons/injection.png","Repairs organic damage","","sci-fi",6
+"scifi_nano_gel","Nano-gel","/LP/icons/tube.png","Repairs mechanical damage","","sci-fi",6
+"scifi_instahack","Insta-hack","/LP/icons/gadget.png","Temporarily gains control over a device","","sci-fi",5
+"scifi_grapple_gun","Grapple gun","/LP/icons/rifle.png","Pulls an object to the gun or the gun to an object","","sci-fi",2
+"scifi_glue_nade","Glue grenade","/LP/icons/bag.png","Sticks everything in the zone for 1 round Hindered","","sci-fi",3
+"scifi_emp_nade","EMP grenade","/LP/icons/capsule.png","Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead","","sci-fi",3
+"scifi_frag_grenade","Fragmentation grenade","/LP/icons/shell.png","Deals damage to everything in the zone","","sci-fi",5
+"scifi_gravi_emitter","Gravitational emitter","/LP/icons/emitter.png","Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance","","sci-fi",1
+"scifi_freeze_grenade","Frost grenade","/LP/icons/liquid-grenade.png","Everyone in the zone is frozen. +2 Freezing","","sci-fi",2
+"scifi_air_conditioning","Air conditioning","/LP/icons/device-2.png","+/- Freezing/Burning in the zone","","sci-fi",1
+"scifi_scanner","Scanner","/LP/icons/tablet.png","Multipurpose scanner","","sci-fi",3
+"scifi_magnetic_gun","Magnetic gun","/LP/icons/gun-2.png","Moves metallic objects","","sci-fi",1
+"scifi_multi_bow","Multipurpose bow","/LP/icons/utility-bow.png","Shoots objects up to line of sight distance","","sci-fi",2
+"scifi_heat-gun","Heat gun","/LP/icons/heat-gun.png","Emits immense heat up to line of sight distance","","sci-fi",1
+"scifi_bfg","BFG","/LP/icons/bfg.png","Huge weapon: absorbs all heat from the zone for 1 round, causes Doom in the next round","","sci-fi",1
+"scifi_heat_blade","Thermodynamic blade","/LP/icons/black-blade.png","A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Burning)","","sci-fi",2
+"scifi_holo_generator","Holo-generator","/LP/icons/orb.png","Generates holographic images","","sci-fi",2
+"scifi_barrier","Barrier generator","/LP/icons/projector.png","Creates a barrier between zones that absorbs 3 damage","","sci-fi",2
+"scifi_turret","Turret","/LP/icons/turret.png","Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down","","sci-fi",1
+"medieval_gambeson","Gambeson","/mighty-decks/assets/medieval/gambeson.png","Light fabric armor. Negates 1 Injury from slashing damage.","","medieval",4
+"medieval_chainmail","Chainmail","/mighty-decks/assets/medieval/chainmail.png","Medium metal armor. Negates 1 Injury from slashing and piercing damage. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
+"medieval_plate_armor","Plate Armor","/mighty-decks/assets/medieval/plate-armor.png","Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing or swimming.","","medieval",2
+"medieval_buckler","Buckler","/mighty-decks/assets/medieval/buckler.png","Light metal shield. +1 Effect when defending from melee attack once per round.","","medieval",2
+"medieval_kite-shield","Kite Shield","/mighty-decks/assets/medieval/kite-shield.png","Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing or swimming.","","medieval",2
+"medieval_dagger","Dagger","/mighty-decks/assets/medieval/dagger.png","A light one-handed piercing melee weapon. Can be thrown 1 zone away.","","medieval",2
+"medieval_hand_axe","Hand Axe","/mighty-decks/assets/medieval/hand-axe.png","A light one-handed slashing melee weapon. Can be thrown 1 zone away.","","medieval",2
+"medieval_longsword","Longsword","/mighty-decks/assets/medieval/longsword.png","A medium one- or two-handed piercing or slashing melee weapon. +1 Effect when attacking while wielded with both hands.","","medieval",2
+"medieval_zweihandler","Zweihänder","/mighty-decks/assets/medieval/zweihandler.png","A heavy two-handed slashing melee weapon. +1 Effect when attacking.","","medieval",2
+"medieval_great_axe","Greataxe","/mighty-decks/assets/medieval/great-axe.png","A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.","","medieval",2
+"medieval_war_hammer","War Hammer","/mighty-decks/assets/medieval/war-hammer.png","A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.","","medieval",2
+"medieval_mace","Mace","/mighty-decks/assets/medieval/mace.png","A medium one-handed bludgeoning melee weapon. 1 Injury negated by armor turns to Distress instead.","","medieval",2
+"medieval_morningstar ","Morningstar","/mighty-decks/assets/medieval/morningstar.png","A medium one-handed bludgeoning melee weapon. Ignores shields.","","medieval",2
+"medieval_staff","Staff","/mighty-decks/assets/medieval/staff.png","A light two-handed bludgeoning melee polearm weapon. +1 Effect when tripping an enemy.","","medieval",2
+"medieval_spear","Spear","/mighty-decks/assets/medieval/spear.png","A medium two-handed piercing melee polearm weapon. Once per round outside your turn you can attack an enemy entering your zone.","","medieval",2
+"medieval_billhook","Billhook","/mighty-decks/assets/medieval/billhook.png","A heavy two-handed piercing or slashing polearm weapon. +1 Effect against cavalry.","","medieval",2
+"medieval_hunting_bow","Hunting Bow","/mighty-decks/assets/medieval/hunting-bow.png","A light two-handed ranged weapon. Range: 1-2 zones away. -1 Effect when shooting targets in the same zone.","","medieval",2
+"medieval_crossbow","Crossbow","/mighty-decks/assets/medieval/crossbow.png","A heavy two-handed ranged weapon. Range: 1-2 zones. Ignores Plate Armor. -1 Effect when shooting targets in the same zone.","","medieval",2
+"medieval_hand_cannon","Hand-Cannon","/mighty-decks/assets/medieval/hand-cannon.png","A heavy two-handed ranged weapon. Range: 1-2 zones away. Play 2 Outcome cards over 2 turns to load and fire. Add the Effect together. -1 Effect when shooting targets in the same zone.","","medieval",2
+"medieval_riding_horse","Riding Horse","/mighty-decks/assets/medieval/riding-horse.png","Can move 2 zones per turn. +1 Effect when attacking infantry on horseback.","","medieval",4
+"medieval_wagon","Horse-Drawn Wagon","/mighty-decks/assets/medieval/wagon.png","Can move 2 zones per turn. Capacity: 2 people in the front and up to 6 in the back. +1 Effect when defending from infantry.","","medieval",1
+"medieval_grappling_hook","Grappling Hook and Rope","/mighty-decks/assets/medieval/grappling-hook.png","+1 Effect while climbing.","","medieval",2
+"medieval_lockpick_set","Lockpick Set","/mighty-decks/assets/medieval/lockpick-set.png","Allows picking locks.","","medieval",1
+"medieval_bandages","Bandages","/mighty-decks/assets/medieval/bandages.png","Removes 2x Injury. Usable during battle. Consumed after use.","","medieval",4
+"medieval_healing_salve","Healing Salve","/mighty-decks/assets/medieval/healing-salve.png","+1 Effect when healing to remove Injuries. Not usable during battle.","","medieval",2
+"medieval_herbal_remedy","Herbal Remedy","/mighty-decks/assets/medieval/herbal-remedy.png","Receive a Boost or negate Poison. Usable during battle. Consumed after use.","","medieval",4
+"medieval_prayer_book","Prayer Book","/mighty-decks/assets/medieval/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
+"medieval_mead","Mead","/mighty-decks/assets/medieval/mead.png","Removes 2x Distress. Usable during battle. Consumed after use.","","medieval",4
+"medieval_grenade","Grenade","/mighty-decks/assets/medieval/grenade.png","Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.","","medieval",2
+"medieval_lantern","Lantern","/mighty-decks/assets/medieval/lantern.png","Provides light in the current zone. Can be used in the rain. Does not count as an open flame.","","medieval",4
+"medieval_torch","Torch","/mighty-decks/assets/medieval/torch.png","Provides light in the current zone. Cannot be used in the rain. Counts as an open flame.","","medieval",4
+"medieval_cannon","Cannon","/mighty-decks/assets/medieval/cannon.png","A heavy explosive artillery weapon. Range: 2+ zones away. -1 Effect when shooting targets 1 zone away. Cannot target the same zone. Ignores all shields and armor. Damages everything in the zone.","","medieval",4
+"medieval_rations","Rations","/mighty-decks/assets/medieval/rations.png","Food and water to sustain a person for a day.","","medieval",8
+"medieval_pouch","Pouch","/mighty-decks/assets/medieval/pouch.png","A pouch can store easily accessable small things. Can be attached to a belt.","","medieval",1
+"medieval_chest","Chest","/mighty-decks/assets/medieval/chest.png","A chest can store heavier things for easier transportation. Can be locked.","","medieval",1
+"medieval_letter","Letter","/mighty-decks/assets/medieval/letter.png","A letter is a convenient way of passing information.","","medieval",1
+"medieval_poison","Poison","/mighty-decks/assets/medieval/poison.png","Causes 1x Injury at the end of every Round until healed. Can be applied to a weapon. Usable during battle. Consumed after use.","","medieval",2
+"medieval_key","Key","/mighty-decks/assets/medieval/key.png","What does it open?","","medieval",1
+"medieval_trap","Trap","/mighty-decks/assets/medieval/trap.png","Causes 2x Injury and Stuck when stepped on. Takes a Success to escape from it.","","medieval",3
+"medieval_tools","Tools","/mighty-decks/assets/medieval/tools.png","Tools for crafting.","","medieval",1
+"medieval_digging","Digging tools","/mighty-decks/assets/medieval/digging.png","Usable for mining or breaking down obstacles.","","medieval",1
+"medieval_ore","Ore","/mighty-decks/assets/medieval/ore.png","Does it contain precious metals, gems or is it just a fancy stone?","","medieval",1
+"medieval_stone","Stone","/mighty-decks/assets/medieval/stone.png","An excellent building material.","","medieval",1
+"medieval_wood","Wood","/mighty-decks/assets/medieval/wood.png","Good for building, but quite flamable.","","medieval",1
+"medieval_iron","Iron","/mighty-decks/assets/medieval/iron.png","Can be used to craft something useful by a blacksmith.","","medieval",1
+"medieval_silver","Silver","/mighty-decks/assets/medieval/silver.png","Can be used to craft something pretty by a jewler.","","medieval",1
+"medieval_gold","Gold","/mighty-decks/assets/medieval/gold.png","Can be used to craft something precious by a jewler.","","medieval",1
+"base_light_weapon","Light Weapon","/mighty-decks/assets/base/light_weapon.png","When attacking with Success or better, you may also play a Partial Success to attack again.","","base","2"
+"base_heavy_weapon","Heavy Weapon","/mighty-decks/assets/base/heavy_weapon.png","+1 Effect when attacking with Success or better.","","base","2"
+"base_reach_weapon","Reach Weapon","/mighty-decks/assets/base/reach_weapon.png","Attacks in same or adjacent zone. On Success, prevent target’s movement next round.","","base","2"
+"base_spread_weapon","Spread Weapon","/mighty-decks/assets/base/spread_weapon.png","Attack all enemies in your zone or an adjacent one.","","base","2"
+"base_throwable_weapon","Throwable Weapon","/mighty-decks/assets/base/throwable_weapon.png","Throw to attack up to 2 zones away.","","base","2"
+"base_precision_weapon","Precision Weapon","/mighty-decks/assets/base/precision_weapon.png","Shoot to attack up to 3 zones away.","","base","2"
+"base_repeating_weapon","Repeating Weapon","/mighty-decks/assets/base/repeating_weapon.png","Attack up to 2 zones away. You may attack multiple targets by playing up to 3 Outcome cards with -1 Effect.","","base","2"
+"base_artillery_weapon","Artillery Weapon","/mighty-decks/assets/base/artillery_weapon.png","Play an Outcome card. At the beginning of your next turn, attack all enemies in the targeted zone with the result.","","base","1"
+"base_light_armor","Light Armor","/mighty-decks/assets/medieval/light-armor.png","Reduce received Injury by 1 and convert it to a Distress.","","base","2"
+"base_heavy_armor","Heavy Armor","/mighty-decks/assets/medieval/heavy-armor.png","Reduce received Injury by 1.","","base","2"
+"base_shield","Shield","/mighty-decks/assets/medieval/shield.png","Convert a Partial Success into a Success when defending.","","base","2"
+"base_healing","Healing","/mighty-decks/assets/medieval/healing.png","Consumable. Remove 1 Injury or spend an action and remove Effect + 1 Injury.","","base","2"
+"base_comfort","Comfort","/mighty-decks/assets/medieval/comfort.png","Consumable. Remove 1 Distress or spend an action and remove Effect + 1 Distress.","","base","2"
+"base_surge","Surge","/mighty-decks/assets/medieval/surge.png","Consumable. Receive 2x Boost.","","base","2"
+"base_tools","Tools","/mighty-decks/assets/medieval/tools.png","+1 Effect on an action where the specific tool is applicable.","","base","2"
+"base_light","Light","/mighty-decks/assets/base/light.png","Lights up current zone.","","base","2"
+"base_vehicle","Vehicle","/mighty-decks/assets/base/vehicle.png","On Move, you can move +1 zone further.","","base","2"
+"base_package","Package","/mighty-decks/assets/base/package.png","Contains something important.","","base","2"
+"base_document","Document","/mighty-decks/assets/base/document.png","Holds important information.","","base","2"
+"base_valuables","Valuables","/mighty-decks/assets/base/valuables.png","Holds valuable items or currency.","","base","2"
+"base_key","Key","/mighty-decks/assets/base/key.png","Opens something important.","","base","2"
+"base_resources","Resources","/mighty-decks/assets/base/resources.png","Basic resources for crafting or building.","","base","2"
+
+

@@ -46,7 +46,7 @@
 "herbal_remedy","Herbal Remedy","/mighty-decks/assets/medieval/herbal-remedy.png","Receive a Boost or negate Poison. Usable during battle. Consumed after use.","","medieval",4
 "prayer_book","Prayer Book","/mighty-decks/assets/medieval/prayer-book.png","+1 Effect when practicing religion to relieve Distress. Not usable during battle.","","medieval",2
 "mead","Mead","/mighty-decks/assets/medieval/mead.png","Removes 2x Distress. Usable during battle. Consumed after use.","","medieval",4
-"granade","Granade","/mighty-decks/assets/medieval/granade.png","Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.","","medieval",2
+"grenade","Grenade","/mighty-decks/assets/medieval/grenade.png","Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.","","medieval",2
 "lantern","Lantern","/mighty-decks/assets/medieval/lantern.png","Provides light in the current zone. Can be used in the rain. Does not count as an open flame.","","medieval",4
 "torch","Torch","/mighty-decks/assets/medieval/torch.png","Provides light in the current zone. Cannot be used in the rain. Counts as an open flame.","","medieval",4
 "cannon","Cannon","/mighty-decks/assets/medieval/cannon.png","A heavy explosive artillery weapon. Range: 2+ zones away. -1 Effect when shooting targets 1 zone away. Cannot target the same zone. Ignores all shields and armor. Damages everything in the zone.","","medieval",4

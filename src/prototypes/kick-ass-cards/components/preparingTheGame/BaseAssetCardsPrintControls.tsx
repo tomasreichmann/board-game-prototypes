@@ -62,10 +62,10 @@ const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
     nounDeck: asset.deck,
     nounCornerIcon: "/mighty-decks/backpack.png",
 
-    adjective: "Flaming",
+    /* adjective: "Flaming",
     adjectiveEffect: "Inflicts Burning effect on hit.",
     adjectiveDeck: "universal",
-    adjectiveCornerIcon: "/mighty-decks/backpack.png",
+    adjectiveCornerIcon: "/mighty-decks/backpack.png", */
 
     imageUri: asset.icon || "/mighty-decks/assets/base/explosive.png",
     backFaceProps: sampleLayeredAssetBackFaceProps,

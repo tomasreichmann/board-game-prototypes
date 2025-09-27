@@ -102,8 +102,8 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     setDefaultGapMm: (gapMm: [number, number]) => set({ defaultGapMm: gapMm }),
     defaultBleedMm: 3,
     setDefaultBleedMm: (bleedMm: number) => set({ defaultBleedMm: bleedMm }),
-    // flipSecondHalf: true,
-    flipSecondHalf: false,
+    flipSecondHalf: true,
+    // flipSecondHalf: false,
     setFlipSecondHalf: (flipSecondHalf: boolean) => set({ flipSecondHalf }),
     showHorizontalBend: true,
     setShowHorizontalBend: (showHorizontalBend: boolean) => set({ showHorizontalBend }),
@@ -112,8 +112,8 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     pageLabelPosition: "left",
     setPageLabelPosition: (pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"]) =>
         set({ pageLabelPosition }),
-    //componentControls: "Template" as const,
-    componentControls: "Base Asset Cards" as const,
+    componentControls: "Template" as const,
+    // componentControls: "Base Asset Cards" as const,
     setComponentControls: (componentControls: keyof typeof componentControlsMap) => set({ componentControls }),
 }));
 

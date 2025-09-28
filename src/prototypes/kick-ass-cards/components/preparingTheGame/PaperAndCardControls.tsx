@@ -24,6 +24,7 @@ import BaseAssetCardsPrintControls from "./BaseAssetCardsPrintControls";
 import BaseTacticalRolesPrintControls from "./BaseTacticalRolesPrintControls";
 import BaseActorMinisPrintControls from "./BaseActorMinisPrintControls";
 import AttractiveCardPrintControls from "./AttractiveCardPrintControls";
+import BaseAssetModifierCardsPrintControls from "./BaseAssetModifierCardsPrintControls";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -49,6 +50,7 @@ export const componentControlsMap = {
     "Base Counter Cards": CounterCardsPrintControls,
     "Base Actor Cards": BaseActorCardsPrintControls,
     "Base Asset Cards": BaseAssetCardsPrintControls,
+    "Base Asset Modifier Cards": BaseAssetModifierCardsPrintControls,
     "Base Actor Minis": BaseActorMinisPrintControls,
     "Base Tactical Roles": BaseTacticalRolesPrintControls,
     "Blank Actor Cards": ActorCardsPrintControls,

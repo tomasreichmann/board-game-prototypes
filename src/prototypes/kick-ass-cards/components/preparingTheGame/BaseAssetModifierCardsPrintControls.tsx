@@ -13,74 +13,50 @@ import LayeredCard, {
     LayeredCardProps,
 } from "../gameComponents/LayeredCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
-import assets from "../../data/assets-en-deck";
+import { assetMap } from "../../data/assets-en-deck";
+import assetModifiers from "../../data/asset-modifiers-en-deck";
 import { AssetType } from "../../types";
 import multiplyByCount, { defaultCountAdapter } from "@/utils/multiplyByCount";
 
-export type BaseAssetCardsPrintControlsProps = {
+export type BaseAssetModifierCardsPrintControllsProps = {
     className?: string;
 };
 
-type BaseLayeredAssetCard = Omit<LayeredCardProps, "children"> & {
+type BaseLayeredAssetModifierCard = Omit<LayeredCardProps, "children"> & {
     slug: string;
 };
 
-const sampleLayeredAssetBackFaceProps: LayeredCardBackFaceProps = {
-    backgroundImageUri: "/mighty-decks/asset-back-face.png",
-    label: "Asset",
-    className: "text-kac-gold-light",
-} as const;
+const adaptAssetModifier = (asset: AssetType): BaseLayeredAssetModifierCard => ({
+    slug: `base-layered-asset-modifier-${asset.slug}`,
+    size: "54x86",
+    bleedMm: 3,
+    className: "relative",
 
-const sampleLayeredAssetItem: LayeredCardDataType = {
-    noun: "Heavy Melee Weapon",
-    nounEffect: "+1 Effect on attacking with Success or better.",
-    adjective: "Flaming",
-    adjectiveEffect: "Inflicts Burning effect on hit.",
-    nounDeck: "universal",
-    adjectiveDeck: "universal",
+    /* noun: assetMap.base_shield.title,
+    nounEffect: assetMap.base_shield.effect,
+    nounDeck: assetMap.base_shield.deck,
     nounCornerIcon: "/mighty-decks/backpack.png",
+    imageUri: assetMap.base_shield.icon || undefined, */
+
+    adjective: asset.title,
+    adjectiveEffect: asset.effect,
+    adjectiveDeck: asset.deck,
     adjectiveCornerIcon: "/mighty-decks/backpack.png",
-    imageUri: "/mighty-decks/assets/base/melee_heavy.png",
-} as const;
 
-const adaptSampleLayeredAsset = (copyIndex: number): BaseLayeredAssetCard => ({
-    slug: `base-layered-asset-${copyIndex}`,
-    size: "54x86",
-    bleedMm: 3,
-    className: "relative",
-    ...sampleLayeredAssetItem,
-    backFaceProps: sampleLayeredAssetBackFaceProps,
+    imageOverlayUri: asset.icon || undefined,
+    // backFaceProps: sampleLayeredAssetModifierBackFaceProps,
+    backgroundImageUri: null,
 });
 
-const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
-    slug: `base-layered-asset-${asset.slug}`,
-    size: "54x86",
-    bleedMm: 3,
-    className: "relative",
-
-    noun: asset.title,
-    nounEffect: asset.effect,
-    nounDeck: asset.deck,
-    nounCornerIcon: "/mighty-decks/backpack.png",
-    /* 
-    adjective: "Flaming",
-    adjectiveEffect: "Inflicts Burning effect on hit.",
-    adjectiveDeck: "universal",
-    adjectiveCornerIcon: "/mighty-decks/backpack.png", */
-
-    imageUri: asset.icon || "/mighty-decks/assets/base/explosive.png",
-    backFaceProps: sampleLayeredAssetBackFaceProps,
-});
-
-export default function BaseAssetCardsPrintControls({ className }: BaseAssetCardsPrintControlsProps) {
+export default function BaseAssetModifierCardsPrintControls({ className }: BaseAssetModifierCardsPrintControllsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     const [copyCount, setCopyCount] = useState(1);
 
-    const baseAssets = assets.filter((asset) => asset.deck === "base");
+    const baseAssetModifiers = assetModifiers.filter((asset) => asset.deck === "base modifier");
 
-    const items = useItemAdapter<BaseLayeredAssetCard>(
-        multiplyByCount(baseAssets, "count", defaultCountAdapter).map(adaptAsset)
-        //baseAssets.map(adaptAsset)
+    const items = useItemAdapter<BaseLayeredAssetModifierCard>(
+        multiplyByCount(baseAssetModifiers, "count", defaultCountAdapter).map(adaptAssetModifier)
+        // baseAssetModifiers.map(adaptAssetModifier)
     );
 
     return (
@@ -102,7 +78,7 @@ export default function BaseAssetCardsPrintControls({ className }: BaseAssetCard
             />
             <Print
                 className="flex flex-col-reverse gap-2"
-                documentTitle="Base Asset Cards"
+                documentTitle="Base Asset Modifier Cards"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (
@@ -116,7 +92,7 @@ export default function BaseAssetCardsPrintControls({ className }: BaseAssetCard
                 <div className="flex flex-col items-center w-full">
                     <ChunkedPages
                         Component={LayeredCard}
-                        BackFaceComponent={LayeredCardBackFace}
+                        // BackFaceComponent={LayeredCardBackFace}
                         getBackFaceProps={(item) => ({
                             size: item.size ?? "54x86",
                             bleedMm: item.bleedMm,
@@ -124,7 +100,7 @@ export default function BaseAssetCardsPrintControls({ className }: BaseAssetCard
                         })}
                         items={items}
                         {...chunkedPagesProps}
-                        label="Base Asset Cards"
+                        label="Base Asset Modifier Cards"
                     />
                 </div>
             </Print>

@@ -15,6 +15,7 @@ export type LayeredCardDataType = {
     adjectiveDeck?: string;
     adjectiveCornerIcon?: string;
     imageUri?: CSSProperties["backgroundImage"];
+    imageOverlayUri?: CSSProperties["backgroundImage"];
     backFaceProps?: LayeredCardBackFaceProps;
 };
 
@@ -42,6 +43,7 @@ export default function LayeredCard({
     adjectiveDeck,
     adjectiveCornerIcon,
     imageUri,
+    imageOverlayUri,
     imageClassName,
     imagePosition,
     imageFit = "contain",
@@ -54,21 +56,25 @@ export default function LayeredCard({
         <Card className={twMerge("LayeredCard", className)} {...restProps}>
             <CardHeader
                 icon={imageUri ?? undefined}
-                className="z-10 relative"
+                className="z-10 relative h-[24px]"
                 cornerIcon={nounCornerIcon ?? undefined}
                 deck={nounDeck ?? undefined}
-            >
-                <CardHeader
-                    icon={undefined}
-                    className="z-10 absolute top-full left-0 right-0"
-                    cornerIcon={adjectiveCornerIcon ?? undefined}
-                    deck={adjectiveDeck ?? undefined}
-                ></CardHeader>
-            </CardHeader>
+            ></CardHeader>
+            <CardHeader
+                icon={undefined}
+                className="z-10 absolute top-8 left-0 right-0"
+                cornerIcon={adjectiveCornerIcon ?? undefined}
+                deck={adjectiveDeck ?? undefined}
+            ></CardHeader>
             <CardBody
                 childrenClassName="h-64 gap-2 flex flex-col shrink-0 min-h-min"
                 icon={imageUri ?? undefined}
                 iconClassName="h-24"
+                iconContent={
+                    imageOverlayUri ? (
+                        <ImageComponent src={imageOverlayUri} className="absolute h-full w-full" objectFit="contain" />
+                    ) : undefined
+                }
             >
                 <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{adjective}</H3>
                 <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{noun}</H3>

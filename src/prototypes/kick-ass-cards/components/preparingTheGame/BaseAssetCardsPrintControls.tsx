@@ -16,6 +16,7 @@ import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import assets from "../../data/assets-en-deck";
 import { AssetType } from "../../types";
 import multiplyByCount, { defaultCountAdapter } from "@/utils/multiplyByCount";
+import { assetModifierMap } from "../../data/asset-modifiers-en-deck";
 
 export type BaseAssetCardsPrintControlsProps = {
     className?: string;
@@ -26,31 +27,13 @@ type BaseLayeredAssetCard = Omit<LayeredCardProps, "children"> & {
 };
 
 const sampleLayeredAssetBackFaceProps: LayeredCardBackFaceProps = {
-    backgroundImageUri: "/mighty-decks/asset-back-face.png",
+    iconUri: "/mighty-decks/types/asset.png",
+    backgroundImageUri: "/mighty-decks/background/card-backface.png",
     label: "Asset",
-    className: "text-kac-gold-light",
+    labelClassName: "text-kac-gold-light",
 } as const;
 
-const sampleLayeredAssetItem: LayeredCardDataType = {
-    noun: "Heavy Melee Weapon",
-    nounEffect: "+1 Effect on attacking with Success or better.",
-    adjective: "Flaming",
-    adjectiveEffect: "Inflicts Burning effect on hit.",
-    nounDeck: "universal",
-    adjectiveDeck: "universal",
-    nounCornerIcon: "/mighty-decks/backpack.png",
-    adjectiveCornerIcon: "/mighty-decks/backpack.png",
-    imageUri: "/mighty-decks/assets/base/melee_heavy.png",
-} as const;
-
-const adaptSampleLayeredAsset = (copyIndex: number): BaseLayeredAssetCard => ({
-    slug: `base-layered-asset-${copyIndex}`,
-    size: "54x86",
-    bleedMm: 3,
-    className: "relative",
-    ...sampleLayeredAssetItem,
-    backFaceProps: sampleLayeredAssetBackFaceProps,
-});
+console.log("assetModifierMap", assetModifierMap);
 
 const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
     slug: `base-layered-asset-${asset.slug}`,
@@ -61,12 +44,13 @@ const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
     noun: asset.title,
     nounEffect: asset.effect,
     nounDeck: asset.deck,
-    nounCornerIcon: "/mighty-decks/backpack.png",
-    /* 
-    adjective: "Flaming",
-    adjectiveEffect: "Inflicts Burning effect on hit.",
-    adjectiveDeck: "universal",
-    adjectiveCornerIcon: "/mighty-decks/backpack.png", */
+    nounCornerIcon: "/mighty-decks/types/asset.png",
+
+    adjective: assetModifierMap.base_dangerous.title,
+    adjectiveEffect: assetModifierMap.base_dangerous.effect,
+    adjectiveDeck: assetModifierMap.base_dangerous.deck,
+    adjectiveCornerIcon: "/mighty-decks/types/asset.png",
+    imageOverlayUri: assetModifierMap.base_dangerous.icon || undefined,
 
     imageUri: asset.icon || "/mighty-decks/assets/base/explosive.png",
     backFaceProps: sampleLayeredAssetBackFaceProps,
@@ -79,8 +63,8 @@ export default function BaseAssetCardsPrintControls({ className }: BaseAssetCard
     const baseAssets = assets.filter((asset) => asset.deck === "base");
 
     const items = useItemAdapter<BaseLayeredAssetCard>(
-        multiplyByCount(baseAssets, "count", defaultCountAdapter).map(adaptAsset)
-        //baseAssets.map(adaptAsset)
+        // multiplyByCount(baseAssets, "count", defaultCountAdapter).map(adaptAsset)
+        [baseAssets[0], baseAssets[1], ...baseAssets].map(adaptAsset)
     );
 
     return (

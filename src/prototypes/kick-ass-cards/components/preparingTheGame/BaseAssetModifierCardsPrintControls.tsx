@@ -3,15 +3,9 @@ import ChunkedPages from "../print/ChunkedPages";
 import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
 import Input from "../controls/Input";
-import { range } from "lodash";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
-import LayeredCard, {
-    LayeredCardBackFace,
-    LayeredCardBackFaceProps,
-    LayeredCardDataType,
-    LayeredCardProps,
-} from "../gameComponents/LayeredCard";
+import LayeredCard, { LayeredCardProps } from "../gameComponents/LayeredCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import { assetMap } from "../../data/assets-en-deck";
 import assetModifiers from "../../data/asset-modifiers-en-deck";
@@ -41,7 +35,7 @@ const adaptAssetModifier = (asset: AssetType): BaseLayeredAssetModifierCard => (
     adjective: asset.title,
     adjectiveEffect: asset.effect,
     adjectiveDeck: asset.deck,
-    adjectiveCornerIcon: "/mighty-decks/backpack.png",
+    adjectiveCornerIcon: "/mighty-decks/types/asset.png",
 
     imageOverlayUri: asset.icon || undefined,
     // backFaceProps: sampleLayeredAssetModifierBackFaceProps,
@@ -55,8 +49,8 @@ export default function BaseAssetModifierCardsPrintControls({ className }: BaseA
     const baseAssetModifiers = assetModifiers.filter((asset) => asset.deck === "base modifier");
 
     const items = useItemAdapter<BaseLayeredAssetModifierCard>(
-        multiplyByCount(baseAssetModifiers, "count", defaultCountAdapter).map(adaptAssetModifier)
-        // baseAssetModifiers.map(adaptAssetModifier)
+        //multiplyByCount(baseAssetModifiers, "count", defaultCountAdapter).map(adaptAssetModifier)
+        baseAssetModifiers.map(adaptAssetModifier)
     );
 
     return (

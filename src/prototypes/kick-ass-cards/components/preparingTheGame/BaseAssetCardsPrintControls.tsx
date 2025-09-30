@@ -3,13 +3,11 @@ import ChunkedPages from "../print/ChunkedPages";
 import ToggleData from "../../../../components/DataToggle";
 import { useState } from "react";
 import Input from "../controls/Input";
-import { range } from "lodash";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
 import LayeredCard, {
     LayeredCardBackFace,
     LayeredCardBackFaceProps,
-    LayeredCardDataType,
     LayeredCardProps,
 } from "../gameComponents/LayeredCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
@@ -35,7 +33,7 @@ const sampleLayeredAssetBackFaceProps: LayeredCardBackFaceProps = {
 
 console.log("assetModifierMap", assetModifierMap);
 
-const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
+const adaptAsset = (asset: AssetType, index: number): BaseLayeredAssetCard => ({
     slug: `base-layered-asset-${asset.slug}`,
     size: "54x86",
     bleedMm: 3,
@@ -46,14 +44,17 @@ const adaptAsset = (asset: AssetType): BaseLayeredAssetCard => ({
     nounDeck: asset.deck,
     nounCornerIcon: "/mighty-decks/types/asset.png",
 
-    adjective: assetModifierMap.base_dangerous.title,
+    /* adjective: assetModifierMap.base_dangerous.title,
     adjectiveEffect: assetModifierMap.base_dangerous.effect,
     adjectiveDeck: assetModifierMap.base_dangerous.deck,
     adjectiveCornerIcon: "/mighty-decks/types/asset.png",
-    imageOverlayUri: assetModifierMap.base_dangerous.icon || undefined,
+    imageOverlayUri: assetModifierMap.base_dangerous.icon || undefined, */
 
     imageUri: asset.icon || "/mighty-decks/assets/base/explosive.png",
-    backFaceProps: sampleLayeredAssetBackFaceProps,
+    backFaceProps: {
+        ...sampleLayeredAssetBackFaceProps,
+        // backgroundImageUri: "/mighty-decks/background/card-backface-" + ((index % 18) + 1) + ".png",
+    },
 });
 
 export default function BaseAssetCardsPrintControls({ className }: BaseAssetCardsPrintControlsProps) {

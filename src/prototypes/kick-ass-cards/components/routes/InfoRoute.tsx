@@ -123,9 +123,9 @@ export default function InfoRoute() {
                                     width: cardSizes[defaultCardSize].mm[0] * 3 + "mm",
                                 }}
                                 items={[
-                                    <AssetCard {...assetMap.longsword} {...defaultCardProps} />,
-                                    <AssetCard {...assetMap.gambeson} {...defaultCardProps} />,
-                                    <AssetCard {...assetMap.grappling_hook} {...defaultCardProps} />,
+                                    <AssetCard {...assetMap.medieval_longsword} {...defaultCardProps} />,
+                                    <AssetCard {...assetMap.medieval_gambeson} {...defaultCardProps} />,
+                                    <AssetCard {...assetMap.medieval_grappling_hook} {...defaultCardProps} />,
                                 ]}
                             />
                         </div>

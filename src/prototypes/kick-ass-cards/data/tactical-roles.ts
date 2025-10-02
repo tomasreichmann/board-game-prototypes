@@ -1,5 +1,6 @@
 export type ActionType = {
     type: "melee" | "ranged" | "direct" | "heal";
+    count?: number;
     effect: (EffectType | JoinEnum)[];
     splash?: boolean;
     range?: string;
@@ -8,6 +9,7 @@ export type ActionType = {
 export type EffectType = {
     effectType:
         | "toughness"
+        | "shield"
         | "injury"
         | "distress"
         | "burning"
@@ -27,327 +29,366 @@ export type TacticalRoleType = {
     slug: string;
     name: string;
     deck: string;
-    toughness?: number;
-    speed?: number;
+    toughness?: string;
+    toughnessBonus?: string;
+    speed?: string;
     special?: string;
     actions?: ActionType[];
+    actionBonuses?: (null | string)[];
     count?: number;
+    isModifier?: boolean;
 };
 
-export const tacticalSpecialsMap: Record<string, TacticalRoleType> = {
-    tough: {
+export const tacticalModifierMap = {
+    tough: <TacticalRoleType>{
         slug: "tough",
         name: "Tough",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "+[toughness][toughness]",
+        //special: "+[toughness][toughness]",
+        toughnessBonus: "+[toughness][toughness]",
+        isModifier: true,
     },
-    shielded: {
+    shielded: <TacticalRoleType>{
         slug: "shielded",
         name: "Shielded",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
+        toughnessBonus: "+[shield]",
         special: "-1[injury] taken",
+        isModifier: true,
     },
-    armored: {
+    armored: <TacticalRoleType>{
         slug: "armoured",
         name: "Armoured",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
+        toughnessBonus: "+[shield][shield]",
         special: "-2[injury] taken",
+        isModifier: true,
     },
-    dangerous: {
+    dangerous: <TacticalRoleType>{
         slug: "dangerous",
         name: "Dangerous",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee]|[ranged] deal +2[injury]",
+        special: "Primary attack also deals +1[injury]",
+        actionBonuses: ["+1[injury]"],
+        isModifier: true,
     },
-    burning: {
+    burning: <TacticalRoleType>{
         slug: "burning",
         name: "Burning",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee]|[ranged] deal +[burning]",
+        special: "Primary attack also deals +[burning]",
+        actionBonuses: ["+[burning]"],
+        isModifier: true,
     },
-    fiery: {
+    fiery: <TacticalRoleType>{
         slug: "fiery",
         name: "Fiery",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
-        special: "[melee]|[ranged] deal [burning] instead",
+        special: "Secondary attack deals [burning] instead",
+        actionBonuses: [null, "replace effect with [burning]"],
+        isModifier: true,
     },
-    freezing: {
+    freezing: <TacticalRoleType>{
         slug: "freezing",
         name: "Freezing",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee]|[ranged] deal +[freezing]",
+        special: "Primary attack also deals +[freezing]",
+        actionBonuses: ["+[freezing]"],
+        isModifier: true,
     },
-    icy: {
+    icy: <TacticalRoleType>{
         slug: "icy",
         name: "Icy",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
-        special: "[melee]|[ranged] deal [freezing] instead",
+        special: "Secondary attack deals [freezing] instead",
+        actionBonuses: [null, "replace effect with [freezing]"],
+        isModifier: true,
     },
-    enerving: {
+    enerving: <TacticalRoleType>{
         slug: "enerving",
         name: "Enerving",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee]|[ranged] also deal +[distress]",
+        special: "Primary attack also deals +[distress]",
+        actionBonuses: ["+[distress]"],
+        isModifier: true,
     },
-    corrupting: {
+    corrupting: <TacticalRoleType>{
         slug: "corrupting",
         name: "Corrupting",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
-        special: "[melee]|[ranged] deal [distress] instead",
+        special: "Secondary attack deals [distress] instead",
+        actionBonuses: [null, "replace effect with [distress]"],
+        isModifier: true,
     },
-    fast: {
+    fast: <TacticalRoleType>{
         slug: "fast",
         name: "Fast",
-        deck: "universal",
+        deck: "base modifier",
         count: 2,
-        // speed: 2,
-        special: "+1[speed]",
+        speed: "+[speed]",
+        special: "Moves an extra zone per turn",
+        isModifier: true,
     },
-    harassing: {
+    harassing: <TacticalRoleType>{
         slug: "harassing",
         name: "Harassing",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee]|[ranged] also deal +[complication]",
+        special: "Secondary attack also deals +[complication]",
+        actionBonuses: [null, "+[complication]"],
+        isModifier: true,
     },
-    slowing: {
+    slowing: <TacticalRoleType>{
         slug: "slowing",
         name: "Slowing",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee]|[ranged] also deal +[hindered]",
+        special: "Secondary attack also deals +[hindered]",
+        actionBonuses: [null, "+[hindered]"],
+        isModifier: true,
     },
-    elemental: {
+    elemental: <TacticalRoleType>{
         slug: "elemental",
         name: "Elemental",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
-        special: "[melee]|[ranged] can deal [freezing] or [burning]",
+        special: "All attacks can deal [freezing] or [burning]",
+        actionBonuses: ["+[freezing]/+[burning]", "+[freezing]/+[burning]"],
+        isModifier: true,
     },
-    charging: {
+    charging: <TacticalRoleType>{
         slug: "charging",
         name: "Charging",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
-        special: "[melee] deals +2[injury] when entering a zone",
+        special: "Primary attack also deals +[injury][injury] when entering a zone",
+        actionBonuses: ["(+[injury][injury])"],
+        isModifier: true,
     },
-    suicide: {
+    suicide: <TacticalRoleType>{
         slug: "suicide",
         name: "Suicide",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
-        special: "can die and deal +2[injury][splash][range]0",
+        special: "Can die and deal [injury][injury][splash]",
+        isModifier: true,
     },
-    grabbing: {
+    grabbing: <TacticalRoleType>{
         slug: "grabbing",
         name: "Grabbing",
-        deck: "universal",
+        deck: "base modifier",
         count: 2,
         special: "[melee] also deals +[stuck]",
+        isModifier: true,
     },
-    webbing: {
+    webbing: <TacticalRoleType>{
         slug: "webbing",
         name: "Webbing",
-        deck: "universal",
+        deck: "base modifier",
         count: 2,
         special: "[ranged] also deals +[stuck][splash]",
+        isModifier: true,
     },
-    healing: {
+    healing: <TacticalRoleType>{
         slug: "healing",
         name: "Healing",
-        deck: "universal",
+        deck: "base modifier",
         count: 2,
         special: "[heal] 2[injury] from one ally in the zone",
+        isModifier: true,
     },
-    restoring: {
+    restoring: <TacticalRoleType>{
         slug: "restoring",
         name: "Restoring",
-        deck: "universal",
+        deck: "base modifier",
         count: 1,
         special: "[heal] an [injury] from all allies in the zone",
+        isModifier: true,
     },
-    regenerating: {
+    regenerating: <TacticalRoleType>{
         slug: "regenerating",
         name: "Regenerating",
-        deck: "universal",
+        deck: "base modifier",
         count: 4,
         special: "[heal] an [injury] at the end of it's turn",
+        toughnessBonus: "[heal]",
+        isModifier: true,
     },
-};
+} as const;
 
-export const tacticalSpecials = Object.values(tacticalSpecialsMap);
+export const tacticalSpecials = Object.values(tacticalModifierMap);
 
-const tacticalRolesMap: Record<string, TacticalRoleType> = {
-    pawn: {
+export const tacticalRolesMap = {
+    pawn: <TacticalRoleType>{
         slug: "pawn",
         name: "Pawn",
-        deck: "universal",
+        deck: "base",
         count: 4,
-        toughness: 1,
-        speed: 1,
+        toughness: "[toughness]".repeat(1),
+        speed: "[speed]",
         actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 1 }] }],
     },
-    minion: {
+    minion: <TacticalRoleType>{
         slug: "minion",
         name: "Minion",
-        deck: "universal",
+        deck: "base",
         count: 4,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 1 }] }],
     },
-    thug: {
+    thug: <TacticalRoleType>{
         slug: "thug",
         name: "Thug",
-        deck: "universal",
+        deck: "base",
         count: 4,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 2 }] }],
     },
-    brute: {
+    brute: <TacticalRoleType>{
         slug: "brute",
         name: "Brute",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 3,
-        speed: 1,
+        toughness: "[toughness]".repeat(3),
+        speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
             { type: "melee", effect: [{ effectType: "injury", amount: 1 }], splash: true },
         ],
     },
-    tank: {
+    tank: <TacticalRoleType>{
         slug: "tank",
         name: "Tank",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 6,
-        speed: 1,
+        toughness: "[toughness]".repeat(6),
+        speed: "[speed]",
         actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 2 }] }],
     },
-    champion: {
+    champion: <TacticalRoleType>{
         slug: "champion",
         name: "Champion",
-        deck: "universal",
+        deck: "base",
         count: 1,
-        toughness: 4,
-        speed: 1,
+        toughness: "[toughness]".repeat(4),
+        speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 3 }] },
             { type: "direct", effect: [{ effectType: "distress", amount: 2 }], splash: true },
         ],
     },
-    assassin: {
+    assassin: <TacticalRoleType>{
         slug: "assassin",
         name: "Assassin",
-        deck: "universal",
+        deck: "base",
         count: 1,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 4 }] }],
     },
-    slinger: {
+    slinger: <TacticalRoleType>{
         slug: "slinger",
         name: "Slinger",
-        deck: "universal",
+        deck: "base",
         count: 4,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             { type: "ranged", effect: [{ effectType: "injury", amount: 1 }], range: "1-2" },
             { type: "melee", effect: [{ effectType: "injury", amount: 1 }] },
         ],
     },
-    skirmisher: {
+    skirmisher: <TacticalRoleType>{
         slug: "skirmisher",
         name: "Skirmisher",
-        deck: "universal",
+        deck: "base",
         count: 4,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
             { type: "ranged", effect: [{ effectType: "injury", amount: 2 }], range: "1-2" },
         ],
     },
-    ranger: {
+    ranger: <TacticalRoleType>{
         slug: "ranger",
         name: "Ranger",
-        deck: "universal",
+        deck: "base",
         count: 4,
-        toughness: 3,
-        speed: 1,
+        toughness: "[toughness]".repeat(3),
+        speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
             { type: "ranged", effect: [{ effectType: "injury", amount: 2 }], range: "1-2" },
         ],
     },
-    stalker: {
+    stalker: <TacticalRoleType>{
         slug: "stalker",
         name: "Stalker",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 3 }] },
             { type: "ranged", effect: [{ effectType: "injury", amount: 3 }], range: "1-2" },
         ],
     },
-    commando: {
+    commando: <TacticalRoleType>{
         slug: "commando",
         name: "Commando",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 3,
-        speed: 1,
+        toughness: "[toughness]".repeat(3),
+        speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 3 }] },
             { type: "ranged", effect: [{ effectType: "injury", amount: 3 }], range: "1-2" },
         ],
     },
-    marksman: {
+    marksman: <TacticalRoleType>{
         slug: "marksman",
         name: "Marksman",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             { type: "ranged", effect: [{ effectType: "injury", amount: 3 }], range: "1-3" },
             { type: "melee", effect: [{ effectType: "injury", amount: 1 }] },
         ],
     },
-    sniper: {
+    sniper: <TacticalRoleType>{
         slug: "sniper",
         name: "Sniper",
-        deck: "universal",
+        deck: "base",
         count: 1,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             { type: "ranged", effect: [{ effectType: "injury", amount: 4 }], range: "1-∞" },
             { type: "melee", effect: [{ effectType: "injury", amount: 1 }] },
         ],
     },
-    grenadier: {
+    grenadier: <TacticalRoleType>{
         slug: "grenadier",
         name: "Grenadier",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             {
                 type: "ranged",
@@ -358,13 +399,13 @@ const tacticalRolesMap: Record<string, TacticalRoleType> = {
             { type: "melee", effect: [{ effectType: "injury", amount: 1 }] },
         ],
     },
-    bomber: {
+    bomber: <TacticalRoleType>{
         slug: "bomber",
         name: "Bomber",
-        deck: "universal",
+        deck: "base",
         count: 1,
-        toughness: 3,
-        speed: 1,
+        toughness: "[toughness]".repeat(3),
+        speed: "[speed]",
         actions: [
             {
                 type: "ranged",
@@ -374,13 +415,13 @@ const tacticalRolesMap: Record<string, TacticalRoleType> = {
             },
         ],
     },
-    artillery: {
+    artillery: <TacticalRoleType>{
         slug: "artillery",
         name: "Artillery",
-        deck: "universal",
+        deck: "base",
         count: 2,
-        toughness: 2,
-        speed: 1,
+        toughness: "[toughness]".repeat(2),
+        speed: "[speed]",
         actions: [
             {
                 type: "ranged",
@@ -390,6 +431,6 @@ const tacticalRolesMap: Record<string, TacticalRoleType> = {
             },
         ],
     },
-};
+} as const;
 
-export default Object.values(tacticalRolesMap);
+export default Object.values(tacticalRolesMap) as TacticalRoleType[];

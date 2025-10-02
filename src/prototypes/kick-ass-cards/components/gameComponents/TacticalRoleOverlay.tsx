@@ -2,9 +2,10 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import Card, { CardBody, CardHeader, CardProps } from "./Card";
 import { TacticalRoleType } from "../../data/tactical-roles";
-import { IconOrImage } from "@/components/Icon/IconOrImage";
+import { IconOrImage, IconOrImageProps } from "@/components/Icon/IconOrImage";
 import { range } from "lodash";
 import twm from "@/utils/twm";
+import { IconProps } from "../Icon";
 // import "./TacticalRoleOverlay.css";
 
 export type TacticalRoleOverlayProps = React.PropsWithChildren<
@@ -31,6 +32,7 @@ export default function TacticalRoleOverlay({
     const specialFragments = special?.split(/(\[[^\]]+\])/g).filter((fr) => fr !== "") || [];
     const isSpecial = special ? special.length > 0 : false;
     const isLongSpecial = special ? special.length > 40 : false;
+    const toughnessValue = (toughness ?? "").split("[toughness]").length - 1;
     return (
         <Card
             className={twMerge("TacticalRoleOverlay", className)}
@@ -53,12 +55,12 @@ export default function TacticalRoleOverlay({
                 </h3>
                 <div className="text-lg font-bold leading-tight text-center flex flex-row">
                     <div className="flex-1 flex flex-row mr-1">
-                        {range(toughness || 0).map((index) => (
+                        {range(toughnessValue).map((index) => (
                             <div
                                 key={index}
                                 className={twm(
                                     "flex-1 relative h-6 max-w-6",
-                                    index === (toughness || 0) - 1 && "w-6 basis-auto shrink-0"
+                                    index === toughnessValue - 1 && "w-6 basis-auto shrink-0"
                                 )}
                             >
                                 <IconOrImage

@@ -38,7 +38,6 @@ const adaptAssetModifier = (asset: AssetType): BaseLayeredAssetModifierCard => (
     adjectiveCornerIcon: "/mighty-decks/types/asset.png",
 
     imageOverlayUri: asset.icon || undefined,
-    // backFaceProps: sampleLayeredAssetModifierBackFaceProps,
     backgroundImageUri: null,
 });
 

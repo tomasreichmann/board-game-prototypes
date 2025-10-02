@@ -35,6 +35,7 @@ const componentContentTypes: ContentItemType["type"][] = ["Actor", "Asset", "Clo
 const deprecatedContentTypes: ContentItemType["type"][] = ["Player", "p", "li", "img", "Alert"];
 
 const contentTypeDescriptionMap = {
+    a: "A basic link that supports internal and external links",
     Mdx: "Rich text content in [MDX](https://mdxjs.com/) format",
     Text: "Simple text content like headings and paragraph text",
     Image: "Shareable Image",

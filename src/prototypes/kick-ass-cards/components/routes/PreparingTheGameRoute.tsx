@@ -1,16 +1,21 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Navigation } from "../Navigation";
-import Text, { H1, H2, H3 } from "../content/Text";
+import Text, { H1, H3 } from "../content/Text";
 import PaperAndCardControls, {
     componentControlsMap,
+    getComponent,
+    routeNameMap,
     usePrintControlsStore,
 } from "../preparingTheGame/PaperAndCardControls";
 import Button from "../controls/Button";
+import { useParams } from "react-router-dom";
+import { mightyDecksPath } from "./routes";
 
 export default function PreparingTheGameRoute() {
-    const { isDefaultPaperOrientationPortrait, componentControls, setComponentControls } = usePrintControlsStore();
-
-    const PrintComponent = componentControlsMap[componentControls];
+    const { isDefaultPaperOrientationPortrait } = usePrintControlsStore();
+    const { componentSlug } = useParams<"componentSlug">();
+    const componentKey = (componentSlug as keyof typeof componentControlsMap) || "template";
+    const PrintComponent = getComponent(componentKey);
 
     return (
         <>
@@ -36,18 +41,20 @@ export default function PreparingTheGameRoute() {
 
                         <H3 className="mt-4">Component types</H3>
                         <div className="flex flex-row flex-wrap gap-2 mt-2">
-                            {(Object.keys(componentControlsMap) as (keyof typeof componentControlsMap)[]).map((key) => (
+                            {Object.entries(routeNameMap).map(([key, title]) => (
                                 <Button
-                                    color={componentControls === key ? "secondary" : "primary"}
-                                    onClick={() => setComponentControls(key)}
+                                    href={mightyDecksPath + "/preparing-the-game/" + key}
+                                    color={componentSlug === key ? "secondary" : "primary"}
                                     size="sm"
                                 >
-                                    {key}
+                                    {title}
                                 </Button>
                             ))}
                         </div>
                         <div className="flex-1 w-full overflow-auto -mx-4 px-4">
-                            <PrintComponent />
+                            <Suspense fallback={<div className="p-4 italic">Loading...</div>}>
+                                <PrintComponent />
+                            </Suspense>
                         </div>
                     </div>
                 </section>

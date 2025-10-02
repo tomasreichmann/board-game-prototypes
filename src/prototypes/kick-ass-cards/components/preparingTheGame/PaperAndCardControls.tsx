@@ -6,25 +6,7 @@ import { cardSizes, paperSizes } from "../../../../components/print/paperSizes";
 import Input from "../controls/Input";
 import Text from "../content/Text";
 import { ChunkedPagesProps } from "../print/ChunkedPages";
-import ActorCardsPrintControls from "./ActorCardsPrintControls";
-import ClocksCardsPrintControls from "./ClocksCardsPrintControls";
-import EffectCardsPrintControls from "./EffectCardsPrintControls";
-import OutcomeCardsPrintControls from "./OutcomeCardsPrintControls";
-import TemplatePrintControls from "./TemplatePrintControls";
-import BoxPrintControls from "./BoxPrintControls";
-import StuntCardsPrintControls from "./StuntCardsPrintControls";
-import AssetCardsPrintControls from "./AssetCardsPrintControls";
-import MedievalActorCardsPrintControls from "./MedievalActorCardsPrintControls";
-import CounterCardsPrintControls from "./CounterCardsPrintControls";
-import DividersPrintControls from "./DividersPrintControls";
-import PenanceInBloodPrintControls from "./PenanceInBloodPrintControls";
-import MedievalLocationsPrintControls from "./MedievalLocationsPrintControls";
-import BaseActorCardsPrintControls from "./BaseActorCardsPrintControls";
-import BaseAssetCardsPrintControls from "./BaseAssetCardsPrintControls";
-import BaseTacticalRolesPrintControls from "./BaseTacticalRolesPrintControls";
-import BaseActorMinisPrintControls from "./BaseActorMinisPrintControls";
-import AttractiveCardPrintControls from "./AttractiveCardPrintControls";
-import BaseAssetModifierCardsPrintControls from "./BaseAssetModifierCardsPrintControls";
+import React from "react";
 
 export const cardOptions = Object.entries(cardSizes).map(([key, { inches, mm }]) => ({
     label: `${key} (${mm[0]}x${mm[1]}mm)`,
@@ -43,27 +25,64 @@ const pageLabelPositionOptions = [
     { label: "right", value: "right" } as const,
 ];
 
+export type PrintControlsComponentType = React.ComponentType<{ className?: string }>;
+
+/* prettier-ignore */
 export const componentControlsMap = {
-    Template: TemplatePrintControls,
-    "Outcome Cards": OutcomeCardsPrintControls,
-    "Effect Cards": EffectCardsPrintControls,
-    "Base Counter Cards": CounterCardsPrintControls,
-    "Base Actor Cards": BaseActorCardsPrintControls,
-    "Base Asset Cards": BaseAssetCardsPrintControls,
-    "Base Asset Modifier Cards": BaseAssetModifierCardsPrintControls,
-    "Base Actor Minis": BaseActorMinisPrintControls,
-    "Base Tactical Roles": BaseTacticalRolesPrintControls,
-    "Blank Actor Cards": ActorCardsPrintControls,
-    "Blank Counter Cards": ClocksCardsPrintControls,
-    "Stunt Cards": StuntCardsPrintControls,
-    "Medieval Asset Cards": AssetCardsPrintControls,
-    "Medieval Actors": MedievalActorCardsPrintControls,
-    "Medieval Locations": MedievalLocationsPrintControls,
-    "Penance In Blood": PenanceInBloodPrintControls,
-    AttractiveCardPrintControls: AttractiveCardPrintControls,
-    Dividers: DividersPrintControls,
-    Box: BoxPrintControls,
+    "template": () => React.lazy(() => import("./TemplatePrintControls")),
+    "outcome-cards": () => React.lazy(() => import("./OutcomeCardsPrintControls")),
+    "effect-cards": () => React.lazy(() => import("./EffectCardsPrintControls")),
+    "base-counter-cards": () => React.lazy(() => import("./CounterCardsPrintControls")),
+    "base-actor-cards": () => React.lazy(() => import("./BaseActorCardsPrintControls")),
+    "base-asset-cards": () => React.lazy(() => import("./BaseAssetCardsPrintControls")),
+    "base-asset-modifier-cards": () => React.lazy(() => import("./BaseAssetModifierCardsPrintControls")),
+    "base-actor-minis": () => React.lazy(() => import("./BaseActorMinisPrintControls")),
+    "base-tactical-roles": () => React.lazy(() => import("./BaseTacticalRolesPrintControls")),
+    "blank-actor-cards": () => React.lazy(() => import("./ActorCardsPrintControls")),
+    "blank-counter-cards": () => React.lazy(() => import("./ClocksCardsPrintControls")),
+    "stunt-cards": () => React.lazy(() => import("./StuntCardsPrintControls")),
+    "medieval-asset-cards": () => React.lazy(() => import("./AssetCardsPrintControls")),
+    "medieval-actors": () => React.lazy(() => import("./MedievalActorCardsPrintControls")),
+    "medieval-locations": () => React.lazy(() => import("./MedievalLocationsPrintControls")),
+    "penance-in-blood": () => React.lazy(() => import("./PenanceInBloodPrintControls")),
+    "attractive-card": () => React.lazy(() => import("./AttractiveCardPrintControls")),
+    "dividers": () => React.lazy(() => import("./DividersPrintControls")),
+    "box": () => React.lazy(() => import("./BoxPrintControls")),
 };
+
+const componentCache: Partial<
+    Record<keyof typeof componentControlsMap, React.LazyExoticComponent<PrintControlsComponentType>>
+> = {};
+
+export const getComponent = (key: keyof typeof componentControlsMap) => {
+    if (!componentCache[key]) {
+        componentCache[key] = componentControlsMap[key]();
+    }
+    return componentCache[key]!;
+};
+
+/* prettier-ignore */
+export const routeNameMap = {
+    "template": "Template",
+    "outcome-cards": "Outcome Cards",
+    "effect-cards": "Effect Cards",
+    "base-counter-cards": "Base Counter Cards",
+    "base-actor-cards": "Base Actor Cards",
+    "base-asset-cards": "Base Asset Cards",
+    "base-asset-modifier-cards": "Base Asset Modifier Cards",
+    "base-actor-minis": "Base Actor Minis",
+    "base-tactical-roles": "Base Tactical Roles",
+    "blank-actor-cards": "Blank Actor Cards",
+    "blank-counter-cards": "Blank Counter Cards",
+    "stunt-cards": "Stunt Cards",
+    "medieval-asset-cards": "Medieval Asset Cards",
+    "medieval-actors": "Medieval Actors",
+    "medieval-locations": "Medieval Locations",
+    "penance-in-blood": "Penance In Blood",
+    "attractive-card": "Attractive Card",
+    "dividers": "Dividers",
+    "box": "Box",
+} as const;
 
 export type PrintControlsStoreType = {
     defaultPaperSize: keyof typeof paperSizes;
@@ -86,8 +105,6 @@ export type PrintControlsStoreType = {
     setFitToPage: (newValue: boolean) => void;
     pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"];
     setPageLabelPosition: (newValue: ChunkedPagesProps<any, any>["labelPosition"]) => void;
-    componentControls: keyof typeof componentControlsMap;
-    setComponentControls: (newValue: keyof typeof componentControlsMap) => void;
 };
 
 export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
@@ -114,9 +131,6 @@ export const usePrintControlsStore = create<PrintControlsStoreType>((set) => ({
     pageLabelPosition: "left",
     setPageLabelPosition: (pageLabelPosition: ChunkedPagesProps<any, any>["labelPosition"]) =>
         set({ pageLabelPosition }),
-    componentControls: "Template" as const,
-    // componentControls: "Base Asset Cards" as const,
-    setComponentControls: (componentControls: keyof typeof componentControlsMap) => set({ componentControls }),
 }));
 
 export type PaperAndCardControlsProps = {

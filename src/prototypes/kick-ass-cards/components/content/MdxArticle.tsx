@@ -31,6 +31,7 @@ import BroadcastCounter from "../screenContent/BroadcastCounter";
 import BroadcastGenericCounterCard from "../screenContent/BroadcastGenericCounterCard";
 import BroadcastStuntCard from "../screenContent/BroadcastStuntCard";
 import BroadcastActorCardWithTacticalOverlay from "../screenContent/BroadcastActorCardWithTacticalOverlay";
+import { Link } from "react-router-dom";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -40,7 +41,14 @@ export type MdxComponent = React.ComponentType<{
 
 export type MdxArticleProps = GenericMdxArticleProps;
 
+const A = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const { href, ...rest } = props;
+    const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
+    return isInternal ? <Link to={href} {...rest} /> : <a {...rest} target="_blank" rel="noopener noreferrer" />;
+};
+
 export const defaultMdxComponentMap = {
+    a: A,
     Alert,
     Aside,
     List: ComponentList,

@@ -1,6 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ButtonHTMLAttributes, HTMLAttributes } from "react";
+import { Link } from "react-router-dom";
 
 const variants = cva(["Button"], {
     variants: {
@@ -266,8 +267,14 @@ export default function Button({
 }: ButtonProps) {
     const classNames = twMerge(variants({ variant, color, size, disabled }), className);
     if ("href" in restProps) {
-        return (
-            <a {...restProps} className={classNames}>
+        const { href, ...linkProps } = restProps as ButtonLinkType;
+        const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
+        return isInternal ? (
+            <Link to={href} className={classNames} {...linkProps}>
+                {children}
+            </Link>
+        ) : (
+            <a {...linkProps} className={classNames} target="_blank" rel="noopener noreferrer">
                 {children}
             </a>
         );

@@ -53,6 +53,13 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
         name: "Preparing the Game",
         path: mightyDecksPath + "/preparing-the-game",
         Component: PreparingTheGameRoute,
+        children: [
+            {
+                name: "Preparing the Game",
+                path: mightyDecksPath + "/preparing-the-game/:componentSlug",
+                Component: PreparingTheGameRoute,
+            },
+        ],
     },
     {
         name: "Products",

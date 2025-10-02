@@ -8,6 +8,7 @@ import tacticalRoles, { TacticalRoleType, tacticalSpecials } from "../../data/ta
 import multiplyByCount, { defaultCountAdapter } from "@/utils/multiplyByCount";
 import LayeredActorCard, { LayeredActorCardProps } from "../gameComponents/LayeredActorCard";
 import { LayeredCardBackFaceProps } from "../gameComponents/LayeredCard";
+import actors from "../../data/actors-deck";
 
 export type BaseTacticalRolesPrintControlsProps = {
     className?: string;
@@ -20,21 +21,23 @@ const sampleLayeredBackFaceProps: LayeredCardBackFaceProps = {
     labelClassName: "text-kac-gold-light",
 } as const;
 
-const adaptActorModifier = (tacticalRole: TacticalRoleType): LayeredActorCardProps => ({
+const adaptActorRole = (tacticalRole: TacticalRoleType, index: number): LayeredActorCardProps => ({
     size: "54x86",
     bleedMm: 3,
     className: "relative",
     ...tacticalRole,
     backFaceProps: sampleLayeredBackFaceProps,
     // backgroundImageUri: null,
+    imageUri: actors[index % actors.length].imageUri,
 });
 
 export default function BaseTacticalRolesPrintControls({ className }: BaseTacticalRolesPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
-
+    const allRoles: TacticalRoleType[] = [...tacticalRoles, ...tacticalSpecials];
     const items = useItemAdapter(
-        multiplyByCount([...tacticalRoles, ...tacticalSpecials], "count", defaultCountAdapter)
-    ).map(adaptActorModifier);
+        //multiplyByCount(allRoles, "count", defaultCountAdapter)
+        allRoles
+    ).map(adaptActorRole);
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
             <ToggleData

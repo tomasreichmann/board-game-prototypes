@@ -5,7 +5,7 @@
 "base_burning","Burning","/mighty-decks/assets/base/burning.png","Inflicts 1 Burning per attack or defend action.","","base modifier","2"
 "base_freezing","Freezing","/mighty-decks/assets/base/freezing.png","Inflicts 1 Freezing per attack or defend action.","","base modifier","2"
 "base_insulating","Insulating","/mighty-decks/assets/base/insulating.png","Protects from 1 Freezing or 1 Burning per defend action.","","base modifier","2"
-"base_enerving","Enerving","/mighty-decks/assets/base/enerving.png","Inflicts 1 Distress per attack or defend action.","","base modifier","2"
+"base_irritating","Irritating","/mighty-decks/assets/base/irritating.png","Inflicts 1 Distress per attack or defend action.","","base modifier","2"
 "base_penetrating","Penetrating","/mighty-decks/assets/base/penetrating.png","Ignores 1 Injury reduction / atk. or inflicts 1 Injury / def. action.","","base modifier","2"
 "base_fragile","Fragile","/mighty-decks/assets/base/fragile.png","Discard after first use.","","base modifier","1"
 "base_permanent","Permanent","/mighty-decks/assets/base/permanent.png","Remains in play, cannot be discarded by normal means.","","base modifier","1"

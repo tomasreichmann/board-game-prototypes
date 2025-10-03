@@ -92,7 +92,15 @@ export default function TacticalRoleOverlay({
                         isSpecial && "justify-end"
                     )}
                 >
-                    {attacks.map(({ type, effect, splash, range }, attackIndex) => {
+                    {attacks.map((attack, attackIndex) => {
+                        if (typeof attack === "string") {
+                            return (
+                                <div key={attackIndex} className="font-bold">
+                                    {attack}
+                                </div>
+                            );
+                        }
+                        const { type, effect, splash, range } = attack;
                         const typeIcon = `/mighty-decks/textIcons/${type}.png`;
                         return (
                             <div key={attackIndex} className="flex flex-row flex-wrap items-center font-bold ">

@@ -34,7 +34,7 @@ export type TacticalRoleType = {
     toughnessBonus?: string;
     speed?: string;
     special?: string;
-    actions?: ActionType[];
+    actions?: (ActionType | string)[];
     actionBonuses?: (null | string)[];
     count?: number;
     isModifier?: boolean;
@@ -47,7 +47,7 @@ export const tacticalModifierMap = {
         deck: "base modifier",
         count: 1,
         //special: "+[toughness][toughness]",
-        toughnessBonus: "+[toughness][toughness]",
+        toughnessBonus: "+[toughness2]",
         isModifier: true,
     },
     shielded: <TacticalRoleType>{
@@ -75,7 +75,7 @@ export const tacticalModifierMap = {
         count: 1,
         special: "+[toughness] and +[injury] for all attacks",
         toughnessBonus: "+[toughness]",
-        actionBonuses: ["+1[injury]", "+1[injury]"],
+        actionBonuses: ["+[injury]", "+[injury]"],
         isModifier: true,
     },
     dangerous: <TacticalRoleType>{
@@ -83,8 +83,8 @@ export const tacticalModifierMap = {
         name: "Dangerous",
         deck: "base modifier",
         count: 1,
-        special: "Primary attack also deals +1[injury]",
-        actionBonuses: ["+1[injury]"],
+        special: "Primary attack also deals +[injury]",
+        actionBonuses: ["+[injury]"],
         isModifier: true,
     },
     burning: <TacticalRoleType>{
@@ -123,9 +123,9 @@ export const tacticalModifierMap = {
         actionBonuses: [null, "[replace][freezing]"],
         isModifier: true,
     },
-    enerving: <TacticalRoleType>{
-        slug: "enerving",
-        name: "Enerving",
+    irritating: <TacticalRoleType>{
+        slug: "irritating",
+        name: "Irritating",
         deck: "base modifier",
         count: 1,
         special: "Primary attack also deals +[distress]",
@@ -182,8 +182,8 @@ export const tacticalModifierMap = {
         name: "Charging",
         deck: "base modifier",
         count: 1,
-        special: "Primary attack also deals +2x[injury] when entering a zone",
-        actionBonuses: ["(+2x[injury])"],
+        special: "Primary attack also deals +[injury2] when entering a zone",
+        actionBonuses: ["(+[injury2])"],
         isModifier: true,
     },
     suicide: <TacticalRoleType>{
@@ -199,7 +199,7 @@ export const tacticalModifierMap = {
         name: "Grabbing",
         deck: "base modifier",
         count: 2,
-        special: "[melee] also deals +[stuck]",
+        special: "[melee] attack also deals +[stuck]",
         actionBonuses: ["(+[stuck])", "(+[stuck])"],
         isModifier: true,
     },
@@ -208,8 +208,17 @@ export const tacticalModifierMap = {
         name: "Webbing",
         deck: "base modifier",
         count: 2,
-        special: "[ranged] also deals +[stuck][splash]",
-        actionBonuses: ["(+[stuck][splash])", "(+[stuck][splash])"],
+        special: "Primary attack also deals +[stuck][splash]",
+        actionBonuses: ["+[stuck][splash]", null],
+        isModifier: true,
+    },
+    reaching: <TacticalRoleType>{
+        slug: "reaching",
+        name: "Reaching",
+        deck: "base modifier",
+        count: 2,
+        special: "[melee] attack reaches to the adjacent zones",
+        actionBonuses: ["([range]0-1)", "([range]0-1)"],
         isModifier: true,
     },
     healing: <TacticalRoleType>{
@@ -217,7 +226,7 @@ export const tacticalModifierMap = {
         name: "Healing",
         deck: "base modifier",
         count: 2,
-        special: "Heal 2[injury] from one ally in the zone",
+        special: "Heal 2x[injury] from one ally in the zone",
         isModifier: true,
     },
     restoring: <TacticalRoleType>{
@@ -225,7 +234,7 @@ export const tacticalModifierMap = {
         name: "Restoring",
         deck: "base modifier",
         count: 1,
-        special: "Heal 1[injury] from all allies in the zone",
+        special: "Heal [injury] from all allies in the zone",
         isModifier: true,
     },
     regenerating: <TacticalRoleType>{
@@ -233,8 +242,16 @@ export const tacticalModifierMap = {
         name: "Regenerating",
         deck: "base modifier",
         count: 4,
-        special: "Heal 1[injury] at the end of it's turn",
-        toughnessBonus: "[heal]",
+        special: "Heal [injury2] at the end of the turn",
+        toughnessBonus: "[heal][heal]",
+        isModifier: true,
+    },
+    encouraging: <TacticalRoleType>{
+        slug: "encouraging",
+        name: "Encouraging",
+        deck: "base modifier",
+        count: 1,
+        special: "[boost] all allies in the zone",
         isModifier: true,
     },
 } as const;
@@ -295,12 +312,9 @@ export const tacticalRolesMap = {
         name: "Tank",
         deck: "base",
         count: 2,
-        toughness: "[toughness]".repeat(6),
+        toughness: "[toughness6]",
         speed: "[speed]",
-        actions: [
-            { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
-            { type: "direct", effect: [{ effectType: "push", amount: 1, splash: true }], range: "1" },
-        ],
+        actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 2 }] }, "[direct][push][range]1[splash]"],
     },
     champion: <TacticalRoleType>{
         slug: "champion",
@@ -321,19 +335,7 @@ export const tacticalRolesMap = {
         count: 1,
         toughness: "[toughness]".repeat(2),
         speed: "[speed]",
-        actions: [{ type: "melee", effect: [{ effectType: "injury", amount: 4 }] }],
-    },
-    slinger: <TacticalRoleType>{
-        slug: "slinger",
-        name: "Slinger",
-        deck: "base",
-        count: 4,
-        toughness: "[toughness]".repeat(2),
-        speed: "[speed]",
-        actions: [
-            { type: "ranged", effect: [{ effectType: "injury", amount: 1 }], range: "1-2" },
-            { type: "melee", effect: [{ effectType: "injury", amount: 1 }] },
-        ],
+        actions: ["[melee][injury4]", "[direct][complication2][splash]"],
     },
     skirmisher: <TacticalRoleType>{
         slug: "skirmisher",
@@ -343,8 +345,8 @@ export const tacticalRolesMap = {
         toughness: "[toughness]".repeat(2),
         speed: "[speed]",
         actions: [
-            { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
-            { type: "ranged", effect: [{ effectType: "injury", amount: 2 }], range: "1-2" },
+            { type: "melee", effect: [{ effectType: "injury", amount: 1 }], count: 2 },
+            { type: "ranged", effect: [{ effectType: "injury", amount: 1 }], count: 2, range: "1-2" },
         ],
     },
     ranger: <TacticalRoleType>{
@@ -355,8 +357,8 @@ export const tacticalRolesMap = {
         toughness: "[toughness]".repeat(3),
         speed: "[speed]",
         actions: [
-            { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
             { type: "ranged", effect: [{ effectType: "injury", amount: 2 }], range: "1-2" },
+            { type: "melee", effect: [{ effectType: "injury", amount: 2 }] },
         ],
     },
     stalker: <TacticalRoleType>{
@@ -380,7 +382,7 @@ export const tacticalRolesMap = {
         speed: "[speed]",
         actions: [
             { type: "melee", effect: [{ effectType: "injury", amount: 3 }] },
-            { type: "ranged", effect: [{ effectType: "injury", amount: 3 }], range: "1-2" },
+            { type: "ranged", effect: [{ effectType: "injury", amount: 1 }], count: 3, range: "1-2" },
         ],
     },
     marksman: <TacticalRoleType>{
@@ -402,10 +404,7 @@ export const tacticalRolesMap = {
         count: 1,
         toughness: "[toughness]".repeat(2),
         speed: "[speed]",
-        actions: [
-            { type: "ranged", effect: [{ effectType: "injury", amount: 4 }], range: "1-∞" },
-            { type: "melee", effect: [{ effectType: "injury", amount: 1 }] },
-        ],
+        actions: ["[ranged][injury4][range]1-∞", { type: "melee", effect: [{ effectType: "injury", amount: 1 }] }],
     },
     grenadier: <TacticalRoleType>{
         slug: "grenadier",

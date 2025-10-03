@@ -26,50 +26,121 @@ const TextWithIcons = ({ text, iconProps }: { text: string; iconProps?: Partial<
     const fragments = text.split(/(\[[^\]]+\])/g).filter((fr) => fr !== "");
     return (
         <>
-            {fragments.map((fragment, i) => (
-                <React.Fragment key={i}>
-                    {fragment.startsWith("[") && fragment.endsWith("]") ? (
-                        <IconOrImage
-                            {...iconProps}
-                            className={twm("inline-block align-center -my-1", iconProps?.className)}
-                            icon={`/mighty-decks/textIcons/${fragment.substring(1, fragment.length - 1)}.png`}
-                        />
-                    ) : (
-                        fragment
-                    )}
-                </React.Fragment>
-            ))}
+            {fragments.map((fragment, fragmentIndex) => {
+                // icon can have a number at the end to indicate multiples like [stuck2]
+                const iconNameMatch = fragment.match(/^\[([a-zA-Z_]+)(\d*)\]$/);
+                if (iconNameMatch) {
+                    const [iconName, iconCountString = "1"] = iconNameMatch.slice(1);
+                    console.log("iconNameMatch", iconNameMatch, iconName, iconCountString);
+                    const iconCount = parseInt(iconCountString || "1", 10);
+                    if (isNaN(iconCount) || iconCount < 1) return null;
+                    const icon = `/mighty-decks/textIcons/${iconName}.png`;
+                    return (
+                        <React.Fragment key={fragmentIndex}>
+                            {Array.from({ length: iconCount }).map((_, iconIndex) => {
+                                const isFirst = iconIndex === 0;
+                                const isLast = iconIndex === iconCount - 1;
+                                const leftMargin = isFirst ? "" : "ml-[-4px]";
+                                const rightMargin = isLast ? "" : "mr-[-4px]";
+                                return (
+                                    <IconOrImage
+                                        key={iconIndex}
+                                        {...iconProps}
+                                        className={twm(
+                                            "inline-block align-center",
+                                            iconProps?.className,
+                                            leftMargin,
+                                            rightMargin
+                                        )}
+                                        icon={icon}
+                                    />
+                                );
+                            })}
+                        </React.Fragment>
+                    );
+                }
+                return (
+                    <React.Fragment key={fragmentIndex}>
+                        {fragment.startsWith("[") && fragment.endsWith("]") ? (
+                            <IconOrImage
+                                {...iconProps}
+                                className={twm("inline-block align-center", iconProps?.className)}
+                                icon={`/mighty-decks/textIcons/${fragment.substring(1, fragment.length - 1)}.png`}
+                            />
+                        ) : (
+                            fragment
+                        )}
+                    </React.Fragment>
+                );
+            })}
         </>
     );
 };
 
+const getIconTextLength = (text: string) => {
+    // get all icons
+    const matches = text.split(/(\[[^\]]+\])/g).filter((fr) => fr !== "");
+    return matches.reduce((length, fragment) => {
+        const iconNameMatch = fragment.match(/^\[([a-zA-Z_]+)(\d*)\]$/);
+        if (iconNameMatch) {
+            const [iconName, iconCountString = "1"] = iconNameMatch.slice(1);
+            const iconCount = parseInt(iconCountString || "1", 10);
+            if (isNaN(iconCount) || iconCount < 1) return length;
+            return length + iconCount;
+        }
+        return length + fragment.length * 0.25;
+    }, 0);
+};
+
 const renderAction = (
     action: NonNullable<TacticalRoleType["actions"]>[number] | null,
-    attackIndex: number,
+    actionIndex: number,
+    iconProps: Partial<IconOrImageProps<IconProps>> = {},
     lineSize?: string,
     iconSize?: string
 ) => {
     if (!action) return null;
+    if (typeof action === "string") {
+        return (
+            <div key={actionIndex} className={twm("flex flex-row justify-end flex-wrap items-center", lineSize)}>
+                <TextWithIcons
+                    text={action}
+                    iconProps={
+                        getIconTextLength(action) > 5
+                            ? { ...iconProps, className: twm(iconProps.className, "mx-[-2px]") }
+                            : iconProps
+                    }
+                />
+            </div>
+        );
+    }
     const { type, effect, splash, range, count } = action;
     const typeIcon = `/mighty-decks/textIcons/${type}.png`;
     return (
-        <div key={attackIndex} className={twm("flex flex-row justify-end flex-wrap items-center font-bold", lineSize)}>
+        <div key={actionIndex} className={twm("flex flex-row justify-end flex-wrap items-center", lineSize)}>
             {count && count > 1 && <>{count}x</>}
             <IconOrImage icon={typeIcon} className={twm("flex-shrink-0 inline-block", iconSize)} />
             {effect.map((effectOrJoin, effectIndex) => {
                 if (typeof effectOrJoin === "string") {
-                    return (
-                        <span key={effectIndex} className="font-bold">
-                            {effectOrJoin}
-                        </span>
-                    );
+                    return <span key={effectIndex}>{effectOrJoin}</span>;
                 }
                 const { amount, effectType } = effectOrJoin;
                 const effectTypeIcon = `/mighty-decks/textIcons/${effectType}.png`;
                 return (
                     <React.Fragment key={effectIndex}>
-                        {amount && amount > 1 && <>{amount}x</>}
-                        <IconOrImage icon={effectTypeIcon} className={twm("flex-shrink-0 inline-block", iconSize)} />
+                        {Array.from({ length: amount }).map((_, iconIndex) => {
+                            const isFirst = iconIndex === 0;
+                            const isLast = iconIndex === amount - 1;
+                            const leftMargin = isFirst ? "" : "ml-[-4px]";
+                            const rightMargin = isLast ? "" : "mr-[-4px]";
+                            return (
+                                <IconOrImage
+                                    key={iconIndex}
+                                    icon={effectTypeIcon}
+                                    className={twm("flex-shrink-0 inline-block", leftMargin, rightMargin, iconSize)}
+                                />
+                            );
+                        })}
                     </React.Fragment>
                 );
             })}
@@ -95,7 +166,7 @@ const renderAction = (
 const getLayeredCardProps = (
     role?: LayeredActorCardProps,
     modifier?: LayeredActorCardProps,
-    lineSize: string = "h-5 vertical-align:middle",
+    lineSize: string = "h-5 flex flex-row items-center",
     iconSize: string = "h-5"
 ): LayeredCardProps => {
     const props: LayeredCardProps = {
@@ -110,7 +181,7 @@ const getLayeredCardProps = (
         props.nounCornerIcon = "/mighty-decks/types/actor.png";
         nounEffectLeft.push(
             <>
-                <div key="toughness" className={lineSize}>
+                <div key="toughness" className={twm(lineSize, "justify-end")}>
                     {role.toughness && (
                         <TextWithIcons
                             text={role.toughness}
@@ -122,7 +193,9 @@ const getLayeredCardProps = (
                         />
                     )}
                 </div>
-                {(role.actions ?? [null, null]).map((action, index) => renderAction(action, index, lineSize, iconSize))}
+                {(role.actions ?? [null, null]).map((action, index) =>
+                    renderAction(action, index, iconProps, lineSize, iconSize)
+                )}
             </>
         );
     }
@@ -130,10 +203,12 @@ const getLayeredCardProps = (
         props.adjective = modifier.name;
         props.adjectiveDeck = modifier.deck;
         props.adjectiveEffect = modifier.special ? (
-            <TextWithIcons
-                text={modifier.special}
-                iconProps={{ ...iconProps, className: twm(iconProps.className, "mx-[-2px]") }}
-            />
+            <span className="font-[600]">
+                <TextWithIcons
+                    text={modifier.special}
+                    iconProps={{ ...iconProps, className: twm(iconProps.className, "mx-[-2px]") }}
+                />
+            </span>
         ) : undefined;
         props.adjectiveCornerIcon = "/mighty-decks/types/actor.png";
         nounEffectRight.push(
@@ -160,7 +235,7 @@ const getLayeredCardProps = (
         );
     }
     props.nounEffect = (
-        <div className="w-full flex flex-row gap-2 flex-grow">
+        <div className="w-full flex flex-row gap-2 flex-grow font-[600]">
             <div className="flex-grow basis-2/3 text-right">{nounEffectLeft}</div>
             <div className="flex-grow basis-1/3 text-left">{nounEffectRight}</div>
         </div>
@@ -190,7 +265,7 @@ export default function LayeredActorCard({
     ...restProps
 }: LayeredActorCardProps) {
     const currentProps = { slug, name, deck, toughness, toughnessBonus, speed, special, actions, actionBonuses, count };
-    const [roleProps, modifierProps] = isModifier ? [sampleRole, currentProps] : [currentProps, sampleModifier];
+    const [roleProps, modifierProps] = isModifier ? [sampleRole, currentProps] : [currentProps, undefined];
     const props = getLayeredCardProps(roleProps, modifierProps);
 
     return <LayeredCard className={twm("LayeredActorCard", className)} {...props} {...restProps} />;

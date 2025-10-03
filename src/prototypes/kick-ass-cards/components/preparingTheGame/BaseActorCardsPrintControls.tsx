@@ -9,10 +9,30 @@ import Icon from "../Icon";
 import ActorCard, { ActorCardBackFace } from "../gameComponents/ActorCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import actors from "../../data/actors-deck";
+import LayeredActorCard, { LayeredActorCardBackFace, LayeredActorCardProps } from "../gameComponents/LayeredActorCard";
+import { LayeredCardBackFaceProps } from "../gameComponents/LayeredCard";
 
 export type BaseActorCardsPrintControlsProps = {
     className?: string;
 };
+
+const layeredBackFaceProps: LayeredCardBackFaceProps = {
+    iconUri: "/mighty-decks/types/actor.png",
+    backgroundImageUri: "/mighty-decks/background/card-backface.png",
+    label: "Asset",
+    labelClassName: "text-kac-gold-light",
+} as const;
+
+const adaptActorRole = (props: LayeredActorCardProps, index: number): LayeredActorCardProps => ({
+    size: "54x86",
+    bleedMm: 3,
+    className: "relative",
+    ...props,
+    backFaceProps: layeredBackFaceProps,
+    // backgroundImageUri: `/mighty-decks/background/paper${(index % 4) + 1}.png`, // paper1-4
+    backgroundImageUri: `/mighty-decks/background/paper1.png`,
+    imageUri: actors[index % actors.length].imageUri,
+});
 
 export default function BaseActorCardsPrintControls({ className }: BaseActorCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
@@ -24,18 +44,15 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
                 actorImageUris.map((imageUri, imageIndex) => ({
                     slug: copyIndex + "-" + imageIndex,
                     forPrint: true,
-                    name: null,
-                    occupation: null,
-                    threat: null,
-                    reward: null,
-                    notes: null,
+                    name: "",
+                    nounCornerIcon: undefined,
+                    nounDeck: undefined,
                     className: "relative",
-                    size: "54x86",
                     imageUri,
                 }))
             )
             .flat()
-    );
+    ).map(adaptActorRole);
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
@@ -69,9 +86,14 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
             >
                 <div className="flex flex-col items-center w-full">
                     <ChunkedPages
-                        Component={ActorCard}
-                        BackFaceComponent={ActorCardBackFace}
+                        Component={LayeredActorCard}
+                        BackFaceComponent={LayeredActorCardBackFace}
                         items={items}
+                        getBackFaceProps={(item) => ({
+                            size: "54x86",
+                            bleedMm: item.bleedMm,
+                            ...item.backFaceProps,
+                        })}
                         {...chunkedPagesProps}
                         label="Blank Actor Cards"
                     />

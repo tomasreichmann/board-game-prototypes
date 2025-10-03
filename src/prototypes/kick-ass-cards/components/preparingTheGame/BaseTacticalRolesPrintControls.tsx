@@ -14,7 +14,7 @@ export type BaseTacticalRolesPrintControlsProps = {
     className?: string;
 };
 
-const sampleLayeredBackFaceProps: LayeredCardBackFaceProps = {
+const layeredBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/actor.png",
     backgroundImageUri: "/mighty-decks/background/card-backface.png",
     label: "Asset",
@@ -26,17 +26,21 @@ const adaptActorRole = (tacticalRole: TacticalRoleType, index: number): LayeredA
     bleedMm: 3,
     className: "relative",
     ...tacticalRole,
-    backFaceProps: sampleLayeredBackFaceProps,
-    // backgroundImageUri: null,
-    imageUri: actors[index % actors.length].imageUri,
+    backFaceProps: layeredBackFaceProps,
+
+    backgroundImageUri: null,
+    /* base card*/
+    // backgroundImageUri: `/mighty-decks/background/paper${(index % 4) + 1}.png`, // paper1-4
+    /* backgroundImageUri: `/mighty-decks/background/paper1.png`,
+    imageUri: actors[index % actors.length].imageUri, */
 });
 
 export default function BaseTacticalRolesPrintControls({ className }: BaseTacticalRolesPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     const allRoles: TacticalRoleType[] = [...tacticalRoles, ...tacticalSpecials];
     const items = useItemAdapter(
-        //multiplyByCount(allRoles, "count", defaultCountAdapter)
-        allRoles
+        multiplyByCount(allRoles, "count", defaultCountAdapter)
+        // allRoles
     ).map(adaptActorRole);
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>

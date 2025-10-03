@@ -44,16 +44,16 @@ export const tacticalModifierMap = {
     tough: <TacticalRoleType>{
         slug: "tough",
         name: "Tough",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         //special: "+[toughness][toughness]",
-        toughnessBonus: "+[toughness2]",
+        toughnessBonus: "+[toughness][toughness]",
         isModifier: true,
     },
     shielded: <TacticalRoleType>{
         slug: "shielded",
         name: "Shielded",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         toughnessBonus: "+[shield]",
         special: "-1[injury] taken",
@@ -62,7 +62,7 @@ export const tacticalModifierMap = {
     armored: <TacticalRoleType>{
         slug: "armoured",
         name: "Armoured",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         toughnessBonus: "+[shield][shield]",
         special: "-2[injury] taken",
@@ -71,7 +71,7 @@ export const tacticalModifierMap = {
     alpha: <TacticalRoleType>{
         slug: "alpha",
         name: "Alpha",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "+[toughness] and +[injury] for all attacks",
         toughnessBonus: "+[toughness]",
@@ -81,7 +81,7 @@ export const tacticalModifierMap = {
     dangerous: <TacticalRoleType>{
         slug: "dangerous",
         name: "Dangerous",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Primary attack also deals +[injury]",
         actionBonuses: ["+[injury]"],
@@ -90,7 +90,7 @@ export const tacticalModifierMap = {
     burning: <TacticalRoleType>{
         slug: "burning",
         name: "Burning",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Primary attack also deals +[burning]",
         actionBonuses: ["+[burning]"],
@@ -99,7 +99,7 @@ export const tacticalModifierMap = {
     fiery: <TacticalRoleType>{
         slug: "fiery",
         name: "Fiery",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         special: "Secondary attack deals [burning] instead",
         actionBonuses: [null, "[replace][burning]"],
@@ -108,7 +108,7 @@ export const tacticalModifierMap = {
     freezing: <TacticalRoleType>{
         slug: "freezing",
         name: "Freezing",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Primary attack also deals +[freezing]",
         actionBonuses: ["+[freezing]"],
@@ -117,7 +117,7 @@ export const tacticalModifierMap = {
     icy: <TacticalRoleType>{
         slug: "icy",
         name: "Icy",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         special: "Secondary attack deals [freezing] instead",
         actionBonuses: [null, "[replace][freezing]"],
@@ -126,7 +126,7 @@ export const tacticalModifierMap = {
     irritating: <TacticalRoleType>{
         slug: "irritating",
         name: "Irritating",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Primary attack also deals +[distress]",
         actionBonuses: ["+[distress]"],
@@ -135,7 +135,7 @@ export const tacticalModifierMap = {
     corrupting: <TacticalRoleType>{
         slug: "corrupting",
         name: "Corrupting",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         special: "Secondary attack deals [distress] instead",
         actionBonuses: [null, "[replace][distress]"],
@@ -144,8 +144,8 @@ export const tacticalModifierMap = {
     fast: <TacticalRoleType>{
         slug: "fast",
         name: "Fast",
-        deck: "base modifier",
-        count: 2,
+        deck: "base mod",
+        count: 4,
         speed: "+[speed]",
         special: "Moves an extra zone per turn",
         isModifier: true,
@@ -153,7 +153,7 @@ export const tacticalModifierMap = {
     harassing: <TacticalRoleType>{
         slug: "harassing",
         name: "Harassing",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Secondary attack also deals +[complication]",
         actionBonuses: [null, "+[complication]"],
@@ -162,7 +162,7 @@ export const tacticalModifierMap = {
     slowing: <TacticalRoleType>{
         slug: "slowing",
         name: "Slowing",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Secondary attack also deals +[hindered]",
         actionBonuses: [null, "+[hindered]"],
@@ -171,7 +171,7 @@ export const tacticalModifierMap = {
     elemental: <TacticalRoleType>{
         slug: "elemental",
         name: "Elemental",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         special: "All attacks can deal [freezing] or [burning]",
         actionBonuses: ["+[freezing]/+[burning]", "+[freezing]/+[burning]"],
@@ -180,7 +180,7 @@ export const tacticalModifierMap = {
     charging: <TacticalRoleType>{
         slug: "charging",
         name: "Charging",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Primary attack also deals +[injury2] when entering a zone",
         actionBonuses: ["(+[injury2])"],
@@ -189,7 +189,7 @@ export const tacticalModifierMap = {
     suicide: <TacticalRoleType>{
         slug: "suicide",
         name: "Suicide",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         special: "Can die and deal 2x[injury][splash]",
         isModifier: true,
@@ -197,7 +197,7 @@ export const tacticalModifierMap = {
     grabbing: <TacticalRoleType>{
         slug: "grabbing",
         name: "Grabbing",
-        deck: "base modifier",
+        deck: "base mod",
         count: 2,
         special: "[melee] attack also deals +[stuck]",
         actionBonuses: ["(+[stuck])", "(+[stuck])"],
@@ -206,7 +206,7 @@ export const tacticalModifierMap = {
     webbing: <TacticalRoleType>{
         slug: "webbing",
         name: "Webbing",
-        deck: "base modifier",
+        deck: "base mod",
         count: 2,
         special: "Primary attack also deals +[stuck][splash]",
         actionBonuses: ["+[stuck][splash]", null],
@@ -215,8 +215,8 @@ export const tacticalModifierMap = {
     reaching: <TacticalRoleType>{
         slug: "reaching",
         name: "Reaching",
-        deck: "base modifier",
-        count: 2,
+        deck: "base mod",
+        count: 1,
         special: "[melee] attack reaches to the adjacent zones",
         actionBonuses: ["([range]0-1)", "([range]0-1)"],
         isModifier: true,
@@ -224,15 +224,15 @@ export const tacticalModifierMap = {
     healing: <TacticalRoleType>{
         slug: "healing",
         name: "Healing",
-        deck: "base modifier",
-        count: 2,
+        deck: "base mod",
+        count: 1,
         special: "Heal 2x[injury] from one ally in the zone",
         isModifier: true,
     },
     restoring: <TacticalRoleType>{
         slug: "restoring",
         name: "Restoring",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "Heal [injury] from all allies in the zone",
         isModifier: true,
@@ -240,7 +240,7 @@ export const tacticalModifierMap = {
     regenerating: <TacticalRoleType>{
         slug: "regenerating",
         name: "Regenerating",
-        deck: "base modifier",
+        deck: "base mod",
         count: 4,
         special: "Heal [injury2] at the end of the turn",
         toughnessBonus: "[heal][heal]",
@@ -249,7 +249,7 @@ export const tacticalModifierMap = {
     encouraging: <TacticalRoleType>{
         slug: "encouraging",
         name: "Encouraging",
-        deck: "base modifier",
+        deck: "base mod",
         count: 1,
         special: "[boost] all allies in the zone",
         isModifier: true,

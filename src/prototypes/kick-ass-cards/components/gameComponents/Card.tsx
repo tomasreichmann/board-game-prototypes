@@ -27,7 +27,12 @@ export const CardHeader = ({
         <div className={twMerge("CardHeader flex flex-row items-center gap-1", className)}>
             {icon && <IconOrImage icon={icon} className={twMerge("h-6 text-kac-steel-dark", iconClassName)} />}
             {
-                <div className={twMerge("flex-1 text-kac-bone-dark text-right text-xs leading-none", deckClassName)}>
+                <div
+                    className={twMerge(
+                        "flex-1 text-kac-bone-dark text-right text-[0.6rem] leading-none",
+                        deckClassName
+                    )}
+                >
                     {deck}
                 </div>
             }

@@ -56,13 +56,15 @@ export default function LayeredCard({
     return (
         <Card className={twMerge("LayeredCard", className)} {...restProps}>
             <div className="relative h-[24px]">
-                <CardHeader
-                    icon={imageUri ?? undefined}
-                    className="z-10 relative"
-                    cornerIcon={nounCornerIcon ?? undefined}
-                    deck={nounDeck ?? undefined}
-                />
-                <div className="absolute top-full left-0 right-0 h-[24px]">
+                {(imageUri || nounCornerIcon || nounDeck) && (
+                    <CardHeader
+                        icon={imageUri ?? undefined}
+                        className="z-10 relative"
+                        cornerIcon={nounCornerIcon ?? undefined}
+                        deck={nounDeck ?? undefined}
+                    />
+                )}
+                <div className="absolute top-full left-0 right-0 h-[24px] -rotate-90 origin-right translate-x-[-4px] translate-y-[-8px]">
                     <CardHeader
                         icon={undefined}
                         className="z-10 "

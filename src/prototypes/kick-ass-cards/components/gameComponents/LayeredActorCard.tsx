@@ -83,7 +83,7 @@ const getIconTextLength = (text: string) => {
     return matches.reduce((length, fragment) => {
         const iconNameMatch = fragment.match(/^\[([a-zA-Z_]+)(\d*)\]$/);
         if (iconNameMatch) {
-            const [iconName, iconCountString = "1"] = iconNameMatch.slice(1);
+            const [_, iconCountString = "1"] = iconNameMatch.slice(1);
             const iconCount = parseInt(iconCountString || "1", 10);
             if (isNaN(iconCount) || iconCount < 1) return length;
             return length + iconCount;
@@ -169,9 +169,7 @@ const getLayeredCardProps = (
     lineSize: string = "h-5 flex flex-row items-center",
     iconSize: string = "h-5"
 ): LayeredCardProps => {
-    const props: LayeredCardProps = {
-        imageUri: "/mighty-decks/actors/base/minion-yellow.png",
-    };
+    const props: LayeredCardProps = {};
     const nounEffectLeft: React.ReactNode[] = [];
     const nounEffectRight: React.ReactNode[] = [];
     const iconProps = { className: iconSize };
@@ -265,7 +263,7 @@ export default function LayeredActorCard({
     ...restProps
 }: LayeredActorCardProps) {
     const currentProps = { slug, name, deck, toughness, toughnessBonus, speed, special, actions, actionBonuses, count };
-    const [roleProps, modifierProps] = isModifier ? [sampleRole, currentProps] : [currentProps, undefined];
+    const [roleProps, modifierProps] = isModifier ? [undefined, currentProps] : [currentProps, undefined];
     const props = getLayeredCardProps(roleProps, modifierProps);
 
     return <LayeredCard className={twm("LayeredActorCard", className)} {...props} {...restProps} />;

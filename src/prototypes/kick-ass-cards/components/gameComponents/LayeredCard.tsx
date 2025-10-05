@@ -24,6 +24,12 @@ export type LayeredCardProps = React.PropsWithChildren<
     {
         slug?: string;
         className?: string;
+        classNames?: {
+            noun?: string;
+            adjective?: string;
+            nounEffect?: string;
+            adjectiveEffect?: string;
+        };
         imagePosition?: CSSProperties["objectPosition"];
         imageFit?: CSSProperties["objectFit"];
         imageClassName?: string;
@@ -35,6 +41,7 @@ export type LayeredCardProps = React.PropsWithChildren<
 
 export default function LayeredCard({
     className,
+    classNames = {},
     noun = " ",
     nounEffect = " ",
     nounDeck = " ",
@@ -48,13 +55,14 @@ export default function LayeredCard({
     imageClassName,
     imagePosition,
     imageFit = "contain",
+    backgroundImageUri = "/mighty-decks/background/paper1-with-image-shadow.png",
     imageWrapperClassName,
     ImageComponent = Image,
     children,
     ...restProps
 }: LayeredCardProps) {
     return (
-        <Card className={twMerge("LayeredCard", className)} {...restProps}>
+        <Card className={twMerge("LayeredCard", className)} backgroundImageUri={backgroundImageUri} {...restProps}>
             <div className="relative h-[24px]">
                 {(imageUri || nounCornerIcon || nounDeck) && (
                     <CardHeader
@@ -91,18 +99,24 @@ export default function LayeredCard({
                     ) : undefined
                 }
             >
-                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{adjective}</H3>
-                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]")}>{noun}</H3>
+                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]", classNames.adjective)}>
+                    {adjective}
+                </H3>
+                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]", classNames.noun)}>
+                    {noun}
+                </H3>
                 <div
                     className={twMerge(
-                        "text-xs text-center text-kac-iron-light text-balance h-[5em] leading-tight tracking-tight flex flex-col justify-end items-center"
+                        "text-xs text-center text-kac-iron-light text-balance h-[5em] leading-tight tracking-tight flex flex-col justify-end items-center",
+                        classNames.nounEffect
                     )}
                 >
                     {nounEffect}
                 </div>
                 <div
                     className={twMerge(
-                        "text-xs text-center text-kac-iron-light text-balance h-[2.5em] leading-tight tracking-tight"
+                        "text-xs text-center text-kac-iron-light text-balance h-[2.5em] leading-tight tracking-tight",
+                        classNames.adjectiveEffect
                     )}
                 >
                     {adjectiveEffect}
@@ -125,7 +139,7 @@ export const LayeredCardBackFace = ({
     labelClassName,
     size = "Bridge",
     iconUri = "/mighty-decks/types/asset.png",
-    backgroundImageUri = "/mighty-decks/paper-dark.png",
+    backgroundImageUri = "/mighty-decks/background/card-backface.png",
     ...restProps
 }: LayeredCardBackFaceProps) => {
     return (
@@ -136,7 +150,7 @@ export const LayeredCardBackFace = ({
         >
             <Image
                 src={iconUri}
-                className="absolute bottom-[35%] h-[50%] left-0 right-0 drop-shadow-lg-heavy"
+                className="absolute bottom-[35%] h-[50%] left-0 right-0"
                 objectFit="contain"
                 objectPosition="center center"
             />

@@ -30,7 +30,7 @@ const adaptActorRole = (props: LayeredActorCardProps, index: number): LayeredAct
     ...props,
     backFaceProps: layeredBackFaceProps,
     // backgroundImageUri: `/mighty-decks/background/paper${(index % 4) + 1}.png`, // paper1-4
-    backgroundImageUri: `/mighty-decks/background/paper1.png`,
+    backgroundImageUri: `/mighty-decks/background/paper1-with-image-shadow.png`,
     imageUri: actors[index % actors.length].imageUri,
 });
 

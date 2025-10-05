@@ -31,8 +31,8 @@ const adaptActorRole = (tacticalRole: TacticalRoleType, index: number): LayeredA
     backgroundImageUri: null,
     /* base card*/
     // backgroundImageUri: `/mighty-decks/background/paper${(index % 4) + 1}.png`, // paper1-4
-    /* backgroundImageUri: `/mighty-decks/background/paper1.png`,
-    imageUri: actors[index % actors.length].imageUri, */
+    // backgroundImageUri: `/mighty-decks/background/paper1.png`,
+    // imageUri: actors[index % actors.length].imageUri,
 });
 
 export default function BaseTacticalRolesPrintControls({ className }: BaseTacticalRolesPrintControlsProps) {

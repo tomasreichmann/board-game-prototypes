@@ -214,6 +214,7 @@ const getLayeredCardProps = (
                 {modifier.toughnessBonus && <TextWithIcons text={modifier.toughnessBonus} iconProps={iconProps} />}
             </div>
         );
+        props.imageOverlayUri = modifier.imageUri;
         nounEffectRight.push(
             <>
                 {(modifier.actionBonuses ?? [null, null]).map((actionBonus, index) =>
@@ -263,7 +264,7 @@ export default function LayeredActorCard({
     ...restProps
 }: LayeredActorCardProps) {
     const currentProps = { slug, name, deck, toughness, toughnessBonus, speed, special, actions, actionBonuses, count };
-    const [roleProps, modifierProps] = isModifier ? [undefined, currentProps] : [currentProps, undefined];
+    const [roleProps, modifierProps] = isModifier ? [sampleRole, currentProps] : [currentProps, undefined];
     const props = getLayeredCardProps(roleProps, modifierProps);
 
     return <LayeredCard className={twm("LayeredActorCard", className)} {...props} {...restProps} />;

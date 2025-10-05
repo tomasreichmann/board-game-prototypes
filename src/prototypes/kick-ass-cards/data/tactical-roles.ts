@@ -37,12 +37,14 @@ export type TacticalRoleType = {
     actions?: (ActionType | string)[];
     actionBonuses?: (null | string)[];
     count?: number;
+    imageOverlayUri?: string;
     isModifier?: boolean;
 };
 
 export const tacticalModifierMap = {
     tough: <TacticalRoleType>{
         slug: "tough",
+        imageOverlayUri: "/mighty-decks/actors/base/tough.png",
         name: "Tough",
         deck: "base mod",
         count: 1,
@@ -52,6 +54,7 @@ export const tacticalModifierMap = {
     },
     shielded: <TacticalRoleType>{
         slug: "shielded",
+        imageOverlayUri: "/mighty-decks/actors/base/shielded.png",
         name: "Shielded",
         deck: "base mod",
         count: 4,
@@ -61,6 +64,7 @@ export const tacticalModifierMap = {
     },
     armored: <TacticalRoleType>{
         slug: "armoured",
+        imageOverlayUri: "/mighty-decks/actors/base/armoured.png",
         name: "Armoured",
         deck: "base mod",
         count: 1,
@@ -70,6 +74,7 @@ export const tacticalModifierMap = {
     },
     alpha: <TacticalRoleType>{
         slug: "alpha",
+        imageOverlayUri: "/mighty-decks/actors/base/alpha.png",
         name: "Alpha",
         deck: "base mod",
         count: 1,
@@ -80,6 +85,7 @@ export const tacticalModifierMap = {
     },
     dangerous: <TacticalRoleType>{
         slug: "dangerous",
+        imageOverlayUri: "/mighty-decks/actors/base/dangerous.png",
         name: "Dangerous",
         deck: "base mod",
         count: 1,
@@ -89,60 +95,67 @@ export const tacticalModifierMap = {
     },
     burning: <TacticalRoleType>{
         slug: "burning",
+        imageOverlayUri: "/mighty-decks/actors/base/burning.png",
         name: "Burning",
         deck: "base mod",
-        count: 1,
+        count: 4,
         special: "Primary attack also deals +[burning]",
         actionBonuses: ["+[burning]"],
         isModifier: true,
     },
     fiery: <TacticalRoleType>{
         slug: "fiery",
+        imageOverlayUri: "/mighty-decks/actors/base/fiery.png",
         name: "Fiery",
         deck: "base mod",
-        count: 4,
+        count: 1,
         special: "Secondary attack deals [burning] instead",
         actionBonuses: [null, "[replace][burning]"],
         isModifier: true,
     },
     freezing: <TacticalRoleType>{
         slug: "freezing",
+        imageOverlayUri: "/mighty-decks/actors/base/freezing.png",
         name: "Freezing",
         deck: "base mod",
-        count: 1,
+        count: 4,
         special: "Primary attack also deals +[freezing]",
         actionBonuses: ["+[freezing]"],
         isModifier: true,
     },
     icy: <TacticalRoleType>{
         slug: "icy",
+        imageOverlayUri: "/mighty-decks/actors/base/icy.png",
         name: "Icy",
         deck: "base mod",
-        count: 4,
+        count: 1,
         special: "Secondary attack deals [freezing] instead",
         actionBonuses: [null, "[replace][freezing]"],
         isModifier: true,
     },
     irritating: <TacticalRoleType>{
         slug: "irritating",
+        imageOverlayUri: "/mighty-decks/actors/base/irritating.png",
         name: "Irritating",
         deck: "base mod",
-        count: 1,
+        count: 4,
         special: "Primary attack also deals +[distress]",
         actionBonuses: ["+[distress]"],
         isModifier: true,
     },
     corrupting: <TacticalRoleType>{
         slug: "corrupting",
+        imageOverlayUri: "/mighty-decks/actors/base/corrupting.png",
         name: "Corrupting",
         deck: "base mod",
-        count: 4,
+        count: 1,
         special: "Secondary attack deals [distress] instead",
         actionBonuses: [null, "[replace][distress]"],
         isModifier: true,
     },
     fast: <TacticalRoleType>{
         slug: "fast",
+        imageOverlayUri: "/mighty-decks/actors/base/fast.png",
         name: "Fast",
         deck: "base mod",
         count: 4,
@@ -152,6 +165,7 @@ export const tacticalModifierMap = {
     },
     harassing: <TacticalRoleType>{
         slug: "harassing",
+        imageOverlayUri: "/mighty-decks/actors/base/harassing.png",
         name: "Harassing",
         deck: "base mod",
         count: 1,
@@ -161,6 +175,7 @@ export const tacticalModifierMap = {
     },
     slowing: <TacticalRoleType>{
         slug: "slowing",
+        imageOverlayUri: "/mighty-decks/actors/base/slowing.png",
         name: "Slowing",
         deck: "base mod",
         count: 1,
@@ -170,6 +185,7 @@ export const tacticalModifierMap = {
     },
     elemental: <TacticalRoleType>{
         slug: "elemental",
+        imageOverlayUri: "/mighty-decks/actors/base/elemental.png",
         name: "Elemental",
         deck: "base mod",
         count: 4,
@@ -179,6 +195,7 @@ export const tacticalModifierMap = {
     },
     charging: <TacticalRoleType>{
         slug: "charging",
+        imageOverlayUri: "/mighty-decks/actors/base/charging.png",
         name: "Charging",
         deck: "base mod",
         count: 1,
@@ -188,6 +205,7 @@ export const tacticalModifierMap = {
     },
     suicide: <TacticalRoleType>{
         slug: "suicide",
+        imageOverlayUri: "/mighty-decks/actors/base/suicide.png",
         name: "Suicide",
         deck: "base mod",
         count: 4,
@@ -196,6 +214,7 @@ export const tacticalModifierMap = {
     },
     grabbing: <TacticalRoleType>{
         slug: "grabbing",
+        imageOverlayUri: "/mighty-decks/actors/base/grabbing.png",
         name: "Grabbing",
         deck: "base mod",
         count: 2,
@@ -205,6 +224,7 @@ export const tacticalModifierMap = {
     },
     webbing: <TacticalRoleType>{
         slug: "webbing",
+        imageOverlayUri: "/mighty-decks/actors/base/webbing.png",
         name: "Webbing",
         deck: "base mod",
         count: 2,
@@ -214,6 +234,7 @@ export const tacticalModifierMap = {
     },
     reaching: <TacticalRoleType>{
         slug: "reaching",
+        imageOverlayUri: "/mighty-decks/actors/base/reaching.png",
         name: "Reaching",
         deck: "base mod",
         count: 1,
@@ -223,6 +244,7 @@ export const tacticalModifierMap = {
     },
     healing: <TacticalRoleType>{
         slug: "healing",
+        imageOverlayUri: "/mighty-decks/actors/base/healing.png",
         name: "Healing",
         deck: "base mod",
         count: 1,
@@ -231,6 +253,7 @@ export const tacticalModifierMap = {
     },
     restoring: <TacticalRoleType>{
         slug: "restoring",
+        imageOverlayUri: "/mighty-decks/actors/base/restoring.png",
         name: "Restoring",
         deck: "base mod",
         count: 1,
@@ -239,6 +262,7 @@ export const tacticalModifierMap = {
     },
     regenerating: <TacticalRoleType>{
         slug: "regenerating",
+        imageOverlayUri: "/mighty-decks/actors/base/regenerating.png",
         name: "Regenerating",
         deck: "base mod",
         count: 4,
@@ -248,6 +272,7 @@ export const tacticalModifierMap = {
     },
     encouraging: <TacticalRoleType>{
         slug: "encouraging",
+        imageOverlayUri: "/mighty-decks/actors/base/encouraging.png",
         name: "Encouraging",
         deck: "base mod",
         count: 1,

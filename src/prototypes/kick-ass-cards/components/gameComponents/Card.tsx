@@ -80,7 +80,7 @@ export const CardBody = ({
                     {icon && (
                         <IconOrImage
                             icon={icon}
-                            className={twMerge("absolute w-full h-full object-contain drop-shadow-lg", iconClassName)}
+                            className={twMerge("absolute w-full h-full object-contain", iconClassName)}
                         />
                     )}
                     {iconContent}

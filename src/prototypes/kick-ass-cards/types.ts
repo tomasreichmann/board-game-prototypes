@@ -72,6 +72,7 @@ export type OutcomeType = {
     title: string;
     icon: IconType;
     description: string;
+    instructions?: string;
 };
 
 export type ThreatType = { slug: string; icon: string; title: string; description: string };

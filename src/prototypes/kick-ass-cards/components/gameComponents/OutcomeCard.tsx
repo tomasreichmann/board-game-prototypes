@@ -45,7 +45,7 @@ const getColorClassName = (icon: string | undefined) => {
 };
 
 export default function OutcomeCard(props: OutcomeCardProps) {
-    const { className, size = "Mini European", title, icon, description, instructions, children, ...restProps } = props;
+    const { className, size = "54x86", title, icon, description, instructions, children, ...restProps } = props;
     const colorClassName = getColorClassName(icon);
 
     // const isSmSize = allSizes[size].mm[1] < 70;
@@ -67,129 +67,18 @@ export default function OutcomeCard(props: OutcomeCardProps) {
             }
         />
     );
-    /* 
-    return (
-        <PaperOrDiv
-            size={size}
-            className={twMerge(
-                "OutcomeCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
-                className
-            )}
-            {...restProps}
-        >
-            <div
-                className="relative flex-1 flex flex-col justify-center items-stretch"
-                style={{
-                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
-                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
-                }}
-            >
-                <img
-                    src="/mighty-decks/paper.png"
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
-                />
-                <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
-                    <div className="flex flex-row items-center gap-1">
-                        <IconOrImage icon={icon} className={twMerge("h-6", colorClassName || "text-kac-steel")} />
-                        <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div>
-                        <IconOrImage icon="/mighty-decks/d20-gold.png" className={"text-kac-steel-dark h-6"} />
-                    </div>
-
-                    <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
-                        <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
-                            <IconOrImage
-                                icon={icon}
-                                className={twMerge(
-                                    "absolute w-full h-full object-contain drop-shadow-lg",
-                                    colorClassName || "text-kac-iron-light"
-                                )}
-                            />
-                        </div>
-                        <H2
-                            className={twMerge(
-                                "font-kacLogo text-kac-cloth text-center mb-1 leading-none",
-                                colorClassName
-                            )}
-                            size={isSmSize ? "xl" : "2xl"}
-                        >
-                            {title}
-                        </H2>
-                    </div>
-
-                    <div
-                        className={twMerge(
-                            "flex-1 basis-[40%] text-xs text-center text-kac-iron-light text-balance",
-                            isSmSize && "text-[0.6rem]",
-                            "leading-tight tracking-tight"
-                        )}
-                    >
-                        <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>
-                            {description}
-                        </RichText>
-                    </div>
-                    {children}
-                </div>
-            </div>
-        </PaperOrDiv>
-    ); */
 }
 
 export const layeredBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/outcome.png",
     backgroundImageUri: "/mighty-decks/background/card-backface.png",
     label: "Outcome",
-    labelClassName: "text-kac-gold-light",
+    labelClassName: "text-kac-monster-lightest",
 } as const;
 
 export const OutcomeCardBackFace = (props: Partial<LayeredCardBackFaceProps> & Partial<PaperProps>) => {
     return <LayeredCardBackFace {...layeredBackFaceProps} {...props} />;
 };
-
-/* export const OutcomeCardBackFace = ({
-    className,
-    size = "Mini European",
-    children,
-    ...restProps
-}: Partial<PaperProps>) => {
-    const {
-        bleedMm = 0,
-        bleedTopMm = bleedMm,
-        bleedRightMm = bleedMm,
-        bleedBottomMm = bleedMm,
-        bleedLeftMm = bleedMm,
-    } = restProps;
-    return (
-        <PaperOrDiv
-            size={size}
-            className={twMerge(
-                "OutcomeCardBackFace gap-2 print:rounded-none flex flex-col justify-stretch items-stretch",
-                className
-            )}
-            {...restProps}
-        >
-            <div
-                className="relative flex-1 flex flex-col justify-center items-stretch bg-kac-steel-dark rounded-lg print:rounded-none"
-                style={{
-                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
-                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
-                }}
-            >
-                <img
-                    src="/mighty-decks/outcome-back-face.png"
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
-                />
-                <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                    <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">
-                        Outcome
-                    </H2>
-                    {children}
-                </div>
-            </div>
-        </PaperOrDiv>
-    );
-}; */
 
 export type OutcomeCardFlippableProps = React.PropsWithChildren<
     OutcomeCardProps & Pick<FlippableProps, "isFaceDown">

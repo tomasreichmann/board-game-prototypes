@@ -5,6 +5,8 @@ import { twMerge } from "tailwind-merge";
 import Card, { CardBody, CardHeader } from "./Card";
 import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
+import { Layer } from "recharts";
+import { LayeredCardBackFace } from "./LayeredCard";
 
 export type CounterCardProps = React.PropsWithChildren<
     {
@@ -154,12 +156,12 @@ export default function CounterCard({
 
 export const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterCardProps) => {
     return (
-        <Card {...restProps} backgroundImageUri="/mighty-decks/clock-back-face.png">
-            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <H2 className="text-kac-fire-lightest text-2xl text-center relative z-1 drop-shadow-md-heavy">
-                    Counter
-                </H2>
-            </div>
-        </Card>
+        <LayeredCardBackFace
+            label="Counter"
+            labelClassName="text-kac-fire-lightest"
+            iconUri="/mighty-decks/types/counter.png"
+            className="CounterCardBackFace"
+            {...restProps}
+        />
     );
 };

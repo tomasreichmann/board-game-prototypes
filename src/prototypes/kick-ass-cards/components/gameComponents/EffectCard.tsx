@@ -6,6 +6,8 @@ import RichText from "../RichText";
 import { IconOrImage } from "../../../../components/Icon/IconOrImage";
 import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
+import LayeredCard, { LayeredCardBackFace, LayeredCardBackFaceProps } from "./LayeredCard";
+import { LayeredActorCardBackFace } from "./LayeredActorCard";
 
 type OptionalKeysType = "slug" | "count";
 
@@ -31,11 +33,29 @@ const colorClassNameMap = {
     "/mighty-decks/salvation.png": "text-kac-gold-dark",
     "/mighty-decks/frost.png": "text-kac-cloth-dark",
     "/mighty-decks/sun.png": "text-kac-fire",
+    injury: "text-kac-blood",
+    distress: "text-lightning-3", // blue
+    dying: "text-kac-iron-dark",
+    panicked: "text-kac-curse-dark",
+    hopeless: "text-kac-steel-dark",
+    stuck: "text-kac-steel-dark",
+    hindered: "text-kac-bone-darker",
+    boost: "text-kac-monster-dark",
+    complication: "text-kac-iron-light",
+    freezing: "text-kac-cloth",
+    burning: "text-kac-fire",
+};
+
+const getColorClassName = (icon: string | undefined) => {
+    if (!icon) return undefined;
+    const type = icon.split("/").pop()?.split(".").shift();
+    if (!type) return undefined;
+    return type in colorClassNameMap ? colorClassNameMap[type as keyof typeof colorClassNameMap] : undefined;
 };
 
 export default function EffectCard({
     className,
-    size = "Mini European",
+    size = "54x86",
     slug,
     deck,
     title,
@@ -44,125 +64,54 @@ export default function EffectCard({
     children,
     ...restProps
 }: EffectCardProps) {
-    const {
-        bleedMm = 0,
-        bleedTopMm = bleedMm,
-        bleedRightMm = bleedMm,
-        bleedBottomMm = bleedMm,
-        bleedLeftMm = bleedMm,
-    } = restProps;
+    const colorClassName = getColorClassName(icon) || "text-kac-iron-light";
 
-    const colorClassName =
-        icon in colorClassNameMap ? colorClassNameMap[icon as keyof typeof colorClassNameMap] : "text-kac-steel-dark";
+    // const isSmSize = allSizes[size].mm[1] < 70;
 
-    const isSmSize = allSizes[size].mm[1] < 70;
+    const [nounEffect, adjectiveEffect] = effect?.split("──").map((part) => part.trim()) || [undefined, undefined];
 
     return (
-        <PaperOrDiv
+        <LayeredCard
             size={size}
-            bleedMm={bleedMm}
             className={twMerge(
                 "EffectCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
                 className
             )}
+            noun={title}
+            nounEffect={
+                nounEffect ? (
+                    <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{nounEffect}</RichText>
+                ) : undefined
+            }
+            adjectiveEffect={
+                adjectiveEffect ? (
+                    <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>
+                        {adjectiveEffect}
+                    </RichText>
+                ) : undefined
+            }
+            imageUri={icon}
+            classNames={{ noun: colorClassName }}
             {...restProps}
-        >
-            <div
-                className="relative flex-1 flex flex-col justify-center items-stretch"
-                style={{
-                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
-                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
-                }}
-            >
-                <img
-                    src="/mighty-decks/paper.png"
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
-                />
-
-                <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
-                    <div className="flex flex-row items-center gap-1">
-                        <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
-                        {/* <div className="flex-1 text-slate-400 text-center text-xs invisible">{slug}</div> */}
-                        <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/mighty-decks/heartbeat.png" className={"text-kac-skin-dark h-6"} />
-                    </div>
-                    <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
-                        <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
-                            <IconOrImage
-                                icon={icon}
-                                className={twMerge(
-                                    "absolute w-full h-full object-contain drop-shadow-lg",
-                                    colorClassName || "text-kac-iron-light"
-                                )}
-                            />
-                        </div>
-                        <H2
-                            className={twMerge(
-                                "font-kacLogo text-kac-cloth leading-none text-center mb-1",
-                                colorClassName
-                            )}
-                            size={isSmSize ? "xl" : "2xl"}
-                        >
-                            {title}
-                        </H2>
-                    </div>
-                    <div
-                        className={twMerge(
-                            "flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light text-balance",
-                            isSmSize && "text-[0.6rem]",
-                            "leading-tight tracking-tight"
-                        )}
-                    >
-                        <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
-                    </div>
-                    {children}
-                </div>
-            </div>
-        </PaperOrDiv>
+        />
     );
 }
 
 export const EffectCardBackFace = ({
     className,
-    size = "Mini European",
+    size = "54x86",
+    label,
     children,
     ...restProps
-}: Partial<PaperProps>) => {
-    const {
-        bleedMm = 0,
-        bleedTopMm = bleedMm,
-        bleedRightMm = bleedMm,
-        bleedBottomMm = bleedMm,
-        bleedLeftMm = bleedMm,
-    } = restProps;
+}: LayeredCardBackFaceProps) => {
     return (
-        <PaperOrDiv
+        <LayeredCardBackFace
             size={size}
-            bleedMm={bleedMm}
-            className={twMerge(
-                "EffectCardBackFace gap-2 rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch",
-                className
-            )}
+            label="Effect"
+            labelClassName="text-kac-curse-lightest"
+            iconUri="/mighty-decks/types/effect.png"
+            className={twMerge("EffectCardBackFace", className)}
             {...restProps}
-        >
-            <div
-                className="relative flex-1 flex flex-col justify-center items-stretch bg-kac-steel-dark rounded-lg print:rounded-none"
-                style={{
-                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
-                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
-                }}
-            >
-                <img
-                    src="/mighty-decks/effect-back-face.png"
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
-                />
-                <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                    <H2 className="text-white text-2xl text-center relative z-1 drop-shadow-md-heavy">Effect</H2>
-                    {children}
-                </div>
-            </div>
-        </PaperOrDiv>
+        />
     );
 };

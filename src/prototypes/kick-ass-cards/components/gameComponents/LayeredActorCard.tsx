@@ -244,6 +244,7 @@ const getLayeredCardProps = (
 
 export default function LayeredActorCard({
     className,
+    classNames = {},
     slug,
     name,
     deck,
@@ -264,10 +265,17 @@ export default function LayeredActorCard({
     ...restProps
 }: LayeredActorCardProps) {
     const currentProps = { slug, name, deck, toughness, toughnessBonus, speed, special, actions, actionBonuses, count };
-    const [roleProps, modifierProps] = isModifier ? [sampleRole, currentProps] : [currentProps, undefined];
+    const [roleProps, modifierProps] = isModifier ? [undefined, currentProps] : [currentProps, undefined];
     const props = getLayeredCardProps(roleProps, modifierProps);
 
-    return <LayeredCard className={twm("LayeredActorCard", className)} {...props} {...restProps} />;
+    return (
+        <LayeredCard
+            className={twm("LayeredActorCard", className)}
+            classNames={{ imageOverlay: "scale-[150%] translate-y-[-18%]", ...classNames }}
+            {...props}
+            {...restProps}
+        />
+    );
 }
 
 export type LayeredActorCardBackFaceProps = LayeredCardBackFaceProps;

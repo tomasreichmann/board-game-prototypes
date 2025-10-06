@@ -71,7 +71,7 @@ export default function OutcomeCard(props: OutcomeCardProps) {
 
 export const layeredBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/outcome.png",
-    backgroundImageUri: "/mighty-decks/background/card-backface.png",
+    backgroundImageUri: "/mighty-decks/background/card-backface2.png",
     label: "Outcome",
     labelClassName: "text-kac-monster-lightest",
 } as const;

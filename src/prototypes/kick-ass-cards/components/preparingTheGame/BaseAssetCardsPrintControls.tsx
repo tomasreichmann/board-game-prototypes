@@ -26,9 +26,9 @@ type BaseLayeredAssetCard = Omit<LayeredCardProps, "children"> & {
 
 const sampleLayeredAssetBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/asset.png",
-    backgroundImageUri: "/mighty-decks/background/card-backface.png",
+    backgroundImageUri: "/mighty-decks/background/card-backface2.png",
     label: "Asset",
-    labelClassName: "text-kac-gold-light",
+    labelClassName: "text-[#d9ebff]",
 } as const;
 
 console.log("assetModifierMap", assetModifierMap);

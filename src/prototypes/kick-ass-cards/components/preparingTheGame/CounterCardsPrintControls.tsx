@@ -11,6 +11,8 @@ import counters, { CounterType } from "../../data/counters-deck";
 import Card, { CardBody, CardHeader } from "../gameComponents/Card";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { CounterCardBackFace } from "../gameComponents/CounterCard";
+import { Layer } from "recharts";
+import LayeredCard from "../gameComponents/LayeredCard";
 
 export type CounterCardsPrintControlsProps = {
     className?: string;
@@ -21,6 +23,9 @@ export type CounterCardProps = React.PropsWithChildren<
 >;
 
 const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
+    return (
+        <LayeredCard imageUri={icon} nounCornerIcon="/mighty-decks/types/counter.png" nounDeck={deck} {...restProps} />
+    );
     return (
         <Card {...restProps}>
             <CardHeader icon={icon} className="z-10" cornerIcon="/mighty-decks/counter.png" deck={deck}></CardHeader>

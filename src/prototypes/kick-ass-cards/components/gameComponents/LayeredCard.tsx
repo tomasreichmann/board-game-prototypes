@@ -29,6 +29,7 @@ export type LayeredCardProps = React.PropsWithChildren<
             adjective?: string;
             nounEffect?: string;
             adjectiveEffect?: string;
+            imageOverlay?: string;
         };
         imagePosition?: CSSProperties["objectPosition"];
         imageFit?: CSSProperties["objectFit"];
@@ -55,7 +56,7 @@ export default function LayeredCard({
     imageClassName,
     imagePosition,
     imageFit = "contain",
-    backgroundImageUri = "/mighty-decks/background/paper1-with-image-shadow.png",
+    backgroundImageUri = "/mighty-decks/background/paper-custom-with-image-shadow.png",
     imageWrapperClassName,
     ImageComponent = Image,
     children,
@@ -89,7 +90,7 @@ export default function LayeredCard({
                     imageOverlayUri ? (
                         <ImageComponent
                             src={imageOverlayUri}
-                            className="absolute h-full w-full "
+                            className={twm("absolute h-full w-full", classNames.imageOverlay)}
                             objectFit="contain"
                             style={{
                                 maskImage:
@@ -139,7 +140,7 @@ export const LayeredCardBackFace = ({
     labelClassName,
     size = "Bridge",
     iconUri = "/mighty-decks/types/asset.png",
-    backgroundImageUri = "/mighty-decks/background/card-backface.png",
+    backgroundImageUri = "/mighty-decks/background/card-backface2.png",
     ...restProps
 }: LayeredCardBackFaceProps) => {
     return (

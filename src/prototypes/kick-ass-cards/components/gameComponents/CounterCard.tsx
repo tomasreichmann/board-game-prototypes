@@ -158,7 +158,7 @@ export const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterCardPro
     return (
         <LayeredCardBackFace
             label="Counter"
-            labelClassName="text-kac-fire-lightest"
+            labelClassName="text-[#cbecf0]"
             iconUri="/mighty-decks/types/counter.png"
             className="CounterCardBackFace"
             {...restProps}

@@ -45,11 +45,11 @@ export default function BaseAssetModifierCardsPrintControls({ className }: BaseA
     const chunkedPagesProps = useChunkedPagesProps();
     const [copyCount, setCopyCount] = useState(1);
 
-    const baseAssetModifiers = assetModifiers.filter((asset) => asset.deck === "base modifier");
+    const baseAssetModifiers = assetModifiers.filter((asset) => asset.deck === "base mod");
 
     const items = useItemAdapter<BaseLayeredAssetModifierCard>(
-        //multiplyByCount(baseAssetModifiers, "count", defaultCountAdapter).map(adaptAssetModifier)
-        baseAssetModifiers.map(adaptAssetModifier)
+        multiplyByCount(baseAssetModifiers, "count", defaultCountAdapter).map(adaptAssetModifier)
+        //baseAssetModifiers.map(adaptAssetModifier)
     );
 
     return (

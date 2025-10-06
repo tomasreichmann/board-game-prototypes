@@ -18,7 +18,7 @@ export type BaseActorCardsPrintControlsProps = {
 
 const layeredBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/actor.png",
-    backgroundImageUri: "/mighty-decks/background/card-backface.png",
+    backgroundImageUri: "/mighty-decks/background/card-backface2.png",
     label: "Asset",
     labelClassName: "text-kac-gold-light",
 } as const;
@@ -30,7 +30,7 @@ const adaptActorRole = (props: LayeredActorCardProps, index: number): LayeredAct
     ...props,
     backFaceProps: layeredBackFaceProps,
     // backgroundImageUri: `/mighty-decks/background/paper${(index % 4) + 1}.png`, // paper1-4
-    backgroundImageUri: `/mighty-decks/background/paper1-with-image-shadow.png`,
+    backgroundImageUri: `/mighty-decks/background/paper-custom-with-image-shadow.png`,
     imageUri: actors[index % actors.length].imageUri,
 });
 

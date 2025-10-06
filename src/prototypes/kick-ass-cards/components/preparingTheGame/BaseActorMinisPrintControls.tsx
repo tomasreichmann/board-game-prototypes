@@ -78,7 +78,7 @@ export default function BaseActorMinisPrintControls({ className }: BaseActorMini
                             cutBorderStyle: "",
                             className: isTransparent
                                 ? "relative"
-                                : "relative bg-[url('/mighty-decks/paper.png')] bg-cover",
+                                : "relative bg-[url('/mighty-decks/background/paper1.png')] bg-cover bg-bottom",
                             imageUri,
                         } as PaperMiniProps)
                 )

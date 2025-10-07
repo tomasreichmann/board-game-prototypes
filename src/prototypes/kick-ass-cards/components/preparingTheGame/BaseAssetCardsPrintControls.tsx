@@ -14,7 +14,7 @@ import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import assets from "../../data/assets-en-deck";
 import { AssetType } from "../../types";
 import multiplyByCount, { defaultCountAdapter } from "@/utils/multiplyByCount";
-import { assetModifierMap } from "../../data/asset-modifiers-en-deck";
+import assetModifiers, { assetModifierMap } from "../../data/asset-modifiers-en-deck";
 import RichText from "../RichText";
 
 export type BaseAssetCardsPrintControlsProps = {
@@ -45,11 +45,11 @@ const adaptAsset = (asset: AssetType, index: number): BaseLayeredAssetCard => ({
     nounDeck: asset.deck,
     nounCornerIcon: "/mighty-decks/types/asset.png",
 
-    /* adjective: assetModifierMap.base_dangerous.title,
-    adjectiveEffect: assetModifierMap.base_dangerous.effect,
-    adjectiveDeck: assetModifierMap.base_dangerous.deck,
+    /* adjective: assetModifiers[index % assetModifiers.length].title,
+    adjectiveEffect: assetModifiers[index % assetModifiers.length].effect,
+    adjectiveDeck: assetModifiers[index % assetModifiers.length].deck,
     adjectiveCornerIcon: "/mighty-decks/types/asset.png",
-    imageOverlayUri: assetModifierMap.base_dangerous.icon || undefined, */
+    imageOverlayUri: assetModifiers[index % assetModifiers.length].icon || undefined, */
 
     imageUri: asset.icon,
     backFaceProps: {

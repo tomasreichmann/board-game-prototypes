@@ -17,19 +17,31 @@ export type EffectCardsPrintControlsProps = {
 export default function EffectCardsPrintControls({ className }: EffectCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     const [playerCount, setPlayerCount] = useState(5);
-    const items = useItemAdapter(
-        range(playerCount)
-            .map((playerIndex) =>
-                effects.map((item) => ({
-                    ...item,
-                    slug: `${playerIndex + 1}-${item.slug}`,
-                    className: "relative",
-                }))
-            )
-            .flat()
-            .sort((a, b) => a.title.localeCompare(b.title))
+    const rawItems = range(playerCount)
+        .map((playerIndex) =>
+            effects.map((item) => ({
+                ...item,
+                slug: `${playerIndex + 1}-${item.slug}`,
+                className: "relative",
+            }))
+        )
+        .flat()
+        .sort((a, b) => a.title.localeCompare(b.title));
+    const cardsPerPage = 8;
+    const missingCountToMakeFullPages = (cardsPerPage - (rawItems.length % cardsPerPage)) % cardsPerPage;
+    rawItems.push(
+        ...Array(missingCountToMakeFullPages)
+            .fill(null)
+            .map((_, index) => ({
+                slug: "empty-" + index,
+                title: "",
+                icon: "",
+                effect: "",
+                count: 0,
+                className: "relative",
+            }))
     );
-
+    const items = useItemAdapter(rawItems);
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>
             <div className="print:hidden mt-4">

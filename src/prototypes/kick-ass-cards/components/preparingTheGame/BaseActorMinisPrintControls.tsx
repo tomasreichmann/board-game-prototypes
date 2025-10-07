@@ -76,10 +76,14 @@ export default function BaseActorMinisPrintControls({ className }: BaseActorMini
                             height: "1in",
                             children: <PrintMarkerCorners />,
                             cutBorderStyle: "",
-                            className: isTransparent
-                                ? "relative"
-                                : "relative bg-[url('/mighty-decks/background/paper-custom-with-image-shadow.png')] [background-size:250%] [background-position:50%_35%] bg-center",
+                            className: "relative",
                             imageUri,
+                            backgroundImageUri: isTransparent
+                                ? ""
+                                : "/mighty-decks/background/paper-custom-with-image-shadow.png",
+                            backgroundImageClassName: isTransparent
+                                ? ""
+                                : "[background-size:250%] [background-position:50%_35%] bg-center",
                         } as PaperMiniProps)
                 )
             )

@@ -1,5 +1,5 @@
+import twm from "@/utils/twm";
 import React from "react";
-import { twMerge } from "tailwind-merge";
 
 export type PaperMiniProps = React.PropsWithChildren<{
     imageUri: string;
@@ -18,6 +18,8 @@ export type PaperMiniProps = React.PropsWithChildren<{
     backImageClassName?: string;
     baseClassName?: string;
     backBaseClassName?: string;
+    backgroundImageUri?: string;
+    backgroundImageClassName?: string;
 }>;
 
 export default function PaperMini({
@@ -32,6 +34,8 @@ export default function PaperMini({
     backImageStyle = { ...imageStyle, transform: "scaleY(-1)" },
     baseContent,
     backBaseContent = baseContent,
+    backgroundImageClassName,
+    backgroundImageUri,
     width = "2in",
     height = "2in",
     baseWidth = `calc(${width} / 2)`,
@@ -40,9 +44,32 @@ export default function PaperMini({
     children,
 }: PaperMiniProps) {
     return (
-        <div className={twMerge("PaperMini flex flex-col", className)}>
+        <div className={twm("PaperMini flex flex-col", className)}>
+            {backgroundImageUri && (
+                <>
+                    <div
+                        className={twm("absolute top-0", backgroundImageClassName)}
+                        style={{
+                            height: `calc(${baseWidth} + ${height})`,
+                            width,
+                            backgroundImage: `url("${backgroundImageUri}")`,
+                            transform: "rotateZ(180deg)",
+                            ...baseStyle,
+                        }}
+                    />
+                    <div
+                        className={twm("absolute bottom-0", backgroundImageClassName)}
+                        style={{
+                            height: `calc(${baseWidth} + ${height})`,
+                            width,
+                            backgroundImage: `url("${backgroundImageUri}")`,
+                            ...baseStyle,
+                        }}
+                    />
+                </>
+            )}
             <div
-                className={backBaseClassName}
+                className={twm("z-1 relative", backBaseClassName)}
                 style={{
                     height: baseWidth,
                     width,
@@ -58,7 +85,7 @@ export default function PaperMini({
                 {backBaseContent}
             </div>
             <div
-                className={backImageClassName}
+                className={twm("z-1 relative", backImageClassName)}
                 style={{
                     height,
                     width,
@@ -72,7 +99,7 @@ export default function PaperMini({
                 }}
             />
             <div
-                className={imageClassName}
+                className={twm("z-1 relative", imageClassName)}
                 style={{
                     height,
                     width,
@@ -86,7 +113,7 @@ export default function PaperMini({
                 }}
             />
             <div
-                className={baseClassName}
+                className={twm("z-1 relative", baseClassName)}
                 style={{
                     height: baseWidth,
                     width,

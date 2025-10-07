@@ -15,6 +15,7 @@ import assets from "../../data/assets-en-deck";
 import { AssetType } from "../../types";
 import multiplyByCount, { defaultCountAdapter } from "@/utils/multiplyByCount";
 import { assetModifierMap } from "../../data/asset-modifiers-en-deck";
+import RichText from "../RichText";
 
 export type BaseAssetCardsPrintControlsProps = {
     className?: string;
@@ -40,7 +41,7 @@ const adaptAsset = (asset: AssetType, index: number): BaseLayeredAssetCard => ({
     className: "relative",
 
     noun: asset.title,
-    nounEffect: asset.effect,
+    nounEffect: <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{asset.effect}</RichText>,
     nounDeck: asset.deck,
     nounCornerIcon: "/mighty-decks/types/asset.png",
 
@@ -50,10 +51,9 @@ const adaptAsset = (asset: AssetType, index: number): BaseLayeredAssetCard => ({
     adjectiveCornerIcon: "/mighty-decks/types/asset.png",
     imageOverlayUri: assetModifierMap.base_dangerous.icon || undefined, */
 
-    imageUri: asset.icon || "/mighty-decks/assets/base/explosive.png",
+    imageUri: asset.icon,
     backFaceProps: {
         ...sampleLayeredAssetBackFaceProps,
-        // backgroundImageUri: "/mighty-decks/background/card-backface-" + ((index % 18) + 1) + ".png",
     },
 });
 
@@ -62,11 +62,28 @@ export default function BaseAssetCardsPrintControls({ className }: BaseAssetCard
     const [copyCount, setCopyCount] = useState(1);
 
     const baseAssets = assets.filter((asset) => asset.deck === "base");
-
-    const items = useItemAdapter<BaseLayeredAssetCard>(
-        // multiplyByCount(baseAssets, "count", defaultCountAdapter).map(adaptAsset)
-        [baseAssets[0], baseAssets[1], ...baseAssets].map(adaptAsset)
+    const rawItems = multiplyByCount(baseAssets, "count", defaultCountAdapter).map(adaptAsset);
+    // const rawItems = [baseAssets[0], baseAssets[1], ...baseAssets].map(adaptAsset)
+    const cardsPerPage = 8;
+    const missingCountToMakeFullPages = (cardsPerPage - (rawItems.length % cardsPerPage)) % cardsPerPage;
+    rawItems.push(
+        ...Array(missingCountToMakeFullPages)
+            .fill(null)
+            .map((_, index) =>
+                adaptAsset(
+                    {
+                        slug: "empty-" + index,
+                        title: "",
+                        icon: "",
+                        count: 0,
+                        effect: "",
+                        cost: 0,
+                    },
+                    index
+                )
+            )
     );
+    const items = useItemAdapter<BaseLayeredAssetCard>(rawItems);
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>

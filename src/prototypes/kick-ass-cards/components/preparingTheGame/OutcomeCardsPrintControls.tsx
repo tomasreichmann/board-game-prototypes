@@ -18,14 +18,25 @@ export default function OutcomeCardsPrintControls({ className }: OutcomeCardsPri
     const chunkedPagesProps = useChunkedPagesProps();
     const [deckCount, setDeckCount] = useState(5);
     const outcomeSet = outcomes;
-
-    const items = useItemAdapter(
-        flatten(
-            range(deckCount).map((deckIndex) =>
-                outcomeSet.map((item) => ({ ...item, slug: deckIndex + "-" + item.slug }))
-            )
+    const rawItems = flatten(
+        range(deckCount).map((deckIndex) =>
+            outcomeSet.map((item) => ({ ...item, icon: item.icon as any, slug: deckIndex + "-" + item.slug }))
         )
     );
+    const cardsPerPage = 8;
+    const missingCountToMakeFullPages = (cardsPerPage - (rawItems.length % cardsPerPage)) % cardsPerPage;
+    rawItems.push(
+        ...Array(missingCountToMakeFullPages)
+            .fill(null)
+            .map((_, index) => ({
+                slug: "empty-" + index,
+                title: "",
+                icon: "",
+                description: "",
+                count: 0,
+            }))
+    );
+    const items = useItemAdapter(rawItems);
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>

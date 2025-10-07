@@ -6,7 +6,6 @@ import Input from "../controls/Input";
 import { range } from "lodash";
 import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
-import ActorCard, { ActorCardBackFace } from "../gameComponents/ActorCard";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import actors from "../../data/actors-deck";
 import LayeredActorCard, { LayeredActorCardBackFace, LayeredActorCardProps } from "../gameComponents/LayeredActorCard";
@@ -19,7 +18,7 @@ export type BaseActorCardsPrintControlsProps = {
 const layeredBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/actor.png",
     backgroundImageUri: "/mighty-decks/background/card-backface2.png",
-    label: "Asset",
+    label: "Actor",
     labelClassName: "text-kac-gold-light",
 } as const;
 
@@ -31,28 +30,42 @@ const adaptActorRole = (props: LayeredActorCardProps, index: number): LayeredAct
     backFaceProps: layeredBackFaceProps,
     // backgroundImageUri: `/mighty-decks/background/paper${(index % 4) + 1}.png`, // paper1-4
     backgroundImageUri: `/mighty-decks/background/paper-custom-with-image-shadow.png`,
-    imageUri: actors[index % actors.length].imageUri,
 });
 
 export default function BaseActorCardsPrintControls({ className }: BaseActorCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
     const [copyCount, setCopyCount] = useState(1);
     const actorImageUris = actors.map((a) => a.imageUri);
-    const items = useItemAdapter(
-        range(copyCount)
-            .map((copyIndex) =>
-                actorImageUris.map((imageUri, imageIndex) => ({
-                    slug: copyIndex + "-" + imageIndex,
-                    forPrint: true,
-                    name: "",
-                    nounCornerIcon: undefined,
-                    nounDeck: undefined,
-                    className: "relative",
-                    imageUri,
-                }))
-            )
-            .flat()
-    ).map(adaptActorRole);
+    const rawItems = range(copyCount)
+        .map((copyIndex) =>
+            actorImageUris.map((imageUri, imageIndex) => ({
+                slug: copyIndex + "-" + imageIndex,
+                forPrint: true,
+                name: "",
+                nounCornerIcon: undefined,
+                nounDeck: undefined,
+                className: "relative",
+                imageUri,
+            }))
+        )
+        .flat();
+    const cardsPerPage = 8;
+    const missingCountToMakeFullPages = (cardsPerPage - (rawItems.length % cardsPerPage)) % cardsPerPage;
+    rawItems.push(
+        ...Array(missingCountToMakeFullPages)
+            .fill(null)
+            .map((_, index) => ({
+                slug: "empty-" + index,
+                forPrint: true,
+                name: "",
+                nounCornerIcon: undefined,
+                nounDeck: undefined,
+                className: "relative",
+                imageUri: "",
+                count: 0,
+            }))
+    );
+    const items = useItemAdapter(rawItems).map(adaptActorRole);
 
     return (
         <div className={twMerge("flex flex-col gap-4 print:gap-0", className)}>

@@ -16,7 +16,7 @@ export type OutcomeCardsPrintControlsProps = {
 
 export default function OutcomeCardsPrintControls({ className }: OutcomeCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
-    const [deckCount, setDeckCount] = useState(1);
+    const [deckCount, setDeckCount] = useState(5);
     const outcomeSet = outcomes;
 
     const items = useItemAdapter(

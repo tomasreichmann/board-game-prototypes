@@ -45,7 +45,17 @@ const getColorClassName = (icon: string | undefined) => {
 };
 
 export default function OutcomeCard(props: OutcomeCardProps) {
-    const { className, size = "54x86", title, icon, description, instructions, children, ...restProps } = props;
+    const {
+        className,
+        size = "54x86",
+        title,
+        icon,
+        deck = "base",
+        description,
+        instructions,
+        children,
+        ...restProps
+    } = props;
     const colorClassName = getColorClassName(icon);
 
     // const isSmSize = allSizes[size].mm[1] < 70;
@@ -56,6 +66,8 @@ export default function OutcomeCard(props: OutcomeCardProps) {
             {...restProps}
             classNames={{ noun: colorClassName }}
             noun={title}
+            nounCornerIcon="/mighty-decks/types/outcome.png"
+            nounDeck={deck}
             imageUri={icon}
             nounEffect={
                 <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{description}</RichText>

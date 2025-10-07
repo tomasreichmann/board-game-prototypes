@@ -16,7 +16,7 @@ export type EffectCardsPrintControlsProps = {
 
 export default function EffectCardsPrintControls({ className }: EffectCardsPrintControlsProps) {
     const chunkedPagesProps = useChunkedPagesProps();
-    const [playerCount, setPlayerCount] = useState(4);
+    const [playerCount, setPlayerCount] = useState(5);
     const items = useItemAdapter(
         range(playerCount)
             .map((playerIndex) =>

@@ -1,13 +1,9 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
+import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { EffectType } from "../../types";
 import RichText from "../RichText";
-import { IconOrImage } from "../../../../components/Icon/IconOrImage";
-import { allSizes } from "../../../../components/print/paperSizes";
-import { H2 } from "../content/Text";
 import LayeredCard, { LayeredCardBackFace, LayeredCardBackFaceProps } from "./LayeredCard";
-import { LayeredActorCardBackFace } from "./LayeredActorCard";
 
 type OptionalKeysType = "slug" | "count";
 
@@ -83,6 +79,8 @@ export default function EffectCard({
                     <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{nounEffect}</RichText>
                 ) : undefined
             }
+            nounCornerIcon="/mighty-decks/types/effect.png"
+            nounDeck={deck}
             adjectiveEffect={
                 adjectiveEffect ? (
                     <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>

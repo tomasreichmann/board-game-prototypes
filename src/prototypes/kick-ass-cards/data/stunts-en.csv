@@ -1,99 +1,99 @@
 "slug","title","icon","requirements","effect","deck","count"
-"seductive","Seductive","/LP/icons/lips.png",,"Receive 2x free Boosts at the start of a social Encounter with a character that may find you attractive.","Universal",1
-"elusive","Elusive","/mighty-decks/elusive.png",,"Once per round, you can move to an adjacent zone when you defend from taking any Injury.","Universal",1
-"evasive","Evasive Maneuver","/mighty-decks/evasive-maneuver.png",,"+1 Effect on driving, riding, or piloting to avoid something.","Universal",1
-"charge","Charge","/mighty-decks/charge.png",,"+1 Effect on melee attacking after moving to a zone.","Universal",1
-"ballistic","Ballistic","/mighty-decks/ballistic.png",Requires a ranged or artillery weapon,"+1 Effect on shooting two or more zones away.","Universal",1
-"acrobatic","Acrobatic","/mighty-decks/acrobat.png",,"You can play two Outcome cards to overcome a movement-based challenge.","Universal",1
-"calm","Calm Under Pressure","/mighty-decks/calm.png",,"Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.","Universal",1
-"dontGiveUp","Don't Give Up","/mighty-decks/dontGiveUp.png",,"You need +1 Distress to get Panicked or Hopeless.","Universal",1
-"bringThePain","Bring the Pain","/LP/icons/bringThePain.png",,"You need +1 Injury to get Unconscious.","Universal",1
-"rage","Rage","/mighty-decks/rage.png",,"Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.","Universal",1
-"recklessAttack","Reckless Attack","/mighty-decks/reckless-attack.png",,"Gain a Complication to add +1 Effect to your melee attack.","Universal",1
-"brushItOff","Brush It Off","/mighty-decks/brush-it-off.png",,"Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.","Universal",1
-"joker","Joker","/mighty-decks/joker.png",,"Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.","Universal",1
-"rallyingCry","Rallying Cry","/mighty-decks/rallying-cry.png",,"Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.","Universal",1
-"ghost","Ghost","/mighty-decks/ghost.png",,"You can choose to receive a Distress for a +2 Effect when trying to avoid detection.","Universal",1
-"allIn","All In","/mighty-decks/all-in.png",,"You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.","Universal",1
-"kleptomaniac","Kleptomaniac","/mighty-decks/pickpocket.png",,"When stealing or looting, you can play cards from your Outcome deck. Get an extra Asset for each Success, Distress for Fumble and Injury for Chaos.","Universal",1
-"foresight","Foresight","/mighty-decks/crystal-ball.png",,"Receive a clue from the Storyteller in exchange for Distress.","Universal",1
-"burglar","Burglar","/mighty-decks/burglar.png",,"You can choose to receive a Distress for a +2 Effect when trying to break into something.","Universal",1
-"tactical","Tactical","/mighty-decks/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",1
-"analytical","Analytical","/mighty-decks/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",1
-"sympathetic","Sympathetic","/mighty-decks/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",1
-"intuitive","Intuitive","/mighty-decks/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","Universal",1
-"fearless","Fearless","/mighty-decks/fearless.png",,"You are always Panicked (you draw Outcome cards randomly), but you never turn Hopeless (You don't give up or flee), you get Hindered instead.","Universal",1
-"strategist","Strategist","/mighty-decks/chess.png",,"Your Outcome card hand limit is increased by 1.","Universal",1
-"assassin","Assassin","/mighty-decks/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","Universal",1
-"ruthless","Ruthless","/mighty-decks/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.","Universal",1
-"elemental","Elemental","/mighty-decks/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","Fantasy",1
-"timeStop","Time Stop","/mighty-decks/time-stop.png",,"Receive a Distress to prevent a turn or round Counter from advancing.","Fantasy",1
-"recklessPiloting","Reckless Driving","/mighty-decks/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","Modern",1
-"burst","Burst fire","/mighty-decks/burst.png","Requires a repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","Modern",1
-"whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","Modern",1
-"demoExpert","Demolitions Expert","/mighty-decks/explosion.png",,"You never hit yourself with your own explosions.","Modern",1
-"sharpshooter","Sharpshooter","/mighty-decks/sharpshooter.png",Requires a ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","Modern",1
-"overclock","Overclock","/mighty-decks/overclock.png",,"Gain a Burning and draw an extra Outcome card to your hand.","Modern",1
-"psychonaut","Psychonaut","/mighty-decks/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","Modern",1
-"chargedAttack","Charged attack","/mighty-decks/charged.png",Requires a charge weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","Sci-Fi",1
-"upload","Upload","/LP/icons/upload.png",Requires a synthetic body,"You can upload your consciousness into a different powered down machine.","Sci-Fi",1
-"turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.","sci-Fi",1
-"heatSink","Heat Sink","/LP/icons/cooler.png","Requires a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Freezing cards.","Sci-Fi",1
-"pummel","Pummel","/mighty-decks/stunts/pummel.png","Win an unarmed duel.","Playing a Partial Success to attack an opponent while unarmed inflicts +1 Injury.","Brawler",1
-"flex","Flex","/mighty-decks/stunts/flex.png","Impress or intimidate someone with your raw strength.","+1 Effect when using your body to impress or intimidate.","Brawler",1
-"oversizedWeaponry","Oversized Weaponry","/mighty-decks/stunts/oversized-weaponry.png","Hit something with a weapon too large to wield easily.","You can use oversized weapons. You can wield two-handed weapons in one hand.","Brawler",1
-"offensiveThrow","Offensive Throw","/mighty-decks/stunts/offensive-throw.png","Throw something most people cannot throw.","You can throw characters of your size or smaller up to 1 zone away.","Brawler",1
-"powerAttack","Power Attack","/mighty-decks/stunts/power-attack.png","Strike an enemy so hard they stagger or fall.","Your melee attacks leave enemies open—they receive a Complication.","Brawler",1
-"warCry","War Cry","/mighty-decks/stunts/war-cry.png","Intimidate multiple opponents at once.","Play Success to intimidate all enemies in your zone, giving them 1 Distress.","Brawler",1
-"hardenedSkin","Hardened Skin","/mighty-decks/stunts/hardened-skin.png","Receive 3 Injury from one attack and remain standing.","Unarmed attacks against you deal -1 Injury.","Brawler",1
-"grapple","Grapple","/mighty-decks/stunts/grapple.png","Successfully restrain an enemy in close combat.","When you successfully block a melee attack, you automatically grapple the attacker.","Brawler",1
-"chokeOut","Choke Out","/mighty-decks/stunts/choke-out.png","Hold an opponent down until they submit or pass out.","If you grapple an enemy for 2 consecutive turns, they lose consciousness.","Brawler",1
-"smash","Smash","/mighty-decks/stunts/smash.png","Knock down 3 or more opponents with a single melee attack.","Your melee attacks damage up to 3 enemies in the same zone.","Brawler",1
-"ghostStep","Ghost Step","/mighty-decks/stunts/ghost-step.png","Sneak past a group of at least 3 enemies without being detected.","+1 Effect while sneaking or hiding.","Spy",1
-"masterOfDisguise","Master of Disguise","/mighty-decks/stunts/master-of-disguise.png","Deceive someone by assuming a false identity.","+1 Effect when you assume a false identity, fooling most who don’t scrutinize you closely.","Spy",1
-"venomous","Venomous","/mighty-decks/stunts/venomous.png","Successfully poison a target without them noticing.","You cannot fail when applying poison. You can apply poison to a weapon and attack with it in 1 action.","Spy",1
-"forger","Forger","/mighty-decks/stunts/forger.png","Deceive someone with a document or evidence you forged.","+1 Effect when manipulating with forged documents. The documents always hold up under casual inspection.","Spy",1
-"stalker","Stalker","/mighty-decks/stunts/stalker.png","Knock-out or assassinate an unaware target in 1 action.","Your attacks deal +1 Injury or Distress to unaware enemies.","Spy",1
-"escapist","Escapist","/mighty-decks/stunts/escapist.png","Lose enemies chasing you.","+1 Effect when escaping enemies without leaving a trace.","Spy",1
-"safecracker","Safecracker","/mighty-decks/stunts/safecracker.png","Break into a safe or other high-security place or container.","+1 Effect when braking into or out of locked places or containers.","Spy",1
-"sweetLies","Sweet Lies","/mighty-decks/stunts/sweet-lies.png","Successfully manipulate someone into trusting you with false information.","Partial Success does not raise suspicion when deceiving someone.","Spy",1
-"pickpocket","Pickpocket","/mighty-decks/stunts/pickpocket.png","Steal two items from a person without them noticing.","When you pickpocket someone, you always get an extra item.","Spy",1
-"stagedAccident","Staged Accident","/mighty-decks/stunts/staged-accident.png","Convince someone that a person you killed died as an accident.","Killing or knocking-out an enemy for the first time in a scene looks like an accident.","Spy",1
-"forager","Forager","/mighty-decks/stunts/forager.png","Find food for your whole group.","You get 2x the food when foraging.","Ranger",1
-"tracker","Tracker","/mighty-decks/stunts/tracker.png","Track an enemy to their lair.","You can never lose a track of an unsuspecting prey.","Ranger",1
-"camouflage","Camouflage","/mighty-decks/stunts/camouflage.png","Fool an enemy by camouflaging yourself without being discovered.","Your camouflage always holds up unless inspected.","Ranger",1
-"hunter","Hunter","/mighty-decks/stunts/hunter.png","Knock-out or kill an enemy with one shot.","Shooting an enemy with full health inflicts +1 Injury.","Ranger",1
-"animalTrainer","Animal Trainer","/mighty-decks/stunts/animal-trainer.png","Make an animal follow your command.","Play a Special Action to teach your pet a new trick.","Ranger",1
-"trapper","Trapper","/mighty-decks/stunts/trapper.png","Make a trap and capture an enemy or an animal in it.","Your traps don't hurt you or your allies.","Ranger",1
-"marksman","Marksman","/mighty-decks/stunts/marksman.png","Hit a target 3 zones away.","You can shoot ranged weapons 1 zone further.","Ranger",1
-"rangedWeaponMaintenance","Ranged Weapon Maintenance","/mighty-decks/stunts/ranged-weapon-maintenance.png","Repair a broken or jammed ranged weapon.","Ranged weapons never jam when you use them.","Ranger",1
-"penetration","Penetration","/mighty-decks/stunts/penetration.png","Hurt two enemies with one shot.","You can apply extra ranged Injury left after defeating an enemy to another enemy in the same zone.","Ranger",1
-"survivor","Survivor","/mighty-decks/stunts/survivor.png","Survive a natural hazard without consequences","You get +1 Effect when dealing with natural hazards.","Ranger",1
-"linguist","Linguist","/mighty-decks/stunts/linguist.png","Decipher a coded message or translate an ancient text.","You can always recognize a language by text or speech. You receive +1 Effect when decoding or translating.",Scholar,1
-"historian","Historian","/mighty-decks/stunts/historian.png","Recall or uncover a crucial historical event.","You always know 1 useful fact about any historical site, artifact, or tradition relevant to your setting.",Scholar,1
-"botanist","Botanist","/mighty-decks/stunts/botanist.png","Identify a rare or useful plant in the wild.","You automatically recognize common plants. You receive +1 Effect when using plants for medicine, poison, or alchemy.",Scholar,1
-"chemist","Chemist","/mighty-decks/stunts/chemist.png","Create an effective potion, poison, or explosive compound.","Chemicals you craft have +1 Effect or +1 round duration.",Scholar,1
-"tinkerer","Tinkerer","/mighty-decks/stunts/tinkerer.png","Repair or modify a device to serve an unintended purpose.","You don't need specialized tools when repairing or crafting.",Scholar,1
-"physician","Physician","/mighty-decks/stunts/physician.png","Heal 3 Injuries in action.","Play a Success to remove up to 2x Injury from an ally outside of combat.",Scholar,1
-"inventor","Inventor","/mighty-decks/stunts/inventor.png","Design and build a completely new tool or device.","Play a Special Action to invent a gadget tailored to the current situation. Destroy a non-single-use item for a +1 Effect.",Scholar,1
-"academic","Academic","/mighty-decks/stunts/academic.png","Teach an ally a new skill.","Play Partial Success to give an ally a Boost and discard a Complication.",Scholar,1
-"powerfulRhetoric","Powerful Rhetoric","/mighty-decks/stunts/powerful-rhetoric.png","Win a public debate or convince a group to change their stance.","Playing a Partial Success when debating or persuading counts as Success.",Scholar,1
-"mastermind","Mastermind","/mighty-decks/stunts/mastermind.png","Defeat enemies using a formation or tactic.","Once per scene, play a Success to prevent your ally in the same zone from receiving any cards until your next turn.",Scholar,1
-"senseDanger","Sense Danger","/mighty-decks/stunts/sense-danger.png","Detect an unseen threat before it strikes.","You receive +1 Effect when trying to notice ambushes, traps, or hidden dangers.","Mystic",1
-"readEmotions","Read Emotions","/mighty-decks/stunts/read-emotions.png","Correctly call out a liar.","Play a Success to detect underlying emotions of a character.","Mystic",1
-"markAnOmen","Mark an Omen","/mighty-decks/stunts/mark-an-omen.png","Interpret or create an omen that influences others.","Play a Success to make all enemies in the same zone believe an omen is real and gain 1 Distress.","Mystic",1
-"genusLoci","Genus Loci","/mighty-decks/stunts/genus-loci.png","Connect with a place or object's lingering essence.","Play a Success to glimpse into an object or location’s past and learn a hidden truth.","Mystic",1
-"vibe","Vibe","/mighty-decks/stunts/vibe.png","Make a friend.","You receive +1 Effect when making a first impression or making someone like you.","Mystic",1
-"guideEmotions","Guide Emotions","/mighty-decks/stunts/guide-emotions.png","Talk someone down from attacking you.","+1 Effect when trying to calm someone down.","Mystic",1
-"crowdControl","Crowd Control","/mighty-decks/stunts/crowd-control.png","Sway a crowd to obey you.","Play a Special Action to control command a crowd, calming, riling up, or directing them.","Mystic",1
-"enterTrance","Enter Trance","/mighty-decks/stunts/enter-trance.png","Experience a trance like state.","Play a Success to fall into a trance and ignore a mental or environmental hazard or charm someone to stun them for a round.","Mystic",1
-"bless","Bless","/mighty-decks/stunts/bless.png","Make someone believe you blessed them.","Once per scene, play a Success to remove a status card from an ally.","Mystic",1
-"circleOfProtection","Circle of Protection","/mighty-decks/stunts/circle-of-protection.png","Create a protective boundary.","Once per session, play a Success to shield yourself and allies in your zone from the next hostile action.","Mystic",1
-"lastStand","Last Stand","/mighty-decks/stunts/last-stand.png","Defeat an enemy while Panicked and Injured.","When defending while you have 5 or more negative Effect cards, take one less (min 1) negative Effect card.","Brawler",1
-"hiddenArsenal","Hidden Arsenal","/mighty-decks/stunts/hidden-arsenal.png","Smuggle a weapon into a restricted area.","Once per scene, reveal a hidden weapon to attack with +2 Effect.","Spy",1
-"calmAnimal","Calm Animal","/mighty-decks/stunts/calm-animal.png","Calm down an aggressive animal.","Animals are not aggressive to you without provocation.","Ranger",1
-"medic","Medic","/mighty-decks/stunts/medic.png","Revive a fallen ally.","+1 Effect when treating Injuries in battle.","Scholar",1
-"hex","Hex","/mighty-decks/stunts/hex.png","Make someone believe you cursed them.","Once per scene, play Success to make a person believe you cursed them. They receive 2x Distress. Usable once per scene.","Scholar",1
-"protector","Protector","/mighty-decks/stunts/protector.png","Take a hit for someone else.","Play an Outcome card to defend someone in your zone. You receive any unblocked Injuries.","Universal",1
-"forwardAssault","Forward Assault","/mighty-decks/stunts/forward-assault.png","Make all your allies assault a zone in one turn.","Designate a zone. +1 Effect to everyone who moves into that zone and attacks during the next turn.","Universal",0
-"coverFire","Cover Fire","/mighty-decks/stunts/cover-fire.png","Intimidate a group of enemies with your firepower.","Once per scene, play a Success to inflict -1 Effect on all enemies' attacks in the zone until your next turn.","Universal",0
+"seductive","Seductive","/mighty-decks/stunts/base/seductive.png","Seduce someone","Receive 2x Boosts at the start of a social Encounter with a character that may find you attractive.","Spy",1
+"elusive","Elusive","/mighty-decks/stunts/base/elusive.png","Retreat from the zone where you took damage","Once per round, you can move to an adjacent zone when you defend from taking any Injury.","Spy",1
+"dontGiveUp","Don't Give Up","/mighty-decks/stunts/base/dont-give-up.png","Recover from Panicked","You need +1 Distress to get Panicked or Hopeless.","Brawler",1
+"bringThePain","Bring the Pain","/mighty-decks/stunts/base/bring-the-pain.png","Sustain 4x Injury in a single Encounter without going Unconscious","You need +1 Injury to get Unconscious.","Brawler",1
+"rallyingCall","Rallying Call","/mighty-decks/stunts/base/rallying-call.png","Boost an ally","Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.","Ranger",1
+"kleptomaniac","Kleptomaniac","/mighty-decks/stunts/base/kleptomaniac.png","Steal something you don't need","When stealing or looting, play up to 3 cards from your Outcome deck. Get an extra Asset for Success, Distress for Fumble and Injury for Chaos.","Universal",1
+"foresight","Foresight","/mighty-decks/stunts/base/foresight.png","Successfully fortell something","Receive a clue from the Storyteller in exchange for Distress.","Mystic",1
+"fearless","Fearless","/mighty-decks/stunts/base/fearless.png","Successfully defend from a Distress while Panicked","You are always Panicked, but you get Hindered instead of Hopeless.","Scholar",1
+"strategist","Strategist","/mighty-decks/stunts/base/strategist.png","Reach a +4 Effect on your action","Your Outcome card hand limit is increased by 1.","Scholar",1
+"demolitionsExpert","Demolitions Expert","/mighty-decks/stunts/base/demolitions-expert.png","Hit yourself with your own explosive","You never hit yourself with your own explosives.","Ranger",1
+"pummel","Pummel","/mighty-decks/stunts/base/pummel.png","Win an unarmed duel.","Playing a Partial Success to attack an opponent while unarmed inflicts +1 Injury.","Brawler",1
+"flex","Flex","/mighty-decks/stunts/base/flex.png","Impress or intimidate someone with your raw strength.","+1 Effect when using your body to impress or intimidate.","Brawler",1
+"oversizedWeaponry","Oversized Weaponry","/mighty-decks/stunts/base/oversized-weaponry.png","Hit something with a weapon too large to wield easily.","You can use oversized weapons. You can wield two-handed weapons in one hand.","Brawler",1
+"offensiveThrow","Offensive Throw","/mighty-decks/stunts/base/offensive-throw.png","Throw something most people cannot throw.","You can throw characters of your size or smaller up to 1 zone away.","Brawler",1
+"powerAttack","Power Attack","/mighty-decks/stunts/base/power-attack.png","Strike an enemy so hard they stagger or fall.","Your melee attacks leave enemies open—they receive a Complication.","Brawler",1
+"warCry","War Cry","/mighty-decks/stunts/base/war-cry.png","Intimidate multiple opponents at once.","Play Success to intimidate all enemies in your zone, giving them 1 Distress.","Brawler",1
+"hardenedSkin","Hardened Skin","/mighty-decks/stunts/base/hardened-skin.png","Receive 3 Injury from one attack and remain standing.","Unarmed attacks against you deal -1 Injury.","Brawler",1
+"grapple","Grapple","/mighty-decks/stunts/base/grapple.png","Successfully restrain an enemy in close combat.","When you successfully block a melee attack, you automatically grapple the attacker.","Brawler",1
+"chokeOut","Choke Out","/mighty-decks/stunts/base/choke-out.png","Hold an opponent down until they submit or pass out.","If you grapple an enemy for 2 consecutive turns, they lose consciousness.","Brawler",1
+"smash","Smash","/mighty-decks/stunts/base/smash.png","Knock down 3 or more opponents with a single melee attack.","Your melee attacks damage up to 3 enemies in the same zone.","Brawler",1
+"ghostStep","Ghost Step","/mighty-decks/stunts/base/ghost-step.png","Sneak past an enemy without being detected.","+1 Effect while sneaking or hiding.","Spy",1
+"masterOfDisguise","Master of Disguise","/mighty-decks/stunts/base/master-of-disguise.png","Deceive someone by assuming a false identity.","+1 Effect when you assume a false identity, fooling most who don’t scrutinize you closely.","Spy",1
+"venomous","Venomous","/mighty-decks/stunts/base/venomous.png","Successfully poison a target without them noticing.","You cannot fail when applying poison. You can apply poison to a weapon and attack with it in 1 action.","Spy",1
+"forger","Forger","/mighty-decks/stunts/base/forger.png","Deceive someone with a document or evidence you forged.","+1 Effect when manipulating with forged documents. The documents always hold up under casual inspection.","Spy",1
+"stalker","Stalker","/mighty-decks/stunts/base/stalker.png","Knock-out or assassinate an unaware target in 1 action.","Your attacks deal +1 Injury or Distress to unaware enemies.","Spy",1
+"escapist","Escapist","/mighty-decks/stunts/base/escapist.png","Lose enemies chasing you.","+1 Effect when escaping enemies without leaving a trace.","Spy",1
+"safecracker","Safecracker","/mighty-decks/stunts/base/safecracker.png","Break into a safe or other high-security place or container.","+1 Effect when braking into or out of locked places or containers.","Spy",1
+"sweetLies","Sweet Lies","/mighty-decks/stunts/base/sweet-lies.png","Successfully manipulate someone into trusting you with false information.","Partial Success does not raise suspicion when deceiving someone.","Spy",1
+"pickpocket","Pickpocket","/mighty-decks/stunts/base/pickpocket.png","Steal two items from a person without them noticing.","When you pickpocket someone, you always get an extra item.","Spy",1
+"stagedAccident","Staged Accident","/mighty-decks/stunts/base/staged-accident.png","Convince someone that a person you killed died as an accident.","Killing or knocking-out an enemy for the first time in a scene looks like an accident.","Spy",1
+"forager","Forager","/mighty-decks/stunts/base/forager.png","Find food for your whole group.","You get 2x the food when foraging.","Ranger",1
+"tracker","Tracker","/mighty-decks/stunts/base/tracker.png","Track an enemy to their lair.","You can never lose a track of an unsuspecting prey.","Ranger",1
+"camouflage","Camouflage","/mighty-decks/stunts/base/camouflage.png","Fool an enemy by camouflaging yourself without being discovered.","Your camouflage always holds up unless inspected.","Ranger",1
+"hunter","Hunter","/mighty-decks/stunts/base/hunter.png","Knock-out or kill an enemy with one shot.","Shooting an enemy with full health inflicts +1 Injury.","Ranger",1
+"animalTrainer","Animal Trainer","/mighty-decks/stunts/base/animal-trainer.png","Make an animal follow your command.","Play a Special Action to teach your pet a new trick.","Ranger",1
+"trapper","Trapper","/mighty-decks/stunts/base/trapper.png","Make a trap and capture an enemy or an animal in it.","Your traps don't hurt you or your allies.","Ranger",1
+"marksman","Marksman","/mighty-decks/stunts/base/marksman.png","Hit a target 3 zones away.","You can shoot ranged weapons 1 zone further.","Ranger",1
+"rangedWeaponMaintenance","Ranged Weapon Maintenance","/mighty-decks/stunts/base/ranged-weapon-maintenance.png","Repair a broken or jammed ranged weapon.","Ranged weapons never jam when you use them.","Ranger",1
+"penetration","Penetration","/mighty-decks/stunts/base/penetration.png","Hurt two enemies with one shot.","You can apply extra ranged Injury left after defeating an enemy to another enemy in the same zone.","Ranger",1
+"survivor","Survivor","/mighty-decks/stunts/base/survivor.png","Survive a natural hazard without consequences","You get +1 Effect when dealing with natural hazards.","Ranger",1
+"linguist","Linguist","/mighty-decks/stunts/base/linguist.png","Decipher a coded message or translate an ancient text.","You can always recognize a language by text or speech. You receive +1 Effect when decoding or translating.",Scholar,1
+"historian","Historian","/mighty-decks/stunts/base/historian.png","Recall or uncover a crucial historical event.","You always know 1 useful fact about any historical site, artifact, or tradition relevant to your setting.",Scholar,1
+"botanist","Botanist","/mighty-decks/stunts/base/botanist.png","Identify a rare or useful plant in the wild.","You automatically recognize common plants. You receive +1 Effect when using plants for medicine, poison, or alchemy.",Scholar,1
+"chemist","Chemist","/mighty-decks/stunts/base/chemist.png","Create an effective potion, poison, or explosive compound.","Chemicals you craft have +1 Effect or +1 round duration.",Scholar,1
+"tinkerer","Tinkerer","/mighty-decks/stunts/base/tinkerer.png","Repair or modify a device to serve an unintended purpose.","You don't need specialized tools when repairing or crafting.",Scholar,1
+"physician","Physician","/mighty-decks/stunts/base/physician.png","Heal 3 Injuries in action.","Play a Success to remove up to 2x Injury from an ally outside of combat.",Scholar,1
+"inventor","Inventor","/mighty-decks/stunts/base/inventor.png","Design and build a completely new tool or device.","Play a Special Action to invent a gadget tailored to the current situation. Destroy a non-single-use item for a +1 Effect.",Scholar,1
+"academic","Academic","/mighty-decks/stunts/base/academic.png","Teach an ally a new skill.","Play Partial Success to give an ally a Boost and discard a Complication.",Scholar,1
+"powerfulRhetoric","Powerful Rhetoric","/mighty-decks/stunts/base/powerful-rhetoric.png","Win a public debate or convince a group to change their stance.","Playing a Partial Success when debating or persuading counts as Success.",Scholar,1
+"mastermind","Mastermind","/mighty-decks/stunts/base/mastermind.png","Defeat enemies using a formation or tactic.","Once per scene, play a Success to prevent your ally in the same zone from receiving any cards until your next turn.",Scholar,1
+"senseDanger","Sense Danger","/mighty-decks/stunts/base/sense-danger.png","Detect an unseen threat before it strikes.","You receive +1 Effect when trying to notice ambushes, traps, or hidden dangers.","Mystic",1
+"readEmotions","Read Emotions","/mighty-decks/stunts/base/read-emotions.png","Correctly call out a liar.","Play a Success to detect underlying emotions of a character.","Mystic",1
+"markAnOmen","Mark an Omen","/mighty-decks/stunts/base/mark-an-omen.png","Interpret or create an omen that influences others.","Play a Success to make all enemies in the same zone believe an omen is real and gain 1 Distress.","Mystic",1
+"genusLoci","Genus Loci","/mighty-decks/stunts/base/genus-loci.png","Connect with a place or object's lingering essence.","Play a Success to glimpse into an object or location’s past and learn a hidden truth.","Mystic",1
+"vibe","Vibe","/mighty-decks/stunts/base/vibe.png","Make a friend.","You receive +1 Effect when making a first impression or making someone like you.","Mystic",1
+"guideEmotions","Guide Emotions","/mighty-decks/stunts/base/guide-emotions.png","Talk someone down from attacking you.","+1 Effect when trying to calm someone down.","Mystic",1
+"crowdControl","Crowd Control","/mighty-decks/stunts/base/crowd-control.png","Sway a crowd to obey you.","Play a Special Action to control command a crowd, calming, riling up, or directing them.","Mystic",1
+"enterTrance","Enter Trance","/mighty-decks/stunts/base/enter-trance.png","Experience a trance like state.","Play a Success to fall into a trance and ignore a mental or environmental hazard or charm someone to stun them for a round.","Mystic",1
+"bless","Bless","/mighty-decks/stunts/base/bless.png","Make someone believe you blessed them.","Once per scene, play a Success to remove a status card from an ally.","Mystic",1
+"circleOfProtection","Circle of Protection","/mighty-decks/stunts/base/circle-of-protection.png","Create a protective boundary.","Once per session, play a Success to shield yourself and allies in your zone from the next hostile action.","Mystic",1
+"lastStand","Last Stand","/mighty-decks/stunts/base/last-stand.png","Defeat an enemy while Panicked and Injured.","When defending while you have 5 or more negative Effect cards, take one less (min 1) negative Effect card.","Brawler",1
+"hiddenArsenal","Hidden Arsenal","/mighty-decks/stunts/base/hidden-arsenal.png","Smuggle a weapon into a restricted area.","Once per scene, reveal a hidden weapon to attack with +2 Effect.","Spy",1
+"calmAnimal","Calm Animal","/mighty-decks/stunts/base/calm-animal.png","Calm down an aggressive animal.","Animals are not aggressive to you without provocation.","Ranger",1
+"medic","Medic","/mighty-decks/stunts/base/medic.png","Revive a fallen ally.","+1 Effect when treating Injuries in battle.","Scholar",1
+"hex","Hex","/mighty-decks/stunts/base/hex.png","Make someone believe you cursed them.","Once per scene, play Success to make a person believe you cursed them. They receive 2x Distress. Usable once per scene.","Scholar",1
+"protector","Protector","/mighty-decks/stunts/base/protector.png","Take a hit for someone else.","Play an Outcome card to defend someone in your zone. You receive any unblocked Injuries.","Brawler",0
+"forwardAssault","Forward Assault","/mighty-decks/stunts/base/forward-assault.png","Make all your allies assault a zone in one turn.","Designate a zone. +1 Effect to everyone who moves into that zone and attacks during the next turn.","Mystic",0
+"coverFire","Cover Fire","/mighty-decks/stunts/base/cover-fire.png","Intimidate a group of enemies with your firepower.","Once per scene, play a Success to inflict -1 Effect on all enemies' attacks in the zone until your next turn.","Ranger",0
+"evasive","Evasive Maneuver","/mighty-decks/evasive-maneuver.png",,"+1 Effect on driving, riding, or piloting to avoid something.","Universal",0
+"charge","Charge","/mighty-decks/charge.png","Defeat an enemy in melee right after entering a zone","+1 Effect on melee attacking after moving to a zone.","Universal",0
+"ballistic","Ballistic","/mighty-decks/ballistic.png","Defeat an enemy with a ranged attack without a line of sight","+1 Effect on shooting two or more zones away.","Universal",0
+"acrobatic","Acrobatic","/mighty-decks/acrobat.png",,"You can combine the Effect of 2 Outcome cards to overcome a movement-based challenge.","Universal",0
+"calm","Calm Under Pressure","/mighty-decks/calm.png",,"Needs rework: Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.","Universal",0
+"rage","Rage","/mighty-decks/rage.png",,"Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.","Universal",0
+"recklessAttack","Reckless Attack","/mighty-decks/reckless-attack.png","Receive an Injury during your attack","Gain a Complication to add +1 Effect to your melee attack.","Universal",0
+"brushItOff","Brush It Off","/mighty-decks/brush-it-off.png",,"Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.","Universal",0
+"joker","Joker","/mighty-decks/joker.png",,"Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.","Universal",0
+"ghost","Ghost","/mighty-decks/ghost.png",,"You can choose to receive a Distress for a +2 Effect when trying to avoid detection.","Universal",0
+"allIn","All In","/mighty-decks/all-in.png",,"You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.","Universal",0
+"burglar","Burglar","/mighty-decks/burglar.png",,"You can choose to receive a Distress for a +2 Effect when trying to break into something.","Universal",0
+"tactical","Tactical","/mighty-decks/tactical.png",,"At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",0
+"analytical","Analytical","/mighty-decks/blackboard.png",,"At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",0
+"sympathetic","Sympathetic","/mighty-decks/sympathetic.png",,"At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.","Universal",0
+"intuitive","Intuitive","/mighty-decks/intuitive.png",,"At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.","Universal",0
+"assassin","Assassin","/mighty-decks/dagger.png",,"+2 Effect when you attack someone who is not aware of you.","Universal",0
+"ruthless","Ruthless","/mighty-decks/ruthless.png",,"When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.","Universal",0
+"elemental","Elemental","/mighty-decks/elemental.png",,"+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.","Fantasy",0
+"timeStop","Time Stop","/mighty-decks/time-stop.png","Fulfill a Counter with your action","Receive a Distress to prevent a turn or round Counter from advancing.","Fantasy",0
+"recklessPiloting","Reckless Driving","/mighty-decks/car-jump.png",,"+1 Effect on driving, riding, or piloting to cause damage.","Modern",0
+"burst","Burst fire","/mighty-decks/burst.png","Requires a repeat-fire weapon","You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.","Modern",0
+"whiteHat","White Hat Hacker","/LP/icons/whiteHat.png",,"+1 Effect when hacking for altruistic reasons.","Modern",0
+"sharpshooter","Sharpshooter","/mighty-decks/sharpshooter.png",Requires a ranged or thrown weapon,"+1 Effect on shooting or throwing at an inanimate object.","Modern",0
+"overclock","Overclock","/mighty-decks/overclock.png",,"Gain a Burning and draw an extra Outcome card to your hand.","Modern",0
+"psychonaut","Psychonaut","/mighty-decks/psychonaut.png",,"You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.","Modern",0
+"chargedAttack","Charged attack","/mighty-decks/charged.png",Requires a charge weapon,"You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.","Sci-Fi",0
+"upload","Upload","/LP/icons/upload.png",Requires a synthetic body,"You can upload your consciousness into a different powered down machine.","Sci-Fi",0
+"turret","Deploy a turret","/LP/icons/turret.png",,"Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.","sci-Fi",0
+"heatSink","Heat Sink","/LP/icons/cooler.png","Requires a synthetic body","Action: touch two allies (or self) in your zone and discard any pairs of Heat and Freezing cards.","Sci-Fi",0

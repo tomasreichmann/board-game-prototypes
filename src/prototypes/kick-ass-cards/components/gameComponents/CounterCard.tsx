@@ -7,6 +7,7 @@ import { allSizes } from "../../../../components/print/paperSizes";
 import { H2 } from "../content/Text";
 import { Layer } from "recharts";
 import { LayeredCardBackFace } from "./LayeredCard";
+import { LayeredActorCardBackFaceProps } from "./LayeredActorCard";
 
 export type CounterCardProps = React.PropsWithChildren<
     {
@@ -154,7 +155,7 @@ export default function CounterCard({
     );
 }
 
-export const CounterCardBackFace = ({ icon, deck, ...restProps }: CounterCardProps) => {
+export const CounterCardBackFace = ({ ...restProps }: LayeredActorCardBackFaceProps) => {
     return (
         <LayeredCardBackFace
             label="Counter"

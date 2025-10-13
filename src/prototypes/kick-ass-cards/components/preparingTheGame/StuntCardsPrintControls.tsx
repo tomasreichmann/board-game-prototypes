@@ -15,11 +15,12 @@ export default function StuntCardsPrintControls({ className }: StuntCardsPrintCo
     const chunkedPagesProps = useChunkedPagesProps();
 
     const items = useItemAdapter(
-        stunts.map((item) => ({
-            ...item,
-            className: "relative",
-        }))
-        .filter((item) => item.count !== 0)
+        stunts
+            .map((item) => ({
+                ...item,
+                className: "relative",
+            }))
+            .filter((item) => item.count !== 0)
         //.sort((a, b) => a.title.localeCompare(b.title))
     );
     return (

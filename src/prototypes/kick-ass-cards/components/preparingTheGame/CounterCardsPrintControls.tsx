@@ -8,10 +8,8 @@ import Print from "../../../../components/print/Print";
 import Icon from "../Icon";
 import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import counters, { CounterType } from "../../data/counters-deck";
-import Card, { CardBody, CardHeader } from "../gameComponents/Card";
 import { PaperProps } from "../../../../components/print/Paper/Paper";
 import { CounterCardBackFace } from "../gameComponents/CounterCard";
-import { Layer } from "recharts";
 import LayeredCard from "../gameComponents/LayeredCard";
 
 export type CounterCardsPrintControlsProps = {
@@ -25,20 +23,6 @@ export type CounterCardProps = React.PropsWithChildren<
 const CounterCard = ({ icon, deck, ...restProps }: CounterType) => {
     return (
         <LayeredCard imageUri={icon} nounCornerIcon="/mighty-decks/types/counter.png" nounDeck={deck} {...restProps} />
-    );
-    return (
-        <Card {...restProps}>
-            <CardHeader icon={icon} className="z-10" cornerIcon="/mighty-decks/counter.png" deck={deck}></CardHeader>
-            <CardBody icon={icon} childrenClassName="flex flex-col justify-center">
-                <div className="flex flex-row flex-wrap gap-2 justify-center items-center px-4 opacity-50">
-                    <Icon icon="d4" className={"w-8 h-8"} />
-                    <Icon icon="d6" className={"w-8 h-8"} />
-                    {/* <Icon icon="d8" className={"w-8 h-8"} /> */}
-                    <Icon icon="d10" className={"w-8 h-8"} />
-                    {/* <Icon icon="d12" className={"w-8 h-8"} /> */}
-                </div>
-            </CardBody>
-        </Card>
     );
 };
 

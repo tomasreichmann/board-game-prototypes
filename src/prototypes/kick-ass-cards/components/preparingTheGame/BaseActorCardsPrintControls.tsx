@@ -19,7 +19,7 @@ const layeredBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/actor.png",
     backgroundImageUri: "/mighty-decks/background/card-backface2.png",
     label: "Actor",
-    labelClassName: "text-kac-gold-light",
+    labelClassName: "text-[#c6f4f2]",
 } as const;
 
 const adaptActorRole = (props: LayeredActorCardProps, index: number): LayeredActorCardProps => ({

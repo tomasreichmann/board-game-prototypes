@@ -1,93 +1,95 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { StuntType } from "../../types";
 import RichText from "../RichText";
-import { IconOrImage } from "../../../../components/Icon/IconOrImage";
-import Card, { CardProps } from "./Card";
-import { H2 } from "../content/Text";
-// import "./StuntCard.css";
+import Card, { CardBody, CardHeader, CardProps } from "./Card";
+import { H2, H3 } from "../content/Text";
+import { LayeredCardBackFace, LayeredCardBackFaceProps } from "./LayeredCard";
+import twm from "@/utils/twm";
 
-export type StuntCardProps = React.PropsWithChildren<Partial<CardProps> & Omit<StuntType, "count">>;
+export type StuntCardProps = React.PropsWithChildren<
+    Partial<CardProps> &
+        Omit<StuntType, "count"> & {
+            classNames?: {
+                title?: string;
+                effect?: string;
+            };
+        }
+>;
 
 export default function StuntCard({
     className,
+    classNames = {},
     size = "Mini European",
+    icon: imageUri,
     slug,
     deck,
     title,
     icon,
     requirements,
     effect,
+    backgroundImageUri = "/mighty-decks/background/paper-custom-with-image-shadow.png",
     children,
     ...restProps
 }: StuntCardProps) {
-    const {
-        bleedMm = 0,
-        bleedTopMm = bleedMm,
-        bleedRightMm = bleedMm,
-        bleedBottomMm = bleedMm,
-        bleedLeftMm = bleedMm,
-    } = restProps;
     return (
-        <PaperOrDiv
-            size={size}
-            bleedMm={bleedMm}
-            className={twMerge(
-                "StuntCard bg-white rounded-lg print:rounded-none flex flex-col justify-stretch items-stretch font-kacBody",
-                className
-            )}
-            {...restProps}
-        >
-            <div
-                className="relative flex-1 flex flex-col justify-center items-stretch"
-                style={{
-                    margin: `-${bleedTopMm}mm -${bleedRightMm}mm -${bleedBottomMm}mm -${bleedLeftMm}mm`,
-                    padding: `${bleedTopMm}mm ${bleedRightMm}mm ${bleedBottomMm}mm ${bleedLeftMm}mm`,
-                }}
-            >
-                <img
-                    src="/mighty-decks/paper.png"
-                    alt=""
-                    className="absolute left-0 top-0 w-full h-full object-cover max-w-none"
+        <Card className={twMerge("LayeredCard", className)} backgroundImageUri={backgroundImageUri} {...restProps}>
+            <div className="relative h-[24px]">
+                <CardHeader
+                    icon={imageUri ?? undefined}
+                    className="z-10 relative"
+                    cornerIcon="/mighty-decks/types/stunt.png"
+                    deck={deck ?? undefined}
                 />
-                <div className="flex-1 relative flex flex-col justify-center items-stretch p-3 gap-2 z-10">
-                    <div className="flex flex-row items-center gap-1">
-                        <IconOrImage icon={icon} className="h-6 text-kac-steel-dark" />
-                        {/* <div className="flex-1 text-kac-iron-light text-center text-xs invisible">{slug}</div> */}
-                        <div className="flex-1 text-kac-bone-dark text-right text-xs leading-none">{deck}</div>
-                        <IconOrImage icon="/mighty-decks/backpack.png" className="text-kac-bone-dark text-opacity-50 h-4" />
-                    </div>
-                    <div className="flex-1 basis-[60%] flex flex-col items-center justify-end gap-2">
-                        <div className="flex-1 relative self-stretch mx-[10%] my-[5%]">
-                            <IconOrImage icon={icon} className="absolute w-full h-full object-contain drop-shadow-lg" />
-                        </div>
-                        <H2 className="font-kacLogo text-kac-iron-light text-2xl leading-none text-center mb-1">
-                            {title}
-                        </H2>
-                    </div>
-                    <div className="flex-1 basis-[40%] text-xs text-center min-h-[6em] text-kac-iron-light leading-tight tracking-tight text-balance">
-                        {requirements && (
-                            <div className="text-center text-kac-blood mb-2 font-bold">
-                                <RichText commonComponentProps={{ className: "h-5 inline-block text-kac-steel-dark" }}>
-                                    {requirements}
-                                </RichText>
-                            </div>
-                        )}
-                        <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{effect}</RichText>
-                    </div>
-                    {children}
-                </div>
             </div>
-        </PaperOrDiv>
+            <CardBody
+                childrenClassName="h-64 gap-2 flex flex-col shrink-0 min-h-min"
+                icon={imageUri ?? undefined}
+                iconClassName="h-24"
+            >
+                <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]", classNames.title)}>
+                    {title}
+                </H3>
+                <div
+                    className={twMerge(
+                        "text-xs text-center text-kac-iron-light text-balance h-[9em] leading-tight tracking-tight flex flex-col justify-start items-center gap-2",
+                        classNames.effect
+                    )}
+                >
+                    <div className="font-bold text-kac-blood text-balance">
+                        {requirements && (
+                            <RichText commonComponentProps={{ className: "inline-block mt-1 -mb-1" }}>
+                                {requirements}
+                            </RichText>
+                        )}
+                    </div>
+                    {effect && (
+                        <div className="text-balance">
+                            <RichText commonComponentProps={{ className: "inline-block -my-1" }}>{effect}</RichText>
+                        </div>
+                    )}
+                </div>
+            </CardBody>
+        </Card>
     );
 }
-export const StuntCardBackFace = ({ ...restProps }: Partial<CardProps>) => {
+export const StuntCardBackFace = ({
+    className,
+    label = "Stunt",
+    labelClassName,
+    size = "54x86",
+    iconUri = "/mighty-decks/types/stunt.png",
+    backgroundImageUri = "/mighty-decks/background/card-backface2.png",
+    ...restProps
+}: Partial<LayeredCardBackFaceProps>) => {
     return (
-        <Card {...restProps} backgroundImageUri="/mighty-decks/stunt-back-face.png">
-            <div className="absolute top-[60%] left-4 right-4 flex flex-col justify-center items-center flex-1 p-3">
-                <H2 className="text-kac-gold-light text-2xl text-center relative z-1 drop-shadow-md-heavy">Stunt</H2>
-            </div>
-        </Card>
+        <LayeredCardBackFace
+            {...restProps}
+            size={size}
+            label={label}
+            labelClassName={twm("text-[#f9e8aa]", labelClassName)}
+            iconUri={iconUri}
+            backgroundImageUri={backgroundImageUri}
+        />
     );
 };

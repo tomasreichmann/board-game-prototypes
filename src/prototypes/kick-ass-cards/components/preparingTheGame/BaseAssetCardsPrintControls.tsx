@@ -14,7 +14,7 @@ import { useChunkedPagesProps, useItemAdapter } from "./printControlUtils";
 import assets from "../../data/assets-en-deck";
 import { AssetType } from "../../types";
 import multiplyByCount, { defaultCountAdapter } from "@/utils/multiplyByCount";
-import assetModifiers, { assetModifierMap } from "../../data/asset-modifiers-en-deck";
+import { assetModifierMap } from "../../data/asset-modifiers-en-deck";
 import RichText from "../RichText";
 
 export type BaseAssetCardsPrintControlsProps = {
@@ -29,7 +29,7 @@ const sampleLayeredAssetBackFaceProps: LayeredCardBackFaceProps = {
     iconUri: "/mighty-decks/types/asset.png",
     backgroundImageUri: "/mighty-decks/background/card-backface2.png",
     label: "Asset",
-    labelClassName: "text-[#d9ebff]",
+    labelClassName: "text-[#edd9ff]",
 } as const;
 
 console.log("assetModifierMap", assetModifierMap);

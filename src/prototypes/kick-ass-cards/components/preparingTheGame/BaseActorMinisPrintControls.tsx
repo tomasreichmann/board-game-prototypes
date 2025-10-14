@@ -120,7 +120,7 @@ export default function BaseActorMinisPrintControls({ className }: BaseActorMini
             />
             <Print
                 className="flex flex-col-reverse gap-2"
-                documentTitle="Actors"
+                documentTitle="Base Actor Minis"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (
@@ -155,7 +155,7 @@ export default function BaseActorMinisPrintControls({ className }: BaseActorMini
                                 </>
                             ),
                         }}
-                        label="Blank Actor Cards"
+                        label="Base Actor Minis"
                     />
                 </div>
             </Print>

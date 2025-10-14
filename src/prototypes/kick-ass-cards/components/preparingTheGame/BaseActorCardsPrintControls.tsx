@@ -86,7 +86,7 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
             />
             <Print
                 className="flex flex-col-reverse gap-2"
-                documentTitle="Actors"
+                documentTitle="Base Actor Cards"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (
@@ -103,12 +103,13 @@ export default function BaseActorCardsPrintControls({ className }: BaseActorCard
                         BackFaceComponent={LayeredActorCardBackFace}
                         items={items}
                         getBackFaceProps={(item) => ({
+                            ...item,
                             size: "54x86",
                             bleedMm: item.bleedMm,
                             ...item.backFaceProps,
                         })}
                         {...chunkedPagesProps}
-                        label="Blank Actor Cards"
+                        label="Base Actor Cards"
                     />
                 </div>
             </Print>

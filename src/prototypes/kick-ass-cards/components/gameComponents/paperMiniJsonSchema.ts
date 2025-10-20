@@ -20,6 +20,8 @@ export const paperMiniJsonSchema: JSONSchemaType<PaperMiniProps> = {
         backImageClassName: { type: "string", nullable: true },
         baseClassName: { type: "string", nullable: true },
         backBaseClassName: { type: "string", nullable: true },
+        backgroundImageUri: { type: "string", nullable: true },
+        backgroundImageClassName: { type: "string", nullable: true },
         children: { type: "string", nullable: true },
     },
     required: ["imageUri"],

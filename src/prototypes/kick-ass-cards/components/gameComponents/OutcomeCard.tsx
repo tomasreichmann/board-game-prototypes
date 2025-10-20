@@ -30,7 +30,7 @@ const outcomeColorClassNameMap: { [key: string]: string } = {
     sprint: "text-kac-gold-dark",
     warlockEye: "text-kac-curse",
 
-    "special-action": "text-kac-fire",
+    "special-action": "text-[#d99600]",
     success: "text-kac-monster-dark",
     "partial-success": "text-kac-steel-dark",
     fumble: "text-kac-iron-light",

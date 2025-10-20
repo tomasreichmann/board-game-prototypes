@@ -87,6 +87,7 @@ export default function BaseAssetModifierCardsPrintControls({ className }: BaseA
                         Component={LayeredCard}
                         // BackFaceComponent={LayeredCardBackFace}
                         getBackFaceProps={(item) => ({
+                            ...item,
                             size: item.size ?? "54x86",
                             bleedMm: item.bleedMm,
                             ...item.backFaceProps,

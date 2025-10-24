@@ -33,6 +33,7 @@ export default function StuntCardsPrintControls({ className }: StuntCardsPrintCo
             />
             <Print
                 className="flex flex-col-reverse gap-2"
+                documentTitle="Base Stunt Cards"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (

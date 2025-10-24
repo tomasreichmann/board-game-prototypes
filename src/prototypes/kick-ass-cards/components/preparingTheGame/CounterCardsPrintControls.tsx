@@ -61,7 +61,7 @@ export default function CounterCardsPrintControls({ className }: CounterCardsPri
             />
             <Print
                 className="flex flex-col-reverse gap-2"
-                documentTitle="Counters"
+                documentTitle="Base Counters"
                 buttonProps={{
                     className: "self-center flex flex-row items-center",
                     children: (

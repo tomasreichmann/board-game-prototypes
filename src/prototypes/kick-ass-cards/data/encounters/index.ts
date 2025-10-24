@@ -82,6 +82,7 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
     ...makeEncounterDefinition("OS-en-low-key-heroes", "Low-key Heroes", OS),
 
     ...makeEncounterDefinition("OS-en-radicare-rapid-rescue", "RadiCare Rapid Rescue", OS),
+    ...makeEncounterDefinition("OS-en-exiles-of-the-hungry-void", "Exiles of the Hungry Void", OS),
 };
 
 export const encountersByCampaign = groupByCampaign(encountersMap);

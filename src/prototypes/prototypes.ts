@@ -9,6 +9,7 @@ import JustDwarvesPrototype, {
 } from "./just-dwarves/JustDwarvesPrototype";
 import { perspectiveViewPrototypeRoute } from "./perspective-view/PerspectiveViewPrototype";
 import { subViewPrototypeRoute } from "./sub-view/SubViewPrototype";
+import { effectBoardPrototypeRoute } from "./effect-board/EffectBoardPrototype";
 
 const prototypes: RouteDefinition[] = [
     {
@@ -30,6 +31,7 @@ const prototypes: RouteDefinition[] = [
     },
     perspectiveViewPrototypeRoute,
     subViewPrototypeRoute,
+    effectBoardPrototypeRoute,
 ];
 
 export default prototypes;

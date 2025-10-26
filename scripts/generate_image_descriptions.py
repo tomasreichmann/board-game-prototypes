@@ -7,7 +7,7 @@ from PIL import Image, PngImagePlugin
 
 # Load environment variables from .env.local
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env.local'))
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
+OPENROUTER_API_KEY = os.getenv('VITE_OPENROUTER_API_KEY')
 
 if not OPENROUTER_API_KEY:
     print("OPENROUTER_API_KEY not found in .env.local")

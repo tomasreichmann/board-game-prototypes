@@ -152,14 +152,12 @@ _Whatever you did to deserve this, the Empire decided to exile you. You were loa
 
 _Once, the Void had been the Empire’s frontier—rich in minerals, strange worlds, and relics of civilizations older than history. Too many ships vanished. Colonies died without reason. So eventually, the Empire withdrew, sealed the gates, and left the region and its survivors to their own devices. Smugglers, pirates, and desperate souls like you now call this sorry place their own._
 
-🎭 **Please introduce your characters**
+_An officer unceremoniously shoves you into a small shuttle. *"Cross back into the Empire space, and you’ll be shot on sight." He spits out before slamming the shuttle door shut.* The autopilot engages and your shuttle silently exits out of the huge docking bay doors._
 
-_You are onboard a small retired military ship. Its original name has been scraped off. Once a proud corvette, now a gutted relic with half its systems stripped, the other half broken, its hull held together by sheer faith. The Imperial transport that brought you here didn’t linger. Its captain’s parting words still echo in the static:_
+🎭 **This is the first time you see one another. Tell us what the others see, when they look at you.**
 
-> *Cross back into the Empire space, and you’ll be shot on sight.*  
-> — Captain Varrek, S.F.V. Virtue of Order
-
-_The transport jumps away in a blink of light, leaving you adrift at the edge of nothing._
+_You reach a small retired military vessel and park in its docking bay. Once a proud corvette, now a gutted relic with half its systems stripped, the other half broken, its hull held together by sheer faith. Its original name has been scraped off._
+_A blink of light illuminates the dark interior as the Imperial transport jumps away, leaving you adrift at the edge of nothing._
 
 As you gather on the bridge, you take stock of the ship:
 
@@ -177,13 +175,23 @@ As you gather on the bridge, you take stock of the ship:
 
 🎭 **Who wants to start and tell me what you do?**
 
+### Stunts for the scene
+
+<List>
+    <StuntCard {...stuntMap["historian"]} />
+    <StuntCard {...stuntMap["tinkerer"]} />
+    <StuntCard {...stuntMap["foresight"]} />
+    <StuntCard {...stuntMap["markAnOmen"]} />
+</List>
+
+
 ### Scene Information
 
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/docking_bay.png)
 
 -   **Docking bay**
     -   This is where you arrived.
-    -   A small imperial shuttle sits in mostly empty dock.
+    -   A small imperial shuttle sits in mostly empty dock. You could use it to board an enemy ship, if it's engines are disabled.
     -   🔎 There is a box of rations, enough for now.
     -   🔎 You noticed there is frost spreading on the outside door, but you cannot see anything outside.
 
@@ -191,7 +199,9 @@ As you gather on the bridge, you take stock of the ship:
 
 -   **Reactor**
     -   Normally this is where the ship's power comes from. You can route it from here to different ship's system or even put it in overdrive and distribute some extra power.
-    -   If fully operational, it should supply up to 3PU, but could be upgraded at specialized docks.
+    -   If fully operational:
+        -   It should supply up to 3PU, but could be upgraded at specialized docks.
+        -   You can put it in manual overdrive and supply up to 3 extra PU.
     -   It is running on minimal power, supplying just 1PU. All power is routed to life-support.
     -   🔎 The fuel is almost gone and there does not seem to be any more. 
     -   🔎 Looking inside the reactor is mesmerizing. You would have sworn you saw a dark shape in the reflection of its window behind you. There was nobody there.
@@ -201,6 +211,7 @@ As you gather on the bridge, you take stock of the ship:
 -   **Engines**
     -   They are un-powered. They need 1PU to provide thrust to move around and maneuver during fights.
     -   Even with these engines operational, you are so far from anything, it will take years before you reach anything worth the effort.
+    -   Manning this station can provide extra speed.
     -   They can be upgraded to provide advantage over ships with weaker engines.
     -   🔎 When the engines are running, they sometimes pick up a strange echo, like when flying through a magnetic field. But you are pretty far away from anything that can have one.
 
@@ -209,6 +220,7 @@ As you gather on the bridge, you take stock of the ship:
 -   **Spin drive**
     -   🏺 There is an Incendiary grenade strapped to the Spin drive ring. The safety pin is still in.
     -   It is un-powered. It needs 1PU for 5 turns, to get enough charge to jump to the next system.
+    -   Manning this station can reduce spin-up time.
     -   🔎 Its huge rings move almost imperceptibly slow on their own.
     -   📅 When spin drive starts to power up. Sensors register rising pressure on the outside of the hull without an apparent reason.
 
@@ -217,6 +229,7 @@ As you gather on the bridge, you take stock of the ship:
 -   **Weapon station**
     -   You can fire the ship's weapons from here.
     -   All but one of the weapon systems were uninstalled. A single laser array is left, but it is malfunctioning.
+    -   Manning this station can increase damage or fire rate.
     -   📅 As you investigated the malfunctioning laser, there was a buildup of energy from a damaged capacitor and the resulting spark ignited wiring hanging from the ceiling. The fire is quickly spreading.
     -   🔎 If repaired, you can use it to target a specific room on the enemy ship. It causes 1 Damage to target system if not absorbed by shield in exchange for 1PU.
     -   🔎 Repairing requires 1 Spare part.
@@ -226,6 +239,7 @@ As you gather on the bridge, you take stock of the ship:
 -   **Missile bay**
     -   Deploying a missile requires someone to manually put the missile into the launcher, but does not cost any power.
     -   Missiles pass through shields, but cost ammunition.
+    -   Manning this station is required for operation.
     -   🔎 There are several parts lying around maybe enough to build a single missile.
     -   🔎 Someone tried to stuff reactor fuel to a missile warhead. There is enough of it to run the reactor for a foreseeable future
     -   📅 Building a missile: As you were lowering one of the missile warheads from the crane, it suddenly released and the warhead fell from two meters and with a terrible clank hit the floor denting it deeply. It stopped rolling in front of your feet. Nothing happened.
@@ -247,7 +261,7 @@ As you gather on the bridge, you take stock of the ship:
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/life_support.png)
 
 -   **Life support**
-    -   You can re-pressure or de-pressure any room on the ship, control the temperature onboard and of the shower water, and reusing of waste water.
+    -   Manning this station, you can re-pressure or de-pressure any room on the ship, control the temperature onboard and of the shower water, and reusing of waste water.
     -   🔎 de-pressuring is useful in case of a fire or hostile boarding.
     -   🔎 Water is not running at the moment. The water in the boiler seems to be frozen solid.
 
@@ -263,27 +277,28 @@ As you gather on the bridge, you take stock of the ship:
 -   **Sensor array**
     -   🏺 There are communicators for everyone here, you can easily communicate with each other, even between nearby vessels.
     -   🔎 The sensors are un-powered, but in working condition. They require 1PU to operate.
+    -   Manning this station you can survey space around you.
     -   📅 Powering up the sensors.
         -   You can survey nearby points of interest from here.
             -   🔎 Doing so reveals 3 points of interest nearby. See *Points of Interest*
         -   You can survey enemy ships to find out what systems they have, so that you can target them.
             -   🔎 There are no ships in the scanning range.
         -   You can search for life signs onboard the ship and setup alerts when you are boarded.
-            -   🔎 However the life-sign detector is malfunctioning. Life-signs are appearing and disappearing all over the ship.
+            -   🔎 The life-sign detector is currently clearly malfunctioning. Life-signs are appearing and disappearing all over the ship. There doesn't appear to be anything physically wrong with it, though.
 
 ### 📅 When the crew starts charging the Spin Drive
 
 _The ship trembles as the Spin Drive begins to hum, a deep metallic vibration that crawls through the floor and into your bones. The lights flicker once, twice — then turn into a dim red pulse. You notice the space outside the cockpit window begins to… twist?! It doesn’t bend or move; it folds on top of itself, like a melted sheet of glass, straining… until it snaps._
 
-_A rift tears open to the Void. A darkness spills through, blacker than the space around it with tiny fake star-like lights, shaped like twisting tendrils of shadow. It creeps out, stretching larger than the ship itself forming into a terrifying entity._
+_A rift tears open to the Void. A darkness spills through, blacker than the space around it, tiny fake star-like lights glitter as they move unnaturally over the darkness. Twisting tendrils of shadow creep out, stretching larger than the ship itself forming into a terrifying entity._
 
-_Every screen flares with static. Warning glyphs flicker and die. Metal groans in agony as the ship’s systems begin to fail one by one — not destroyed, but drained. The heat leaves the air. Frost creeps across consoles and bulkheads in seconds. You see your breath. Then, from somewhere deep in the hull, the sound of rending steel echoes through the corridors._
+_Every screen flares with static. Warning glyphs flicker and die. Metal groans in agony as the ship’s systems begin to fail — not destroyed, but drained. The heat leaves the air. Frost creeps across consoles and bulkheads in seconds. You see your breath. Then, from somewhere deep in the hull, the sound of rending steel scratches your ear drums._
 
 _The shadow tendrils are inside. They slither through cracks, and seams. Every surface they touch loses color, temperature, and light._
 
 _The hum of the Spin Drive turns frantic, building toward an unstable crescendo. If it fails now, you are stranded._
 
-🎭 **The Void Horror has breached the ship. What do you do to protect the Spin drive and make it engage?**
+🎭 **The Void Horror has breached the ship. What do you do to protect the Spin drive and help it engage?**
 
 💡 Add Counter: **Protect the Spin Drive** with a total 2x the amount of players.  
 -   Have each player play one Outcome card and describe how they want to protect the Spin Drive.  
@@ -315,75 +330,9 @@ The crew has to pick where to go next and jump there using the Spin drive.
 -   *Abandoned research station* — An abandoned imperial research station. Maybe there's still something of value that hasn't been looted.
 -   *A mining colony has a pest problem* — A nearby automated mining colony advertises a job to get rid of giant rodents nesting in its mining shafts.
 
-__
+### A transport in distress
 
-### 🏺 Rewards
+-   You can jump to the transport in distress and rescue the crew.
 
--   🎁 **Hardware store items**: Players can pick a tool (e.g., crowbar, toolkit, power tools, metal parts) as a reward. One for each surviving employee in total. Tracked by **Store Employees Alive**.
--   🎁 **Stolen SUV**: If the fleeing gang members are defeated, the heroes can take their car.
 
-### Counters
-
--   **Gang's Will to Fight** total should be 2 per player.
-
-<List>
-    <CounterCard {...counterMap.morale} title="Gang's Will to Fight" current={6} total={6} reward="Gang members run away." threat="Gang escalates the violence." />
-    <CounterCard {...counterMap.incognito} title="Police Alert" current={4} total={4} reward="Players have time after the fight before the police arrives." threat="The police comes early." />
-    <CounterCard {...counterMap.defense} title="Store Employees Alive" current={4} total={4} reward="Players can pick a tool as a reward. One item for each surviving employee in total." />
-</List>
-
-### Stunt Challenge
-
-<List>
-    <StuntCard {...stuntMap.flex} />
-    <StuntCard {...stuntMap.ghostStep} />
-    <StuntCard {...stuntMap.vibe} />
-    <StuntCard {...stuntMap.marksman} />
-</List>
-
-### Enemies
-
-<List>
-    <Actor {...actorMap.bruiser_blue} name="Vanta Thug" />
-    <Actor {...actorMap.bruiser_green} name="Vanta Thug" />
-    <Actor {...actorMap.bruiser_red} name="Vanta Thug" />
-    <Actor {...actorMap.bruiser_yellow} name="Vanta Thug" />
-
-    <Actor {...actorMap.marksman_blue} name="Vanta Striker" />
-    <Actor {...actorMap.marksman_green} name="Vanta Striker" />
-    <Actor {...actorMap.marksman_red} name="Vanta Striker" />
-    <Actor {...actorMap.marksman_yellow} name="Vanta Striker" />
-
-    <Actor {...actorMap.commander} name="Rebar, Vanta Recruiter" />
-</List>
-
-### Resolution
-
-_You hear sirens closing in from a distance. It's time to bounce. You leave the alley and disappear into the darkness. The Vanta Crew got what they deserved.
-Now you just gotta figure out how to sneak past your parents without catching a full-blown lecture._
-
-## Points of Interest
-
-## Scene 2 – The Test
-
-### 💡 Storyteller info (do not read out loud)
-
-* **Scene summary**: It's the morning after the rooftop brawl. The teens are bruised, exhausted, and completely unprepared for their physics test. To make things worse, Rebar is spotted near the school talking to two government agents. The agents meet with the physics teacher, hinting they’re looking for students who show signs of involvement in suspicious activity—especially anyone with poor grades or unexplained injuries.
-* **Setting**: A chilly, fluorescent-lit classroom with buzzing lights and a worn-out whiteboard. The players are seated at separate desks, surrounded by students who are all furiously reviewing last-minute notes.
-* **Threat**: The teacher is being pressured by the agents and is extra alert to cheating or suspicious behavior.
-* **Objective**: Pass the test without being caught cheating or drawing attention. Avoid revealing signs of last night’s fight.
-* **Exam mechanics**: Each player must answer 4 difficult physics questions. They can use stealth or social stunts to cheat (e.g., pass notes, sneak peeks, distract the teacher, or steal answer keys).
-* **Tension builder**: If caught or acting suspicious, the teacher may report them to the agents.
-
-*Your desk feels harder than usual and your eyelids heavier. The physics classroom smells faintly of whiteboard markers, cold coffee, and teenage panic. Rain streaks across the windows in blurry lines, and outside, a black sedan idles at the curb.*
-*Through a crack in the classroom door, you notice your physics teacher, ms. Vogel, speaking with two grim-looking suits who definitely don’t teach here. You move to closer to listen in. All you can make out is that they are looking with kids with some unusual skills.*
-*The agents told the teacher to let them know about any suspicious students especially if they have poor grades or unexplained injuries.*
-
-*A moment later, you stare blankly at the test with four brutal physics questions. Your brain is fried from last night’s fight, and your powers are no help here.*
-*Ms. Vogel paces through the class room looking for cheaters or worse...*
-
-🎭 **The test starts now. What do you do?**
-
-* Agent Renata Vales
-* Agent Felix Brandt
-
+<ComponentHelper />

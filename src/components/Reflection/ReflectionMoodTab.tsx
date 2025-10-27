@@ -1,9 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-    formatConsumptionLabel,
-    getConsumptionCombos,
-    ReflectionEvent,
-} from "@/components/Reflection/eventFilter";
+import { formatConsumptionLabel, getConsumptionCombos, ReflectionEvent } from "@/components/Reflection/eventFilter";
 import ReflectionMoodChart from "@/components/Reflection/ReflectionMoodChart";
 
 interface ReflectionMoodTabProps {
@@ -71,9 +67,19 @@ export default function ReflectionMoodTab({ events }: ReflectionMoodTabProps) {
     const [selectedConsumptionKeys, setSelectedConsumptionKeys] = useState<string[]>([]);
     const [isConsumptionSelectAll, setIsConsumptionSelectAll] = useState(false);
 
-    const conflictCount = useMemo(
-        () => moodEvents.filter((event) => event.metadata.isConflict).length,
-        [moodEvents],
+    const conflictCount = useMemo(() => moodEvents.filter((event) => event.metadata.isConflict).length, [moodEvents]);
+
+    const sleepRecordCount = useMemo(
+        () => moodEvents.filter((event) => event.metadata.sleepHours).length,
+        [moodEvents]
+    );
+
+    const averageSleepHours = useMemo(
+        () =>
+            moodEvents
+                .filter((event) => event.metadata.sleepHours)
+                .reduce((sum, event) => sum + event.metadata.sleepHours!, 0) / sleepRecordCount,
+        [moodEvents, sleepRecordCount]
     );
 
     useEffect(() => {
@@ -83,7 +89,7 @@ export default function ReflectionMoodTab({ events }: ReflectionMoodTabProps) {
         }
 
         setSelectedConsumptionKeys((previous) =>
-            previous.filter((key) => consumptionCombos.some((combo) => combo.key === key)),
+            previous.filter((key) => consumptionCombos.some((combo) => combo.key === key))
         );
     }, [consumptionCombos, isConsumptionSelectAll]);
 
@@ -130,10 +136,21 @@ export default function ReflectionMoodTab({ events }: ReflectionMoodTabProps) {
                     <div className="stat-desc">{minMood ? formatDate(minMood.event) : "No data"}</div>
                 </div>
                 <div className="stat bg-base-100 text-base-content border border-base-300 rounded-box">
+                    <div className="stat-title">Sleep Hours</div>
+                    <div className="stat-value text-warning">{formatAverage(averageSleepHours) ?? "–"}</div>
+                    <div className="stat-desc">
+                        {sleepRecordCount > 0
+                            ? `${sleepRecordCount} event${sleepRecordCount === 1 ? "" : "s"}`
+                            : "No data"}
+                    </div>
+                </div>
+                <div className="stat bg-base-100 text-base-content border border-base-300 rounded-box">
                     <div className="stat-title">Conflicts</div>
                     <div className="stat-value text-warning">{conflictCount}</div>
                     <div className="stat-desc">
-                        {conflictCount ? `${conflictCount} event${conflictCount === 1 ? "" : "s"} flagged` : "No conflicts"}
+                        {conflictCount
+                            ? `${conflictCount} event${conflictCount === 1 ? "" : "s"} flagged`
+                            : "No conflicts"}
                     </div>
                 </div>
             </div>

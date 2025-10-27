@@ -9,6 +9,7 @@ export interface ConsumptionItem {
 export interface ReflectionEventMetadata {
     mood?: number;
     moodReason?: string;
+    sleepHours?: number;
     isConflict?: boolean;
     conflictDescription?: string;
     consumption?: ConsumptionItem[];
@@ -37,17 +38,18 @@ const substanceAliases: Record<string, string> = {
     alkohol: "alcohol",
     coke: "c",
     "2c": "2cb",
+    "3mmc": "3m",
+    "4mmc": "4m",
 };
 
 const unitAliases: Record<string, string> = {
     sip: "sips",
-    glass: "glasses",
     drop: "drops",
     bump: "bumps",
     line: "lines",
     lines: "lines",
     drink: "drinks",
-    drinks: "drinks",
+    glass: "drinks",
 };
 
 const normaliseSubstanceName = (name: string): string => {
@@ -66,6 +68,31 @@ const normaliseUnitName = (unit?: string): string | undefined => {
     }
     const lower = trimmed.toLowerCase();
     return unitAliases[lower] ?? lower;
+};
+
+const unitCoversionMap: Record<string, { unit: string; multiplier: number }> = {
+    sips: {
+        unit: "glasses",
+        multiplier: 0.25,
+    },
+    bumps: {
+        unit: "lines",
+        multiplier: 0.5,
+    },
+};
+
+const convertUnits = (amount: number, unit: string): { amount: number; unit: string } => {
+    if (unit in unitCoversionMap) {
+        const conversion = unitCoversionMap[unit];
+        return {
+            amount: amount * conversion.multiplier,
+            unit: conversion.unit,
+        };
+    }
+    return {
+        amount,
+        unit,
+    };
 };
 
 export const createConsumptionKey = (substance: string, unit?: string) => {
@@ -228,6 +255,25 @@ const createConflictParser = (): MetadataParser => {
     };
 };
 
+const createSleepParser = (): MetadataParser => {
+    const sleepRegex = /^sleep?\s*:\s*(.*)h?$/i;
+
+    return ({ lines, metadata }) => {
+        for (const line of lines) {
+            const match = sleepRegex.exec(line.replace(/\u00a0/g, " ").trim());
+            if (!match) {
+                continue;
+            }
+
+            const rawValue = match[1] ?? "";
+            const value = rawValue.trim();
+            metadata.sleepHours = parseFloat(value);
+
+            break;
+        }
+    };
+};
+
 const createConsumptionParser = (): MetadataParser => {
     const consumptionRegex = /^consumption\s*:\s*(.*)$/i;
 
@@ -300,8 +346,12 @@ const createConsumptionParser = (): MetadataParser => {
                 items.push(consumptionItem);
 
                 if (amount !== undefined) {
-                    const key = createConsumptionKey(canonicalSubstance, unit);
-                    consumptionMap[key] = (consumptionMap[key] ?? 0) + amount;
+                    const normalizedUnit = normaliseUnitName(unit);
+                    const { amount: convertedAmount, unit: convertedUnit } = normalizedUnit
+                        ? convertUnits(amount, normalizedUnit)
+                        : { amount, unit: normalizedUnit };
+                    const key = createConsumptionKey(canonicalSubstance, convertedUnit);
+                    consumptionMap[key] = (consumptionMap[key] ?? 0) + convertedAmount;
                 }
             });
 
@@ -312,7 +362,12 @@ const createConsumptionParser = (): MetadataParser => {
     };
 };
 
-const metadataParsers: MetadataParser[] = [createMoodParser(), createConflictParser(), createConsumptionParser()];
+const metadataParsers: MetadataParser[] = [
+    createMoodParser(),
+    createConflictParser(),
+    createSleepParser(),
+    createConsumptionParser(),
+];
 
 const parseDescriptionMetadata = (description: string): ReflectionEventMetadata => {
     if (!description) {
@@ -414,12 +469,17 @@ export const getConsumptionCombos = (events: ReflectionEvent[]): ConsumptionComb
             if (item.amount === undefined || Number.isNaN(item.amount)) {
                 return;
             }
-            const key = createConsumptionKey(item.substance, normaliseUnitName(item.unit));
+            const normalizedUnit = normaliseUnitName(item.unit);
+            const convertedUnit =
+                normalizedUnit && normalizedUnit in unitCoversionMap
+                    ? unitCoversionMap[normalizedUnit].unit
+                    : normalizedUnit;
+            const key = createConsumptionKey(item.substance, normaliseUnitName(convertedUnit));
             if (!map.has(key)) {
                 map.set(key, {
                     key,
                     substance: item.substance,
-                    unit: normaliseUnitName(item.unit),
+                    unit: convertedUnit,
                 });
             }
         });

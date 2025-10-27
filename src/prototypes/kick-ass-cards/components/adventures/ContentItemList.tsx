@@ -57,14 +57,14 @@ const contentTypeDescriptionMap = {
     Button: "button style links",
     ActorCardWithTacticalOverlay: "Actor card with tactical overlay",
     StuntCard: "Stunt card",
-
+    ComponentHelper: "Shows all available content types and their props",
     Clock: "DEPRECATED in favor of Counter",
     Player: "DEPRECATED Player character card",
     p: "DEPRECATED layout for paragraph text",
     li: "DEPRECATED layout for list items",
     img: "DEPRECATED layout for images",
     Alert: "DEPRECATED DaisyUI Box content for warnings and information",
-} as const;
+} satisfies Record<ContentItemType["type"], string | undefined>;
 
 export type ContentItemLabelProps = {
     type: ContentItemType["type"];

@@ -15,8 +15,9 @@ export type LayeredActorCardProps = React.PropsWithChildren<
         imageClassName?: string;
         imageWrapperClassName?: string;
         ImageComponent?: React.ComponentType<ImageProps>;
-    } & Partial<TacticalRoleType> &
-        Partial<LayeredCardProps>
+        role?: TacticalRoleType;
+        modifier?: TacticalRoleType;
+    } & Partial<LayeredCardProps>
 >;
 
 const sampleRole = tacticalRolesMap.champion;
@@ -164,8 +165,8 @@ const renderAction = (
 };
 
 const getLayeredCardProps = (
-    role?: LayeredActorCardProps,
-    modifier?: LayeredActorCardProps,
+    role?: TacticalRoleType,
+    modifier?: TacticalRoleType,
     lineSize: string = "h-5 flex flex-row items-center",
     iconSize: string = "h-5"
 ): LayeredCardProps => {
@@ -214,7 +215,7 @@ const getLayeredCardProps = (
                 {modifier.toughnessBonus && <TextWithIcons text={modifier.toughnessBonus} iconProps={iconProps} />}
             </div>
         );
-        props.imageOverlayUri = modifier.imageUri;
+        props.imageOverlayUri = modifier.imageOverlayUri;
         nounEffectRight.push(
             <>
                 {(modifier.actionBonuses ?? [null, null]).map((actionBonus, index) =>
@@ -246,30 +247,17 @@ export default function LayeredActorCard({
     className,
     classNames = {},
     slug,
-    name,
-    deck,
-    toughness,
-    toughnessBonus,
-    speed,
-    special,
-    actions,
-    actionBonuses,
-    count,
-    isModifier,
-    imageClassName,
-    imagePosition,
-    imageFit = "contain",
-    imageWrapperClassName,
-    ImageComponent = Image,
+    imageUri,
+    role,
+    modifier,
     children,
     ...restProps
 }: LayeredActorCardProps) {
-    const currentProps = { slug, name, deck, toughness, toughnessBonus, speed, special, actions, actionBonuses, count };
-    const [roleProps, modifierProps] = isModifier ? [undefined, currentProps] : [currentProps, undefined];
-    const props = getLayeredCardProps(roleProps, modifierProps);
+    const props = getLayeredCardProps(role, modifier);
 
     return (
         <LayeredCard
+            imageUri={imageUri}
             className={twm("LayeredActorCard", className)}
             classNames={{ imageOverlay: "scale-[150%] translate-y-[-18%]", ...classNames }}
             {...props}

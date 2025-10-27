@@ -32,6 +32,7 @@ import BroadcastGenericCounterCard from "../screenContent/BroadcastGenericCounte
 import BroadcastStuntCard from "../screenContent/BroadcastStuntCard";
 import BroadcastActorCardWithTacticalOverlay from "../screenContent/BroadcastActorCardWithTacticalOverlay";
 import { Link } from "react-router-dom";
+import ComponentHelper from "../gameComponents/ComponentHelper";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -73,6 +74,7 @@ export const defaultMdxComponentMap = {
     GenericCounterCard: BroadcastGenericCounterCard,
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,
+    ComponentHelper,
     Mdx,
     Text,
     Toggle,

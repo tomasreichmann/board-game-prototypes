@@ -21,11 +21,12 @@ const layeredBackFaceProps: LayeredCardBackFaceProps = {
     labelClassName: "text-kac-gold-light",
 } as const;
 
-const adaptActorRole = (tacticalRole: TacticalRoleType, index: number): LayeredActorCardProps => ({
+const adaptActorRole = (tacticalRole: TacticalRoleType): LayeredActorCardProps => ({
     size: "54x86",
     bleedMm: 3,
     className: "relative",
-    ...tacticalRole,
+    role: tacticalRole.isModifier ? undefined : tacticalRole,
+    modifier: tacticalRole.isModifier ? tacticalRole : undefined,
     backFaceProps: layeredBackFaceProps,
 
     backgroundImageUri: null,

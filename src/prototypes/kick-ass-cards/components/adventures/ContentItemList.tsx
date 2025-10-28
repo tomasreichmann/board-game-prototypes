@@ -5,7 +5,7 @@ import {
     ContentItemDropResultType,
     ContentItemType,
 } from "../../services/firestoreAdventureController";
-import { defaultMdxComponentMap } from "../content/MdxArticle";
+import { contentTypeDescriptionMap, defaultMdxComponentMap } from "../content/MdxArticle";
 import { useMemo } from "react";
 import Text, { H5, H6 } from "../content/Text";
 import { useDrag } from "react-dnd";
@@ -33,38 +33,6 @@ const layoutContentTypes: ContentItemType["type"][] = [
 ] as const;
 const componentContentTypes: ContentItemType["type"][] = ["Actor", "Asset", "Clock", "Effect", "Outcome", "PaperMini"];
 const deprecatedContentTypes: ContentItemType["type"][] = ["Player", "p", "li", "img", "Alert"];
-
-const contentTypeDescriptionMap = {
-    a: "A basic link that supports internal and external links",
-    Mdx: "Rich text content in [MDX](https://mdxjs.com/) format",
-    Text: "Simple text content like headings and paragraph text",
-    Image: "Shareable Image",
-    Actor: "Card for an PCs and NPCs",
-    Asset: "Card for an item like object",
-    CounterCard: "Card for tracking custom threats and goals",
-    GenericCounterCard: "Card for tracking generic threats and goals",
-    Effect: "Card for character effects like Wound or Boost",
-    Outcome: "Card for outcomes like Success or Fumble",
-    PaperMini: "Foldable paper-craft mini",
-    List: "layout for a list of any content items",
-    Heading: "layout for a heading with a title and an image",
-    Columns: "layout for side by side content",
-    Aside: "layout for content on the side",
-    Hand: "layout for items in an arc",
-    Spread: "layout for items in a spread",
-    Paper: "layout in a standard paper or card size",
-    Toggle: "layout for collapsible content",
-    Button: "button style links",
-    ActorCardWithTacticalOverlay: "Actor card with tactical overlay",
-    StuntCard: "Stunt card",
-    ComponentHelper: "Shows all available content types and their props",
-    Clock: "DEPRECATED in favor of Counter",
-    Player: "DEPRECATED Player character card",
-    p: "DEPRECATED layout for paragraph text",
-    li: "DEPRECATED layout for list items",
-    img: "DEPRECATED layout for images",
-    Alert: "DEPRECATED DaisyUI Box content for warnings and information",
-} satisfies Record<ContentItemType["type"], string | undefined>;
 
 export type ContentItemLabelProps = {
     type: ContentItemType["type"];

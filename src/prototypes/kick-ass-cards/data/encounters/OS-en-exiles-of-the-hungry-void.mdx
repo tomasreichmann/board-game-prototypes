@@ -204,6 +204,7 @@ As you gather on the bridge, you take stock of the ship:
         -   You can put it in manual overdrive and supply up to 3 extra PU.
     -   It is running on minimal power, supplying just 1PU. All power is routed to life-support.
     -   🔎 The fuel is almost gone and there does not seem to be any more. 
+    -   🔎 Looks like there used to be some upgrades providing better energy output, but those have been uninstalled since. 
     -   🔎 Looking inside the reactor is mesmerizing. You would have sworn you saw a dark shape in the reflection of its window behind you. There was nobody there.
 
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/engine_room.png)
@@ -222,6 +223,7 @@ As you gather on the bridge, you take stock of the ship:
     -   It is un-powered. It needs 1PU for 5 turns, to get enough charge to jump to the next system.
     -   Manning this station can reduce spin-up time.
     -   🔎 Its huge rings move almost imperceptibly slow on their own.
+    -   🔎 The console seems to require a hardware key. But it is nowhere to be found.
     -   📅 When spin drive starts to power up. Sensors register rising pressure on the outside of the hull without an apparent reason.
 
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/weapons_station.png)
@@ -254,8 +256,8 @@ As you gather on the bridge, you take stock of the ship:
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/crew_quarters.png)
 
 -   **Crew quarters**
+    -   _There is a room with enough cots to fit 8 people. Throw the window in the door you see a man in military uniform lying on the bed, unmoving. There is a hardware key hanging around his neck._
     -   This room is closed off, because it is unpressurized. You cannot re-pressurize it from here.
-    -   There is a room with enough cots to fit 8 people.
     -   🏺 The dead person was holding onto 2 Synth-blood injectors (Healing x2)
 
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/life_support.png)
@@ -303,13 +305,20 @@ _The hum of the Spin Drive turns frantic, building toward an unstable crescendo.
 💡 Add Counter: **Protect the Spin Drive** with a total 2x the amount of players.  
 -   Have each player play one Outcome card and describe how they want to protect the Spin Drive.  
 -   At the end of the round, distribute Injuries and damage ship systems for each point below the total of the Protect the Spin Drive Counter.
+    -   Examples of Injuries: _The shadow tendrils move right through you, everywhere they touch you, frostbite starts to spread, chilling you to the bone._
+    -   Examples of damage: _Frost covers the console the delicate machinery until something cracks._
 -   Then the **Spin drive engages**.
 
-<CounterCard {...counterMap.defense} title="Protect the Spin Drive" current={6} total={6} reward="You jump away" threat="Ship systems damage, characters Injury" />
+<CounterCard {...counterMap.defense} title="Protect the Spin Drive" current={6} total={6} reward="You jump away" threat="Ship systems damaged, characters Injured" />
 
 ### Systems overview
 
--   *Reactor* — power source, determines how many ship systems can be active
+-   Ship systems can take as much damage as is their energy consumption or output.
+-   Each damage reduces the available energy consumption or output by 1PU.
+-   Damage can be repaired by player action, 1 damage repaired per Effect.
+-   If completely destroyed, the system requires a **Spare part** to be repaired.
+
+-   *Reactor* — Reactor MK power source, determines how many ship systems can be active
 -   *Engines* — provide thrust to move around and maneuver during fights
 -   *Spin drive* — jump to other systems
 -   *Weapon systems* — fire weapons
@@ -322,6 +331,7 @@ _The hum of the Spin Drive turns frantic, building toward an unstable crescendo.
 
 _The Spin Drive roars to life, its rings blurring into golden light as the ship lurches violently forward. With a sound like the universe tearing, the stars collapse into streaks—and in the instant before everything goes white, the shadow’s reaching tendrils vanish into nothing, left behind in the dying silence of the Void._
 
+
 ### 📅 Next points of interest
 
 The crew has to pick where to go next and jump there using the Spin drive.
@@ -330,9 +340,46 @@ The crew has to pick where to go next and jump there using the Spin drive.
 -   *Abandoned research station* — An abandoned imperial research station. Maybe there's still something of value that hasn't been looted.
 -   *A mining colony has a pest problem* — A nearby automated mining colony advertises a job to get rid of giant rodents nesting in its mining shafts.
 
-### A transport in distress
+# A transport in distress
 
--   You can jump to the transport in distress and rescue the crew.
+_You jumped to the coordinates of the distress call and see a transport entering a nearby asteroid field followed by a pirate corvette. Both ships seem pretty beat up. The transport's weapons seem to be offline. They seem to try to charge their Spin drive, but cannot while under disruptor fire from the pirates._
+
+-   If you want to engage, you will have to move to the asteroid field. Navigating it requires a skilled pilot, you risk damaging the ship, but you can also shield yourself from enemy fire.
+-   The pirates seem to be ignoring you for now.
+-   💡 **Sensors:** The pirates are armed with a disruptor and a laser array, their reactor seems to be damaged so they are alternating between them.
+    -   Weapon station Mk II armed with.
+        -   Disruptor Mk I: De-powers a system by 1PU for 1 turn.
+        -   Laser array Mk I: Damages a system by 1 Damage.
+    -   You see the pirate ship's layout.
+-   📅 If the crew attacks the pirates, they turn to engage your ship and the transport jumps away next turn.
+
+## Pirate ship's layout
+
+<List>
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/docking_bay.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cargo_hold.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/elevator.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/crew_quarters.png)' }} />
+</List>
+<List>
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/spin_drive.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/engine_room.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/elevator.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/reactor.png)' }} />
+</List>
+<List>
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/shield_generator.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/weapons_station.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/elevator.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cockpit.png)' }} />
+</List>
+
+## 📅 Defeating pirates
+
+-   Pirates will surrender if their weapons are destroyed.
+    -   They offer a box of stims (5x Surge), 1 spin battery (Instantly charges the Spin drive) and a sub-space rescue token (Calls a rescue ship to help you fix your systems and provide fuel for one jump)
+-   If the pirate ship generator is destroyed the ship explodes.
+    -   The crew can salvage a Disruptor Mk I
 
 
 <ComponentHelper />

@@ -54,8 +54,8 @@ export default function CounterCard({
             nounCornerIcon="/mighty-decks/types/counter.png"
             nounDeck={deck ?? undefined}
             noun={<>{title ?? undefined}</>}
-            nounEffect={<span className="text-kac-monster-dark font-bold">{reward}</span>}
-            adjectiveEffect={<span className="text-kac-blood font-bold">{threat}</span>}
+            nounEffect={<span className="text-kac-monster-dark ">{reward}</span>}
+            adjectiveEffect={<span className="text-kac-blood ">{threat}</span>}
             {...restProps}
         />
     );

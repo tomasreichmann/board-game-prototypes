@@ -33,6 +33,7 @@ import BroadcastStuntCard from "../screenContent/BroadcastStuntCard";
 import BroadcastActorCardWithTacticalOverlay from "../screenContent/BroadcastActorCardWithTacticalOverlay";
 import { Link } from "react-router-dom";
 import ComponentHelper from "../gameComponents/ComponentHelper";
+import LayeredCard from "../gameComponents/LayeredCard";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -74,11 +75,45 @@ export const defaultMdxComponentMap = {
     GenericCounterCard: BroadcastGenericCounterCard,
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,
+    LayeredCard,
     ComponentHelper,
     Mdx,
     Text,
     Toggle,
 };
+
+export const contentTypeDescriptionMap = {
+    a: "A basic link that supports internal and external links",
+    Mdx: "Rich text content in [MDX](https://mdxjs.com/) format",
+    Text: "Simple text content like headings and paragraph text",
+    Image: "Shareable Image",
+    Actor: "Card for an PCs and NPCs",
+    Asset: "Card for an item like object",
+    CounterCard: "Card for tracking custom threats and goals",
+    GenericCounterCard: "Card for tracking generic threats and goals",
+    Effect: "Card for character effects like Wound or Boost",
+    Outcome: "Card for outcomes like Success or Fumble",
+    PaperMini: "Foldable paper-craft mini",
+    List: "layout for a list of any content items",
+    Heading: "layout for a heading with a title and an image",
+    Columns: "layout for side by side content",
+    Aside: "layout for content on the side",
+    Hand: "layout for items in an arc",
+    Spread: "layout for items in a spread",
+    Paper: "layout in a standard paper or card size",
+    Toggle: "layout for collapsible content",
+    Button: "button style links",
+    ActorCardWithTacticalOverlay: "Actor card with tactical overlay",
+    StuntCard: "Stunt card",
+    LayeredCard: "Generic card with noun, adjective and their effect fields",
+    ComponentHelper: "Shows all available content types and their props",
+    Clock: "DEPRECATED in favor of Counter",
+    Player: "DEPRECATED Player character card",
+    p: "DEPRECATED layout for paragraph text",
+    li: "DEPRECATED layout for list items",
+    img: "DEPRECATED layout for images",
+    Alert: "DEPRECATED DaisyUI Box content for warnings and information",
+} satisfies Record<keyof typeof defaultMdxComponentMap, string | undefined>;
 
 export default function MdxArticle({
     className,

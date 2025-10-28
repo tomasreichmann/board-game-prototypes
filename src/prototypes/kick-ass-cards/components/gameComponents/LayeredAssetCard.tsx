@@ -6,6 +6,7 @@ import { TacticalRoleType, tacticalModifierMap, tacticalRolesMap } from "../../d
 import { IconOrImage, IconOrImageProps } from "@/components/Icon/IconOrImage";
 import { IconProps } from "../Icon";
 import { AssetType } from "../../types";
+import RichText from "../RichText";
 
 export type LayeredAssetCardProps = React.PropsWithChildren<
     {
@@ -21,11 +22,13 @@ const getLayeredCardProps = (baseProps?: Partial<AssetType>, modifier?: Partial<
         adjective: modifier?.title,
         adjectiveEffect: modifier?.effect,
         adjectiveDeck: modifier?.deck,
-        adjectiveCornerIcon: "/mighty-decks/types/asset.png",
+        adjectiveCornerIcon: modifier ? "/mighty-decks/types/asset.png" : undefined,
         noun: baseProps?.title,
-        nounEffect: baseProps?.effect,
+        nounEffect: baseProps?.effect ? (
+            <RichText commonComponentProps={{ className: "h-5 inline-block -my-1" }}>{baseProps?.effect}</RichText>
+        ) : undefined,
         nounDeck: baseProps?.deck,
-        nounCornerIcon: "/mighty-decks/types/asset.png",
+        nounCornerIcon: baseProps ? "/mighty-decks/types/asset.png" : undefined,
         imageUri: baseProps?.icon,
         imageOverlayUri: modifier?.icon,
     };

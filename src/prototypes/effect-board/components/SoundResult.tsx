@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
-import { Sound } from "freesound-client";
 import Text from "@/prototypes/kick-ass-cards/components/content/Text";
+import { Sound } from "@/services/Freesound/freesound";
 
 export type SoundResultProps = PropsWithChildren & { sound: Partial<Sound> };
 

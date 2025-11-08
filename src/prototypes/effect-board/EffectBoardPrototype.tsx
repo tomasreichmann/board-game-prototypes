@@ -5,8 +5,7 @@ import Text, { H1 } from "../kick-ass-cards/components/content/Text";
 import Page from "@/components/Page/Page";
 import Input from "../kick-ass-cards/components/controls/Input";
 import Button from "../kick-ass-cards/components/controls/Button";
-import freesound from "@/services/Freesound/freesound";
-import { Collection, Sound } from "freesound-client";
+import { FreesoundResponse, searchFreeSound } from "@/services/Freesound/freesound";
 import ToggleData from "@/components/DataToggle";
 import SoundResult from "./components/SoundResult";
 import { EffectBoardProvider } from "./hooks/useEffectBoard";
@@ -19,12 +18,11 @@ import EffectPlayer from "./components/EffectPlayer";
 export default function EffectBoardPrototype({ children }: PropsWithChildren) {
     const searchRef = useRef<HTMLInputElement>(null);
     const [error, setError] = React.useState<string | null>(null);
-    const [searchResults, setSearchResults] = React.useState<Collection<Sound>>();
+    const [searchResults, setSearchResults] = React.useState<FreesoundResponse>();
 
     const handleSearch = useCallback(() => {
         if (!searchRef.current) return;
-        freesound
-            .search(searchRef.current?.value)
+        searchFreeSound(searchRef.current?.value)
             .then((results) => setSearchResults(results))
             .catch((error) => setError(error.message));
     }, []);

@@ -10,7 +10,6 @@ const allStunts = multiplyByCount(tricks, "count", defaultCountAdapter).map((ite
     size: "54x86",
     className: "relative",
 }));
-console.log(allStunts);
 
 export default function StuntCardPages() {
     return (

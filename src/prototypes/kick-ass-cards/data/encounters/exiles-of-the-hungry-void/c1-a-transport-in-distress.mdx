@@ -1,0 +1,61 @@
+---
+campaign: Exiles of the Hungry Void
+chapter: 1
+
+---
+
+import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
+
+# A transport in distress
+
+💡 This encounter should be an easy introductory ship to ship battle. The pirates are shooting blind, so hopefully, they will have a hard time hitting the players' generator.  
+If it starts to drag, let the signs of the Void Horror show up, like frosting and rippling space. The pirates will get spooked and try to flee and so should the players.
+
+_You jumped to the coordinates of the distress call and see a merchant transport entering a nearby asteroid field followed by a pirate corvette. Both ships seem pretty beat up. The transport's weapons and comms seem to be offline. They are trying to charge their Spin drive to jump away, but the disruptor fire from the pirate ship keeps draining its energy._
+
+-   The transport is damaged and trying to escape through the asteroid field. Their comms seem to be offline.
+-   If you want to engage, you will have to move to the asteroid field. Navigating it requires a skilled pilot, you risk damaging the ship, but you can also shield yourself from enemy fire.
+-   The pirates seem to be ignoring you for now.
+-   🔎 **Sensors:**
+    -   Effect 1: The pirates are armed with a disruptor and a laser array, their reactor seems to be damaged so they are alternating between them.
+    -   Effect 2: Their sensors seem to be also damaged
+    -   Effect 3: There are several life signs that don't appear to be moving. They are running a skeleton crew.
+    -   Weapon station Mk II armed with.
+        -   Disruptor Mk I: De-powers a system by 1PU for 1 turn.
+        -   Laser array Mk I: Damages a system by 1 Damage.
+    -   You see the pirate ship's layout.
+-   📅 If the crew attacks the pirates, they turn to engage your ship and the transport jumps away next turn.
+
+### Stunts for the scene
+
+<List>
+    <StuntCard {...stuntMap.warCry} />
+    <StuntCard {...stuntMap.stagedAccident} />
+    <StuntCard {...stuntMap.rallyingCall} />
+    <StuntCard {...stuntMap.weaponMaintenance} />
+</List>
+
+## Pirate ship's layout
+
+<List>
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/docking_bay.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cargo_hold.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/crew_quarters.png)' }} />
+</List>
+<List>
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/spin_drive.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/engine_room.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/reactor.png)' }} />
+</List>
+<List>
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/shield_generator.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/weapons_station.png)' }} />
+    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cockpit.png)' }} />
+</List>
+
+## 📅 Defeating pirates
+
+-   Pirates will surrender if their weapons are destroyed or all pirates are defeated.
+    -   They offer a *box of stims* (5x Surge), 1 *spin battery* (Instantly charges the Spin drive)
+-   If the pirate ship generator is destroyed the ship explodes.
+    -   The crew can salvage a Disruptor Mk I

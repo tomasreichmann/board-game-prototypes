@@ -1,9 +1,10 @@
 ---
-campaign: One Shots
+campaign: Exiles of the Hungry Void
+chapter: 0
 
 ---
 
-import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "./components";
+import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
 
 ![](/mighty-decks/encounters/exiles_of_the_hungry_void/exiles_of_the_hungry_void_horizontal.png)
 
@@ -252,6 +253,7 @@ As you gather on the bridge, you take stock of the ship:
     -   There is a sealed corridor. It looks like someone tried really hard to make sure nothing can enter or exit the corridor.
     -   🔎 It looks like there are more rooms there, but unsealing would require hiring a specialized crew with some serious equipment.
     -   🔎 You hear faint scratching from the other side.
+    -   🏺 There are still two Instant sealants (Insulating Resource) stacked against the wall. You can use these to immediately seal a hull breach.
 
 ![""](/mighty-decks/encounters/exiles_of_the_hungry_void/locations/crew_quarters.png)
 
@@ -264,6 +266,7 @@ As you gather on the bridge, you take stock of the ship:
 
 -   **Life support**
     -   Manning this station, you can re-pressure or de-pressure any room on the ship, control the temperature onboard and of the shower water, and reusing of waste water.
+    -   🏺 There is are 2 *Spin batteries* (Pushing Surge) lying on the floor. You can use these to fully charge the Spin drive and jump away. They are very expensive and damaging to the spin drive, only to be used as the last resort.
     -   🔎 de-pressuring is useful in case of a fire or hostile boarding.
     -   🔎 Water is not running at the moment. The water in the boiler seems to be frozen solid.
 
@@ -316,70 +319,24 @@ _The hum of the Spin Drive turns frantic, building toward an unstable crescendo.
 -   Ship systems can take as much damage as is their energy consumption or output.
 -   Each damage reduces the available energy consumption or output by 1PU.
 -   Damage can be repaired by player action, 1 damage repaired per Effect.
--   If completely destroyed, the system requires a **Spare part** to be repaired.
 
--   *Reactor* — Reactor MK power source, determines how many ship systems can be active
--   *Engines* — provide thrust to move around and maneuver during fights
--   *Spin drive* — jump to other systems
--   *Weapon systems* — fire weapons
--   *Missile bay* — deploy missiles
--   *Sensors* — find other ships and their systems, plot course to points of interest
--   *Life support* — control temperature and pressure
--   *Cockpit* — navigation, communication
+-   *Reactor* — Provides power, determines how many ship systems can be active at the same time. Manning reactor can produce extra energy.
+-   *Engines* — Provide thrust to move around and maneuver during fights. Manning engines can provide extra speed.
+-   *Spin drive* — Jumps the ship to other systems. Manning spin drive can reduce spin-up time.
+-   *Weapon systems* — Fires weapons. Manning this increases damage or fire rate.
+-   *Missile bay* — Launches missiles. Manning this is required to load and target missiles.
+-   *Sensors* — Give information about space around you, find other ships and their systems, plot course to points of interest. Manning sensors gives more information.
+-   *Life support* — Controls temperature and air pressure. Manning this can pressurize or depressurize rooms.
+-   *Cockpit* — Manuevers the ship. Manning cockpit can provide evasion.
 
 ### 📅 Spin drive engages
 
 _The Spin Drive roars to life, its rings blurring into golden light as the ship lurches violently forward. With a sound like the universe tearing, the stars collapse into streaks—and in the instant before everything goes white, the shadow’s reaching tendrils vanish into nothing, left behind in the dying silence of the Void._
 
-
 ### 📅 Next points of interest
 
 The crew has to pick where to go next and jump there using the Spin drive.
 
--   *A transport in distress* — A transport sent out a distress signal. It is being pursued by pirates.
--   *Abandoned research station* — An abandoned imperial research station. Maybe there's still something of value that hasn't been looted.
--   *A mining colony has a pest problem* — A nearby automated mining colony advertises a job to get rid of giant rodents nesting in its mining shafts.
-
-# A transport in distress
-
-_You jumped to the coordinates of the distress call and see a transport entering a nearby asteroid field followed by a pirate corvette. Both ships seem pretty beat up. The transport's weapons seem to be offline. They seem to try to charge their Spin drive, but cannot while under disruptor fire from the pirates._
-
--   If you want to engage, you will have to move to the asteroid field. Navigating it requires a skilled pilot, you risk damaging the ship, but you can also shield yourself from enemy fire.
--   The pirates seem to be ignoring you for now.
--   💡 **Sensors:** The pirates are armed with a disruptor and a laser array, their reactor seems to be damaged so they are alternating between them.
-    -   Weapon station Mk II armed with.
-        -   Disruptor Mk I: De-powers a system by 1PU for 1 turn.
-        -   Laser array Mk I: Damages a system by 1 Damage.
-    -   You see the pirate ship's layout.
--   📅 If the crew attacks the pirates, they turn to engage your ship and the transport jumps away next turn.
-
-## Pirate ship's layout
-
-<List>
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/docking_bay.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cargo_hold.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/elevator.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/crew_quarters.png)' }} />
-</List>
-<List>
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/spin_drive.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/engine_room.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/elevator.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/reactor.png)' }} />
-</List>
-<List>
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/shield_generator.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/weapons_station.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/elevator.png)' }} />
-    <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cockpit.png)' }} />
-</List>
-
-## 📅 Defeating pirates
-
--   Pirates will surrender if their weapons are destroyed.
-    -   They offer a box of stims (5x Surge), 1 spin battery (Instantly charges the Spin drive) and a sub-space rescue token (Calls a rescue ship to help you fix your systems and provide fuel for one jump)
--   If the pirate ship generator is destroyed the ship explodes.
-    -   The crew can salvage a Disruptor Mk I
-
-
-<ComponentHelper />
+-   *[A transport in distress](/mighty-decks/encounters/exiles-of-the-hungry-void/c1-a-transport-in-distress)* — A transport sent out a distress signal. It is being pursued by pirates.
+-   *[Abandoned research station](/mighty-decks/encounters/exiles-of-the-hungry-void/c1-abandoned-research-station)* — An abandoned imperial research station. Maybe there's still something of value that hasn't been looted.
+-   *[A mining colony has a pest problem](/mighty-decks/encounters/exiles-of-the-hungry-void/c1-a-mining-colony-has-a-pest-problem)* — A nearby automated mining colony advertises a job to get rid of giant rodents nesting in its mining shafts.

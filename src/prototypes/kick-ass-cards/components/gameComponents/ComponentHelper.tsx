@@ -86,9 +86,9 @@ const ComponentHelper = ({ initialType = "asset", initialSearch = "", ...restPro
         <div {...restProps}>
             <Input type="text" value={search} onChange={handleSearchChange} />
             <div className="flex flex-row gap-4 flex-wrap">
-                {types.map((type) => (
+                {types.map((type, index) => (
                     <Input
-                        key={type}
+                        key={type + "-" + index}
                         label={type}
                         type={"radio"}
                         value={type}
@@ -100,8 +100,8 @@ const ComponentHelper = ({ initialType = "asset", initialSearch = "", ...restPro
                 ))}
             </div>
             <div className="flex flex-row flex-wrap gap-4 not-prose">
-                {filteredItems.map((item) => (
-                    <div key={item.name} className="flex flex-col items-center">
+                {filteredItems.map((item, index) => (
+                    <div key={item.name + "-" + index} className="flex flex-col items-center">
                         <H3>{item.slug}</H3>
                         <Item {...item} />
                         <pre className="text-xs text-slate-800 bg-slate-100 border-2 border-slate-500 rounded-md p-2 overflow-auto max-w-[calc(100vw-100px)] max-h-[calc(100vh-200px)] whitespace-pre-wrap">

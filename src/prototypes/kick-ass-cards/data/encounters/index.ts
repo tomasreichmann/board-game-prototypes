@@ -28,6 +28,19 @@ const makeEncounterDefinition = (key: string, title: string, campaign: string, i
     },
 });
 
+const modules = import.meta.glob("./**/*.mdx", {
+    eager: false, // keep lazy by default
+});
+
+export async function loadEncounter(pathWithoutExtension: string) {
+    const key = `./${pathWithoutExtension}.mdx`;
+    const loader = modules[key];
+    if (!loader) {
+        throw new Error(`Encounter not found: ${key}. Available keys: ${Object.keys(modules).join(", ")}`);
+    }
+    return loader().then((mod: any) => mod);
+}
+
 export const encountersMap: { [key: string]: EncounterDefinition } = {
     ...makeEncounterDefinition("index", "Featured Encounters", ""),
     ...makeEncounterDefinition("index-cs", "Vybraná Dobrodružství", ""),
@@ -82,7 +95,7 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
     ...makeEncounterDefinition("OS-en-low-key-heroes", "Low-key Heroes", OS),
 
     ...makeEncounterDefinition("OS-en-radicare-rapid-rescue", "RadiCare Rapid Rescue", OS),
-    ...makeEncounterDefinition("OS-en-exiles-of-the-hungry-void", "Exiles of the Hungry Void", OS),
+    ...makeEncounterDefinition("exiles-of-the-hungry-void/intro", "Exiles of the Hungry Void", OS),
 };
 
 export const encountersByCampaign = groupByCampaign(encountersMap);

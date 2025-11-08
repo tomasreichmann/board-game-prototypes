@@ -9,7 +9,6 @@ export default function groupByCampaign(encMap: typeof encountersMap) {
         };
     } = {};
     Object.values(encMap).forEach((encounter) => {
-        console.log("Encounter:", encounter);
         const campaignName = encounter.campaign;
         if (!campaignName) {
             return;

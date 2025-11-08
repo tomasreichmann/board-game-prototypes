@@ -1,4 +1,4 @@
-import { encountersMap } from "../../data/encounters";
+import { encountersMap, loadEncounter } from "../../data/encounters";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ArticleWithTitle from "../layout/ArticleWithTitle";
@@ -11,10 +11,13 @@ export default function EncounterRoute() {
     const [isPending, setIsPending] = useState(true);
     const [Encounter, setEncounter] = useState<React.ComponentType | null>(null);
     const [error, setError] = useState<Error | null>(null);
-    const { encounterSlug } = useParams<"encounterSlug">();
+    const params = useParams<"encounterSlug" | "*">();
+    const restPath = params["*"] ? `/${params["*"]}` : "";
+    const encounterSlug = params["encounterSlug"] + restPath;
+
     const encounterDefinition = (encounterSlug && encountersMap[encounterSlug]) || {
-        path: undefined,
-        title: undefined,
+        path: encounterSlug,
+        title: encounterSlug.split("/").at(-1)!.replace(/-/g, " "),
     };
     const { path } = encounterDefinition;
 
@@ -27,7 +30,7 @@ export default function EncounterRoute() {
         setEncounter(null);
         let isValid = true;
         const pathWithoutExtension = path.replace("/.mdx$/", "");
-        import(`../../data/encounters/${pathWithoutExtension}.mdx`)
+        loadEncounter(pathWithoutExtension)
             .then((data) => {
                 if (isValid) {
                     console.dir(data);
@@ -36,7 +39,7 @@ export default function EncounterRoute() {
                 }
             })
             .catch((error) => {
-                console.error(`../../data/encounters/${path} Error:`, error);
+                console.error(`Error loading ../../data/encounters/${path} Error:`, error);
                 setError(error);
             });
         return () => {

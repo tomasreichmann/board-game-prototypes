@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <BrowserRouter>
             <Routes>
                 <Route
-                    path="/kick-ass-cards*"
+                    path="/kick-ass-cards/*"
                     element={<Navigate to={window.location.pathname.replace("/kick-ass-cards", "/mighty-decks")} />}
                 />
                 {routeStructure}

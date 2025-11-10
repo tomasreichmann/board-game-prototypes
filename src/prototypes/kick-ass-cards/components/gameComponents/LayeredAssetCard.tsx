@@ -2,7 +2,7 @@ import React, { CSSProperties } from "react";
 import Image, { ImageProps } from "../Image";
 import twm from "@/utils/twm";
 import LayeredCard, { LayeredCardBackFace, LayeredCardBackFaceProps, LayeredCardProps } from "./LayeredCard";
-import { TacticalRoleType, tacticalModifierMap, tacticalRolesMap } from "../../data/tactical-roles";
+import { TacticalRoleType, tacticalModifierMap, tacticalRoleMap } from "../../data/tactical-roles";
 import { IconOrImage, IconOrImageProps } from "@/components/Icon/IconOrImage";
 import { IconProps } from "../Icon";
 import { AssetType } from "../../types";

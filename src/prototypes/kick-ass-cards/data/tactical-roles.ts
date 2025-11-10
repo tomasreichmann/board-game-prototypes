@@ -283,7 +283,7 @@ export const tacticalModifierMap = {
 
 export const tacticalSpecials = Object.values(tacticalModifierMap);
 
-export const tacticalRolesMap = {
+export const tacticalRoleMap = {
     pawn: <TacticalRoleType>{
         slug: "pawn",
         name: "Pawn",
@@ -482,4 +482,4 @@ export const tacticalRolesMap = {
     },
 } as const;
 
-export default Object.values(tacticalRolesMap) as TacticalRoleType[];
+export default Object.values(tacticalRoleMap) as TacticalRoleType[];

@@ -1,8 +1,8 @@
 import React, { CSSProperties } from "react";
-import Image, { ImageProps } from "../Image";
+import { ImageProps } from "../Image";
 import twm from "@/utils/twm";
 import LayeredCard, { LayeredCardBackFace, LayeredCardBackFaceProps, LayeredCardProps } from "./LayeredCard";
-import { TacticalRoleType, tacticalModifierMap, tacticalRolesMap } from "../../data/tactical-roles";
+import { TacticalRoleType } from "../../data/tactical-roles";
 import { IconOrImage, IconOrImageProps } from "@/components/Icon/IconOrImage";
 import { IconProps } from "../Icon";
 
@@ -19,9 +19,6 @@ export type LayeredActorCardProps = React.PropsWithChildren<
         modifier?: TacticalRoleType;
     } & Partial<LayeredCardProps>
 >;
-
-const sampleRole = tacticalRolesMap.champion;
-const sampleModifier = tacticalModifierMap.alpha;
 
 const TextWithIcons = ({ text, iconProps }: { text: string; iconProps?: Partial<IconOrImageProps<IconProps>> }) => {
     const fragments = text.split(/(\[[^\]]+\])/g).filter((fr) => fr !== "");
@@ -84,7 +81,7 @@ const getIconTextLength = (text: string) => {
     return matches.reduce((length, fragment) => {
         const iconNameMatch = fragment.match(/^\[([a-zA-Z_]+)(\d*)\]$/);
         if (iconNameMatch) {
-            const [_, iconCountString = "1"] = iconNameMatch.slice(1);
+            const [, iconCountString = "1"] = iconNameMatch.slice(1);
             const iconCount = parseInt(iconCountString || "1", 10);
             if (isNaN(iconCount) || iconCount < 1) return length;
             return length + iconCount;
@@ -246,11 +243,11 @@ const getLayeredCardProps = (
 export default function LayeredActorCard({
     className,
     classNames = {},
-    slug,
+    slug: _slug,
     imageUri,
     role,
     modifier,
-    children,
+    children: _children,
     ...restProps
 }: LayeredActorCardProps) {
     const props = getLayeredCardProps(role, modifier);

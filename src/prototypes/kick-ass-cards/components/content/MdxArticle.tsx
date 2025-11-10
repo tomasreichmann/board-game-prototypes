@@ -34,6 +34,8 @@ import BroadcastActorCardWithTacticalOverlay from "../screenContent/BroadcastAct
 import { Link } from "react-router-dom";
 import ComponentHelper from "../gameComponents/ComponentHelper";
 import LayeredCard from "../gameComponents/LayeredCard";
+import LayeredActorCard from "../gameComponents/LayeredActorCard";
+import LayeredAssetCard from "../gameComponents/LayeredAssetCard";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -76,6 +78,8 @@ export const defaultMdxComponentMap = {
     Paper: BroadcastPaper,
     PaperMini: BroadcastPaperMini,
     LayeredCard,
+    LayeredActorCard,
+    LayeredAssetCard,
     ComponentHelper,
     Mdx,
     Text,
@@ -106,6 +110,8 @@ export const contentTypeDescriptionMap = {
     ActorCardWithTacticalOverlay: "Actor card with tactical overlay",
     StuntCard: "Stunt card",
     LayeredCard: "Generic card with noun, adjective and their effect fields",
+    LayeredActorCard: "Layered card for an actor with noun, adjective and their effect fields",
+    LayeredAssetCard: "Layered card for an asset with noun, adjective and their effect fields",
     ComponentHelper: "Shows all available content types and their props",
     Clock: "DEPRECATED in favor of Counter",
     Player: "DEPRECATED Player character card",

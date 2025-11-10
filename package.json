@@ -80,6 +80,7 @@
         "dmx-ts": "^0.4.0",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-mdx": "^3.6.2",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.0.1",
         "google-spreadsheet": "^3.3.0",

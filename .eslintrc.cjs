@@ -25,7 +25,7 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "prettier",
     ],
-    plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
+    plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "mdx"],
     rules: {
         // project sensible defaults; tweak as you like
         "react/react-in-jsx-scope": "off", // Vite + React 17+ doesn't need import React
@@ -48,7 +48,14 @@ module.exports = {
             extends: ["plugin:@typescript-eslint/recommended"],
             rules: {
                 // allow explicit `any` in this project where necessary
-                '@typescript-eslint/no-explicit-any': 'off',
+                "@typescript-eslint/no-explicit-any": "off",
+            },
+        },
+        {
+            files: ["**/*.mdx"],
+            extends: ["plugin:mdx/recommended"],
+            rules: {
+                // optional: relax or configure MDX-specific rules here
             },
         },
     ],

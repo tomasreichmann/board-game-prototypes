@@ -20,7 +20,7 @@ const stageTypeClassNameMap: { [key: string]: string } = {
 };
 
 export default function EncounterMap({ className, stages, children }: EncounterMapProps) {
-    const iconProps = { className: "h-5 inline-block -my-1" };
+    /* const iconProps = { className: "h-5 inline-block -my-1" }; */
     const stagesToInsert = stages[0] ? [stages[0]] : [];
     const levels = [{ level: 0, stages: [] as StageType[] }];
     let safeGuard = 100;
@@ -76,7 +76,6 @@ export default function EncounterMap({ className, stages, children }: EncounterM
                                                 const nextStageIndex = nextLevel?.stages.findIndex(
                                                     (stage) => stage.slug === nextStageSlug
                                                 );
-                                                const indexShift = nextStageIndex - stageIndex;
 
                                                 const currentLevelSize = stages.length;
                                                 const currentStageIndex = stageIndex;
@@ -95,6 +94,7 @@ export default function EncounterMap({ className, stages, children }: EncounterM
 
                                                 return (
                                                     <div
+                                                        key={nextStageSlug}
                                                         className="absolute border-r-4 border-lightning-2 z-0"
                                                         style={{
                                                             height: length,
@@ -105,7 +105,6 @@ export default function EncounterMap({ className, stages, children }: EncounterM
                                                         }}
                                                     ></div>
                                                 );
-                                                return indexShift;
                                             })}
                                         </div>
                                     );

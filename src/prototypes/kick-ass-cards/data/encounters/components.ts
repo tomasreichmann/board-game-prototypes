@@ -4,6 +4,7 @@ import { effectMap as effectMapInitial } from "../effects-deck-en";
 import { stuntMap as stuntMapInitial } from "../stunts-en-deck";
 import { outcomeMap as outcomeMapInitial } from "../outcomeDeck";
 import { actorMap as actorMapInitial } from "../actors-deck";
+export { tacticalRoleMap as actorRoleMap, tacticalModifierMap as actorModifierMap } from "../tactical-roles";
 
 import defaultProps from "./defaultProps";
 

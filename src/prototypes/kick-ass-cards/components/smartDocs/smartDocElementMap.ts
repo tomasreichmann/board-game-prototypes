@@ -19,7 +19,7 @@ export type ElementControlType =
           default: React.ReactNode[];
       };
 
-export type SmartDocElementType<P extends {}> = {
+export type SmartDocElementType<P extends Record<string, unknown>> = {
     Component: React.ComponentType<P>;
     componentName: string;
     label: string;
@@ -33,7 +33,7 @@ export type ElementMapType = {
     [Key in ElementNamesType]: ElementControlType;
 };
 
-export const getDefaultProps = <P extends {}>(controls: SmartDocElementType<P>["controls"]) => {
+export const getDefaultProps = <P extends Record<string, unknown>>(controls: SmartDocElementType<P>["controls"]) => {
     return Object.fromEntries(
         (Object.entries(controls) as [keyof P, ElementControlType][]).map(([key, control]) => [key, control.default])
     );

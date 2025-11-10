@@ -5,7 +5,7 @@ export type ControlMapType<ControlTypes extends string, Props extends {}> = {
     [key in ControlTypes]: React.ComponentType<ControlProps<Props>>;
 };
 
-export type EditableControlItemType<Props extends {}, ControlMap extends {}> = {
+export type EditableControlItemType<Props extends {}, ControlMap extends Record<string, unknown>> = {
     prop: keyof Props;
     type: keyof ControlMap;
     label: string;

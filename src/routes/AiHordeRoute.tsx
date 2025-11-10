@@ -86,7 +86,7 @@ export default function AiHordeRoute() {
                 return { ...options, prompt: [newPrompt, negativePromptDelimiter, negativePrompt].join("") };
             });
         },
-        [setOptionProperty]
+        [setOptionProperty, setOptions]
     );
     const setNegativePrompt = useCallback(
         (newNegativePrompt: string) => {
@@ -142,7 +142,7 @@ export default function AiHordeRoute() {
                 );
             }
         });
-    }, [generateImage, options]);
+    }, [generateImage, setHistory, options]);
 
     return (
         <Page className="AiHordeRoute flex-1 h-svh flex flex-col box-border">

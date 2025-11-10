@@ -121,10 +121,14 @@ export const deleteDocument = async (path: string, docId: string) => {
 
 export const replaceUndefinedProperties = <T>(data: T): T => {
     if (typeof data === "object") {
-        const containsUndefinedValues = Object.values(data as Object).some((value) => value === undefined);
+        const containsUndefinedValues = Object.values(data as Record<string, unknown>).some(
+            (value) => value === undefined
+        );
         return (
             containsUndefinedValues
-                ? Object.fromEntries(Object.entries(data as Object).filter(([, value]) => value !== undefined))
+                ? Object.fromEntries(
+                      Object.entries(data as Record<string, unknown>).filter(([, value]) => value !== undefined)
+                  )
                 : data
         ) as T;
     }
@@ -204,7 +208,7 @@ export const useQuery = <Ref extends DocumentReference<DocumentData, DocumentDat
         if (!ref) {
             return;
         }
-        let unsubscribe: Function = () => undefined;
+        let unsubscribe: () => void;
         if (ref.type === "document") {
             unsubscribe = onSnapshot(
                 ref,

@@ -1,4 +1,4 @@
-const randomUniqueItems = <T extends any>(array: T[], count: number) => {
+const randomUniqueItems = <T>(array: T[], count: number) => {
     const options = [...array];
     if (options.length < count) {
         return array;

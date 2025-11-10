@@ -4,7 +4,7 @@ export type WeightedRange<T> = {
 };
 export type ValueOrRangeOrWeightedRange<T> = T | T[] | WeightedRange<T>;
 
-export const randomNumber = (min: number, max: number, precision: number = 1) => {
+export const randomNumber = (min: number, max: number, precision = 1) => {
     const preciseValue = Math.random() * (max - min) + min;
     if (precision === 0) {
         return preciseValue;
@@ -12,11 +12,11 @@ export const randomNumber = (min: number, max: number, precision: number = 1) =>
     return Math.max(Math.min(Math.floor(preciseValue / precision) * precision, max), min);
 };
 
-export const randomValue = <T extends any>(values: T[]) => {
+export const randomValue = <T>(values: T[]) => {
     return values[Math.floor(Math.random() * values.length)];
 };
 
-export const weightedRandom = <T extends any>(values: T[], weights: number[]) => {
+export const weightedRandom = <T>(values: T[], weights: number[]) => {
     let normalizedWeights = weights;
     if (values.length !== normalizedWeights.length || weights.some((weight) => weight < 0)) {
         normalizedWeights = values.map((_, index) => {
@@ -105,12 +105,12 @@ export type ResolveValueOptionsType = {
  * @deprecated This function is deprecated. Use resolveRandom instead.
  * Resolves a value from a given randomization.
  *
- * @param {ValueOrRangeOrWeightedRange<T>} randomization - The randomization to resolve a value from.
+ * @param {ValueOrRangeOrWeightedRange<T,>} randomization - The randomization to resolve a value from.
  * @param {ResolveValueOptionsType} [options] - Optional options object.
  * @param {number} [options.rangePrecision=1] - The precision to use when resolving a value from a range.
  * @return {T} - The resolved value.
  */
-const resolveValue = <T extends any>(
+const resolveValue = <T>(
     randomization: ValueOrRangeOrWeightedRange<T>,
     { rangePrecision = 1 }: ResolveValueOptionsType = {}
 ) => {
@@ -139,13 +139,5 @@ const resolveValue = <T extends any>(
     }
     return randomization as T;
 };
-
-type DeepRandomType<T> = T | T[] | { [key: string]: DeepRandomType<T> };
-
-/**
- * resolves tree of values recursively.
- * @param randomization can be a list of values with weights, list of values without weights, or a map of values depending on a parameter
- */
-const resolveRandom = <T extends any, P>(randomization: DeepRandomType<T>, reference: P) => {};
 
 export default resolveValue;

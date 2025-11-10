@@ -9,7 +9,11 @@ export type SmartDocContentProps = {
     path: string;
 };
 
-const getPropsWithDrop = <P extends {}>(props: P, controls: SmartDocElementType<P>["controls"], path: string) => {
+const getPropsWithDrop = <P extends Record<string, unknown>>(
+    props: P,
+    controls: SmartDocElementType<P>["controls"],
+    path: string
+) => {
     return Object.fromEntries(
         (Object.entries(props) as [keyof P, any][]).map(([key, value]) => {
             const controlItem = controls[key];

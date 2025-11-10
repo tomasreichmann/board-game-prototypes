@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import clsx from "clsx";
 import { Button } from "react-daisyui";
 import cultureScheme, { Culture } from "../../generators/schemes/cultureScheme";
 import resolveRandom, { DeepRandomType } from "../../generators/resolveRandom";
 import DataPreview from "../../../../components/DataPreview";
 import personScheme from "../../generators/schemes/personScheme";
-import VisualizeRandom from "./VisualizeRandom";
 
 export type GeneratorProps = {
     localStorageKey?: string;
@@ -16,8 +14,6 @@ export type GeneratorProps = {
 
 export type GeneratorStoreType = {};
 
-const initialStore = {};
-
 export type PresetType<T> = {
     label: string;
     scheme: DeepRandomType<T>;
@@ -25,7 +21,7 @@ export type PresetType<T> = {
     additionalProps: Partial<T>;
 };
 
-const createPreset = <T extends any>(
+const createPreset = <T,>(
     label: string,
     scheme: DeepRandomType<T>,
     Component: React.ComponentType<T>,
@@ -46,8 +42,8 @@ const defaultPresets = [
 export default function Generator({
     className,
     initialPresets = defaultPresets,
-    localStorageKey = "generator",
-}: GeneratorProps) {
+}: /* localStorageKey = "generator", */
+GeneratorProps) {
     const presets = initialPresets;
     const [selectedPreset, setSelectedPreset] = useState<PresetType<any> | null>(presets[0]);
     const [counter, setCounter] = useState(0);
@@ -58,11 +54,6 @@ export default function Generator({
             setResult(resolveRandom(selectedPreset.scheme));
         }
     }, [selectedPreset, counter]);
-    //const store = useLocalStorage<>(localStorageKey);
-
-    /*const families = Array(10)
-        .fill(0)
-        .map(() => generateFamily());*/
 
     const PreviewComponent = selectedPreset?.Component;
 

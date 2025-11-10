@@ -28,7 +28,7 @@ export default function SmartDoc({ className, path, children }: SmartDocProps) {
     if (!smartDoc) {
         return (
             <div className={twMerge("SmartDoc flex flex-col gap-2", className)}>
-                <H2 color="danger">Smart Doc "{path}" not found</H2>
+                <H2 color="danger">Smart Doc &quot;{path}&quot; not found</H2>
                 {children}
             </div>
         );

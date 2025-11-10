@@ -167,8 +167,8 @@ const renderAction = (
 const getLayeredCardProps = (
     role?: TacticalRoleType,
     modifier?: TacticalRoleType,
-    lineSize: string = "h-5 flex flex-row items-center",
-    iconSize: string = "h-5"
+    lineSize = "h-5 flex flex-row items-center",
+    iconSize = "h-5"
 ): LayeredCardProps => {
     const props: LayeredCardProps = {};
     const nounEffectLeft: React.ReactNode[] = [];

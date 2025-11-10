@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useEffect, useMemo } from "react";
 
-import { clamp } from "lodash";
+import { clamp, noop } from "lodash";
 import { usePerspectiveView } from "../../../../components/PerspectiveView/PerspectiveViewProvider";
 import { PerspectiveViewActionTypeEnum } from "../../../../components/PerspectiveView/perspectiveViewReducer";
 import useDragDelta from "../../../../hooks/useDragDelta";
@@ -56,8 +56,8 @@ const strahdCardItem = {
         props: {
             editing: true,
             preview: true,
-            onEditToggle: () => {},
-            onChange: () => {},
+            onEditToggle: noop,
+            onChange: noop,
             props: {
                 className: "z-20",
                 name: "Count Strahd von Zarovich",

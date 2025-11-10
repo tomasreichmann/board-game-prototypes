@@ -25,6 +25,7 @@ export default function SettingsRoute() {
     const items = (Object.keys(settings) as (keyof typeof settings)[]).map((key) => {
         return (
             <Input
+                key={key}
                 type={valueTypeInputTypeMap[typeof settings[key] as keyof typeof valueTypeInputTypeMap] || "text"}
                 value={settings[key]}
                 onChange={(e) => {

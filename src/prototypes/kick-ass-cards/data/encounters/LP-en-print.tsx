@@ -140,8 +140,9 @@ export default function LPCardPages() {
                             currentToughness={4}
                             hideCounter
                             imageUri="/LP/characters/amara.png"
-                            children={<PrintMarkerCorners />}
-                        />
+                        >
+                            <PrintMarkerCorners />
+                        </ActorCard>
                         <ActorCard
                             {...defaultActorProps}
                             bleedMm={3}
@@ -155,8 +156,9 @@ export default function LPCardPages() {
                             hideCounter
                             imagePosition="top"
                             imageUri="/LP/characters/holden.png"
-                            children={<PrintMarkerCorners />}
-                        />
+                        >
+                            <PrintMarkerCorners />
+                        </ActorCard>
                         <ActorCard
                             {...defaultActorProps}
                             bleedMm={3}
@@ -170,8 +172,9 @@ export default function LPCardPages() {
                             hideCounter
                             imagePosition="top"
                             imageUri="/LP/characters/lanaes.png"
-                            children={<PrintMarkerCorners />}
-                        />
+                        >
+                            <PrintMarkerCorners />
+                        </ActorCard>
                         <PaperMini
                             className="ml-4 mt-10"
                             imageUri="/LP/characters/holden.png"

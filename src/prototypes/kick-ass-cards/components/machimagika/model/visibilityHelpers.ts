@@ -45,7 +45,7 @@ export const setSceneVisibility = (state: GameStateType, scene: SceneEnum, visib
 
 export const setAboveScenesVisibility = (state: GameStateType, scene: SceneEnum, visibility: VisibilityEnum) => {
     const sceneLayerIndex = sceneOrderFromBottom.indexOf(scene);
-    let newState = { ...state };
+    const newState = { ...state };
     sceneOrderFromBottom.slice(sceneLayerIndex + 1).forEach((scene) => {
         newState[sceneVisibilityPropMap[scene]] = visibility;
     });

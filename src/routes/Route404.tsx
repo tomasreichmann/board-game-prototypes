@@ -1,4 +1,4 @@
-import { useLocation, useRouteError } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Page from "../components/Page/Page";
 import { routes } from "../routes";
 
@@ -8,7 +8,7 @@ export default function Route404() {
     return (
         <Page className="Route404 flex-1 h-svh flex flex-col box-border">
             <h1 className="text-xl font-bold mb-10">
-                Sorry, can't find the page you are looking for
+                Sorry, can&apos;t find the page you are looking for
                 <br />
                 {pathname}
             </h1>

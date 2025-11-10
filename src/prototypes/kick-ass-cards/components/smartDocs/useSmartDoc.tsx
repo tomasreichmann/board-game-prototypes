@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { SmartDocContentItemType, SmartDocType, smartDocLSKeyPrefix } from "./smartDocs";
+import { SmartDocContentItemType, SmartDocType } from "./smartDocs";
 import { SmartDocElementType, getDefaultProps } from "./smartDocElementMap";
 import immutableAssign from "immutable-assign";
 import { get } from "lodash";
@@ -93,7 +93,7 @@ export const useSmartDoc = () => {
     return { state: state, dispatch };
 };
 
-export const SmartDocPathContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
+export const SmartDocPathContextProvider = ({ children }: React.PropsWithChildren) => {
     const [path, setPath] = useState<string | null>(null);
 
     return <SmartDocContext.Provider value={{ path, setPath }}>{children}</SmartDocContext.Provider>;

@@ -94,7 +94,7 @@ export default function FireworksScene({ children, fps = 30, durationMs = 4000 }
     }, []);
 
     useEffect(() => {
-        let saveState = { ...state };
+        const saveState = { ...state };
         const interval = setInterval(() => {
             requestAnimationFrame(() => {
                 setFrame((frame) => {

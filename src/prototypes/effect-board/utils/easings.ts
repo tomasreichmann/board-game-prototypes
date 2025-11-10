@@ -35,7 +35,7 @@ export function createNoiseEnvelopeEase(
     const decayNorm = 1 - a > 0 ? 1 - a : 1; // normalize decay span
 
     return (tIn: number) => {
-        let t = clamp01(tIn);
+        const t = clamp01(tIn);
 
         // Envelope: piecewise attack→decay, continuous at t = a
         let envelope: number;

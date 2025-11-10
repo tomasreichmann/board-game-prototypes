@@ -1,5 +1,6 @@
 import Ajv from "ajv";
 import { assetCardSchema } from "../../prototypes/kick-ass-cards/components/gameComponents/AssetCard";
+import { noop } from "lodash";
 
 // Define parsers and validators outside of the task
 type ParserFunctionType = (response: string, options?: Record<string, any>) => any;
@@ -170,8 +171,8 @@ export type JobManagerOptionsType = {
 
 const JobManager = ({ llmApi, sdApi }: JobManagerOptionsType) => {
     const waitForConfirmation = () => {
-        let onContinue = () => {};
-        let onCancel = () => {};
+        let onContinue = noop;
+        let onCancel = noop;
 
         const promise = new Promise<void>((resolve, reject) => {
             onContinue = resolve;

@@ -26,7 +26,7 @@ export const getSchemaAtDeepPointer = (schema: JSONSchemaType<any>, deepPointer:
     if (pointerFragments.length === 0) {
         return schema;
     }
-    let pointerFragmentsLeft = pointerFragments;
+    const pointerFragmentsLeft = pointerFragments;
     let currentFragment;
     let currentSchema = schema;
     while ((currentFragment = pointerFragmentsLeft.shift())) {

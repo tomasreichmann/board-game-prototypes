@@ -1,13 +1,10 @@
 import Page from "../components/Page/Page";
 
-import { useState } from "react";
 import Text from "../prototypes/kick-ass-cards/components/content/Text";
 import WgBusinessCardsPrintControls from "../prototypes/kick-ass-cards/components/preparingTheGame/WgBusinessCardsPrintControls";
-import { paperSizes, cardSizes } from "../components/print/paperSizes";
 import PaperAndCardControls, {
     usePrintControlsStore,
 } from "../prototypes/kick-ass-cards/components/preparingTheGame/PaperAndCardControls";
-import { ChunkedPagesProps } from "../prototypes/kick-ass-cards/components/print/ChunkedPages";
 
 export default function WgBusinessCardRoute() {
     const { isDefaultPaperOrientationPortrait } = usePrintControlsStore();

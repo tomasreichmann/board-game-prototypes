@@ -1,4 +1,4 @@
-const models = [
+export const models = [
     "ICBINP - I Can't Believe It's Not Photography",
     "AlbedoBase XL (SDXL)",
     "Deliberate",

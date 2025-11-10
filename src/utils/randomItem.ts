@@ -1,4 +1,4 @@
-export const randomItem = <T extends any>(values: T[]) => {
+export const randomItem = <T>(values: T[]) => {
     if (values.length === 0) {
         return null;
     }

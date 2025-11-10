@@ -5,7 +5,7 @@ import { GameActionTypeEnum } from "./GameActionTypeEnum";
 
 export default function handleNewGame(state: GameStateType, action: GameActionType): [GameStateType, GameActionType] {
     if (action.type === GameActionTypeEnum.NewGame) {
-        let newState: GameStateType = {
+        const newState: GameStateType = {
             ...state,
             ...initialState,
         };

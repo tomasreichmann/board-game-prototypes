@@ -68,7 +68,6 @@ export default function SDRoute() {
         setOptionProperty,
         isPending,
         error,
-        value,
         history,
     } = useSD({
         historyKeyPostfix: "COMMON",

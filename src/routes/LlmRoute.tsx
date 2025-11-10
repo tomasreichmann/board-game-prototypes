@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { MistralFormatEnum, MistralOptionsType, useMistral } from "../hooks/useMistral";
+import { MistralOptionsType, useMistral } from "../hooks/useMistral";
 import Button from "../prototypes/kick-ass-cards/components/controls/Button";
 import ButtonWithConfirmation from "../prototypes/kick-ass-cards/components/controls/ButtonWithConfirmation";
 import copyToClipboard from "../utils/copyToClipboard";
@@ -108,7 +108,7 @@ export default function LlmRoute() {
             sendMessage(message);
             setMessage("");
         },
-        [sendMessage]
+        [sendMessage, setMessage]
     );
 
     return (

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { AnyRecord } from "../../../utils/simpleTypes";
 import { defaultMdxComponentMap } from "../components/content/MdxArticle";
 import { ContentDropProps } from "../components/adventures/ContentDrop";
@@ -95,7 +95,7 @@ export const useAdventure = (adventureId: string | undefined) => {
 export const useAdventureDocument = (adventureId: string | undefined, documentId: string | undefined) => {
     const collectionPath = ["adventures", adventureId, "contents"].join("/");
     const docPath = [collectionPath, documentId].join("/");
-    const docRef = useMemo(() => (adventureId ? doc(db, docPath) : undefined), [adventureId, documentId]);
+    const docRef = useMemo(() => (adventureId ? doc(db, docPath) : undefined), [adventureId, documentId, doc]);
     const { data, error } = useQuery(
         docRef,
         `Document with id "${adventureId}" within adventure with id "${adventureId}" does not exist`

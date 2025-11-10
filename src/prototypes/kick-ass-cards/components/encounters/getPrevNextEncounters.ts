@@ -7,7 +7,7 @@ export default function getPrevNextEncounters(
         encounters: EncounterDefinition[];
     }[]
 ) {
-    let currentEncounterIndex: number = -2;
+    let currentEncounterIndex = -2;
     const campaignMatch = encountersByCampaign.find((campaign) => {
         return campaign.encounters.some((encounter, encounterIndex) => {
             const isMatch = encounter.slug === currentSlug;

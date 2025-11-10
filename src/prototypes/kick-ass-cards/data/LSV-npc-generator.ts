@@ -33,7 +33,7 @@ export const random = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
 };
 
-export const weightedRandom = <T extends any>(values: T[], weights: number[]) => {
+export const weightedRandom = <T>(values: T[], weights: number[]) => {
     if (values.length !== weights.length) {
         throw new Error(
             "Invalid number of weights. Values: " +

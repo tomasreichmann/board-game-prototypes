@@ -494,9 +494,9 @@ export default function RunningTheGame() {
                             <Body mt>
                                 The Storyteller places a Counter card with a graphic that resembles what they want to
                                 track, puts it in a sleave and writes a title on the sleave with a dry-erase marker. He
-                                than places one or more dice on it representing the range of it's possible values. The
-                                total of the face values shows the Counter's current value. The dice used may indicate
-                                the maximum possible value of the Counter (e.g. D4: 1 to 4, 2x D6: 2 to 12).
+                                than places one or more dice on it representing the range of it&apos;s possible values.
+                                The total of the face values shows the Counter's current value. The dice used may
+                                indicate the maximum possible value of the Counter (e.g. D4: 1 to 4, 2x D6: 2 to 12).
                             </Body>
                         </div>
                     </div>
@@ -582,13 +582,13 @@ export default function RunningTheGame() {
                     </Body>
                     <Body mt>The Storyteller may allow players to pick an additional Stunt as a reward.</Body>
                     <Body mt>
-                        The players' Outcome decks, hands, and Effect cards (such as Injury or Distress) carry over to
-                        the next scene.
+                        The players&apos; Outcome decks, hands, and Effect cards (such as Injury or Distress) carry over
+                        to the next scene.
                     </Body>
 
                     <H2 mt>Ending the Session</H2>
                     <Body>
-                        It's best to end the session at the end of a scene, ending on a high note when the party
+                        It&apos;s best to end the session at the end of a scene, ending on a high note when the party
                         achieved something significant or on a cliffhanger.
                     </Body>
 

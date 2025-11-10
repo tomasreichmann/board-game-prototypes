@@ -60,7 +60,7 @@ export type Resolver<T, R> = (
     resolver?: Resolver<T, R>
 ) => ResolveResultType<DeepRandomType<T>> | T;
 
-export const weightedRandom = <T extends any>(weightedValues: DeepRandomWeightedType<T>["_rWeighted"]) => {
+export const weightedRandom = <T>(weightedValues: DeepRandomWeightedType<T>["_rWeighted"]) => {
     let sum = 0;
     const totalWeights = weightedValues.reduce((total, weightedItem) => total + weightedItem[1], 0);
     const rand = Math.random() * totalWeights;

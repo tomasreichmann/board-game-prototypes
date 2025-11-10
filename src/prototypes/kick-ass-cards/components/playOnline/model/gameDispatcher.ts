@@ -115,9 +115,9 @@ const deselectItem = (contentItem: ContentItemType): ContentItemType => ({
 
 const makeClickable = (
     contentItem: ContentItemType,
-    inGeneral: boolean = false,
-    forOwner: boolean = true,
-    forStoryteller: boolean = true
+    inGeneral = false,
+    forOwner = true,
+    forStoryteller = true
 ): ContentItemType => ({
     ...contentItem,
     isClickable: inGeneral,

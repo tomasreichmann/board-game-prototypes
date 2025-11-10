@@ -1,4 +1,4 @@
-export const randomNumber = (min: number = 0, max: number = 0, precision: number = 1) => {
+export const randomNumber = (min = 0, max = 0, precision = 1) => {
     const preciseValue = Math.random() * (max - min + precision) + min;
     if (precision === 0) {
         return preciseValue;

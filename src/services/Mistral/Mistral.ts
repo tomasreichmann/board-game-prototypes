@@ -1,5 +1,5 @@
 import MistralClient, { ChatCompletionResponseChoice, ResponseFormat, ToolCalls } from "@mistralai/mistralai";
-import { getSettingsKey, localSettingsKey } from "../../hooks/useLocalSettings";
+import { getSettingsKey } from "../../hooks/useLocalSettings";
 import { JSONSchemaType } from "ajv";
 
 const getMistralKeyFromLocalSettings = () => {

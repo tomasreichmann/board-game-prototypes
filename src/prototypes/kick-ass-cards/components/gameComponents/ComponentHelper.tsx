@@ -42,6 +42,16 @@ const typeMap = {
             modifier: assetModifierMap,
         },
     },
+    assetModifier: {
+        data: assetModifierMap,
+        Component: LayeredAssetCard,
+        getProps: (item: (typeof assetModifierMap)[string]) => ({ modifier: item }),
+        getCode: (item: (typeof assetModifierMap)[string]) =>
+            `<LayeredAssetCard modifier={tacticalModifierMap.${item.slug}} />`,
+        secondaryData: {
+            modifier: assetModifierMap,
+        },
+    },
     actor: {
         data: actorMap,
         Component: LayeredActorCard,
@@ -54,15 +64,15 @@ const typeMap = {
             { role, modifier }: { role?: TacticalRoleType; modifier?: TacticalRoleType }
         ) =>
             `<LayeredActorCard
-    {...actorMap["${item.slug}"]}${
+    {...actorMap.${item.slug}}${
                 role
                     ? `
-    role={actorRoleMap["${role.slug}"]}`
+    role={actorRoleMap.${role.slug}}`
                     : ""
             } ${
                 modifier
                     ? `
-    modifier={actorModifierMap["${modifier.slug}"]}`
+    modifier={actorModifierMap.${modifier.slug}}`
                     : ""
             } />`,
         secondaryData: {
@@ -76,7 +86,7 @@ const typeMap = {
         getProps: (role: (typeof actorRoleMap)[keyof typeof actorRoleMap]) => ({ role }),
         getCode: (item: (typeof actorRoleMap)[keyof typeof actorRoleMap]) =>
             `<LayeredActorCard
-    role={actorRoleMap["${item.slug}"]}
+    role={actorRoleMap.${item.slug}}
 />`,
     },
     actorModifier: {
@@ -85,26 +95,26 @@ const typeMap = {
         getProps: (modifier: (typeof actorModifierMap)[keyof typeof actorModifierMap]) => ({ modifier }),
         getCode: (item: (typeof actorModifierMap)[keyof typeof actorModifierMap]) =>
             `<LayeredActorCard
-    modifier={actorModifierMap["${item.slug}"]}
+    modifier={actorModifierMap.${item.slug}}
 />`,
     },
     counter: {
         data: counterMap,
         Component: CounterCard,
         getProps: (item: (typeof counterMap)[string]) => ({ ...item }),
-        getCode: (item: (typeof counterMap)[string]) => `<CounterCard {...counterMap["${item.slug}"]} />`,
+        getCode: (item: (typeof counterMap)[string]) => `<CounterCard {...counterMap.${item.slug}} />`,
     },
     effect: {
         data: effectMap,
         Component: EffectCard,
         getProps: (item: (typeof effectMap)[string]) => ({ ...item }),
-        getCode: (item: (typeof effectMap)[string]) => `<EffectCard {...effectMap["${item.slug}"]} />`,
+        getCode: (item: (typeof effectMap)[string]) => `<EffectCard {...effectMap.${item.slug}} />`,
     },
     stunt: {
         data: stuntMap,
         Component: StuntCard,
         getProps: (item: (typeof stuntMap)[string]) => ({ ...item }),
-        getCode: (item: (typeof stuntMap)[string]) => `<StuntCard {...stuntMap["${item.slug}"]} />`,
+        getCode: (item: (typeof stuntMap)[string]) => `<StuntCard {...stuntMap.${item.slug}} />`,
     },
 };
 

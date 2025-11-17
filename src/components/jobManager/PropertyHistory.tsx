@@ -4,7 +4,6 @@ import Markdown from "react-markdown";
 import JobType from "./jobType";
 import Button from "../../prototypes/kick-ass-cards/components/controls/Button";
 import Text from "../../prototypes/kick-ass-cards/components/content/Text";
-import { defaultComponentMap } from "../../prototypes/kick-ass-cards/components/ContentItem";
 import copyToClipboard from "../../utils/copyToClipboard";
 import { twMerge } from "tailwind-merge";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";

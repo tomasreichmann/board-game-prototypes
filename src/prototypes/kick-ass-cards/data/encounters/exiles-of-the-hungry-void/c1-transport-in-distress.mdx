@@ -4,6 +4,7 @@ chapter: 1
 
 ---
 
+import { getOtherChapterEncounterLinks } from "..";
 import { actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
 
 ![](/public/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/a_transport_ship_in_distress.png)
@@ -70,9 +71,13 @@ _You jumped to the coordinates of the distress call and see a merchant transport
     <Paper size="54x86" orientation="landscape" className="not-prose bg-cover rounded-md" style={{ backgroundImage: 'url(/mighty-decks/encounters/exiles_of_the_hungry_void/locations/cockpit.png)' }} />
 </List>
 
-## 📅 Defeating pirates
+## 📅 Pirates Defeated
 
 -   Pirates will surrender if their weapons are destroyed or all pirates are defeated.
-    -   They offer a *box of stims* (5x Surge), 1 *spin battery* (Instantly charges the Spin drive)
+    -   🏺 They offer a **Box of stims** (5x Surge), 1x **Spin battery** (Pushing Surge) - Instantly charges the Spin drive
 -   If the pirate ship generator is destroyed the ship explodes.
-    -   The crew can salvage a Disruptor Mk I
+    -   The crew can salvage a **Disruptor Mk I**
+
+### Other encounters in the chapter
+
+<LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />

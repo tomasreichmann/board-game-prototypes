@@ -34,6 +34,7 @@ export const playOnlinePath = mightyDecksPath + "/play-online";
 export const playOnlineGamePath = `${playOnlinePath}/game`;
 export const productsPath = mightyDecksPath + "/products";
 export const relicsOfValorPath = productsPath + "/relics-of-valor";
+export const encountersPath = mightyDecksPath + "/encounters";
 
 export const sidebarPath = "__sidebar";
 
@@ -138,13 +139,13 @@ export const mightyDecksSubRoutes: RouteDefinition[] = [
     },
     {
         name: "Encounters",
-        path: mightyDecksPath + "/encounters",
+        path: encountersPath,
         index: true,
         Component: EncountersRoute,
         children: [
             {
                 name: "Encounter",
-                path: mightyDecksPath + "/encounters/:encounterSlug/*",
+                path: encountersPath + "/:encounterSlug/*",
                 Component: EncounterRoute,
             },
         ],

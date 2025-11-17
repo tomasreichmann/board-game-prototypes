@@ -4,6 +4,7 @@ chapter: 1
 
 ---
 
+import { getOtherChapterEncounterLinks } from "..";
 import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
 
 ![](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/abandoned_research_station.png)
@@ -24,16 +25,24 @@ _You cut off engines as a dark silhouette of an Imperial research station comes 
 -   You arrived at the station in your shuttle and decided to split to cover more ground:
 
 🎭 Where do you want to go? There are several sections: Canteen, Armory, Garden, Lab
-    -   🔎 **Canteen:** You raided their pantry to find all most of the food supplies have rotten. Except for a couple packs of highly addictive Wasabi nuts (2x Comfort).
-    -   🔎 **Armory:** The security system immediately activates when you enter and sprays you with laser fire. Defend from a 3 Effect attack.
-        -   You take (3 - Effect) Injury.
-        -   Fumble: you retreat. Otherwise: you find a **Light Armor** and a **Fire suppressing grenade (Insulating Thrown Weapon)**
-    -   🔎 **Garden:** You take a stroll though a slightly overgrown garden. Various herbs and vegetables grow around glass dome and slowly claim the surrounding walls and paths. The star-light coming through the canopy of leaves makes a nice glow. It's nice to be reminded of how nature finds a way to survive and thrive even without humans. Remove any **Distress** if you have any. Or take a **Boost**.
+    -   🔎 **Canteen:** You raided their pantry to find all most of the food supplies have rotten.  
+    🏺 Except for a couple packs of **highly addictive Wasabi nuts** (2x Comfort).
+    -   🔎 **Armory:** The security system immediately activates when you enter and sprays you with laser fire.  
+        -   Defend from a 3 Effect attack.
+            -   You take (3 - Effect) Injury.
+            -   Fumble: You retreat.
+            -   Otherwise: 🏺 You find a **Light Armor** and a **Fire suppressing grenade** (Insulating Thrown Weapon)
+    -   🔎 **Garden:** You take a stroll though a slightly overgrown garden. Various herbs and vegetables grow around glass dome and slowly claim the surrounding walls and paths. The star-light coming through the canopy of leaves glows beautifully. It's nice to be reminded of how nature finds a way to survive and thrive even without humans. Remove any **Distress** if you have any. Or take a **Boost**.
     -   🔎 **Lab:** It seems like the lab was evacuated in a hurry. Some chemical leaked from a container. There are several corpses next to it. How did you do searching the lab?
         -   **Fumble**: there must have been something toxic still in the air. You got a terrible headache (1x **Distress**) and left before it got worse.
-        -   **Otherwise**: You find materials for making a prototype **regenerator** There is enough to make (Effect times) **Empowered Healing**.
-    -   🔎 **Crew quarters:** The room is a mess. A bloody message on the wall reads: *"It is coming. And it is HUNGRY!"*. There are some broken unopened beer bottles on the table. You found a dirty magazine under the bed. **Comfort**
-        -   **Fumble**: there must have been something toxic still in the air. You got a terrible headache (1x **Distress**) and left before it got worse.
-        -   **Otherwise**: You find materials for making a prototype **regenerator** There is enough to make (Effect times) **Empowered Healing**.
+        -   **Otherwise**: 🏺 You find materials for making a prototype **regenerator** There is enough to make (Effect times) **Empowered Healing**.
+    -   🔎 **Crew quarters:** The room is a mess. A bloody message on the wall reads: *"It is coming. And it is HUNGRY!"*. There are some broken unopened beer bottles on the table.
+        -   🏺 You found a **dirty magazine** (Comfort) under the bed.
+        -   **Fumble**: You are shaken by the horrible sight (1x **Distress**) and decided to leave.
+        -   **Otherwise**: 🏺 You find a bloody **hunting knife** (Light Weapon).
 
 📅 You meet back at the docking bay and return back to your ship, leaving the abandoned station behind a little emptier.
+
+### Other encounters in the chapter
+
+<LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />

@@ -36,6 +36,7 @@ import ComponentHelper from "../gameComponents/ComponentHelper";
 import LayeredCard from "../gameComponents/LayeredCard";
 import LayeredActorCard from "../gameComponents/LayeredActorCard";
 import LayeredAssetCard from "../gameComponents/LayeredAssetCard";
+import LinkList from "./LinkList";
 
 export type MdxComponent = React.ComponentType<{
     components: {
@@ -59,6 +60,7 @@ export const defaultMdxComponentMap = {
     p: Paragraph,
     Button,
     li: ListItem,
+    LinkList,
     Columns,
     Hand,
     Outcome: OutcomeCard,
@@ -99,6 +101,7 @@ export const contentTypeDescriptionMap = {
     Outcome: "Card for outcomes like Success or Fumble",
     PaperMini: "Foldable paper-craft mini",
     List: "layout for a list of any content items",
+    LinkList: "layout for a list of links",
     Heading: "layout for a heading with a title and an image",
     Columns: "layout for side by side content",
     Aside: "layout for content on the side",

@@ -1,4 +1,3 @@
-import { saveAs } from "file-saver";
 /**
  * Convert a base64 image string to a Blob and generate a URL for it.
  *

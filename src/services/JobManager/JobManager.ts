@@ -169,7 +169,7 @@ export type JobManagerOptionsType = {
     sdApi?: any;
 };
 
-const JobManager = ({ llmApi, sdApi }: JobManagerOptionsType) => {
+const JobManager = ({ llmApi /* , sdApi */ }: JobManagerOptionsType) => {
     const waitForConfirmation = () => {
         let onContinue = noop;
         let onCancel = noop;

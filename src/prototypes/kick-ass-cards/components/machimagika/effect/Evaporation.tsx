@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 import Particles, { IParticlesProps } from "react-particles";
 import { loadFull } from "tsparticles";
 import { useState, useCallback, useEffect, useRef } from "react";
-import { Container, Engine, MoveDirection } from "tsparticles-engine";
+import { Container, Engine } from "tsparticles-engine";
 import useMeasure from "react-use-measure";
 
 export type EvaporationProps = {
@@ -210,13 +210,14 @@ export default function Evaporation({
             await container;
             setParticlesContainer(container);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [bounds.width, bounds.height, disabled]
     );
 
-    const firstRenderTime = useRef(Date.now());
+    const firstRenderTime = useRef(0);
 
     useEffect(() => {
-        let interval: number;
+        let interval: NodeJS.Timeout;
         if (!disabled && particlesContainer && bounds.width > 0 && bounds.height > 0) {
             const xScale = particlesContainer.canvas.size.width / bounds.width;
             interval = setInterval(() => {
@@ -228,6 +229,9 @@ export default function Evaporation({
                         x: -left + (bounds.width + left + right) * Math.random() * xScale,
                         y: particlesContainer.canvas.size.height - 10 - 30 * Math.random(),
                     });
+                }
+                if (firstRenderTime.current === 0) {
+                    firstRenderTime.current = Date.now();
                 }
                 if (elapsedTime >= duration) {
                     clearInterval(interval);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigation } from "../Navigation";
 import {
     PerspectiveViewDeprecated,
@@ -8,15 +8,11 @@ import EffectCard from "../gameComponents/EffectCard";
 
 import effects from "../../data/effects.csv";
 import { Position } from "../../../../components/perspectiveViewDeprecated/Position";
-import Spread from "../layout/Spread";
 import OutcomeBackFace from "../gameComponents/OutcomeBackFace";
 import {
     PerspectiveCard,
     PerspectiveCardProps,
 } from "../../../../components/perspectiveViewDeprecated/PerspectiveCard";
-import { cardSizes } from "../../../../components/print/paperSizes";
-import SceneRouter from "../machimagika/scene/SceneRouter";
-import { GameContextProvider } from "../machimagika/model/GameContext";
 import { Button } from "react-daisyui";
 
 export default function MachimagikaRoute() {
@@ -25,7 +21,7 @@ export default function MachimagikaRoute() {
     const [firstCardPreset, setFirstCardPreset] = useState<Partial<PerspectiveCardProps>>({});
 
     useEffect(() => {
-        let timeout: number;
+        let timeout: NodeJS.Timer;
         if (isNavigationVisible) {
             timeout = setTimeout(() => {
                 setIsNavigationVisible(false);

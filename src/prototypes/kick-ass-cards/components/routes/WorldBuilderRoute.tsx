@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigation } from "../Navigation";
 import PerspectiveViewProvider from "../../../../components/PerspectiveView/PerspectiveViewProvider";
 import PerspectiveView from "../../../../components/PerspectiveView/PerspectiveView";
-import Position from "../../../../components/PerspectiveView/Position";
-import Paper, { PaperProps } from "../../../../components/print/Paper/Paper";
-import { cardSizes } from "../../../../components/print/paperSizes";
-import { PositionProps } from "../../../../components/perspectiveViewDeprecated/Position";
-import ActorCard from "../worldBuilder/content/ActorCard";
 import WorldBuilder from "../worldBuilder/WorldBuilder";
-import PerspectiveBoard from "../../../../components/PerspectiveBoard/PerspectiveBoard";
 import PerspectiveBoardProvider from "../../../../components/PerspectiveBoard/PerspectiveBoardProvider";
 import { PerspectiveBoardDebug } from "../../../../components/PerspectiveBoard/PerspectiveBoardDebug";
 import ComponentPanel from "../worldBuilder/controls/ComponentPanel";
-
-const actorCardSize: keyof typeof cardSizes = "Tarot";
-const [actorCardWidth, actorCardHeight] = cardSizes[actorCardSize].points;
 
 export default function WorldBuilderRoute() {
     const [isNavigationVisible, setIsNavigationVisible] = useState(true);
 
     useEffect(() => {
-        let timeout: number;
+        let timeout: NodeJS.Timer;
         if (isNavigationVisible) {
             timeout = setTimeout(() => {
                 setIsNavigationVisible(false);

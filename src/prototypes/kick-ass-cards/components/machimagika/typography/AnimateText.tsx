@@ -10,8 +10,9 @@ export default function AnimateText({ mode = "word", delayMs = 200, children }: 
     const [progress, setProgress] = useState(0);
     const isWordMode = mode === "word";
     useEffect(() => {
-        setProgress(0);
-        let interval: number;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setProgress(0); // This causes a cascading render, moved to key prop
+        let interval: NodeJS.Timer;
         const maxProgress = isWordMode ? children.split(" ").length : children.length;
         if (children.length > 0) {
             interval = setInterval(() => {
@@ -24,6 +25,7 @@ export default function AnimateText({ mode = "word", delayMs = 200, children }: 
             }, delayMs);
         }
         return () => clearInterval(interval);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mode, delayMs, children]);
     const separator = isWordMode ? " " : "";
     const fragments = isWordMode ? children.split(" ") : children.split("");

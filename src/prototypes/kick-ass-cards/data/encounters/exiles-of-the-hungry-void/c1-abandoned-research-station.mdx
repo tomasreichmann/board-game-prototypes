@@ -4,7 +4,7 @@ chapter: 1
 title: An Abandoned Research Station
 ---
 
-import { getOtherChapterEncounterLinks } from "..";
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
 import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
 
 ![](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/abandoned_research_station.png)
@@ -46,3 +46,7 @@ _You cut off engines as a dark silhouette of an Imperial research station comes 
 ### Other encounters in the chapter
 
 <LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

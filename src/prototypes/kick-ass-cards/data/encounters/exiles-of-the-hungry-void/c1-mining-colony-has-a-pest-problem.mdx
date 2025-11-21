@@ -4,7 +4,7 @@ chapter: 1
 title: Mining Colony Has a Pest Problem
 ---
 
-import { getOtherChapterEncounterLinks } from "..";
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
 import { actorMap, counterMap, assetMap, effectMap, stuntMap, actorRoleMap, actorModifierMap } from "../components";
 
 ![](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/mining_colony_has_a_pest_problem.png)
@@ -56,3 +56,7 @@ _You leave the outpost and prepare to jump away._
 ### Other encounters in the chapter
 
 <LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

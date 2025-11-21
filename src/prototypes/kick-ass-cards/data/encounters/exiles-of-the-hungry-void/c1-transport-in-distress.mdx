@@ -4,7 +4,7 @@ chapter: 1
 title: A transport in distress
 ---
 
-import { getOtherChapterEncounterLinks } from "..";
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
 import { actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
 
 ![](/public/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/a_transport_ship_in_distress.png)
@@ -81,3 +81,7 @@ _You jumped to the coordinates of the distress call and see a merchant transport
 ### Other encounters in the chapter
 
 <LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

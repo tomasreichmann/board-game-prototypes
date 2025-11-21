@@ -5,6 +5,7 @@ chapter: 0
 
 ---
 
+import { getCampaignChapterEncounters } from "..";
 import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
 
 ![](/mighty-decks/encounters/exiles_of_the_hungry_void/exiles_of_the_hungry_void_horizontal.png)
@@ -338,6 +339,6 @@ _The Spin Drive roars to life, its rings blurring into golden light as the ship 
 
 The crew has to pick where to go next and jump there using the Spin drive.
 
--   *[Transport in distress](/mighty-decks/encounters/exiles-of-the-hungry-void/c1-transport-in-distress)* — A transport sent out a distress signal. It is being pursued by pirates.
--   *[Abandoned research station](/mighty-decks/encounters/exiles-of-the-hungry-void/c1-abandoned-research-station)* — An abandoned imperial research station. Maybe there's still something of value that hasn't been looted.
--   *[Mining colony has a pest problem](/mighty-decks/encounters/exiles-of-the-hungry-void/c1-mining-colony-has-a-pest-problem)* — A nearby automated mining colony advertises a job to get rid of giant rodents nesting in its mining shafts.
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

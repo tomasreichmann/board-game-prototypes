@@ -1,6 +1,7 @@
 import { LinkListProps } from "../../components/content/LinkList";
 import groupByCampaign from "../../components/encounters/groupByCampaing";
 import { encountersMap as generatedEncountersMap } from "./encounters.generated";
+import { encountersPath } from "../../components/routes/routes";
 
 export type EncounterDefinition = {
     path: string;
@@ -24,41 +25,15 @@ export async function loadEncounter(pathWithoutExtension: string) {
     return loader().then((mod: any) => mod);
 }
 
-export const encountersMap: { [key: string]: EncounterDefinition } = generatedEncountersMap;
+export const encountersMap = generatedEncountersMap as Record<string, EncounterDefinition>;
 
 export const encountersByCampaign = groupByCampaign(encountersMap);
 
-import kebabCaseToTitleCase from "@/utils/kebabCaseToTitleCase";
-import { encountersPath } from "../../components/routes/routes";
-
-const getFileNameFromPath = (path: string) => {
-    return (path.split("/").pop() || "").replace(".mdx", "");
-};
-
-const getChapterFromFilename = (fileName: string) => {
-    const match = fileName.match(/^c(\d+)-/);
-    if (!match) {
-        return undefined;
-    }
-    return parseInt(match[1], 10);
-};
-
-const getTitleFromFilename = (fileName: string) => {
-    const isIndex = fileName.toLowerCase() === "index";
-    const [, ...fileNameFragments] = isIndex ? ["c0", "Intro"] : fileName.split("-");
-    return kebabCaseToTitleCase(fileNameFragments.join("-"));
-};
-
-const encounterList = Object.keys(modules)
+const encounterList = Object.keys(encountersMap)
     .sort()
-    .map((path) => {
-        const campaignFolderMatch = path.match(/\.\/(.*)\/(.*)/);
-        const campaignFolder = campaignFolderMatch ? campaignFolderMatch[1] : undefined;
-        const campaign = campaignFolder ? kebabCaseToTitleCase(campaignFolder) : undefined;
-        const fileName = getFileNameFromPath(path); // E.g. "c1-transport-in-distress"
-        const chapter = getChapterFromFilename(fileName);
-        const title = getTitleFromFilename(fileName);
-        return { slug: path, path, fileName, title, chapter, campaign };
+    .map((encounterSlug) => {
+        const { path, title, chapter, campaign } = encountersMap[encounterSlug as keyof typeof encountersMap];
+        return { slug: encounterSlug, path, title, chapter, campaign };
     });
 
 type ChapterDirectoryType = EncounterDefinition[][];
@@ -89,8 +64,7 @@ export const getOtherChapterEncounters = (currentPath: string) => {
     return campaignDirectory[campaign][chapter].filter((e) => e.path !== currentPath);
 };
 
-const getRelativePath = (path: string) =>
-    `./${path.replace(/^.*\/data\/encounters\//, "").replace(/\.mdx.*$/, "")}.mdx`;
+const getRelativePath = (path: string) => stripFileExtension(path.replace(/^.*\/data\/encounters\//, ""));
 
 const stripFileExtension = (path: string) => path.replace(/\.[^/.]+$/, "");
 
@@ -101,6 +75,16 @@ export const getOtherChapterEncounterLinks = (currentPath: string): LinkListProp
     const otherChapterEncounters = getOtherChapterEncounters(relativePath);
 
     return otherChapterEncounters.map((encounter) => {
-        return { href: getRootPath(stripFileExtension(encounter.path)), children: encounter.title };
+        return { href: getRootPath(encounter.path), children: encounter.title };
     });
+};
+
+export const getCampaignChapterEncounters = (campaign: string, chapter: number): LinkListProps["links"] => {
+    if (!campaignDirectory[campaign] || !campaignDirectory[campaign][chapter]) {
+        return [];
+    }
+    return campaignDirectory[campaign][chapter].map((encounter) => ({
+        href: getRootPath(encounter.path),
+        children: encounter.title,
+    }));
 };

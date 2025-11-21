@@ -3,12 +3,13 @@
 
 import { EncounterDefinition } from "./index";
 
-export const encountersMap: { [key: string]: EncounterDefinition } = {
+export const encountersMap = {
     "TTT-info": {
         "slug": "TTT-info",
         "path": "TTT-info",
         "title": "Trauma Team Troubles",
-        "campaign": "Trauma Team Troubles"
+        "campaign": "Trauma Team Troubles",
+        "chapter": 0
     },
     "TOH-c1-a2-On-The-Road-to-Spice": {
         "slug": "TOH-c1-a2-On-The-Road-to-Spice",
@@ -28,7 +29,8 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "TOH-c0-a0-GM-Info",
         "path": "TOH-c0-a0-GM-Info",
         "title": "Throne of Hawthorn - Game Master Info",
-        "campaign": "Throne of Hawthorn"
+        "campaign": "Throne of Hawthorn",
+        "chapter": 0
     },
     "Rules": {
         "slug": "Rules",
@@ -111,19 +113,22 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "ML-cs-c1-Slavnosti-stribra",
         "path": "ML-cs-c1-Slavnosti-stribra",
         "title": "Slavnosti Stříbra",
-        "campaign": "Matečná žíla"
+        "campaign": "Matečná žíla",
+        "chapter": 0
     },
     "ML-cs-c0-Info": {
         "slug": "ML-cs-c0-Info",
         "path": "ML-cs-c0-Info",
         "title": "Matečná žíla",
-        "campaign": "Matečná žíla"
+        "campaign": "Matečná žíla",
+        "chapter": 0
     },
     "LP-items": {
         "slug": "LP-items",
         "path": "LP-items",
         "title": "Běžné předměty",
-        "campaign": "Ledová pomsta"
+        "campaign": "Ledová pomsta",
+        "chapter": 0
     },
     "LP-en-c2-a2-Spore-ship": {
         "slug": "LP-en-c2-a2-Spore-ship",
@@ -178,7 +183,8 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "LP-en-c0-a0-Info",
         "path": "LP-en-c0-a0-Info",
         "title": "Cold Revenge",
-        "campaign": "Cold Revenge"
+        "campaign": "Cold Revenge",
+        "chapter": 0
     },
     "LP-c2-a2-Sporova-lod": {
         "slug": "LP-c2-a2-Sporova-lod",
@@ -233,7 +239,8 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "LP-c0-a0-Info",
         "path": "LP-c0-a0-Info",
         "title": "Ledová pomsta",
-        "campaign": "Ledová pomsta"
+        "campaign": "Ledová pomsta",
+        "chapter": 0
     },
     "LP-akt1-Vyzkumnice": {
         "slug": "LP-akt1-Vyzkumnice",
@@ -253,19 +260,22 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "ISV-c1-a0-Info",
         "path": "ISV-c1-a0-Info",
         "title": "In Sanguine Veritas",
-        "campaign": "In Sanguine Veritas"
+        "campaign": "In Sanguine Veritas",
+        "chapter": 0
     },
     "ISV-c0-a1-Prequel": {
         "slug": "ISV-c0-a1-Prequel",
         "path": "ISV-c0-a1-Prequel",
         "title": "In Sanguine Veritas - Prequel",
-        "campaign": "In Sanguine Veritas"
+        "campaign": "In Sanguine Veritas",
+        "chapter": 0
     },
     "ISV-c0-a0-Prequel-GM-Info": {
         "slug": "ISV-c0-a0-Prequel-GM-Info",
         "path": "ISV-c0-a0-Prequel-GM-Info",
         "title": "In Sanguine Veritas - Informace pro vypravěče (obsahuje spoilery)",
-        "campaign": "In Sanguine Veritas"
+        "campaign": "In Sanguine Veritas",
+        "chapter": 0
     },
     "index": {
         "slug": "index",
@@ -281,13 +291,22 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "B139-rules-cs",
         "path": "B139-rules-cs",
         "title": "Futuristický LARP",
-        "campaign": "B-day"
+        "campaign": "B-day",
+        "chapter": 0
     },
     "B139-info-cs": {
         "slug": "B139-info-cs",
         "path": "B139-info-cs",
         "title": "B-Day #139: Futuristický LARP",
-        "campaign": "B-day"
+        "campaign": "B-day",
+        "chapter": 0
+    },
+    "exiles-of-the-hungry-void/c2-graveyard-bazaar": {
+        "slug": "exiles-of-the-hungry-void/c2-graveyard-bazaar",
+        "path": "exiles-of-the-hungry-void/c2-graveyard-bazaar",
+        "title": "Graveyard Bazaar",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 2
     },
     "exiles-of-the-hungry-void/c1-transport-in-distress": {
         "slug": "exiles-of-the-hungry-void/c1-transport-in-distress",
@@ -300,13 +319,6 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "exiles-of-the-hungry-void/c1-mining-colony-has-a-pest-problem",
         "path": "exiles-of-the-hungry-void/c1-mining-colony-has-a-pest-problem",
         "title": "Mining Colony Has a Pest Problem",
-        "campaign": "Exiles of the Hungry Void",
-        "chapter": 1
-    },
-    "exiles-of-the-hungry-void/c1-graveyard-bazaar": {
-        "slug": "exiles-of-the-hungry-void/c1-graveyard-bazaar",
-        "path": "exiles-of-the-hungry-void/c1-graveyard-bazaar",
-        "title": "Graveyard Bazaar",
         "campaign": "Exiles of the Hungry Void",
         "chapter": 1
     },
@@ -328,6 +340,7 @@ export const encountersMap: { [key: string]: EncounterDefinition } = {
         "slug": "exiles-of-the-hungry-void/c0-intro",
         "path": "exiles-of-the-hungry-void/c0-intro",
         "title": "Exiles of the Hungry Void",
-        "campaign": "Exiles of the Hungry Void"
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 0
     }
 };

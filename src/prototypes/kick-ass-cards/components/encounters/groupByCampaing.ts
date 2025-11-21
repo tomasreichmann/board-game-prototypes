@@ -22,9 +22,13 @@ export default function groupByCampaign(encMap: typeof encountersMap) {
         campaignsMap[campaignName].encounters.push(encounter);
     });
     return Object.values(campaignsMap)
-        .sort(getCompareFnByStringKey("name"))
+        .sort(getCompareFnByStringKey("title"))
         .map((campaign) => {
-            campaign.encounters.sort(getCompareFnByStringKey("name"));
+            campaign.encounters.sort((a, b) => {
+                const chapterA = a.chapter ?? Infinity;
+                const chapterB = b.chapter ?? Infinity;
+                return chapterA - chapterB || a.title.localeCompare(b.title);
+            });
             return campaign;
         });
 }

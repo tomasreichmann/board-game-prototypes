@@ -55,11 +55,11 @@ import outcomes from "../outcomes-en.csv";
 <Hand
     className="h-[350px] max-w-[800px]"
     items={[
-        <Outcome {...C.defaultAssetProps} {...outcomes[0]} />,
-        <Outcome {...C.defaultAssetProps} {...outcomes[1]} />,
-        <Outcome {...C.defaultAssetProps} {...outcomes[2]} />,
-        <Outcome {...C.defaultAssetProps} {...outcomes[3]} />,
-        <Outcome {...C.defaultAssetProps} {...outcomes[4]} />,
+        <Outcome key={outcomes[0].slug} {...C.defaultAssetProps} {...outcomes[0]} />,
+        <Outcome key={outcomes[1].slug} {...C.defaultAssetProps} {...outcomes[1]} />,
+        <Outcome key={outcomes[2].slug} {...C.defaultAssetProps} {...outcomes[2]} />,
+        <Outcome key={outcomes[3].slug} {...C.defaultAssetProps} {...outcomes[3]} />,
+        <Outcome key={outcomes[4].slug} {...C.defaultAssetProps} {...outcomes[4]} />,
     ]}
 />
 

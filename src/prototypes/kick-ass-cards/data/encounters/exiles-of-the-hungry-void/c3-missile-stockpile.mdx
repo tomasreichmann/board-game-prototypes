@@ -1,0 +1,69 @@
+---
+campaign: Exiles of the Hungry Void
+chapter: 3
+title: Missile Stockpile
+---
+
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
+import { actorMap, counterMap, assetMap, effectMap, stuntMap, actorRoleMap, actorModifierMap } from "../components";
+
+![](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/missile_stockpile.png)
+
+# Missile Stockpile
+
+-   💡 This encounter is a quick one-round threat → resolution encounter. A missile battery launches 2x player count of different rockets immediatelly when the space-ship jumps in. Players can each try to destroy/hack/evade the rockets. Each missile that is not dealt with strikes a random system on the ship. The types of rockets are Incendiary, Breach, EMP, Toxic.
+
+_The stars wrench themselves back into familiar points of light as you exit the jump. Before the ship even settles, proximity alarms scream to life. A nearby asteroid, disguised as inert rock, slides open to reveal an automated missile battery. It fires a volley before you can even raise shields._
+
+**"Incoming! Multiple warheads!"**
+
+_A number of different missiles (equal to **twice the number of crew members**) streaks toward your ship. They are a mixed bag of different technology and payloads different payload, a different flavor of disaster._
+
+-   **Incendiary Missile:** Upon impact, starts a raging **Fire** in a random room it struck. Anyone in that room suffers **1 Burning** every turn until repaired.
+-   **Breach Missile:** Causes a hull breach and vents the air from the room. Anyone in that room suffers **1 Freezing** every turn until repaired.
+-   **EMP Missile:** Disables a random system, making it **Inoperable** for a round making the energy wasted.
+-   **Toxic Missile:** Detonates a chemical payload, filling a random room with toxic gas. Anyone in that room takes **1 Distress** every turn until vented.
+
+---
+
+### Brace for Impact!
+
+_You have seconds to act. Each crew member can try to intercept some missiles._
+
+🎭 **Choose your target and your method!**
+
+For each crew member, pick one incoming missile to deal with.
+
+-   **Destroy it:** Target a missile with the ship's point-defense cannons. On a success, it's vaporized in a flash of light. On a failure, your shot goes wide.
+-   **Hack it:** Splice into the missile's guidance system, turning it into a dud or making it veer off course. On a success, the missile drifts harmlessly into space. On a failure, the counter-intrusion locks you out.
+-   **Jam it:** Use the ship's electronic countermeasures to blind the missile's sensors. On a success, the missile loses its lock. On a failure, it homes in with deadly precision.
+
+---
+
+### Resolution
+
+_The next few seconds are a blur of frantic activity, explosions, and near misses._
+
+-   For each **Effect**, one missile is neutralized.
+-   The rest of the missiles strike your ship.
+    -   💡 For each missile that hits, roll a D4 to find out what type it is. Then roll a die to determine which system is struck. Apply the missile's effect._
+
+_As quickly as it began, the assault is over. the echoes of explosions still ringing in your ears and the smell of ozone and smoke filling the corridors._
+
+-   The automated battery, having expended its loaded missiles, retracts back into the asteroid.
+-   You find a door on the other side of the asteroid, where a supply of missile parts are stored. There is a data-shard with missile schematics, but the machine spirit seems to only want to part with a single missile before it destroys the data-shard.  
+🏺 Which missile design do you want to keep?
+    -   **Incendiary Missile**
+    -   **Breach Missile**
+    -   **EMP Missile**
+    -   **Toxic Missile**
+
+---
+
+### Other encounters in the chapter
+
+<LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

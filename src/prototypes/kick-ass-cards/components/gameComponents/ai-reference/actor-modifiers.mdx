@@ -1,0 +1,299 @@
+---
+title: Actor Modifiers
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Actor Modifiers
+
+Modifiers add special abilities or stats to actors.
+
+## Data
+
+````typescript
+export const actorModifierMap = {
+    "tough": {
+        "slug": "tough",
+        "imageOverlayUri": "/mighty-decks/actors/base/tough.png",
+        "name": "Tough",
+        "deck": "base mod",
+        "count": 1,
+        "toughnessBonus": "+[toughness][toughness]",
+        "isModifier": true
+    },
+    "shielded": {
+        "slug": "shielded",
+        "imageOverlayUri": "/mighty-decks/actors/base/shielded.png",
+        "name": "Shielded",
+        "deck": "base mod",
+        "count": 4,
+        "toughnessBonus": "+[shield]",
+        "special": "-1[injury] taken",
+        "isModifier": true
+    },
+    "armored": {
+        "slug": "armoured",
+        "imageOverlayUri": "/mighty-decks/actors/base/armoured.png",
+        "name": "Armoured",
+        "deck": "base mod",
+        "count": 1,
+        "toughnessBonus": "+[shield][shield]",
+        "special": "-2[injury] taken",
+        "isModifier": true
+    },
+    "alpha": {
+        "slug": "alpha",
+        "imageOverlayUri": "/mighty-decks/actors/base/alpha.png",
+        "name": "Alpha",
+        "deck": "base mod",
+        "count": 1,
+        "special": "+[toughness] and +[injury] for all attacks",
+        "toughnessBonus": "+[toughness]",
+        "actionBonuses": [
+            "+[injury]",
+            "+[injury]"
+        ],
+        "isModifier": true
+    },
+    "dangerous": {
+        "slug": "dangerous",
+        "imageOverlayUri": "/mighty-decks/actors/base/dangerous.png",
+        "name": "Dangerous",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Primary attack also deals +[injury]",
+        "actionBonuses": [
+            "+[injury]"
+        ],
+        "isModifier": true
+    },
+    "burning": {
+        "slug": "burning",
+        "imageOverlayUri": "/mighty-decks/actors/base/burning.png",
+        "name": "Burning",
+        "deck": "base mod",
+        "count": 4,
+        "special": "Primary attack also deals +[burning]",
+        "actionBonuses": [
+            "+[burning]"
+        ],
+        "isModifier": true
+    },
+    "fiery": {
+        "slug": "fiery",
+        "imageOverlayUri": "/mighty-decks/actors/base/fiery.png",
+        "name": "Fiery",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Secondary attack deals [burning] instead",
+        "actionBonuses": [
+            null,
+            "[replace][burning]"
+        ],
+        "isModifier": true
+    },
+    "freezing": {
+        "slug": "freezing",
+        "imageOverlayUri": "/mighty-decks/actors/base/freezing.png",
+        "name": "Freezing",
+        "deck": "base mod",
+        "count": 4,
+        "special": "Primary attack also deals +[freezing]",
+        "actionBonuses": [
+            "+[freezing]"
+        ],
+        "isModifier": true
+    },
+    "icy": {
+        "slug": "icy",
+        "imageOverlayUri": "/mighty-decks/actors/base/icy.png",
+        "name": "Icy",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Secondary attack deals [freezing] instead",
+        "actionBonuses": [
+            null,
+            "[replace][freezing]"
+        ],
+        "isModifier": true
+    },
+    "irritating": {
+        "slug": "irritating",
+        "imageOverlayUri": "/mighty-decks/actors/base/irritating.png",
+        "name": "Irritating",
+        "deck": "base mod",
+        "count": 4,
+        "special": "Primary attack also deals +[distress]",
+        "actionBonuses": [
+            "+[distress]"
+        ],
+        "isModifier": true
+    },
+    "corrupting": {
+        "slug": "corrupting",
+        "imageOverlayUri": "/mighty-decks/actors/base/corrupting.png",
+        "name": "Corrupting",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Secondary attack deals [distress] instead",
+        "actionBonuses": [
+            null,
+            "[replace][distress]"
+        ],
+        "isModifier": true
+    },
+    "fast": {
+        "slug": "fast",
+        "imageOverlayUri": "/mighty-decks/actors/base/fast.png",
+        "name": "Fast",
+        "deck": "base mod",
+        "count": 4,
+        "speed": "+[speed]",
+        "special": "Moves an extra zone per turn",
+        "isModifier": true
+    },
+    "harassing": {
+        "slug": "harassing",
+        "imageOverlayUri": "/mighty-decks/actors/base/harassing.png",
+        "name": "Harassing",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Secondary attack also deals +[complication]",
+        "actionBonuses": [
+            null,
+            "+[complication]"
+        ],
+        "isModifier": true
+    },
+    "slowing": {
+        "slug": "slowing",
+        "imageOverlayUri": "/mighty-decks/actors/base/slowing.png",
+        "name": "Slowing",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Secondary attack also deals +[hindered]",
+        "actionBonuses": [
+            null,
+            "+[hindered]"
+        ],
+        "isModifier": true
+    },
+    "elemental": {
+        "slug": "elemental",
+        "imageOverlayUri": "/mighty-decks/actors/base/elemental.png",
+        "name": "Elemental",
+        "deck": "base mod",
+        "count": 4,
+        "special": "All attacks can deal [freezing] or [burning]",
+        "actionBonuses": [
+            "+[freezing]/+[burning]",
+            "+[freezing]/+[burning]"
+        ],
+        "isModifier": true
+    },
+    "charging": {
+        "slug": "charging",
+        "imageOverlayUri": "/mighty-decks/actors/base/charging.png",
+        "name": "Charging",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Primary attack also deals +[injury2] when entering a zone",
+        "actionBonuses": [
+            "(+[injury2])"
+        ],
+        "isModifier": true
+    },
+    "suicide": {
+        "slug": "suicide",
+        "imageOverlayUri": "/mighty-decks/actors/base/suicide.png",
+        "name": "Suicide",
+        "deck": "base mod",
+        "count": 4,
+        "special": "Can die and deal 2x[injury][splash]",
+        "isModifier": true
+    },
+    "grabbing": {
+        "slug": "grabbing",
+        "imageOverlayUri": "/mighty-decks/actors/base/grabbing.png",
+        "name": "Grabbing",
+        "deck": "base mod",
+        "count": 2,
+        "special": "[melee] attack also deals +[stuck]",
+        "actionBonuses": [
+            "(+[stuck])",
+            "(+[stuck])"
+        ],
+        "isModifier": true
+    },
+    "webbing": {
+        "slug": "webbing",
+        "imageOverlayUri": "/mighty-decks/actors/base/webbing.png",
+        "name": "Webbing",
+        "deck": "base mod",
+        "count": 2,
+        "special": "Primary attack also deals +[stuck][splash]",
+        "actionBonuses": [
+            "+[stuck][splash]",
+            null
+        ],
+        "isModifier": true
+    },
+    "reaching": {
+        "slug": "reaching",
+        "imageOverlayUri": "/mighty-decks/actors/base/reaching.png",
+        "name": "Reaching",
+        "deck": "base mod",
+        "count": 1,
+        "special": "[melee] attack reaches to the adjacent zones",
+        "actionBonuses": [
+            "([range]0-1)",
+            "([range]0-1)"
+        ],
+        "isModifier": true
+    },
+    "healing": {
+        "slug": "healing",
+        "imageOverlayUri": "/mighty-decks/actors/base/healing.png",
+        "name": "Healing",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Heal 2x[injury] from one ally in the zone",
+        "isModifier": true
+    },
+    "restoring": {
+        "slug": "restoring",
+        "imageOverlayUri": "/mighty-decks/actors/base/restoring.png",
+        "name": "Restoring",
+        "deck": "base mod",
+        "count": 1,
+        "special": "Heal [injury] from all allies in the zone",
+        "isModifier": true
+    },
+    "regenerating": {
+        "slug": "regenerating",
+        "imageOverlayUri": "/mighty-decks/actors/base/regenerating.png",
+        "name": "Regenerating",
+        "deck": "base mod",
+        "count": 4,
+        "special": "Heal [injury2] at the end of the turn",
+        "toughnessBonus": "[heal][heal]",
+        "isModifier": true
+    },
+    "encouraging": {
+        "slug": "encouraging",
+        "imageOverlayUri": "/mighty-decks/actors/base/encouraging.png",
+        "name": "Encouraging",
+        "deck": "base mod",
+        "count": 1,
+        "special": "[boost] all allies in the zone",
+        "isModifier": true
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<LayeredActorCard modifier={actorModifierMap[actorModifierMapSlug]} />
+````
+<LayeredActorCard modifier={actorModifierMap.tough} />

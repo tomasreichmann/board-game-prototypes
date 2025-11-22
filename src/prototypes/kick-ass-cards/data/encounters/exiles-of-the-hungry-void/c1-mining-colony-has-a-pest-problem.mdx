@@ -2,6 +2,8 @@
 campaign: Exiles of the Hungry Void
 chapter: 1
 title: Mining Colony Has a Pest Problem
+hook: "An automated mining outpost offers a reward for clearing out hostile 'wildlife' that has infested their tunnels."
+prompt: "This is an introductory combat encounter. The crew must first track the creatures to their nest, then fight a wave of smaller critters, followed by a larger 'brood mother' boss to complete the mission."
 ---
 
 import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
@@ -11,7 +13,7 @@ import { actorMap, counterMap, assetMap, effectMap, stuntMap, actorRoleMap, acto
 
 # Mining Colony Has a Pest Problem
 
--   💡 This encounter should be an introduction to combat. An easy fight with many weak enemies.
+💡 {prompt}
 
 _The docking clamps seize your ship with a metallic shudder, drawing you into a tiny mining outpost half-buried in the crust of a lonely dwarf planet. A projection flickers to life: a mining foreman automaton, voice flat but urgent:  
 “Wildlife detected in extraction tunnels. Hostile behavior escalating. Colony protocols forbid harm to native species. Outsourcing resolution. Payment available in refined metals.”_

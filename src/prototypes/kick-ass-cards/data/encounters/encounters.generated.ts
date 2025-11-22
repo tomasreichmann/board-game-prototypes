@@ -301,6 +301,20 @@ export const encountersMap = {
         "campaign": "B-day",
         "chapter": 0
     },
+    "exiles-of-the-hungry-void/c3-missile-stockpile": {
+        "slug": "exiles-of-the-hungry-void/c3-missile-stockpile",
+        "path": "exiles-of-the-hungry-void/c3-missile-stockpile",
+        "title": "Missile Stockpile Raid",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 3
+    },
+    "exiles-of-the-hungry-void/c3-cursed-prison-transport": {
+        "slug": "exiles-of-the-hungry-void/c3-cursed-prison-transport",
+        "path": "exiles-of-the-hungry-void/c3-cursed-prison-transport",
+        "title": "Cursed Prison Transport",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 3
+    },
     "exiles-of-the-hungry-void/c2-graveyard-bazaar": {
         "slug": "exiles-of-the-hungry-void/c2-graveyard-bazaar",
         "path": "exiles-of-the-hungry-void/c2-graveyard-bazaar",
@@ -311,7 +325,7 @@ export const encountersMap = {
     "exiles-of-the-hungry-void/c1-transport-in-distress": {
         "slug": "exiles-of-the-hungry-void/c1-transport-in-distress",
         "path": "exiles-of-the-hungry-void/c1-transport-in-distress",
-        "title": "A transport in distress",
+        "title": "Transport in Distress",
         "campaign": "Exiles of the Hungry Void",
         "chapter": 1
     },

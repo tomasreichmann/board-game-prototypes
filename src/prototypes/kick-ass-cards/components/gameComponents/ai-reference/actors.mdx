@@ -1,0 +1,331 @@
+---
+title: Actor Cards
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Actor Cards
+
+Actors are characters or creatures in the game.
+
+## Data
+
+````typescript
+export const actorMap = {
+    "animal_blue": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "animal_blue",
+        "imageUri": "/mighty-decks/actors/base/animal-blue.png"
+    },
+    "animal_green": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "animal_green",
+        "imageUri": "/mighty-decks/actors/base/animal-green.png"
+    },
+    "animal_red": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "animal_red",
+        "imageUri": "/mighty-decks/actors/base/animal-red.png"
+    },
+    "animal_yellow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "animal_yellow",
+        "imageUri": "/mighty-decks/actors/base/animal-yellow.png"
+    },
+    "aristocrat": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "aristocrat",
+        "imageUri": "/mighty-decks/actors/base/aristocrat.png"
+    },
+    "artillery_acid": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "artillery_acid",
+        "imageUri": "/mighty-decks/actors/base/artillery-acid.png"
+    },
+    "artillery_earth": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "artillery_earth",
+        "imageUri": "/mighty-decks/actors/base/artillery-earth.png"
+    },
+    "artillery_fire": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "artillery_fire",
+        "imageUri": "/mighty-decks/actors/base/artillery-fire.png"
+    },
+    "artillery_ice": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "artillery_ice",
+        "imageUri": "/mighty-decks/actors/base/artillery-ice.png"
+    },
+    "artillery_lightning": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "artillery_lightning",
+        "imageUri": "/mighty-decks/actors/base/artillery-lightning.png"
+    },
+    "assassin": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "assassin",
+        "imageUri": "/mighty-decks/actors/base/assassin.png"
+    },
+    "beast": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "beast",
+        "imageUri": "/mighty-decks/actors/base/beast.png"
+    },
+    "bruiser_blue": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "bruiser_blue",
+        "imageUri": "/mighty-decks/actors/base/bruiser-blue.png"
+    },
+    "bruiser_green": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "bruiser_green",
+        "imageUri": "/mighty-decks/actors/base/bruiser-green.png"
+    },
+    "bruiser_red": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "bruiser_red",
+        "imageUri": "/mighty-decks/actors/base/bruiser-red.png"
+    },
+    "bruiser_yellow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "bruiser_yellow",
+        "imageUri": "/mighty-decks/actors/base/bruiser-yellow.png"
+    },
+    "civilian": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "civilian",
+        "imageUri": "/mighty-decks/actors/base/civilian.png"
+    },
+    "claw_blue": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "claw_blue",
+        "imageUri": "/mighty-decks/actors/base/claw-blue.png"
+    },
+    "claw_green": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "claw_green",
+        "imageUri": "/mighty-decks/actors/base/claw-green.png"
+    },
+    "claw_red": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "claw_red",
+        "imageUri": "/mighty-decks/actors/base/claw-red.png"
+    },
+    "claw_yellow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "claw_yellow",
+        "imageUri": "/mighty-decks/actors/base/claw-yellow.png"
+    },
+    "cog": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "cog",
+        "imageUri": "/mighty-decks/actors/base/cog.png"
+    },
+    "commander": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "commander",
+        "imageUri": "/mighty-decks/actors/base/commander.png"
+    },
+    "construct": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "construct",
+        "imageUri": "/mighty-decks/actors/base/construct.png"
+    },
+    "guard_blue": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "guard_blue",
+        "imageUri": "/mighty-decks/actors/base/guard-blue.png"
+    },
+    "guard_green": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "guard_green",
+        "imageUri": "/mighty-decks/actors/base/guard-green.png"
+    },
+    "guard_red": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "guard_red",
+        "imageUri": "/mighty-decks/actors/base/guard-red.png"
+    },
+    "guard_yellow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "guard_yellow",
+        "imageUri": "/mighty-decks/actors/base/guard-yellow.png"
+    },
+    "healer": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "healer",
+        "imageUri": "/mighty-decks/actors/base/healer.png"
+    },
+    "horror": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "horror",
+        "imageUri": "/mighty-decks/actors/base/horror.png"
+    },
+    "manipulator": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "manipulator",
+        "imageUri": "/mighty-decks/actors/base/manipulator.png"
+    },
+    "marksman_blue": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "marksman_blue",
+        "imageUri": "/mighty-decks/actors/base/marksman-blue.png"
+    },
+    "marksman_green": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "marksman_green",
+        "imageUri": "/mighty-decks/actors/base/marksman-green.png"
+    },
+    "marksman_red": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "marksman_red",
+        "imageUri": "/mighty-decks/actors/base/marksman-red.png"
+    },
+    "marksman_yellow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "marksman_yellow",
+        "imageUri": "/mighty-decks/actors/base/marksman-yellow.png"
+    },
+    "merchant": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "merchant",
+        "imageUri": "/mighty-decks/actors/base/merchant.png"
+    },
+    "minion_blue": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "minion_blue",
+        "imageUri": "/mighty-decks/actors/base/minion-blue.png"
+    },
+    "minion_green": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "minion_green",
+        "imageUri": "/mighty-decks/actors/base/minion-green.png"
+    },
+    "minion_red": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "minion_red",
+        "imageUri": "/mighty-decks/actors/base/minion-red.png"
+    },
+    "minion_yellow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "minion_yellow",
+        "imageUri": "/mighty-decks/actors/base/minion-yellow.png"
+    },
+    "sentry": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "sentry",
+        "imageUri": "/mighty-decks/actors/base/sentry.png"
+    },
+    "specialist": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "specialist",
+        "imageUri": "/mighty-decks/actors/base/specialist.png"
+    },
+    "swarm": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "swarm",
+        "imageUri": "/mighty-decks/actors/base/swarm.png"
+    },
+    "zealot": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "imagePosition": "center top",
+        "slug": "zealot",
+        "imageUri": "/mighty-decks/actors/base/zealot.png"
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<LayeredActorCard {...actorMap[actorMapSlug]} role={actorRoleMap[actorRoleMapSlug]} modifier={actorModifierMap[actorModifierMapSlug]} />
+````
+<LayeredActorCard {...actorMap.animal_blue} role={actorRoleMap.pawn} modifier={actorModifierMap.tough} />

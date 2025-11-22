@@ -1,10 +1,6 @@
-import React, { CSSProperties } from "react";
-import Image, { ImageProps } from "../Image";
+import React from "react";
 import twm from "@/utils/twm";
 import LayeredCard, { LayeredCardBackFace, LayeredCardBackFaceProps, LayeredCardProps } from "./LayeredCard";
-import { TacticalRoleType, tacticalModifierMap, tacticalRoleMap } from "../../data/tactical-roles";
-import { IconOrImage, IconOrImageProps } from "@/components/Icon/IconOrImage";
-import { IconProps } from "../Icon";
 import { AssetType } from "../../types";
 import RichText from "../RichText";
 
@@ -36,14 +32,13 @@ const getLayeredCardProps = (baseProps?: Partial<AssetType>, modifier?: Partial<
 
 export default function LayeredAssetCard({
     className,
-    slug,
+    slug: _slug,
     title,
     deck,
-    count,
+    count: _count,
     effect,
     icon,
     modifier,
-    children,
     ...restProps
 }: LayeredAssetCardProps) {
     const baseProps = { deck, title, icon, effect };

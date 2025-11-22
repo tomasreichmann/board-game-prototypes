@@ -2,6 +2,8 @@
 campaign: Exiles of the Hungry Void
 chapter: 2
 title: Graveyard Bazaar
+hook: "You dock at the Graveyard Bazaar, a sprawling, chaotic marketplace built from the wreckage of ancient starships, offering a rare moment of safety."
+prompt: "This is a social/downtime encounter. There is no combat. Players can spend their resources to upgrade the ship, buy and sell items, work on projects, and interact with different factions to gain information or build relationships before a large concert event."
 ---
 
 import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
@@ -11,7 +13,7 @@ import { actorMap, counterMap, assetMap, effectMap, stuntMap, actorRoleMap, acto
 
 # Graveyard Bazaar
 
--   💡 This encounter should be the end of the first chapter. A change of pace and an opportunity to buy upgrades and equipment, work on long term projects, and reflect on the past adventure.
+💡 {prompt}
 
 _Neon symbols flare against the stitched-together hulls, lighting the maze of wrecked ships that form the Graveyard Bazaar. Smugglers, scavengers, cultists, and wanderers drift between makeshift stalls and glowing stages, their shadows broken by the pulse of cheap generators and drifting lantern drones._
 
@@ -69,7 +71,8 @@ _You walk around but don't really pay attention to the merchandise. Instead, you
 -   **The Smugglers**
 -   **The Void Seers**
 -   **The Death Cultists**
--   **The Blood Cultists**
+-   **The Hemomancers Coven**
+-   **The Machinist church**
 
 _You vibed with them for a while, exchanging stories and laughs. +1 Relations with the Faction_
 
@@ -90,3 +93,5 @@ _As the last band took their bow, the crowd slowly dispersed, leaving behind a s
 ### Next chapter encounters
 
 <LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />
+
+<ComponentHelper />

@@ -17,7 +17,7 @@ export default function RunningTheGame() {
         <RulesTwoPageLayout
             startingPageNumber={3}
             pages={[
-                <Setup />,
+                <Setup key="setup" />,
                 <>
                     <H1>Running the Game</H1>
                     <Body>
@@ -77,9 +77,9 @@ export default function RunningTheGame() {
                         enhance their immersion and experience.
                     </Body>
                     <Body mt>
-                        Storyteller balances the <em>"spotlight"</em> between the players. When a more active player
-                        talks for too long, move the spotlight to a player that didn't talk for a while. For example by
-                        saying:{" "}
+                        Storyteller balances the <em>&quot;spotlight&quot;</em> between the players. When a more active
+                        player talks for too long, move the spotlight to a player that didn't talk for a while. For
+                        example by saying:{" "}
                         <Quote Component="span">
                             "And what do <strong>you</strong> do in the meantime?"
                         </Quote>
@@ -244,13 +244,8 @@ export default function RunningTheGame() {
                             </Body>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <Scaled key={effectMap.unconscious.slug} scale={0.5}>
-                                <EffectCard
-                                    {...effectMap.unconscious}
-                                    className={cardClassName}
-                                    size="54x86"
-                                    title="Dying"
-                                />
+                            <Scaled key={effectMap.dying.slug} scale={0.5}>
+                                <EffectCard {...effectMap.dying} className={cardClassName} size="54x86" title="Dying" />
                             </Scaled>
                         </div>
                     </div>

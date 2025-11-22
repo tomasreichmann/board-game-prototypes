@@ -1,0 +1,440 @@
+---
+title: Actor Roles
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Actor Roles
+
+Roles define the tactical function of an actor.
+
+## Data
+
+````typescript
+export const actorRoleMap = {
+    "pawn": {
+        "slug": "pawn",
+        "name": "Pawn",
+        "deck": "base",
+        "count": 4,
+        "toughness": "[toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ]
+            },
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "range": "1"
+            }
+        ]
+    },
+    "minion": {
+        "slug": "minion",
+        "name": "Minion",
+        "deck": "base",
+        "count": 4,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ]
+            },
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "range": "1-2"
+            }
+        ]
+    },
+    "thug": {
+        "slug": "thug",
+        "name": "Thug",
+        "deck": "base",
+        "count": 4,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ]
+            },
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "range": "1"
+            }
+        ]
+    },
+    "brute": {
+        "slug": "brute",
+        "name": "Brute",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness][toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ]
+            },
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "splash": true
+            }
+        ]
+    },
+    "tank": {
+        "slug": "tank",
+        "name": "Tank",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness6]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ]
+            },
+            "[direct][push][range]1[splash]"
+        ]
+    },
+    "champion": {
+        "slug": "champion",
+        "name": "Champion",
+        "deck": "base",
+        "count": 1,
+        "toughness": "[toughness][toughness][toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 3
+                    }
+                ]
+            },
+            {
+                "type": "direct",
+                "effect": [
+                    {
+                        "effectType": "distress",
+                        "amount": 2
+                    }
+                ],
+                "splash": true
+            }
+        ]
+    },
+    "assassin": {
+        "slug": "assassin",
+        "name": "Assassin",
+        "deck": "base",
+        "count": 1,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            "[melee][injury4]",
+            "[direct][complication2][splash]"
+        ]
+    },
+    "skirmisher": {
+        "slug": "skirmisher",
+        "name": "Skirmisher",
+        "deck": "base",
+        "count": 4,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "count": 2
+            },
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "count": 2,
+                "range": "1-2"
+            }
+        ]
+    },
+    "ranger": {
+        "slug": "ranger",
+        "name": "Ranger",
+        "deck": "base",
+        "count": 4,
+        "toughness": "[toughness][toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ],
+                "range": "1-2"
+            },
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ]
+            }
+        ]
+    },
+    "stalker": {
+        "slug": "stalker",
+        "name": "Stalker",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 3
+                    }
+                ]
+            },
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 3
+                    }
+                ],
+                "range": "1-2"
+            }
+        ]
+    },
+    "commando": {
+        "slug": "commando",
+        "name": "Commando",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness][toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 3
+                    }
+                ]
+            },
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ],
+                "count": 3,
+                "range": "1-2"
+            }
+        ]
+    },
+    "marksman": {
+        "slug": "marksman",
+        "name": "Marksman",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 3
+                    }
+                ],
+                "range": "1-3"
+            },
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ]
+            }
+        ]
+    },
+    "sniper": {
+        "slug": "sniper",
+        "name": "Sniper",
+        "deck": "base",
+        "count": 1,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            "[ranged][injury4][range]1-∞",
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ]
+            }
+        ]
+    },
+    "grenadier": {
+        "slug": "grenadier",
+        "name": "Grenadier",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ],
+                "splash": true,
+                "range": "1"
+            },
+            {
+                "type": "melee",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 1
+                    }
+                ]
+            }
+        ]
+    },
+    "bomber": {
+        "slug": "bomber",
+        "name": "Bomber",
+        "deck": "base",
+        "count": 1,
+        "toughness": "[toughness][toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 3
+                    }
+                ],
+                "splash": true,
+                "range": "0"
+            }
+        ]
+    },
+    "artillery": {
+        "slug": "artillery",
+        "name": "Artillery",
+        "deck": "base",
+        "count": 2,
+        "toughness": "[toughness][toughness]",
+        "speed": "[speed]",
+        "actions": [
+            {
+                "type": "ranged",
+                "effect": [
+                    {
+                        "effectType": "injury",
+                        "amount": 2
+                    }
+                ],
+                "splash": true,
+                "range": "1-∞"
+            }
+        ]
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<LayeredActorCard role={actorRoleMap[actorRoleMapSlug]} />
+````
+<LayeredActorCard role={actorRoleMap.pawn} />

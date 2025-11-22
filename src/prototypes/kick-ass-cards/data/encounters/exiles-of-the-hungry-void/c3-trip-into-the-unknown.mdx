@@ -1,0 +1,55 @@
+---
+campaign: Exiles of the Hungry Void
+chapter: 3
+title: A Trip into the Unknown
+hook: Unsettling gravity waves from a nearby nebula match the void entity's signature.
+prompt: This encounter is a "push your luck" scenario where players explore a dangerous nebula. Each level deeper offers greater rewards and intel about the void entity, but at increasing risk. Players must succeed at Piloting or Engineering checks to proceed, with failure causing ship damage.
+---
+
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
+import { counterMap } from "../components";
+
+![Cinematic digital painting — a small, rugged exploration ship navigating a treacherous nebula. The ship is dwarfed by colossal, swirling clouds of incandescent gas and dark, cosmic dust. The nebula is a chaotic tapestry of vibrant colors: deep purples, electric blues, and fiery oranges, all interwoven with veins of blackness. Gravity lenses warp the starlight behind the clouds, creating distorted, dreamlike patterns. The ship’s engines leave a faint trail as it carefully maneuvers through a canyon of glowing gas. Tendrils of energy, like ethereal lightning, arc between the nebula’s dense pockets, occasionally lashing out into the void. The ship’s hull plating shows signs of wear and recent scorching, suggesting a perilous journey. Lighting: dramatic and high-contrast, with the ship illuminated by the nebula’s internal glow. Sharp shadows are cast across its hull. The surrounding space is filled with a soft, ambient light from the swirling gases. Palette: rich and saturated jewel tones—amethyst, sapphire, and amber—contrasted with deep, inky blacks. Textures: smooth, gaseous clouds; sharp, crystalline dust particles; weathered and scored metal on the ship. Mood: awe-inspiring but dangerous; a sense of venturing into a beautiful yet hostile frontier. Composition: 3:2 wide shot, with the ship positioned off-center to emphasize the immense scale and chaotic beauty of the nebula.](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/trip_into_the_unknown.png)
+
+# A Trip into the Unknown
+
+💡 {prompt}
+
+_Your sensors pick up familiar, unsettling gravity waves emanating from a nearby nebula. The patterns are eerily similar to those of the void entity. This could be a chance to gather vital intelligence on the creature._
+
+---
+
+### Into the Maelstrom
+
+_The nebula is a swirling chaos of gas, dust, and gravitational anomalies. Each foray deeper into its core offers greater rewards but also exposes your ship to increasing danger. The ship's machine spirit plots a course, but the final decision is yours._
+
+<CounterCard {...counterMap.investigation} title="Nebula Depth" current={0} total={2} />
+
+🎭 **Do you wish to proceed deeper?**
+
+Each time you decide to go deeper, the **Nebula Depth** increases by 1. You must then make a **Piloting** or **Engineering** check to navigate the hazards. The difficulty of this check is equal to the current **Nebula Depth**.
+
+-   **Success:** You navigate the treacherous currents and uncover something of value.
+-   **Failure:** Your ship is battered by the nebula. It takes **1 Damage** to a random system for each point of **Effect** you failed the check by.
+
+After each check, you may choose to leave the nebula with your findings or press on. The encounter ends when you jump away or reach the maximum depth.
+
+### Discoveries in the Deep
+
+**Depth 1: The Outer Rim**
+-   **Discovery:** You find a derelict prospector's ship, its systems fried. The logs speak of a "cold shadow" that drained their reactor.
+-   🏺 **Reward:** 1x Resource.
+-   🏺 **Intel:** The void entity feeds on heat.
+
+**Depth 2: The Twilight Zone**
+-   **Discovery:** Your sensors detect pockets of extreme cold amidst the glowing gas. Analysis of the energy patterns reveals a crucial clue about its origins.
+-   🏺 **Reward:** 1x Intel.
+-   🏺 **Intel:** The void entity is an indigenous species to this part of space.
+
+### Other encounters in the chapter
+
+<LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

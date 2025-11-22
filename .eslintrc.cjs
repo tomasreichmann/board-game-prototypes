@@ -49,6 +49,7 @@ module.exports = {
             rules: {
                 // allow explicit `any` in this project where necessary
                 "@typescript-eslint/no-explicit-any": "off",
+                "react/no-unescaped-entities": "off",
             },
         },
         {
@@ -66,6 +67,8 @@ module.exports = {
             extends: ["plugin:mdx/recommended"],
             rules: {
                 // optional: relax or configure MDX-specific rules here
+                "no-unused-expressions": "off",
+                "@typescript-eslint/no-unused-vars": "off",
             },
             globals: {
                 // components provided via the MDX provider (defaultMdxComponentMap)
@@ -106,6 +109,8 @@ module.exports = {
                 chapter: "readonly",
                 act: "readonly",
                 title: "readonly",
+                prompt: "readonly",
+                hook: "readonly",
             },
         },
     ],

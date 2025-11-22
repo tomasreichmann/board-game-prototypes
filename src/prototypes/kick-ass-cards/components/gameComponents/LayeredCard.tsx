@@ -97,7 +97,9 @@ export default function LayeredCard({
                                     "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%)",
                             }}
                         />
-                    ) : undefined
+                    ) : (
+                        <div />
+                    )
                 }
             >
                 <H3 className={twMerge("leading-none text-kac-iron-light text-center h-[1em]", classNames.adjective)}>

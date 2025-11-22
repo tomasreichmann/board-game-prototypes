@@ -1,0 +1,163 @@
+---
+title: Effect Cards
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Effect Cards
+
+Effects are status conditions that can affect actors or players.
+
+## Data
+
+````typescript
+export const effectMap = {
+    "injury": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "injury",
+        "title": "Injury",
+        "icon": "/mighty-decks/effects/injury.png",
+        "effect": "4x Injury ➜ Unconscious.──Use an action or an Asset to heal and discard.",
+        "deck": "base",
+        "count": 4
+    },
+    "distress": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "distress",
+        "title": "Distress",
+        "icon": "/mighty-decks/effects/distress.png",
+        "effect": "3x Distress ➜ Panic.<BR>4x Distress ➜ Hopeless.──Use an action or an Asset to recover and discard.",
+        "deck": "base",
+        "count": 4
+    },
+    "dying": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "dying",
+        "title": "Dying",
+        "icon": "/mighty-decks/effects/dying.png",
+        "effect": "4x Injury: You cannot take actions until someone revives you. Check optional dying rules.──Heal your Injuries to discard.",
+        "deck": "base",
+        "count": 1
+    },
+    "panicked": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "panicked",
+        "title": "Panicked",
+        "icon": "/mighty-decks/effects/panicked.png",
+        "effect": "3x Distress: You can only play the top card of your Outcome deck.──Recover from your Distress to discard.",
+        "deck": "base",
+        "count": 1
+    },
+    "hopeless": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "hopeless",
+        "title": "Hopeless",
+        "icon": "/mighty-decks/effects/hopeless.png",
+        "effect": "4x Distress: You can only flee or give up.──Recover from your Distress to discard.",
+        "deck": "base",
+        "count": 1
+    },
+    "stuck": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "stuck",
+        "title": "Stuck",
+        "icon": "/mighty-decks/effects/stuck.png",
+        "effect": "You cannot move, but you can still take other actions.──Use an action to free yourself and discard.",
+        "deck": "base",
+        "count": 1
+    },
+    "hindered": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "hindered",
+        "title": "Hindered",
+        "icon": "/mighty-decks/effects/hindered.png",
+        "effect": "You can only move or take actions, but not both.──Use an action to free yourself and discard.",
+        "deck": "base",
+        "count": 1
+    },
+    "boost": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "boost",
+        "title": "Boost",
+        "icon": "/mighty-decks/effects/boost.png",
+        "effect": "Your next action or defense has +1 Effect or +1 Move.",
+        "deck": "base",
+        "count": 1
+    },
+    "complication": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "complication",
+        "title": "Complication",
+        "icon": "/mighty-decks/effects/complication.png",
+        "effect": "A Complication makes your life harder.──Next action or defense has -1 Effect, then discard.",
+        "deck": "base",
+        "count": 1
+    },
+    "freezing": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "freezing",
+        "title": "Freezing",
+        "icon": "/mighty-decks/effects/freezing.png",
+        "effect": "Every turn you end with 2x Freezing or more, you receive a Distress. Cancelled by Burning.──Use an action or an Asset to discard.",
+        "deck": "base",
+        "count": 2
+    },
+    "burning": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "burning",
+        "title": "Burning",
+        "icon": "/mighty-decks/effects/burning.png",
+        "effect": "Every turn you end with 2x Burning or more, you receive an Injury. Cancelled by Freezing.──Use an action or an Asset to discard.",
+        "deck": "base",
+        "count": 2
+    },
+    "infection": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "infection",
+        "title": "Spore infection",
+        "icon": "/LP/icons/spore-infection.png",
+        "effect": "+1 Doom",
+        "deck": "base",
+        "count": 0
+    },
+    "doom": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "doom",
+        "title": "Doom",
+        "icon": "/mighty-decks/doom.png",
+        "effect": "You are loosing your humanity.──3x Doom: You transform into a monster.",
+        "deck": "base",
+        "count": 0
+    },
+    "salvation": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "salvation",
+        "title": "Salvation",
+        "icon": "/mighty-decks/salvation.png",
+        "effect": "You are regaining your humanity.──3x Salvation: You transform back into a hero.",
+        "deck": "base",
+        "count": 0
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<Effect {...effectMap[effectMapSlug]} />
+````
+<Effect {...effectMap.injury} />

@@ -1,0 +1,107 @@
+---
+campaign: Exiles of the Hungry Void
+chapter: 3
+title: Cursed Prison Transport
+hook: An Imperial prison transport ship issued a distress call. 
+prompt: This encounter has players decide if they want to catch some escape pods from a destroyed prison transport that has been infested by demons. The pods are a mixed bag of imperials, prisoners and demons. The imperials are grateful for being saved and offer rewards. Some of the prisoners are dangerous, while others are grateful. The demons are mostly vicious and attack or curse the players immediately. The players can try to intercept pods by piloting and engineering. The total of Effect of checks by two people is the amount of checks intercepted. Each pod is randomly selected from a list of 10 options.
+---
+
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../components";
+
+![Cinematic digital painting — a massive Imperial prison transport ship, torn apart in deep space, drifting in a vast field of shattered hull plates, bent girders, and swirling debris. The vessel’s once-monolithic frame now hangs open like a carcass, its armored spine split and twisted. From within the ruptured core, unholy green energy crackles and pulses, crawling along the broken superstructure like unnatural lightning. Faint glyph-like patterns flicker inside the glow — hints of something awakened or unleashed. Chunks of plating float weightlessly, rotating in slow arcs through the void. A few intact prison cells drift freely, their walls scorched, doors blown open. Below the ruined bays, escape pods fire sporadically, launching in erratic bursts of motion — some with controlled ignition burns, others tumbling wildly as they streak away from the dying ship. Their engine flares cut sharp neon lines across the darkness. Lighting: eerie green bioluminescent pulses from the ship’s exposed core; cold starlight catching metallic debris; distant warm glints from fleeing escape pods. Palette: sickly green, cold steel gray, deep void black, faint reactor amber, and muted Imperial whites. Textures: torn alloy, cracked bulkheads, drifting dust clouds, scorched plating, leaking energy arcs. Mood: catastrophic rupture — a moment suspended between destruction and desperate flight. Composition: 3:2 wide shot with the shattered prison ship dominating the frame, debris drifting in layered depth, escape pods streaking away into the void, and green energy illuminating the scene from within the wreck.](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/cursed_prison_transport.png)
+
+# Cursed Prison Transport
+
+💡 {prompt}
+
+_Following a distress call, you arrive at a debris field where the Imperial prison transport, *The Penitent's Sorrow*, lies in ruins. Its hull is torn open, and an unsettling green energy pulses from within. As you watch, escape pods launch from the wreck, scattering into the void._
+
+<CounterCard {...counterMap.agreement} title="Escape Pods" />
+
+---
+
+### Catch Them If You Can
+
+_The pods are moving fast, and your window to intercept them is closing. You'll need precise maneuvering and technical skill to bring them aboard._
+
+🎭 **How do you intercept the pods?**
+
+-   **Piloting:** Deftly maneuver the ship to match a pod's trajectory.
+-   **Engineering:** Use tractor beams or grappling hooks to secure a pod.
+
+### Resolution
+
+💡 The total **Effect** from two selected crew members' checks determines how many escape pods you successfully retrieve. For each pod, roll a D10 on the table below to see what's inside.
+💡 Some of the effects will become apparent only after the crew leaves. Tell them the outcome after they jump away.
+
+**Roll (D10)**
+
+-   1-2: **Imperial Guards:** Grateful but shaken imperial guards.
+    -   **Kill:** 🔎 They attack 2 of you for 2 Injury (you can defend) before dying.
+        -    🏺 2x **Light Armor**
+    -   **Imprison them:** 🔎 You get later an offer of ransom. 
+        -   🏺 2x Resources
+    -   **Drop them at a nearest station:** 🔎
+        -   They offer a piece of valuable intel about a hidden cache of supplies in a nearby system as thanks.
+        -   🏺 A modified weapon or armor.
+-   3 **Dangerous Prisoners:** A group of obvious criminals. What do you do with them?
+    -   **Kill:**
+        -   🔎 They didn't have any valuables on them
+    -   **Imprison them:**
+        -   🔎 They make a run for your escape pods: 4 Effect to prevent them escape. They will damage one random ship system for each missing Effect.
+    -   **Drop them at a nearest station:**
+        -   🔎 They will remember this.
+        -   🏺 Relations with Pirates +1, but you lose 1x Resource.
+-   4: **Grateful Prisoner:** A political dissident who is relieved to be out of prison for the first time in 20 years.
+    -   **Kill:**
+        -   🔎 They didn't have any valuables on them.
+    -   **Imprison them:**
+        -   🔎 You find them dead the next day.
+    -   **Drop them at a nearest station:**
+        -   🔎 They are a skilled engineer and they repair 3 damaged ship systems before being dropped off.
+-   5-6: **Lesser Demon:** The pod opens to reveal a snarling, spiky beast. It launches its spikes at everyone present
+    -   Defend from 2 Injury
+    -   🏺 The spikes are a valuable ritual ingredient: worth 3x Resources
+-   7: **A strange Artifact:** The pod is empty save for a pulsating, obsidian idol in the shape of an unborn baby, it makes a faint wet slurping sound.
+    -   **Take it:**
+        -   🔎 The crew member who touches it becomes **Cursed** (-1 Effect on all Defense actions) until the idol is no longer in their possession.
+        -   🏺 **Obsidian Idol** (Dangerous Valuable). It can be sold for 5x Resource to the right buyer, or used in a rituals.
+    -   **Destroy it:**
+        -   🔎 It explodes with dark energy. The nearest crew member takes 2 Injury, ignoring armor.
+    -   **Leave it:**
+        -   🔎 You jettison the pod. As it tumbles away, you feel a malevolent presence watching you until it's gone.
+-   8: **Imperial Officer:** A pompous, high-ranking officer who demands you return them to Imperial space.
+    -   **Ransom them:**
+        -   🔎 They will pay ransom if not more than 3x Resources. Otherwise they will let them rot in your prison.
+        -   🏺 3x Resources.
+    -   **Interrogate them:**
+        -   🔎 With a Success check, you can extract information about a secret Imperial weapons cache.
+        -   🏺 Gain a modified weapon or armor.
+    -   **Hand them to Pirates:**
+        -   🔎 The pirates are thrilled to have such a valuable hostage.
+        -   🏺 Relations with Pirates +1.
+-   9: **Damaged Pod:** The pod is breached and the occupant is dead, frozen in the vacuum of space.
+    -   🏺 they had a basic weapon on them.
+-   10: **Crewman:** The pod contains a terrified injured Imperial crewman. As you help them out, their body contorts, and a powerful demon possesses them, laughing with a stolen voice.
+    -   All present characters can defend from a curse of reliving your greatest fear (3x Distress) 
+    -   The crewmen claws his eyes out bleeding out on the floor.
+
+### Imperial Rescue
+
+_In a blink of light a huge Imperial cruiser appears out of folded space and immediately opens fire with a salve of 4 rockets on your ship._
+
+-   You have one round to deal with the rockets, before they hit your ship.
+-   Each rocket that is not dealt with damages a random ship-system and any characters in the room.
+
+<CounterCard {...counterMap.energy} title="Incoming Rockets" current={4} total={4} />
+
+**You decide to not linger and jump with haste.**
+
+### Other encounters in the chapter
+
+<LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

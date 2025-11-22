@@ -1,0 +1,78 @@
+---
+title: Outcome Cards
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Outcome Cards
+
+Outcomes represent the result of an action or event.
+
+## Data
+
+````typescript
+export const outcomeMap = {
+    "special": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "special",
+        "title": "Special action",
+        "icon": "/mighty-decks/outcomes/special-action.png",
+        "description": "Activate your special action",
+        "instructions": "3 Effect",
+        "deck": "base",
+        "count": 1
+    },
+    "success": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "success",
+        "title": "Success",
+        "icon": "/mighty-decks/outcomes/success.png",
+        "description": "It worked!",
+        "instructions": "2 Effect",
+        "deck": "base",
+        "count": 3
+    },
+    "partial": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "partial",
+        "title": "Partial success",
+        "icon": "/mighty-decks/outcomes/partial-success.png",
+        "description": "It mostly worked",
+        "instructions": "1 Effect,<BR>or success with a complication",
+        "deck": "base",
+        "count": 3
+    },
+    "fumble": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "fumble",
+        "title": "Fumble",
+        "icon": "/mighty-decks/outcomes/fumble.png",
+        "description": "It failed!<BR>Bonuses to Effect do not apply",
+        "instructions": "Catastrophe: 3 or only Fumbles after draw.",
+        "deck": "base",
+        "count": 4
+    },
+    "chaos": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "chaos",
+        "title": "Chaos",
+        "icon": "/mighty-decks/outcomes/chaos.png",
+        "description": "Something unexpected happened",
+        "instructions": "Cannot be used for defense",
+        "deck": "base",
+        "count": 1
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<Outcome {...outcomeMap[outcomeMapSlug]} />
+````
+<Outcome {...outcomeMap.special} />

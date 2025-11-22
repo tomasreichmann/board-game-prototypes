@@ -17,6 +17,9 @@ import { assetModifierMap } from "../../data/asset-modifiers-en-deck";
 import LayeredActorCard from "./LayeredActorCard";
 import { H3 } from "../content/Text";
 import LayeredAssetCard from "./LayeredAssetCard";
+/* import ComponentsReference from "./components.ai-reference.mdx";
+import GeneratedComponentsReference from "./ai-reference/index.mdx";
+import { defaultMdxComponentMap } from "../content/MdxArticle"; */
 
 type TypeType = (typeof types)[number];
 
@@ -163,6 +166,9 @@ const ComponentHelper = ({ initialType = "asset", initialSearch = "", ...restPro
                     </div>
                 ))}
             </div>
+
+            {/* <ComponentsReference components={defaultMdxComponentMap} /> */}
+            {/* <GeneratedComponentsReference components={defaultMdxComponentMap} /> */}
         </div>
     );
 };

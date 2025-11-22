@@ -1,0 +1,239 @@
+---
+title: Counter Cards
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Counter Cards
+
+Counters represent threats or obstacles.
+
+## Data
+
+````typescript
+export const counterMap = {
+    "danger": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "danger",
+        "title": "Danger",
+        "icon": "/mighty-decks/counters/danger.png",
+        "deck": "base",
+        "count": 1
+    },
+    "defense": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "defense",
+        "title": "Defense",
+        "icon": "/mighty-decks/counters/defense.png",
+        "deck": "base",
+        "count": 1
+    },
+    "destruction": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "destruction",
+        "title": "Destruction",
+        "icon": "/mighty-decks/counters/destruction.png",
+        "deck": "base",
+        "count": 1
+    },
+    "distance": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "distance",
+        "title": "Distance",
+        "icon": "/mighty-decks/counters/distance.png",
+        "deck": "base",
+        "count": 1
+    },
+    "drop": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "drop",
+        "title": "Drop",
+        "icon": "/mighty-decks/counters/drop.png",
+        "deck": "base",
+        "count": 1
+    },
+    "energy": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "energy",
+        "title": "Energy",
+        "icon": "/mighty-decks/counters/energy.png",
+        "deck": "base",
+        "count": 1
+    },
+    "escape": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "escape",
+        "title": "Escape",
+        "icon": "/mighty-decks/counters/escape.png",
+        "deck": "base",
+        "count": 1
+    },
+    "euphoria": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "euphoria",
+        "title": "Euphoria",
+        "icon": "/mighty-decks/counters/euphoria.png",
+        "deck": "base",
+        "count": 1
+    },
+    "incognito": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "incognito",
+        "title": "Incognito",
+        "icon": "/mighty-decks/counters/incognito.png",
+        "deck": "base",
+        "count": 1
+    },
+    "investigation": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "investigation",
+        "title": "Investigation",
+        "icon": "/mighty-decks/counters/investigation.png",
+        "deck": "base",
+        "count": 1
+    },
+    "morale": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "morale",
+        "title": "Morale",
+        "icon": "/mighty-decks/counters/morale.png",
+        "deck": "base",
+        "count": 1
+    },
+    "performance": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "performance",
+        "title": "Performance",
+        "icon": "/mighty-decks/counters/performance.png",
+        "deck": "base",
+        "count": 1
+    },
+    "persuasion": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "persuasion",
+        "title": "Persuasion",
+        "icon": "/mighty-decks/counters/persuasion.png",
+        "deck": "base",
+        "count": 1
+    },
+    "race": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "race",
+        "title": "Race",
+        "icon": "/mighty-decks/counters/race.png",
+        "deck": "base",
+        "count": 1
+    },
+    "reputation": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "reputation",
+        "title": "Reputation",
+        "icon": "/mighty-decks/counters/reputation.png",
+        "deck": "base",
+        "count": 1
+    },
+    "resources": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "resources",
+        "title": "Resources",
+        "icon": "/mighty-decks/counters/resources.png",
+        "deck": "base",
+        "count": 1
+    },
+    "stealth": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "stealth",
+        "title": "Stealth",
+        "icon": "/mighty-decks/counters/stealth.png",
+        "deck": "base",
+        "count": 1
+    },
+    "study": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "study",
+        "title": "Study",
+        "icon": "/mighty-decks/counters/study.png",
+        "deck": "base",
+        "count": 1
+    },
+    "time": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "time",
+        "title": "Time",
+        "icon": "/mighty-decks/counters/time.png",
+        "deck": "base",
+        "count": 1
+    },
+    "tracking": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "tracking",
+        "title": "Tracking",
+        "icon": "/mighty-decks/counters/tracking.png",
+        "deck": "base",
+        "count": 1
+    },
+    "wealth": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "wealth",
+        "title": "Wealth",
+        "icon": "/mighty-decks/counters/wealth.png",
+        "deck": "base",
+        "count": 1
+    },
+    "agreement": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "agreement",
+        "title": "Agreement",
+        "icon": "/mighty-decks/counters/agreement.png",
+        "deck": "base",
+        "count": 1
+    },
+    "construction": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "construction",
+        "title": "Construction",
+        "icon": "/mighty-decks/counters/construction.png",
+        "deck": "base",
+        "count": 1
+    },
+    "crafting": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "crafting",
+        "title": "Crafting",
+        "icon": "/mighty-decks/counters/crafting.png",
+        "deck": "base",
+        "count": 1
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<CounterCard {...counterMap[counterMapSlug]} />
+````
+<CounterCard {...counterMap.danger} />

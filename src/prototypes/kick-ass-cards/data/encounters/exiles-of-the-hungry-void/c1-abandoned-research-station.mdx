@@ -2,6 +2,8 @@
 campaign: Exiles of the Hungry Void
 chapter: 1
 title: An Abandoned Research Station
+hook: "You've picked up a faint, automated signal from a derelict Imperial research station, adrift and silent in the Void."
+prompt: "This is a quick, single-round exploration encounter. The crew boards the station and splits up to investigate different sections (Canteen, Armory, Garden, Lab, Crew Quarters). Each choice presents a brief challenge or discovery, after which the crew regroups and leaves."
 ---
 
 import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
@@ -11,7 +13,7 @@ import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../componen
 
 # An Abandoned Research Station
 
--   💡 This encounter should be an introduction to quick decision based encounters. Every player gets and action and then they leave.
+💡 {prompt}
 
 _You cut off engines as a dark silhouette of an Imperial research station comes into view. Unmarked, cold and motionless in the void. No running lights, no comm broadcast, or docking traffic. Just a dead structure drifting in space. Could there still be something of value?_
 

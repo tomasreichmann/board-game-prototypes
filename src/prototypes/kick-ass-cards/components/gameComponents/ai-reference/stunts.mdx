@@ -1,0 +1,1101 @@
+---
+title: Stunt Cards
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Stunt Cards
+
+Stunts are special actions players can perform.
+
+## Data
+
+````typescript
+export const stuntMap = {
+    "dontGiveUp": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "dontGiveUp",
+        "title": "Don't Give Up",
+        "icon": "/mighty-decks/stunts/base/dont-give-up.png",
+        "requirements": "Recover from Panicked.",
+        "effect": "You need +1 Distress to get Panicked or Hopeless.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "bringThePain": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "bringThePain",
+        "title": "Bring the Pain",
+        "icon": "/mighty-decks/stunts/base/bring-the-pain.png",
+        "requirements": "Recover from Unconscious.",
+        "effect": "You need +1 Injury to get Unconscious.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "fearless": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "fearless",
+        "title": "Fearless",
+        "icon": "/mighty-decks/stunts/base/fearless.png",
+        "requirements": "Defend from a Distress while Panicked.",
+        "effect": "You are always Panicked, but you get Hindered instead of Hopeless.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "pummel": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "pummel",
+        "title": "Pummel",
+        "icon": "/mighty-decks/stunts/base/pummel.png",
+        "requirements": "Knock out an opponent unarmed.",
+        "effect": "Playing a Partial Success to attack an opponent while unarmed inflicts +1 Injury.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "flex": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "flex",
+        "title": "Flex",
+        "icon": "/mighty-decks/stunts/base/flex.png",
+        "requirements": "Impress or intimidate someone with your body.",
+        "effect": "+1 Effect when using your body to impress or intimidate.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "oversizedWeaponry": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "oversizedWeaponry",
+        "title": "Oversized Weaponry",
+        "icon": "/mighty-decks/stunts/base/oversized-weaponry.png",
+        "requirements": "Hit something with a weapon too large to wield easily.",
+        "effect": "You can use oversized weapons. You can wield two-handed weapons in one hand.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "offensiveThrow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "offensiveThrow",
+        "title": "Offensive Throw",
+        "icon": "/mighty-decks/stunts/base/offensive-throw.png",
+        "requirements": "Throw something most people cannot throw.",
+        "effect": "You can throw characters of your size or smaller up to 1 zone away.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "powerAttack": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "powerAttack",
+        "title": "Power Attack",
+        "icon": "/mighty-decks/stunts/base/power-attack.png",
+        "requirements": "Strike an enemy so hard they stagger or fall.",
+        "effect": "Your melee attacks leave enemies open—they receive a Complication.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "warCry": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "warCry",
+        "title": "War Cry",
+        "icon": "/mighty-decks/stunts/base/war-cry.png",
+        "requirements": "Intimidate multiple opponents at once.",
+        "effect": "Play Success to intimidate all enemies in your zone, giving them 1 Distress.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "grapple": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "grapple",
+        "title": "Grapple",
+        "icon": "/mighty-decks/stunts/base/grapple.png",
+        "requirements": "Restrain an enemy in close combat.",
+        "effect": "When you successfully block a melee attack, you automatically grapple the attacker.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "chokeOut": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "chokeOut",
+        "title": "Choke Out",
+        "icon": "/mighty-decks/stunts/base/choke-out.png",
+        "requirements": "Hold an opponent down until they submit or pass out.",
+        "effect": "If you grapple an enemy for 2 consecutive turns, they lose consciousness.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "smash": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "smash",
+        "title": "Smash",
+        "icon": "/mighty-decks/stunts/base/smash.png",
+        "requirements": "Knock down 3 or more opponents with a single melee attack.",
+        "effect": "You can split you melee attack Effect between enemies in the same zone.",
+        "deck": "Brawler",
+        "count": 1
+    },
+    "seductive": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "seductive",
+        "title": "Seductive",
+        "icon": "/mighty-decks/stunts/base/seductive.png",
+        "requirements": "Seduce someone.",
+        "effect": "Receive 2x Boosts at the start of a social Encounter with a character that may find you attractive.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "elusive": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "elusive",
+        "title": "Elusive",
+        "icon": "/mighty-decks/stunts/base/elusive.png",
+        "requirements": "Retreat from a zone where you received an Injury.",
+        "effect": "Once per round, you can move to an adjacent zone when you defend from taking any Injury.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "ghostStep": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "ghostStep",
+        "title": "Ghost Step",
+        "icon": "/mighty-decks/stunts/base/ghost-step.png",
+        "requirements": "Sneak past an enemy without being detected.",
+        "effect": "+1 Effect while moving silently.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "masterOfDisguise": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "masterOfDisguise",
+        "title": "Master of Disguise",
+        "icon": "/mighty-decks/stunts/base/master-of-disguise.png",
+        "requirements": "Deceive someone by assuming a false identity.",
+        "effect": "+1 Effect when you assume a false identity.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "venomous": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "venomous",
+        "title": "Venomous",
+        "icon": "/mighty-decks/stunts/base/venomous.png",
+        "requirements": "Poison someone.",
+        "effect": "You can apply poison to a weapon and attack with it in 1 action. You don't poison yourself by mistake.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "forger": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "forger",
+        "title": "Forger",
+        "icon": "/mighty-decks/stunts/base/forger.png",
+        "requirements": "Deceive someone with a forged evidence.",
+        "effect": "+1 Effect when manipulating with forged documents. The documents always hold up under casual inspection.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "stalker": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "stalker",
+        "title": "Stalker",
+        "icon": "/mighty-decks/stunts/base/stalker.png",
+        "requirements": "Knock-out or assassinate    an unaware target in 1 action.",
+        "effect": "Your attacks deal +1 Injury or Distress to unaware enemies.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "safecracker": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "safecracker",
+        "title": "Safecracker",
+        "icon": "/mighty-decks/stunts/base/safecracker.png",
+        "requirements": "Break a lock.",
+        "effect": "+1 Effect when braking into or out of locked places or containers.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "pickpocket": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "pickpocket",
+        "title": "Pickpocket",
+        "icon": "/mighty-decks/stunts/base/pickpocket.png",
+        "requirements": "Steal an item from a person without them noticing.",
+        "effect": "When you play a Success or better to pickpocket someone, you get an extra asset.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "stagedAccident": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "stagedAccident",
+        "title": "Staged Accident",
+        "icon": "/mighty-decks/stunts/base/staged-accident.png",
+        "requirements": "Kill or knock-out someone indirectly.",
+        "effect": "+1 Effect when hurting someone indirectly.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "hiddenArsenal": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "hiddenArsenal",
+        "title": "Hidden Arsenal",
+        "icon": "/mighty-decks/stunts/base/hidden-arsenal.png",
+        "requirements": "Smuggle a weapon somewhere.",
+        "effect": "Once per scene, reveal a hidden weapon to attack with +2 Effect.",
+        "deck": "Spy",
+        "count": 1
+    },
+    "rallyingCall": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "rallyingCall",
+        "title": "Rallying Call",
+        "icon": "/mighty-decks/stunts/base/rallying-call.png",
+        "requirements": "Boost an ally.",
+        "effect": "Play a Success to allow all allies that can hear you to discard a Complication or receive a Boost.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "forager": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "forager",
+        "title": "Forager",
+        "icon": "/mighty-decks/stunts/base/forager.png",
+        "requirements": "Forage some food.",
+        "effect": "You get 2x the food when foraging.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "tracker": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "tracker",
+        "title": "Tracker",
+        "icon": "/mighty-decks/stunts/base/tracker.png",
+        "requirements": "Find someone you are tracking.",
+        "effect": "+1 Effect while tracking.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "camouflage": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "camouflage",
+        "title": "Camouflage",
+        "icon": "/mighty-decks/stunts/base/camouflage.png",
+        "requirements": "Camouflaging yourself from an enemy for 3 rounds.",
+        "effect": "Your camouflage always holds up unless inspected.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "hunter": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "hunter",
+        "title": "Hunter",
+        "icon": "/mighty-decks/stunts/base/hunter.png",
+        "requirements": "Knock-out or kill an enemy with one shot.",
+        "effect": "Hitting an enemy without an Injury inflicts +1 Injury.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "animalTrainer": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "animalTrainer",
+        "title": "Animal Trainer",
+        "icon": "/mighty-decks/stunts/base/animal-trainer.png",
+        "requirements": "Make an animal follow your command.",
+        "effect": "Play a Special Action to teach your pet a new trick.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "trapper": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "trapper",
+        "title": "Trapper",
+        "icon": "/mighty-decks/stunts/base/trapper.png",
+        "requirements": "Make a trap and capture an enemy or an animal in it.",
+        "effect": "Your traps don't hurt you or your allies.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "marksman": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "marksman",
+        "title": "Marksman",
+        "icon": "/mighty-decks/stunts/base/marksman.png",
+        "requirements": "Hit a target 3 zones away.",
+        "effect": "You can shoot ranged weapons 1 zone further.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "weaponMaintenance": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "weaponMaintenance",
+        "title": "Weapon Maintenance",
+        "icon": "/mighty-decks/stunts/base/weapon-maintenance.png",
+        "requirements": "Repair a broken weapon.",
+        "effect": "Weapons never break or jam when you use them.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "penetration": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "penetration",
+        "title": "Penetration",
+        "icon": "/mighty-decks/stunts/base/penetration.png",
+        "requirements": "Hurt two enemies with one shot.",
+        "effect": "You can apply extra ranged Injury left after defeating an enemy to another enemy in the same zone.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "survivor": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "survivor",
+        "title": "Survivor",
+        "icon": "/mighty-decks/stunts/base/survivor.png",
+        "requirements": "Survive a natural hazard without consequences.",
+        "effect": "You get +1 Effect when dealing with natural hazards.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "animalFriend": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "animalFriend",
+        "title": "Animal Friend",
+        "icon": "/mighty-decks/stunts/base/animal-friend.png",
+        "requirements": "Calm down an aggressive animal.",
+        "effect": "+1 Effect when handling animals.",
+        "deck": "Ranger",
+        "count": 1
+    },
+    "strategist": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "strategist",
+        "title": "Strategist",
+        "icon": "/mighty-decks/stunts/base/strategist.png",
+        "requirements": "Reach a +4 Effect on your action.",
+        "effect": "Your Outcome card hand limit is increased by 1.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "volatileMastery": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "volatileMastery",
+        "title": "Volatile Mastery",
+        "icon": "/mighty-decks/stunts/base/volatile-mastery.png",
+        "requirements": "Blow something up.",
+        "effect": "You never hit yourself with your own explosives.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "linguist": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "linguist",
+        "title": "Linguist",
+        "icon": "/mighty-decks/stunts/base/linguist.png",
+        "requirements": "Gain a clue by studying a text document.",
+        "effect": "+1 Effect when decoding or translating. You can always recognize a language by text or speech.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "historian": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "historian",
+        "title": "Historian",
+        "icon": "/mighty-decks/stunts/base/historian.png",
+        "requirements": "Recall or uncover a historical event.",
+        "effect": "You always know 1 useful fact about any historical site, artifact, or tradition relevant to your setting.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "botanist": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "botanist",
+        "title": "Botanist",
+        "icon": "/mighty-decks/stunts/base/botanist.png",
+        "requirements": "Identify a rare or useful plant in the wild.",
+        "effect": "You automatically recognize common plants. You receive +1 Effect when using plants for medicine, poison, or alchemy.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "chemist": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "chemist",
+        "title": "Chemist",
+        "icon": "/mighty-decks/stunts/base/chemist.png",
+        "requirements": "Create an effective potion, poison, or explosive compound.",
+        "effect": "Chemicals you craft have +1 Effect or +1 round duration.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "tinkerer": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "tinkerer",
+        "title": "Tinkerer",
+        "icon": "/mighty-decks/stunts/base/tinkerer.png",
+        "requirements": "Repair or modify a device to serve an unintended purpose.",
+        "effect": "You don't need specialized tools when repairing or crafting.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "physician": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "physician",
+        "title": "Physician",
+        "icon": "/mighty-decks/stunts/base/physician.png",
+        "requirements": "Treat a diseased person.",
+        "effect": "+1 Effect when treating Injuries and diseases outside battle.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "inventor": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "inventor",
+        "title": "Inventor",
+        "icon": "/mighty-decks/stunts/base/inventor.png",
+        "requirements": "Design and build a completely new tool or device.",
+        "effect": "Play a Special Action to invent a gadget tailored to the current situation. Destroy a non-consumable item for a +1 Effect.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "academic": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "academic",
+        "title": "Academic",
+        "icon": "/mighty-decks/stunts/base/academic.png",
+        "requirements": "Teach an ally a new skill.",
+        "effect": "Play Partial Success to give an ally a Boost and discard a Complication.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "powerfulRhetoric": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "powerfulRhetoric",
+        "title": "Powerful Rhetoric",
+        "icon": "/mighty-decks/stunts/base/powerful-rhetoric.png",
+        "requirements": "Make a speech.",
+        "effect": "Playing a Partial Success when persuading or debating counts as a Success.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "medic": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "medic",
+        "title": "Medic",
+        "icon": "/mighty-decks/stunts/base/medic.png",
+        "requirements": "Revive a fallen ally.",
+        "effect": "+1 Effect when treating Injuries in battle.",
+        "deck": "Scholar",
+        "count": 1
+    },
+    "foresight": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "foresight",
+        "title": "Foresight",
+        "icon": "/mighty-decks/stunts/base/foresight.png",
+        "requirements": "Fortell something.",
+        "effect": "Receive a clue from the Storyteller in exchange for 2x Distress.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "senseDanger": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "senseDanger",
+        "title": "Sense Danger",
+        "icon": "/mighty-decks/stunts/base/sense-danger.png",
+        "requirements": "Detect an unseen threat before it strikes.",
+        "effect": "You receive +1 Effect when trying to notice ambushes, traps, or hidden dangers.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "readEmotions": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "readEmotions",
+        "title": "Read Emotions",
+        "icon": "/mighty-decks/stunts/base/read-emotions.png",
+        "requirements": "Call out a liar.",
+        "effect": "Play a Success to detect underlying emotions of a character.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "markAnOmen": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "markAnOmen",
+        "title": "Mark an Omen",
+        "icon": "/mighty-decks/stunts/base/mark-an-omen.png",
+        "requirements": "Act on a superstition.",
+        "effect": "Play a Success to make all enemies in the same zone gain 1 Distress.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "genusLoci": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "genusLoci",
+        "title": "Genus Loci",
+        "icon": "/mighty-decks/stunts/base/genus-loci.png",
+        "requirements": "Connect with a place or object's lingering essence.",
+        "effect": "Play a Success to glimpse into an object or location’s past and learn a hidden truth.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "guideEmotions": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "guideEmotions",
+        "title": "Guide Emotions",
+        "icon": "/mighty-decks/stunts/base/guide-emotions.png",
+        "requirements": "Talk someone down from attacking you.",
+        "effect": "+1 Effect when trying to calm someone down.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "crowdControl": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "crowdControl",
+        "title": "Crowd Control",
+        "icon": "/mighty-decks/stunts/base/crowd-control.png",
+        "requirements": "Sway a crowd to obey you.",
+        "effect": "Play a Special Action to control command a crowd, calming, riling up, or directing them.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "bless": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "bless",
+        "title": "Bless",
+        "icon": "/mighty-decks/stunts/base/bless.png",
+        "requirements": "Bless someone.",
+        "effect": "Once per scene, play a Success to remove a status card other than Injury from an ally.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "circleOfProtection": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "circleOfProtection",
+        "title": "Circle of Protection",
+        "icon": "/mighty-decks/stunts/base/circle-of-protection.png",
+        "requirements": "Create a protective boundary.",
+        "effect": "Once per session, play a Success to shield yourself and allies in your zone from the next hostile action.",
+        "deck": "Mystic",
+        "count": 1
+    },
+    "tactician": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "tactician",
+        "title": "Tactician",
+        "icon": "/mighty-decks/stunts/base/tactician.png",
+        "requirements": "Execute a named tactic.",
+        "effect": "Once per scene, play a Success to prevent your ally in the same zone from receiving any cards until your next turn.",
+        "deck": "Scholar",
+        "count": 0
+    },
+    "lastStand": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "lastStand",
+        "title": "Last Stand",
+        "icon": "/mighty-decks/stunts/base/last-stand.png",
+        "requirements": "Defeat an enemy while one Injury away from being Unconscious.",
+        "effect": "Receive 1 less negative Effect card but at least 1 when you already have at least 5.",
+        "deck": "Brawler",
+        "count": 0
+    },
+    "kleptomaniac": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "kleptomaniac",
+        "title": "Kleptomaniac",
+        "icon": "/mighty-decks/stunts/base/kleptomaniac.png",
+        "requirements": "Steal something you don't need.",
+        "effect": "When stealing or looting, play up to 3 cards from your Outcome deck. Get an extra Asset for Success, Distress for Fumble and Injury for Chaos.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "hardenedSkin": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "hardenedSkin",
+        "title": "Hardened Skin",
+        "icon": "/mighty-decks/stunts/base/hardened-skin.png",
+        "requirements": "Receive 3 Injury from one attack and remain standing.",
+        "effect": "Unarmed attacks against you deal -1 Injury.",
+        "deck": "Brawler",
+        "count": 0
+    },
+    "enterTrance": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "enterTrance",
+        "title": "Enter Trance",
+        "icon": "/mighty-decks/stunts/base/enter-trance.png",
+        "requirements": "Experience a trance like state.",
+        "effect": "Play a Success to fall into a trance and ignore a mental or environmental hazard or charm someone to stun them for a round.",
+        "deck": "Mystic",
+        "count": 0
+    },
+    "sweetLies": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "sweetLies",
+        "title": "Sweet Lies",
+        "icon": "/mighty-decks/stunts/base/sweet-lies.png",
+        "requirements": "Manipulate someone into trusting you with false information.",
+        "effect": "Partial Success does not raise suspicion when deceiving someone.",
+        "deck": "Spy",
+        "count": 0
+    },
+    "escapist": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "escapist",
+        "title": "Escapist",
+        "icon": "/mighty-decks/stunts/base/escapist.png",
+        "requirements": "Lose enemies chasing you.",
+        "effect": "+1 Effect when escaping enemies without leaving a trace.",
+        "deck": "Spy",
+        "count": 0
+    },
+    "vibe": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "vibe",
+        "title": "Vibe",
+        "icon": "/mighty-decks/stunts/base/vibe.png",
+        "requirements": "Make a friend.",
+        "effect": "You receive +1 Effect when making a first impression or making someone like you.",
+        "deck": "Mystic",
+        "count": 0
+    },
+    "hex": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "hex",
+        "title": "Hex",
+        "icon": "/mighty-decks/stunts/base/hex.png",
+        "requirements": "Curse someone.",
+        "effect": "Once per scene, play Success to make a person believe you cursed them. They receive 2x Distress. Usable once per scene.",
+        "deck": "Mystic",
+        "count": 0
+    },
+    "protector": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "protector",
+        "title": "Protector",
+        "icon": "/mighty-decks/stunts/base/protector.png",
+        "requirements": "Take a hit for someone else.",
+        "effect": "Play an Outcome card to defend someone in your zone. You receive any unblocked Injuries.",
+        "deck": "Brawler",
+        "count": 0
+    },
+    "forwardAssault": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "forwardAssault",
+        "title": "Forward Assault",
+        "icon": "/mighty-decks/stunts/base/forward-assault.png",
+        "requirements": "Make all your allies assault a zone in one turn.",
+        "effect": "Designate a zone. +1 Effect to everyone who moves into that zone and attacks during the next turn.",
+        "deck": "Mystic",
+        "count": 0
+    },
+    "coverFire": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "coverFire",
+        "title": "Cover Fire",
+        "icon": "/mighty-decks/stunts/base/cover-fire.png",
+        "requirements": "Intimidate a group of enemies with your firepower.",
+        "effect": "Once per scene, play a Success to inflict -1 Effect on all enemies' attacks in the zone until your next turn.",
+        "deck": "Ranger",
+        "count": 0
+    },
+    "evasive": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "evasive",
+        "title": "Evasive Maneuver",
+        "icon": "/mighty-decks/evasive-maneuver.png",
+        "requirements": "",
+        "effect": "+1 Effect on driving, riding, or piloting to avoid something.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "charge": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "charge",
+        "title": "Charge",
+        "icon": "/mighty-decks/charge.png",
+        "requirements": "Defeat an enemy in melee right after entering a zone.",
+        "effect": "+1 Effect on melee attacking after moving to a zone.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "ballistic": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "ballistic",
+        "title": "Ballistic",
+        "icon": "/mighty-decks/ballistic.png",
+        "requirements": "Defeat an enemy with a ranged attack without a line of sight.",
+        "effect": "+1 Effect on shooting two or more zones away.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "acrobatic": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "acrobatic",
+        "title": "Acrobatic",
+        "icon": "/mighty-decks/acrobat.png",
+        "requirements": "",
+        "effect": "You can combine the Effect of 2 Outcome cards to overcome a movement-based challenge.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "calm": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "calm",
+        "title": "Calm Under Pressure",
+        "icon": "/mighty-decks/calm.png",
+        "requirements": "",
+        "effect": "Needs rework: Gain Boost every time you get Distress. You no longer get the benefit of this effect once you lose a Distress until the end of the Encounter.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "rage": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "rage",
+        "title": "Rage",
+        "icon": "/mighty-decks/rage.png",
+        "requirements": "",
+        "effect": "Once per encounter, you can explode with rage and get as many Boosts as you have Distresses. You lose all Boosts, if you lose a Distress and at the end of the Encounter.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "recklessAttack": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "recklessAttack",
+        "title": "Reckless Attack",
+        "icon": "/mighty-decks/reckless-attack.png",
+        "requirements": "Receive an Injury during your attack.",
+        "effect": "Gain a Complication to add +1 Effect to your melee attack.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "brushItOff": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "brushItOff",
+        "title": "Brush It Off",
+        "icon": "/mighty-decks/brush-it-off.png",
+        "requirements": "",
+        "effect": "Every time you receive an Injury and don't have any Complications, you can choose to receive a Complication instead.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "joker": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "joker",
+        "title": "Joker",
+        "icon": "/mighty-decks/joker.png",
+        "requirements": "",
+        "effect": "Any time you receive a Distress and you don't have any Complications you can choose to receive a Complication instead.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "ghost": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "ghost",
+        "title": "Ghost",
+        "icon": "/mighty-decks/ghost.png",
+        "requirements": "",
+        "effect": "You can choose to receive a Distress for a +2 Effect when trying to avoid detection.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "allIn": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "allIn",
+        "title": "All In",
+        "icon": "/mighty-decks/all-in.png",
+        "requirements": "",
+        "effect": "You can choose to play up to 3 Outcome cards from your hand for combined Effect. You cannot play a Fumble or Chaos this way. Don't draw any Outcome cards at the end of your turn.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "burglar": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "burglar",
+        "title": "Burglar",
+        "icon": "/mighty-decks/burglar.png",
+        "requirements": "",
+        "effect": "You can choose to receive a Distress for a +2 Effect when trying to break into something.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "tactical": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "tactical",
+        "title": "Tactical",
+        "icon": "/mighty-decks/tactical.png",
+        "requirements": "",
+        "effect": "At the beginning of a combat Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "analytical": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "analytical",
+        "title": "Analytical",
+        "icon": "/mighty-decks/blackboard.png",
+        "requirements": "",
+        "effect": "At the beginning of an expertise-based Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "sympathetic": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "sympathetic",
+        "title": "Sympathetic",
+        "icon": "/mighty-decks/sympathetic.png",
+        "requirements": "",
+        "effect": "At the beginning of a social Encounter, draw two extra Outcome cards. Only draw Outcome cards when you have fewer cards in hand than your hand limit.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "intuitive": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "intuitive",
+        "title": "Intuitive",
+        "icon": "/mighty-decks/intuitive.png",
+        "requirements": "",
+        "effect": "At the beginning of an Encounter, you can look at the top 3 cards of your Outcome deck, discard one and put the rest back in any order.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "assassin": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "assassin",
+        "title": "Assassin",
+        "icon": "/mighty-decks/dagger.png",
+        "requirements": "",
+        "effect": "+2 Effect when you attack someone who is not aware of you.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "ruthless": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "ruthless",
+        "title": "Ruthless",
+        "icon": "/mighty-decks/ruthless.png",
+        "requirements": "",
+        "effect": "When you finish an enemy, you can choose to give all other enemies in the zone that can see you a Distress or Injury.",
+        "deck": "Universal",
+        "count": 0
+    },
+    "elemental": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "elemental",
+        "title": "Elemental",
+        "icon": "/mighty-decks/elemental.png",
+        "requirements": "",
+        "effect": "+1 Effect on Success when you use an element you are proficient in. You receive an extra Distress card when damaged by an opposite element.",
+        "deck": "Fantasy",
+        "count": 0
+    },
+    "timeStop": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "timeStop",
+        "title": "Time Stop",
+        "icon": "/mighty-decks/time-stop.png",
+        "requirements": "Fulfill a Counter with your action.",
+        "effect": "Receive a Distress to prevent a turn or round Counter from advancing.",
+        "deck": "Fantasy",
+        "count": 0
+    },
+    "recklessPiloting": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "recklessPiloting",
+        "title": "Reckless Driving",
+        "icon": "/mighty-decks/car-jump.png",
+        "requirements": "",
+        "effect": "+1 Effect on driving, riding, or piloting to cause damage.",
+        "deck": "Modern",
+        "count": 0
+    },
+    "burst": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "burst",
+        "title": "Burst fire",
+        "icon": "/mighty-decks/burst.png",
+        "requirements": "Requires a repeat-fire weapon.",
+        "effect": "You can hit a number of targets in a zone equal to your Effect +1 for 1 Effect each.",
+        "deck": "Modern",
+        "count": 0
+    },
+    "whiteHat": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "whiteHat",
+        "title": "White Hat Hacker",
+        "icon": "/LP/icons/whiteHat.png",
+        "requirements": "",
+        "effect": "+1 Effect when hacking for altruistic reasons.",
+        "deck": "Modern",
+        "count": 0
+    },
+    "sharpshooter": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "sharpshooter",
+        "title": "Sharpshooter",
+        "icon": "/mighty-decks/sharpshooter.png",
+        "requirements": "Requires a ranged or thrown weapon.",
+        "effect": "+1 Effect on shooting or throwing at an inanimate object.",
+        "deck": "Modern",
+        "count": 0
+    },
+    "overclock": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "overclock",
+        "title": "Overclock",
+        "icon": "/mighty-decks/overclock.png",
+        "requirements": "",
+        "effect": "Gain a Burning and draw an extra Outcome card to your hand.",
+        "deck": "Modern",
+        "count": 0
+    },
+    "psychonaut": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "psychonaut",
+        "title": "Psychonaut",
+        "icon": "/mighty-decks/psychonaut.png",
+        "requirements": "",
+        "effect": "You can ignore one effect of any bio-chemical consumable or increase its Effect by 1.",
+        "deck": "Modern",
+        "count": 0
+    },
+    "chargedAttack": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "chargedAttack",
+        "title": "Charged attack",
+        "icon": "/mighty-decks/charged.png",
+        "requirements": "Requires a charge weapon.",
+        "effect": "You can play an Outcome card from the deck each turn to add its Effect to your next attack. Fumble cancels previous Effect.",
+        "deck": "Sci-Fi",
+        "count": 0
+    },
+    "upload": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "upload",
+        "title": "Upload",
+        "icon": "/LP/icons/upload.png",
+        "requirements": "Requires a synthetic body.",
+        "effect": "You can upload your consciousness into a different powered down machine.",
+        "deck": "Sci-Fi",
+        "count": 0
+    },
+    "turret": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "turret",
+        "title": "Deploy a turret",
+        "icon": "/LP/icons/turret.png",
+        "requirements": "",
+        "effect": "Deploy a small turret in your Zone. Play an outcome card. For that many turns the turret can attack up to 1 zone away with 1 Effect during your turn.",
+        "deck": "sci-Fi",
+        "count": 0
+    },
+    "heatSink": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none",
+        "slug": "heatSink",
+        "title": "Heat Sink",
+        "icon": "/LP/icons/cooler.png",
+        "requirements": "Requires a synthetic body.",
+        "effect": "Action: touch two allies (or self) in your zone and discard any pairs of Heat and Freezing cards.",
+        "deck": "Sci-Fi",
+        "count": 0
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<StuntCard {...stuntMap[stuntMapSlug]} />
+````
+<StuntCard {...stuntMap.dontGiveUp} />

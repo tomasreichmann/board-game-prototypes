@@ -1,21 +1,21 @@
 ---
 campaign: Exiles of the Hungry Void
 chapter: 3
-title: Missile Stockpile
+title: Missile Stockpile Raid
+hook: You detected a concentration of materials normally used for missile production at a nearby asteroid field.
+prompt: This encounter is a quick one-round threat → resolution encounter. A missile battery launches 2x player count of different rockets immediately when the space-ship jumps in. Players can each try to destroy/hack/evade the rockets. Each missile that is not dealt with strikes a random system on the ship. The types of rockets are Incendiary, Breach, EMP, Toxic.
 ---
 
 import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
 import { actorMap, counterMap, assetMap, effectMap, stuntMap, actorRoleMap, actorModifierMap } from "../components";
 
-![](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/missile_stockpile.png)
+![Cinematic digital painting — a sudden ambush in deep space as a disguised asteroid unfolds into a hidden weapons platform. A spacecraft just out of frame has jumped into the sector, illuminating a field of drifting debris and jagged rock fragments with its arrival flash. One nearby asteroid—previously indistinguishable from inert stone—shifts unnaturally. Its cracked surface slides open along mechanical seams, revealing an automated missile battery nested inside like the exposed heart of a machine predator. Servo-arms adjust with predatory precision. Missile ports glow with different hues as the platform locks onto its target in milliseconds. A violent volley launches at once: Incendiary missile trailing a spiraling plume of molten-orange fire, Breach missile with a sharp cobalt contrail and armored tip, EMP torpedo shedding crackling blue-white arcs of ionized static, Toxic warhead venting sickly green vapor as it streaks through the dark. The hostile barrage crosses the frame before any defensive systems can rise, lighting the cold void with chaotic, multicolored streaks. Fragments of dust and micro-debris are illuminated in the crossfire, shimmering like frozen sparks. Lighting: sharp contrast from missile ignition flares; cold starlight on the asteroid’s rough exterior; subtle backlighting from the off-screen ship’s arrival flash. Palette: cobalt blue, molten orange, toxic green, faded gray stone, and cold metal. Textures: jagged rock, hidden alloy plating, hydraulic seams, drifting dust clouds, engine vapor trails. Mood: sudden betrayal — the calm of space shattered by a trap sprung too fast to evade. Composition: 3:2 wide shot focused on the asteroid’s opening structure and the missile volley streaking toward the viewer; off-screen ship implied by backlighting and directional motion.](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/missile_stockpile_raid.png)
 
 # Missile Stockpile
 
--   💡 This encounter is a quick one-round threat → resolution encounter. A missile battery launches 2x player count of different rockets immediatelly when the space-ship jumps in. Players can each try to destroy/hack/evade the rockets. Each missile that is not dealt with strikes a random system on the ship. The types of rockets are Incendiary, Breach, EMP, Toxic.
+💡 {prompt}
 
-_The stars wrench themselves back into familiar points of light as you exit the jump. Before the ship even settles, proximity alarms scream to life. A nearby asteroid, disguised as inert rock, slides open to reveal an automated missile battery. It fires a volley before you can even raise shields._
-
-**"Incoming! Multiple warheads!"**
+_The stars wrench themselves back into familiar points of light as you exit the jump. Before the ship even settles, proximity alarms scream to life. A nearby asteroid, disguised as inert rock, slides open to reveal an automated missile battery. It fires a volley of missiles. **"Incoming! Multiple warheads!"** says the ship's machine spirit dryly._
 
 _A number of different missiles (equal to **twice the number of crew members**) streaks toward your ship. They are a mixed bag of different technology and payloads different payload, a different flavor of disaster._
 
@@ -30,15 +30,16 @@ _A number of different missiles (equal to **twice the number of crew members**) 
 
 _You have seconds to act. Each crew member can try to intercept some missiles._
 
-🎭 **Choose your target and your method!**
+🎭 **How do you want to deal with the missiles?**
 
-For each crew member, pick one incoming missile to deal with.
+-   **Destroy it:** Target a missile with the ship's weapons. Each Effect destroys one missile.
+-   **Hack it:** Splice into the missile's guidance system, turning it into a dud or making it veer off course.
+    -   **Success:** You gain control of the missile.
+    -   **Partial success:** The missile drifts harmlessly into space. 
+    -   **Failure:** On a failure, the counter-intrusion locks you out.
+-   **Evade it:** Each effect allows you to evade one missile.
 
--   **Destroy it:** Target a missile with the ship's point-defense cannons. On a success, it's vaporized in a flash of light. On a failure, your shot goes wide.
--   **Hack it:** Splice into the missile's guidance system, turning it into a dud or making it veer off course. On a success, the missile drifts harmlessly into space. On a failure, the counter-intrusion locks you out.
--   **Jam it:** Use the ship's electronic countermeasures to blind the missile's sensors. On a success, the missile loses its lock. On a failure, it homes in with deadly precision.
-
----
+<LayeredActorCard {...actorMap.artillery_fire} role={actorRoleMap.ranger} modifier={actorModifierMap.tough}  />
 
 ### Resolution
 

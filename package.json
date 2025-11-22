@@ -13,7 +13,8 @@
         "deploy": "npm run build && netlify deploy",
         "dmx-server": "node server/dmx-server.js",
         "md:generate:encounters": "node src/prototypes/kick-ass-cards/data/encounters/generate-encounters-meta.js",
-        "md:add-titles": "node src/prototypes/kick-ass-cards/data/encounters/add-mdx-titles.js"
+        "md:add-titles": "vite-node src/prototypes/kick-ass-cards/data/encounters/add-mdx-titles.js",
+        "md:generate:component-docs": "vite-node src/prototypes/kick-ass-cards/scripts/generate-component-docs.ts"
     },
     "dependencies": {
         "@clerk/clerk-react": "^5.0.1",
@@ -93,8 +94,9 @@
         "tailwindcss-animate": "^1.0.6",
         "tailwindcss-themer": "^2.0.2",
         "typescript": "^5.4.3",
-        "vite": "^5.1.6",
+        "vite": "^5.2.11",
         "vite-plugin-svgr": "^4.2.0",
-        "vite-tsconfig-paths": "^5.1.4"
+        "vite-node": "^1.6.0",
+        "vite-tsconfig-paths": "^4.3.2"
     }
 }

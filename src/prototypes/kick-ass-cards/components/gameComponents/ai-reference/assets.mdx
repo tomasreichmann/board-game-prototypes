@@ -1,0 +1,1002 @@
+---
+title: Asset Cards
+---
+
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../../../data/encounters/components";
+
+# Asset Cards
+
+Assets are items or equipment players can use.
+
+## Data
+
+````typescript
+export const assetMap = {
+    "scifi_medi_gel": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_medi_gel",
+        "title": "Medi-gel",
+        "icon": "/LP/icons/injection.png",
+        "effect": "Repairs organic damage",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "6"
+    },
+    "scifi_nano_gel": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_nano_gel",
+        "title": "Nano-gel",
+        "icon": "/LP/icons/tube.png",
+        "effect": "Repairs mechanical damage",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "6"
+    },
+    "scifi_instahack": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_instahack",
+        "title": "Insta-hack",
+        "icon": "/LP/icons/gadget.png",
+        "effect": "Temporarily gains control over a device",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "5"
+    },
+    "scifi_grapple_gun": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_grapple_gun",
+        "title": "Grapple gun",
+        "icon": "/LP/icons/rifle.png",
+        "effect": "Pulls an object to the gun or the gun to an object",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "2"
+    },
+    "scifi_glue_nade": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_glue_nade",
+        "title": "Glue grenade",
+        "icon": "/LP/icons/bag.png",
+        "effect": "Sticks everything in the zone for 1 round Hindered",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "3"
+    },
+    "scifi_emp_nade": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_emp_nade",
+        "title": "EMP grenade",
+        "icon": "/LP/icons/capsule.png",
+        "effect": "Disables all electronics in the zone for 1 round.<BR>Synthetics receive 2x Injury instead",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "3"
+    },
+    "scifi_frag_grenade": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_frag_grenade",
+        "title": "Fragmentation grenade",
+        "icon": "/LP/icons/shell.png",
+        "effect": "Deals damage to everything in the zone",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "5"
+    },
+    "scifi_gravi_emitter": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_gravi_emitter",
+        "title": "Gravitational emitter",
+        "icon": "/LP/icons/emitter.png",
+        "effect": "Attracts/repels everything up to 1 Zone away. Moving against the emitter causes Hindrance",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "1"
+    },
+    "scifi_freeze_grenade": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_freeze_grenade",
+        "title": "Frost grenade",
+        "icon": "/LP/icons/liquid-grenade.png",
+        "effect": "Everyone in the zone is frozen. +2 Freezing",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "2"
+    },
+    "scifi_air_conditioning": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_air_conditioning",
+        "title": "Air conditioning",
+        "icon": "/LP/icons/device-2.png",
+        "effect": "+/- Freezing/Burning in the zone",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "1"
+    },
+    "scifi_scanner": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_scanner",
+        "title": "Scanner",
+        "icon": "/LP/icons/tablet.png",
+        "effect": "Multipurpose scanner",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "3"
+    },
+    "scifi_magnetic_gun": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_magnetic_gun",
+        "title": "Magnetic gun",
+        "icon": "/LP/icons/gun-2.png",
+        "effect": "Moves metallic objects",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "1"
+    },
+    "scifi_multi_bow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_multi_bow",
+        "title": "Multipurpose bow",
+        "icon": "/LP/icons/utility-bow.png",
+        "effect": "Shoots objects up to line of sight distance",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "2"
+    },
+    "scifi_heat-gun": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_heat-gun",
+        "title": "Heat gun",
+        "icon": "/LP/icons/heat-gun.png",
+        "effect": "Emits immense heat up to line of sight distance",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "1"
+    },
+    "scifi_bfg": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_bfg",
+        "title": "BFG",
+        "icon": "/LP/icons/bfg.png",
+        "effect": "Huge weapon: absorbs all heat from the zone for 1 round, causes Doom in the next round",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "1"
+    },
+    "scifi_heat_blade": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_heat_blade",
+        "title": "Thermodynamic blade",
+        "icon": "/LP/icons/black-blade.png",
+        "effect": "A blade that drains heat from enemies and heats up the wielder (+1 Effect, +1 Burning)",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "2"
+    },
+    "scifi_holo_generator": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_holo_generator",
+        "title": "Holo-generator",
+        "icon": "/LP/icons/orb.png",
+        "effect": "Generates holographic images",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "2"
+    },
+    "scifi_barrier": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_barrier",
+        "title": "Barrier generator",
+        "icon": "/LP/icons/projector.png",
+        "effect": "Creates a barrier between zones that absorbs 3 damage",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "2"
+    },
+    "scifi_turret": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "scifi_turret",
+        "title": "Turret",
+        "icon": "/LP/icons/turret.png",
+        "effect": "Deploy a small turret in your Zone. The turret can attack with 1 Effect during your turn. At the end of each turn, discard an Outcome card with Effect 1+ or the Turret shuts down",
+        "cost": "",
+        "deck": "sci-fi",
+        "count": "1"
+    },
+    "medieval_gambeson": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_gambeson",
+        "title": "Gambeson",
+        "icon": "/mighty-decks/assets/medieval/gambeson.png",
+        "effect": "Light fabric armor. Negates 1 Injury from slashing damage.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_chainmail": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_chainmail",
+        "title": "Chainmail",
+        "icon": "/mighty-decks/assets/medieval/chainmail.png",
+        "effect": "Medium metal armor. Negates 1 Injury from slashing and piercing damage. -1 Effect when sneaking, running, climbing or swimming.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_plate_armor": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_plate_armor",
+        "title": "Plate Armor",
+        "icon": "/mighty-decks/assets/medieval/plate-armor.png",
+        "effect": "Heavy metal armor. Negates 2 Injuries from slashing and piercing damage and 1 Injury from bludgeoning damage. -2 Effect when sneaking, running, climbing or swimming.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_buckler": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_buckler",
+        "title": "Buckler",
+        "icon": "/mighty-decks/assets/medieval/buckler.png",
+        "effect": "Light metal shield. +1 Effect when defending from melee attack once per round.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_kite-shield": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_kite-shield",
+        "title": "Kite Shield",
+        "icon": "/mighty-decks/assets/medieval/kite-shield.png",
+        "effect": "Large wooden shield. +1 Effect when defending from melee or ranged attack. -1 Effect when sneaking, running, climbing or swimming.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_dagger": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_dagger",
+        "title": "Dagger",
+        "icon": "/mighty-decks/assets/medieval/dagger.png",
+        "effect": "A light one-handed piercing melee weapon. Can be thrown 1 zone away.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_hand_axe": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_hand_axe",
+        "title": "Hand Axe",
+        "icon": "/mighty-decks/assets/medieval/hand-axe.png",
+        "effect": "A light one-handed slashing melee weapon. Can be thrown 1 zone away.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_longsword": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_longsword",
+        "title": "Longsword",
+        "icon": "/mighty-decks/assets/medieval/longsword.png",
+        "effect": "A medium one- or two-handed piercing or slashing melee weapon. +1 Effect when attacking while wielded with both hands.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_zweihandler": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_zweihandler",
+        "title": "Zweihänder",
+        "icon": "/mighty-decks/assets/medieval/zweihandler.png",
+        "effect": "A heavy two-handed slashing melee weapon. +1 Effect when attacking.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_great_axe": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_great_axe",
+        "title": "Greataxe",
+        "icon": "/mighty-decks/assets/medieval/great-axe.png",
+        "effect": "A heavy two-handed slashing melee weapon. +2 Effect when attacking multiple enemies.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_war_hammer": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_war_hammer",
+        "title": "War Hammer",
+        "icon": "/mighty-decks/assets/medieval/war-hammer.png",
+        "effect": "A heavy two-handed piercing or bludgeoning melee weapon. +1 Effect against armor.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_mace": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_mace",
+        "title": "Mace",
+        "icon": "/mighty-decks/assets/medieval/mace.png",
+        "effect": "A medium one-handed bludgeoning melee weapon. 1 Injury negated by armor turns to Distress instead.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_morningstar ": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_morningstar ",
+        "title": "Morningstar",
+        "icon": "/mighty-decks/assets/medieval/morningstar.png",
+        "effect": "A medium one-handed bludgeoning melee weapon. Ignores shields.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_staff": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_staff",
+        "title": "Staff",
+        "icon": "/mighty-decks/assets/medieval/staff.png",
+        "effect": "A light two-handed bludgeoning melee polearm weapon. +1 Effect when tripping an enemy.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_spear": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_spear",
+        "title": "Spear",
+        "icon": "/mighty-decks/assets/medieval/spear.png",
+        "effect": "A medium two-handed piercing melee polearm weapon. Once per round outside your turn you can attack an enemy entering your zone.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_billhook": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_billhook",
+        "title": "Billhook",
+        "icon": "/mighty-decks/assets/medieval/billhook.png",
+        "effect": "A heavy two-handed piercing or slashing polearm weapon. +1 Effect against cavalry.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_hunting_bow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_hunting_bow",
+        "title": "Hunting Bow",
+        "icon": "/mighty-decks/assets/medieval/hunting-bow.png",
+        "effect": "A light two-handed ranged weapon. Range: 1-2 zones away. -1 Effect when shooting targets in the same zone.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_crossbow": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_crossbow",
+        "title": "Crossbow",
+        "icon": "/mighty-decks/assets/medieval/crossbow.png",
+        "effect": "A heavy two-handed ranged weapon. Range: 1-2 zones. Ignores Plate Armor. -1 Effect when shooting targets in the same zone.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_hand_cannon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_hand_cannon",
+        "title": "Hand-Cannon",
+        "icon": "/mighty-decks/assets/medieval/hand-cannon.png",
+        "effect": "A heavy two-handed ranged weapon. Range: 1-2 zones away. Play 2 Outcome cards over 2 turns to load and fire. Add the Effect together. -1 Effect when shooting targets in the same zone.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_riding_horse": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_riding_horse",
+        "title": "Riding Horse",
+        "icon": "/mighty-decks/assets/medieval/riding-horse.png",
+        "effect": "Can move 2 zones per turn. +1 Effect when attacking infantry on horseback.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_wagon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_wagon",
+        "title": "Horse-Drawn Wagon",
+        "icon": "/mighty-decks/assets/medieval/wagon.png",
+        "effect": "Can move 2 zones per turn. Capacity: 2 people in the front and up to 6 in the back. +1 Effect when defending from infantry.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_grappling_hook": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_grappling_hook",
+        "title": "Grappling Hook and Rope",
+        "icon": "/mighty-decks/assets/medieval/grappling-hook.png",
+        "effect": "+1 Effect while climbing.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_lockpick_set": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_lockpick_set",
+        "title": "Lockpick Set",
+        "icon": "/mighty-decks/assets/medieval/lockpick-set.png",
+        "effect": "Allows picking locks.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_bandages": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_bandages",
+        "title": "Bandages",
+        "icon": "/mighty-decks/assets/medieval/bandages.png",
+        "effect": "Removes 2x Injury. Usable during battle. Consumed after use.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_healing_salve": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_healing_salve",
+        "title": "Healing Salve",
+        "icon": "/mighty-decks/assets/medieval/healing-salve.png",
+        "effect": "+1 Effect when healing to remove Injuries. Not usable during battle.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_herbal_remedy": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_herbal_remedy",
+        "title": "Herbal Remedy",
+        "icon": "/mighty-decks/assets/medieval/herbal-remedy.png",
+        "effect": "Receive a Boost or negate Poison. Usable during battle. Consumed after use.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_prayer_book": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_prayer_book",
+        "title": "Prayer Book",
+        "icon": "/mighty-decks/assets/medieval/prayer-book.png",
+        "effect": "+1 Effect when practicing religion to relieve Distress. Not usable during battle.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_mead": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_mead",
+        "title": "Mead",
+        "icon": "/mighty-decks/assets/medieval/mead.png",
+        "effect": "Removes 2x Distress. Usable during battle. Consumed after use.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_grenade": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_grenade",
+        "title": "Grenade",
+        "icon": "/mighty-decks/assets/medieval/grenade.png",
+        "effect": "Play an Outcome card to throw the granade up to 1 zone away. Damages everything in the zone. Consumed after use.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_lantern": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_lantern",
+        "title": "Lantern",
+        "icon": "/mighty-decks/assets/medieval/lantern.png",
+        "effect": "Provides light in the current zone. Can be used in the rain. Does not count as an open flame.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_torch": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_torch",
+        "title": "Torch",
+        "icon": "/mighty-decks/assets/medieval/torch.png",
+        "effect": "Provides light in the current zone. Cannot be used in the rain. Counts as an open flame.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_cannon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_cannon",
+        "title": "Cannon",
+        "icon": "/mighty-decks/assets/medieval/cannon.png",
+        "effect": "A heavy explosive artillery weapon. Range: 2+ zones away. -1 Effect when shooting targets 1 zone away. Cannot target the same zone. Ignores all shields and armor. Damages everything in the zone.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "4"
+    },
+    "medieval_rations": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_rations",
+        "title": "Rations",
+        "icon": "/mighty-decks/assets/medieval/rations.png",
+        "effect": "Food and water to sustain a person for a day.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "8"
+    },
+    "medieval_pouch": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_pouch",
+        "title": "Pouch",
+        "icon": "/mighty-decks/assets/medieval/pouch.png",
+        "effect": "A pouch can store easily accessable small things. Can be attached to a belt.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_chest": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_chest",
+        "title": "Chest",
+        "icon": "/mighty-decks/assets/medieval/chest.png",
+        "effect": "A chest can store heavier things for easier transportation. Can be locked.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_letter": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_letter",
+        "title": "Letter",
+        "icon": "/mighty-decks/assets/medieval/letter.png",
+        "effect": "A letter is a convenient way of passing information.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_poison": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_poison",
+        "title": "Poison",
+        "icon": "/mighty-decks/assets/medieval/poison.png",
+        "effect": "Causes 1x Injury at the end of every Round until healed. Can be applied to a weapon. Usable during battle. Consumed after use.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "2"
+    },
+    "medieval_key": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_key",
+        "title": "Key",
+        "icon": "/mighty-decks/assets/medieval/key.png",
+        "effect": "What does it open?",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_trap": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_trap",
+        "title": "Trap",
+        "icon": "/mighty-decks/assets/medieval/trap.png",
+        "effect": "Causes 2x Injury and Stuck when stepped on. Takes a Success to escape from it.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "3"
+    },
+    "medieval_tools": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_tools",
+        "title": "Tools",
+        "icon": "/mighty-decks/assets/medieval/tools.png",
+        "effect": "Tools for crafting.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_digging": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_digging",
+        "title": "Digging tools",
+        "icon": "/mighty-decks/assets/medieval/digging.png",
+        "effect": "Usable for mining or breaking down obstacles.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_ore": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_ore",
+        "title": "Ore",
+        "icon": "/mighty-decks/assets/medieval/ore.png",
+        "effect": "Does it contain precious metals, gems or is it just a fancy stone?",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_stone": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_stone",
+        "title": "Stone",
+        "icon": "/mighty-decks/assets/medieval/stone.png",
+        "effect": "An excellent building material.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_wood": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_wood",
+        "title": "Wood",
+        "icon": "/mighty-decks/assets/medieval/wood.png",
+        "effect": "Good for building, but quite flamable.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_iron": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_iron",
+        "title": "Iron",
+        "icon": "/mighty-decks/assets/medieval/iron.png",
+        "effect": "Can be used to craft something useful by a blacksmith.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_silver": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_silver",
+        "title": "Silver",
+        "icon": "/mighty-decks/assets/medieval/silver.png",
+        "effect": "Can be used to craft something pretty by a jewler.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "medieval_gold": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "medieval_gold",
+        "title": "Gold",
+        "icon": "/mighty-decks/assets/medieval/gold.png",
+        "effect": "Can be used to craft something precious by a jewler.",
+        "cost": "",
+        "deck": "medieval",
+        "count": "1"
+    },
+    "base_light_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_light_weapon",
+        "title": "Light Weapon",
+        "icon": "/mighty-decks/assets/base/light_weapon.png",
+        "effect": "When attacking with Success or better, you may also play a Partial Success to attack again.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_heavy_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_heavy_weapon",
+        "title": "Heavy Weapon",
+        "icon": "/mighty-decks/assets/base/heavy_weapon.png",
+        "effect": "+1 Effect when attacking with Success or better.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_reach_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_reach_weapon",
+        "title": "Reach Weapon",
+        "icon": "/mighty-decks/assets/base/reach_weapon.png",
+        "effect": "Attacks in same or adjacent zone. On Success, prevent target’s movement next round.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_spread_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_spread_weapon",
+        "title": "Spread Weapon",
+        "icon": "/mighty-decks/assets/base/spread_weapon.png",
+        "effect": "Attack all enemies in your zone or an adjacent one.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_throwable_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_throwable_weapon",
+        "title": "Throwable Weapon",
+        "icon": "/mighty-decks/assets/base/throwable_weapon.png",
+        "effect": "Throw to attack up to 2 zones away.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_precision_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_precision_weapon",
+        "title": "Precision Weapon",
+        "icon": "/mighty-decks/assets/base/precision_weapon.png",
+        "effect": "Shoot to attack up to 3 zones away.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_repeating_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_repeating_weapon",
+        "title": "Repeating Weapon",
+        "icon": "/mighty-decks/assets/base/repeating_weapon.png",
+        "effect": "Attack up to 3 targets 1-2 zones away. Draw from the Outcome Deck for each enemy. Stop on Fumble.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_artillery_weapon": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_artillery_weapon",
+        "title": "Artillery Weapon",
+        "icon": "/mighty-decks/assets/base/artillery_weapon.png",
+        "effect": "Play an Outcome card. At the beginning of your next turn, attack all enemies in the targeted zone with the result.",
+        "cost": "",
+        "deck": "base",
+        "count": "1"
+    },
+    "base_light_armor": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_light_armor",
+        "title": "Light Armor",
+        "icon": "/mighty-decks/assets/base/light_armor.png",
+        "effect": "Reduce received Injury by 1 and convert it to a Distress.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_heavy_armor": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_heavy_armor",
+        "title": "Heavy Armor",
+        "icon": "/mighty-decks/assets/base/heavy_armor.png",
+        "effect": "Reduce received Injury by 1.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_shield": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_shield",
+        "title": "Shield",
+        "icon": "/mighty-decks/assets/base/shield.png",
+        "effect": "Convert a Partial Success into a Success when defending.",
+        "cost": "",
+        "deck": "base",
+        "count": "4"
+    },
+    "base_healing": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_healing",
+        "title": "Healing",
+        "icon": "/mighty-decks/assets/base/healing.png",
+        "effect": "Consumable.<BR>Remove 1 Injury or spend an action and remove Effect +1 Injury.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_comfort": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_comfort",
+        "title": "Comfort",
+        "icon": "/mighty-decks/assets/base/comfort.png",
+        "effect": "Consumable.<BR>Remove 1 Distress or spend an action and remove Effect +1 Distress.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_surge": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_surge",
+        "title": "Surge",
+        "icon": "/mighty-decks/assets/base/surge.png",
+        "effect": "Consumable.<BR>Receive 2x Boost.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_tools": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_tools",
+        "title": "Tools",
+        "icon": "/mighty-decks/assets/base/tools.png",
+        "effect": "+1 Effect on an action while using a tool to work.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_light": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_light",
+        "title": "Light",
+        "icon": "/mighty-decks/assets/base/light.png",
+        "effect": "Lights up current zone.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_vehicle": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_vehicle",
+        "title": "Vehicle",
+        "icon": "/mighty-decks/assets/base/vehicle.png",
+        "effect": "On Move, you can move +1 zone further.",
+        "cost": "",
+        "deck": "base",
+        "count": "2"
+    },
+    "base_package": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_package",
+        "title": "Package",
+        "icon": "/mighty-decks/assets/base/package.png",
+        "effect": "Contains something important.",
+        "cost": "",
+        "deck": "base",
+        "count": "1"
+    },
+    "base_document": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_document",
+        "title": "Document",
+        "icon": "/mighty-decks/assets/base/document.png",
+        "effect": "Holds important information.",
+        "cost": "",
+        "deck": "base",
+        "count": "1"
+    },
+    "base_valuables": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_valuables",
+        "title": "Valuables",
+        "icon": "/mighty-decks/assets/base/valuables.png",
+        "effect": "Holds valuable items or currency.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "base_key": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_key",
+        "title": "Key",
+        "icon": "/mighty-decks/assets/base/key.png",
+        "effect": "Opens something important.",
+        "cost": "",
+        "deck": "base",
+        "count": "1"
+    },
+    "base_resources": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "base_resources",
+        "title": "Resources",
+        "icon": "/mighty-decks/assets/base/resources.png",
+        "effect": "Basic resources for crafting or building.",
+        "cost": "",
+        "deck": "base",
+        "count": "5"
+    },
+    "": {
+        "size": "54x86",
+        "className": "not-prose drop-shadow-md print:drop-shadow-none print:filter-none rounded-md overflow-hidden",
+        "slug": "",
+        "title": "",
+        "icon": "",
+        "effect": "",
+        "cost": "",
+        "deck": "",
+        "count": ""
+    }
+};
+````
+
+## Usage Example
+
+````tsx
+<LayeredAssetCard {...assetMap[assetMapSlug]} modifier={assetModifierMap[assetModifierMapSlug]} />
+````
+<LayeredAssetCard {...assetMap.scifi_medi_gel} modifier={assetModifierMap.base_fast} />

@@ -7,7 +7,7 @@ prompt: This encounter is a "push your luck" scenario where players explore a da
 ---
 
 import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
-import { counterMap } from "../components";
+import { outcomeMap, actorMap, actorRoleMap, actorModifierMap, counterMap, assetMap, assetModifierMap, effectMap, stuntMap } from "../components";
 
 ![Cinematic digital painting — a small, rugged exploration ship navigating a treacherous nebula. The ship is dwarfed by colossal, swirling clouds of incandescent gas and dark, cosmic dust. The nebula is a chaotic tapestry of vibrant colors: deep purples, electric blues, and fiery oranges, all interwoven with veins of blackness. Gravity lenses warp the starlight behind the clouds, creating distorted, dreamlike patterns. The ship’s engines leave a faint trail as it carefully maneuvers through a canyon of glowing gas. Tendrils of energy, like ethereal lightning, arc between the nebula’s dense pockets, occasionally lashing out into the void. The ship’s hull plating shows signs of wear and recent scorching, suggesting a perilous journey. Lighting: dramatic and high-contrast, with the ship illuminated by the nebula’s internal glow. Sharp shadows are cast across its hull. The surrounding space is filled with a soft, ambient light from the swirling gases. Palette: rich and saturated jewel tones—amethyst, sapphire, and amber—contrasted with deep, inky blacks. Textures: smooth, gaseous clouds; sharp, crystalline dust particles; weathered and scored metal on the ship. Mood: awe-inspiring but dangerous; a sense of venturing into a beautiful yet hostile frontier. Composition: 3:2 wide shot, with the ship positioned off-center to emphasize the immense scale and chaotic beauty of the nebula.](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/trip_into_the_unknown.png)
 
@@ -27,7 +27,11 @@ _The nebula is a swirling chaos of gas, dust, and gravitational anomalies. Each 
 
 🎭 **Do you wish to proceed deeper?**
 
-Each time you decide to go deeper, the **Nebula Depth** increases by 1. You must then make a **Piloting** or **Engineering** check to navigate the hazards. The difficulty of this check is equal to the current **Nebula Depth**.
+💡 Every time players decide to go deeper, they need to explain how are they helping to overcome the current challenge.  
+The challenge rating starts at player count and rises by half the amount of players rounded down for each level.
+If the total Effect equals or exceeds the current challenge the spaceship moves without incident.  
+If the check does not meet the challenge, a random ship-system is damaged for each missing Effect.
+
 
 -   **Success:** You navigate the treacherous currents and uncover something of value.
 -   **Failure:** Your ship is battered by the nebula. It takes **1 Damage** to a random system for each point of **Effect** you failed the check by.

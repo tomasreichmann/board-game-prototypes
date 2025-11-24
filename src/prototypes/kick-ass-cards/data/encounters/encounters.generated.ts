@@ -301,6 +301,13 @@ export const encountersMap = {
         "campaign": "B-day",
         "chapter": 0
     },
+    "exiles-of-the-hungry-void/c3-trip-into-the-unknown": {
+        "slug": "exiles-of-the-hungry-void/c3-trip-into-the-unknown",
+        "path": "exiles-of-the-hungry-void/c3-trip-into-the-unknown",
+        "title": "Trip into the Unknown",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 3
+    },
     "exiles-of-the-hungry-void/c3-missile-stockpile": {
         "slug": "exiles-of-the-hungry-void/c3-missile-stockpile",
         "path": "exiles-of-the-hungry-void/c3-missile-stockpile",

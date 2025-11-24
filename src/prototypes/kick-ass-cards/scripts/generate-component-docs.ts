@@ -61,8 +61,9 @@ const componentInfo = {
     counterMap: {
         fileName: "counters.mdx",
         title: "Counter Cards",
-        description: "Counters represent threats or obstacles.",
-        usage: `<CounterCard {...counterMap[counterMapSlug]} />`,
+        description:
+            "Counters represent threats or obstacles. title prop is recommended, total and current props make sense when the number does not depend on some variable like player count.",
+        usage: `<CounterCard {...counterMap[counterMapSlug]} title="Some Title" total={10} current={5} />`,
     },
     effectMap: {
         fileName: "effects.mdx",
@@ -150,30 +151,32 @@ async function generateMdxFile(objectName: string, info: ComponentInfoValue, dat
 }
 
 async function generateIndexFile(allInfo: Record<string, ComponentInfoValue>) {
-    const imports = Object.values(allInfo)
-        .map((info) => `import ${info.title.replace(/ /g, "")} from './${info.fileName}';`)
-        .join("\n");
-
     const content = `
 # Component Reference
 
 This documentation provides details and usage examples for the various game components available in MDX.
 
-${Object.values(allInfo)
-    .map(
-        (info) => `
+${Object.entries(allInfo)
+    .map(([key, info]) => {
+        const slugs = variableSlugMap[key as keyof typeof variableSlugMap];
+        return `
 <details>
     <summary>${info.title}</summary>
-    <${info.title.replace(/ /g, "")} />
+    ### Usage Example
+    \`\`\`tsx
+    ${info.usage}
+    \`\`\`
+    ### Available Slugs
+    <ul>
+    ${slugs.map((slug) => `<li><code>${slug}</code></li>`).join("\n    ")}
+    </ul>
 </details>
-`
-    )
+`;
+    })
     .join("\n")}
 `;
 
-    const indexContent = `${imports}\n\n${content}`;
-
-    await fs.writeFile(path.join(paths.outputDir, "index.mdx"), indexContent);
+    await fs.writeFile(path.join(paths.outputDir, "index.mdx"), content);
     console.log("Generated index.mdx");
 }
 

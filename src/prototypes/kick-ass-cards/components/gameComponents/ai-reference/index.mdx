@@ -1,12 +1,3 @@
-import ActorCards from './actors.mdx';
-import ActorRoles from './actor-roles.mdx';
-import ActorModifiers from './actor-modifiers.mdx';
-import AssetCards from './assets.mdx';
-import CounterCards from './counters.mdx';
-import EffectCards from './effects.mdx';
-import StuntCards from './stunts.mdx';
-import OutcomeCards from './outcomes.mdx';
-
 
 # Component Reference
 
@@ -15,48 +6,410 @@ This documentation provides details and usage examples for the various game comp
 
 <details>
     <summary>Actor Cards</summary>
-    <ActorCards />
+    ### Usage Example
+    ```tsx
+    <LayeredActorCard {...actorMap[actorMapSlug]} role={actorRoleMap[actorRoleMapSlug]} modifier={actorModifierMap[actorModifierMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>animal_blue</li>
+    <li>animal_green</li>
+    <li>animal_red</li>
+    <li>animal_yellow</li>
+    <li>aristocrat</li>
+    <li>artillery_acid</li>
+    <li>artillery_earth</li>
+    <li>artillery_fire</li>
+    <li>artillery_ice</li>
+    <li>artillery_lightning</li>
+    <li>assassin</li>
+    <li>beast</li>
+    <li>bruiser_blue</li>
+    <li>bruiser_green</li>
+    <li>bruiser_red</li>
+    <li>bruiser_yellow</li>
+    <li>civilian</li>
+    <li>claw_blue</li>
+    <li>claw_green</li>
+    <li>claw_red</li>
+    <li>claw_yellow</li>
+    <li>cog</li>
+    <li>commander</li>
+    <li>construct</li>
+    <li>guard_blue</li>
+    <li>guard_green</li>
+    <li>guard_red</li>
+    <li>guard_yellow</li>
+    <li>healer</li>
+    <li>horror</li>
+    <li>manipulator</li>
+    <li>marksman_blue</li>
+    <li>marksman_green</li>
+    <li>marksman_red</li>
+    <li>marksman_yellow</li>
+    <li>merchant</li>
+    <li>minion_blue</li>
+    <li>minion_green</li>
+    <li>minion_red</li>
+    <li>minion_yellow</li>
+    <li>sentry</li>
+    <li>specialist</li>
+    <li>swarm</li>
+    <li>zealot</li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Actor Roles</summary>
-    <ActorRoles />
+    ### Usage Example
+    ```tsx
+    <LayeredActorCard role={actorRoleMap[actorRoleMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>pawn</li>
+    <li>minion</li>
+    <li>thug</li>
+    <li>brute</li>
+    <li>tank</li>
+    <li>champion</li>
+    <li>assassin</li>
+    <li>skirmisher</li>
+    <li>ranger</li>
+    <li>stalker</li>
+    <li>commando</li>
+    <li>marksman</li>
+    <li>sniper</li>
+    <li>grenadier</li>
+    <li>bomber</li>
+    <li>artillery</li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Actor Modifiers</summary>
-    <ActorModifiers />
+    ### Usage Example
+    ```tsx
+    <LayeredActorCard modifier={actorModifierMap[actorModifierMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>tough</li>
+    <li>shielded</li>
+    <li>armored</li>
+    <li>alpha</li>
+    <li>dangerous</li>
+    <li>burning</li>
+    <li>fiery</li>
+    <li>freezing</li>
+    <li>icy</li>
+    <li>irritating</li>
+    <li>corrupting</li>
+    <li>fast</li>
+    <li>harassing</li>
+    <li>slowing</li>
+    <li>elemental</li>
+    <li>charging</li>
+    <li>suicide</li>
+    <li>grabbing</li>
+    <li>webbing</li>
+    <li>reaching</li>
+    <li>healing</li>
+    <li>restoring</li>
+    <li>regenerating</li>
+    <li>encouraging</li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Asset Cards</summary>
-    <AssetCards />
+    ### Usage Example
+    ```tsx
+    <LayeredAssetCard {...assetMap[assetMapSlug]} modifier={assetModifierMap[assetModifierMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>scifi_medi_gel</li>
+    <li>scifi_nano_gel</li>
+    <li>scifi_instahack</li>
+    <li>scifi_grapple_gun</li>
+    <li>scifi_glue_nade</li>
+    <li>scifi_emp_nade</li>
+    <li>scifi_frag_grenade</li>
+    <li>scifi_gravi_emitter</li>
+    <li>scifi_freeze_grenade</li>
+    <li>scifi_air_conditioning</li>
+    <li>scifi_scanner</li>
+    <li>scifi_magnetic_gun</li>
+    <li>scifi_multi_bow</li>
+    <li>scifi_heat-gun</li>
+    <li>scifi_bfg</li>
+    <li>scifi_heat_blade</li>
+    <li>scifi_holo_generator</li>
+    <li>scifi_barrier</li>
+    <li>scifi_turret</li>
+    <li>medieval_gambeson</li>
+    <li>medieval_chainmail</li>
+    <li>medieval_plate_armor</li>
+    <li>medieval_buckler</li>
+    <li>medieval_kite-shield</li>
+    <li>medieval_dagger</li>
+    <li>medieval_hand_axe</li>
+    <li>medieval_longsword</li>
+    <li>medieval_zweihandler</li>
+    <li>medieval_great_axe</li>
+    <li>medieval_war_hammer</li>
+    <li>medieval_mace</li>
+    <li>medieval_morningstar </li>
+    <li>medieval_staff</li>
+    <li>medieval_spear</li>
+    <li>medieval_billhook</li>
+    <li>medieval_hunting_bow</li>
+    <li>medieval_crossbow</li>
+    <li>medieval_hand_cannon</li>
+    <li>medieval_riding_horse</li>
+    <li>medieval_wagon</li>
+    <li>medieval_grappling_hook</li>
+    <li>medieval_lockpick_set</li>
+    <li>medieval_bandages</li>
+    <li>medieval_healing_salve</li>
+    <li>medieval_herbal_remedy</li>
+    <li>medieval_prayer_book</li>
+    <li>medieval_mead</li>
+    <li>medieval_grenade</li>
+    <li>medieval_lantern</li>
+    <li>medieval_torch</li>
+    <li>medieval_cannon</li>
+    <li>medieval_rations</li>
+    <li>medieval_pouch</li>
+    <li>medieval_chest</li>
+    <li>medieval_letter</li>
+    <li>medieval_poison</li>
+    <li>medieval_key</li>
+    <li>medieval_trap</li>
+    <li>medieval_tools</li>
+    <li>medieval_digging</li>
+    <li>medieval_ore</li>
+    <li>medieval_stone</li>
+    <li>medieval_wood</li>
+    <li>medieval_iron</li>
+    <li>medieval_silver</li>
+    <li>medieval_gold</li>
+    <li>base_light_weapon</li>
+    <li>base_heavy_weapon</li>
+    <li>base_reach_weapon</li>
+    <li>base_spread_weapon</li>
+    <li>base_throwable_weapon</li>
+    <li>base_precision_weapon</li>
+    <li>base_repeating_weapon</li>
+    <li>base_artillery_weapon</li>
+    <li>base_light_armor</li>
+    <li>base_heavy_armor</li>
+    <li>base_shield</li>
+    <li>base_healing</li>
+    <li>base_comfort</li>
+    <li>base_surge</li>
+    <li>base_tools</li>
+    <li>base_light</li>
+    <li>base_vehicle</li>
+    <li>base_package</li>
+    <li>base_document</li>
+    <li>base_valuables</li>
+    <li>base_key</li>
+    <li>base_resources</li>
+    <li></li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Counter Cards</summary>
-    <CounterCards />
+    ### Usage Example
+    ```tsx
+    <CounterCard {...counterMap[counterMapSlug]} title="Some Title" />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>danger</li>
+    <li>defense</li>
+    <li>destruction</li>
+    <li>distance</li>
+    <li>drop</li>
+    <li>energy</li>
+    <li>escape</li>
+    <li>euphoria</li>
+    <li>incognito</li>
+    <li>investigation</li>
+    <li>morale</li>
+    <li>performance</li>
+    <li>persuasion</li>
+    <li>race</li>
+    <li>reputation</li>
+    <li>resources</li>
+    <li>stealth</li>
+    <li>study</li>
+    <li>time</li>
+    <li>tracking</li>
+    <li>wealth</li>
+    <li>agreement</li>
+    <li>construction</li>
+    <li>crafting</li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Effect Cards</summary>
-    <EffectCards />
+    ### Usage Example
+    ```tsx
+    <Effect {...effectMap[effectMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>injury</li>
+    <li>distress</li>
+    <li>dying</li>
+    <li>panicked</li>
+    <li>hopeless</li>
+    <li>stuck</li>
+    <li>hindered</li>
+    <li>boost</li>
+    <li>complication</li>
+    <li>freezing</li>
+    <li>burning</li>
+    <li>infection</li>
+    <li>doom</li>
+    <li>salvation</li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Stunt Cards</summary>
-    <StuntCards />
+    ### Usage Example
+    ```tsx
+    <StuntCard {...stuntMap[stuntMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>dontGiveUp</li>
+    <li>bringThePain</li>
+    <li>fearless</li>
+    <li>pummel</li>
+    <li>flex</li>
+    <li>oversizedWeaponry</li>
+    <li>offensiveThrow</li>
+    <li>powerAttack</li>
+    <li>warCry</li>
+    <li>grapple</li>
+    <li>chokeOut</li>
+    <li>smash</li>
+    <li>seductive</li>
+    <li>elusive</li>
+    <li>ghostStep</li>
+    <li>masterOfDisguise</li>
+    <li>venomous</li>
+    <li>forger</li>
+    <li>stalker</li>
+    <li>safecracker</li>
+    <li>pickpocket</li>
+    <li>stagedAccident</li>
+    <li>hiddenArsenal</li>
+    <li>rallyingCall</li>
+    <li>forager</li>
+    <li>tracker</li>
+    <li>camouflage</li>
+    <li>hunter</li>
+    <li>animalTrainer</li>
+    <li>trapper</li>
+    <li>marksman</li>
+    <li>weaponMaintenance</li>
+    <li>penetration</li>
+    <li>survivor</li>
+    <li>animalFriend</li>
+    <li>strategist</li>
+    <li>volatileMastery</li>
+    <li>linguist</li>
+    <li>historian</li>
+    <li>botanist</li>
+    <li>chemist</li>
+    <li>tinkerer</li>
+    <li>physician</li>
+    <li>inventor</li>
+    <li>academic</li>
+    <li>powerfulRhetoric</li>
+    <li>medic</li>
+    <li>foresight</li>
+    <li>senseDanger</li>
+    <li>readEmotions</li>
+    <li>markAnOmen</li>
+    <li>genusLoci</li>
+    <li>guideEmotions</li>
+    <li>crowdControl</li>
+    <li>bless</li>
+    <li>circleOfProtection</li>
+    <li>tactician</li>
+    <li>lastStand</li>
+    <li>kleptomaniac</li>
+    <li>hardenedSkin</li>
+    <li>enterTrance</li>
+    <li>sweetLies</li>
+    <li>escapist</li>
+    <li>vibe</li>
+    <li>hex</li>
+    <li>protector</li>
+    <li>forwardAssault</li>
+    <li>coverFire</li>
+    <li>evasive</li>
+    <li>charge</li>
+    <li>ballistic</li>
+    <li>acrobatic</li>
+    <li>calm</li>
+    <li>rage</li>
+    <li>recklessAttack</li>
+    <li>brushItOff</li>
+    <li>joker</li>
+    <li>ghost</li>
+    <li>allIn</li>
+    <li>burglar</li>
+    <li>tactical</li>
+    <li>analytical</li>
+    <li>sympathetic</li>
+    <li>intuitive</li>
+    <li>assassin</li>
+    <li>ruthless</li>
+    <li>elemental</li>
+    <li>timeStop</li>
+    <li>recklessPiloting</li>
+    <li>burst</li>
+    <li>whiteHat</li>
+    <li>sharpshooter</li>
+    <li>overclock</li>
+    <li>psychonaut</li>
+    <li>chargedAttack</li>
+    <li>upload</li>
+    <li>turret</li>
+    <li>heatSink</li>
+    </ul>
 </details>
 
 
 <details>
     <summary>Outcome Cards</summary>
-    <OutcomeCards />
+    ### Usage Example
+    ```tsx
+    <Outcome {...outcomeMap[outcomeMapSlug]} />
+    ```
+    ### Available Slugs
+    <ul>
+    <li>special</li>
+    <li>success</li>
+    <li>partial</li>
+    <li>fumble</li>
+    <li>chaos</li>
+    </ul>
 </details>
 

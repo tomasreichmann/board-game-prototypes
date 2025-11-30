@@ -308,6 +308,13 @@ export const encountersMap = {
         "campaign": "Exiles of the Hungry Void",
         "chapter": 3
     },
+    "exiles-of-the-hungry-void/c3-siege-of-rock-bottom": {
+        "slug": "exiles-of-the-hungry-void/c3-siege-of-rock-bottom",
+        "path": "exiles-of-the-hungry-void/c3-siege-of-rock-bottom",
+        "title": "Siege of Rock Bottom",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 3
+    },
     "exiles-of-the-hungry-void/c3-missile-stockpile": {
         "slug": "exiles-of-the-hungry-void/c3-missile-stockpile",
         "path": "exiles-of-the-hungry-void/c3-missile-stockpile",

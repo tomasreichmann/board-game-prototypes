@@ -1,0 +1,78 @@
+---
+campaign: Exiles of the Hungry Void
+chapter: 3
+title: Siege of Rock Bottom
+hook: You detect an explosion of comm's traffic from a nearby smuggler station. It seems to be under attack by Machinist priests. The priests claim the smugglers have stolen a relic of great value. When the smugglers claimed they don't have it, the Machinist ships decided to take it by force. You can use the commotion to your advantage.
+prompt: This encounter gives players an opportunity to choose a side in the conflict to gain spoils from the other side, gaining relations bonus with one and loosing with the other. A 3rd option is to try to retrieve the relic from the station under fire and return it for peaceful resolution and relations bonus with both.
+---
+
+import { getCampaignChapterEncounters, getOtherChapterEncounterLinks } from "..";
+import { actorMap, counterMap, assetMap, effectMap, stuntMap, actorRoleMap, actorModifierMap } from "../components";
+
+![Cinematic digital painting — a chaotic space battle raging around a massive, repurposed industrial space station in the middle of a dust nebula, currently used as a smuggler' base, "Rock Bottom". Renesance style, ships of the Machine church, glowing with righteous blue energy, bombard the station with pulse lasers. A few smaller, scrappy smuggler vessels support station's defensive turrets, returning fire. Explosions blossom silently against the station's pockmarked surface and the shields of the machine church fleet. The station itself is a sprawling complex of gantries, docking bays, and makeshift structures built on top of original bulky factories. Emergency lights flash around the station. Lighting: harsh, strobing flashes from weapons fire and explosions, casting sharp shadows across the asteroid and ships. The cold, distant starlight provides a dim ambient light. Palette: cold blues and whites of the machine church ships' energy, fiery oranges of explosions, and the dull gray of dusty nebula, punctuated by the varied colors of the smuggler ships. Textures: scorched metal plates of the station, decorated metallic hulls of the machine church ships, weathered patchwork plating of the smuggler vessels. Mood: a desperate siege, chaotic and intense. Composition: 3:2 wide shot, capturing the scale of the battle with the industrial station as the central focus, ships engaged in combat around it.](/mighty-decks/encounters/exiles_of_the_hungry_void/scenes/siege_of_rock_bottom.png)
+
+# Siege of Rock Bottom
+
+💡 {prompt}
+
+_You jump into a system ablaze with conflict. Your sensors are flooded with comms chatter and weapons fire. A flotilla of decorated Machinist priest vessels is laying siege to a massive industrial station, "Rock Bottom." Bright pulses of laser score the station's rusty plating, while scrappy smuggler ships and automated turrets return fire._
+
+_A priority channel cuts through the noise: **"This is the vessel *Cog's Righteous Fury*. The heretics of Rock Bottom harbor a stolen Machinist relic. Surrender it, and we will cease this purification. Resist, and be cleansed by holy fire."** Another voice, laced with static and defiance, retorts: **"We don't have your shitty trinket, you zealots! Piss off before we make your ships see-through!"**_
+
+_The battle rages, and your unexpected arrival has not gone unnoticed. Both sides are hailing you, demanding you declare your allegiance or be treated as hostile. This is a chance to make powerful allies, or a great deal of profit._
+
+---
+
+## Choose Your Side
+
+🎭 **The Machinists and Smugglers both demand your help. What do you do?**
+
+### 1. Side with the Machinist Church
+
+_You answer the Machinists' call, your weapons turning on the smuggler vessels. The priests welcome your aid in their holy quest._
+
+-   **Objective:** Help the Machinists disable Rock Bottom's defenses and board the station.
+-   **Challenge:** The station's turrets and remaining smuggler ships fight desperately. Overcome a **Challenge** equal to **3x the number of players**. At the end of each round, you have to defend from attacks worth **1x Effect** per player.
+-   **Reward:**
+    -   🔎 The Machinists, victorious, allow you to salvage parts from the defeated smuggler ships.
+    -   🏺 Gain **1x Weapon system of your choice**.
+    -   🤝 **+2 Relations** with the Machinist Church, **-2 Relations** with Smugglers.
+-   **Failure:** If you flee without completing the objective, the Machinists are displeased with your performance. 🤝 **-1 Relations** with the Machinist Church.
+
+---
+
+### 2. Side with the Smugglers
+_You align with the underdogs, opening fire on the Machinist vessels. The smugglers cheer your name over the comms._
+-   **Objective:** Help the smugglers repel the Machinist attack.
+-   **Challenge:** The Machinist ships are technologically superior and well-coordinated. Overcome a **Challenge** equal to **3x the number of players**.
+-   **Reward:**
+    -   🔎 The smugglers, grateful for your help, give you access to their hidden stockpiles as thanks.
+    -   🏺 Each player gains a **Modified Weapon or Armor**.
+    -   🤝 **+2 Relations** with Smugglers, **-2 Relations** with the Machinist Church.
+-   **Failure:** If you flee without completing the objective, the smugglers curse your incompetence. 🤝 **-1 Relations** with Smugglers.
+
+---
+
+### 3. Retrieve the Relic
+_You try to broadcast a message of peace, offering to mediate, but the fighting does not cease and you operate under heavy fire. You try to board the station, and find the stolen relic, and return it to the Machinists to end the bloodshed._
+-   **Objective:** Infiltrate the station under fire, locate the relic, and return it. This is a multi-stage challenge.
+-   **Stage 1: Board the station:** The station is on high alert. You need to fly through cross-fire to get to a docking port.
+    -   💡 **Challenge: 2x Players**. Sustain 1 damage to a random ship system for every missing Effect.
+-   **Stage 2: Find the relic:** You detect the relic, an ancient data-reading device labeled "Biskma," in possession of a drunk pirate fighting Machinist droids. Get in and retrieve it.
+    -   💡 **Challenge: 2x Players**. The player crew sustains 1 damage to a random member for every missing Effect.
+-   **Reward:**
+    -   🔎 You return the relic. The Machinists are overjoyed, and the smugglers are relieved. Both sides see you as honorable mediators.
+    -   🏺 The Machinists reward you with a sacred schematic, and the smugglers offer a token of their gratitude. Gain **1x new Ship System** and **2x Resources**.
+    -   🤝 **+2 Relations** with the Machinist Church, **+2 Relations** with Smugglers.
+-   **Failure:**
+    -   If you flee without completing the objective, both sides take you for a coward. 🤝 **-1 Relations** with both factions.
+
+---
+
+### Other encounters in the chapter
+
+<LinkList className="flex-col" links={ getOtherChapterEncounterLinks(import.meta.url) } />
+
+### Next chapter encounters
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter + 1) } />

@@ -364,6 +364,13 @@ export const encountersMap = {
         "campaign": "Exiles of the Hungry Void",
         "chapter": 1
     },
+    "exiles-of-the-hungry-void/c0-ship": {
+        "slug": "exiles-of-the-hungry-void/c0-ship",
+        "path": "exiles-of-the-hungry-void/c0-ship",
+        "title": "The Ship",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 0
+    },
     "exiles-of-the-hungry-void/c0-intro": {
         "slug": "exiles-of-the-hungry-void/c0-intro",
         "path": "exiles-of-the-hungry-void/c0-intro",

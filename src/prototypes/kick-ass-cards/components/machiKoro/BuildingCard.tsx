@@ -1,7 +1,6 @@
 import React from "react";
 import { PaperOrDiv, PaperProps } from "../../../../components/print/Paper/Paper";
 import { twMerge } from "tailwind-merge";
-import ToggleData from "../../../../components/DataToggle";
 
 export enum BuildingTypeEnum {
     "PublicTender" = "PublicTender",
@@ -55,7 +54,7 @@ const RichFragment = ({
         if (children === "\n\n") {
             return <span className="inline-block w-full h-[0.25em]" />;
         }
-        const activationNumberMatch = children.match(/\((\d+\-?\+?)\)/);
+        const activationNumberMatch = children.match(/\((\d+-?\+?)\)/);
         if (activationNumberMatch) {
             const [, condition] = activationNumberMatch;
             return (

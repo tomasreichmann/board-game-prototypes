@@ -1,0 +1,16 @@
+---
+title: "The Ship"
+campaign: Exiles of the Hungry Void
+chapter: 0
+prompt: "This page describes the player ship"
+---
+
+import { getCampaignChapterEncounters } from "..";
+import { actorMap, counterMap, assetMap, effectMap, stuntMap } from "../components";
+import AreaStage from "../../../components/gameComponents/AreaStage";
+
+# The Ship
+
+<AreaStage className="not-prose" />
+
+<LinkList className="flex-col" links={ getCampaignChapterEncounters(campaign, chapter) } />

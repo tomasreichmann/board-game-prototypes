@@ -377,5 +377,12 @@ export const encountersMap = {
         "title": "Exiles of the Hungry Void",
         "campaign": "Exiles of the Hungry Void",
         "chapter": 0
+    },
+    "exiles-of-the-hungry-void/c0-dumped": {
+        "slug": "exiles-of-the-hungry-void/c0-dumped",
+        "path": "exiles-of-the-hungry-void/c0-dumped",
+        "title": "Dumped in the Void",
+        "campaign": "Exiles of the Hungry Void",
+        "chapter": 0
     }
 };

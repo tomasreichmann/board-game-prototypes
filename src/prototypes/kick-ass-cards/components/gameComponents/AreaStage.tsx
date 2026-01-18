@@ -166,6 +166,8 @@ const [cardHeight, cardWidth] = cardSizes["54x86"].mm.map(mmToPx);
 
 const gridCols = 3;
 const gridRows = Math.ceil(zones.length / gridCols);
+const gapX = 4;
+const gapY = 4;
 
 export type AreaStageProps = {
     className?: string;
@@ -179,8 +181,8 @@ export default function AreaStage({ className }: AreaStageProps) {
             cellWidth: cardWidth,
             columns: gridCols,
             rows: gridRows,
-            gapX: 4,
-            gapY: 4,
+            gapX,
+            gapY,
             x: 0,
             y: 0,
         } satisfies GridLayoutPropsType,
@@ -191,9 +193,12 @@ export default function AreaStage({ className }: AreaStageProps) {
         stageObjectProps: layout.getCardTransform("zoneGrid", index),
     }));
 
+    const width = gridCols * cardWidth + (gridCols - 1) * gapX;
+    const height = gridRows * cardHeight + (gridRows - 1) * gapY;
+
     return (
-        <Frame2d width={1000} height={1000} className={className}>
-            <Stage2d width={1000} height={1000}>
+        <Frame2d width={width} height={height} className={className}>
+            <Stage2d width={width} height={height}>
                 {zoneItems.map(({ zoneProps, stageObjectProps }, index) => (
                     <StageObject
                         {...stageObjectProps}
